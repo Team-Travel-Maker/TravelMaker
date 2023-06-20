@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>관리자 페이지- 회원 정보 목록</title>
+    <link rel="stylesheet" href="/css/admin/admin_common.css" />
+    <link rel="stylesheet" href="/css/admin/sidemenu.css" />
+    <link rel="stylesheet" href="/css/admin/admin_member_list.css" />
+    <link rel="stylesheet" href="/css/admin/admin_board.css">
+    <link rel="stylesheet" href="/css/admin/admin_board_proposal.css">
+    <link rel="stylesheet" href="/css/admin/admin_common.css">
+    <link rel="stylesheet" href="/css/admin/modal.css" />
+    <link rel="icon" href="/images/logo/favicon.png" />
+</head>
+
+<body>
+<div>
+    <!-- 모달 부분 -->
+    <div class="modal">
+        <div class="warn-modal">
+            <div id="content-wrap"></div>
+        </div>
+    </div>
+
+    <div class="info-title-box info-title-box-flex">
+        <div class="logo-box-layout">
+            <div class="logo-box">
+                <img src="/images/admin/wegether.svg" style="padding-top: 17px" />
+            </div>
+
+        </div>
+        <div>
+            <div class="select-name">
+                <span>회원정보 관리</span>
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <!-- 사이드 바 -->
+        <div th:replace="~{admins/side-bar :: #side-bar-wrap}"></div>
+
+        <div class="container">
+            <div class="container-margin">
+                <div style="display: flex; justify-content: space-between">
+                    <!-- 헤더 -->
+
+                    <div class="search-wrap">
+                        <form>
+                            <div class="search-container">
+                                <!-- 검색창 -->
+                                <div class="search-input-container">
+                                    <input class="search-input delete-button" type="search" name="keyword" placeholder="아이디, 이름 또는 닉네임을 입력하세요" style="width: 450px; padding: 11px;">
+                                </div>
+                                <!-- 검색 버튼 누르기 -->
+                                <button style="display: none" type="submit"></button>
+                            </div>
+                        </form>
+                        <!-- 검색창 눌렀을 때 나오는 메뉴 -->
+                    </div>
+
+                    <div class="box-layout">
+                        <div class="delete-box">
+                            <button class="delete-button">회원 상태 변경</button>
+                        </div>
+                        <div class="change-box">
+                            <button class="change-button">개인/업체 변경</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 내용 섹션 -->
+                <section class="board-info-box-layout">
+                    <div class="board-info-box">
+                        <div class="board-info-title-box">
+                            <span>회원정보 목록</span>
+                        </div>
+
+                        <div class="info-table">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th class="checkbox-line">
+                                        <input type="checkbox" id="allSelect" />
+                                    </th>
+                                    <th>No</th>
+                                    <th>회원상태</th>
+                                    <th>개인/업체</th>
+                                    <th>아이디</th>
+                                    <th>이름</th>
+                                    <th>닉네임</th>
+                                    <th>핸드폰 번호</th>
+                                    <th>가입 날짜</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="checkbox-line">
+                                        <input
+                                                type="checkbox"
+                                                class="memberCheckbox"
+                                                name="check"/>
+                                    </td>
+                                    <td>1</td>
+                                    <td style="color:#0fa34c">일반 회원</td>
+                                    <td>개인</td>
+                                    <td>ljm1234@naver.com</td>
+                                    <td>이종문</td>
+                                    <td>야미</td>
+                                    <td>01040573327</td>
+                                    <td>2023-06-01 09:57:40</td>
+                                </tr>
+                                <tr>
+                                    <td class="checkbox-line">
+                                        <input
+                                                type="checkbox"
+                                                class="memberCheckbox"
+                                                name="check"/>
+                                    </td>
+                                    <td>2</td>
+                                    <td style="color:#ff0000">탈퇴 회원</td>
+                                    <td style="color:blue">업체</td>
+                                    <td>ljm1234@naver.com</td>
+                                    <td>이종문</td>
+                                    <td>야미</td>
+                                    <td>01040573327</td>
+                                    <td>2023-06-01 09:57:40</td>
+                                </tr>
+                                <tr>
+                                    <td class="checkbox-line">
+                                        <input
+                                                type="checkbox"
+                                                class="memberCheckbox"
+                                                name="check"/>
+                                    </td>
+                                    <td>3</td>
+                                    <td style="color:#0fa34c">일반 회원</td>
+                                    <td>개인</td>
+                                    <td>ljm1234@naver.com</td>
+                                    <td>이종문</td>
+                                    <td>야미</td>
+                                    <td>01040573327</td>
+                                    <td>2023-06-01 09:57:40</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <!-- 폼태그 -->
+
+                <!-- 페이지 부분 -->
+                <div id="paging-wrap">
+                    <a class="member-change-page paging paging-move">
+                        <img src="/images/admin/prev.png" width="15px"></a>
+                    <th:block>
+                        <a class="paging paging-checked">1</a>
+                        <a class="member-change-page paging">2</a>
+                    </th:block>
+                    <a class="member-change-page paging paging-move">
+                        <img src="/images/admin/next.png" width="15px"></a>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/js/admin/checkbox.js"></script>
+<script src="/js/admin/page.js"></script>
+<script src="/js/admin/paging.js"></script>
+<script src="/js/admin/sidemenu.js"></script>
+<script src="/js/admin/modal.js"></script>
+</html>
