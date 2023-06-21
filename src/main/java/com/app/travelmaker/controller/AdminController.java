@@ -23,6 +23,20 @@ public class AdminController {
 
 // 공지사항 관리
 
+    //목록
+    @GetMapping("notice/list")
+    public void goToNoticeList(){;}
+
+    //등록
+    @GetMapping("notice/write")
+    public void goToNoticeWrite(){;}
+
+    //상세
+    @GetMapping("notice/detail")
+    public void goToNoticeDetail(){;}
+    //수정
+    @GetMapping("notice/modify")
+    public void goToNoticeModify(){;}
 
 
 }

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>관리자 페이지- 공지사항 게시판 상세보기</title>
+        <link rel="stylesheet" href="/css/admin/sidemenu.css" />
+        <link rel="stylesheet" href="/css/admin/admin_board_detail.css" />
+        <link rel="stylesheet" href="/css/admin/admin_inquire_detail.css" />
+        <link rel="stylesheet" href="/css/admin/admin_board.css">
+        <link rel="stylesheet" href="/css/admin/admin_board_proposal.css">
+        <link rel="stylesheet" href="/css/admin/admin_common.css">
+        <link rel="icon" href="/image/logo/favicon.png" />
+    </head>
+    <body>
+        <div>
+            <div class="info-title-box info-title-box-flex">
+                <div class="logo-box-layout">
+                    <div class="logo-box">
+                        <img src="/images/admin/wegether.svg" style="padding-top: 17px" />
+                    </div>
+                    <div class="logo-title">
+                        <span>Jar</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="select-name">
+                        <span>공지사항 게시판 관리</span>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap">
+                <!-- 사이드 바 -->
+                <div th:replace="~{admins/side-bar :: #side-bar-wrap}"></div>
+
+                <div class="container">
+                    <div class="container-margin">
+                        <!-- 헤더 -->
+                        <div class="prev-button-layout">
+                            <div>
+                                <a th:href="@{/admins/notice/list}">
+                                    <img src="/images/admin/prev_icon.png" class="prev-icon" />
+                                </a>
+                                <span class="prev-title">리스트로 돌아가기</span>
+                            </div>
+                        </div>
+
+                        <!-- 내용 섹션 -->
+                        <section class="board-info-box-layout">
+                            <div class="board-info-box">
+                                <div class="board-info-title-box" style="position: relative">
+                                    <span>공지사항 상세보기</span>
+                                    <a th:href="@{/admins/notice/modify}" class="btn_done">수정 하기</a>
+                                </div>
+                                <div class="info-table">
+                                    <div class="info-member">
+                                        <span class="span-bold">제목 :</span>
+                                        <!-- 제목 -->
+                                        <span>제목불러와야함</span>
+                                    </div>
+                                    <div class="info-member">
+                                        <span class="span-bold">작성 날짜 :</span>
+                                        <!-- 작성 날짜 -->
+                                        <span>작성날짜불러와야함</span>
+                                    </div>
+                                    <div class="info-member">
+                                        <span class="span-bold">대표 이미지</span>
+                                        <br>
+                                        <!-- 대표 이미지 -->
+                                        <span class="notice-image">대표이미지불러오기</span>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="info-table">
+                                    <div></div>
+                                </div>
+                                <div class="info-table">
+                                    <!-- 내용 이미지 -->
+                                    <span class="notice-detail-image">내용이미지 불러오기</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="/js/admin/sidemenu.js"></script>
+</html>
