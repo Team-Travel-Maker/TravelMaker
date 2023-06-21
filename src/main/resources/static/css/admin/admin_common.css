@@ -1,0 +1,168 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+label,
+button {
+    cursor: pointer;
+}
+
+.is-hidden {
+    display: none !important;
+}
+
+.is-block {
+    display: block !important;
+}
+
+.is-inline-block {
+    display: inline-block !important;
+}
+
+.is-flex {
+    display: flex !important;
+}
+
+.is-align-center {
+    text-align: center;
+}
+
+.is-flex-align-center {
+    justify-content: center !important;
+}
+
+.is-flex-align-left {
+    justify-content: left !important;
+}
+
+.is-flex-align-right {
+    justify-content: right !important;
+}
+
+.is-flex-align-around {
+    justify-content:space-around !important;
+}
+
+.is-flex-align-between {
+    justify-content:space-between !important;
+}
+
+.is-flex-align-evenly {
+    justify-content:space-evenly !important;
+}
+
+td.is_inactive>hr {
+    border-bottom: 4px solid gray !important;
+}
+
+td.is_active>hr {
+    border-bottom: 4px solid green !important;
+}
+
+td.is_warning>hr {
+    border-bottom: 4px solid rgb(255, 48, 25) !important;
+}
+
+div#paging-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.pages {
+    padding: 30px;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 1rem;
+}
+
+a.paging {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+a.paging-checked {
+    color: #0c48dc;
+    font-weight: 700;
+}
+
+a.paging-move {
+    margin: 0px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+a.side-bar-color {
+    text-decoration: none;
+    color: #e0e0e0;
+}
+
+div.attach-wrap {
+    display: flex;
+    justify-content: flex-start;
+}
+
+label.attach {
+    position: relative;
+    flex-shrink: 0;
+    justify-content: center;
+    width: 104px;
+    height: 104px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #827f7f;
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+label.attach img {
+    width: 100%;
+}
+
+label.attach img.thumbnail {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+label.attach h6 {
+    font-weight: 400;
+}
+
+label.attach h6.plus {
+    font-size: 40px;
+    font-weight: 100;
+    line-height: 1em;
+}
+
+div.x {
+    display: none;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    top: -15px;
+    right: 0px;
+    width: 24px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    background: rgba(33, 35, 41, 0.5);
+    border-radius: 0px 4px;
+}
+
+div.x img {
+    width: 100%;
+    filter: invert(0.9);
+}
+
+span.file-size {
+    position: absolute;
+    bottom: -25px;
+}
