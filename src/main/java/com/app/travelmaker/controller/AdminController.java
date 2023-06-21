@@ -39,4 +39,25 @@ public class AdminController {
     public void goToNoticeModify(){;}
 
 
+//  문의 관리
+
+    //목록
+    @GetMapping("inquiry/list")
+    public void goToInquiryList(){;}
+
+    //상세 답변 미완료
+    @GetMapping("inquiry/detail")
+    public void goToInquiryDetail(){;}
+
+    //상세 답변 완료된
+    @GetMapping("inquiry/answer-detail")
+    public void goToInquiryAnswerDetail(){;}
+
+    //답변 작성
+    @GetMapping("inquiry/write")
+    public void goToInquiryAnswerWrite(){;}
+    //답변 수정
+    @GetMapping("inquiry/modify")
+    public void goToInquiryAnswerModify(){;}
+
 }
