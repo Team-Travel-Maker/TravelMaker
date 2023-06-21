@@ -28,7 +28,7 @@
                                 <img src="/images/admin/board_icon.png" class="icon">
                             </div>
                             <a href="">
-                                <span>게시판 관리</span>
+                                <span>커뮤니티 관리</span>
                             </a>
                             <div class="triangle-button">
                                 <img src="/images/admin/arrow_icon.png"
@@ -43,30 +43,30 @@
                             </li> -->
                             <li class="select-menu">
                                 <a href="#">
-                                    <span>개인 챌린지 게시판</span>
+                                    <span>일반 후기</span>
                                 </a>
                             </li>
                             <li class="select-menu">
                                 <a href="#">
-                                    <span>단체 챌린지 게시판</span>
+                                    <span>개선 요청</span>
                                 </a>
                             </li>
                             <li class="select-menu">
                                 <a href="#">
-                                    <span>다이어리 게시판</span>
-                                </a>
-                            </li>
-                            <li class="select-menu">
-                                <a href="#">
-                                    <span>문의 게시판</span>
-                                </a>
-                            </li>
-                            <li class="select-menu">
-                                <a href="#">
-                                    <span>제안 게시판</span>
+                                    <span>소통</span>
                                 </a>
                             </li>
                         </ul>
+                    </li>
+                    <li class="menu">
+                        <div class="menu-flex">
+                            <div>
+                                <img src="/images/admin/board_icon.png" class="icon">
+                            </div>
+                            <a href="">
+                                <span>문의/답변 관리</span>
+                            </a>
+                        </div>
                     </li>
 
                     <li class="menu">
@@ -84,12 +84,12 @@
                         </div>
                         <ul class="menus2 menus" style="display:none;">
                             <li class="select-menu">
-                                <a href="#">
+                                <a th:href="@{/admins/notice/list}">
                                     <span>공지사항 목록</span>
                                 </a>
                             </li>
                             <li class="select-menu">
-                                <a href="#">
+                                <a th:href="@{/admins/notice/write}">
                                     <span>공지사항 작성</span>
                                 </a>
                             </li>
@@ -100,7 +100,7 @@
                             <div>
                                 <img src="/images/admin/user_icon.png" class="icon">
                             </div>
-                            <a href="#">
+                            <a th:href="@{/admins/member/list}">
                                 <span>회원정보 관리</span>
                             </a>
                         </div>
