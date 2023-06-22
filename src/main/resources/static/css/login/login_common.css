@@ -1,0 +1,212 @@
+html {
+    display: block;
+@media only screen and (min-width: 768px)
+}
+* {
+    font-family: Pretendard,'Pretendard JP','Pretendard Std',-apple-system,system-ui,BlinkMacSystemFont,Roboto,'Segoe UI',Helvetica,Arial,'Apple SD Gothic Neo','Malgun Gothic','Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol',sans-serif;
+}
+* {
+    box-sizing: border-box;
+}
+hr {
+    display: block;
+    unicode-bidi: isolate;
+    margin-block-start: 0.5em;
+    margin-block-end: 0.5em;
+    margin-inline-start: auto;
+    margin-inline-end: auto;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+}
+form {
+    display: block;
+    margin-top: 0em;
+}
+html, body, #login__next {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 320px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: none;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+}
+body {
+    display: block;
+    margin: 8px;
+}
+a {
+    color: inherit;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+}
+:root,html[data-theme=light] {
+    --theme-palette-colors-pink-400: #f348a3;
+    --theme-palette-colors-gray-900: #333;
+    --theme-palette-colors-black-100: #000;
+    --theme-palette-colors-bluegray-200: #e1e2e3;
+    --theme-palette-colors-gray-700: #767676;
+    --theme-palette-colors-blue-800: #002fdb;
+    --theme-palette-colors-gray-600: #888;
+    --theme-palette-colors-gray-800: #666;
+    --theme-palette-colors-purple-400: #8958fa;
+    --theme-palette-colors-gray-300: #ccc;
+    --theme-palette-colors-green-400: #08ba9c;
+    --theme-palette-colors-blue-400: #36f;
+    --theme-palette-colors-gray-200: #ececec;
+    --theme-palette-colors-red-400: #fe415c;
+    --theme-palette-colors-gray-500: #939393;
+    --theme-palette-colors-gray-400: #aaa;
+    --theme-palette-colors-pastel-lime-50: #f6f8ee;
+    --theme-palette-colors-pastel-purple-50: #f7f2f9;
+    --theme-palette-colors-pastel-blue-50: #eff1fb;
+    --theme-palette-colors-pastel-lightblue-50: #f3f9fe;
+    --theme-palette-colors-pastel-cyan-50: #eefaf9;
+    --theme-palette-colors-pastel-green-100: #e4f4ec;
+    --theme-palette-colors-bluegray-100: #f2f4f7;
+    --theme-palette-colors-pastel-green-50: #f2fbf5;
+    --theme-palette-colors-base-bg: #f7f7f7;
+    --theme-palette-colors-white-100: #fff;
+    --theme-palette-colors-pastel-indigo-50: #f3f2fb;
+    --theme-palette-colors-gray-100: #f8f8f8;
+    --theme-palette-colors-elevated-bg: #fff;
+    --theme-palette-colors-contents-bg: #fff;
+    --theme-palette-colors-common-white: #fff;
+    --theme-palette-colors-orange-400: #ff9100;
+    --theme-palette-colors-blue-invert: #4d7dff;
+    --theme-palette-colors-dimmer: rgba(0,0,0,.5);
+    --theme-palette-colors-blue-600: #2658f6
+}
+
+html[data-theme=dark] {
+    --theme-palette-colors-black-100: #f8f8f8;
+    --theme-palette-colors-base-bg: #111110;
+    --theme-palette-colors-gray-200: #343434;
+    --theme-palette-colors-gray-300: #4a4a4a;
+    --theme-palette-colors-gray-800: #a3a3a3;
+    --theme-palette-colors-blue-800: #294fdd;
+    --theme-palette-colors-elevated-bg: #222223;
+    --theme-palette-colors-gray-900: #f0f0f0;
+    --theme-palette-colors-common-white: #fff;
+    --theme-palette-colors-gray-600: #737373;
+    --theme-palette-colors-contents-bg: #1c1c1c;
+    --theme-palette-colors-pastel-green-50: #28312c;
+    --theme-palette-colors-blue-400: #4d7dff;
+    --theme-palette-colors-pastel-blue-50: #2d3042;
+    --theme-palette-colors-pastel-green-100: #303e36;
+    --theme-palette-colors-pastel-lightblue-50: #252b2f;
+    --theme-palette-colors-pastel-indigo-50: #2f2c3f;
+    --theme-palette-colors-pastel-purple-50: #352c38;
+    --theme-palette-colors-pastel-lime-50: #2d3027;
+    --theme-palette-colors-red-400: #ff5c73;
+    --theme-palette-colors-green-400: #37bca6;
+    --theme-palette-colors-purple-400: #9574ff;
+    --theme-palette-colors-pink-400: #f15eac;
+    --theme-palette-colors-white-100: #111;
+    --theme-palette-colors-gray-100: #222;
+    --theme-palette-colors-gray-400: #595959;
+    --theme-palette-colors-gray-500: #666;
+    --theme-palette-colors-pastel-cyan-50: #243130;
+    --theme-palette-colors-gray-700: #868686;
+    --theme-palette-colors-bluegray-100: #2e2f31;
+    --theme-palette-colors-bluegray-200: #35383b;
+    --theme-palette-colors-blue-invert: #36f;
+    --theme-palette-colors-orange-400: #f5a61d;
+    --theme-palette-colors-dimmer: rgba(0,0,0,.5);
+    --theme-palette-colors-blue-600: #4471f7
+}
+
+:root {
+    --text-weight-caption2-bold: 600;
+    --text-weight-caption2-medium: 500;
+    --text-weight-caption2-normal: 400;
+    --text-weight-caption1-bold: 600;
+    --text-weight-caption1-medium: 500;
+    --text-weight-caption1-normal: 400;
+    --text-weight-footnote-bold: 600;
+    --text-weight-footnote-medium: 500;
+    --text-weight-footnote-normal: 400;
+    --text-weight-subhead-bold: 600;
+    --text-weight-subhead-medium: 500;
+    --text-weight-subhead-normal: 400;
+    --text-weight-bodyalt-bold: 600;
+    --text-weight-bodyalt-medium: 500;
+    --text-weight-bodyalt-normal: 400;
+    --text-weight-body-bold: 600;
+    --text-weight-body-medium: 500;
+    --text-weight-body-normal: 400;
+    --text-weight-headline-bold: 600;
+    --text-weight-headline-medium: 500;
+    --text-weight-headline-normal: 400;
+    --text-weight-heading-bold: 600;
+    --text-weight-heading-medium: 500;
+    --text-weight-heading-normal: 400;
+    --text-weight-subtitle-bold: 700;
+    --text-weight-subtitle-medium: 500;
+    --text-weight-subtitle-normal: 400;
+    --text-weight-title-bold: 700;
+    --text-weight-title-medium: 500;
+    --text-weight-title-normal: 400;
+    --text-weight-display-bold: 700;
+    --text-weight-display-medium: 500;
+    --text-weight-display-normal: 400;
+    --text-spacing-caption2: 0.031em;
+    --text-spacing-caption1: 0.025em;
+    --text-spacing-footnote: 0.0192em;
+    --text-spacing-subhead: 0.0145em;
+    --text-spacing-bodyalt: 0.0096em;
+    --text-spacing-body: 0.0056em;
+    --text-spacing-headline: 0em;
+    --text-spacing-heading: -0.012em;
+    --text-spacing-subtitle: -0.023em;
+    --text-spacing-title: -0.024em;
+    --text-spacing-display: -0.027em;
+    --text-height-caption2: 14px;
+    --text-height-caption1: 16px;
+    --text-height-footnote: 18px;
+    --text-height-subhead: 20px;
+    --text-height-bodyalt-reading: 24px;
+    --text-height-bodyalt: 22px;
+    --text-height-body-reading: 26px;
+    --text-height-body: 24px;
+    --text-height-headline: 24px;
+    --text-height-heading: 26px;
+    --text-height-subtitle: 32px;
+    --text-height-title: 38px;
+    --text-height-display: 48px;
+    --text-size-caption2: 11px;
+    --text-size-caption1: 12px;
+    --text-size-footnote: 13px;
+    --text-size-subhead: 14px;
+    --text-size-bodyalt: 15px;
+    --text-size-body: 16px;
+    --text-size-headline: 17px;
+    --text-size-heading: 20px;
+    --text-size-subtitle: 24px;
+    --text-size-title: 28px;
+    --text-size-display: 36px
+}
+
+@media only screen and (min-width: 768px) {
+    :root {
+        --text-spacing-headline:-0.002em;
+        --text-spacing-heading: -0.0195em;
+        --text-spacing-subtitle: -0.0236em;
+        --text-spacing-title: -0.0282em;
+        --text-spacing-display: -0.0319;
+        --text-height-headline: 26px;
+        --text-height-heading: 28px;
+        --text-height-subtitle: 38px;
+        --text-height-title: 52px;
+        --text-height-display: 72px;
+        --text-size-headline: 18px;
+        --text-size-heading: 22px;
+        --text-size-subtitle: 28px;
+        --text-size-title: 40px;
+        --text-size-display: 56px
+    }
+}
