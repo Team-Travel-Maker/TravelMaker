@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지- 문의 게시판 작성</title>
+    <link rel="stylesheet" href="/css/admin/sidemenu.css">
+    <link rel="stylesheet" href="/css/admin/admin_board_proposal_modify.css">
+    <link rel="stylesheet" href="/css/admin/admin_board.css">
+    <link rel="stylesheet" href="/css/admin/admin_board_proposal.css">
+    <link rel="stylesheet" href="/css/admin/admin_common.css">
+    <link rel="icon" href="/images/logo/favicon.png">
+
+</head>
+
+    <body>
+        <div>
+            <div class="info-title-box info-title-box-flex">
+                <div class="logo-box-layout">
+                    <div class="logo-box">
+                        <img src="" style="padding-top: 17px" />
+                    </div>
+                    <div class="logo-title">
+                        <span>Jar</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="select-name">
+                        <span>문의 게시판 관리</span>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap">
+
+                <!-- 사이드 바 -->
+                <div th:replace="~{admins/side-bar :: #side-bar-wrap}"></div>
+
+                <div class="container">
+                    <div class="container-margin">
+                        <!-- 헤더 -->
+                        <div class="prev-button-layout">
+                            <div>
+                                <a href="">
+                                    <img style="top: 2px;" src="/images/admin/prev_icon.png" class="prev-icon">
+                                    <span class="prev-title">리스트로 돌아가기</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 내용 섹션 -->
+                        <section class="board-info-box-layout">
+                            <div class="board-info-box">
+                                <div class="board-info-title-box">
+                                    <span>문의글</span>
+                                </div>
+                                <div class="info-table">
+                                    <div class="board_title">
+                                        <span class="span-bold">제목 :</span>
+                                        <!-- 제목 -->
+                                        <span>제목 불러오기</span>
+                                    </div>
+                                    <div class="board_info board_writer">
+                                        <span class="span-bold">작성자 :</span>
+                                        <!-- 작성자 명 -->
+                                        <span>작성자 이름 불러오기</span>
+                                    </div>
+                                    <div class="board_info board_register_date">
+                                        <span class="span-bold">작성 날짜 :</span>
+                                        <!-- 작성 날짜 -->
+                                        <span>작성 날짜 불러오기</span>
+                                    </div>
+                                    <div class="board_info board_register_date">
+                                        <span class="span-bold">문의/신고 :</span>
+                                        <!-- 작성 날짜 -->
+                                        <span>문의인지 신고인지 불러오기</span>
+                                    </div>
+                                    <hr>
+                                    <!-- 작성 내용 -->
+                                    <div class="board_content">문의 내용 불러오기</div>
+                                </div>
+                        </section>
+                        <section class="board-info-box-layout">
+                            <div class="board-info-box">
+                                <div class="board-info-title-box">
+                                    <span>등록 답변</span>
+                                </div>
+                                <div class="info-table">
+                                    <div class="board_info board_register_date">
+                                        <span class="span-bold">작성 날짜 :</span>
+
+                                        <!-- 등록 날짜 -->
+                                        <span>답변 날짜 불러오기</span>
+                                    </div>
+                                    <form action="">
+                                        <input type="hidden" name="inquiryId"}>
+                                        <hr>
+                                        <!-- 등록 내용 -->
+                                        <div class="board_content">답변 내용 불러오기</div>
+                                        <hr>
+                                        <div>
+                                            <button type="button" class="btn_done">
+                                                수정
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+                        <div style="height: 50px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="/js/admin/sidemenu.js"></script>
+<script>
+    //답변 수정 폼으로 이동만 시키기
+    const btn = $('.btn_done');
+    btn.on("click", function () {
+        location.href=`/admins/inquiry/modify`
+    })
+
+</script>
+</html>
