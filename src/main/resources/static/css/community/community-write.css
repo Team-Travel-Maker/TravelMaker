@@ -1,0 +1,387 @@
+.CommunityWrite{
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.Padding_padding___Nyki {
+    height: 50px;
+}
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.Header_CommunityWriteHeader{
+    position: fixed;
+    top: 50px;
+    z-index: 10;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    border: 1px solid #e1e2e3;
+}
+.Header_CommunityWriteHeader_content{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    height: 100%;
+    padding: 10px 0;
+}
+@media (min-width: 1200px){
+    .Header_CommunityWriteHeader_content{
+        max-width: 1060px;
+        margin: 0 auto;
+    }
+}
+
+.Header_CommunityWriteHeader_button{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 135px;
+    height: 40px;
+    margin-left: auto;
+}
+button, div, h1, h2, h3, h4, h5, h6, input, p, select, span, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+.Button_root{
+    --button-color: #171717;
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    vertical-align: middle;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: normal;
+    border: none;
+    /*background-color: none;*/
+    cursor: pointer;
+    white-space: nowrap;
+}
+.Button_disabled{
+    pointer-events: none;
+}
+.Button_contained {
+    border-radius: 1000px;
+    border: none;
+}
+
+.Header_CommunityWriteHeader_button button {
+    width: 100%;
+    height: 100%;
+    background-color: #f2f4f7;
+    color: #ccc;
+}
+
+.Button__fullWidth {
+    width: 100%;
+}
+.Button__containedSizeMedium, .Button__outlinedSizeMedium {
+    padding: 0 20px;
+    min-width: 64px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 600;
+}
+.Button_containedDisabled {
+    cursor: default;
+    background-color: #f4f4f5;
+    color: #c4c4c4;
+}
+.Button_label{
+    width: 100%;
+    font-size: inherit;
+    font-weight: inherit;
+    display: inherit;
+    -ms-flex-align: inherit;
+    align-items: inherit;
+    -ms-flex-pack: inherit;
+    justify-content: inherit;
+    color: inherit;
+}
+
+.CommunityWrite_content{
+    position: relative;
+    width: 100%;
+    padding-top: 60px ;
+}
+.CommunityWritePaper{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: calc(100vh - 110px);
+    padding: 39px 40px;
+    border: 1px solid #e1e2e3;
+    border-top: 0;
+    background-color: #fff;
+}
+
+@media (min-width: 1200px){
+    .CommunityWritePaper {
+        max-width: 790px;
+        margin: 0 auto;
+    }
+}
+.TagPanel{
+    margin-bottom: 50px
+}
+.TagPanel .TagPanel_tagWrapper .TagPanel_slider{
+    width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+}
+.TagPanel .TagPanel_tagWrapper .TagPanel_selectedTag_deleteButton {
+    margin-left: 3px;
+    margin-bottom: 2px;
+    width: 18px;
+    height: 18px;
+}
+.SvgIcon_SvgIcon__root__svg__DKYBi {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    fill: currentColor;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    font-size: inherit;
+}
+.SvgIcon_SvgIcon__root__8vwon {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: inherit;
+    align-items: inherit;
+    -ms-flex-pack: inherit;
+    justify-content: inherit;
+}
+.TagPanel .TagPanel_tagWrapper .TagPanel_selectedTag {
+    height: 34px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 0 10px 0 12px;
+    background: #fff;
+    border-radius: 100px;
+    border: 1px solid #36f;
+    color: #36f;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.TagPanel .TagPanel_tagWrapper .TagPanel_slider:before {
+    left: 0;
+    content: "";
+    display: block;
+    height: 100%;
+    width: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    background-image: -webkit-gradient(linear,left top,right top,color-stop(21.82%,#fff),to(hsla(0,0%,100%,0)));
+    background-image: linear-gradient(90deg,#fff 21.82%,hsla(0,0%,100%,0));
+}
+
+.TagPanel .TagPanel_tagWrapper .TagPanel_slider .TagPanel_scroll{
+    display: -ms-flexbox;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -ms-scroll-chaining: none;
+    overscroll-behavior: contain;
+    -ms-touch-action: pan-x;
+    touch-action: pan-x;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-left: 10px;
+    padding-right: 16px;
+}
+
+.TagPanel .TagPanel_tagMessage {
+    color: #666;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+.TagPanel .TagPanel_tagMessage_hint{
+    color: #939393;
+}
+.TagPanel .TagPanel_tagMessage_required{
+    color:#fe415c;
+
+}
+.TagPanel .TagPanel_tagWrapper{
+    display: -ms-flexbox;
+    display: flex;
+}
+.TagPanel .TagPanel_tagWrapper .TagPanel_tagPlaceholder{
+    margin-left: 10px;
+    width: 85px;
+    height: 34px;
+}
+.TagPanel .TagPanel_tagWrapper .TagPanel_slider {
+    width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+}
+
+TagPanel .TagPanel_tagWrapper .TagPanel_slider .TagPanel_scroll {
+    display: -ms-flexbox;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -ms-scroll-chaining: none;
+    overscroll-behavior: contain;
+    -ms-touch-action: pan-x;
+    touch-action: pan-x;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-left: 10px;
+    padding-right: 16px;
+}
+
+.TagPanel .TagPanel_tagWrapper .TagPanel_slider .TagPanel_scroll_list {
+    display: -ms-flexbox;
+    display: flex;
+    margin-right: 16px;
+}
+.CommunityWrite-titleWrapper {
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    padding-bottom: 21px;
+    border-bottom: 2px solid #e1e2e3;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 38px;
+}
+.AutoTextarea{
+    position: relative;
+}
+
+.AutoTextarea_AutoTextarea{
+    width: 100%;
+    height: auto;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    color: #333;
+    outline: 0;
+    resize: none;
+    overflow: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+.AutoTextarea_AutoTextarea_hidden {
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+.CommunityWrite-contentWrapper {
+    width: 100%;
+    padding-top: 28px;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 28px;
+}
+.TagPanel .TagPanel_tagWrapper .TagPanel_tagPlaceholder {
+    margin-left: 10px;
+    width: 85px;
+    height: 34px;
+}
+
+.Button_contained {
+    color: #fff;
+    background-color: #36f;
+}
+.CommunityWrite_CommunityPhotoFile{
+    display: none;
+}
+.CommunityWrite_CommunityPhotoButton {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: -ms-flexbox;
+    display: flex;
+    width: 790px;
+    height: 100%;
+    margin: 0 auto;
+    pointer-events: none;
+}
+.PhotoButton_PhotoButton{
+    position: absolute;
+    right: 38px;
+    bottom: 60px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #e1e2e3;
+    border-radius: 50%;
+    background-color: #fff;
+    -webkit-filter: drop-shadow(0 2px 10px rgba(0,0,0,.1));
+    filter: drop-shadow(0 2px 10px rgba(0,0,0,.1));
+    pointer-events: all;
+    color: #333;
+}
+
+.PhotoButton_PhotoButton>span {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12px;
+    color: inherit;
+}
+.PhotoButton_PhotoButton>span>em {
+    font-style: normal;
+    color: #36f;
+}
