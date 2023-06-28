@@ -472,3 +472,10 @@
     flex-shrink: 0;
     font-size: inherit;
 }
+
+.input-error{
+    display: none;
+    color: red;
+    margin-left: 5px;
+}
+

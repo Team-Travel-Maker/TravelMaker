@@ -375,13 +375,14 @@
                                                         <input id="account" type="text" name="account" disabled value="friend_7-9@naver.com" style="color: rgb(51, 51, 51);">
                                                     </div>
                                                 </div>
-                                                <div class="input-wrap">
+                                                <div class="input-wrap has-error">
                                                     <label for="member-name" class="first-label">
                                                         <span class="required">받는 사람<span>
                                                     </label>
                                                     <div class="input-wrap">
-                                                        <input id="member-name" type="text" name="memberName" value="이종문">
+                                                        <input id="member-name" type="text" name="memberName" placeholder="받는 사람">
                                                     </div>
+                                                    <div class="input-error">받는 사람을 입력해주세요.</div>
                                                 </div>
                                                 <div class="input-wrap has-error">
                                                     <label for="zip-code" class="first-label">
@@ -389,10 +390,10 @@
                                                     </label>
                                                     <div class="input-wrap zip-code-container">
                                                         <div class="zip-code-input-wrap">
-                                                        <input id="zip-code" type="text" name="zipCode">
+                                                        <input id="zip-code" type="text" name="zipCode" placeholder="우편 번호" disabled>
                                                         </div>
                                                         <div class="first-next-btn-wrap">
-                                                            <button type="button">주소 검색</button>
+                                                            <button onclick="sample6_execDaumPostcode()" type="button">주소 검색</button>
                                                         </div>
                                                     </div>
                                                     <div class="input-error">우편번호를 입력해주세요.</div>
@@ -402,7 +403,7 @@
                                                         <span class="required">주소<span>
                                                     </label>
                                                     <div class="input-wrap">
-                                                        <input id="address" type="text" name="address">
+                                                        <input id="address" type="text" name="address" placeholder="주소" disabled>
                                                     </div>
                                                     <div class="input-error">주소를 입력해주세요.</div>
                                                 </div>
@@ -411,7 +412,7 @@
                                                         <span class="required">상세주소<span>
                                                     </label>
                                                     <div class="input-wrap">
-                                                        <input id="address-detail" type="text" name="addressDetail">
+                                                        <input id="address-detail" type="text" name="addressDetail" placeholder="상세 주소">
                                                     </div>
                                                     <div class="input-error">상세주소를 입력해주세요.</div>
                                                 </div>
@@ -420,12 +421,21 @@
                                                         <span class="required">휴대폰 번호<span>
                                                     </label>
                                                     <div class="input-wrap">
-                                                        <input id="phone-number" type="text" name="phoneNumber">
+                                                        <input id="phone-number" type="text" name="phoneNumber" placeholder="휴대폰 번호">
                                                     </div>
                                                     <div class="input-error">휴대폰 번호를 입력해주세요.</div>
                                                 </div>
+                                                <div class="input-wrap has-error">
+                                                    <label for="delivery-caution" class="first-label">
+                                                        <span class="required">배송 시 주의사항<span>
+                                                    </label>
+                                                    <div class="input-wrap">
+                                                        <input id="delivery-caution" type="text" name="deliveryCaution" placeholder="배송시 주의사항">
+                                                    </div>
+                                                    <div class="input-error">배송 시 주의사항을 입력해주세요.</div>
+                                                </div>
                                                 <div class="first-next-btn-wrap">
-                                                    <button type="button">구매하기</button>
+                                                    <button class="purchase-btn" type="button">구매하기</button>
                                                 </div>
                                             </div>
                                         </section>
@@ -441,6 +451,7 @@
     </div>   
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/js/admin/modal.js"></script>
 <script src="/js/shop/shop-list.js"></script>
 </html>
