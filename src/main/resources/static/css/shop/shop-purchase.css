@@ -274,7 +274,7 @@ a.paging-move {
     background-color: #f2f4f7;
 }
 
-.top-container span{
+.top-container{
     display: none;
 }
 
@@ -285,4 +285,8 @@ a.paging-move {
 
 .first-edit{
     cursor : pointer;
+}
+
+.input-wrap input:focus{
+    outline: none;
 }
