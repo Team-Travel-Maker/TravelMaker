@@ -346,7 +346,7 @@
 }
 .find-check-timein-p {
     color: var(--theme-palette-colors-blue-400);
-    font-weight: var(--text-weight-footnote-normal);
+    font-weight: var(--text-weight-footnote-bold);
     text-align: left;
     letter-spacing: var(--text-spacing-footnote);
     font-size: var(--text-size-footnote);
