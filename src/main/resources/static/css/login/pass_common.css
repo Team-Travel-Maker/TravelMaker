@@ -21,10 +21,3 @@ a {
 * {
     font-family: Pretendard,'Pretendard JP','Pretendard Std',-apple-system,system-ui,BlinkMacSystemFont,Roboto,'Segoe UI',Helvetica,Arial,'Apple SD Gothic Neo','Malgun Gothic','Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol',sans-serif;
 }
-html:lang(ja) * {
-    font-family: 'Pretendard JP',Pretendard,'Pretendard Std',-apple-system,system-ui,BlinkMacSystemFont,Roboto,'Segoe UI',Helvetica,Arial,'Hiragino Sans','Yu Gothic',Meiryo,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol',sans-serif;
-    word-break: break-all;
-}
-html:lang(en_US) * {
-    font-family: 'Pretendard Std',Pretendard,'Pretendard JP',-apple-system,system-ui,BlinkMacSystemFont,Roboto,'Segoe UI',Helvetica,Arial,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol',sans-serif;
-}
