@@ -10,11 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/shops/*")
 public class ShopController {
 
-    @GetMapping("list")
-    public void goToList(){;}
-
-    @GetMapping("detail")
-    public void goToDetail(){;}
+    @GetMapping("purchase")
+    public void goToPurchase(){;}
 
 
 }
