@@ -6,11 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>관리자 페이지- 문의 게시판 상세보기</title>
         <link rel="stylesheet" href="/css/admin/sidemenu.css" />
-        <link rel="stylesheet" href="/css/admin/admin_board_detail.css" />
-        <link rel="stylesheet" href="/css/admin/admin_inquire_detail.css" />
-        <link rel="stylesheet" href="/css/admin/admin_board.css">
-        <link rel="stylesheet" href="/css/admin/admin_board_proposal.css">
-        <link rel="stylesheet" href="/css/admin/admin_common.css">
+        <link rel="stylesheet" href="/css/admin/admin-board-detail.css" />
+        <link rel="stylesheet" href="/css/admin/admin-inquire-detail.css" />
+        <link rel="stylesheet" href="/css/admin/admin-board.css">
+        <link rel="stylesheet" href="/css/admin/admin-board-proposal.css">
+        <link rel="stylesheet" href="/css/admin/admin-common.css">
         <link rel="icon" href="/images/logo/favicon.png" />
     </head>
 
@@ -41,7 +41,7 @@
                         <div class="prev-button-layout">
                             <div>
                                 <a th:href="@{/admins/inquiry/list}">
-                                    <img src="/images/admin/prev_icon.png" class="prev-icon" />
+                                    <img src="/images/admin/prev-icon.png" class="prev-icon" />
                                     <span class="prev-title">리스트로 돌아가기</span>
                                 </a>
                             </div>
@@ -55,31 +55,36 @@
                                 </div>
                                 <hr />
                                 <div class="info-table">
-                                    <div class="board_title">
+                                    <div class="board-title">
                                         <span class="span-bold">제목 :</span>
                                         <!-- 제목 -->
                                         <span>제목 불러오기 </span>
                                     </div>
-                                    <div class="board_info board_writer">
+                                    <div class="board-info board-writer">
                                         <span class="span-bold">작성자 :</span>
                                         <!-- 작성자 명 -->
                                         <span>이름 불러오기 </span>
                                     </div>
-                                    <div class="board_info board_register_date">
+                                    <div class="board-info board-register-date">
                                         <span class="span-bold">작성 날짜 :</span>
                                         <!-- 작성 날짜 -->
                                         <span>작성 날짜 불러오기</span>
                                     </div>
-                                    <div class="board_info board_register_date">
+                                    <div class="board-info board-update-date">
+                                        <span class="span-bold">수정 날짜 :</span>
+                                        <!-- 작성 날짜 -->
+                                        <span>작성 날짜 불러오기</span>
+                                    </div>
+                                    <div class="board-info board-register-date">
                                         <span class="span-bold">문의/신고 :</span>
                                         <!-- 작성 날짜 -->
                                         <span>문의인지 신고인지 불러오기</span>
                                     </div>
                                     <hr />
                                     <!-- 게시판 내용 -->
-                                    <div class="board_content">문의 내용 불러오기</div>
+                                    <div class="board-content">문의 내용 불러오기</div>
                                     <hr />
-                                    <div class="answer_button_wrapper modify_button_wrapper">
+                                    <div class="answer-button-wrapper modify-button-wrapper">
                                         <button>
                                             답변하기
                                         </button>
@@ -96,7 +101,7 @@
     <script src="/js/admin/sidemenu.js"></script>
     <script>
         //답변하기로 이동만 해놓기
-        const answer = $('.answer_button_wrapper button');
+        const answer = $('.answer-button-wrapper button');
 
         answer.on("click", function () {
             location.href=`/admins/inquiry/write`

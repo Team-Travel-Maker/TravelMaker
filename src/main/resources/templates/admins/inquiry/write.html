@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자 페이지- 문의 게시판 작성</title>
     <link rel="stylesheet" href="/css/admin/sidemenu.css">
-    <link rel="stylesheet" href="/css/admin/admin_board_proposal_modify.css">
-    <link rel="stylesheet" href="/css/admin/admin_board.css">
-    <link rel="stylesheet" href="/css/admin/admin_board_proposal.css">
-    <link rel="stylesheet" href="/css/admin/admin_common.css">
+    <link rel="stylesheet" href="/css/admin/admin-board-proposal-modify.css">
+    <link rel="stylesheet" href="/css/admin/admin-board.css">
+    <link rel="stylesheet" href="/css/admin/admin-board-proposal.css">
+    <link rel="stylesheet" href="/css/admin/admin-common.css">
     <link rel="stylesheet" href="/css/admin/modal.css"/>
     <link rel="icon" href="/image/logo/favicon.png">
 
@@ -51,7 +51,7 @@
                     <div class="prev-button-layout">
                         <div>
                             <a th:href="@{/admins/inquiry/list}">
-                                <img style="top: 2px;" src="/images/admin/prev_icon.png" class="prev-icon">
+                                <img style="top: 2px;" src="/images/admin/prev-icon.png" class="prev-icon">
                                 <span class="prev-title">리스트로 돌아가기</span>
                             </a>
                         </div>
@@ -64,28 +64,28 @@
                                 <span>문의글</span>
                             </div>
                             <div class="info-table">
-                                <div class="board_title">
+                                <div class="board-title">
                                     <span class="span-bold">제목 :</span>
                                     <!-- 제목 -->
                                     <span>제목 불러오기</span>
                                 </div>
-                                <div class="board_info board_writer">
+                                <div class="board-info board-writer">
                                     <span class="span-bold">작성자 :</span>
                                     <!-- 작성자 명 -->
                                     <span>작성자명 불러오기</span>
                                 </div>
-                                <div class="board_info board_register_date">
+                                <div class="board-info board-register-date">
                                     <span class="span-bold">작성 날짜 :</span>
                                     <!-- 작성 날짜 -->
                                     <span>작성 날짜 불러오기</span>
                                 </div>
-                                <div class="board_info board_register_date">
+                                <div class="board-info board-register-date">
                                     <span class="span-bold">문의/신고 :</span>
                                     <!-- 작성 날짜 -->
                                     <span>문의인지 신고인지 불러오기</span>
                                 </div>
                                 <hr>
-                                <div class="board_content">내용 불러오기</div>
+                                <div class="board-content">내용 불러오기</div>
                             </div>
                     </section>
                     <section class="board-info-box-layout">
@@ -102,7 +102,7 @@
                                     </div>
                                     <hr>
                                     <div>
-                                        <button type="button" class="btn_done">등록</button>
+                                        <button type="button" class="btn-done">등록</button>
                                     </div>
                                 </form>
                             </div>
@@ -119,7 +119,7 @@
 <script src="/js/admin/modal.js"></script>
 <script>
 
-    $("button.btn_done").on("click", function(){
+    $("button.btn-done").on("click", function(){
 
         if($("#boardContent").val() == "") {
             showWarnModal("답변 내용을 입력해주세요.");
