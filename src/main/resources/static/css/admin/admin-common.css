@@ -52,15 +52,15 @@ button {
     justify-content:space-evenly !important;
 }
 
-td.is_inactive>hr {
+td.is-inactive>hr {
     border-bottom: 4px solid gray !important;
 }
 
-td.is_active>hr {
+td.is-active>hr {
     border-bottom: 4px solid green !important;
 }
 
-td.is_warning>hr {
+td.is-warning>hr {
     border-bottom: 4px solid rgb(255, 48, 25) !important;
 }
 

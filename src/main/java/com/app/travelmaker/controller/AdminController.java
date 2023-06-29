@@ -60,4 +60,20 @@ public class AdminController {
     @GetMapping("inquiry/modify")
     public void goToInquiryAnswerModify(){;}
 
+//    커뮤니티 관리
+
+    //소통 목록
+    @GetMapping("community/list")
+    public void goToCommunityList(){;}
+
+    //일반 후기 목록
+    @GetMapping("review/list")
+    public void goToReviewList(){;}
+
+    //개선 요청 목록
+    @GetMapping("improvement/list")
+    public void goToImprovementList(){;}
+
+
+
 }

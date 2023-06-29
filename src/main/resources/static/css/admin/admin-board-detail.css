@@ -128,7 +128,7 @@ div.margin span {
 	width: 10px;	
 }
 
-div.info-table>div.board_info {
+div.info-table>div.board-info {
     /* display: inline-block; */
     margin-right: 12px;
 }
@@ -148,7 +148,7 @@ div.info-table>div.board_info {
     border: none;
 }
 
-div.board_content {
+div.board-content {
     min-height: 320px;
 }
 
@@ -156,12 +156,12 @@ div.board_content {
     width: 100%;
 }
 
-.board_register_date {
+.board-register-date {
 	padding-bottom: 8px;
 	margin: 0 !important;
 }
 
-.modify_button_wrapper {
+.modify-button-wrapper {
 	margin: 0;
 	padding-top: 16px;
 }
@@ -177,7 +177,7 @@ div.board_content {
     border: 0;
 	margin:8px 0;
 }
-.btn_done {
+.btn-done {
 	font-family: 'GmarketSansMedium';
 	width: 100px;
 	height: 30px;
