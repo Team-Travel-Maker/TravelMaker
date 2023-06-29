@@ -108,7 +108,7 @@ textarea {
 	margin: 6px 0px;
 }
 
-.info-table button.btn_done {
+.info-table button.btn-done {
 	font-family: 'GmarketSansMedium';
 	width: 100px;
 	height: 30px;
@@ -123,7 +123,7 @@ a.back-page {
 	margin-left: 30px;
 }
 
-.select_box {
+.select-box {
 	position: relative;
 	width: 150px;
 	height: 35px;
@@ -131,7 +131,7 @@ a.back-page {
 	border: 2px solid #989898;
 }
 
-.select_category {
+.select-category {
 	width: inherit;
 	height: inherit;
 	background: transparent;
@@ -142,7 +142,7 @@ a.back-page {
 	z-index: 3;
 }
 
-.select_category>option {
+.select-category>option {
 	background: #989898;
 	color: #fff;
 	padding: 3px 0;
@@ -171,7 +171,7 @@ a.back-page {
 	transform: rotate(180deg);
 }
 
-div.head_button_wrapper {
+div.head-button-wrapper {
 	width: fit-content;
 	height: fit-content;
 }
@@ -201,7 +201,7 @@ div.file-image-box>p {
 	padding: 4px 0;
 }
 
-div.file_insert_wrapper {
+div.file-insert-wrapper {
 	width: fit-content;
 	height: fit-content;
 	border-radius: 8px;
@@ -211,12 +211,12 @@ div.file-image-box {
 	display: flex;
 }
 
-.img_div>img {
+.img-div>img {
 	/* width: 100px; */
 	max-height: 17vh;
 }
 
-.inserted_img_section {
+.inserted-img-section {
 	width: 21vw;
 	margin-top: 30px;
 }
@@ -236,12 +236,12 @@ input[type='date'] {
 	outline: -webkit-focus-ring-color 0;
 }
 
-.board_info,.board_info>div {
+.board-info,.board-info>div {
 	padding: 0;
 	height: fit-content;
 	margin: 0;
 }
 
-.board_info span {
+.board-info span {
 	font-size: 12px;
 }
