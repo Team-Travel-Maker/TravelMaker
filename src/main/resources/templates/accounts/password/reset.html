@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko_KR">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Travel Maker OneID</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        .async-hide {
+            opacity: 0 !important;
+        }
+    </style>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="stylesheet" href="/css/login/pass_common.css">
+    <link rel="stylesheet" href="/css/login/password_reset.css">
+</head>
+    <body style="overflow: unset;">
+        <div id="pass__next">
+            <div class="pass-div1">
+                <div class="pass-div2">
+                    <div class="pass-container">
+                        <div class="pass-header-container">
+                            <div class="pass-back-button-container">
+                                <button type="button" class="pass-back-button">
+                                    <span class="button-span">
+                                        <svg viewBox="0 0 18 18" class="pass-back-button-svg">
+                                            <path
+                                                d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="pass-logo-container">
+                                <p
+                                    color="var(--theme-palette-colors-black-100)"
+                                    class="pass-logo-p">비밀번호 재설정</p>
+                            </div>
+                            <div class="pass-logo-right"></div>
+                        </div>
+                        <div class="pass-body-container">
+                            <form>
+                                <div class="new-pass-container">
+                                    <label
+                                        for="password"
+                                        color="var(--theme-palette-colors-gray-600)"
+                                        class="new-pass-label">새 비밀번호</label>
+                                </div>
+                                <input
+                                    type="password"
+                                    placeholder="새 비밀번호를 입력해주세요."
+                                    name="password"
+                                    class="new-pass-input"
+                                    value="">
+                                <div class="security-level-container">
+                                    <span color="#f342a0" class="low-level-on-span"></span>
+                                    <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
+                                    <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
+                                </div>
+                                <div class="security-level-container">
+                                    <span color="#00bdde" class="normal-level-on-span"></span>
+                                    <span color="#00bdde" class="normal-level-on-span"></span>
+                                    <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
+                                </div>
+                                <div class="security-level-container">
+                                    <span color="#07ba9c" class="high-level-on-span"></span>
+                                    <span color="#07ba9c" class="high-level-on-span"></span>
+                                    <span color="#07ba9c" class="high-level-on-span"></span>
+                                </div>
+                                <div class="security-level-text-container">
+                                    <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
+                                    <p data-testid="Typography" color="#f342a0" class="security-level-low-p">약함</p>
+                                </div>
+                                <div class="security-level-text-container">
+                                    <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
+                                    <p data-testid="Typography" color="#00bdde" class="security-level-normal-p">보통</p>
+                                </div>
+                                <div class="security-level-text-container">
+                                    <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
+                                    <p data-testid="Typography" color="#07ba9c" class="security-level-high-p">강함</p>
+                                </div>
+                                <input
+                                    type="password"
+                                    placeholder="새 비밀번호를 다시 한번 입력해주세요."
+                                    name="passwordConfirm"
+                                    class="new-pass-input"
+                                    value="">
+                                <input
+                                    type="password"
+                                    placeholder="새 비밀번호를 입력해주세요."
+                                    name="password"
+                                    class="new-pass-format-error"
+                                    value="">
+                                <p
+                                    color="var(--theme-palette-colors-red-400)"
+                                    class="new-pass-error-p">올바르지 않은 비밀번호입니다.</p>
+                                <input
+                                    type="password"
+                                    placeholder="새 비밀번호를 다시 한번 입력해주세요."
+                                    name="passwordConfirm"
+                                    class="new-pass-format-error"
+                                    value="">
+                                <p
+                                    color="var(--theme-palette-colors-red-400)"
+                                    class="new-pass-error-p">비밀번호가 서로 일치하지 않습니다.</p>
+                                <p
+                                    color="var(--theme-palette-colors-gray-600)"
+                                    class="new-pass-format-explain-p">영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 16자 이하로 입력해주세요.</p>
+                                <button type="submit" class="continue-button" disabled="">
+                                    <span
+                                        data-testid="Typography"
+                                        color="var(--theme-palette-colors-black-100)"
+                                        class="continue-button-span">계속</span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

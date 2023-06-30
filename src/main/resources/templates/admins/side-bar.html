@@ -25,13 +25,13 @@
                     <li class="menu">
                         <div class="menu-flex">
                             <div>
-                                <img src="/images/admin/board_icon.png" class="icon">
+                                <img src="/images/admin/board-icon.png" class="icon">
                             </div>
-                            <a href="">
+                            <a>
                                 <span>커뮤니티 관리</span>
                             </a>
                             <div class="triangle-button">
-                                <img src="/images/admin/arrow_icon.png"
+                                <img src="/images/admin/arrow-icon.png"
                                      class="icon triangle-icon triangle">
                             </div>
                         </div>
@@ -42,17 +42,17 @@
                                 </a>
                             </li> -->
                             <li class="select-menu">
-                                <a href="#">
+                                <a th:href="@{/admins/review/list}">
                                     <span>일반 후기</span>
                                 </a>
                             </li>
                             <li class="select-menu">
-                                <a href="#">
+                                <a th:href="@{/admins/improvement/list}">
                                     <span>개선 요청</span>
                                 </a>
                             </li>
                             <li class="select-menu">
-                                <a href="#">
+                                <a th:href="@{/admins/community/list}">
                                     <span>소통</span>
                                 </a>
                             </li>
@@ -61,9 +61,9 @@
                     <li class="menu">
                         <div class="menu-flex">
                             <div>
-                                <img src="/images/admin/board_icon.png" class="icon">
+                                <img src="/images/admin/board-icon.png" class="icon">
                             </div>
-                            <a href="">
+                            <a th:href="@{/admins/inquiry/list}">
                                 <span>문의/답변 관리</span>
                             </a>
                         </div>
@@ -72,13 +72,13 @@
                     <li class="menu">
                         <div class="menu-flex">
                             <div>
-                                <img src="/images/admin/notice_icon.png" class="icon">
+                                <img src="/images/admin/notice-icon.png" class="icon">
                             </div>
                             <a>
                                 <span>공지사항 관리</span>
                             </a>
                             <div class="triangle-button">
-                                <img src="/images/admin/arrow_icon.png"
+                                <img src="/images/admin/arrow-icon.png"
                                      class="icon triangle-icon triangle">
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                     <li class="menu">
                         <div class="menu-flex">
                             <div>
-                                <img src="/images/admin/user_icon.png" class="icon">
+                                <img src="/images/admin/user-icon.png" class="icon">
                             </div>
                             <a th:href="@{/admins/member/list}">
                                 <span>회원정보 관리</span>

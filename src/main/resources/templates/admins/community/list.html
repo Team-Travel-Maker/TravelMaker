@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>관리자 페이지- 소통 게시판 목록</title>
+        <link rel="stylesheet" href="/css/admin/sidemenu.css">
+        <link rel="stylesheet" href="/css/admin/admin-board.css">
+        <link rel="stylesheet" href="/css/admin/admin-board-proposal.css">
+        <link rel="stylesheet" href="/css/admin/admin-common.css">
+        <link rel="icon" href="/images/logo/favicon.png">
+    </head>
+
+    <body>
+        <div>
+            <div class="info-title-box info-title-box-flex">
+                <div class="logo-box-layout">
+                    <div class="logo-box">
+                        <img src="" style="padding-top: 17px"/>
+                    </div>
+                </div>
+                <div>
+                    <div class="select-name">
+                        <span>소통 게시판 관리</span>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap">
+                <!-- 사이드 바 -->
+                <div th:replace="~{admins/side-bar :: #side-bar-wrap}"></div>
+
+                <div class="container">
+                    <div class="container-margin">
+                        <div style="display: flex; justify-content: space-between">
+                            <!-- 헤더 -->
+                            <div class="search-wrap">
+                                <form>
+                                    <div class="search-container">
+                                        <!-- 검색창 -->
+                                        <div class="search-input-container">
+                                            <input  class="search-input deleteButton delete-button" type="search" name="keyword" placeholder="제목을 입력하세요" style="width: 450px; padding: 11px;">
+                                        </div>
+                                        <!-- 검색 버튼 누르기 -->
+                                        <button style="display: none" type="submit"></button>
+                                    </div>
+                                </form>
+                                <!-- 검색창 눌렀을 때 나오는 메뉴 -->
+                            </div>
+
+                            <div class="update-button-flex">
+                                <div class="delete-box-layout">
+                                    <div class="delete-box">
+                                        <button
+                                                class="deleteButton delete-button"
+                                        >
+                                            선택 게시물 삭제
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 내용 섹션 -->
+                        <section class="board-info-box-layout">
+                            <div class="board-info-box">
+                                <div class="board-info-title-box">
+                                    <span>소통 목록</span>
+                                </div>
+
+                                <div class="info-table">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th class="checkbox-line">
+                                                <input type="checkbox" id="allSelect"/>
+                                            </th>
+                                            <th>No</th>
+                                            <th>소통 제목</th>
+                                            <th>등록일</th>
+                                            <th>수정일</th>
+                                            <th>대표 이미지</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody class="notice-list">
+
+                                        <!-- 타임리프로 이미지 제외한 화면 그리기 -->
+                                        <tr>
+                                            <td class="checkbox-line">
+                                                <input
+                                                        type="checkbox"
+                                                        class="noticeCheckbox"
+                                                        name="check"/>
+                                            </td>
+                                            <td>1</td>
+                                            <td>
+                                                <a>소통 제목1</a>
+                                            </td>
+                                            <td>2023-06-01 09:57:40</td>
+                                            <td>2023-06-01 09:57:40</td>
+                                            <td class="image-wrap">
+                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="checkbox-line">
+                                                <input
+                                                        type="checkbox"
+                                                        class="noticeCheckbox"
+                                                        name="check"/>
+                                            </td>
+                                            <td>1</td>
+                                            <td>
+                                                <a>소통 제목1</a>
+                                            </td>
+                                            <td>2023-06-01 09:57:40</td>
+                                            <td>2023-06-01 09:57:40</td>
+                                            <td class="image-wrap">
+                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="checkbox-line">
+                                                <input
+                                                        type="checkbox"
+                                                        class="noticeCheckbox"
+                                                        name="check"/>
+                                            </td>
+                                            <td>1</td>
+                                            <td>
+                                                <a>소통 제목1</a>
+                                            </td>
+                                            <td>2023-06-01 09:57:40</td>
+                                            <td>2023-06-01 09:57:40</td>
+                                            <td class="image-wrap">
+                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="checkbox-line">
+                                                <input
+                                                        type="checkbox"
+                                                        class="noticeCheckbox"
+                                                        name="check"/>
+                                            </td>
+                                            <td>1</td>
+                                            <td>
+                                                <a>소통 제목1</a>
+                                            </td>
+                                            <td>2023-06-01 09:57:40</td>
+                                            <td>2023-06-01 09:57:40</td>
+                                            <td class="image-wrap">
+                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="checkbox-line">
+                                                <input
+                                                        type="checkbox"
+                                                        class="noticeCheckbox"
+                                                        name="check"/>
+                                            </td>
+                                            <td>1</td>
+                                            <td>
+                                                <a>소통 제목1</a>
+                                            </td>
+                                            <td>2023-06-01 09:57:40</td>
+                                            <td>2023-06-01 09:57:40</td>
+                                            <td class="image-wrap">
+                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
+                                            </td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- 페이지 부분 -->
+                        <!-- 페이지 부분 -->
+                        <div id="paging-wrap">
+                            <a class="member-change-page paging paging-move">
+                                <img src="/images/admin/prev.png" width="15px"></a>
+                            <th:block>
+                                <a class="paging paging-checked">1</a>
+                                <a class="member-change-page paging">2</a>
+                            </th:block>
+                            <a class="member-change-page paging paging-move">
+                                <img src="/images/admin/next.png" width="15px"></a>
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="/js/admin/sidemenu.js"></script>
+    <script src="/js/admin/checkbox.js"></script>
+    <script>
+        const tbodyTd = $('.info-table tbody td a')
+
+        tbodyTd.on("click", function () {
+            location.href=`/admins/notice/detail`;
+        });
+    </script>
+</html>

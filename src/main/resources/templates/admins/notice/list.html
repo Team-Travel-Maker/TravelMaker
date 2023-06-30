@@ -7,9 +7,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>관리자 페이지- 공지사항 게시판 목록</title>
         <link rel="stylesheet" href="/css/admin/sidemenu.css">
-        <link rel="stylesheet" href="/css/admin/admin_board.css">
-        <link rel="stylesheet" href="/css/admin/admin_board_proposal.css">
-        <link rel="stylesheet" href="/css/admin/admin_common.css">
+        <link rel="stylesheet" href="/css/admin/admin-board.css">
+        <link rel="stylesheet" href="/css/admin/admin-board-proposal.css">
+        <link rel="stylesheet" href="/css/admin/admin-common.css">
         <link rel="icon" href="/images/logo/favicon.png">
     </head>
 
@@ -35,7 +35,7 @@
                     <div class="container-margin">
                         <div style="display: flex; justify-content: space-between">
                             <!-- 헤더 -->
-                            <div class="DesktopSearchApp_container__2VF9O">
+                            <div class="search-wrap">
                                 <form>
                                     <div class="search-container">
                                         <!-- 검색창 -->
@@ -87,6 +87,7 @@
                                             <th>No</th>
                                             <th>공지사항 제목</th>
                                             <th>등록일</th>
+                                            <th>수정일</th>
                                             <th>대표 이미지</th>
                                         </tr>
                                         </thead>
@@ -105,8 +106,9 @@
                                                 <a>공지사항 제목1</a>
                                             </td>
                                             <td>2023-06-01 09:57:40</td>
+                                            <td>2023-06-01 09:57:40</td>
                                             <td class="image-wrap">
-                                                <img src="/images/admin/write_icon.png" style="width: 30px; height: 30px">
+                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
                                             </td>
                                         </tr>
                                         <tr>
@@ -121,8 +123,9 @@
                                                 <a>공지사항 제목1</a>
                                             </td>
                                             <td>2023-06-01 09:57:40</td>
+                                            <td>2023-06-01 09:57:40</td>
                                             <td class="image-wrap">
-                                                <img src="/images/admin/write_icon.png" style="width: 30px; height: 30px">
+                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
                                             </td>
                                         </tr>
                                         <tr>
@@ -137,8 +140,9 @@
                                                 <a>공지사항 제목1</a>
                                             </td>
                                             <td>2023-06-01 09:57:40</td>
+                                            <td>2023-06-01 09:57:40</td>
                                             <td class="image-wrap">
-                                                <img src="/images/admin/write_icon.png" style="width: 30px; height: 30px">
+                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
                                             </td>
                                         </tr>
                                         <tr>
@@ -153,8 +157,9 @@
                                                 <a>공지사항 제목1</a>
                                             </td>
                                             <td>2023-06-01 09:57:40</td>
+                                            <td>2023-06-01 09:57:40</td>
                                             <td class="image-wrap">
-                                                <img src="/images/admin/write_icon.png" style="width: 30px; height: 30px">
+                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
                                             </td>
                                         </tr>
                                         <tr>
@@ -169,8 +174,9 @@
                                                 <a>공지사항 제목1</a>
                                             </td>
                                             <td>2023-06-01 09:57:40</td>
+                                            <td>2023-06-01 09:57:40</td>
                                             <td class="image-wrap">
-                                                <img src="/images/admin/write_icon.png" style="width: 30px; height: 30px">
+                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
                                             </td>
                                         </tr>
 
@@ -202,7 +208,7 @@
     <script src="/js/admin/sidemenu.js"></script>
     <script src="/js/admin/checkbox.js"></script>
     <script>
-        const tbodyTd = $('.info-table tbody td')
+        const tbodyTd = $('.info-table tbody td a')
 
         tbodyTd.on("click", function () {
             location.href=`/admins/notice/detail`;
