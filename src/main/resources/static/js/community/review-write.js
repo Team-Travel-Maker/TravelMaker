@@ -36,5 +36,19 @@ const write2 = $('.AutoTextarea_AutoTextarea').eq(2).val().length;
         btn.css('backgroundColor', '');
         btn.css('color', '');
     }
+});
 
-})
+
+//첨부파일
+function openFile(){
+    document.getElementById('upload1').click();
+
+}
+// 파일 선택 이벤트 처리 함수
+document.getElementById('upload1').addEventListener('change', handleFileSelect);
+function handleFileSelect(event) {
+    // 선택한 파일의 정보를 가져옵니다
+    const file = event.target.files[0];
+
+
+}
