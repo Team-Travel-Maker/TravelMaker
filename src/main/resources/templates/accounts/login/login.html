@@ -46,13 +46,7 @@
                                 type="email"
                                 placeholder="이메일을 입력해주세요."
                                 name="email_input"
-                                class="email-input"
-                                value="">
-                            <input
-                                type="email"
-                                placeholder="이메일을 입력해주세요."
-                                name="email_input"
-                                class="email-format-error-input"
+                                class="email-input email-format-error-input"
                                 value="">
                         </div>
                         <p
@@ -62,7 +56,8 @@
                             type="submit"
                             data-attribute-id="signupLogin__start"
                             data-method="email"
-                            class="continue-email-button">
+                            class="continue-email-button"
+                            disabled="">
                                 <span
                                     color="var(--theme-palette-colors-black-100)"
                                     class="continue-email-button-span">이메일로 계속하기</span>
@@ -93,39 +88,6 @@
                                 <p
                                     color="var(--theme-palette-colors-gray-600)"
                                     class="button-p">Naver</p>
-                            </button>
-                            <button
-                                type="button"
-                                data-attribute-id="signupLogin__start"
-                                data-method="google"
-                                class="google-button">
-                                <span>
-                                    <svg viewbox="0 0 57 56" class="google-button-svg">
-                                        <path
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M41.6657 28.3122C41.6657 27.34 41.5789 26.4044 41.4158 25.5068H28.5V30.8112H35.8813C35.5629 32.5255 34.5968 33.9792 33.1446 34.9514V38.3922H37.5758C40.1693 36.0044 41.6657 32.4889 41.6657 28.3122Z"
-                                            fill="#3D82F0"></path>
-                                        <path
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M28.5003 41.7146C32.2032 41.7146 35.3072 40.4864 37.5761 38.3927L33.1449 34.9504C31.9167 35.7733 30.3457 36.2594 28.5003 36.2594C24.9285 36.2594 21.9053 33.8472 20.8264 30.606H16.2443V34.1595C18.5011 38.6411 23.1396 41.7146 28.5003 41.7146Z"
-                                            fill="#31A752"></path>
-                                        <path
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M20.8261 30.606C20.5518 29.7831 20.3964 28.9039 20.3964 28.0002C20.3964 27.0966 20.5518 26.2174 20.8261 25.3945V21.841H16.244C15.316 23.6924 14.7857 25.7877 14.7857 28.0002C14.7857 30.2128 15.316 32.3081 16.244 34.1595L20.8261 30.606Z"
-                                            fill="#F9BA00"></path>
-                                        <path
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M28.5003 19.7407C30.5133 19.7407 32.322 20.4325 33.7422 21.7917L37.6767 17.8588C35.3011 15.6447 32.1971 14.2855 28.5003 14.2855C23.1396 14.2855 18.5011 17.359 16.2443 21.842L20.8264 25.394C21.9053 22.1529 24.9285 19.7407 28.5003 19.7407Z"
-                                            fill="#E64234"></path>
-                                    </svg>
-                                </span>
-                                <p
-                                    color="var(--theme-palette-colors-gray-600)"
-                                    class="button-p">Google</p>
                             </button>
                             <button
                                 type="button"
@@ -182,36 +144,13 @@
                         <p
                             color="var(--theme-palette-colors-gray-600)"
                             class="copyrigth-p">© TravelMaker, Inc.</p>
-                        <div class="language-container">
-                            <div class="language-country-container">
-                                <img
-                                    src="https://static.wanted.co.kr/images/wantedoneid/ico_KR.svg"
-                                    class="language-country-img">
-                                <div class="language-select-container">
-                                    <select class="language-select">
-                                        <option value="ko_KR">한국어</option>
-                                        <option value="en_US">English</option>
-                                        <option value="ja">日本語</option>
-                                    </select>
-                                    <div class="language-select-button-container">
-                                        <span class="button-span">
-                                            <svg viewbox="0 0 10 6" class="button-span">
-                                                <path fill-rule="evenodd"
-                                                    clip-rule="evenodd"
-                                                    d="M5 3.93934L1.28033 0.21967C0.987437 -0.0732233 0.512563 -0.0732233 0.21967 0.21967C-0.0732233 0.512563 -0.0732233 0.987437 0.21967 1.28033L4.46967 5.53033C4.76256 5.82322 5.23744 5.82322 5.53033 5.53033L9.78033 1.28033C10.0732 0.987437 10.0732 0.512563 9.78033 0.21967C9.48744 -0.0732233 9.01256 -0.0732233 8.71967 0.21967L5 3.93934Z"
-                                                    fill="var(--theme-palette-colors-gray-900)"></path>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script src="login.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="/js/login/login.js"></script>
 </body>
 </html>
