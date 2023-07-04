@@ -617,6 +617,7 @@
     }
     .location-category-wrap{
         display: block;
+        margin: 0 auto;
     }
 
     .location-category{
