@@ -1,14 +1,11 @@
+let count = 1;
+let flag = false;
+
 // 1쿠폰 선택
 const $firstContainerWrap = $('.first-container-wrap');
 const $firstContainerWrapSpan = $('.first-step-number');
 const $firstContainerWrapH2 = $('.first-step-title');
 
-
-// 첫번째 내용 박스
-const $firstContent = $('.first-input-content');
-
-// 첫번째 수정
-const $edit = $('.first-edit');
 
 //왼쪽 화살표
 const $leftWrap= $('.left-arrow-wrap');
@@ -49,12 +46,21 @@ const $secondTitleH2 = $('.title-btn h2');
 const $numberTwo = $('.second-number');
 
 // 배송정보 입력 input 태그들
-const deliveryInput = $('.input-wrap input');
+const $deliveryInput = $('.input-wrap input');
 // 오류 메세지
-const message = $('.input-error');
+const $message = $('.input-error');
 
 //구매하기 버튼
-const purchaseBtn = $('.coupon-buy-btn');
+const $purchaseBtn = $('.coupon-buy-btn');
+
+//수량 버튼
+const $qtyBtn = $('.qty-btn');
+// 수량
+const $qtySpan = $('.qty-btn-label');
+let qty = 1;
+
+//총가격
+const $pricePtag =$('.total-price');
 
 /*--------------------------------------*/
 
@@ -93,15 +99,45 @@ $leftWrap.hover(
 
 //왼쪽 화살표 클릭
 $leftWrap.on("click", function(){
-    $leftWrap.hide();
+
+    if(!flag){
+        count-=2;
+    }
+
+    flag = true;
+
     $rightWrap.show();
-    $locationBtns.css("transform", `translateX(4px)`)
+    console.log("왼쪽" + count);
+    $locationBtns.css("transform", `translateX(${-110*count}px)`)
+    count--;
+    console.log(count);
+    if(count == -1){
+        $leftWrap.hide();
+    }
 })
 
 //오른쪽 화살표 클릭
 $rightWrap.on("click", function(){
+
+
+    if(flag){
+        count+=2;
+    }
+
+    if(count == -1){
+        count = 1;
+    }
+
+    flag = false;
+
     $leftWrap.show();
-    $locationBtns.css("transform", `translateX(-460px)`)
+    console.log("오른쪽" + count);
+    $locationBtns.css("transform", `translateX(${-110 * count}px)`)
+    count++;
+    if(count == 5){
+        $rightWrap.hide();
+    }
+
 })
 
 //쿠폰 선택시 선택효과및 밑에 input value에 쿠폰 id 값 넣기
@@ -129,16 +165,28 @@ $coupons.on("click", function(e){
 })
 
 
+// 수량버튼
+$qtyBtn.on("click", function(e) {
+    console.log(e.target.value);
+    if(e.target.value == '+'){
+        $qtySpan.text(++qty);
+    }else{
+        if(qty == 1){return};
+        $qtySpan.text(--qty)
+    }
+
+    $pricePtag.text(qty * 10_000 + "point");
+
+})
+
 
 
 // focus blur 효과
-deliveryInput.on("focus", function () {
-    console.log("들어옴1")
+$deliveryInput.on("focus", function () {
     $(this).css("border-color", "rgb(12, 72, 220)")
 })
 
-deliveryInput.on("blur", function () {
-    console.log("들어옴2")
+$deliveryInput.on("blur", function () {
     $(this).css("border-color", "#e1e2e3")
 })
 
@@ -166,21 +214,21 @@ function sample6_execDaumPostcode() {
             document.getElementById("address").value = addr;
             // 커서를 상세주소 필드로 이동한다.
             document.getElementById("address-detail").focus();
-            message.eq(1).hide();
-            message.eq(2).hide();
-            deliveryInput.eq(2).css("border-color","#e1e2e3");
-            deliveryInput.eq(3).css("border-color","#e1e2e3");
+            $message.eq(1).hide();
+            $message.eq(2).hide();
+            $deliveryInput.eq(2).css("border-color","#e1e2e3");
+            $deliveryInput.eq(3).css("border-color","#e1e2e3");
         }
     }).open();
 }
 
-deliveryInput.on("keyup", function () {
+$deliveryInput.on("keyup", function () {
     const thisMsg= $(this).closest("div.has-error").find('.input-error');
     console.log(thisMsg);
     thisMsg.hide();
 })
 
-purchaseBtn.on("click", function () {
+$purchaseBtn.on("click", function () {
 
     if($couponValue.val() == ""){
         showWarnModal("쿠폰을 선택해주세요");
@@ -188,58 +236,58 @@ purchaseBtn.on("click", function () {
     }
 
 
-    if(deliveryInput.eq(1).val() == ""){
+    if($deliveryInput.eq(1).val() == ""){
         showWarnModal("받는 사람을 입력해주세요");
-        deliveryInput.eq(1).css("border-color","red");
-        message.eq(0).show();
+        $deliveryInput.eq(1).css("border-color","red");
+        $message.eq(0).show();
         return;
     }
 
-    if(deliveryInput.eq(2).val() == ""){
+    if($deliveryInput.eq(2).val() == ""){
         showWarnModal("우편번호와 주소을 입력해주세요");
-        deliveryInput.eq(2).css("border-color","red");
-        deliveryInput.eq(3).css("border-color","red");
-        message.eq(1).show();
-        message.eq(2).show();
+        $deliveryInput.eq(2).css("border-color","red");
+        $deliveryInput.eq(3).css("border-color","red");
+        $message.eq(1).show();
+        $message.eq(2).show();
         return;
     }
 
-    if(deliveryInput.eq(4).val() == ""){
+    if($deliveryInput.eq(4).val() == ""){
         showWarnModal("상세주소를 입력해주세요");
-        deliveryInput.eq(4).css("border-color","red");
-        message.eq(3).show();
+        $deliveryInput.eq(4).css("border-color","red");
+        $message.eq(3).show();
         return;
     }
 
-    if(deliveryInput.eq(5).val() == ""){
+    if($deliveryInput.eq(5).val() == ""){
         showWarnModal("휴대폰 번호를 입력해주세요");
-        deliveryInput.eq(5).css("border-color","red");
-        message.eq(4).show();
+        $deliveryInput.eq(5).css("border-color","red");
+        $message.eq(4).show();
         return;
     }
 
-    if(!fn_mbtlnumChk(deliveryInput.eq(5).val())){
+    if(!fn_mbtlnumChk($deliveryInput.eq(5).val())){
         showWarnModal("올바른 휴대폰 번호가 아닙니다.");
-        deliveryInput.eq(5).css("border-color","red");
-        message.eq(4).show();
+        $deliveryInput.eq(5).css("border-color","red");
+        $message.eq(4).show();
         return;
     }
 
-    if(deliveryInput.eq(6).val() == ""){
+    if($deliveryInput.eq(6).val() == ""){
         showWarnModal("배송 시 주의사항을 입력해주세요");
-        deliveryInput.eq(6).css("border-color","red");
-        message.eq(5).show();
+        $deliveryInput.eq(6).css("border-color","red");
+        $message.eq(5).show();
         return;
     }
 
-    if(deliveryInput.val() != ""){
+    if($deliveryInput.val() != ""){
         showWarnModal("쿠폰 구매가 완료되었습니다.")
     }
 
 })
 
 // 휴대폰 번호 검사
-deliveryInput.eq(5).on('input', function () {
+$deliveryInput.eq(5).on('input', function () {
     let numericVal = $(this).val().replace(/[^0-9]/g, '');
 
     if (numericVal.length > 11) {

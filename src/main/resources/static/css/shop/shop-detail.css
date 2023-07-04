@@ -514,7 +514,7 @@
     background-color: #fff;
 }
 
-.heart-btn-label{
+.qty-btn-label{
     width: 100%;
     font-size: inherit;
     font-weight: inherit;
@@ -544,7 +544,7 @@
     font-size: inherit;
 }
 
-.heart-btn-span{
+.qty-btn-span{
     overflow: hidden;
     position: absolute;
     z-index: 0;
