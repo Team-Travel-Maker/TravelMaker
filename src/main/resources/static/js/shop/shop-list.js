@@ -54,7 +54,7 @@ const deliveryInput = $('.input-wrap input');
 const message = $('.input-error');
 
 //구매하기 버튼
-const purchaseBtn = $('.purchase-btn');
+const purchaseBtn = $('.coupon-buy-btn');
 
 /*--------------------------------------*/
 
@@ -95,12 +95,11 @@ $leftWrap.hover(
 $leftWrap.on("click", function(){
     $leftWrap.hide();
     $rightWrap.show();
-    $locationBtns.css("transform", `translateX(20px)`)
+    $locationBtns.css("transform", `translateX(4px)`)
 })
 
 //오른쪽 화살표 클릭
 $rightWrap.on("click", function(){
-    $rightWrap.hide();
     $leftWrap.show();
     $locationBtns.css("transform", `translateX(-460px)`)
 })
@@ -129,70 +128,7 @@ $coupons.on("click", function(e){
 
 })
 
-//쿠폰 선택해야 다음 버튼 누를 수 있게하기
-$nextBtn.on("click", function () {
-    if($couponValue.val() == ""){
-        showWarnModal("쿠폰을 선택해주세요");
-        return;
-    }
 
-    if($couponValue.val() != ""){
-
-        //1 비활성화
-        $firstContent.hide();
-        $secondTitleBtn.eq(0).removeClass("active");
-        $secondTitleBtn.eq(0).addClass("no-active");
-        $firstContainerWrap.removeClass("active");
-        $firstContainerWrapSpan.removeClass("active");
-        $firstContainerWrapH2.removeClass("active");
-        $firstContainerWrap.addClass("no-active");
-        $firstContainerWrapSpan.addClass("no-active");
-        $firstContainerWrapH2.addClass("no-active");
-
-        //1 edit 활성화
-        $edit.show();
-        
-        //2 배송정보 활성화
-        $secondTitleBtn.eq(1).removeClass("no-active");
-        $secondTitleBtn.eq(1).addClass("active");
-        $secondTitleH2.eq(1).removeClass("no-active");
-        $secondTitleH2.eq(1).addClass("active");
-        $numberTwo.removeClass("no-active");
-        $numberTwo.addClass("active");
-        
-        $secondContent.show();
-        $topContainerSpan.show();
-    }
-})
-
-// edit 버튼효과
-$edit.on("click", function () {
-
-    //1 비활성화
-    $firstContent.show();
-    $secondTitleBtn.eq(0).removeClass("no-active");
-    $secondTitleBtn.eq(0).addClass("active");
-    $firstContainerWrap.removeClass("no-active");
-    $firstContainerWrapSpan.removeClass("no-active");
-    $firstContainerWrapH2.removeClass("no-active");
-    $firstContainerWrap.addClass("active");
-    $firstContainerWrapSpan.addClass("active");
-    $firstContainerWrapH2.addClass("active");
-
-    //1 edit 활성화
-    $edit.hide();
-
-    //2 배송정보 활성화
-    $secondTitleBtn.eq(1).removeClass("active");
-    $secondTitleBtn.eq(1).addClass("no-active");
-    $secondTitleH2.eq(1).removeClass("active");
-    $secondTitleH2.eq(1).addClass("no-active");
-    $numberTwo.removeClass("active");
-    $numberTwo.addClass("no-active");
-
-    $secondContent.hide();
-    $topContainerSpan.hide();
-})
 
 
 // focus blur 효과
@@ -245,6 +181,12 @@ deliveryInput.on("keyup", function () {
 })
 
 purchaseBtn.on("click", function () {
+
+    if($couponValue.val() == ""){
+        showWarnModal("쿠폰을 선택해주세요");
+        return;
+    }
+
 
     if(deliveryInput.eq(1).val() == ""){
         showWarnModal("받는 사람을 입력해주세요");

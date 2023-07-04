@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Maker || Gift Shop</title>
     <link rel="icon" href="/images/logo/favicon.png">
-    <link rel="stylesheet" href="/css/common.css" />
-    <link rel="stylesheet" href="/css/header/header.css" />
-    <link rel="stylesheet" href="/css/shop/shop-purchase.css" />
-    <link rel="stylesheet" href="/css/shop/shop-list.css" />
-    <link rel="stylesheet" href="/css/admin/modal.css" />
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/header/header.css"/>
+    <link rel="stylesheet" href="/css/shop/shop-purchase.css"/>
+    <link rel="stylesheet" href="/css/shop/shop-list.css"/>
+    <link rel="stylesheet" href="/css/shop/shop-detail.css"/>
+    <link rel="stylesheet" href="/css/admin/modal.css"/>
 </head>
 <body>
-
 <!-- 모달 부분 -->
 <div class="modal">
     <div class="warn-modal">
@@ -23,432 +23,438 @@
 <!-- 헤더 -->
 <div th:replace="~{header/header :: #header}"></div>
 
-    <div>
-        <section class="purchase-section">
-            <div class="purchase-wrap">
-                <div class="purchase-container">
-                    <div class="top-container">
-                        <div><h1><button type="button"> <img src="https://static.wanted.co.kr/images/shop/events/wanted-symbol-logo3x.png" width="145" alt=""></button></h1></div>
-                     </div>
-                        <section class="purchase-section">
-                            <div class="purchase-wrap">
-                                <div class="purchase-container">
-                               
-                                        <section class="first-input-container">  
-                                            <div class="first-input-title">
-                                                <button type="button" class="title-btn active">
-                                                    <div class="first-container-wrap">
-                                                        <span class="first-number first-step-number active">1</span>
-                                                        <h2 class="first-step-title">상품권 선택</h2>
-                                                     </div>  
-                                                         <span class="first-edit edit-active">Edit</span>
-                                                </button>
+<!-- shop detail -->
+<div class="coupon-wrap">
+    <div class="coupon-container">
+        <div class="coupon-detail">
+            <div class="coupon-content">
+                <section class="purchase-section">
+                    <div class="purchase-wrap">
+                        <div class="purchase-container">
+                            <div class="top-container">
+                                <span>필수 입력 항목입니다.</span>
+                            </div>
+                            <form>
+                                <section class="first-input-container">
+                                    <div class="first-input-title">
+                                        <button type="button" class="title-btn active">
+                                            <div class="second-container-wrap">
+                                                <h2 class="active">상품권 배송 정보</h2>
                                             </div>
-                                            <div class="first-input-content">
-                                               
-                                                <!-- shop-list -->
-                                                  <!-- shop list -->
-                                            <div class="main-container">
-                                                <div class="shop-container">
-                                                <!-- 지역선택 & 검색 추가 -->
-                                                <div class="select-wrap">
-                                                    <div class="select-container">
-                                                        <div class="select">
-                                                            <button type="button" class="select-option">
+                                        </button>
+                                    </div>
+                                    <div class="second-input-content">
+                                        <div class="input-wrap">
+                                            <label for="account" class="first-label">계정</label>
+                                            <div class="input-wrap">
+                                                <input id="account" type="text" name="account" disabled
+                                                       value="friend_7-9@naver.com" style="color: rgb(51, 51, 51);">
+                                            </div>
+                                        </div>
+                                        <div class="input-wrap has-error">
+                                            <label for="member-name" class="first-label">
+                                                        <span class="required">받는 사람<span>
+                                            </label>
+                                            <div class="input-wrap">
+                                                <input id="member-name" type="text" name="memberName"
+                                                       placeholder="받는 사람">
+                                            </div>
+                                            <div class="input-error">받는 사람을 입력해주세요.</div>
+                                        </div>
+                                        <div class="input-wrap has-error">
+                                            <label for="zip-code" class="first-label">
+                                                        <span class="required">우편번호<span>
+                                            </label>
+                                            <div class="input-wrap zip-code-container">
+                                                <div class="zip-code-input-wrap">
+                                                    <input id="zip-code" type="text" name="zipCode" placeholder="우편 번호"
+                                                           disabled>
+                                                </div>
+                                                <div class="first-next-btn-wrap">
+                                                    <button onclick="sample6_execDaumPostcode()" type="button">주소 검색
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="input-error">우편번호를 입력해주세요.</div>
+                                        </div>
+                                        <div class="input-wrap has-error">
+                                            <label for="address" class="first-label">
+                                                        <span class="required">주소<span>
+                                            </label>
+                                            <div class="input-wrap">
+                                                <input id="address" type="text" name="address" placeholder="주소"
+                                                       disabled>
+                                            </div>
+                                            <div class="input-error">주소를 입력해주세요.</div>
+                                        </div>
+                                        <div class="input-wrap has-error">
+                                            <label for="address-detail" class="first-label">
+                                                        <span class="required">상세주소<span>
+                                            </label>
+                                            <div class="input-wrap">
+                                                <input id="address-detail" type="text" name="addressDetail"
+                                                       placeholder="상세 주소">
+                                            </div>
+                                            <div class="input-error">상세주소를 입력해주세요.</div>
+                                        </div>
+                                        <div class="input-wrap has-error">
+                                            <label for="phone-number" class="first-label">
+                                                        <span class="required">휴대폰 번호<span>
+                                            </label>
+                                            <div class="input-wrap">
+                                                <input id="phone-number" type="text" name="phoneNumber"
+                                                       placeholder="휴대폰 번호">
+                                            </div>
+                                            <div class="input-error">휴대폰 번호를 입력해주세요.</div>
+                                        </div>
+                                        <div class="input-wrap has-error">
+                                            <label for="delivery-caution" class="first-label">
+                                                        <span class="required">배송 시 주의사항<span>
+                                            </label>
+                                            <div class="input-wrap">
+                                                <input id="delivery-caution" type="text" name="deliveryCaution"
+                                                       placeholder="배송시 주의사항">
+                                            </div>
+                                            <div class="input-error">배송 시 주의사항을 입력해주세요.</div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- 상품권 정보 담을 곳 -->
+                                <input class="coupon-id" type="hidden" name="couponId" value="">
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <aside class="coupon-buy-wrap" style="top: 70px">
+        <div class="coupon-buy-container">
+            <header class="asdie-css-header">
+                <div class="coupon-price-container">
+                    <div class="title">
+                        <h2 class="main-title">
+                            Travel Maker와 함께<br>국내 여행의 가치를 높히자
+                        </h2>
+                        <p class="sub-title">원하는 지역 화폐 상품권을 찾아보세요.</p>
+                    </div>
+
+                    <!-- shop-list -->
+                    <!-- shop list -->
+                    <div class="main-container">
+                        <div class="shop-container">
+                            <!-- 지역선택 & 검색 추가 -->
+                            <div class="select-wrap location-box">
+                                <div class="select-container">
+                                    <div class="select">
+                                        <button type="button" class="select-option">
                                                                 <span class="location-title">
                                                                     지역
                                                                 </span>
-                                                                <span class="location-name">
+                                            <span class="location-name">
                                                                     전국
                                                                 </span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="search-wrap">
-                                                            <div class="gift-search-container">
-                                                                <form>
-                                                                    <input class="gift-search" type="text" placeholder="검색어를 입력해주세요">
-                                                                    <span class="search-mark-container">
-                                                                        <svg class="search-mark" viewBox="0 0 24 24"><path d="M9.47375 1.89474C13.6597 1.89474 17.0527 5.2878 17.0527 9.47369C17.0527 10.2532 16.9341 11.0197 16.7041 11.7514C16.5471 12.2505 16.0153 12.5279 15.5161 12.371C15.017 12.2141 14.7396 11.6822 14.8966 11.1831C15.069 10.6345 15.158 10.0597 15.158 9.47369C15.158 6.33424 12.6132 3.78948 9.47375 3.78948C6.33428 3.78948 3.78952 6.33424 3.78952 9.47369C3.78952 12.6125 6.33466 15.1579 9.47375 15.1579C11.0057 15.1579 12.4626 14.5505 13.514 13.5044C13.8507 13.1694 14.3761 13.1397 14.7463 13.4147L14.8524 13.5064L21.8282 20.4883C22.198 20.8584 22.1977 21.4583 21.8276 21.8281C21.4911 22.1643 20.9648 22.1946 20.594 21.9193L20.4878 21.8275L14.1361 15.4699L14.0594 15.5312C12.8519 16.4355 11.3781 16.9722 9.8318 17.0443L9.47375 17.0526C5.28818 17.0526 1.89478 13.6589 1.89478 9.47369C1.89478 5.2878 5.28785 1.89474 9.47375 1.89474Z"></path></svg>
-                                                                    </span>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>   
-                                                <div class="select-wrap">
-                                                    <div class="left-arrow-wrap">
-                                                    <button type="button">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="select-wrap">
+                                <div class="left-arrow-wrap">
+                                    <button type="button">
                                                         <span class="left-arrow">
                                                             <svg class="left-arrow-svg" viewBox="0 0 18 18"><path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path></svg>
                                                         </span>
-                                                    </button>
-                                                </div>
-                                                <div class="right-arrow-wrap"> 
-                                                    <button type="button">
+                                    </button>
+                                </div>
+                                <div class="right-arrow-wrap">
+                                    <button type="button">
                                                         <span class="right-arrow">
                                                             <svg class="right-arrow-svg" viewBox="0 0 18 18"><path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path></svg>
                                                         </span>
-                                                    </button>
-                                                </div>
-                                                    <div class="select-container">
-                                                        <div class="location-category-wrap">
-                                                        <button type="button" class="location-category now-button">
+                                    </button>
+                                </div>
+                                <div class="select-container">
+                                    <div class="location-category-wrap">
+                                        <button type="button" class="location-category now-button">
                                                             <span>
                                                                 전국
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 서울
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 부산
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 대구
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 인천
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 광주
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 대전
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 울산
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 세종
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 경기
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 강원
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 충북
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 충남
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 전북
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 전남
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 경북
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 경남
                                                             </span>
-                                                        </button>
-                                                        <button type="button" class="location-category">
+                                        </button>
+                                        <button type="button" class="location-category">
                                                             <span>
                                                                 제주
                                                             </span>
-                                                        </button>
-                                                        </div>
-                                                    </div>
-                                                </div>   
-                                                <!-- shoplist 시작 --> 
-                                                <div class="title">
-                                                    <h2 class="main-title">
-                                                       Travel Maker와 함께 국내 여행의 가치를 높히자
-                                                    </h2>
-                                                    <p class="sub-title">원하는 지역 화폐 상품권을 찾아보세요.</p>
-                                                </div>
-                                                <div class="list">
-                                                    <div class="list-container">
-                                                    <ul class="shop-list">
-                                                        <li id="1">
-                                                            <div class="gift-card">
-                                                                <a href="">
-                                                                <header style="background-image: url(/images/shop/춘천화폐.jpg);
-                                                                    " >
-                                                                </header>
-                                                                <div class="content-box">
-                                                                    <div class="content">춘천 중앙시장 화폐 10,000원권</div>
-                                                                    <div class="name">상품권</div>
-                                                                    <div class="location">강원도
-                                                                    <span class="address-dot">.</span>
-                                                                    <span>춘천</span></div>
-                                                                    <div class="price">가격 : 10,000 point</div>
-                                                                </div>
-                                                                </a>
-                                                            </div>
-                                                            </li>
-                                                            <li id="2">
-                                                            <div class="gift-card">
-                                                                <a href="">
-                                                                <header style="background-image: url(/images/shop/춘천화폐.jpg);
-                                                                    " >
-                                                                </header>
-                                                                <div class="content-box">
-                                                                    <div class="content">춘천 중앙시장 화폐 10,000원권</div>
-                                                                    <div class="name">상품권</div>
-                                                                    <div class="location">강원도
-                                                                    <span class="address-dot">.</span>
-                                                                    <span>춘천</span></div>
-                                                                    <div class="price">가격 : 10,000 point</div>
-                                                                </div>
-                                                                </a>
-                                                            </div>
-                                                            </li>
-                                                            <li>
-                                                            <div class="gift-card">
-                                                                <a href="">
-                                                                <header style="background-image: url(/images/shop/춘천화폐.jpg);
-                                                                    " >
-                                                                </header>
-                                                                <div class="content-box">
-                                                                    <div class="content">춘천 중앙시장 화폐 10,000원권</div>
-                                                                    <div class="name">상품권</div>
-                                                                    <div class="location">강원도
-                                                                    <span class="address-dot">.</span>
-                                                                    <span>춘천</span></div>
-                                                                    <div class="price">가격 : 10,000 point</div>
-                                                                </div>
-                                                                </a>
-                                                            </div>
-                                                            </li>
-                                                            <li>
-                                                            <div class="gift-card">
-                                                                <a href="">
-                                                                <header style="background-image: url(/images/shop/춘천화폐.jpg);
-                                                                    " >
-                                                                </header>
-                                                                <div class="content-box">
-                                                                    <div class="content">춘천 중앙시장 화폐 10,000원권</div>
-                                                                    <div class="name">상품권</div>
-                                                                    <div class="location">강원도
-                                                                    <span class="address-dot">.</span>
-                                                                    <span>춘천</span></div>
-                                                                    <div class="price">가격 : 10,000 point</div>
-                                                                </div>
-                                                                </a>
-                                                            </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="gift-card">
-                                                                    <a href="">
-                                                                    <header style="background-image: url(/images/shop/춘천화폐.jpg);
-                                                                        " >
-                                                                    </header>
-                                                                    <div class="content-box">
-                                                                        <div class="content">춘천 중앙시장 화폐 10,000원권</div>
-                                                                        <div class="name">상품권</div>
-                                                                        <div class="location">강원도
-                                                                        <span class="address-dot">.</span>
-                                                                        <span>춘천</span></div>
-                                                                        <div class="price">가격 : 10,000 point</div>
-                                                                    </div>
-                                                                    </a>
-                                                                </div>
-                                                                </li>
-                                                                <li>
-                                                                <div class="gift-card">
-                                                                    <a href="">
-                                                                    <header style="background-image: url(/images/shop/춘천화폐.jpg);
-                                                                        " >
-                                                                    </header>
-                                                                    <div class="content-box">
-                                                                        <div class="content">춘천 중앙시장 화폐 10,000원권</div>
-                                                                        <div class="name">상품권</div>
-                                                                        <div class="location">강원도
-                                                                        <span class="address-dot">.</span>
-                                                                        <span>춘천</span></div>
-                                                                        <div class="price">가격 : 10,000 point</div>
-                                                                    </div>
-                                                                    </a>
-                                                                </div>
-                                                                </li>
-                                                                <li>
-                                                                <div class="gift-card">
-                                                                    <a href="">
-                                                                    <header style="background-image: url(/images/shop/춘천화폐.jpg);
-                                                                        " >
-                                                                    </header>
-                                                                    <div class="content-box">
-                                                                        <div class="content">춘천 중앙시장 화폐 10,000원권</div>
-                                                                        <div class="name">상품권</div>
-                                                                        <div class="location">강원도
-                                                                        <span class="address-dot">.</span>
-                                                                        <span>춘천</span></div>
-                                                                        <div class="price">가격 : 10,000 point</div>
-                                                                    </div>
-                                                                    </a>
-                                                                </div>
-                                                                </li>
-                                                                <li>
-                                                                <div class="gift-card">
-                                                                    <a href="">
-                                                                    <header style="background-image: url(/images/shop/춘천화폐.jpg);
-                                                                        " >
-                                                                    </header>
-                                                                    <div class="content-box">
-                                                                        <div class="content">춘천 중앙시장 화폐 10,000원권</div>
-                                                                        <div class="name">상품권</div>
-                                                                        <div class="location">강원도
-                                                                        <span class="address-dot">.</span>
-                                                                        <span>춘천</span></div>
-                                                                        <div class="price">가격 : 10,000 point</div>
-                                                                    </div>
-                                                                    </a>
-                                                                </div>
-                                                                </li>
-                                                    </ul>
-                                                    </div>
-                                                </div>
-                                                </div>
-                                            </div>
-
-                                                <div class="paging-wrap">
-                                                    <a class="paging paging-move">
-                                                        <img src="/images/admin/prev.png" width="15px"></a>
-                                                        <a class="paging paging-checked">1</a>
-                                                        <a class="page paging">2</a>
-                                                        <a class="page paging">3</a>
-                                                        <a class="page paging">4</a>
-                                                        <a class="page paging">5</a>
-                                                    <a class="paging paging-move">
-                                                        <img src="/images/admin/next.png" width="15px"></a>
-                                                </div>
-
-                                                <!-- 다음 버튼 -->
-                                                <div class="first-next-btn-wrap next-btn">
-                                                    <button type="button">다음</button>
-                                                </div>
-                                            </div>
-                                        </section>
-                                        <div class="top-container">
-                                            <span>필수 입력 항목입니다.</span>
-                                         </div>
-                                    <form>
-                                        <section class="first-input-container">  
-                                            <div class="first-input-title">
-                                                <button type="button" class="title-btn no-active">
-                                                    <div class="second-container-wrap">
-                                                        <span class="second-number no-active">2</span>
-                                                        <h2 class="no-active">배송 정보</h2>
-                                                     </div>  
-                                                </button>
-                                            </div>
-                                            <div class="second-input-content">
-                                                <div class="input-wrap">
-                                                    <label for="account" class="first-label">계정</label>
-                                                    <div class="input-wrap">
-                                                        <input id="account" type="text" name="account" disabled value="friend_7-9@naver.com" style="color: rgb(51, 51, 51);">
-                                                    </div>
-                                                </div>
-                                                <div class="input-wrap has-error">
-                                                    <label for="member-name" class="first-label">
-                                                        <span class="required">받는 사람<span>
-                                                    </label>
-                                                    <div class="input-wrap">
-                                                        <input id="member-name" type="text" name="memberName" placeholder="받는 사람">
-                                                    </div>
-                                                    <div class="input-error">받는 사람을 입력해주세요.</div>
-                                                </div>
-                                                <div class="input-wrap has-error">
-                                                    <label for="zip-code" class="first-label">
-                                                        <span class="required">우편번호<span>
-                                                    </label>
-                                                    <div class="input-wrap zip-code-container">
-                                                        <div class="zip-code-input-wrap">
-                                                        <input id="zip-code" type="text" name="zipCode" placeholder="우편 번호" disabled>
-                                                        </div>
-                                                        <div class="first-next-btn-wrap">
-                                                            <button onclick="sample6_execDaumPostcode()" type="button">주소 검색</button>
-                                                        </div>
-                                                    </div>
-                                                    <div class="input-error">우편번호를 입력해주세요.</div>
-                                                </div>
-                                                <div class="input-wrap has-error">
-                                                    <label for="address" class="first-label">
-                                                        <span class="required">주소<span>
-                                                    </label>
-                                                    <div class="input-wrap">
-                                                        <input id="address" type="text" name="address" placeholder="주소" disabled>
-                                                    </div>
-                                                    <div class="input-error">주소를 입력해주세요.</div>
-                                                </div>
-                                                <div class="input-wrap has-error">
-                                                    <label for="address-detail" class="first-label">
-                                                        <span class="required">상세주소<span>
-                                                    </label>
-                                                    <div class="input-wrap">
-                                                        <input id="address-detail" type="text" name="addressDetail" placeholder="상세 주소">
-                                                    </div>
-                                                    <div class="input-error">상세주소를 입력해주세요.</div>
-                                                </div>
-                                                <div class="input-wrap has-error">
-                                                    <label for="phone-number" class="first-label">
-                                                        <span class="required">휴대폰 번호<span>
-                                                    </label>
-                                                    <div class="input-wrap">
-                                                        <input id="phone-number" type="text" name="phoneNumber" placeholder="휴대폰 번호">
-                                                    </div>
-                                                    <div class="input-error">휴대폰 번호를 입력해주세요.</div>
-                                                </div>
-                                                <div class="input-wrap has-error">
-                                                    <label for="delivery-caution" class="first-label">
-                                                        <span class="required">배송 시 주의사항<span>
-                                                    </label>
-                                                    <div class="input-wrap">
-                                                        <input id="delivery-caution" type="text" name="deliveryCaution" placeholder="배송시 주의사항">
-                                                    </div>
-                                                    <div class="input-error">배송 시 주의사항을 입력해주세요.</div>
-                                                </div>
-                                                <div class="first-next-btn-wrap">
-                                                    <button class="purchase-btn" type="button">구매하기</button>
-                                                </div>
-                                            </div>
-                                        </section>
-                                        <!-- 상품권 정보 담을 곳 -->
-                                        <input class="coupon-id" type="hidden" name="couponId" value="">
-                                     </form>
-                                 </div>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        </section>
+                            <!-- shoplist 시작 -->
+                            <div class="list">
+                                <div class="list-container">
+                                    <ul class="shop-list scroll-bar">
+                                        <li id="1">
+                                            <div class="gift-card">
+                                                <a href="">
+                                                    <header style="background-image: url(/images/shop/춘천화폐.jpg);
+                                                                    " >
+                                                    </header>
+                                                    <div class="content-box">
+                                                        <div class="content">춘천 중앙시장 화폐 10,000원권</div>
+                                                        <div class="name">상품권</div>
+                                                        <div class="location">강원도
+                                                            <span class="address-dot">.</span>
+                                                            <span>춘천</span></div>
+                                                        <div class="price">가격 : 10,000 point</div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li id="2">
+                                            <div class="gift-card">
+                                                <a href="">
+                                                    <header style="background-image: url(/images/shop/춘천화폐.jpg);
+                                                                    " >
+                                                    </header>
+                                                    <div class="content-box">
+                                                        <div class="content">춘천 중앙시장 화폐 10,000원권</div>
+                                                        <div class="name">상품권</div>
+                                                        <div class="location">강원도
+                                                            <span class="address-dot">.</span>
+                                                            <span>춘천</span></div>
+                                                        <div class="price">가격 : 10,000 point</div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="gift-card">
+                                                <a href="">
+                                                    <header style="background-image: url(/images/shop/춘천화폐.jpg);
+                                                                    " >
+                                                    </header>
+                                                    <div class="content-box">
+                                                        <div class="content">춘천 중앙시장 화폐 10,000원권</div>
+                                                        <div class="name">상품권</div>
+                                                        <div class="location">강원도
+                                                            <span class="address-dot">.</span>
+                                                            <span>춘천</span></div>
+                                                        <div class="price">가격 : 10,000 point</div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="gift-card">
+                                                <a href="">
+                                                    <header style="background-image: url(/images/shop/춘천화폐.jpg);
+                                                                    " >
+                                                    </header>
+                                                    <div class="content-box">
+                                                        <div class="content">춘천 중앙시장 화폐 10,000원권</div>
+                                                        <div class="name">상품권</div>
+                                                        <div class="location">강원도
+                                                            <span class="address-dot">.</span>
+                                                            <span>춘천</span></div>
+                                                        <div class="price">가격 : 10,000 point</div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="gift-card">
+                                                <a href="">
+                                                    <header style="background-image: url(/images/shop/춘천화폐.jpg);
+                                                                        " >
+                                                    </header>
+                                                    <div class="content-box">
+                                                        <div class="content">춘천 중앙시장 화폐 10,000원권</div>
+                                                        <div class="name">상품권</div>
+                                                        <div class="location">강원도
+                                                            <span class="address-dot">.</span>
+                                                            <span>춘천</span></div>
+                                                        <div class="price">가격 : 10,000 point</div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="gift-card">
+                                                <a href="">
+                                                    <header style="background-image: url(/images/shop/춘천화폐.jpg);
+                                                                        " >
+                                                    </header>
+                                                    <div class="content-box">
+                                                        <div class="content">춘천 중앙시장 화폐 10,000원권</div>
+                                                        <div class="name">상품권</div>
+                                                        <div class="location">강원도
+                                                            <span class="address-dot">.</span>
+                                                            <span>춘천</span></div>
+                                                        <div class="price">가격 : 10,000 point</div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="gift-card">
+                                                <a href="">
+                                                    <header style="background-image: url(/images/shop/춘천화폐.jpg);
+                                                                        " >
+                                                    </header>
+                                                    <div class="content-box">
+                                                        <div class="content">춘천 중앙시장 화폐 10,000원권</div>
+                                                        <div class="name">상품권</div>
+                                                        <div class="location">강원도
+                                                            <span class="address-dot">.</span>
+                                                            <span>춘천</span></div>
+                                                        <div class="price">가격 : 10,000 point</div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="gift-card">
+                                                <a href="">
+                                                    <header style="background-image: url(/images/shop/춘천화폐.jpg);
+                                                                        " >
+                                                    </header>
+                                                    <div class="content-box">
+                                                        <div class="content">춘천 중앙시장 화폐 10,000원권</div>
+                                                        <div class="name">상품권</div>
+                                                        <div class="location">강원도
+                                                            <span class="address-dot">.</span>
+                                                            <span>춘천</span></div>
+                                                        <div class="price">가격 : 10,000 point</div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-            </div>
-        </section>
-    </div>   
+                    <br>
+                    <div class="line-css"></div>
+                    <br>
+                    <h4 style="margin-bottom: 8px">개수</h4>
+                    <div class="qty-wrap">
+
+                        <div class="coupon-buy-btn-wrap">
+                            <div class="">
+                                <button class="qty-btn" type="button">+</button>
+                            </div>
+                            <div class="coupon-heart-btn-wrap">
+                                <button class="coupon-heart-btn">
+                                                <span class="heart-btn-label">
+                                                  <span class="heart-svg-wrap">
+                                                  </span>
+                                                  0
+                                                </span>
+                                    <span class="heart-btn-span"></span>
+                                </button>
+                            </div>
+                            <div class="">
+                                <button class="qty-btn" type="button">-</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul>
+                        <li>
+                            <h4>총 가격</h4>
+                            <p>10,000Point</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="coupon-buy-btn-wrap">
+                    <div class="coupon-buy-btn-container">
+                        <button class="coupon-buy-btn" type="button">구매하기</button>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </aside>
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
