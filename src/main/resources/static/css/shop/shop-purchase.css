@@ -292,3 +292,9 @@ a.paging-move {
 #zip-code {
     width: 88% !important;
 }
+
+@media (min-width: 1000px){
+    .purchase-wrap{
+        max-width: 700px;
+    }
+}

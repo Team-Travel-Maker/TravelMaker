@@ -5,6 +5,7 @@
 }
 
 .coupon-container{
+    order: 10;
     max-width:630px;
     margin-top: 23px;
     max-width: 630px;
@@ -402,6 +403,7 @@
 
 /* 오른쪽 메뉴 */
 .coupon-buy-wrap{
+    order: 12;
     width: 340px;
     position: absolute;
     right: calc((100% - 1060px)/2);
@@ -587,4 +589,38 @@
 
 .qty-wrap{
     display: flex;
+}
+
+
+@media (max-width: 900px){
+    .coupon-wrap {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+    }
+    .coupon-container{
+        max-width: 860px;
+        position :static;
+    }
+    .coupon-buy-wrap{
+        position :static;
+    }
+
+    .asdie-css-header{
+        width: 860px !important;
+    }
+    .right-arrow-wrap{
+        display: none;
+    }
+    .left-arrow-wrap{
+        display: none;
+    }
+    .location-category-wrap{
+        display: block;
+    }
+
+    .location-category{
+        margin-bottom: 10px;
+    }
+
 }
