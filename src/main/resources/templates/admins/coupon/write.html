@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>관리자 페이지- 상품권 작성</title>
+    <link rel="stylesheet" href="/css/admin/sidemenu.css"/>
+    <link rel="stylesheet" href="/css/admin/admin-board-notice-write.css"/>
+    <link rel="stylesheet" href="/css/admin/admin-board.css">
+    <link rel="stylesheet" href="/css/admin/admin-board-proposal.css">
+    <link rel="stylesheet" href="/css/admin/admin-common.css">
+    <link rel="stylesheet" href="/css/admin/modal.css"/>
+    <link rel="icon" href="/images/logo/favicon.png"/>
+</head>
+
+<body>
+
+<!-- 모달 부분 -->
+<div class="modal">
+    <div class="warn-modal">
+        <div id="content-wrap"></div>
+    </div>
+</div>
+
+<div>
+    <div class="info-title-box info-title-box-flex">
+        <div class="logo-box-layout">
+            <div class="logo-box">
+                <img src="" style="padding-top: 17px"/>
+            </div>
+            <div class="logo-title">
+                <span>Jar</span>
+            </div>
+        </div>
+        <div>
+            <div class="select-name">
+                <span>상품권 관리</span>
+            </div>
+        </div>
+    </div>
+    <div class="wrap">
+        <!-- 사이드 바 -->
+        <div th:replace="~{admins/side-bar :: #side-bar-wrap}"></div>
+
+        <div class="container">
+            <div class="container-margin">
+                <!-- 헤더 -->
+                <div class="prev-button-layout">
+                    <div>
+                        <a href="">
+                            <img src="/images/admin/prev-icon.png" class="prev-icon"/>
+                        </a>
+                        <a class="back-page" th:href="@{/admins/coupon/list}">리스트로 돌아가기</a>
+                    </div>
+                </div>
+
+                <!-- 내용 섹션 -->
+                <section class="board-info-box-layout">
+                    <div class="board-info-box">
+                        <div class="board-info-title-box">
+                            <span>상품권 등록하기</span>
+                        </div>
+                        <hr/>
+                        <div class="info-table">
+                            <form method="post" id="noticeWriteForm"
+                                  name="noticeWriteForm">
+                                <div>
+                                    <input
+                                            type="text"
+                                            class="board-title"
+                                            id="notice-title"
+                                            name="couponTitle"
+                                            placeholder="상품권 이름을 입력해주세요."
+                                            autocomplete="off"
+                                    />
+                                </div>
+                                <hr/>
+                                <div>
+                                    <input
+                                            type="text"
+                                            class="board-title"
+                                            id="coupon-location"
+                                            name="couponLocation"
+                                            placeholder="상품권 지역을 입력해주세요. ex)서울, 경기도"
+                                            autocomplete="off"
+                                    />
+                                </div>
+                                <hr/>
+                                <div>
+                                    <input
+                                            type="text"
+                                            class="board-title"
+                                            id="coupon-location-detail"
+                                            name="couponLocationDetail"
+                                            placeholder="상품권 지역을 입력해주세요. ex)춘천, 광주"
+                                            autocomplete="off"
+                                    />
+                                </div>
+                                <hr/>
+                                <div>
+                                    <input
+                                            type="text"
+                                            class="board-title"
+                                            id="coupon-price"
+                                            name="couponPrice"
+                                            placeholder="상품권 가격을 입력해주세요."
+                                            autocomplete="off"
+                                    />
+                                </div>
+                                <hr/>
+                                <div class="attach-wrap">
+                                    <!-- 대표 이미지 부분 -->
+                                    <label for="upload1" class="attach">
+                                        <img src="" class="thumbnail" id="thumbnail1">
+                                        <div class="x">
+                                            <img src="/images/admin/x.png">
+                                        </div>
+                                        <h6 class="plus">+</h6>
+                                        <h6 style="text-align: center">
+                                            대표 이미지<br>(썸네일 부분)
+                                        </h6>
+                                    </label>
+                                </div>
+                                <input type="file" id="upload1" class="upload" style="display: none;">
+                                <input type="file" id="upload2" class="upload" style="display: none;">
+                                <div>
+                                    <button type="button" class="ok-button btn-done">등록 완료</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/js/admin/sidemenu.js"></script>
+<script src="/js/admin/modal.js"></script>
+<script>
+    $("button.btn-done").on("click", function () {
+
+        // 상품권 이름 유효성 검사
+        if ($("#notice-title").val() == "") {
+            showWarnModal("상품권 이름을 입력해주세요.");
+            $("#noticeTitle").focus();
+            return false;
+        };
+
+        // 상품권 지역 유효성 검사
+        if ($("#coupon-location").val() == "") {
+            showWarnModal("상품권 지역을 입력해주세요.");
+            $("#coupon-location").focus();
+            return false;
+        };
+
+
+        // 상품권 상세지역 유효성 검사
+        if ($("#coupon-location-detail").val() == "") {
+            showWarnModal("상품권 상세지역을 입력해주세요.");
+            $("#coupon-location-detail").focus();
+            return false;
+        };
+
+
+        // 상품권 가격 유효성 검사
+        if ($("#coupon-price").val() == "") {
+            showWarnModal("상품권 내용을 입력해주세요.");
+            $("#coupon-price").focus();
+            return false;
+        };
+
+        showWarnModal("등록 되었습니다.");
+
+        setTimeout(function () {
+            // $("#noticeWriteForm").submit();
+        }, 1500);
+    });
+</script>
+</html>
