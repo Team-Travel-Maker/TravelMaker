@@ -463,7 +463,9 @@ g {
     mask: url(#mask0_150_2361);
 }
 
-
+.header-padding {
+    height: 50px;
+}
 
 
 

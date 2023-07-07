@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에코인증 등록</title>
 </head>
 
-<link rel="stylesheet" href="../../static/css/eco/eco-registration.css">
+<link rel="stylesheet" href="../../static/css/ecos/eco-registration.css">
+<link rel="stylesheet" href="../../static/css/common.css"/>
+<link rel="stylesheet" href="../../static/css/header/header.css"/>
 
 <body>
+<!-- 헤더 -->
+<div th:replace="~{header/header :: #header}"></div>
+
+<div class="header-padding"></div>
 
 <!-- 에코인증 등록 -->
 <main class="registration-wrapper">
@@ -65,9 +72,7 @@
                     </div>
                 </div>
                 <div class="AutoTextarea writePaper-title">
-                    <textarea class="AutoTextarea-textarea" name="title" placeholder="제목을 입력해주세요." required style="height: 38px;">
-                        <div id="placeholder"  style="display: block !important;">제목을 입력해주세요.</div>
-                    </textarea>
+                    <textarea class="AutoTextarea-textarea" name="title" placeholder="제목을 입력해주세요." required style="height: 38px;"></textarea>
                     <textarea class="AutoTextarea-textarea AutoTextarea-hidden" readonly style="height: 38px;"></textarea>
                 </div>
                 <div class="writePaper-content">
@@ -118,4 +123,8 @@
 
 
 </body>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+
 </html>
