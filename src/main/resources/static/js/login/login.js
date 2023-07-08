@@ -1,9 +1,6 @@
 // 이메일 입력란
 const $emailInput = $('.email-input');
 
-// 에러 입력란
-const $emailInputErr = $('.email-format-error-input');
-
 // 에러 메시지
 const $emailErrMsg = $('.email-format-error-p');
 
