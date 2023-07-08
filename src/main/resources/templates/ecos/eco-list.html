@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-list</title>
+</head>
+
+<link rel="stylesheet" href="../../static/css/ecos/eco-list.css">
+<link rel="stylesheet" href="../../static/css/common.css"/>
+<link rel="stylesheet" href="../../static/css/header/header.css"/>
+
+<body>
+
+<!-- 헤더 -->
+<div th:replace="~{header/header :: #header}"></div>
+
+<div class="header-padding"></div>
+<div class="content-wrapper">
+    <aside class="sidebar-wrapper">
+        <div class="sidebar-content-wrapper">
+            <div class="mini-profile-wrapper">
+                <h2 class="mini-profile-title">MY 커뮤니티</h2>
+                <button type="button" class="mini-profile-btn">
+                    <div class="mini-profile-avatar">
+                        <img src="https://static.wanted.co.kr/oneid-user/profile-default.png" alt="">
+                    </div>
+                    <div class="mini-profile-username-wrapper">
+                        <div class="mini-profile-login-info">
+                            <span class="mini-profile-username">정범진</span>
+                            <div class="mini-profile-badges">
+                                <div class="mini-profile-authorCareer">
+                                    <div class="userInfo-badge" data-id="518">개발</div>
+                                    <div class="userInfo-badge">신입</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="mini-profile-arrow">
+                            <svg width="18" height="18">
+                                <path d="M5.21967 2.21967C5.48594 1.9534 5.9026 1.9292 6.19621 2.14705L6.28033 2.21967L12.5303 8.46967C12.7966 8.73594 12.8208 9.1526 12.6029 9.44621L12.5303 9.53033L6.28033 15.7803C5.98744 16.0732 5.51256 16.0732 5.21967 15.7803C4.9534 15.5141 4.9292 15.0974 5.14705 14.8038L5.21967 14.7197L10.939 9L5.21967 3.28033C4.9534 3.01406 4.9292 2.5974 5.14705 2.30379L5.21967 2.21967Z" fill="#666666"></path>
+                            </svg>
+                        </span>
+                </button>
+            </div>
+            <div class="open-profile-banner">
+                <button type="button" >
+                    <div class="open-profile-banner-message">
+                        나를 잘 표현하고 싶다면?
+                        <br>
+                        커뮤니티 프로필 완성하기
+                    </div>
+                    <div class="open-profile-banner-arrowright">
+                            <span class="svg-icon-1">
+                                <svg class="svg-icon" viewBox="0 0 18 18">
+                                    <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path>
+                                </svg>
+                            </span>
+                    </div>
+                </button>
+            </div>
+            <div class="recommended-profile">
+                <H3 class="recommended-profile-title">업데이트된 추천 프로필</H3>
+                <p class="recommended-profile-subtitle">관심있는 프로필을 찾아보세요.</p>
+                <div class="recommended-profile-rows">
+                    <a class="recommended-profile-item">
+                        <div class="recommended-profile-avatar">
+                            <img src="https://static.wanted.co.kr/oneid-user/profile-default.png" alt="">
+                        </div>
+                        <div class="recommended-profile-username">이종문</div>
+                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommended-profile-arrow">
+                            <path
+                                    d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a class="recommended-profile-item">
+                        <div class="recommended-profile-avatar">
+                            <img src="https://static.wanted.co.kr/oneid-user/XzNyLh5zTbJreHmrLTmK69/3689aeec8b1602a01fc2892070d778bf84f3ccd8db84571d3c95af547243f226"
+                                 alt="">
+                        </div>
+                        <div class="recommended-profile-username">찌릿영자</div>
+                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommended-profile-arrow">
+                            <path
+                                    d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a class="recommended-profile-item">
+                        <div class="recommended-profile-avatar">
+                            <img src="https://static.wanted.co.kr/open-profile/avatar/2cc8ef69fa26bd29b00926102f6578eeb9e38efe52671efa718e08cb1ce82f32"
+                                 alt="">
+                        </div>
+                        <div class="recommended-profile-username">미나링링</div>
+                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommended-profile-arrow">
+                            <path
+                                    d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a class="recommended-profile-item">
+                        <div class="recommended-profile-avatar">
+                            <img src="https://static.wanted.co.kr/open-profile/avatar/49cb79451eb74d1d44d9a035c14b782b2f8d862080fda2326858f71a7ddcfa9f"
+                                 alt="">
+                        </div>
+                        <div class="recommended-profile-username">마치된것같아</div>
+                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommended-profile-arrow">
+                            <path
+                                    d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a class="recommended-profile-item">
+                        <div class="recommended-profile-avatar">
+                            <img src="https://static.wanted.co.kr/community/avatar/90c4b059fe8d8ecb2185b4bd9e40974a7314057c992dc5e321b2e9f142ccd868" alt="">
+                        </div>
+                        <div class="recommended-profile-username">RJ</div>
+                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommended-profile-arrow">
+                            <path
+                                    d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z">
+                            </path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="recommended-profile-newprofile">
+                    <button class="recommended-profile-newprofile-seemore button-fullWidth button-outlineMedium button-outlineSet">
+                            <span class="new-profile">새로운 프로필 보기
+                                <span class="new-profile-endicon button-sizeMedium">
+                                    <span class="svg-icon">
+                                        <svg class="svg-icon-1" viewBox="0 0 24 24">
+                                            <path
+                                                    d="M7.37374 2.7578C7.62384 2.29823 8.19915 2.12841 8.65872 2.37851L12.453 4.44332L12.5682 4.51706C12.8266 4.70995 12.962 5.0165 12.9465 5.3242C12.9472 5.33886 12.9475 5.35361 12.9475 5.36843C12.9475 5.67552 12.8014 5.94849 12.5749 6.1216L10.2985 9.54035L10.2123 9.65118C9.90279 9.99393 9.38074 10.0674 8.98483 9.80382L8.874 9.71768C8.53125 9.40817 8.45772 8.88612 8.72135 8.49021L9.9678 6.61778C7.12241 7.48689 5.05275 10.1333 5.05275 13.2632C5.05275 17.1001 8.1632 20.2105 12.0001 20.2105C13.869 20.2105 15.6179 19.471 16.913 18.176C18.2081 16.8809 18.9475 15.132 18.9475 13.2632C18.9475 11.3954 18.208 9.64641 16.9127 8.35009C16.5429 7.97997 16.5431 7.38013 16.9132 7.01031C17.2834 6.64048 17.8832 6.64072 18.253 7.01084C19.8998 8.65888 20.8423 10.8879 20.8423 13.2632C20.8423 15.6396 19.8997 17.8688 18.2528 19.5158C16.6058 21.1627 14.3766 22.1053 12.0001 22.1053C7.11676 22.1053 3.15801 18.1465 3.15801 13.2632C3.15801 9.34005 5.71295 6.01369 9.2497 4.8572L7.75303 4.04277L7.64425 3.97373C7.26808 3.69759 7.14449 3.17907 7.37374 2.7578Z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </span>
+                            </span>
+                        <span class="action-btn"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <main class="contentlist-wrapper">
+        <div class="contentlist-categories">
+            <div class="interest-category">
+                <div class="InterestTagSlide">
+                    <div class="ScrollSnap-1">
+                        <div class="ScrollSnap-2 ScrollSnap-contain ScrollSnap-x ScrollSnap-option">
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span class="new-profile">추천</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>전체</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>취업/이직</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>개발</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>IT/기술</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>UX/UI</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>인간관계</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>커리어고민</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>데이터</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>조직문화</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>브랜딩</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>한입 콘텐츠</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>회사생활</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>라이프스타일</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>노무</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>경영/전략</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>HR</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>디자인</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>서비스기획</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>CS/CX</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>MD</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>리더십</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>마케팅</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>콘텐츠 제작</span>
+                                <span class="action-btn"></span>
+                            </button>
+                            <button class="ScrollSnap-color ScrollSnap-Item Btn-root Btn-outline Btn-outlineSize Btn-containedSize">
+                                <span>QA</span>
+                                <span class="action-btn"></span>
+                            </button>
+                        </div>
+                        <div class="InterestTagSlide-Arrow InterestTagSlide-leftArrow InterestTagSlide-Arrow-visible">
+                            <button type="button">
+                                    <span class="svg-icon">
+                                        <svg class="svg-icon-1" viewBox="0 0 18 18">
+                                            <path
+                                                    d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                            </button>
+                        </div>
+                        <div class="InterestTagSlide-Arrow InterestTagSlide-rightArrow InterestTagSlide-Arrow-visible">
+                            <button type="button">
+                                    <span class="svg-icon">
+                                        <svg class="svg-icon-1" viewBox="0 0 18 18">
+                                            <path
+                                                    d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="button" class="InterestTagSlide-more">
+                        <svg width="18" height="18" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                  d="M12 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 12 10zm7 0a2 2 0 1 1-.001 4.001A2 2 0 0 1 19 10zM5 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 5 10z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="ProfileForMobile">
+                    <button type="button">
+                        <div class="mini-profile-avatar">
+                            <img src="https://static.wanted.co.kr/oneid-user/profile-default.png" alt="">
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="ContentBody-wrapper">
+            <section class="PostWrite-Btn">
+                <div class="mini-profile-avatar PostWrite-Btn-Avatar">
+                    <img src="https://static.wanted.co.kr/oneid-user/profile-default.png" alt="avatar image">
+                </div>
+                <button type="button" class="PostWrite-WriteBtn">
+                    커리어와 라이프스타일에 대해 자유롭게 이야기 해주세요!
+                    <span class="PostWrite-Btn-Icon">
+                            <span class="svg-icon">
+                                <svg class="svg-icon-1" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M17.9338 2.08059C17.5629 1.80534 17.0366 1.83583 16.7002 2.17212L3.43579 15.4323L3.33867 15.5461C3.22211 15.7068 3.1582 15.9013 3.1582 16.1023V19.8947L3.16685 20.0233C3.22958 20.4857 3.62596 20.8421 4.10558 20.8421H7.2678L7.39635 20.8335C7.85877 20.7707 8.21517 20.3744 8.21517 19.8947L8.20652 19.7662C8.14379 19.3038 7.74742 18.9474 7.2678 18.9474H5.05168V16.4956L13.2631 8.28674L15.7123 10.7359L9.7494 16.6985L9.65767 16.8047C9.38244 17.1756 9.41297 17.7019 9.74927 18.0383C10.1192 18.4083 10.719 18.4083 11.0891 18.0384L21.8281 7.30155L21.9198 7.1953C22.195 6.82447 22.1645 6.29818 21.8283 5.96181L18.04 2.17233L17.9338 2.08059ZM17.0521 9.39616L19.8181 6.63032L17.3688 4.18232L14.6031 6.94717L17.0521 9.39616Z">
+                                    </path>
+                                </svg>
+                            </span>
+                        </span>
+                </button>
+            </section>
+            <section class="PostsView">
+                <article class="PostItem">
+                    <div class="PostItem-top">
+                        <a href="/community/profile/SZPXggK9FYDkodSPKHFU6i">
+                            <div class="MiniProfile-Box">
+                                <div class="MiniProfile-BoxArea">
+                                    <div class="Avatar-Wrapper">
+                                        <div class="mini-profile-avatar Avatar-UL">
+                                            <img src="https://static.wanted.co.kr/open-profile/avatar/924c80921f04ea74cf229552f7cd68caacdc37fe46de61b223abd890eeaf83da"
+                                                 alt="">
+                                        </div>
+                                    </div>
+                                    <div class="UserBox-VerticalBox">
+                                        <div class="UserBox-userInfo">
+                                            <div class="UserBox-UserName">효빵삥</div>
+                                            <div class="UserBox-UserCareer">
+                                                <div class="userInfo-badge" data-id="511">디자인</div>
+                                                <div class="userInfo-badge">3년차</div>
+                                            </div>
+                                        </div>
+                                        <span class="UserBox-WriteAt">2023.05.16</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="PostItem-Body" href="">
+                        <h3 class="PostItem-Title">이메일 알람 ㅠㅠ</h3>
+                        <p class="PostItem-Content">이메일 알람 그만 받고 싶은데 아시는분 계신가요</p>
+                        <div class="PostItem-Bottom">
+                            <div class="PostItem-Like button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor"
+                                          d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">0</span>
+                            </div>
+                            <div class="PostItem-Comment button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
+                                          d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">1</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- ::after -->
+                </article>
+                <article class="PostItem">
+                    <div class="PostItem-top">
+                        <a>
+                            <div class="MiniProfile-Box">
+                                <div class="MiniProfile-BoxArea">
+                                    <div class="Avatar-Wrapper">
+                                        <div class="mini-profile-avatar Avatar-UL">
+                                            <img src="https://k.kakaocdn.net/dn/EjfDe/btroWDUrH6y/xUULugPsrJhmJDUSAkbXZ0/img-110x110.jpg"
+                                                 alt="">
+                                        </div>
+                                    </div>
+                                    <div class="UserBox-VerticalBox">
+                                        <div class="UserBox-userInfo">
+                                            <div class="UserBox-UserName">Dz6jN</div>
+                                            <div class="UserBox-UserCareer">
+                                                <div class="userInfo-badge" data-id="511">디자인</div>
+                                                <div class="userInfo-badge">5년차</div>
+                                            </div>
+                                        </div>
+                                        <span class="UserBox-WriteAt">2023.05.15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="PostItem-Body">
+                        <h3 class="PostItem-Title">노트북 사려는데 확인 도와주실분?</h3>
+                        <p class="PostItem-Content">
+                            어도비 일러스트레이터만 사용해서 작업을 하고있습니다.
+                            http://mitem.gmarket.co.kr/Item?goodsCode=2512748168&amp;jaehuid= 이 노트북을 사도 괜찮을까요? 도움주시면
+                            감사함미당...
+                        </p>
+                        <div class="PostItem-Bottom">
+                            <div class="PostItem-Like button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor"
+                                          d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">0</span>
+                            </div>
+                            <div class="PostItem-Comment button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
+                                          d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">1</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- ::after -->
+                </article>
+                <article class="PostItem">
+                    <div class="PostItem-top">
+                        <a>
+                            <div class="MiniProfile-Box">
+                                <div class="MiniProfile-BoxArea">
+                                    <div class="Avatar-Wrapper">
+                                        <div class="mini-profile-avatar Avatar-UL">
+                                            <img src="https://static.wanted.co.kr/images/avatars/2470923/05a44cda.jpg"
+                                                 alt="">
+                                        </div>
+                                    </div>
+                                    <div class="UserBox-VerticalBox">
+                                        <div class="UserBox-userInfo">
+                                            <div class="UserBox-UserName">할찮</div>
+                                            <div class="UserBox-UserCareer">
+                                                <div class="userInfo-badge" data-id="530">영업</div>
+                                                <div>2년차</div>
+                                            </div>
+                                        </div>
+                                        <span class="UserBox-WriteAt">2023.05.15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="PostItem-Body">
+                        <h3 class="PostItem-Title">고객들과 접점찾기(영업) 어떻게 해야 할까요?</h3>
+                        <p class="PostItem-Content">안녕하세요, 선배님들 영업 새내기 인사드립니다.
+                            항상 원티드 및 기타 커뮤니티를 뒤져가면서 선배 영업사원님들의 고민, 팁들을 보고
+                            공부하면서 알아가고 있는데 아무래도 영업이라는 것이 업종마다 차이가 있고,
+                            무엇보다 고객 접점을 찾는다는게 어떤 영업이든 공통적이지만 어렵더군요...
+                            본론으로 넘어가 몇가지 여쭈어 보고 싶습니다.
+                            1. 현재 어떤 방법으로 영업하고 계신가요?
+                            2. 저는 마케팅회사에 다니고 있습니다. 어떻게 영업해야 할까요?
+                            3. 콜영업, 메일영업을 해보신 분들 중에 사용하시는 툴이나 db 수집 경로는 어떻게 되나요?
+                            정답은 없겠지만 아직 갈피가 잘 안잡히는 상황에서 선배님들의 조언을 얻고 싶습니다.</p>
+                        <div class="PostItem-Bottom">
+                            <div class="PostItem-Like button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor"
+                                          d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">0</span>
+                            </div>
+                            <div class="PostItem-Comment button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
+                                          d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">1</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- ::after -->
+                </article>
+                <article class="PostItem">
+                    <div class="PostItem-top">
+                        <a>
+                            <div class="MiniProfile-Box">
+                                <div class="MiniProfile-BoxArea">
+                                    <div class="Avatar-Wrapper">
+                                        <div class="mini-profile-avatar Avatar-UL">
+                                            <img src="https://static.wanted.co.kr/oneid-user/oBC6tmQJjLMKtiszyDtSkz/Rr933WaZRBz5AiyioaKqHS.jpg"
+                                                 alt="">
+                                        </div>
+                                    </div>
+                                    <div class="UserBox-VerticalBox">
+                                        <div class="UserBox-userInfo">
+                                            <div class="UserBox-UserName">해피테스터</div>
+                                            <div class="UserBox-UserCareer">
+                                                <div class="userInfo-badge" data-id="518">개발</div>
+                                                <div class="userInfo-badge">16년차</div>
+                                            </div>
+                                        </div>
+                                        <span class="UserBox-WriteAt">2023.04.25</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="PostItem-Body">
+                        <h3 class="PostItem-Title">Dev-QA, 원티드랩 전체 팀 테스트 문화</h3>
+                        <p class="PostItem-Content">짧은 주기로 반복되는 애자일 개발조직에서 전체 팀의 품질 책임에 대한 아이디어를 강화하고 지원하는 것 또한 QA 엔지니어의 역할입니다. 원티드랩만의 전체 팀
+                            테스트(Whole Team Test) 문화를 이끄는 주요한 활동으로 자리잡은 Dev-QA 세션에 대해 소개합니다.
+                            https://medium.com/wantedjobs/dev-qa-%EC%9B%90%ED%8B%B0%EB%93%9C%EB%9E%A9-%EC%A0%84%EC%B2%B4-%ED%8C%80-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%AC%B8%ED%99%94-ff2ed37051e7
+                        </p>
+                        <div class="PostItem-Bottom">
+                            <div class="PostItem-Like button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor"
+                                          d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">6</span>
+                            </div>
+                            <div class="PostItem-Comment button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
+                                          d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">2</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- ::after -->
+                </article>
+                <article class="PostItem">
+                    <div class="PostItem-top">
+                        <a>
+                            <div class="MiniProfile-Box">
+                                <div class="MiniProfile-BoxArea">
+                                    <div class="Avatar-Wrapper">
+                                        <div class="mini-profile-avatar Avatar-UL">
+                                            <img src="https://static.wanted.co.kr/oneid-user/oBC6tmQJjLMKtiszyDtSkz/Rr933WaZRBz5AiyioaKqHS.jpg"
+                                                 alt="">
+                                        </div>
+                                    </div>
+                                    <div class="UserBox-VerticalBox">
+                                        <div class="UserBox-userInfo">
+                                            <div class="UserBox-UserName">해피테스터</div>
+                                            <div class="UserBox-UserCareer">
+                                                <div class="userInfo-badge" data-id="518">개발</div>
+                                                <div class="userInfo-badge">16년차</div>
+                                            </div>
+                                        </div>
+                                        <span class="UserBox-WriteAt">2023.04.17</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="PostItem-Body">
+                        <h3 class="PostItem-Title">API 테스트 어떻게 설계하고 진행하시는지 궁금합니다 & 도서 추천</h3>
+                        <p class="PostItem-Content">2023 4월, QA 프리온보딩 세션에서 주고받았던 API 테스트 관련한 질문과 답변의 일부입니다.</p>
+                        <picture>
+                            <source media="(min-width: 1200px)"
+                                    srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2F3ffa0b6dcda06d7219f30b92693befbe5ec4ed43604e1f4618e7699c7bf021f3&amp;w=384&amp;q=90">
+                            <img src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2F3ffa0b6dcda06d7219f30b92693befbe5ec4ed43604e1f4618e7699c7bf021f3&amp;w=310&amp;q=90"
+                                 alt="post-img" class="PostItemImage-PostItemImage--0Nj-n"
+                                 srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2F3ffa0b6dcda06d7219f30b92693befbe5ec4ed43604e1f4618e7699c7bf021f3&amp;w=310&amp;q=90 1x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2F3ffa0b6dcda06d7219f30b92693befbe5ec4ed43604e1f4618e7699c7bf021f3&amp;w=620&amp;q=90 2x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2F3ffa0b6dcda06d7219f30b92693befbe5ec4ed43604e1f4618e7699c7bf021f3&amp;w=930&amp;q=90 3x">
+                        </picture>
+                        <div class="PostItem-Bottom">
+                            <div class="PostItem-Like button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor"
+                                          d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">3</span>
+                            </div>
+                            <div class="PostItem-Comment button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
+                                          d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">3</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- ::after -->
+                </article>
+                <article class="PostItem">
+                    <div class="PostItem-top">
+                        <a>
+                            <div class="MiniProfile-Box">
+                                <div class="MiniProfile-BoxArea">
+                                    <div class="Avatar-Wrapper">
+                                        <div class="mini-profile-avatar Avatar-UL">
+                                            <img src="https://static.wanted.co.kr/oneid-user/oBC6tmQJjLMKtiszyDtSkz/Rr933WaZRBz5AiyioaKqHS.jpg"
+                                                 alt="">
+                                        </div>
+                                    </div>
+                                    <div class="UserBox-VerticalBox">
+                                        <div class="UserBox-userInfo">
+                                            <div class="UserBox-UserName">해피테스터</div>
+                                            <div class="UserBox-UserCareer">
+                                                <div class="userInfo-badge" data-id="518">개발</div>
+                                                <div class="userInfo-badge">16년차</div>
+                                            </div>
+                                        </div>
+                                        <span class="UserBox-WriteAt">2023.04.15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="PostItem-Body">
+                        <h3 class="PostItem-Title">포트폴리오 잘 쓰고 있는지 모르겠네요 ㅜ,.ㅜ</h3>
+                        <p class="PostItem-Content">2023년 4월, QA 프리온보딩 세션에서 나눴던 많은 질문과 답변 중, 포트폴리오 작성에 대한 고민을 나누었던 대화입니다.
+                            비슷한 고민을 하고 계실 QA 엔지니어분들께 도움이 됐으면 하고, 다른 분들의 의견도 기대합니다~!
+                            https://www.wanted.co.kr/events/pre-challenge-qa-1
+                        </p>
+                        <picture>
+                            <source media="(min-width: 1200px)"
+                                    srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2Fce22430ea49b6b1652d9ee6f6dc47c2c1b2790a83fb3eaf1923690c4d1f2c5c4&amp;w=384&amp;q=90">
+                            <img src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2Fce22430ea49b6b1652d9ee6f6dc47c2c1b2790a83fb3eaf1923690c4d1f2c5c4&amp;w=310&amp;q=90"
+                                 alt="post-img" class="PostItemImage-PostItemImage--0Nj-n"
+                                 srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2Fce22430ea49b6b1652d9ee6f6dc47c2c1b2790a83fb3eaf1923690c4d1f2c5c4&amp;w=310&amp;q=90 1x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2Fce22430ea49b6b1652d9ee6f6dc47c2c1b2790a83fb3eaf1923690c4d1f2c5c4&amp;w=620&amp;q=90 2x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2Fce22430ea49b6b1652d9ee6f6dc47c2c1b2790a83fb3eaf1923690c4d1f2c5c4&amp;w=930&amp;q=90 3x">
+                        </picture>
+                        <div class="PostItem-Bottom">
+                            <div class="PostItem-Like button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor"
+                                          d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">2</span>
+                            </div>
+                            <div class="PostItem-Comment button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
+                                          d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">1</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- ::after -->
+                </article>
+                <article class="PostItem">
+                    <div class="PostItem-top">
+                        <a>
+                            <div class="MiniProfile-Box">
+                                <div class="MiniProfile-BoxArea">
+                                    <div class="Avatar-Wrapper">
+                                        <div class="mini-profile-avatar Avatar-UL">
+                                            <img src="https://static.wanted.co.kr/oneid-user/oBC6tmQJjLMKtiszyDtSkz/Rr933WaZRBz5AiyioaKqHS.jpg"
+                                                 alt="">
+                                        </div>
+                                    </div>
+                                    <div class="UserBox-VerticalBox">
+                                        <div class="UserBox-userInfo">
+                                            <div class="UserBox-UserName">해피테스터</div>
+                                            <div class="UserBox-UserCareer">
+                                                <div class="userInfo-badge" data-id="518">개발</div>
+                                                <div class="userInfo-badge">16년차</div>
+                                            </div>
+                                        </div>
+                                        <span class="UserBox-WriteAt">2023.04.15</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="PostItem-Body">
+                        <h3 class="PostItem-Title">QA 포트폴리오에는 대부분 어떤 항목을 작성하나요?</h3>
+                        <p class="PostItem-Content">2023년 4월, QA 프리온보딩 세션에서 나눴던 많은 질문과 답변 중,
+                            "QA 포트폴리오에는 대부분 어떤 항목을 작성하나요??"... 에 대한 기록입니다.
+                            비슷한 고민을 하고 계실 QA 엔지니어분들께 도움이 됐으면 하고, 다른 분들의 의견도 기대합니다~!
+
+                            https://www.wanted.co.kr/events/pre-challenge-qa-1
+                        </p>
+                        <picture>
+                            <source media="(min-width: 1200px)"
+                                    srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2F9b7172cb5603e44b499726d19b8dbc3edb5c01fa61a9e0c083bc7e491ef33544&amp;w=384&amp;q=90">
+                            <img src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2F9b7172cb5603e44b499726d19b8dbc3edb5c01fa61a9e0c083bc7e491ef33544&amp;w=310&amp;q=90"
+                                 alt="post-img" class="PostItemImage-PostItemImage--0Nj-n"
+                                 srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2F9b7172cb5603e44b499726d19b8dbc3edb5c01fa61a9e0c083bc7e491ef33544&amp;w=310&amp;q=90 1x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2F9b7172cb5603e44b499726d19b8dbc3edb5c01fa61a9e0c083bc7e491ef33544&amp;w=620&amp;q=90 2x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2F9b7172cb5603e44b499726d19b8dbc3edb5c01fa61a9e0c083bc7e491ef33544&amp;w=930&amp;q=90 3x">
+                        </picture>
+                        <div class="PostItem-Bottom">
+                            <div class="PostItem-Like button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor"
+                                          d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">2</span>
+                            </div>
+                            <div class="PostItem-Comment button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
+                                          d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">1</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- ::after -->
+                </article>
+                <article class="PostItem">
+                    <div class="PostItem-top">
+                        <a>
+                            <div class="MiniProfile-Box">
+                                <div class="MiniProfile-BoxArea">
+                                    <div class="Avatar-Wrapper">
+                                        <div class="mini-profile-avatar Avatar-UL">
+                                            <img src="https://static.wanted.co.kr/open-profile/avatar/38448368d81bef4526348169e44838d6a57a86e3a8120516c37851af8ccfc5a7"
+                                                 alt="">
+                                        </div>
+                                    </div>
+                                    <div class="UserBox-VerticalBox">
+                                        <div class="UserBox-userInfo">
+                                            <div class="UserBox-UserName">하이퍼볼800원</div>
+                                            <div class="UserBox-UserCareer">
+                                                <div class="userInfo-badge" data-id="518">개발</div>
+                                                <div class="userInfo-badge">5년차</div>
+                                            </div>
+                                        </div>
+                                        <span class="UserBox-WriteAt">2023.04.13</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="PostItem-Body">
+                        <h3 class="PostItem-Title">Python으로 Wanted 서비스의 헬스 체크하기</h3>
+                        <p class="PostItem-Content">저희 팀에서는 품질 업무를 위한 다양한 스크립트를 개발하여 활용하고 있습니다. 그 중에는 Wanted를 비롯한 주요 서비스들의 활성 상태를 체크하는 스크립트도
+                            있는데요. 이번 글에서는 Python을 이용하여 Wanted 주요 서비스의 안정성을 체크하는 스크립트를 만들게 된 배경과 운영 방식에 대해 공유 드리려고
+                            합니다.
+                            https://medium.com/wantedjobs/python%EC%9C%BC%EB%A1%9C-wanted-%EC%84%9C%EB%B9%84%EC%8A%A4%EC%9D%98-%ED%97%AC%EC%8A%A4-%EC%B2%B4%ED%81%AC%ED%95%98%EA%B8%B0-636ae70826ab
+                        </p>
+                        <picture>
+                            <source media="(min-width: 1200px)"
+                                    srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2Fbfe1ae8b02b04fccc97cec047d72a0a8bbef2b4da22aeb77c340be3566215615&amp;w=384&amp;q=90">
+                            <img src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2Fbfe1ae8b02b04fccc97cec047d72a0a8bbef2b4da22aeb77c340be3566215615&amp;w=310&amp;q=90"
+                                 alt="post-img" class="PostItemImage-PostItemImage--0Nj-n"
+                                 srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2Fbfe1ae8b02b04fccc97cec047d72a0a8bbef2b4da22aeb77c340be3566215615&amp;w=310&amp;q=90 1x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2Fbfe1ae8b02b04fccc97cec047d72a0a8bbef2b4da22aeb77c340be3566215615&amp;w=620&amp;q=90 2x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2FImageTargetTypeEnum.COMMUNITY%2F2023%2F4%2Fbfe1ae8b02b04fccc97cec047d72a0a8bbef2b4da22aeb77c340be3566215615&amp;w=930&amp;q=90 3x">
+                        </picture>
+                        <div class="PostItem-Bottom">
+                            <div class="PostItem-Like button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor"
+                                          d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">2</span>
+                            </div>
+                            <div class="PostItem-Comment button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
+                                          d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">1</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- ::after -->
+                </article>
+                <article class="PostItem">
+                    <div class="PostItem-top">
+                        <a>
+                            <div class="MiniProfile-Box">
+                                <div class="MiniProfile-BoxArea">
+                                    <div class="Avatar-Wrapper">
+                                        <div class="mini-profile-avatar Avatar-UL">
+                                            <img src="https://static.wanted.co.kr/open-profile/avatar/38448368d81bef4526348169e44838d6a57a86e3a8120516c37851af8ccfc5a7"
+                                                 alt="">
+                                        </div>
+                                    </div>
+                                    <div class="UserBox-VerticalBox">
+                                        <div class="UserBox-userInfo">
+                                            <div class="UserBox-UserName">하이퍼볼800원</div>
+                                            <div class="UserBox-UserCareer">
+                                                <div class="userInfo-badge" data-id="518">개발</div>
+                                                <div class="userInfo-badge">5년차</div>
+                                            </div>
+                                        </div>
+                                        <span class="UserBox-WriteAt">2022.10.13</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="PostItem-Body">
+                        <h3 class="PostItem-Title">테스트는 재미있으면 안되나요?</h3>
+                        <p class="PostItem-Content">
+                            어떻게 하면 스쿼드 구성원들이 품질을 더 잘 이해하고 테스트를 더 잘 할 수 있을까요?
+                            테스트를 재밌게, 즐겁게 할 수 없을까요?
+                            2021년 12월 스쿼드에 합류한 이후 생긴 고민이었습니다.
+                            https://medium.com/wantedjobs/%ED%85%8C%EC%8A%A4%ED%8A%B8%EB%8A%94-%EC%9E%AC%EB%AF%B8%EC%9E%88%EC%9C%BC%EB%A9%B4-%EC%95%88%EB%90%98%EB%82%98%EC%9A%94-4a5a045bcd3f
+                        </p>
+                        <picture>
+                            <source media="(min-width: 1200px)"
+                                    srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F10%2Ff966bad6c037370ab192f0f0427f8d904e7cdbfa9bc2446ffa119d4027b94f92-resized&amp;w=384&amp;q=90">
+                            <img src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F10%2Ff966bad6c037370ab192f0f0427f8d904e7cdbfa9bc2446ffa119d4027b94f92-resized&amp;w=310&amp;q=90"
+                                 alt="post-img" class=""
+                                 srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F10%2Ff966bad6c037370ab192f0f0427f8d904e7cdbfa9bc2446ffa119d4027b94f92-resized&amp;w=310&amp;q=90 1x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F10%2Ff966bad6c037370ab192f0f0427f8d904e7cdbfa9bc2446ffa119d4027b94f92-resized&amp;w=620&amp;q=90 2x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F10%2Ff966bad6c037370ab192f0f0427f8d904e7cdbfa9bc2446ffa119d4027b94f92-resized&amp;w=930&amp;q=90 3x">
+                        </picture>
+                        <div class="PostItem-Bottom">
+                            <div class="PostItem-Like button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor"
+                                          d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">22</span>
+                            </div>
+                            <div class="PostItem-Comment button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
+                                          d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">4</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- ::after -->
+                </article>
+                <article class="PostItem">
+                    <div class="PostItem-top">
+                        <a>
+                            <div class="MiniProfile-Box">
+                                <div class="MiniProfile-BoxArea">
+                                    <div class="Avatar-Wrapper">
+                                        <div class="mini-profile-avatar Avatar-UL">
+                                            <img src="https://static.wanted.co.kr/open-profile/avatar/38448368d81bef4526348169e44838d6a57a86e3a8120516c37851af8ccfc5a7" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="UserBox-VerticalBox">
+                                        <div class="UserBox-userInfo">
+                                            <div class="UserBox-UserName">하이퍼볼800원</div>
+                                            <div class="UserBox-UserCareer">
+                                                <div class="userInfo-badge" data-id="518">개발</div>
+                                                <div class="userInfo-badge">5년차</div>
+                                            </div>
+                                        </div>
+                                        <span class="UserBox-WriteAt">2022.08.22</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="PostItem-Body">
+                        <h3 class="PostItem-Title">[QA] Fiddler로 API의 응답 데이터를 조작해 UI를 검증하기</h3>
+                        <p class="PostItem-Content">Fiddler는 클라이언트와 서버 간의 http, https 패킷을 캡쳐할 수 있는 툴입니다.
+                            Fiddler로 캡쳐한 패킷을 이용해 API의 응답 데이터 조작과 분석, 모니터링에 사용할 수 있습니다.
+
+                            그 밖에도 API를 반복하여 요청하거나, 네트워크 속도를 조절 할 수도 있고 테스트 데이터를 임의로 조작하여 UI를 검증할 수 있습니다.
+
+                            제가 웹 서비스 QA 시 Fiddler를 이용해 API의 응답 데이터를 조작하며 UI를 검증하는 몇 가지 방법에 대해 작성한 글을 공유해 드립니다!
+
+                            https://medium.com/wantedjobs/fiddler%EB%A1%9C-api%EC%9D%98-%EC%9D%91%EB%8B%B5-%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%A5%BC-%EC%A1%B0%EC%9E%91%ED%95%B4-ui%EB%A5%BC-%EA%B2%80%EC%A6%9D%ED%95%98%EA%B8%B0-d751edb8cb24
+                        </p>
+                        <picture>
+                            <source media="(min-width: 1200px)"
+                                    srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F8%2Fbdbd8da83e1715f7e0bbe6cfe96c1713ef4819b80d0d8a312e3ee9300a2a0af8-resized-resized&amp;w=384&amp;q=90">
+                            <img src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F8%2Fbdbd8da83e1715f7e0bbe6cfe96c1713ef4819b80d0d8a312e3ee9300a2a0af8-resized-resized&amp;w=310&amp;q=90"
+                                 alt="post-img" class="PostItemImage-PostItemImage--0Nj-n"
+                                 srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F8%2Fbdbd8da83e1715f7e0bbe6cfe96c1713ef4819b80d0d8a312e3ee9300a2a0af8-resized-resized&amp;w=310&amp;q=90 1x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F8%2Fbdbd8da83e1715f7e0bbe6cfe96c1713ef4819b80d0d8a312e3ee9300a2a0af8-resized-resized&amp;w=620&amp;q=90 2x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F8%2Fbdbd8da83e1715f7e0bbe6cfe96c1713ef4819b80d0d8a312e3ee9300a2a0af8-resized-resized&amp;w=930&amp;q=90 3x">
+                        </picture>
+                        <div class="PostItem-Bottom">
+                            <div class="PostItem-Like button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor"
+                                          d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">12</span>
+                            </div>
+                            <div class="PostItem-Comment button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
+                                          d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">7</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- ::after -->
+                </article>
+                <article class="PostItem">
+                    <div class="PostItem-top">
+                        <a>
+                            <div class="MiniProfile-Box">
+                                <div class="MiniProfile-BoxArea">
+                                    <div class="Avatar-Wrapper">
+                                        <div class="mini-profile-avatar Avatar-UL">
+                                            <img src="https://static.wanted.co.kr/oneid-user/oBC6tmQJjLMKtiszyDtSkz/Rr933WaZRBz5AiyioaKqHS.jpg"
+                                                 alt="">
+                                        </div>
+                                    </div>
+                                    <div class="UserBox-VerticalBox">
+                                        <div class="UserBox-userInfo">
+                                            <div class="UserBox-UserName">해피테스터</div>
+                                            <div class="UserBox-UserCareer">
+                                                <div class="userInfo-badge" data-id="518">개발</div>
+                                                <div class="userInfo-badge">16년차</div>
+                                            </div>
+                                        </div>
+                                        <span class="UserBox-WriteAt">2022.08.21</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="PostItem-Body">
+                        <h3 class="PostItem-Title">테스트 맵을 활용한 테스트</h3>
+                        <p class="PostItem-Content">
+                            시대의 변화에 따라 개발 프로세스는 형식보다는 긴밀하게 협업하고 변화에 유연하게 대응하는 방식으로 진화해 왔습니다. 그에 반해 테스트 활동들과 산출물들은 여전히
+                            형식적이고 유연하지 못한 방식이 많은 것 같습니다.
+                            QA업무를 대표하는 산출물인 '테스트 케이스'만 보더라도 제가 업무를 처음 시작한 2005년과 크게 달라지지 않았습니다. 과연 그 방식이 아직도 유효해서
+                            일까요?
+                            최근 조직에서 무거운 '테스트 케이스' 형식을 '테스트 맵'으로 전환하게 됐던 배경과 과정에 대해 적어보았습니다.
+                            https://medium.com/wantedjobs/%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%A7%B5%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%ED%85%8C%EC%8A%A4%ED%8A%B8-41467a1fabed
+                        </p>
+                        <picture>
+                            <source media="(min-width: 1200px)"
+                                    srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F8%2Fed773be0f9b0a56824c5b08e62cc514d1cf7d309c89d335f0f2f4b36e283a79e-resized-resized-resized-resized&amp;w=384&amp;q=90">
+                            <img src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F8%2Fed773be0f9b0a56824c5b08e62cc514d1cf7d309c89d335f0f2f4b36e283a79e-resized-resized-resized-resized&amp;w=310&amp;q=90"
+                                 alt="post-img" class="PostItemImage-PostItemImage--0Nj-n"
+                                 srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F8%2Fed773be0f9b0a56824c5b08e62cc514d1cf7d309c89d335f0f2f4b36e283a79e-resized-resized-resized-resized&amp;w=310&amp;q=90 1x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F8%2Fed773be0f9b0a56824c5b08e62cc514d1cf7d309c89d335f0f2f4b36e283a79e-resized-resized-resized-resized&amp;w=620&amp;q=90 2x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2022%2F8%2Fed773be0f9b0a56824c5b08e62cc514d1cf7d309c89d335f0f2f4b36e283a79e-resized-resized-resized-resized&amp;w=930&amp;q=90 3x">
+                        </picture>
+                        <div class="PostItem-Bottom">
+                            <div class="PostItem-Like button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor"
+                                          d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">12</span>
+                            </div>
+                            <div class="PostItem-Comment button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
+                                          d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">1</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- ::after -->
+                </article>
+                <article class="PostItem">
+                    <div class="PostItem-top">
+                        <a>
+                            <div class="MiniProfile-Box">
+                                <div class="MiniProfile-BoxArea">
+                                    <div class="Avatar-Wrapper">
+                                        <div class="mini-profile-avatar Avatar-UL">
+                                            <img src="https://static.wanted.co.kr/oneid-user/oBC6tmQJjLMKtiszyDtSkz/Rr933WaZRBz5AiyioaKqHS.jpg"
+                                                 alt="">
+                                        </div>
+                                    </div>
+                                    <div class="UserBox-VerticalBox">
+                                        <div class="UserBox-userInfo">
+                                            <div class="UserBox-UserName">해피테스터</div>
+                                            <div class="UserBox-UserCareer">
+                                                <div  class="userInfo-badge" data-id="518">개발</div>
+                                                <div  class="userInfo-badge">16년차</div>
+                                            </div>
+                                        </div>
+                                        <span class="UserBox-WriteAt">2021.10.18</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="PostItem-Body">
+                        <h3 class="PostItem-Title">애자일 테스팅 회고...</h3>
+                        <p class="PostItem-Content">
+                            digital.ai라는 기관에서는 매년 State of Agile Report를 통하여 설문조사에 기반한 애자일 동향 리포트를 발행하고 있습니다.
+                            (https://stateofagile.com/#)
+                            애자일을 도입한 목적, 채택한 애자일 어프로치, 도전과제, 사용 중인 툴 등 여러 내용이 포함되어 있는데요.
+                            인상적인 부분은 높은 퍼센티지를 차지하는 고질적인 도전과제(문제)들은 해가 지나도 여전하다는 것입니다. Agile Manifesto(애자일 선언문)가 발표된
+                            지 20년이 지난 지금, 깊이 생각해 볼 부분이 아닌가 생각이 듭니다.
+                            그러면 애자일 테스팅은 어떨까요?
+                            2012년 애자일 테스팅의 대가(라 불리는 분)들이 모여 10년 전 나누었던 얘기를 되짚어 보았습니다.
+                            https://agiletesting.tistory.com/entry/%EC%95%A0%EC%9E%90%EC%9D%BC-%ED%85%8C%EC%8A%A4%ED%8C%85-%EB%8F%84%EC%A0%84%EA%B3%BC%EC%A0%9C-%ED%92%88%EC%A7%88-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%ED%8C%80-%EC%9D%B4%EC%8A%88%EC%9D%98-%EA%B7%B9%EB%B3%B5
+                        </p>
+                        <div class="PostItem-Bottom">
+                            <div class="PostItem-Like button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor"
+                                          d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">10</span>
+                            </div>
+                            <div class="PostItem-Comment button-Btn">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
+                                          d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
+                                    </path>
+                                </svg>
+                                <span class="button-CountBtn count">1</span>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- ::after -->
+                </article>
+                <div class="ScrollObserver"></div>
+            </section>
+        </div>
+    </main>
+</div>
+<div class="toastMessage Notice">
+        <span class="Notice-Icon Notice-GreenIcon Notice-NoIcon">
+<!--            https://www.w3.org/2000/svg     -->
+            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="" class="Notice-LargeIcon">
+                <path
+                        d="M5.53033 10.9697C5.23744 10.6768 4.76256 10.6768 4.46967 10.9697C4.17678 11.2626 4.17678 11.7374 4.46967 12.0303L9.46967 17.0303C9.76256 17.3232 10.2374 17.3232 10.5303 17.0303L19.5303 8.03033C19.8232 7.73744 19.8232 7.26256 19.5303 6.96967C19.2374 6.67678 18.7626 6.67678 18.4697 6.96967L10 15.4393L5.53033 10.9697Z"
+                        fill="black"></path>
+            </svg>
+        </span>
+    <span></span>
+    <div id="modal"></div>
+</div>
+
+
+</body>
+</html>
