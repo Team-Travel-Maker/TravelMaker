@@ -22,7 +22,6 @@
 
 .title {
   position: relative;
-  padding: 20px 0 20px;
 }
 
 @media (min-width: 1200px) {
@@ -60,13 +59,18 @@
 }
 
 .shop-list {
-  margin: -10px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    height: 350px;
   padding: 0;
+    overflow-y: scroll;
 }
 
+
+
 .list-container > ul li {
-  width: 24%;
-  padding: 10px;
+  width: 100%;
+  padding: 0 10px;
   list-style: none;
   display: inline-block;
   vertical-align: top;
@@ -205,8 +209,8 @@
 }
 
 .select-container{
-    margin
-    : 30px;
+    margin-top: 20px;
+   margin-bottom: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -371,13 +375,14 @@
 
 /* 왼쪽 */
 .left-arrow-wrap{
-        left: 0;
+        top: 80px;
+        left: -14px;
         -ms-flex-pack: start;
         justify-content: flex-start;
         background: -webkit-gradient(linear,left top,right top,color-stop(21.82%,#fff),to(hsla(0,0%,100%,0)));
         background: linear-gradient(90deg,#fff 21.82%,hsla(0,0%,100%,0));
         display: flex;
-        width: 80px;
+        width: 35px;
         position: absolute;
         align-items: center;
         display: none;
@@ -424,13 +429,14 @@
 /* 오른쪽 */
 
 .right-arrow-wrap{
-    right: 0;
+    top: 80px;
+    right: -14px;
     -ms-flex-pack: end;
     justify-content: flex-end;
     background: -webkit-gradient(linear,right top,left top,color-stop(21.82%,#fff),to(hsla(0,0%,100%,0)));
     background: linear-gradient(270deg,#fff 21.82%,hsla(0,0%,100%,0));
     display: flex;
-    width: 80px;
+    width: 40px;
     position: absolute;
     align-items: center;
     z-index: 1;
@@ -479,3 +485,41 @@
     margin-left: 5px;
 }
 
+.location-box{
+    margin-bottom: 10px;
+}
+
+.scroll-bar::-webkit-scrollbar {
+    width: 8px;  /* 스크롤바의 너비 */
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #217af4; /* 스크롤바의 색상 */
+
+}
+
+.scroll-bar::-webkit-scrollbar-track {
+    background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #217af4; /* 스크롤바의 색상 */
+
+}
+
+.scroll-bar::-webkit-scrollbar-track {
+    background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
+}
+
+.list{
+    margin-top: 20px;
+}
+
+.line-css{
+    border-bottom: 1px solid #e1e2e3;
+    margin: 0 auto 20px;
+    width: 261px;
+
+}

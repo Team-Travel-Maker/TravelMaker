@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>관리자 페이지- 공지사항 게시판 상세보기</title>
+        <title>관리자 페이지- 상품권 상세보기</title>
         <link rel="stylesheet" href="/css/admin/sidemenu.css" />
         <link rel="stylesheet" href="/css/admin/admin-board-detail.css" />
         <link rel="stylesheet" href="/css/admin/admin-inquire-detail.css" />
@@ -26,7 +26,7 @@
                 </div>
                 <div>
                     <div class="select-name">
-                        <span>공지사항 게시판 관리</span>
+                        <span>상품권 관리</span>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                         <!-- 헤더 -->
                         <div class="prev-button-layout">
                             <div>
-                                <a th:href="@{/admins/notice/list}">
+                                <a th:href="@{/admins/coupon/list}">
                                     <img src="/images/admin/prev-icon.png" class="prev-icon" />
                                 </a>
                                 <span class="prev-title">리스트로 돌아가기</span>
@@ -50,33 +50,44 @@
                         <section class="board-info-box-layout">
                             <div class="board-info-box">
                                 <div class="board-info-title-box" style="position: relative">
-                                    <span>공지사항 상세보기</span>
-                                    <a th:href="@{/admins/notice/modify}" class="btn-done">수정 하기</a>
+                                    <span>상품권 상세보기</span>
+                                    <a th:href="@{/admins/coupon/modify}" class="btn-done">수정 하기</a>
                                 </div>
                                 <div class="info-table">
                                     <div class="info-member">
-                                        <span class="span-bold">제목 :</span>
+                                        <span class="span-bold">상품권 이름 :</span>
                                         <!-- 제목 -->
-                                        <span>제목불러와야함</span>
+                                        <span>이름불러와야함</span>
                                     </div>
                                     <hr />
                                     <div class="info-member">
-                                        <span class="span-bold">작성 날짜 :</span>
+                                        <span class="span-bold">상품권 지역 :</span>
+                                        <!-- 제목 -->
+                                        <span>지역불러와야함</span>
+                                    </div>
+                                    <hr />
+                                    <div class="info-member">
+                                        <span class="span-bold">상품권 상세 지역 :</span>
+                                        <!-- 제목 -->
+                                        <span>상세 지역 불러와야함</span>
+                                    </div>
+                                    <hr />
+                                    <div class="info-member">
+                                        <span class="span-bold">상품권 가격 :</span>
+                                        <!-- 제목 -->
+                                        <span>가격 불러오기</span>
+                                    </div>
+                                    <hr />
+                                    <div class="info-member">
+                                        <span class="span-bold">등록 날짜 :</span>
                                         <!-- 작성 날짜 -->
-                                        <span>작성날짜불러와야함</span>
+                                        <span>등록날짜불러와야함</span>
                                     </div>
                                     <hr />
                                     <div class="info-member">
                                         <span class="span-bold">수정 날짜 :</span>
-                                        <!-- 작성 날짜 -->
+                                        <!-- 수정 날짜 -->
                                         <span>수정날짜불러와야함</span>
-                                    </div>
-                                    <hr />
-                                    <div class="info-member">
-                                        <span class="span-bold">대표 이미지</span>
-                                        <br>
-                                        <!-- 대표 이미지 -->
-                                        <span class="notice-image">대표이미지불러오기</span>
                                     </div>
                                 </div>
                                 <hr />
@@ -84,8 +95,8 @@
                                     <div></div>
                                 </div>
                                 <div class="info-table">
-                                    <!-- 내용 이미지 -->
-                                    <span class="notice-detail-image">내용이미지 불러오기</span>
+                                    <!-- 대표 이미지 -->
+                                    <span class="notice-detail-image">대표 이미지 불러오기</span>
                                 </div>
                             </div>
                         </section>
