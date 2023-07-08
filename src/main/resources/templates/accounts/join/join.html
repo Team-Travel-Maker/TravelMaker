@@ -11,7 +11,7 @@
         }
     </style>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <link rel="stylesheet" href="/css/login/join_common.css">
+    <link rel="stylesheet" href="/css/login/join-common.css">
     <link rel="stylesheet" href="/css/login/join.css">
 </head>
 <body cz-shortcut-listen="true" style="overflow: unset;">
@@ -39,6 +39,7 @@
                                 class="input-label">이메일</label>
                         </div>
                         <input
+                            id="email"
                             type="email"
                             placeholder="이메일을 입력해주세요."
                             name="email"
@@ -48,7 +49,7 @@
                         <div class="input-label-container">
                             <label
                                 color="var(--theme-palette-colors-gray-600)"
-                                for="username"
+                                for="join-name"
                                 class="input-label">이름</label>
                         </div>
                         <input
@@ -80,17 +81,17 @@
                                         for="zip-code"
                                         class="input-label">우편번호</label>
                                 </div>
-                                <div class="find_input_phone_container">
+                                <div class="find-input-phone-container">
                                     <input
                                         id="zip-code"
                                         type="text"
                                         placeholder="우편 번호"
                                         name="zipCode"
-                                        class="find_input"
+                                        class="find-input"
                                         value=""
                                         disabled="">
-                                    <button onclick="sample6_execDaumPostcode()" type="button" class="find_check_button">
-                                        <span color="var(--theme-palette-colors-black-100)" class="find_button_span">주소 검색</span>
+                                    <button onclick="sample6_execDaumPostcode()" type="button" class="find-check-button">
+                                        <span color="var(--theme-palette-colors-black-100)" class="find-button-span">주소 검색</span>
                                     </button>
                                 </div>
                             </div>
@@ -138,8 +139,8 @@
                                 class="input-label">휴대폰 번호</label>
                         </div>
                         <div>
-                            <div class="find_select_country_div">
-                                <select class="find_select_country">
+                            <div class="find-select-country-div">
+                                <select class="find-select-country">
                                     <option value="KR">South Korea +82</option>
                                     <option value="JP">Japan +81</option>
                                     <option value="TW">Taiwan +886</option>
@@ -313,9 +314,9 @@
                                     <option value="ZM">Zambia +260</option>
                                     <option value="ZW">Zimbabwe +263</option>
                                 </select>
-                                <div class="find_select_button_container">
-                                    <span class="button_span">
-                                        <svg viewbox="0 0 10 6" class="find_select_button_svg">
+                                <div class="find-select-button-container">
+                                    <span class="button-span">
+                                        <svg viewbox="0 0 10 6" class="find-select-button-svg">
                                             <path
                                                 fill-rule="evenodd"
                                                 clip-rule="evenodd"
@@ -325,55 +326,56 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="find_input_phone_container"><input
+                            <div class="find-input-phone-container"><input
                                 id="mobile"
                                 type="text"
                                 placeholder="(예시) 01013245768"
                                 name="mobile"
-                                class="find_input"
-                                value="">
-                                <button id="phone-check-button" type="button" class="find_check_button" disabled="">
+                                class="find-input find-error-input"
+                                value=""
+                                maxlength="11">
+                                <button id="phone-check-button" type="button" class="find-check-button" disabled="">
                                     <span color="var(--theme-palette-colors-black-100)"
-                                          class="find_button_span" id="phone-check-button-span">인증번호 받기</span>
+                                          class="find-button-span" id="phone-check-button-span">인증번호 받기</span>
                                 </button>
                             </div>
                             <p
                                 color="var(--theme-palette-colors-red-400)"
-                                class="find_phone_format_error_p">올바른 전화번호를 입력해주세요.</p>
-                            <div class="find_check_num_container"><input
+                                class="find-phone-format-error-p">올바른 전화번호를 입력해주세요.</p>
+                            <div class="find-check-num-container"><input
                                 id="check-code"
                                 type="text"
                                 placeholder="인증번호를 입력해주세요."
                                 name="authCode"
-                                readonly=""
-                                class="find_input"
+                                disabled
+                                class="find-input"
                                 value="">
-                                <button type="button" class="find_check_num_button" disabled="">
+                                <button type="button" class="find-check-num-button" disabled="">
                                     <span
                                         color="var(--theme-palette-colors-black-100)"
-                                        class="find_check_num_button_span">인증하기</span>
+                                        class="find-check-num-button-span">인증하기</span>
                                 </button>
                             </div>
-                            <p color="var(--theme-palette-colors-blue-400)" class="find_check_timein_p">
+                            <p color="var(--theme-palette-colors-blue-400)" class="find-check-timein-p">
                                 인증번호가 요청되었습니다.
                             </p>
                             <p
                                 color="var(--theme-palette-colors-blue-400)"
-                                class="find_check_timein_time_p">
+                                class="find-check-timein-time-p">
                                 유효시간 01:45
                             </p>
-                            <p color="var(--theme-palette-colors-red-400)" class="find_check_timeout_p">
+                            <p color="var(--theme-palette-colors-red-400)" class="find-check-timeout-p">
                                 인증 시간이 만료되었습니다. 다시 시도해 주세요.
                             </p>
                             <p
                                 color="var(--theme-palette-colors-red-400)"
-                                class="find_check_timeout_time_p">
+                                class="find-check-timeout-time-p">
                                 유효시간 00:00
                             </p>
-                            <p color="var(--theme-palette-colors-red-400)" class="find_check_wrong_p">
+                            <p color="var(--theme-palette-colors-red-400)" class="find-check-wrong-p">
                                 올바르지 않은 인증번호입니다. 다시 확인해 주세요.
                             </p>
-                            <p color="#08ba9c" class="find_check_ok_p">
+                            <p color="#08ba9c" class="find-check-ok-p">
                                 인증되었습니다.
                             </p>
                         </div>
@@ -385,60 +387,66 @@
                                     class="new-pass-label">새 비밀번호</label>
                             </div>
                             <input
+                                id="password"
                                 type="password"
                                 placeholder="새 비밀번호를 입력해주세요."
                                 name="password"
-                                class="new-pass-input"
+                                class="new-pass-input new-pass-format-error"
                                 value="">
-                            <div class="security-level-container">
-                                <span color="#f342a0" class="low-level-on-span"></span>
-                                <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
-                                <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
+                            <div class="security-level-low">
+                                <div class="security-level-container">
+                                    <span color="#f342a0" class="low-level-on-span"></span>
+                                    <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
+                                    <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
+                                </div>
+                                <div class="security-level-text-container">
+                                    <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
+                                    <p data-testid="Typography" color="#f342a0" class="security-level-low-p">약함</p>
+                                </div>
                             </div>
-                            <div class="security-level-container">
-                                <span color="#00bdde" class="normal-level-on-span"></span>
-                                <span color="#00bdde" class="normal-level-on-span"></span>
-                                <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
+                            <div class="security-level-normal">
+                                <div class="security-level-container">
+                                    <span color="#00bdde" class="normal-level-on-span"></span>
+                                    <span color="#00bdde" class="normal-level-on-span"></span>
+                                    <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
+                                </div>
+                                <div class="security-level-text-container">
+                                    <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
+                                    <p data-testid="Typography" color="#00bdde" class="security-level-normal-p">보통</p>
+                                </div>
                             </div>
-                            <div class="security-level-container">
-                                <span color="#07ba9c" class="high-level-on-span"></span>
-                                <span color="#07ba9c" class="high-level-on-span"></span>
-                                <span color="#07ba9c" class="high-level-on-span"></span>
+                            <div class="security-level-high">
+                                <div class="security-level-container">
+                                    <span color="#07ba9c" class="high-level-on-span"></span>
+                                    <span color="#07ba9c" class="high-level-on-span"></span>
+                                    <span color="#07ba9c" class="high-level-on-span"></span>
+                                </div>
+                                <div class="security-level-text-container">
+                                    <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
+                                    <p data-testid="Typography" color="#07ba9c" class="security-level-high-p">강함</p>
+                                </div>
                             </div>
-                            <div class="security-level-text-container">
-                                <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
-                                <p data-testid="Typography" color="#f342a0" class="security-level-low-p">약함</p>
-                            </div>
-                            <div class="security-level-text-container">
-                                <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
-                                <p data-testid="Typography" color="#00bdde" class="security-level-normal-p">보통</p>
-                            </div>
-                            <div class="security-level-text-container">
-                                <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
-                                <p data-testid="Typography" color="#07ba9c" class="security-level-high-p">강함</p>
-                            </div>
+                            <p
+                                color="var(--theme-palette-colors-red-400)"
+                                id="pass-format-wrong"
+                                class="new-pass-error-p">올바르지 않은 비밀번호입니다.
+                            </p>
                             <input
                                 type="password"
                                 placeholder="새 비밀번호를 다시 한번 입력해주세요."
                                 name="passwordConfirm"
-                                class="new-pass-input"
+                                class="new-pass-confirm-input new-pass-confirm-format-error"
                                 value="">
-                            <input
-                                type="password"
-                                placeholder="새 비밀번호를 입력해주세요."
-                                name="password"
-                                class="new-pass-format-error"
-                                value="">
-                            <p color="var(--theme-palette-colors-red-400)" class="new-pass-error-p">올바르지 않은 비밀번호입니다.</p>
-                            <input
-                                type="password"
-                                placeholder="새 비밀번호를 다시 한번 입력해주세요."
-                                name="passwordConfirm"
-                                class="new-pass-format-error"
-                                value="">
-                            <p color="var(--theme-palette-colors-red-400)" class="new-pass-error-p">비밀번호가 서로 일치하지
-                                않습니다.</p>
-                            <p color="rgb(7, 186, 156)" class="new-pass-possible-p">사용 가능한 비밀번호입니다.</p>
+                            <p
+                                color="var(--theme-palette-colors-red-400)"
+                                id="pass-not-match"
+                                class="new-pass-error-p">비밀번호가 서로 일치하지 않습니다.
+                            </p>
+                            <p
+                                color="rgb(7, 186, 156)"
+                                id="pass-available"
+                                class="new-pass-possible-p">사용 가능한 비밀번호입니다.
+                            </p>
                             <p
                                 color="var(--theme-palette-colors-gray-600)"
                                 class="new-pass-format-explain-p">영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 16자 이하로
@@ -458,9 +466,12 @@
                                     </svg>
                                 </span>
                             </div>
-
                             <div class="agree-blank-container"></div>
-                            <input type="checkbox" name="is_agree_all" class="agree-checkbox">
+                            <input
+                                    type="checkbox"
+                                    name="is_agree_all"
+                                    id="is_agree_all"
+                                    class="agree-checkbox">
                             <div class="agree-check-p-container">
                                 <p color="var(--theme-palette-colors-gray-900)" class="agree-check-all-p">전체 동의</p>
                             </div>
@@ -481,7 +492,11 @@
                                 </span>
                             </div>
                             <div class="agree-blank-container"></div>
-                            <input type="checkbox" name="is_above_14" class="agree-checkbox">
+                            <input
+                                    type="checkbox"
+                                    name="is_above_14"
+                                    id="is_above_14"
+                                    class="agree-checkbox">
                             <div class="agree-check-p-container">
                                 <p color="var(--theme-palette-colors-gray-600)" class="agree-check-p">만 14세 이상입니다.
                                     (필수)</p>
@@ -502,7 +517,11 @@
                                 </span>
                             </div>
                             <div class="agree-blank-container"></div>
-                            <input type="checkbox" name="is_terms_conditions" class="agree-checkbox">
+                            <input
+                                    type="checkbox"
+                                    name="is_terms_conditions"
+                                    id="is_terms_conditions"
+                                    class="agree-checkbox">
                             <div class="agree-check-p-container">
                                 <p color="var(--theme-palette-colors-gray-600)" class="agree-check-p">원티드 이용약관 동의
                                     (필수)</p>
@@ -528,7 +547,11 @@
                                 </span>
                             </div>
                             <div class="agree-blank-container"></div>
-                            <input type="checkbox" name="is_collect_information" class="agree-checkbox">
+                            <input
+                                    type="checkbox"
+                                    name="is_collect_information"
+                                    id="is_collect_information"
+                                    class="agree-checkbox">
                             <div class="agree-check-p-container">
                                 <p color="var(--theme-palette-colors-gray-600)" class="agree-check-p">원티드 개인정보 수집 및 이용
                                     동의 (필수)</p>
@@ -554,7 +577,11 @@
                                 </span>
                             </div>
                             <div class="agree-blank-container"></div>
-                            <input type="checkbox" name="is_accept_event_all" class="agree-checkbox">
+                            <input
+                                    type="checkbox"
+                                    name="is_accept_event_all"
+                                    id="is_accept_event_all"
+                                    class="agree-checkbox">
                             <div class="agree-check-p-container">
                                 <p color="var(--theme-palette-colors-gray-600)" class="agree-check-p">채용 소식, 커리어 콘텐츠,
                                     이벤트 등 원티드 맞춤 정보 받기</p>

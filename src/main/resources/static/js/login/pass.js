@@ -36,7 +36,7 @@ const $nextBtn = $('.pass-next-button');
 const $passResetBtn = $('.pass-init-update-button');
 
 // 테스트용 hidden타입 비번
-const $testPass = $('#test-pass');
+let $testPass = '1234';
 console.log($('.error-mode').find('input').val())
 
 // pass -> text모드로 변경
@@ -81,10 +81,10 @@ $passModeInput.find('input').on("input", function () {
 // 다음 버튼 눌렀을 때 비번이 다르면 에러 입력창과 에러 메세지
 $nextBtn.on("click", function () {
     console.log("다음 버튼 클릭")
-    console.log($testPass.val());
+    console.log($testPass);
     console.log($passModeInput.find('input').val());
-    if ($testPass.val() == $passModeInput.find('input').val()
-        || $testPass.val() == $textModeInput.find('input').val()) {
+    if ($testPass == $passModeInput.find('input').val()
+        || $testPass == $textModeInput.find('input').val()) {
         if($passErrCnt < 5) {
             // 로그인 성공 -> 메인 화면으로 가도록 처리
             console.log("로그인 성공")

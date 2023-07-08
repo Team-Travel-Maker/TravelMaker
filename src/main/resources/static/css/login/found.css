@@ -152,6 +152,9 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
 }
+.found-body-container::-webkit-scrollbar {
+    display: none;
+}
 .found-body-h1 {
     color: var(--theme-palette-colors-black-100);
     font-weight: var(--text-weight-heading-bold);

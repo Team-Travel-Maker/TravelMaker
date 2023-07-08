@@ -11,7 +11,7 @@
         }
     </style>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <link rel="stylesheet" href="/css/login/pass_common.css">
+    <link rel="stylesheet" href="/css/login/pass-common.css">
     <link rel="stylesheet" href="/css/login/password.css">
 </head>
     <body style="overflow: unset;">
@@ -47,6 +47,7 @@
                                 </div>
                                 <div class="pass-input-container pass-mode">
                                     <input
+                                        id="password"
                                         type="password"
                                         placeholder="비밀번호를 입력해주세요."
                                         name="password"
@@ -112,10 +113,7 @@
                                 <p
                                     color="var(--theme-palette-colors-red-400)"
                                     class="pass-input-wrong-p">비밀번호가 일치하지 않습니다.</p>
-
-                                <!-- js 비번 테스트 용, 나중에 삭제 필요 23.07.01-->
-                                <input type="hidden" value="1234" id="test-pass">
-
+                                
                                 <button
                                     type="button"
                                     data-attribute-id="signup__email__login"
