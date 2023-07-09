@@ -1,0 +1,182 @@
+.CommunityWrite_CommunityWrite__9mT5h {
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+.Header_CommunityWriteHeader__yoM82 {
+    position: fixed;
+    top: 50px;
+    z-index: 10;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    border: 1px solid #e1e2e3;
+}
+@media (min-width: 1200px){
+    .Header_CommunityWriteHeader__content__o8Uvu {
+        max-width: 1060px;
+        margin: 0 auto;
+    }
+}
+.Header_CommunityWriteHeader__content__o8Uvu {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    height: 100%;
+    padding: 10px 0;
+}
+.Header_CommunityWriteHeader__button__Js48X {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 135px;
+    height: 40px;
+    margin-left: auto;
+}
+.Header_CommunityWriteHeader__button__Js48X.valid button {
+    background-color: #36f;
+    color: #fff;
+}
+.Header_CommunityWriteHeader__button__Js48X button {
+    width: 100%;
+    height: 100%;
+    background-color: #f2f4f7;
+    color: #ccc;
+}
+.Button_Button__fullWidth__RU4tf {
+    width: 100%;
+}
+.Button_Button__containedSizeMedium__c2z9c, .Button_Button__outlinedSizeMedium__k3ora {
+    padding: 0 20px;
+    min-width: 64px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 600;
+}
+.Button_Button__contained__toUI5, .Button_Button__containedPrimary__gFaT9 {
+    color: #fff;
+    background-color: #36f;
+}
+.Button_Button__contained__toUI5 {
+    border-radius: 1000px;
+    border: none;
+}
+.Button_Button__root__V1ie3 {
+    --button-color: #171717;
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    vertical-align: middle;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: normal;
+    border: none;
+    background-color: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.Button_Button__label__1Kk0v {
+    width: 100%;
+    font-size: inherit;
+    font-weight: inherit;
+    display: inherit;
+    -ms-flex-align: inherit;
+    align-items: inherit;
+    -ms-flex-pack: inherit;
+    justify-content: inherit;
+    color: inherit;
+}
+.Button_Button__interaction__kkYaa {
+    overflow: hidden;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: inherit;
+    opacity: 0;
+    background-color: var(--button-color);
+    -webkit-transition: opacity .2s ease;
+    transition: opacity .2s ease;
+    will-change: opacity;
+}
+.Button_Button__containedDisabled__qiqtc {
+    cursor: default;
+    background-color: #f4f4f5;
+    color: rgba(42,42,42,.28);
+}
+.Button_Button__disabled__2eyyF {
+    pointer-events: none;
+}
+.CommunityWrite_CommunityWriteMobileSubmit__nbhwO {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    height: 95px;
+}
+.CommunityWrite_CommunityWriteMobileSubmit__gradient__O8wbg {
+    display: block;
+    width: 100%;
+    height: 30px;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(255,254,254,0)),to(#fffefe));
+    background-image: linear-gradient(180deg,rgba(255,254,254,0),#fffefe);
+}
+.CommunityWrite_CommunityWriteMobileSubmit__button__TRLXF {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    height: 65px;
+    padding: 0 15px 15px;
+    background-color: #fff;
+}
+.CommunityWrite_CommunityWriteMobileSubmit__button__TRLXF button {
+    width: 100%;
+    height: 100%;
+    background-color: #f2f4f7;
+    color: #ccc;
+    font-size: 16px;
+}
+.Button_Button__fullWidth__RU4tf {
+    width: 100%;
+}
+.Button_Button__containedSizeMedium__c2z9c, .Button_Button__outlinedSizeMedium__k3ora {
+    padding: 0 20px;
+    min-width: 64px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 600;
+}
+.Button_Button__containedDisabled__qiqtc {
+    cursor: default;
+    background-color: #f4f4f5;
+    color: rgba(42,42,42,.28);
+}
+@media (max-width: 767px) {
+    .CommunityWrite_CommunityWriteMobileSubmit__nbhwO {
+        display: -ms-flexbox;
+        display: flex;
+    }
+}
