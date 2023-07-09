@@ -30,6 +30,10 @@ public class LoginController {
     @GetMapping("account/exiting")
     public void goToExiting(){;}
 
+    //계정이 존재 하지 않을 때
+    @GetMapping("account/not-exiting")
+    public void goToNotExiting(){;}
+
     //비밀번호 입력
     @GetMapping("password/input")
     public void goToPassword(){;}

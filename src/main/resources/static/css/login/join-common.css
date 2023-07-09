@@ -1,4 +1,4 @@
-html, body, #pass__next {
+html, body, #join__next {
     padding: 0;
     margin: 0;
     width: 100%;
@@ -10,14 +10,11 @@ html, body, #pass__next {
     word-break: keep-all;
     overflow-wrap: anywhere;
 }
+* {
+    box-sizing: border-box;
+}
 a {
     color: inherit;
     -webkit-text-decoration: none;
     text-decoration: none;
-}
-* {
-    box-sizing: border-box;
-}
-* {
-    font-family: Pretendard,'Pretendard JP','Pretendard Std',-apple-system,system-ui,BlinkMacSystemFont,Roboto,'Segoe UI',Helvetica,Arial,'Apple SD Gothic Neo','Malgun Gothic','Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol',sans-serif;
 }

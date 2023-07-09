@@ -11,7 +11,7 @@
         }
     </style>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <link rel="stylesheet" href="/css/login/pass_common.css">
+    <link rel="stylesheet" href="/css/login/pass-common.css">
     <link rel="stylesheet" href="/css/login/password.css">
 </head>
     <body style="overflow: unset;">
@@ -45,14 +45,15 @@
                                         for="password"
                                         class="pass-label">비밀번호</label>
                                 </div>
-                                <div class="pass-input-container">
+                                <div class="pass-input-container pass-mode">
                                     <input
+                                        id="password"
                                         type="password"
                                         placeholder="비밀번호를 입력해주세요."
                                         name="password"
-                                        class="pass-input"
+                                        class="pass-input pass-input-format-error"
                                         value="">
-                                    <button type="button">
+                                    <button type="button" class="open-eye-button">
                                         <span class="pass-input-button-span">
                                             <svg viewbox="0 0 24 24" width="24" height="24" fill="none"
                                                  class="pass-input-button-svg">
@@ -65,14 +66,14 @@
                                         </span>
                                     </button>
                                 </div>
-                                <div class="pass-input-container">
+                                <div class="pass-input-container text-mode">
                                     <input
                                         type="text"
-                                        placeholder="비밀번호를 입력해주세요."
                                         name="password"
                                         class="pass-input"
-                                        value="asfdwdg">
-                                    <button type="button">
+                                        value=""
+                                        readonly="">
+                                    <button type="button" class="close-eye-button">
                                         <span class="pass-input-button-span">
                                             <svg viewBox="0 0 24 24" width="24" height="24" fill="none"
                                                  class="pass-input-button-svg">
@@ -85,14 +86,14 @@
                                         </span>
                                     </button>
                                 </div>
-                                <div class="pass-input-container">
+                                <div class="pass-input-container error-mode">
                                     <input
                                         type="password"
                                         placeholder="비밀번호를 입력해주세요."
                                         name="password"
                                         class="pass-input-format-error"
                                         value="">
-                                    <button type="button">
+                                    <button type="button" class="open-eye-button">
                                         <span class="pass-input-button-span">
                                             <svg viewbox="0 0 24 24" width="24" height="24" fill="none"
                                                  class="pass-input-button-svg">
@@ -108,13 +109,17 @@
                                 <p
                                     color="var(--theme-palette-colors-red-400)"
                                     class="pass-input-count-over-p">5회 이상 로그인에 실패했습니다.<br>비밀번호 초기화/변경을 진행해주세요.</p>
+
+                                <p
+                                    color="var(--theme-palette-colors-red-400)"
+                                    class="pass-input-wrong-p">비밀번호가 일치하지 않습니다.</p>
+                                
                                 <button
-                                    type="submit"
+                                    type="button"
                                     data-attribute-id="signup__email__login"
                                     class="pass-next-button"
                                     disabled="">
                                         <span
-                                            data-testid="Typography"
                                             color="var(--theme-palette-colors-black-100)"
                                             class="pass-next-span">다음</span>
                                 </button>
@@ -130,4 +135,6 @@
             </div>
         </div>
     </body>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="/js/login/pass.js"></script>
 </html>
