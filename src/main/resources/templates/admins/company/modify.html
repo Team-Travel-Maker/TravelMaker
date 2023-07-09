@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지- 업체 작성</title>
+    <link rel="stylesheet" href="/css/admin/sidemenu.css">
+    <link rel="stylesheet" href="/css/admin/admin-board-proposal-modify.css">
+    <link rel="stylesheet" href="/css/admin/admin-board.css">
+    <link rel="stylesheet" href="/css/admin/admin-board-proposal.css">
+    <link rel="stylesheet" href="/css/admin/admin-common.css">
+    <link rel="stylesheet" href="/css/admin/modal.css"/>
+    <link rel="icon" href="/image/logo/favicon.png">
+
+</head>
+
+<body>
+    <!-- 모달 부분 -->
+    <div class="modal">
+        <div class="warn-modal">
+            <div id="content-wrap"></div>
+        </div>
+    </div>
+
+    <div>
+        <div class="info-title-box info-title-box-flex">
+            <div class="logo-box-layout">
+                <div class="logo-box">
+                    <img src="" style="padding-top: 17px" />
+                </div>
+                <div class="logo-title">
+                    <span>Jar</span>
+                </div>
+            </div>
+            <div>
+                <div class="select-name">
+                    <span>업체 관리</span>
+                </div>
+            </div>
+        </div>
+        <div class="wrap">
+
+            <!-- 사이드 바 -->
+            <div th:replace="~{admins/side-bar :: #side-bar-wrap}"></div>
+
+            <div class="container">
+                <div class="container-margin">
+                    <!-- 헤더 -->
+                    <div class="prev-button-layout">
+                        <div>
+                            <a th:href="@{/admins/company/list}">
+                                <img style="top: 2px;" src="/images/admin/prev-icon.png" class="prev-icon">
+                                <span class="prev-title">리스트로 돌아가기</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 내용 섹션 -->
+                    <section class="board-info-box-layout">
+                        <div class="board-info-box">
+                            <div class="board-info-title-box">
+                                <span>업체글</span>
+                            </div>
+                            <div class="info-table">
+                                <div class="board-title">
+                                    <span class="span-bold">신청 제목 :</span>
+                                    <!-- 제목 -->
+                                    <span>신청 제목 불러오기</span>
+                                </div>
+                                <div class="board-info board-writer">
+                                    <span class="span-bold">업체명 :</span>
+                                    <!-- 업체명 -->
+                                    <span>업체명 불러오기</span>
+                                </div>
+                                <div class="board-info board-writer">
+                                    <span class="span-bold">업체 주소 :</span>
+                                    <!-- 업체 명 -->
+                                    <span>업체주소 불러오기</span>
+                                </div>
+                                <div class="board-info board-register-date">
+                                    <span class="span-bold">작성 날짜 :</span>
+                                    <!-- 작성 날짜 -->
+                                    <span>작성 날짜 불러오기</span>
+                                </div>
+                                <div class="board-info board-register-date">
+                                    <span class="span-bold">종류 :</span>
+                                    <!-- 종류 -->
+                                    <span>숙박인지 음식점인지 불러오기</span>
+                                </div>
+                                <div class="board-info board-register-date">
+                                    <span class="span-bold">상태 :</span>
+                                    <!-- 상태 -->
+                                    <span>대기 / 승인 / 반려 불러오기</span>
+                                </div>
+                                <hr>
+                                <div class="info-member">
+                                    <span class="span-bold">대표 이미지</span>
+                                    <br>
+                                    <!-- 대표 이미지 -->
+                                    <span class="notice-image">대표이미지불러오기</span>
+                                </div>
+                                <hr>
+                                <div class="info-member">
+                                    <span class="span-bold">일반 이미지</span>
+                                    <br>
+                                    <!-- 대표 이미지 -->
+                                    <span class="notice-image">일반이미지불러오기</span>
+                                </div>
+                                <hr>
+                                <div class="board-content">신청 내용 불러오기</div>
+                            </div>
+                    </section>
+                    <section class="board-info-box-layout">
+                        <div class="board-info-box">
+                            <div class="board-info-title-box">
+                                <span>업체 신청 답변</span>
+                            </div>
+                            <div class="info-table">
+                                <form method="post" id= "answerWriteForm" name="answerWriteForm">
+                                    <input type="hidden" name="inquiryId">
+                                    <hr>
+                                    <div>
+                                        <textarea class="board-content" id="boardContent" name="boardContent">답변 내용 불러오기</textarea>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <button type="button" class="btn-done">승인</button>
+                                        <button type="button" class="btn-done">반려</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                    <div style="height: 50px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/js/admin/sidemenu.js"></script>
+<script src="/js/admin/modal.js"></script>
+<script>
+
+    $("button.btn-done").on("click", function(){
+
+        if($("#boardContent").val() == "") {
+            showWarnModal("답변 내용을 입력해주세요.");
+            $("#boardContent").focus();
+            return false;
+        };
+        showWarnModal("등록 되었습니다.");
+        setTimeout(function () {
+            // $("#answerWriteForm").submit();
+            }, 1500);
+    });
+</script>
+
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자 페이지- 문의 게시판 작성</title>
+    <title>관리자 페이지- 업체 작성</title>
     <link rel="stylesheet" href="/css/admin/sidemenu.css">
     <link rel="stylesheet" href="/css/admin/admin-board-proposal-modify.css">
     <link rel="stylesheet" href="/css/admin/admin-board.css">
@@ -27,7 +27,7 @@
                 </div>
                 <div>
                     <div class="select-name">
-                        <span>문의 게시판 관리</span>
+                        <span>업체 관리</span>
                     </div>
                 </div>
             </div>
@@ -52,32 +52,69 @@
                         <section class="board-info-box-layout">
                             <div class="board-info-box">
                                 <div class="board-info-title-box">
-                                    <span>문의글</span>
+                                    <span>업체글</span>
                                 </div>
                                 <div class="info-table">
                                     <div class="board-title">
-                                        <span class="span-bold">제목 :</span>
-                                        <!-- 제목 -->
-                                        <span>제목 불러오기</span>
+                                        <span class="span-bold">신청 제목 :</span>
+                                        <!-- 신청 제목 -->
+                                        <span>신청 제목 불러오기 </span>
                                     </div>
                                     <div class="board-info board-writer">
-                                        <span class="span-bold">작성자 :</span>
-                                        <!-- 작성자 명 -->
-                                        <span>작성자 이름 불러오기</span>
+                                        <span class="span-bold">업체명 :</span>
+                                        <!-- 업체명 -->
+                                        <span>업체명 불러오기 </span>
+                                    </div>
+                                    <div class="board-info board-writer">
+                                        <span class="span-bold">업체 주소 :</span>
+                                        <!-- 업체주소 -->
+                                        <span>업체주소 불러오기 </span>
                                     </div>
                                     <div class="board-info board-register-date">
                                         <span class="span-bold">작성 날짜 :</span>
                                         <!-- 작성 날짜 -->
                                         <span>작성 날짜 불러오기</span>
                                     </div>
-                                    <div class="board-info board-register-date">
-                                        <span class="span-bold">문의/신고 :</span>
+                                    <div class="board-info board-update-date">
+                                        <span class="span-bold">수정 날짜 :</span>
                                         <!-- 작성 날짜 -->
-                                        <span>문의인지 신고인지 불러오기</span>
+                                        <span>작성 날짜 불러오기</span>
                                     </div>
-                                    <hr>
-                                    <!-- 작성 내용 -->
-                                    <div class="board-content">문의 내용 불러오기</div>
+                                    <div class="board-info board-register-date">
+                                        <span class="span-bold">종류 : </span>
+                                        <!-- 작성 날짜 -->
+                                        <span>숙박인지 음식인지 불러오기</span>
+                                    </div>
+                                    <div class="board-info board-register-date">
+                                        <span class="span-bold">상태 : </span>
+                                        <!-- 작성 날짜 -->
+                                        <span>대기 / 승인 / 반려 불러오기</span>
+                                    </div>
+                                    <hr />
+                                    <div class="info-member">
+                                        <span class="span-bold">대표 이미지</span>
+                                        <br>
+                                        <!-- 대표 이미지 -->
+                                        <span class="notice-image">대표이미지불러오기</span>
+                                    </div>
+                                    <hr />
+                                    <div class="info-table">
+                                        <!-- 내용 이미지 -->
+                                        <span class="notice-detail-image">내용이미지 불러오기</span>
+                                    </div>
+                                    <hr />
+                                    <!-- 게시판 내용 -->
+                                    <div class="board-content">업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                    </div>
                                 </div>
                         </section>
                         <section class="board-info-box-layout">
@@ -133,7 +170,7 @@
     //답변 수정 폼으로 이동만 시키기
     const btn = $('.btn-done');
     btn.on("click", function () {
-        location.href=`/admins/inquiry/modify`
+        location.href=`/admins/company/modify`
     })
 
 </script>
