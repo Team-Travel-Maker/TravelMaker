@@ -1,0 +1,29 @@
+.Section {
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+@media (min-width: 1200px)
+.Section {
+    padding-top: 25px;
+}
+
+.TopBanner {
+    position: relative;
+    overflow: hidden;
+}
+
+.slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    user-select: none;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.TopBanner_prevArrow {
+    left: calc((100% - 1210px)/2);
+    display: flex;
+    align-items: center;
+}
