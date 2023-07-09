@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 에코인증</title>
+</head>
+
+<link rel="stylesheet" href="/css/common.css"/>
+<link rel="stylesheet" href="/css/ecos/my-eco.css">
+<link rel="stylesheet" href="/css/header/header.css">
+
+<body>
+<!-- 헤더 -->
+<div th:replace="~{header/header :: #header}"></div>
+
+<!-- 메인 컨텐츠 -->
+<div class="content-wrapper">
+    <main class="main-content">
+        <h1>나의 에코인증 내역</h1>
+        <article class="userProfile-wrapper">
+            <div class="userProfile-mobileHeader">
+                <button class="userProfile-backBtn">
+                    <span class="svg-root userProfile-leftArrow">
+                        <svg class="svgIcon-rootSvg" viewBox="0 0 18 18">
+                            <path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+            <div class="userProfile-container">
+                <div class="userProfile-userAvatar">
+                    <div class="userAvatar userProfile-avatar">
+                        <img src="https://static.wanted.co.kr/oneid-user/profile_default.png" alt="">
+                    </div>
+                    <div class="userProfile-userInfo">
+                        <div class="userProfile-userName">정범진</div>
+                        <div class="userCareer userProfile-badge">
+                            <div class="userInfo-badge" data-id="518">개발</div>
+                            <div class="userInfo-badge">신입</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="userProfile-tagsPanel">
+                    <h3>관심주제</h3>
+                    <ul class="userProfile-tagList">
+                        <li class="userProfile-tag">취업/이직</li>
+                        <li class="userProfile-tag">개발</li>
+                        <li class="userProfile-tag">IT/기술</li>
+                        <li class="userProfile-tag">UX/UI</li>
+                    </ul>
+                </div>
+                <button type="button" class="userProfile-editBtn">
+                    <span class="svgIcon-root">
+                        <svg class="svgIcon-rootSvg" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.9338 2.08059C17.5629 1.80534 17.0366 1.83583 16.7002 2.17212L3.43579 15.4323L3.33867 15.5461C3.22211 15.7068 3.1582 15.9013 3.1582 16.1023V19.8947L3.16685 20.0233C3.22958 20.4857 3.62596 20.8421 4.10558 20.8421H7.2678L7.39635 20.8335C7.85877 20.7707 8.21517 20.3744 8.21517 19.8947L8.20652 19.7662C8.14379 19.3038 7.74742 18.9474 7.2678 18.9474H5.05168V16.4956L13.2631 8.28674L15.7123 10.7359L9.7494 16.6985L9.65767 16.8047C9.38244 17.1756 9.41297 17.7019 9.74927 18.0383C10.1192 18.4083 10.719 18.4083 11.0891 18.0384L21.8281 7.30155L21.9198 7.1953C22.195 6.82447 22.1645 6.29818 21.8283 5.96181L18.04 2.17233L17.9338 2.08059ZM17.0521 9.39616L19.8181 6.63032L17.3688 4.18232L14.6031 6.94717L17.0521 9.39616Z"></path>
+                        </svg>
+                    </span>
+                    <span>수정하기</span>
+                </button>
+            </div>
+        </article>
+        <div class="userProfile-body">
+            <div class="userProfile-header">
+                <h2>내 활동</h2>
+                <ul class="ecoProfile-tabs">
+                    <li class="ecoProfile-current">
+                        <a href="/community/my/recents">최근본</a>
+                    </li>
+                    <li class="ecoProfile-current">
+                        <a href="/community/my/posts">작성글</a>
+                    </li>
+                    <li class="ecoProfile-current">
+                        <a href="/community/my/comments">작성댓글</a>
+                    </li>
+                    <li class="ecoProfile-current">
+                        <a href="/community/my/likes">좋아요</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <article class="postItem-wrapper">
+                    <div class="postItem-top">
+                        <a href="/community/profile/FBPmrKWGczL8kztvzaVjnf">
+                            <div class="userInfo-wrapper">
+                                <div class="userInfo-horizontalBox">
+                                    <div class="userInfo-avatarWrapper avatar-wrapper">
+                                        <div class="userAvatar userInfo-avatarSize avatar">
+                                            <img src="https://static.wanted.co.kr/oneid-user/profile_default.png" alt="">
+                                        </div>
+                                    </div>
+                                    <span class="userInfo-userName userName">정범진</span>
+                                </div>
+                                <span class="userInfo-createAt create-time">2023.07.08</span>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="postItem-body">
+                        <h3 class="postItem-title">테스트</h3>
+                        <p class="postItem-content">1</p>
+                        <div class="postItem-bottom">
+                            <div class="button-Btn postItem-like">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z"></path>
+                                </svg>
+                                <span class="Button-count count">0</span>
+                            </div>
+                            <div class="button-Btn postItem-comments">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)" d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z"></path>
+                                </svg>
+                                <span class="Button-count count">1</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+            <div class="scrollObserver"></div>
+        </div>
+    </main>
+</div>
+<div class="toastMessage Notice">
+    <span class="notice-Icon notice-green notice-noIcon">
+        <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="https://www.w3.org/2000/svg" class="notice-largeCheckIcon">
+            <path d="M5.53033 10.9697C5.23744 10.6768 4.76256 10.6768 4.46967 10.9697C4.17678 11.2626 4.17678 11.7374 4.46967 12.0303L9.46967 17.0303C9.76256 17.3232 10.2374 17.3232 10.5303 17.0303L19.5303 8.03033C19.8232 7.73744 19.8232 7.26256 19.5303 6.96967C19.2374 6.67678 18.7626 6.67678 18.4697 6.96967L10 15.4393L5.53033 10.9697Z" fill="black"></path>
+        </svg>
+    </span>
+    <span></span>
+</div>
+
+
+
+</body>
+</html>

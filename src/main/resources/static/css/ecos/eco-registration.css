@@ -416,6 +416,67 @@ input, input:focus {
 }
 
 .writePaper-photoBtn {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: -ms-flexbox;
+    display: flex;
+    width: 790px;
+    height: 100%;
+    margin: 0 auto;
+    pointer-events: none;
+}
+
+
+
+/*mask {*/
+/*    x: 1;*/
+/*    y: 4;*/
+/*    width: 22;*/
+/*    height: 16;*/
+/*}*/
+
+g {
+    mask: url(#mask0_150_2361);
+}
+
+.header-padding {
+    height: 50px;
+}
+
+.toolTip {
+    position: absolute;
+    right: 38px;
+    bottom: 123px;
+    padding: 6px 10px;
+    border: 0;
+    border-radius: 4px;
+    background-color: #36f;
+    color: #fefefe;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.toolTip-bubblePoint {
+    position: absolute;
+    overflow: hidden;
+    right: 15px;
+    height: 14px;
+}
+
+.toolTip-bubblePoint:after {
+    content: "";
+    width: 14px;
+    height: 7px;
+    border: 0;
+    background-color: #36f;
+    display: block;
+    -webkit-transform: rotate(-55deg) skewX(-20deg);
+    transform: rotate(-55deg) skewX(-20deg);
+}
+
+.PhotoButton {
     position: absolute;
     right: 38px;
     bottom: 60px;
@@ -438,6 +499,18 @@ input, input:focus {
     color: #333;
 }
 
+.PhotoButton>span {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12px;
+    color: inherit;
+}
+
+.PhotoButton>span>em {
+    font-style: normal;
+    color: #36f;
+}
+
 .writePaper-mobileBackground {
     position: fixed;
     z-index: -1;
@@ -451,23 +524,6 @@ input, input:focus {
     pointer-events: none;
     background-color: #fff;
 }
-
-/*mask {*/
-/*    x: 1;*/
-/*    y: 4;*/
-/*    width: 22;*/
-/*    height: 16;*/
-/*}*/
-
-g {
-    mask: url(#mask0_150_2361);
-}
-
-.header-padding {
-    height: 50px;
-}
-
-
 
 
 

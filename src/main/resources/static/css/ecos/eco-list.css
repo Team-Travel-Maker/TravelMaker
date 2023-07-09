@@ -132,7 +132,7 @@ textarea {
     /* clip-path: circle(50% at 50% 50%); */
 }
 
-.mini-profile-btn > .mini-profile-username-wrapper {
+.mini-profile-btn > .mini-profile-userName-wrapper {
     /* display: -ms-flexbox; */
     display: flex;
     /* -ms-flex-align: center; */
@@ -143,7 +143,7 @@ textarea {
     color: #666;
 }
 
-.mini-profile-btn > .mini-profile-username-wrapper > .mini-profile-login-info {
+.mini-profile-btn > .mini-profile-userName-wrapper > .mini-profile-login-info {
     /* display: -ms-flexbox; */
     display: flex;
     /* -ms-flex-direction: column; */
@@ -152,9 +152,9 @@ textarea {
 }
 
 .mini-profile-btn
-> .mini-profile-username-wrapper
+> .mini-profile-userName-wrapper
 > .mini-profile-login-info
-> .mini-profile-username {
+> .mini-profile-userName {
     margin-bottom: 5px;
     font-size: 16px;
     font-weight: 700;
@@ -343,7 +343,7 @@ textarea {
 .recommended-profile
 .recommended-profile-rows
 .recommended-profile-item
-.recommended-profile-username {
+.recommended-profile-userName {
     font-weight: 600;
     font-size: 13px;
     line-height: 16px;
@@ -361,11 +361,11 @@ textarea {
     margin-left: auto;
 }
 
-.recommended-profile .recommended-profile-newprofile {
+.recommended-profile .recommended-profile-newProfile {
     padding: 0 23px;
 }
 
-.recommended-profile-newprofile-seemore {
+.recommended-profile-newProfile-seemore {
     padding: 0 20px;
     min-width: 64px;
     height: 40px;
@@ -409,7 +409,7 @@ textarea {
     margin-left: 5px;
 }
 
-.new-profile-endicon {
+.new-profile-endIcon {
     font-size: 1.2em;
 }
 
@@ -788,16 +788,16 @@ textarea {
 }
 
 @media (min-width: 1200px) {
-    .PostItem-top .UserBox-UserName {
+    .PostItem-top .UserBox-userName {
         max-width: 399px;
     }
 }
 
-.UserBox-VerticalBox .UserBox-UserName {
+.UserBox-VerticalBox .UserBox-userName {
     color: #333;
 }
 
-.UserBox-UserName {
+.UserBox-userName {
     font-size: 13px;
     font-weight: 700;
     overflow: hidden;
