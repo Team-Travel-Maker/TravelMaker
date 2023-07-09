@@ -149,7 +149,7 @@ div.info-table>div.board-info {
 }
 
 div.board-content {
-    min-height: 320px;
+    /*min-height: 320px;*/
 }
 
 .board-info-box {

@@ -63,10 +63,26 @@
                             <div>
                                 <img src="/images/admin/board-icon.png" class="icon">
                             </div>
-                            <a th:href="@{/admins/inquiry/list}">
-                                <span>문의/답변 관리</span>
+                            <a>
+                                <span>상품권 관리</span>
                             </a>
+                            <div class="triangle-button">
+                                <img src="/images/admin/arrow-icon.png"
+                                     class="icon triangle-icon triangle">
+                            </div>
                         </div>
+                        <ul class="menus1 menus" style="display: none;">
+                            <li class="select-menu">
+                                <a th:href="@{/admins/coupon/list}">
+                                    <span>상품권 목록</span>
+                                </a>
+                            </li>
+                            <li class="select-menu">
+                                <a th:href="@{/admins/coupon/write}">
+                                    <span>상품권 등록</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li class="menu">
@@ -95,6 +111,29 @@
                             </li>
                         </ul>
                     </li>
+
+                    <li class="menu">
+                        <div class="menu-flex">
+                            <div>
+                                <img src="/images/admin/board-icon.png" class="icon">
+                            </div>
+                            <a th:href="@{/admins/inquiry/list}">
+                                <span>문의/답변 관리</span>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="menu">
+                        <div class="menu-flex">
+                            <div>
+                                <img src="/images/admin/user-icon.png" class="icon">
+                            </div>
+                            <a th:href="@{/admins/company/list}">
+                                <span>업체 관리</span>
+                            </a>
+                        </div>
+                    </li>
+
                     <li class="menu">
                         <div class="menu-flex">
                             <div>

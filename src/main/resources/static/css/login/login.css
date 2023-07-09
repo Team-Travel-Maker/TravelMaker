@@ -160,7 +160,7 @@
     padding: 0 12px;
     outline: none;
     background-color: transparent;
-    border: 1px solid var(--theme-palette-colors-bluegray-200);
+    border: 1px solid var(--theme-palette-colors-bluegray-200) !important;
     color: var(--theme-palette-colors-gray-900);
     border-radius: 5px;
     font-size: 16px;
@@ -168,7 +168,7 @@
     margin-bottom: 8px;
 }
 .email-input:focus {
-    border: 1px solid var(--theme-palette-colors-blue-400);
+    border: 1px solid var(--theme-palette-colors-blue-400) !important;
 }
 .email-input::-webkit-input-placeholder {
     color: var(--theme-palette-colors-gray-300);
@@ -194,9 +194,6 @@
     background-color: var(--theme-palette-colors-bluegray-100);
     opacity: 1;
 }
-.email-format-error-input:focus {
-    border: 1px solid var(--theme-palette-colors-blue-400);
-}
 .email-format-error-input {
     width: 100%;
     height: 50px;
@@ -209,7 +206,7 @@
     font-size: 16px;
     font-weight: 400;
     margin-bottom: 8px;
-    border: 1px solid var(--theme-palette-colors-red-400) !important;
+    border: 1px solid var(--theme-palette-colors-red-400);
 }
 .email-format-error-p {
     color: var(--theme-palette-colors-red-400);
@@ -220,6 +217,7 @@
     line-height: var(--text-height-footnote);
     margin-bottom: 8px;
     margin-top: 0;
+    display: none;
 }
 .continue-email-button {
     width: 100%;
@@ -286,10 +284,6 @@
     margin: 0;
     max-width: 25%;
 }
-.google-button span {
-    position: relative;
-}
-.google-button,
 .naver-kakao-button {
     display: flex;
     flex-direction: column;
@@ -301,22 +295,10 @@
     background: none;
     cursor: pointer;
 }
-.google-button svg,
 .naver-kakao-button svg {
     padding: 0;
     width: 56px;
     height: 56px;
-}
-.google-button span::after {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 1px solid var(--theme-palette-colors-bluegray-200);
-    box-sizing: border-box;
 }
 .another-account-container > button > p {
     margin-top: 8px;
@@ -330,20 +312,6 @@
     font-size: var(--text-size-caption2);
     line-height: var(--text-height-caption2);
     text-transform: capitalize;
-}
-.google-button-svg {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    width: 1em;
-    height: 1em;
-    display: inline-block;
-    fill: currentColor;
-    -webkit-flex-shrink: 0;
-    -ms-flex-negative: 0;
-    flex-shrink: 0;
-    font-size: inherit;
 }
 .forget-account-button {
     background-color: transparent;
@@ -474,54 +442,4 @@
     border-radius: 2px;
     z-index: 1;
     border: 1px solid var(--theme-palette-colors-bluegray-200);
-}
-.language-select-container {
-    height: 50px;
-    min-height: 50px;
-    border-radius: 5px;
-    width: 100%;
-    border: 1px solid var(--theme-palette-colors-bluegray-200);
-    background-color: var(--theme-palette-colors-contents-bg);
-    margin-bottom: 10px;
-    position: relative;
-    height: 34px;
-    min-height: 34px;
-}
-.language-select-container select:disabled {
-    background: var(--theme-palette-colors-bluegray-100);
-}
-.language-select-container select {
-    padding-left: 45px;
-    font-size: 13px;
-    font-weight: 600;
-}
-.language-select-container > div {
-    right: 13px;
-}
-.language-select {
-    padding-left: 12px;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
-    height: 100%;
-    border: none;
-    background: none;
-    z-index: 1;
-    font-size: 16px;
-    color: var(--theme-palette-colors-gray-900);
-    font-weight: 400;
-}
-.language-select-button-container {
-    position: absolute;
-    right: 20px;
-    font-size: 10px;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
 }

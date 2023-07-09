@@ -74,6 +74,45 @@ public class AdminController {
     @GetMapping("improvement/list")
     public void goToImprovementList(){;}
 
+//   상품권 관리
+
+    //상품권 목록
+    @GetMapping("coupon/list")
+    public void goToCouponList(){;}
+
+    //상품권 등록
+    @GetMapping("coupon/write")
+    public void goToCouponWrite(){;}
+
+    //상품권 상세
+    @GetMapping("coupon/detail")
+    public void goToCouponDetail(){;}
+
+    //상품권 수정
+    @GetMapping("coupon/modify")
+    public void goToCouponModify(){;}
+
+//    업체 관리
+
+    // 업체 목록
+    @GetMapping("company/list")
+    public void goToCompanyList(){;}
+
+    // 업체 상세
+    @GetMapping("company/detail")
+    public void goToCompanyDetail(){;}
+
+    //업체 신청 답변
+    @GetMapping("company/write")
+    public void goToCompanyWrite(){;}
+
+    //업체 답변 수정
+    @GetMapping("company/modify")
+    public void goToCompanyModify(){;}
+
+    //업체 신청 답변 받은 상세
+    @GetMapping("company/answer-detail")
+    public void goToCompanyAnswerDetail(){;}
 
 
 }
