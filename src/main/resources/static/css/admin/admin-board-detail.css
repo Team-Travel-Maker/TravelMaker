@@ -152,6 +152,10 @@ div.board-content {
     /*min-height: 320px;*/
 }
 
+.inquiry-content{
+	min-height: 320px;
+}
+
 .board-info-box {
     width: 100%;
 }

@@ -624,4 +624,18 @@
         margin-bottom: 10px;
     }
 
+    .list-container > ul li {
+        width: 200px;
+        padding: 0 10px;
+        list-style: none;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .line-css {
+        border-bottom: 1px solid #e1e2e3;
+        margin: 0 auto 20px;
+        width: 818px;
+    }
+
 }
