@@ -1,19 +1,7 @@
 /* ------------------------ 플래그 변수 관련 ------------------------*/
 // 가입하기 버튼 활성화를 위한 확인 flg들
-// 이름 입력 확인 flg
-let $nameFlg = 0;
-// 핸드폰 인증완료 플래그
-let $phoneFlg = 0;
-// 인증 번호 플래그 (정상적으로 번호 인증이 완료 되었을 때 1로 변경 예정)
-let $chkCodeFlg = 0;
 // 비밀번호 유효성 확인 플래그
 let $passChkFlg = 0;
-// 만 14세 이상 동의 체크 플래그
-let above14Flg = 0;
-// 이용약관 동의 체크 플래그
-let termsConditionsFlg = 0;
-// 개인정보 수집 및 이용 체크 플래그
-let collectInfoFlg = 0;
 
 
 /* ------------------------ 태그 변수 관련 ------------------------*/
@@ -21,11 +9,15 @@ let collectInfoFlg = 0;
 // 이름 입력란
 const $nameInput = $('#join-name');
 
-
 /* ---------- 회원타입 변수 ----------*/
 // 회원 타입 버튼들
 const $memberTypeBtns = $('.join-member-type-button');
 
+/* ---------- 우편번호 변수 ----------*/
+const $zipCode = $('#zip-code');
+
+/* ---------- 상세 주소 변수 ----------*/
+const $addressDetail = $('#address-detail');
 
 /* ---------- 인증번호 변수 ----------*/
 // 나라 번호 select
@@ -119,15 +111,18 @@ const $joinBtn = $('.join-button');
 
 /* ------------------------ 처리 관련 ------------------------*/
 /* ---------- 이름 관련 처리 ----------*/
-//이름이 입력 되어 있으면 이름 입력 확인 flg
-$nameInput.on("input", function () {
-    console.log("이름 입력중")
-    if ($nameInput.val().length > 0) {
-        $nameFlg = 1;
-    } else {
-        $nameFlg = 0;
-    }
+$nameInput.on('input', function () {
+    joinBtnCheck();
 })
+
+/* ---------- 주소 관련 처리 ----------*/
+$zipCode.on('input', function () {
+    joinBtnCheck()
+})
+$addressDetail.on('input', function () {
+    joinBtnCheck()
+})
+
 
 /* ---------- 타입 관련 처리 ----------*/
 // 타입 버튼 이벤트
@@ -153,8 +148,6 @@ let setinterval;
 $countryNmSelect.on('change', function () {
     //휴대폰 관련 태그 초기화
     console.log("나라 번호 바뀜")
-    $phoneFlg = 0;
-    $chkCodeFlg = 0;
     $phoneInput.val('');
     $("#phone-check-button-span").html("인증번호 받기");
     $phoneChkBtn.attr("disabled", true);
@@ -173,13 +166,11 @@ $countryNmSelect.on('change', function () {
     // 인증시간 초기화
     clearInterval(setinterval);
     counter = 0;
+    joinBtnCheck()
 })
 
 // 휴대폰 입력과 동시에 유효성 검사 및 입력 테두리 변경
 $phoneInput.on('input',function() {
-
-    $phoneFlg = 0;
-    $chkCodeFlg = 0;
 
     // 번호 수정시 버튼 및 입력란 초기화
     $("#phone-check-button-span").html("인증번호 받기");
@@ -221,6 +212,7 @@ $phoneInput.on('input',function() {
         $phoneErr.hide();
         $phoneChkBtn.attr("disabled", false);
     }
+    joinBtnCheck()
 });
 
 // 휴대폰 정규식
@@ -252,6 +244,7 @@ $phoneChkBtn.on("click", function(){
     clearInterval(setinterval);
     counter = 0;
     setinterval = setInterval(timeIt, 1200);
+    joinBtnCheck()
 })
 
 // 인증 번호 입력란 유효성 검사
@@ -288,7 +281,6 @@ $codeChkBtn.on('click', function () {
         // 인증 시간 초기화
         clearInterval(setinterval);
         counter = 0;
-        $chkCodeFlg = 1;
 
     } else {
         $chkTimeInP.hide();
@@ -297,6 +289,7 @@ $codeChkBtn.on('click', function () {
         $chkTimeOutTimeP.show();
         $chkCodeWrongP.show();
     }
+    joinBtnCheck()
 })
 
 /*혹시 모를 이 페이지가 열리면 타이머 값 초기화*/
@@ -377,6 +370,7 @@ function sample6_execDaumPostcode() {
             document.getElementById("address-detail").focus();
         }
     }).open();
+    joinBtnCheck()
 }
 
 /* ---------- 비밀번호 관련 처리 ----------*/
@@ -388,6 +382,11 @@ $newPassInput.on('input', function () {
 
     // 비밀번호 유효성 확인 플래그 초기화
     $passChkFlg = 0;
+
+    // 비밀번호 설정 성공 문구 초기화
+    // 비밀번호 일치 실패 문구 초기화
+    $newPassAvailable.hide();
+    $newPassNotMatch.show();
 
     let inputVal = $(this).val();
     if((!fn_passChk(inputVal) || inputVal.length < 8 || inputVal.length > 16)
@@ -408,7 +407,17 @@ $newPassInput.on('input', function () {
         }
         $newPassInput.addClass('new-pass-input');
         $newPassErrorP.hide();
+        if(inputVal == $newPassConfirmInput.val()) {
+            $newPassAvailable.show();
+            $newPassConfirmInput.addClass('new-pass-confirm-input');
+        } else {
+            $newPassConfirmInput.removeClass('new-pass-confirm-input');
+        }
     }
+    if(inputVal == $newPassConfirmInput.val()) {
+        $newPassNotMatch.hide();
+    }
+    joinBtnCheck()
 })
 
 $newPassConfirmInput.on('input', function () {
@@ -431,6 +440,7 @@ $newPassConfirmInput.on('input', function () {
             $newPassAvailable.show();
         }
     }
+    joinBtnCheck()
 })
 
 // 비밀번호 유효성 검사 함수
@@ -448,51 +458,132 @@ function fn_passChk(pass) {
 
 
 /* ---------- 가입하기 버튼 관련 처리 ----------*/
-$joinBtn.on('click', function () {
-    if($newPassConfirmInput.val() != $newPassInput.val()) {
-        // 비밀번호, 비밀번화 확인 입력 불일치
-        $joinBtn.attr("disabled", true);
-        $newPassConfirmInput.focus();
-        $newPassConfirmInput.removeClass('new-pass-confirm-input');
-        $newPassNotMatch.show();
-    } else {
-        // 비밀번호, 비밀번화 확인 입력 일치
-        console.log("비밀번호 설정은 성공");
-    }
-})
+// $joinBtn.on('click', function () {
+//     if($newPassConfirmInput.val() != $newPassInput.val()) {
+//         // 비밀번호, 비밀번화 확인 입력 불일치
+//         $joinBtn.attr("disabled", true);
+//         $newPassConfirmInput.focus();
+//         $newPassConfirmInput.removeClass('new-pass-confirm-input');
+//         $newPassNotMatch.show();
+//     } else {
+//         // 비밀번호, 비밀번화 확인 입력 일치
+//         console.log("비밀번호 설정은 성공");
+//     }
+// })
 
 
 /* ---------- 동의 관련 처리 ----------*/
-$agreeAllChkBox.on('click', function() {
-    if($agreeAllChkBox.is(":checked")) {
-        console.log("전체 동의 체크");
-        $("agree-checkbox").prop("checked", true);
-    } else {
-        console.log("전체 동의 해지");
-        $("agree-checkbox").prop("checked", false);
+
+
+//전체관련
+$('.all-agree-checkbox').on("click", function () {
+
+    if(!$(this).is(':checked')){
+        $('.agree-blank-container').show();
+        $('.agree-check-container').hide();
+        $('.agree-checkbox-span').hide();
+        $('.disagree-checkbox-span').show();
+        $('.agree-checkbox-svg').hide();
+        $('.marketing-agree-checkbox-svg').show();
+        $('.agree-checkbox').prop("checked", false);
+    } else{
+        //체크성공
+        $('.agree-blank-container').hide();
+        $('.agree-check-container').show();
+        $('.agree-checkbox-span').show();
+        $('.disagree-checkbox-span').hide();
+        $('.marketing-agree-checkbox-span').show();
+        $('.agree-checkbox-svg').show();
+        $('.agree-checkbox').prop("checked", true);
     }
+    joinBtnCheck()
 });
 
-$("agree-checkbox").on('click', function() {
-    var total = $("agree-checkbox").length;
-    var checked = $("agree-checkbox:checked").length;
+//체크 하나하나
+$('.agree-checkbox').on("click", function () {
+    const $thisAgree = $(this).closest('.agree-container').find('.agree-check-container');
+    const $thisDisagree = $(this).closest('.agree-container').find('.agree-blank-container');
+    const $thisAgreeSvg = $(this).closest('.agree-container').find('.agree-checkbox-svg');
+    const $thisAgreeSpan = $(this).closest('.agree-container').find('.agree-checkbox-span');
 
-    if(total != checked) $agreeAllChkBox.prop("checked", false);
-    else $agreeAllChkBox.prop("checked", true);
-});
+    checkTest();
 
-//jqury
+    if(!$(this).is(':checked')){
+        $thisAgree.hide();
+        $thisAgreeSvg.hide();
+        $thisAgreeSpan.hide();
+        $thisDisagree.show();
+    }else {
+        $thisAgree.show();
+        $thisAgreeSvg.show();
+        $thisAgreeSpan.show();
+        $thisDisagree.hide();
+    }
 
-// $memberTypeBtns.css("color", "red");
-// $memberTypeBtns.attr("disabled", true);
-//
+    joinBtnCheck()
 
+})
 
-let idFlag = false;
-let passwordFlag = false;
+$('.agree-checkbox').eq(3).on("click", function () {
+    if($(this).prop("id") == 'is_accept_event_all' && $(this).is(":checked")){
+        $('.marketing-agree-checkbox-span').show();
+        $('.agree-checkbox-svg').eq(5).show();
+        $('.agree-checkbox-svg').eq(6).show();
+        $('.agree-checkbox-svg').eq(7).show();
+        $('.marketing-agree-checkbox-svg').hide();
+        $('.disagree-checkbox-span').hide();
+    } else{
+        $('.marketing-agree-checkbox-span').hide();
+        $('.agree-checkbox-svg').eq(5).show();
+        $('.agree-checkbox-svg').eq(6).show();
+        $('.agree-checkbox-svg').eq(7).show();
+        $('.marketing-agree-checkbox-svg').show();
+        $('.disagree-checkbox-span').show();
+    }
+    joinBtnCheck()
+})
 
-function flagCheck() {
-    if(passwordFlag && idFlag ){
+function checkTest() {
+       if($('.agree-checkbox').eq(0).is(":checked") &&
+       $('.agree-checkbox').eq(1).is(":checked")&&
+       $('.agree-checkbox').eq(2).is(":checked") &&
+       $('.agree-checkbox').eq(3).is(":checked")){
+        $('.all-agree-checkbox').prop('checked',true);
+   }else{
+       $('.all-agree-checkbox').prop('checked',false);
+   }
+   allCheckTest($('.all-agree-checkbox'));
 }
 
+function allCheckTest(thisAll){
+    //체크해제
+    if(!thisAll.is(':checked')){
+        $('.agree-blank-container').eq(0).show();
+        $('.agree-check-container').eq(0).hide();
+        $('.agree-checkbox-span').eq(0).hide();
+        $('.agree-checkbox-svg').eq(0).hide();
+    } else{
+        //체크성공
+        $('.agree-blank-container').eq(0).hide();
+        $('.agree-check-container').eq(0).show();
+        $('.agree-checkbox-span').eq(0).show();
+        $('.agree-checkbox-svg').eq(0).show();
+    }
+}
+
+/* ---------- 가입 버튼 관련 처리 함수 ----------*/
+function joinBtnCheck() {
+    if($nameInput.val().length > 0 &&
+        $zipCode.val().length > 0 &&
+        $addressDetail.val().length > 0 &&
+        $(".find-check-ok-p").css("display") == "block" &&
+        $(".new-pass-possible-p").css("display") == "block" &&
+        $('.agree-checkbox').eq(0).is(":checked") &&
+        $('.agree-checkbox').eq(1).is(":checked")&&
+        $('.agree-checkbox').eq(2).is(":checked")
+    ) {
+        $joinBtn.attr("disabled", false);
+    } else {
+        $joinBtn.attr("disabled", true);
+    }
 }
