@@ -23,5 +23,10 @@ public class EcoController {
     @GetMapping("eco-detail")
     public void goToDetail(){;}
 
+//    나의 에코인증 목록
+    @GetMapping("my-eco")
+    public void goToMyeco(){;}
+
+
 
 }

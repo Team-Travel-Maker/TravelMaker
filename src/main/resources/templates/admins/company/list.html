@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>관리자 페이지- 일반 후기 게시판 목록</title>
+        <title>관리자 페이지- 업체 목록</title>
         <link rel="stylesheet" href="/css/admin/sidemenu.css">
         <link rel="stylesheet" href="/css/admin/admin-board.css">
         <link rel="stylesheet" href="/css/admin/admin-board-proposal.css">
@@ -23,7 +23,7 @@
                 </div>
                 <div>
                     <div class="select-name">
-                        <span>일반 후기 게시판 관리</span>
+                        <span>업체 관리</span>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                                         <button
                                                 class="deleteButton delete-button"
                                         >
-                                            선택 게시물 삭제
+                                            업체 삭제
                                         </button>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                         <section class="board-info-box-layout">
                             <div class="board-info-box">
                                 <div class="board-info-title-box">
-                                    <span>일반 후기 목록</span>
+                                    <span>업체 목록</span>
                                 </div>
 
                                 <div class="info-table">
@@ -76,7 +76,9 @@
                                                 <input type="checkbox" id="allSelect"/>
                                             </th>
                                             <th>No</th>
-                                            <th>일반 후기 제목</th>
+                                            <th>상태</th>
+                                            <th>업체명</th>
+                                            <th>종류</th>
                                             <th>등록일</th>
                                             <th>수정일</th>
                                             <th>대표 이미지</th>
@@ -93,9 +95,11 @@
                                                         name="check"/>
                                             </td>
                                             <td>1</td>
+                                            <td class="waiting">대기</td>
                                             <td>
-                                                <a>일반 후기 제목1</a>
+                                                <a th:href="@{/admins/company/detail}">업체 명1</a>
                                             </td>
+                                            <td>음식점</td>
                                             <td>2023-06-01 09:57:40</td>
                                             <td>2023-06-01 09:57:40</td>
                                             <td class="image-wrap">
@@ -110,9 +114,11 @@
                                                         name="check"/>
                                             </td>
                                             <td>1</td>
+                                            <td class="approval">승인</td>
                                             <td>
-                                                <a>일반 후기 제목1</a>
+                                                <a th:href="@{/admins/company/answer-detail}">업체 명1</a>
                                             </td>
+                                            <td>숙박</td>
                                             <td>2023-06-01 09:57:40</td>
                                             <td>2023-06-01 09:57:40</td>
                                             <td class="image-wrap">
@@ -127,9 +133,11 @@
                                                         name="check"/>
                                             </td>
                                             <td>1</td>
+                                            <td class="companion">반려</td>
                                             <td>
-                                                <a>일반 후기 제목1</a>
+                                                <a>업체 명1</a>
                                             </td>
+                                            <td>숙박</td>
                                             <td>2023-06-01 09:57:40</td>
                                             <td>2023-06-01 09:57:40</td>
                                             <td class="image-wrap">
@@ -144,9 +152,11 @@
                                                         name="check"/>
                                             </td>
                                             <td>1</td>
+                                            <td class="approval">승인</td>
                                             <td>
-                                                <a>일반 후기 제목1</a>
+                                                <a>업체 명1</a>
                                             </td>
+                                            <td>숙박</td>
                                             <td>2023-06-01 09:57:40</td>
                                             <td>2023-06-01 09:57:40</td>
                                             <td class="image-wrap">
@@ -161,9 +171,11 @@
                                                         name="check"/>
                                             </td>
                                             <td>1</td>
+                                            <td class ="approval">승인</td>
                                             <td>
-                                                <a>일반 후기 제목1</a>
+                                                <a>업체 명1</a>
                                             </td>
+                                            <td>숙박</td>
                                             <td>2023-06-01 09:57:40</td>
                                             <td>2023-06-01 09:57:40</td>
                                             <td class="image-wrap">
@@ -198,4 +210,5 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/js/admin/sidemenu.js"></script>
     <script src="/js/admin/checkbox.js"></script>
+
 </html>

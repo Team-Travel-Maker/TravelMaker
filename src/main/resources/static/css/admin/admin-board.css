@@ -5,3 +5,19 @@ td.no-answer>hr {
 td.answered>hr {
     border-bottom: 4px solid #4F6DF5;
 }
+
+.approval{
+    color: green;
+}
+
+.companion{
+    color: red;
+}
+
+.waiting{
+    color: blue;
+}
+
+.span-bold {
+    font-weight: bold;
+}

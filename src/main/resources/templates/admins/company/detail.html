@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>관리자 페이지- 문의 게시판 상세보기</title>
+        <title>관리자 페이지- 업체 게시판 상세보기</title>
         <link rel="stylesheet" href="/css/admin/sidemenu.css" />
         <link rel="stylesheet" href="/css/admin/admin-board-detail.css" />
         <link rel="stylesheet" href="/css/admin/admin-inquire-detail.css" />
@@ -27,7 +27,7 @@
                 </div>
                 <div>
                     <div class="select-name">
-                        <span>문의 게시판 관리</span>
+                        <span>업체 게시판 관리</span>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                         <!-- 헤더 -->
                         <div class="prev-button-layout">
                             <div>
-                                <a th:href="@{/admins/inquiry/list}">
+                                <a th:href="@{/admins/company/list}">
                                     <img src="/images/admin/prev-icon.png" class="prev-icon" />
                                     <span class="prev-title">리스트로 돌아가기</span>
                                 </a>
@@ -51,19 +51,24 @@
                         <section class="board-info-box-layout">
                             <div class="board-info-box">
                                 <div class="board-info-title-box">
-                                    <span>문의글 상세보기</span>
+                                    <span>업체 상세보기</span>
                                 </div>
                                 <hr />
                                 <div class="info-table">
                                     <div class="board-title">
-                                        <span class="span-bold">제목 :</span>
-                                        <!-- 제목 -->
-                                        <span>제목 불러오기 </span>
+                                        <span class="span-bold">신청 제목 :</span>
+                                        <!-- 신청 제목 -->
+                                        <span>신청 제목 불러오기 </span>
                                     </div>
                                     <div class="board-info board-writer">
-                                        <span class="span-bold">작성자 :</span>
-                                        <!-- 작성자 명 -->
-                                        <span>이름 불러오기 </span>
+                                        <span class="span-bold">업체명 :</span>
+                                        <!-- 업체명 -->
+                                        <span>업체명 불러오기 </span>
+                                    </div>
+                                    <div class="board-info board-writer">
+                                        <span class="span-bold">업체 주소 :</span>
+                                        <!-- 업체주소 -->
+                                        <span>업체주소 불러오기 </span>
                                     </div>
                                     <div class="board-info board-register-date">
                                         <span class="span-bold">작성 날짜 :</span>
@@ -76,13 +81,42 @@
                                         <span>작성 날짜 불러오기</span>
                                     </div>
                                     <div class="board-info board-register-date">
-                                        <span class="span-bold">문의/신고 :</span>
+                                        <span class="span-bold">종류 : </span>
                                         <!-- 작성 날짜 -->
-                                        <span>문의인지 신고인지 불러오기</span>
+                                        <span>숙박인지 음식인지 불러오기</span>
+                                    </div>
+                                    <div class="board-info board-register-date">
+                                        <span class="span-bold">상태 : </span>
+                                        <!-- 작성 날짜 -->
+                                        <span>대기 / 승인 / 반려 불러오기</span>
+                                    </div>
+                                    <hr />
+                                    <div class="info-member">
+                                        <span class="span-bold">대표 이미지</span>
+                                        <br>
+                                        <!-- 대표 이미지 -->
+                                        <span class="notice-image">대표이미지불러오기</span>
+                                    </div>
+                                    <hr />
+                                    <div class="info-member">
+                                        <span class="span-bold">내용 이미지</span>
+                                        <br>
+                                        <!-- 대표 이미지 -->
+                                        <span class="notice-image">내용 이미지 불러오기</span>
                                     </div>
                                     <hr />
                                     <!-- 게시판 내용 -->
-                                    <div class="inquiry-content">문의 내용 불러오기</div>
+                                    <div class="board-content">업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                        업체 신청 내용 불러오기
+                                    </div>
                                     <hr />
                                     <div class="answer-button-wrapper modify-button-wrapper">
                                         <button>
@@ -104,7 +138,7 @@
         const answer = $('.answer-button-wrapper button');
 
         answer.on("click", function () {
-            location.href=`/admins/inquiry/write`
+            location.href=`/admins/company/write`
         })
 
     </script>
