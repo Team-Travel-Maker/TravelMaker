@@ -1,0 +1,221 @@
+.Padding_padding___Nyki {
+    height: 50px;
+}
+.container-profile {
+     position: relative;
+     max-width: 1060px;
+ }
+@media (min-width: 1200px) {
+    .container-profile {
+        padding-bottom: 100px;
+        margin: 0 auto;
+    }
+}
+    @media (min-width: 1200px) {
+    .container-profile {
+        width: 87.72%;
+    }
+}
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+button, div, h1, h2, h3, h4, h5, h6, input, p, select, span, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+.nav {
+    position: relative;
+    line-height: normal;
+}
+.nav-title>p {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    padding: 50px 0 20px;
+}
+
+.nav-button {
+    width: 100%;
+    display: none;
+    position: relative;
+    border-top: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    cursor: pointer;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+.point {
+    margin: 0 auto;
+    max-width: 1060px;
+}
+
+.aside {
+    float: left;
+    width: 33.3333%;
+    margin-bottom: 0;
+    padding-right: 20px;
+}
+
+.aside-inner {
+    -webkit-box-shadow: inset 0 0 0 1px #e1e2e3;
+    box-shadow: inset 0 0 0 1px #e1e2e3;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.points-div {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: relative;
+    height: 173px;
+    padding-top: 44px;
+    padding-right: 20px;
+    padding-left: 20px;
+    background-color: #1b293a;
+}
+.points-point {
+    color: #fff;
+    text-align: center;
+}
+.point-label {
+    font-size: 16px;
+    font-weight: 500;
+}
+.point-value {
+    font-size: 34px;
+    font-weight: 600;
+}
+.point-value sub {
+    bottom: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+.point-expire {
+    margin-top: 15px;
+    font-size: 12px;
+    color: rgba(255,255,255,.7);
+}
+
+/*i아이콘 안에*/
+.points-tooltip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 0;
+}
+.tooltip-tooltip {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+}
+.points-tooltip .tooltip-label {
+    display: none;
+}
+
+.points-tooltip .tooltip-button {
+    width: 18px;
+    height: 18px;
+    margin: 20px;
+}
+ .tooltip-trigger {
+     height: 15px;
+     margin-left: 6px;
+ }
+.points-tooltip .tooltip-button svg {
+    width: 100%;
+    height: 100%;
+}
+.points-tooltip .tooltip-body{
+    top: 39px;
+    left: 14px;
+}
+.tooltip-tooltip-body{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: calc(100% + 5px);
+    left: -1px;
+    width: 306px;
+    padding: 27px 29px;
+    border: 1px solid #999;
+    background-color: #fff;
+}
+.tooltip-tooltip-body.is-show {
+    display: block;
+}
+.tooltip-title {
+    font-size: 16px;
+    font-weight: 700;
+}
+.tooltip-desc {
+    margin-top: 15px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #666;
+}
+.tooltip-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+.SvgIcon_SvgIcon__root__8vwon {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: inherit;
+    align-items: inherit;
+    -ms-flex-pack: inherit;
+    justify-content: inherit;
+}
+.SvgIcon_SvgIcon__root__svg__DKYBi {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    fill: currentColor;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    font-size: inherit;
+}
+
+.list {
+    float: left;
+    width: 66.6666%;
+    padding-bottom: 80px;
+    margin-top: -36px;
+}
+.list-empty {
+    padding: 240px 0;
+    color: #d1d1d1;
+    font-size: 24px;
+    text-align: center;
+}
+
+.container-profile:after {
+    display: block;
+    content: "";
+    clear: both;
+}

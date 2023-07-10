@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>포인트</title>
+    <link rel="stylesheet" href="/css/header/header.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/mypage/points.css">
+</head>
+<body>
+<div th:replace="~{header/header :: #header}"></div>
+<div class="Padding_padding___Nyki"></div>
+
+<div class="container-profile">
+    <nav role="presentation" class="nav">
+        <h2 class="nav-title">
+            <p>포인트</p>
+            <button type="button" class="nav-button">포인트</button>
+        </h2>
+    </nav>
+    <div class="point">
+        <div class="aside">
+            <div class="aside-inner">
+                <div class="points-div">
+                    <div class="points-point">
+                        <div class="point-label">포인트</div>
+                        <div class="point-value">0<sub> P</sub></div>
+                        <div class="point-expire">7일 이내 소멸 포인트 0 p</div>
+                    </div>
+<!--                    i 아이콘-->
+                    <div class="points-tooltip">
+                        <div class="tooltip tooltip-tooltip">
+                            <span class="tooltip-label">보유 포인트</span>
+                            <button type="button" class="tooltip-button tooltip-trigger">
+                                <svg xmlns="https://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 18 18"
+                                     fill="none">
+                                    <path d="M11.7341 16.2486C10.8677 16.5748 9.94548 16.7442 9 16.7442C4.7232 16.7442 1.25581 13.2771 1.25581 9C1.25581 4.72293 4.7232 1.25581 9 1.25581C11.0825 1.25581 13.0329 2.08087 14.476 3.524C15.9194 4.96743 16.7442 6.91758 16.7442 9C16.7442 11.0833 15.9194 13.0334 14.4761 14.4759C14.2308 14.721 14.2307 15.1186 14.4759 15.3639C14.721 15.6091 15.1186 15.6093 15.3639 15.3641C17.0406 13.6885 18 11.4199 18 9C18 6.58111 17.0406 4.31263 15.364 2.636C13.6877 0.959718 11.419 0 9 0C4.02965 0 0 4.02934 0 9C0 13.9707 4.02965 18 9 18C10.0973 18 11.1694 17.8031 12.1766 17.4239C12.5011 17.3017 12.6652 16.9396 12.543 16.615C12.4208 16.2905 12.0586 16.1264 11.7341 16.2486Z"
+                                          fill="#939393"></path>
+                                    <path d="M8.16279 5.65116C8.16279 5.18819 8.53786 4.81395 9 4.81395C9.46214 4.81395 9.83721 5.18819 9.83721 5.65116C9.83721 6.11414 9.46214 6.48837 9 6.48837C8.53786 6.48837 8.16279 6.11414 8.16279 5.65116Z"
+                                          fill="#939393"></path>
+                                    <path d="M9.62791 8.99668V13.0664C9.62791 13.4132 9.34678 13.6944 9 13.6944C8.65322 13.6944 8.37209 13.4132 8.37209 13.0664V8.99668C8.37209 8.64989 8.65322 8.36877 9 8.36877C9.34678 8.36877 9.62791 8.64989 9.62791 8.99668Z"
+                                          fill="#939393"></path>
+                                </svg>
+                            </button>
+                            <div class="tooltip-body tooltip-tooltip-body">
+                                <div class="tooltip-title">보유 포인트란?</div>
+                                <div class="tooltip-desc">원티드 서비스 내 활동 및 이벤트 참여를 통해 적립 받은 포인트이며, 사용 시 포인트
+                                    만료일자 기준으로 포인트가 먼저 소진됩니다.
+                                </div>
+                                <button type="button" class="tooltip-close"><span
+                                        class="SvgIcon_SvgIcon__root__8vwon"><svg
+                                        class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 24 24"><path
+                                        d="M5.93289 4.6068C5.56201 4.33162 5.03569 4.36219 4.69935 4.69853C4.32938 5.0685 4.32938 5.66834 4.69935 6.03831L10.6611 12L4.69935 17.9617L4.60763 18.0679C4.33244 18.4388 4.36302 18.9651 4.69935 19.3015L4.80561 19.3932C5.17649 19.6684 5.7028 19.6378 6.03914 19.3015L12.0009 13.3402L17.9626 19.3015L18.0688 19.3932C18.4397 19.6684 18.966 19.6378 19.3023 19.3015C19.6723 18.9315 19.6723 18.3317 19.3023 17.9617L13.3406 12L19.3023 6.03831L19.3941 5.93206C19.6693 5.56118 19.6387 5.03487 19.3023 4.69853L19.1961 4.6068C18.8252 4.33162 18.2989 4.36219 17.9626 4.69853L12.0009 10.6598L6.03914 4.69853L5.93289 4.6068Z"></path></svg></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="list">
+            <div class="list-empty">적립내역이 없습니다</div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script>
+    let $btnI = $('.tooltip-trigger');
+    let $tooltip =$('.tooltip-tooltip-body');
+    console.log($btnI);
+    console.log($tooltip);
+    $btnI.on('click',function(){
+
+        if($tooltip.is(':hidden')){
+            $tooltip.show();
+        }else {
+            $tooltip.hide();
+        }
+
+    });
+    // btnI.addEventListener('click',function(){
+    //     tooltip.classList.add('.tooltip-tooltip-body.is-show');
+    // })
+</script>
+</html>
