@@ -431,17 +431,19 @@ textarea {
 
 /*============ main ============*/
 
-.contentlist-wrapper {
+.contentList-wrapper {
     width: 100%;
     height: 100%;
-    /* display: -ms-flexbox; */
+    display: -ms-flexbox;
     display: flex;
-    /* -ms-flex-direction: column; */
+    -ms-flex-direction: column;
     flex-direction: column;
 }
 
+
+
 @media (min-width: 1200px) {
-    .contentlist-wrapper .contentlist-categories {
+    .contentList-wrapper .contentList-categories {
         background-color: #f8f8f8;
         position: fixed;
         top: 50px;
@@ -462,94 +464,101 @@ textarea {
 }
 
 .interest-category {
-    /* display: -ms-flexbox; */
+    display: -ms-flexbox;
     display: flex;
-    /* width: 100%; */
-    /* position: fixed; */
-    /* top: calc(var(--nav-height) + 54px); */
+    width: 100%;
+    position: fixed;
+    top: calc(var(--nav-height) + 54px);
     background-color: #fff;
     padding: 0;
-    /* margin-top: -54px; */
+    margin-top: -54px;
     z-index: 1;
 }
 
 @media (min-width: 1200px) {
-    .InterestTagSlide {
+    .interestCategory-slide {
         width: 100%;
         padding: 19px 30px;
     }
 }
 
 .InterestTagSlide {
-    /* width: calc(100% - 70px);
-    padding: 10px 0 10px 15px; */
+    width: calc(100% - 70px);
+    padding: 10px 0 10px 15px;
     margin: 0;
 }
 
+@media (min-width: 1200px) {
+    .InterestTagSlide {
+        margin: 30px 0;
+    }
+}
+
 .InterestTagSlide {
-    /* width: 100%; */
-    /* display: -ms-flexbox; */
+    width: 100%;
+    display: -ms-flexbox;
     display: flex;
-    /* -ms-flex-direction: row; */
+    -ms-flex-direction: row;
     flex-direction: row;
     position: relative;
-    /* margin: 20px 0; */
-    /* -ms-flex: 1 1; */
+    margin: 20px 0;
+    -ms-flex: 1 1;
     flex: 1 1;
     grid-gap: 8px;
     gap: 8px;
 }
 
-.ScrollSnap-1 {
+/* 슬라이드 태그 */
+.ScrollSnap-slide {
     max-width: calc(100% - 40px - 8px);
 }
 
-.ScrollSnap-1 {
+.ScrollSnap-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scrollSnap {
     position: relative;
-    /* display: -ms-flexbox; */
+    display: -ms-flexbox;
     display: flex;
 }
 
-.ScrollSnap-2 {
+.interestTagSlide-tag {
     grid-gap: 8px;
     gap: 8px;
-    /* display: -ms-flexbox; */
+    display: -ms-flexbox;
     display: flex;
     padding-bottom: 0.5px;
 }
 
-.ScrollSnap-x {
-    /* -ms-scroll-snap-type: x mandatory; */
+.ScrollSnap-mandatory {
+    /*-ms-scroll-snap-type: x mandatory;*/
     scroll-snap-type: x mandatory;
 }
 
 .ScrollSnap-contain {
-    /* -ms-scroll-chaining: none; */
+    -ms-scroll-chaining: none;
     overscroll-behavior: contain;
 }
 
-.ScrollSnap-option {
-    /* -ms-flex-direction: row; */
+.ScrollSnap-scrollX {
+    -ms-flex-direction: row;
     flex-direction: row;
-    /* -ms-flex-align: center; */
+    -ms-flex-align: center;
     align-items: center;
     overflow-x: scroll;
     overflow-y: hidden;
 }
 
-.ScrollSnap-color,
-.ScrollSnap-Item:hover {
-    color: #8a8a8a;
+.ScrollSnap-scroll {
+    display: -ms-flexbox;
+    display: flex;
 }
 
-.ScrollSnap-Item {
-    padding: 9px 22px !important;
-    line-height: 146.7% !important;
-    /* -ms-flex-negative: 0; */
-    flex-shrink: 0;
-    outline: none;
-    scroll-snap-align: start;
-}
+
+
+
 
 .Btn-containedSize,
 .Btn-outlineSize {
@@ -562,16 +571,16 @@ textarea {
 
 .Btn-outline {
     --button-color: #171717;
-    /* color: var(--button-color);
+    color: var(--button-color);
     font-weight: 500;
-    -webkit-box-shadow: inset 0 0 0 1px #e1e2e4; */
+    -webkit-box-shadow: inset 0 0 0 1px #e1e2e4;
     box-shadow: inset 0 0 0 1px #e1e2e4;
     border-radius: 1000px;
     background-color: #fff;
 }
 
-.Btn-root {
-    /* --button-color: #171717; */
+.Button-root {
+    --button-color: #171717;
     position: relative;
     display: inline-flex;
     -ms-flex-align: center;
@@ -579,11 +588,11 @@ textarea {
     -ms-flex-pack: center;
     justify-content: center;
     vertical-align: middle;
-    /* -webkit-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    line-height: normal; */
+    line-height: normal;
     border: none;
-    /* background-color: none; */
+    /*background-color: none; */
     cursor: pointer;
     white-space: nowrap;
 }
