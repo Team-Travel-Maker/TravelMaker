@@ -14,7 +14,9 @@ public class MyPageController {
     @GetMapping("my/posts")
     public void goToPosts(){;}
 
-
+// 관심 지역 설정
+    @GetMapping("interestsRegion")
+    public void goTointerestsRegion(){;}
 
 //  포인트
     @GetMapping("points")
