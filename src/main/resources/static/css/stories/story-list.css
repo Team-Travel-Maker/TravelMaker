@@ -83,8 +83,8 @@
 .select-box-container {
     padding: 0;
     height: 40px;
-    border-radius: 2px;
-    border: 1px solid #333;
+    border-radius: 5px;
+    border: 1px solid #ececec;
     background-color: #fff;
     position: relative;
     width: 100px;
