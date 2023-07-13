@@ -11,6 +11,38 @@
 <link rel="stylesheet" href="/css/header/header.css"/>
 
 <body>
+
+<!-- 모달 부분 -->
+<div class="modal">
+    <div class="warn-modal">
+        <div id="modal-wrap">
+            <div>
+                <div>
+                    <p>MBTI</p>
+                </div>
+                <div>
+                    <button type="button">ISTJ</button>
+                    <button type="button">TSFJ</button>
+                    <button type="button">ISTP</button>
+                    <button type="button">ISFP</button>
+                    <button type="button">INFJ</button>
+                    <button type="button">INFP</button>
+                    <button type="button">INTJ</button>
+                    <button type="button">INTP</button>
+                    <button type="button">ESTJ</button>
+                    <button type="button">ESFP</button>
+                    <button type="button">ENFP</button>
+                    <button type="button">ENTP</button>
+                    <button type="button">ESFJ</button>
+                    <button type="button">ESTP</button>
+                    <button type="button">ENFJ</button>
+                    <button type="button">ENTJ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- 헤더 -->
 <div th:replace="~{header/header :: #header}"></div>
 
@@ -49,7 +81,7 @@
                         <span class="tagMessage-hint">(1~3개)</span>
                         <span class="tagMessage-required">*</span>
                     </div>
-                    <div class="tagPanel-tagWrapper">
+                    <div class="tagPanel-tagWrapper modalOpen">
                         <button type="button">
                             <svg width="34" height="34" viewBox="0 0 34 34">
                                 <path d="M0 17C0 7.61116 7.61116 0 17 0V0C26.3888 0 34 7.61116 34 17V17C34 26.3888 26.3888 34 17 34V34C7.61116 34 0 26.3888 0 17V17Z" fill="#F2F4F7"></path>
@@ -128,6 +160,6 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-
+<script src="/js/goWith/goWith-registration.js"></script>
 
 </html>
