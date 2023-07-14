@@ -14,9 +14,23 @@ public class MyPageController {
     @GetMapping("my/posts")
     public void goToPosts(){;}
 
+    // 내가 작성한 댓글
+    @GetMapping("my/comments")
+    public void goToComments(){;}
+
+
+//   알림
+    @GetMapping("alarm")
+    public void goToAlarm(){;}
 // 관심 지역 설정
     @GetMapping("interestsRegion")
     public void goTointerestsRegion(){;}
+// 계정설정
+    @GetMapping("accountManage")
+    public void goToAccountManage(){; }
+// 회원탈퇴
+    @GetMapping("withdrawal")
+    public void goToWithDrawal(){;}
 
 //  포인트
     @GetMapping("points")

@@ -2,125 +2,123 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>이용후기</title>
+    <title>이용 후기</title>
     <link rel="stylesheet" href="/css/common.css"/>
     <link rel="stylesheet" href="/css/header/header.css"/>
-    <link rel="stylesheet" href="/css/community/community-list.css">
+    <link rel="stylesheet" href="/css/community/community-detail.css">
 </head>
 <body>
 <div th:replace="~{header/header :: #header}"></div>
 <div class="Padding_padding___Nyki"></div>
-<main class="CommunityPostDetail">
-    <aside class="CommunityPostDetail_side">
+<main class="community-post-detail">
+    <aside class="communityPostDetail-side">
         <div>
-            <div class="PostLeftSide_top"><a href="/community/profile/dSf3ndwZt8yTpkazgDSpUR">
-                <div class="AuthorBox AuthorBox__xlarge PostLeftSide__authorBox">
-                    <div class="AuthorBox_avatarWrapper avatar_wrapper">
-                        <div class="UserAvatar AuthorBox_avatar avatar"><img
-                                src="https://lh3.googleusercontent.com/a-/AFdZucrcVodTTA5irGg5Z-cSmLtDDNHVbuo0S-Uhrj4uiA=s96-c"
-                                alt=""></div>
-                    </div>
-                    <div class="AuthorBox_verticalBox">
-                        <!--이름-->
-                        <div class="AuthorBox_username username">사피</div>
-                        <div class="AuthorInfo">
-                            <!--등급-->
-                            <div class="UserInfo userGrade" >새싹</div>
-                            <!--지역-->
-                            <div class="UserInfo userRegion">서울</div>
+            <div class="postleftside-top">
+                <a href="/community/profile/3y3VD9cK82eAdgnyv2NhTJ">
+                    <div class="authorbox authorbox-xlarge postleftSide-authorBox">
+                        <div class="authorBox-avatarWrapper avatar-Wrapper">
+                            <div class="userAvater authorBox-avater avatar"><img
+                                    src="https://static.wanted.co.kr/open_profile/avatar/18bc9596a867766b497736f70014ccd6232f6c90a845c5a3cb3d5d310bc7537a"
+                                    alt="">
+                            </div>
+                        </div>
+                        <div class="authorBox-vertical">
+                            <div class="authorBox-authorBox-username username">잠꾸</div>
+                            <div class="author-info">
+                                <div class="userinfo-badge">개발</div>
+                                <div class="userinfo-badge">7년차</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a></div>
-            <div class="PostLeftSide__bottom">
+                </a>
+            </div>
+            <div class="postLeftside-bottom">
                 <div>
-                <!--좋아요-->
-                    <button type="button" class="button_Button">
+                    <button type="button" class="btn-lgb">
                         <svg width="20" height="20" viewBox="0 0 18 18">
                             <path fill="currentColor"
                                   d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z"></path>
                         </svg>
-                        <span class="Button_count count">0</span></button>
+                        <span class="btn-count-L1 count">0</span></button>
                 </div>
                 <div>
-                    <button type="button"  class="button_Button">
+                    <button type="button" aria-label="comments: 1" aria-pressed="false" class="btn-lgb"
+                            data-attribute-id="community__contentDetail__commentBtn__click"
+                            data-content-title="[기프티콘 제공 설문조사] 온라인 클래스 관련 설문조사입니다." data-content-id="9642"
+                            data-like-count="0" data-comment-count="1" data-interest-tag="데이터,개발,IT/기술">
                         <svg width="20" height="20" viewBox="0 0 18 18">
                             <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
                                   d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z"></path>
                         </svg>
-                <!-- 댓글 갯수  -->
-                        <span class="Button_count count">2</span></button>
+                        <span class="btn-count-L1 count">1</span></button>
                 </div>
             </div>
         </div>
     </aside>
-<!-- 게시글 상세-->
-    <section class="container">
-        <article class="PostContents">
-            <div class="PostContents_header">
-                <div class="PostContents_author"><a
-                        href="/community/profile/dSf3ndwZt8yTpkazgDSpUR">
-                    <div class="AuthorBox AuthorBox_xlarge">
-                        <div class="AuthorBox_verticalArea">
-                            <div class="AuthorBox_avatarWrapper avatar_wrapper">
-                                <div class="UserAvatar AuthorBox_avatar avatar"><img
-                                        src="https://lh3.googleusercontent.com/a-/AFdZucrcVodTTA5irGg5Z-cSmLtDDNHVbuo0S-Uhrj4uiA=s96-c"
+    <section class="communityPostDetail-contents">
+        <article class="postDetail-contents">
+            <div class="postContents-header">
+                <div class="postContents-author"><a
+                        href="/community/profile/3y3VD9cK82eAdgnyv2NhTJ">
+                    <div class="authorbox authorbox-xlarge">
+                        <div class="authorBox-authorbox-verticalArea">
+                            <div class="authorBox-avatarWrapper avatar-Wrapper">
+                                <div class="userAvater authorBox-avater avatar"><img
+                                        src="https://static.wanted.co.kr/open_profile/avatar/18bc9596a867766b497736f70014ccd6232f6c90a845c5a3cb3d5d310bc7537a"
                                         alt=""></div>
                             </div>
-                            <div class="AuthorBox_verticalBox">
-                                <div class="AuthorBox_userInfo">
-<!--                                    유저이름-->
-                                    <div class="AuthorBox_username username">사피</div>
-                                    <div class="AuthorCareer">
-<!--                                        유저 등급-->
-                                        <div class="UserInfo userGrade">새싹</div>
-<!--                                        지역-->
-                                        <div class="UserInfo userRegion">서울</div>
+                            <div class="authorBox-vertical">
+                                <div class="authorBox-authorbox-userinfo">
+                                    <div class="authorBox-authorBox-username username">잠꾸</div>
+                                    <div class="author-info">
+                                        <div class="userinfo-badge" data-id="518">개발</div>
+                                        <div class="userinfo-badge">7년차</div>
                                     </div>
                                 </div>
-<!--                                올린 날짜-->
-                                <span class="AuthorBox_create create_time">20시간 전</span></div>
+                                <span class="authorBox-authorbox-createAt create-time">4분 전</span></div>
                         </div>
                     </div>
                 </a></div>
-                    <!--제목-->
-                <h1 itemprop="headline" class="PostContents_title">포트폴리오 없이도 취업이 가능할까요?</h1></div>
-            <div class="PostContents_body">안녕하세요. 29살 취준생입니다.
+                <h1 itemprop="headline" class="postContents-title">[기프티콘 제공 설문조사] 온라인 클래스 관련
+                    설문조사입니다.</h1></div>
+            <div class="postContents-body">안녕하세요! 저희는 온라인 강의(클래스) 통합 관리 서비스를 기획중인 IT 동아리 DND의
+                6팀입니다.
+                저희는 커져가는 E-러닝 시장에서 흩어져 있는 다양한 온라인 강의 플랫폼들을 통합적으로 관리할 수 있는 서비스를 기획하고 있습니다!
+                이와 관련하여 본 설문조사는 온라인 클래스 수강경험에 대한 조사를 위해 제작되었습니다.
+                예상 소요 시간: 2-3 분 내외입니다.
+                설문에 참여해 주신 분들 중 추첨을 통해 3분께 스타벅스 기프티콘을 드립니다.
+                설문 결과를 추합하고 서비스 개발이 마무리 된 뒤, 모든 정보는 폐기될 예정입니다.
+                참여에 감사드리며, 기타 문의사항은 <a href="mailto:hayeeun01@gmail.com" target="_blank" rel="noopener noreferrer">hayeeun01@gmail.com</a>
+                으로 전송 부탁드립니다.
 
-                비전공자가 포트폴리오 없이도 백엔드 신입으로 취업이 가능할까요?
-
-                부트캠프 node 과정을 수료 하였으나, 팀 프로젝트를 진행하기 전부터 시작해서 진행하는 동안 여러 트러블이 많이 있어서 너무 형편없이 된 것 같아서 차리리 제외하고 내는게 더 좋게
-                보이지않을까 고민이됩니다.
-                <div class="PostContents_metaTags"></div>
-                <div class="PostContents_PostContents_images"></div>
+                설문조사 링크: <a href="https://forms.gle/BYDyaKKPFq76gQjs5" target="_blank" rel="noopener noreferrer">https://forms.gle/BYDyaKKPFq76gQjs5</a>
+                <div class="postContents-metaTags"></div>
+                <div class="postContents-image"></div>
             </div>
-<!--            카테고리 -->
-            <div class="PostContents_tags"><a class="PostContents_tag_button" href="/community/10241/results">취업/이직</a>
-                <a class="PostContents_tag_button" href="/community/10093/results">개발</a></div>
-            <div class="PostContents_bottomActions">
-                <div class="PostContents_bottomActions_like">
-<!--                    좋아요-->
-                    <button type="button" class="button_Button">
+            <div class="postContents-tags"><a class="postContents-tag-btn" href="/community/10085/results">데이터</a>
+                <a class="postContents-tag-btn" href="/community/10093/results">개발</a>
+                <a class="postContents-tag-btn" href="/community/10059/results">IT/기술</a></div>
+            <div class="postContents-btnActions">
+                <div class="postContents-btnActions-like">
+                    <button type="button" class="btn-lgb">
                         <svg width="24" height="24" viewBox="0 0 24 24">
-                            <path fill="currentColor"
-                                  d="M12.563 2.5c0-2.424 3.201-3.043 4.521-.974.446.7.62 1.499.56 2.358-.07 1.008-.451 2.047-1.039 3.081-.055.097-.11.192-.167.285H22a.75.75 0 0 1 .75.75v7a.75.75 0 0 1-.08.335l-3 6a.75.75 0 0 1-.67.415h-7a.75.75 0 1 1 0-1.5h6.536l2.714-5.427V8.75H15a.75.75 0 0 1-.574-1.232 10.286 10.286 0 0 0 .875-1.293c.486-.857.795-1.697.847-2.445.039-.555-.066-1.035-.328-1.447-.564-.883-1.758-.652-1.758.167 0 .875-.302 1.666-.798 2.357-.292.409-.588.7-.88.923C10.712 6.786 9.66 7.677 9.1 8.426l.067-.082a.752.752 0 0 1-.137.186l-.016.014c-.21.298-.264.453-.264.467a.75.75 0 0 1-1.5 0c0-.079.01-.165.029-.26L2.75 8.75v11.5h4.5v-8.125a.75.75 0 1 1 1.5 0V21a.75.75 0 0 1-.75.75H2a.75.75 0 0 1-.75-.75V8A.75.75 0 0 1 2 7.25h6.12c.71-.844 1.838-1.76 3.414-2.702.113-.089.31-.284.511-.564.327-.456.518-.955.518-1.484z"></path>
+                            <path fill="currentColor" d="M12.563 2.5c0-2.424 3.201-3.043 4.521-.974.446.7.62 1.499.56 2.358-.07 1.008-.451 2.047-1.039 3.081-.055.097-.11.192-.167.285H22a.75.75 0 0 1 .75.75v7a.75.75 0 0 1-.08.335l-3 6a.75.75 0 0 1-.67.415h-7a.75.75 0 1 1 0-1.5h6.536l2.714-5.427V8.75H15a.75.75 0 0 1-.574-1.232 10.286 10.286 0 0 0 .875-1.293c.486-.857.795-1.697.847-2.445.039-.555-.066-1.035-.328-1.447-.564-.883-1.758-.652-1.758.167 0 .875-.302 1.666-.798 2.357-.292.409-.588.7-.88.923C10.712 6.786 9.66 7.677 9.1 8.426l.067-.082a.752.752 0 0 1-.137.186l-.016.014c-.21.298-.264.453-.264.467a.75.75 0 0 1-1.5 0c0-.079.01-.165.029-.26L2.75 8.75v11.5h4.5v-8.125a.75.75 0 1 1 1.5 0V21a.75.75 0 0 1-.75.75H2a.75.75 0 0 1-.75-.75V8A.75.75 0 0 1 2 7.25h6.12c.71-.844 1.838-1.76 3.414-2.702.113-.089.31-.284.511-.564.327-.456.518-.955.518-1.484z"></path>
                         </svg>
-                        <span class="Button_count count">0</span></button>
+                        <span class="btn-count-L1 count">0</span></button>
                 </div>
-                <div class="PostContents_bottomActions_comment">
-                    <button type="button" class="button_Button">
+                <div class="postContents-bottomActions-comment">
+                    <button type="button" class="btn-lgb">
                         <svg width="24" height="24" viewBox="0 0 24 24">
                             <path fill="currentColor" transform="matrix(-1 0 0 1 24 0)"
                                   d="M9.826 19.561c.71.125 1.438.189 2.174.189 5.912 0 10.75-4.112 10.75-9.25S17.912 1.25 12 1.25c-5.913 0-10.75 4.112-10.75 9.25 0 3.273 1.841 6.389 4.882 7.747a.75.75 0 0 0 .611-1.37C4.267 15.772 2.75 13.205 2.75 10.5c0-4.251 4.116-7.75 9.25-7.75 5.133 0 9.25 3.5 9.25 7.75s-4.117 7.75-9.25 7.75c-.747 0-1.482-.074-2.194-.22a.75.75 0 0 0-.578.12l-4.656 3.234a.75.75 0 0 0 .856 1.232l4.398-3.055z"></path>
                         </svg>
-<!--                        댓글갯수-->
-                        <span class="Button_count count">2</span></button>
+                        <span class="btn-count-L1 count">1</span></button>
                 </div>
-                <button type="button" class="PostContents_menu_link_button">
-                    <span class="SvgIcon_SvgIcon__root__8vwon">
-                        <svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.8419 5.13156C20.8419 3.34425 19.3929 1.89474 17.6051 1.89474C15.8181 1.89474 14.3682 3.34457 14.3682 5.13156L14.3777 5.37944C14.384 5.46157 14.3934 5.54316 14.4058 5.62409L14.4152 5.67411L6.48256 9.86022L6.41109 9.78015C5.79271 9.13677 4.91641 8.75021 3.9697 8.75021C2.1352 8.75021 0.631592 10.194 0.631592 11.9933C0.631592 13.7933 2.13485 15.2364 3.9697 15.2364L4.20171 15.2286C5.04647 15.1719 5.82161 14.8075 6.3874 14.2307L6.45098 14.1587L15.0769 18.7102C15.2605 18.8071 15.4707 18.841 15.6754 18.8067L15.7022 18.8022L15.8292 18.7718C16.077 18.6942 16.2842 18.5172 16.3988 18.28L16.4722 18.148C16.5528 18.0206 16.6553 17.9073 16.7783 17.8116C17.3632 17.3544 18.2064 17.4579 18.6625 18.0422C19.1191 18.627 19.0157 19.4704 18.4326 19.9256C17.8475 20.3823 17.004 20.2788 16.5478 19.6945L16.4536 19.5905C16.1191 19.272 15.593 19.238 15.2181 19.5307C14.8057 19.8527 14.7324 20.4481 15.0543 20.8605C16.1547 22.2699 18.1889 22.5196 19.5985 21.4192C21.007 20.3199 21.2563 18.2855 20.156 16.8762C19.0556 15.4667 17.0211 15.2169 15.6126 16.3178L15.4226 16.4779C15.3616 16.5334 15.303 16.5911 15.2426 16.6547L6.6973 12.1478L6.67428 12.1292C6.60376 12.0831 6.52833 12.0476 6.45025 12.0225L6.41688 12.0139L6.49246 11.9899C6.53023 11.9752 6.56816 11.9579 6.60613 11.9379L15.9611 7.00213L16.1289 6.88917L16.159 6.86384L16.2612 6.76385C16.5102 6.48039 16.57 6.07014 16.4003 5.72293L16.3408 5.5818C16.2895 5.43808 16.263 5.28694 16.263 5.13156C16.263 4.391 16.8645 3.78948 17.6051 3.78948C18.3463 3.78948 18.9471 4.39053 18.9471 5.13156C18.9471 5.87326 18.3467 6.47363 17.6051 6.47363L17.4765 6.48228C17.0141 6.54501 16.6577 6.94138 16.6577 7.421C16.6577 7.94422 17.0818 8.36837 17.6051 8.36837C19.3932 8.36837 20.8419 6.91969 20.8419 5.13156ZM2.52634 11.9933C2.52634 11.2581 3.16483 10.6449 3.9697 10.6449L4.14547 10.6549C4.60709 10.7073 5.00699 10.9637 5.22962 11.334L5.26108 11.395L5.28192 11.4515C5.38641 11.702 5.59409 11.9092 5.85157 12.0023L5.89393 12.0152L5.85009 12.0269C5.61829 12.1049 5.41331 12.2729 5.296 12.5268L5.22001 12.668C4.96724 13.0762 4.49734 13.3416 3.9697 13.3416C3.16435 13.3416 2.52634 12.7292 2.52634 11.9933Z"></path></svg></span>
+                <button type="button" class="postContent-menu-link">
+                    <span class="svgIcon-root"><svg
+                            class="svgIcon-root-svg" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.8419 5.13156C20.8419 3.34425 19.3929 1.89474 17.6051 1.89474C15.8181 1.89474 14.3682 3.34457 14.3682 5.13156L14.3777 5.37944C14.384 5.46157 14.3934 5.54316 14.4058 5.62409L14.4152 5.67411L6.48256 9.86022L6.41109 9.78015C5.79271 9.13677 4.91641 8.75021 3.9697 8.75021C2.1352 8.75021 0.631592 10.194 0.631592 11.9933C0.631592 13.7933 2.13485 15.2364 3.9697 15.2364L4.20171 15.2286C5.04647 15.1719 5.82161 14.8075 6.3874 14.2307L6.45098 14.1587L15.0769 18.7102C15.2605 18.8071 15.4707 18.841 15.6754 18.8067L15.7022 18.8022L15.8292 18.7718C16.077 18.6942 16.2842 18.5172 16.3988 18.28L16.4722 18.148C16.5528 18.0206 16.6553 17.9073 16.7783 17.8116C17.3632 17.3544 18.2064 17.4579 18.6625 18.0422C19.1191 18.627 19.0157 19.4704 18.4326 19.9256C17.8475 20.3823 17.004 20.2788 16.5478 19.6945L16.4536 19.5905C16.1191 19.272 15.593 19.238 15.2181 19.5307C14.8057 19.8527 14.7324 20.4481 15.0543 20.8605C16.1547 22.2699 18.1889 22.5196 19.5985 21.4192C21.007 20.3199 21.2563 18.2855 20.156 16.8762C19.0556 15.4667 17.0211 15.2169 15.6126 16.3178L15.4226 16.4779C15.3616 16.5334 15.303 16.5911 15.2426 16.6547L6.6973 12.1478L6.67428 12.1292C6.60376 12.0831 6.52833 12.0476 6.45025 12.0225L6.41688 12.0139L6.49246 11.9899C6.53023 11.9752 6.56816 11.9579 6.60613 11.9379L15.9611 7.00213L16.1289 6.88917L16.159 6.86384L16.2612 6.76385C16.5102 6.48039 16.57 6.07014 16.4003 5.72293L16.3408 5.5818C16.2895 5.43808 16.263 5.28694 16.263 5.13156C16.263 4.391 16.8645 3.78948 17.6051 3.78948C18.3463 3.78948 18.9471 4.39053 18.9471 5.13156C18.9471 5.87326 18.3467 6.47363 17.6051 6.47363L17.4765 6.48228C17.0141 6.54501 16.6577 6.94138 16.6577 7.421C16.6577 7.94422 17.0818 8.36837 17.6051 8.36837C19.3932 8.36837 20.8419 6.91969 20.8419 5.13156ZM2.52634 11.9933C2.52634 11.2581 3.16483 10.6449 3.9697 10.6449L4.14547 10.6549C4.60709 10.7073 5.00699 10.9637 5.22962 11.334L5.26108 11.395L5.28192 11.4515C5.38641 11.702 5.59409 11.9092 5.85157 12.0023L5.89393 12.0152L5.85009 12.0269C5.61829 12.1049 5.41331 12.2729 5.296 12.5268L5.22001 12.668C4.96724 13.0762 4.49734 13.3416 3.9697 13.3416C3.16435 13.3416 2.52634 12.7292 2.52634 11.9933Z"></path></svg></span>
                 </button>
-                <button type="button" class="PostContents_menu_button">
+                <button type="button" class="postcontent-menu-btn">
                     <svg width="24" height="24" viewBox="0 0 24 24">
                         <path fill="currentColor"
                               d="M12 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 12 10zm7 0a2 2 0 1 1-.001 4.001A2 2 0 0 1 19 10zM5 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 5 10z"></path>
@@ -128,78 +126,55 @@
                 </button>
             </div>
         </article>
-<!--        댓글-->
-        <div class="CommunityPostDetail_commentsView">
-            <div class="CommentItem">
-                <div class="CommentItem_header"><a href="/community/profile/WuUkA24ewprFEKnbvXCDB4">
-                    <div class="AuthorBox AuthorBox_xlarge CommentItem_author">
-                        <div class="AuthorBox_verticalArea">
-                            <div class="AuthorBox_avatarWrapper avatar_wrapper">
-                                <div class="UserAvatar AuthorBox_avatar avatar"><img
+        <div class="communitypostDetail-commentsview">
+            <div class="commentItem-commtentItem">
+                <div class="commentItem-commtentItem-header"><a href="/community/profile/WuUkA24ewprFEKnbvXCDB4">
+                    <div class="authorbox authorbox-xlarge commentItem-commtentItem-author">
+                        <div class="authorBox-authorbox-verticalArea">
+                            <div class="authorBox-avatarWrapper avatar-Wrapper">
+                                <div class="userAvater authorBox-avater avatar"><img
                                         src="https://static.wanted.co.kr/images/avatars/2958997/284bd3e6.jpg" alt="">
                                 </div>
                             </div>
-                            <div class="AuthorBox_verticalBox">
-                                <div class="AuthorBox_userInfo">
-<!--                                    댓글 단 유저 이름-->
-                                    <div class="AuthorBox_username username">원티드 AI</div>
-                                    <div class="AuthorCareer">
-                                    <!-- 유저 등급-->
-                                        <div class="UserInfo userGrade">새싹</div>
-                                    <!-- 지역-->
-                                        <div class="UserInfo userRegion">서울</div>
-                                    </div>
-
+                            <div class="authorBox-vertical">
+                                <div class="authorBox-authorbox-userinfo">
+                                    <div class="authorBox-authorBox-username username">원티드 AI</div>
                                 </div>
-                <!--   시간-->
-                                <span class="AuthorBox_create create_time">20시간 전</span></div>
+                                <span class="authorBox-authorbox-createAt create-time">4분 전</span></div>
                         </div>
                     </div>
                 </a>
-                    <button type="button" aria-label="popup menu" class="CommentItem_menu">
+                    <button type="button" class="commentItem-commtentmenu">
                         <svg width="18" height="18" viewBox="0 0 24 24">
                             <path fill="currentColor"
                                   d="M12 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 12 10zm7 0a2 2 0 1 1-.001 4.001A2 2 0 0 1 19 10zM5 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 5 10z"></path>
                         </svg>
                     </button>
                 </div>
-<!--                댓글 내용-->
-                <div class="CommentItem_content">안녕하세요! 원티드 AI입니다. 먼저, 취준생으로서 화이팅입니다!
-
-                    포트폴리오 없이도 취업이 가능할까요? 답변은 "가능합니다" 입니다! 하지만 좀 더 어려울 수 있습니다. 코딩 부트캠프를 수료하셨다면 이미 백엔드 개발에 필요한 능력을 쌓은 것이기
-                    때문에, 개인적으로는 프로젝트 경험이 포트폴리오에 대해 지배적인 요소가 아니라고 생각합니다.
-
-                    프로젝트가 제대로 되지 않았다는 것은 아쉽지만, 저희가 추천드리는 방법은 개인 프로젝트를 진행하시는 것입니다. 그리고 이 프로젝트를 포트폴리오로 사용하실 수 있습니다. 개인적으로
-                    진행하는 프로젝트는 자신이 직접 선택하고, 관심있는 것을 만들면 좋습니다. 그리고 이를 통해 코드 작성 능력, 문제 해결 능력, 협업 능력 등을 쌓으실 수 있습니다.
-
-                    마지막으로, 포트폴리오가 없는 상태에서 취업을 하시더라도, 본인이 스스로 공부하고 발전하는 모습을 보이신다면 기업에서는 그 자체만으로도 큰 가치를 둘 것입니다. 제가 더 도움이 될
-                    수 있는 방법이 있다면 언제든지 문의해주세요. 화이팅입니다! 🤗
+                <div class="commtentItem-content">설문조사에 참여해 주셔서 감사합니다! 저희 DND 6팀은 온라인 강의 관리 서비스를 기획
+                    중입니다. 설문 결과를 토대로 더 나은 서비스를 제공할 수 있도록 노력하겠습니다. 기프티콘 추첨에 참여하시는 것도 잊지 마세요!
                 </div>
             </div>
-<!--            댓글 더미 -->
-<!--            댓글 작성하기-->
-            <div class="CommentWrite">
-                <div class="CommentWrite_top">
-                    <div class="UserAvatar CommentWrite_avatar"><img
+            <div class="commentWrite-commtentWrite">
+                <div class="commentWrite-commtentWrite-top">
+                    <div class="userAvater commentWrite-commtentWrite-avatar"><img
                             src="https://static.wanted.co.kr/oneid-user/profile_default.png" alt=""></div>
-<!--                    작성자 이름-->
-                    <span class="CommentWrite_username">김광민</span></div>
-                <div class="CommentWrite_bottom">
-                    <form>
-<!--                        댓글 내용 작성하기 폼-->
-                        <textarea class="CommentWrite_textarea" placeholder="댓글 남기기"></textarea>
-                        <button class="Button_Button__root__V1ie3 Button_Button__contained__toUI5 Button_Button__containedPrimary__gFaT9 Button_Button__containedSizeMedium__c2z9c Button_Button__containedDisabled__qiqtc Button_Button__disabled__2eyyF CommentWrite_CommentWrite__saveButton__Ao_V8"
-                                type="submit" disabled=""><span class="Button_Button__label__1Kk0v">등록</span></button>
+                    <span class="commentWrite-commtentWrite-username">김광민</span></div>
+                <div class="commentWrite-commtentWrite-bottom">
+                    <form><textarea class="commentWrite-commtentWrite-textarea" placeholder="댓글 남기기"></textarea>
+                        <button class="button-root button-contained button-containedPrimary button-containedSizeMedium button-containedDisabled button-disabled commentwrite-saveBtn" type="submit" disabled="">
+                            <span class="btn-label">등록</span></button>
                     </form>
                 </div>
             </div>
-            <button class="Button_Button__root__V1ie3 Button_Button__outlined__H2mkd Button_Button__outlinedAssistive__mBcQK Button_Button__outlinedSizeMedium__k3ora CommunityPostDetail_backToList__EpKXX"
+            <button class="button-root btn-outlined btn-outlinedAssistive btn-outlinedSizeMedium communityPostDetail-bakckList"
                     type="button">
-                <span class="Button_Button__label__1Kk0v"><span class="Button_Button__startIcon__DtqdY Button_Button__startIcon__sizeMedium__GChf6"><span
-                    class="SvgIcon_SvgIcon__root__8vwon"><svg class="SvgIcon_SvgIcon__root__svg__DKYBi"
-                                                              viewBox="0 0 24 24"><path
-                    d="M15.42 20.7879C14.9267 21.2812 14.1269 21.2812 13.6336 20.7879L5.73887 12.8932C5.24557 12.3999 5.24557 11.6001 5.73887 11.1068L13.6336 3.21207C14.1269 2.71878 14.9267 2.71878 15.42 3.21207C15.9133 3.70537 15.9133 4.50515 15.42 4.99845L8.41843 12L15.42 19.0015C15.9133 19.4948 15.9133 20.2946 15.42 20.7879Z"></path></svg></span></span>목록으로</span><span
-                    class="Button_Button__interaction__kkYaa"></span></button>
+                <span class="btn-label"><span
+                        class="btn-startIcon btn-startIcon-sizeMedium"><span
+                        class="svgIcon-root"><svg class="svgIcon-root-svg"
+                                                  viewBox="0 0 24 24"><path
+                        d="M15.42 20.7879C14.9267 21.2812 14.1269 21.2812 13.6336 20.7879L5.73887 12.8932C5.24557 12.3999 5.24557 11.6001 5.73887 11.1068L13.6336 3.21207C14.1269 2.71878 14.9267 2.71878 15.42 3.21207C15.9133 3.70537 15.9133 4.50515 15.42 4.99845L8.41843 12L15.42 19.0015C15.9133 19.4948 15.9133 20.2946 15.42 20.7879Z"></path></svg></span></span>목록으로</span><span
+                    class="btn-interaction"></span></button>
         </div>
     </section>
 </main>
