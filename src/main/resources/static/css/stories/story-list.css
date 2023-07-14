@@ -9,6 +9,9 @@
         width: 87.72%;
     }
 }
+@media (min-width: 935px) {
+
+}
 .story-list-container {
     position: relative;
     max-width: 1060px;
@@ -121,7 +124,7 @@
     background-color: #e1e2e4;
 }
 .hr-bottom {
-    height: 2px;
+    height: 1px;
     margin: 0;
     border: none;
     -ms-flex-negative: 0;
