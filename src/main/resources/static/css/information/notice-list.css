@@ -240,7 +240,7 @@ form.search input[type="submit"] {
     border-radius: 25px;
     color: #ababab;
     color: transparent;
-    background: url(//theme.zdassets.com/theme_assets/9309779/32d50e5e2e82fe3a2e1cab8abc09336bed336b0c.png);
+    background: url("/images/information/검색버튼.png");
     background-size: 50px;
     background-repeat: no-repeat;
     display: block;

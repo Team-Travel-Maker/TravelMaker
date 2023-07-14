@@ -76,7 +76,7 @@ ul.article-list > li{
 /*모바일 버전 관련문서 버튼 after*/
 #related_articles_div_collapse_btn:after{
     content: "";
-    background-image:url("//theme.zdassets.com/theme_assets/9309779/32a2fa4e5ce568e7fb16063205277a8abd1c66b3.png");
+    background-image:url("/images/information/selectbox버튼아래.png");
     background-size: 25px 25px;
     display: inline-block;
     width: 20px;
@@ -86,7 +86,7 @@ ul.article-list > li{
 }
 #related_articles_div_collapse_btn[aria-expanded="false"]:after{
     content: "";
-    background-image:url("//theme.zdassets.com/theme_assets/9309779/32a2fa4e5ce568e7fb16063205277a8abd1c66b3.png");
+    background-image:url("/images/information/selectbox버튼아래.png");
     background-size: 25px 25px;
     display: inline-block;
     width: 20px;
@@ -97,7 +97,7 @@ ul.article-list > li{
 
 #related_articles_div_collapse_btn[aria-expanded="true"]:after{
     content: "";
-    background-image:url("//theme.zdassets.com/theme_assets/9309779/b9726d609a703175d8fc43f279dd6e8687aa1439.png");
+    background-image:url("/images/information/selectbox버튼위.png");
     background-size: 25px 25px;
     display: inline-block;
     width: 20px;
@@ -303,7 +303,7 @@ form.search input[type="submit"] {
     color: #ababab;
     /*검색버튼 아이콘화*/
     color: transparent;
-    background: url(//theme.zdassets.com/theme_assets/9309779/32d50e5e2e82fe3a2e1cab8abc09336bed336b0c.png);
+    background: url("/images/information/검색버튼.png");
     background-size: 50px;
     background-repeat: no-repeat;
     display: block;
