@@ -86,24 +86,6 @@ const $newPassNotMatch = $('#pass-not-match');
 // 비밀번호 사용 가능 문구
 const $newPassAvailable = $('#pass-available')
 
-
-/* ---------- 동의 변수 ----------*/
-// 전체 동의 버튼
-const $agreeAllChkBox = $('#is_agree_all');
-
-// 만 14세 이상 동의 버튼
-const $above14ChkBox = $('#is_above_14');
-
-// 이용약관 동의 버튼
-const $termsConditionsChkBox = $('#is_terms_conditions');
-
-// 개인정보 수집 및 이용 동의 버튼
-const $collectInfoChkBox = $('#is_collect_information');
-
-// 맞춤 정보 받기 동의 버튼
-const $acceptEventAllChkBox = $('#is_accept_event_all');
-
-
 /* ---------- 마지막 가입하기 버튼 변수 ----------*/
 // 모든 입력란 마다 버튼 플래그 확인 함수를 불러서 다 확인 완료이면 버튼이 활성화 될 수 있도록
 const $joinBtn = $('.join-button');
@@ -122,7 +104,6 @@ $zipCode.on('input', function () {
 $addressDetail.on('input', function () {
     joinBtnCheck()
 })
-
 
 /* ---------- 타입 관련 처리 ----------*/
 // 타입 버튼 이벤트
@@ -587,3 +568,10 @@ function joinBtnCheck() {
         $joinBtn.attr("disabled", true);
     }
 }
+
+$joinBtn.on('click', function () {
+    showWarnModal("회원가입이 정상적으로 처리 되었습니다.");
+    setTimeout(function () {
+        // $("#answerWriteForm").submit();
+    }, 1500);
+})

@@ -1,0 +1,408 @@
+#drophover > li > a > img{
+    margin-top: -3px;
+    width: 22px;
+}
+@media (max-width: 769px) {
+    #drophover > li > a > img{
+        margin-top: 0px;
+        width: 22px;
+    }
+}
+#heder_logo_image {
+    max-width: 180px;
+}
+@media (max-width: 767px) {
+    #heder_logo_image {
+        max-width: 180px;
+    }
+}
+ul.article-list > li{
+    padding: 10px 0px;
+}
+.articles > a {
+    padding: 5px 0px;
+}
+
+@media (max-width: 769px) {
+    .header-inner{
+        margin-top : 2px;
+    }
+}
+#MOBILERealatedArticlesDIV > section > ul > li {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.search input[type="search"] {
+    background-color: #fff;
+    border: 1px solid #ececec;
+    border-radius: 5px;
+    height: 50px;
+    padding: 10px 55px 10px 15px;
+    width: 100%;
+}
+
+/*모바일 버전 관련문서 보이기*/
+@media (max-width: 769px) {
+    #mobile_related_articles_DIV {
+        display:block;
+    }
+    #pc_related_articles_DIV {
+        display:none;
+    }
+}
+@media (min-width: 770px) {
+    /*모바일 버전 관련문서 보이기*/
+    #mobile_related_articles_DIV {
+        display:none;
+    }
+    #pc_related_articles_DIV {
+        display:block;
+    }
+}
+
+/*모바일 버전 관련문서 버튼 스타일*/
+#related_articles_div_collapse_btn{
+    width:100%;
+    background-color:#FFFFFF;
+    color:#333333;
+    border-color:#EAEAEA;
+    text-align:left;
+    padding-right:23px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+/*모바일 버전 관련문서 버튼 after*/
+#related_articles_div_collapse_btn:after{
+    content: "";
+    background-image:url("//theme.zdassets.com/theme_assets/9309779/32a2fa4e5ce568e7fb16063205277a8abd1c66b3.png");
+    background-size: 25px 25px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    color: #333333;
+    float: right;
+}
+#related_articles_div_collapse_btn[aria-expanded="false"]:after{
+    content: "";
+    background-image:url("//theme.zdassets.com/theme_assets/9309779/32a2fa4e5ce568e7fb16063205277a8abd1c66b3.png");
+    background-size: 25px 25px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    color: #333333;
+    float: right;
+}
+
+#related_articles_div_collapse_btn[aria-expanded="true"]:after{
+    content: "";
+    background-image:url("//theme.zdassets.com/theme_assets/9309779/b9726d609a703175d8fc43f279dd6e8687aa1439.png");
+    background-size: 25px 25px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    color: #333333;
+    float: right;
+}
+
+/*Zendesk 기본 관련문서 타이틀 숨기기*/
+#MOBILERealatedArticlesDIV > section > h3{
+    display:none;
+}
+ol.breadcrumbs {
+    padding-left: 0px;
+}
+/*상단 문서 Path 및 검색 영역 [S]*/
+.breadcrumb-container{
+    margin-bottom: 20px;
+    padding-right: 15px;
+    padding-left: 0px;
+}
+.breadcrumb-container-path{
+    padding-left:15px;
+}
+.breadcrumb-container-search{
+    padding-left:0px;
+    padding-right:0px;
+}
+@media (max-width: 769px) {
+    #article-content-div{
+        padding-right: 0px;
+    }
+    .breadcrumb-container{
+        margin-bottom: 20px;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .breadcrumb-container-search{
+        padding-left:15px;
+        padding-right:15px;
+    }
+    form.search input[type="submit"] {
+        right: 10px;
+    }
+}
+/*상단 문서 Path 및 검색 영역 [E]*/
+
+@media (min-width: 992px)
+{
+    #article-content-div {
+        padding-right:80px;
+    }
+}
+.breadcrumbs{
+    padding-left: 0px;
+}
+
+.breadcrumbs li + li:before {
+    content: ">";
+    font-size: large;
+    font-weight: bold;
+    font-family: 'FontAwesome';
+    padding: 0 5px;
+    color: rgba(51, 122, 183, 1);
+}
+.profile-header .container {
+    display: flex;
+    flex-wrap: wrap;
+}
+@media (min-width: 768px) {
+    .profile-header .container {
+        flex-wrap: nowrap;
+    }
+}
+
+/*헤더 이미지 영역 모바일 동적 반응을 위한 스타일 [S]*/
+@media (max-width: 767px) {
+    /*헤더 이미지*/
+    #heder_logo_image {
+        max-width:10%; /*40%*/
+        margin-top:18px;
+    }
+}
+@media (max-width: 480px) {
+    /*헤더 이미지*/
+    #heder_logo_image {
+        max-width:10%; /*40%*/
+        margin-top:18px;
+    }
+}
+/*==========================================*/
+/*   Base Starts
+/*==========================================*/
+
+@charset "utf-8";
+body.helpcenter-enable {
+    height: 100%;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+}
+body img,
+body iframe {
+    max-width: 100%;
+    margin-top: 15px;
+}
+body a,
+body a:hover,
+body a:focus {
+    outline: 0;
+    text-decoration: none;
+    color: rgba(51, 122, 183, 1);
+    webkit-transition: all 250ms ease-in-out;
+    -moz-transition: all 250ms ease-in-out;
+    -o-transition: all 250ms ease-in-out;
+    -ms-transition: all 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
+}
+p:empty {
+    display: none;
+}
+body ul,
+body ol {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 5px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(51, 122, 183, 1);
+}
+
+.header {
+    background-color: rgba(204, 96, 47, 0);
+}
+
+.header-inner {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.logo img {
+    max-height: 20px; /*30*/
+    margin-top: 12px;
+}
+
+body .btn,
+body .btn a {
+    background-color: #757575;
+    color: #fff;
+    font-size: 0.9em;
+}
+@media all and (max-width: 767px) {
+    body h3 {
+        font-size: 18px;
+    }
+    .header-inner {
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+}
+body .btn:hover,
+body .btn:focus,
+.btn:after {
+    color: #fff;
+}
+
+@media all and (max-width: 767px) {
+    .article-sidebar {
+        /*margin-top: 25px;*/
+        margin-top: 0px;
+    }
+}
+.search input[type="search"] {
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 25px;
+    height: 50px;
+    padding: 10px 55px 10px 30px;
+    width: 100%;
+}
+form.search input[type="submit"] {
+    border: medium none;
+    height: 48px;
+    overflow: hidden;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    vertical-align: middle;
+    background: #fff;
+    padding: 0 20px;
+    border-radius: 25px;
+    color: #ababab;
+    /*검색버튼 아이콘화*/
+    color: transparent;
+    background: url(//theme.zdassets.com/theme_assets/9309779/32d50e5e2e82fe3a2e1cab8abc09336bed336b0c.png);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    display: block;
+    background-position: -15px 15px;
+}
+.padding {
+    padding: 40px 0;
+}
+
+.article-sidebar ul li a {
+    color: #454545;
+}
+
+.article-sidebar section:first-child h3 {
+    margin-top: 0;
+}
+.article-sidebar h3 {
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+section.breadcrumb {
+    padding: inherit;
+    background-color: transparent;
+    border-bottom: 1px solid #ECECEC;
+}
+ol.breadcrumbs {
+    padding: 15px 5px;
+}
+ol.breadcrumbs li:first-child a:before {
+    /*content: "\f015";*/
+    padding-right: 3px;
+    font-family: 'FontAwesome';
+}
+.breadcrumbs > li {
+    color:#767676 !important;
+    display: inline-block;
+}
+.breadcrumbs > li a {
+    color: #757575;
+}
+.breadcrumbs > li:last-child a {
+    color: #333333;
+}
+
+.article-sidebar section > ul > li {
+    padding: 5px 22px;
+    position: relative;
+    font-size: 1.1em;
+    line-height: 2;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+    .article-sidebar section > ul > li {
+        font-size: 1em;
+    }
+    body h3 {
+        font-size: 18px;
+    }
+}
+.article-sidebar section > ul > li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 1.4;
+    padding-left:0px;
+    padding-right:0px;
+}
+
+.article-sidebar section > ul > li:hover {
+    background-color:#f2f4f7;
+}
+
+.article-sidebar section > ul > li:before {
+    /*content: "\f0f6";*/
+    font-family: 'FontAwesome';
+    position: absolute;
+    left: 0;
+    color: rgba(51, 122, 183, 1);
+}
+.article-sidebar section > ul > li:before {
+    margin-top: 2px;
+}
+
+.article-sidebar section > ul {
+    padding-left: 0;
+}
+
+.article-body img {
+    /*border: 1px solid #efefef;*/
+    padding: 4px;
+}
+.article-body {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+.article-head {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    font-weight: 600;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
