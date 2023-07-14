@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="/css/header/header.css"/>
 
 <body>
+
+
+
 <!-- 헤더 -->
 <div th:replace="~{header/header :: #header}"></div>
 
@@ -50,13 +53,13 @@
                         <span class="tagMessage-required">*</span>
                     </div>
                     <div class="tagPanel-tagWrapper">
-                        <button type="button">
+                        <button type="button" class="modalOpen">
                             <svg width="34" height="34" viewBox="0 0 34 34">
                                 <path d="M0 17C0 7.61116 7.61116 0 17 0V0C26.3888 0 34 7.61116 34 17V17C34 26.3888 26.3888 34 17 34V34C7.61116 34 0 26.3888 0 17V17Z" fill="#F2F4F7"></path>
                                 <path d="M17.7432 10.6482C17.6935 10.2822 17.3797 10 17 10C16.5858 10 16.25 10.3358 16.25 10.75V16.25H10.75L10.6482 16.2568C10.2822 16.3065 10 16.6203 10 17C10 17.4142 10.3358 17.75 10.75 17.75H16.25V23.25L16.2568 23.3518C16.3065 23.7178 16.6203 24 17 24C17.4142 24 17.75 23.6642 17.75 23.25V17.75H23.25L23.3518 17.7432C23.7178 17.6935 24 17.3797 24 17C24 16.5858 23.6642 16.25 23.25 16.25H17.75V10.75L17.7432 10.6482Z" fill="#666666"></path>
                             </svg>
                         </button>
-                        <button type="button" class="tagPanel-placeholder" aria-label="Open Select Tag Modal">
+                        <button type="button" class="tagPanel-placeholder modalOpen" aria-label="Open Select Tag Modal">
                             <picture>
                                 <source type="image/webp" srcset="https://static.wanted.co.kr/images/community/tag_empty.webp 1x, https://static.wanted.co.kr/images/community/tag_empty@2x.webp 2x, https://static.wanted.co.kr/images/community/tag_empty@3x.webp 3x">
                                 <img srcset="https://static.wanted.co.kr/images/community/tag_empty.png 1x, https://static.wanted.co.kr/images/community/tag_empty@2x.png 2x, https://static.wanted.co.kr/images/community/tag_empty@3x.png 3x" src="https://static.wanted.co.kr/images/community/tag_empty@3x.png" alt="empty tag">
@@ -66,6 +69,43 @@
                             <!--                            ::before-->
                             <div class="tagPanel-scroll">
                                 <div class="tagPanel-scrollList"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tagPanel">
+                    <div class="tagPanel-message">
+                        <span>MBTI 선택</span>
+                        <span class="tagMessage-required">*</span>
+                    </div>
+                    <div class="tagPanel-tagWrapper">
+                        <button type="button" class="modalOpen">
+                            <svg width="34" height="34" viewBox="0 0 34 34">
+                                <path d="M0 17C0 7.61116 7.61116 0 17 0V0C26.3888 0 34 7.61116 34 17V17C34 26.3888 26.3888 34 17 34V34C7.61116 34 0 26.3888 0 17V17Z" fill="#F2F4F7"></path>
+                                <path d="M17.7432 10.6482C17.6935 10.2822 17.3797 10 17 10C16.5858 10 16.25 10.3358 16.25 10.75V16.25H10.75L10.6482 16.2568C10.2822 16.3065 10 16.6203 10 17C10 17.4142 10.3358 17.75 10.75 17.75H16.25V23.25L16.2568 23.3518C16.3065 23.7178 16.6203 24 17 24C17.4142 24 17.75 23.6642 17.75 23.25V17.75H23.25L23.3518 17.7432C23.7178 17.6935 24 17.3797 24 17C24 16.5858 23.6642 16.25 23.25 16.25H17.75V10.75L17.7432 10.6482Z" fill="#666666"></path>
+                            </svg>
+                        </button>
+                        <button type="button" class="tagPanel-placeholder modalOpen" aria-label="Open Select Tag Modal">
+                            <picture>
+                                <source type="image/webp" srcset="https://static.wanted.co.kr/images/community/tag_empty.webp 1x, https://static.wanted.co.kr/images/community/tag_empty@2x.webp 2x, https://static.wanted.co.kr/images/community/tag_empty@3x.webp 3x">
+                                <img srcset="https://static.wanted.co.kr/images/community/tag_empty.png 1x, https://static.wanted.co.kr/images/community/tag_empty@2x.png 2x, https://static.wanted.co.kr/images/community/tag_empty@3x.png 3x" src="https://static.wanted.co.kr/images/community/tag_empty@3x.png" alt="empty tag">
+                            </picture>
+                        </button>
+                        <div class="tagPanel-slider">
+                            <!--                            ::before-->
+                            <div class="tagPanel-scroll">
+                                <div class="tagPanel-scrollList">
+                                    <div class="tagPanel-selectedTag">
+                                        <span></span>
+                                        <button type="button" class="selectedTag-deletedBtn">
+                                            <span class="svgIcon-root">
+                                                <svg class="svgIcon-rootSvg" viewBox="0 0 24 24">
+                                                    <path d="M5.93289 4.6068C5.56201 4.33162 5.03569 4.36219 4.69935 4.69853C4.32938 5.0685 4.32938 5.66834 4.69935 6.03831L10.6611 12L4.69935 17.9617L4.60763 18.0679C4.33244 18.4388 4.36302 18.9651 4.69935 19.3015L4.80561 19.3932C5.17649 19.6684 5.7028 19.6378 6.03914 19.3015L12.0009 13.3402L17.9626 19.3015L18.0688 19.3932C18.4397 19.6684 18.966 19.6378 19.3023 19.3015C19.6723 18.9315 19.6723 18.3317 19.3023 17.9617L13.3406 12L19.3023 6.03831L19.3941 5.93206C19.6693 5.56118 19.6387 5.03487 19.3023 4.69853L19.1961 4.6068C18.8252 4.33162 18.2989 4.36219 17.9626 4.69853L12.0009 10.6598L6.03914 4.69853L5.93289 4.6068Z"></path>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -121,6 +161,69 @@
     </div>
     <div class="writePaper-mobileBackground"></div>
 
+    <!-- MBTI 모달 부분 -->
+    <div class="modal">
+        <div class="warn-modal">
+            <div id="modal-wrap">
+                <div class="">
+                    <div style="margin-bottom: 10px">
+                        <h3 style="letter-spacing: 0.5px">MBTI 선택(1개)</h3>
+                    </div>
+                    <div class="">
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ISTJ">
+                            ISTJ
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="TSFJ">
+                            TSFJ
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ISTP">
+                            ISTP
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ISFP">
+                            ISFP
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="INFJ">
+                            INFJ
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="INFP">
+                            INFP
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="INTJ">
+                            INTJ
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="INTP">
+                            INTP
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ESTJ">
+                            ESTJ
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ESFP">
+                            ESFP
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ENFP">
+                            ENFP
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ENTP">
+                            ENTP
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ESFJ">
+                            ESFJ
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ESTP">
+                            ESTP
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ENFJ">
+                            ENFJ
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ENTJ">
+                            ENTJ
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </main>
 
@@ -128,6 +231,6 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-
+<script src="/js/goWith/goWith-registration.js"></script>
 
 </html>
