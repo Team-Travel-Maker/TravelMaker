@@ -81,11 +81,3 @@ $rightWrap.on("click", function(){
     }
 
 })
-// focus blur 효과
-$deliveryInput.on("focus", function () {
-    $(this).css("border-color", "rgb(12, 72, 220)")
-})
-
-$deliveryInput.on("blur", function () {
-    $(this).css("border-color", "#e1e2e3")
-})

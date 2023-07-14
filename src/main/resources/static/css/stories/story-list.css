@@ -78,12 +78,41 @@
     font-weight: 600;
     color: #333;
 }
-.select-container {
+.registration-btn-div {
     height: 40px;
     margin-left: auto;
     position: relative;
 }
+
+.registration-btn {
+    -ms-flex-align: center;
+    align-items: center;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    height: 40px;
+    padding: 0 15px!important;
+    margin-bottom: 0;
+    border-radius: 30px;
+    border: 1px solid #ececec;
+    position: relative;
+    background-color: #3366ff;
+}
+.registration-btn>span {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: normal;
+    color: #FFFFFF;
+    white-space: nowrap;
+}
+
+
+.select-container {
+    height: 40px;
+    /*margin-left: auto;*/
+    position: relative;
+}
 .select-box-container {
+    margin-left: 10px;
     padding: 0;
     height: 40px;
     border-radius: 5px;
