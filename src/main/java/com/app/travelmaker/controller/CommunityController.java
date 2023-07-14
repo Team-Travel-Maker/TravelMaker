@@ -37,6 +37,7 @@ public class CommunityController {
 
     @GetMapping("board/detail")
     public void goToBoardDetail(){;}
+
     @GetMapping("board/write")
     public void goToBoardWrite(){;}
 

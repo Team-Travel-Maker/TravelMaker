@@ -1,0 +1,84 @@
+.commentListItem-CommentListItem {
+    display: block;
+    width: inherit;
+    margin: 0 29px;
+    padding: 30px 0 29px;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    color: #171717;
+}
+
+@supports (-webkit-line-clamp:2) and (-webkit-box-orient:vertical) {
+    .commentListItem-CommentListItem-comment {
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        word-break: break-all;
+        overflow: hidden;
+    }
+}
+.commentListItem-CommentListItem-comment {
+        font-weight: 600;
+        font-size: 16px;
+        color: #171717;
+        margin-bottom: 8px;
+        line-height: 140%;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+    }
+
+.commentListItem-CommentListItem-create-time {
+    font-size: 13px;
+    color: #8a8a8a;
+    margin-bottom: 13px;
+}
+
+.commentListItem-CommentListItem-footer {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 14px;
+    color: #171717;
+}
+.commentListItem-CommentListItem-footer-post-title {
+    margin-right: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.commentListItem-CommentListItem-footer-icon-text:not(:last-child) {
+    margin-right: 8px;
+}
+.commentListItem-commentListItem-footer-icon-text{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
+}
+.commentListItem-CommentListItem-footer-icon-text>svg {
+    margin-right: 4px;
+}
+
+.commentListItem-CommentListItem-footer-icon-text>span {
+    font-weight: 700;
+    font-size: 12px;
+    -webkit-transform: translateY(1px);
+    transform: translateY(1px);
+}
+.commentListItem-CommentListItem-footer-icon-text.commentListItem-active {
+    color: #36f;
+}
+.commentListItem-CommentListItem-footer-icon-text {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px);
+}

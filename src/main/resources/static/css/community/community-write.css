@@ -130,7 +130,7 @@ button {
 .CommunityWrite_content{
     position: relative;
     width: 100%;
-    padding-top: 60px ;
+    /*padding-top: 60px ;*/
 }
 .CommunityWritePaper{
     display: -ms-flexbox;
@@ -384,4 +384,16 @@ TagPanel .TagPanel_tagWrapper .TagPanel_slider .TagPanel_scroll {
 .PhotoButton_PhotoButton>span>em {
     font-style: normal;
     color: #36f;
+}
+
+
+.span-color{
+    color: #36f;
+    font-weight: 700;
+}
+.now-button{
+    --button-color: #36f;
+    color: #36f;
+    box-shadow: 0 0 0 1px #36f inset;
+    font-weight: 700;
 }
