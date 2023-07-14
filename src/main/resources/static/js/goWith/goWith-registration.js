@@ -1,5 +1,5 @@
 // 모달
-const modal = $("div.modalOpen");
+const modal = $("button.modalOpen");
 
 modal.on("click", e => {
     console.log("클릭됐냐?")
@@ -33,3 +33,43 @@ $(document).on('keyup',function(evt){
 
     }
 });
+
+
+// 모달 바깥 부분 클릭 시 모달 닫힘
+$(document).ready(function() {
+    $('.modal').click(function(event) {
+        if ($(event.target).hasClass('modal') || $(event.target).attr('id') === 'modal-wrap') {
+            $('.modal').hide();
+        }
+    });
+});
+
+
+
+$(document).ready(function() {
+    // 선택된 태그 취소 버튼 감춰놓기!
+    $(".tagPanel-scroll").children().css("display", "none");
+
+    // MBTI 선택
+    $('.modal-btn.mbti-btn').click(function() {
+        let selectedMBTI = $(this).val();
+        $('.tagPanel-selectedTag').children('span:first-child').text(selectedMBTI);
+        $(".tagPanel-scroll").children().css("display", "flex");
+        $(".tagPanel-placeholder").hide();
+        $('.modal').hide();
+    });
+
+    // MBTI 선택 취소
+    $('.selectedTag-deletedBtn').click(function() {
+        let selectedMBTI = $(this).val("");
+        $('.tagPanel-selectedTag').children('span:first-child').text(selectedMBTI);
+        $(".tagPanel-placeholder").show();
+        $(".tagPanel-scroll").children().css("display", "none");
+    });
+
+
+
+});
+
+
+
