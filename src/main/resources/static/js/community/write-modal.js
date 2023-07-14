@@ -1,38 +1,29 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>관심 지역</title>
-    <link rel="stylesheet" href="/css/header/header.css"/>
-    <link rel="stylesheet" href="/css/common.css"/>
-    <link rel="stylesheet" href="/css/mypage/interestsRegion.css">
-</head>
-<body>
-<div th:replace="~{header/header :: #header}"></div>
-<div class="Padding_padding___Nyki"></div>
-<div class="container-profile container-profileInterests">
-    <nav role="presentation" class="Nav">
-        <h2 class="nav-title">
-            <p>관심지역 설정</p>
-            <button type="button" class="nav-button">관심지역 설정</button>
-        </h2>
-    </nav>
-    <section class="interests">
-        <div class="interests-contents">
-            <p class="interests-message">김광민님의 여행을 위한<br>00를 추천해
-            드릴게요!</p>
-            <p class="interests-sub-message">아티클, 영상, 커뮤니티에서 보고싶은 주제를 선택해보세요.</p>
+// const $openModal = $('#write-openModal');
+//     console.log($openModal);
+//
+//     $openModal.on('click',function(){
+//
+//     })
+let modalMessage = `<div class="modal-container modal-scroll write–modal-body">
+    <div class="modal-title selectTagsModal-title">
+        <h4>태그 선택</h4>
+        <span class="select-tagsModal">2</span>
+        <button type="button" class="modal-close">
+            <span class="SvgIcon_SvgIcon__root__8vwon"><svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 24 24"><path d="M17.97 19.03a.749.749 0 1 0 1.06-1.06l-6.5-6.5a.749.749 0 0 0-1.06 0l-6.5 6.5a.749.749 0 1 0 1.06 1.06L12 13.06l5.97 5.97zM12 10.94 6.03 4.97a.749.749 0 1 0-1.06 1.06l6.5 6.5a.749.749 0 0 0 1.06 0l6.5-6.5a.749.749 0 1 0-1.06-1.06L12 10.94z"></path></svg></span>
+        </button>
+    </div>
+    <div class="modalContent-ModalContent">
+        <div class="selectTagsModal-SelectTagsModal">
+            <p class="selectTagsModal-message">작성글 주제에 맞는 태그를 선택해주세요. (1~3개)</p>
             <div class="interestsTags">
                 <div class="interestsTags-interestsTags-curation">
                     <ul>
                         <li class="curationTags">
-                            <div class="curationTags-iconImg"><img
-                                    src="https://static.wanted.co.kr/images/tags/0a15b242.png" alt="직장인 공감"><span
-                                    class="curationTags-tagTitle">지역</span></div>
+                            <div class="curationTags-iconImg"><img src="https://static.wanted.co.kr/images/tags/0a15b242.png" alt="직장인 공감"><span class="curationTags-tagTitle">지역</span></div>
                             <ul class="curationTags-subTags">
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                            <span>서 울</span>
+                                        <span>서 울</span>
                                     </button>
                                 </li>
                                 <li>
@@ -111,20 +102,20 @@
                                                                 전라북도
                                                             </span>
                                     </button>
-                                    <li>
-                                    <button type="button" class="location-category" style="transform: translateX(0px);">
+                                </li><li>
+                                <button type="button" class="location-category" style="transform: translateX(0px);">
                                                             <span>
                                                                 전라남도
                                                             </span>
-                                    </button>
-                                    </li>
-                                    <li>
+                                </button>
+                            </li>
+                                <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
                                                             <span>
                                                                 경상북도
                                                             </span>
                                     </button>
-                                    </li>
+                                </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
                                                             <span>
@@ -152,26 +143,43 @@
                 </div>
             </div>
         </div>
-        <div class="interests-buttons">
-            <a href="/mywanted" class="">MY원티드 돌아가기</a>
-            <button type="button" class="style-wrapper">관심지역 저장하기</button>
-        </div>
-    </section>
-</div>
-</body>
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script>
-    const $spanTags = $('.location-category>span');
-    const $locationBtns =$('.location-category');
+    </div>
+    <div class="modal-action select-action">
+        <button class="modal-btn btn-contained btn-containedPrimary btn-containedSizeLarge btn-fullwidth">
+            <span class="button-label">완료</span><span class="btn-interaction"></span>
+        </button>
+    </div>
+</div>`;
 
-    $locationBtns.on("click", function(){
-        if(!$(this).hasClass("now-button")){
-            $(this).addClass("now-button");
-            $(this).children().addClass('span-color');
 
-        }else{ $(this).removeClass("now-button");
-            $(this).children().removeClass('span-color');
-        }
+let modalCheck;
+
+function showModal(modalMessage) {
+    modalCheck = false;
+    $("div#content-wrap").html(modalMessage)
+    $("div.warn-modal").css("animation", "popUp 0.5s");
+    $("div.modal").css("display", "flex");
+
+}
+
+//
+$("div.modal").on("click", function () {
+    const $closeModal = $('.modal-close');
+    if (modalCheck) {
+        $("div.warn-modal").css("animation", "popDown 0.5s");
+        $("div.modal").fadeOut(500);
+    }
+    $closeModal.on('click',function(){
+        // modalCheck = false;
+        $("div.modal").css("display","none");
+        // $("div.modal").css("display", "flex").hide().fadeIn(500);
+        console.log($closeModal);
     });
-</script>
-</html>
+});
+
+// const $closeModal = $('.modal-close');
+// console.log($closeModal);
+//
+// $closeModal.on('click',function(){
+//     $("div.modal").css("display", "flex").hide().fadeIn(500);
+// });

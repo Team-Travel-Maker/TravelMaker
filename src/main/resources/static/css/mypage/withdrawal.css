@@ -1,0 +1,362 @@
+.container{
+     width: 100%;
+     display: -webkit-box;
+     display: -webkit-flex;
+    display: -ms-flexbox;
+     display: flex;
+     -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+     flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #fff;
+}
+.withdrawal-div {
+    max-width: 628px;
+    width: 628px;
+    margin: 0 15px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+}
+.withdrawal-div-margin {
+    margin-top: 30px;
+}
+.withdrawal-div2 {
+    border-radius: 5px;
+    width: 100%;
+    max-height: calc(100vh - 100px);
+    overflow: auto;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid #e1e2e3;
+}
+.withdrawal-div3 {
+    overflow: auto;
+    position: relative;
+    padding: 20px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.withdrawal-div4 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-bottom: 45px;
+    margin-top: 30px;
+}
+.withdrawal-title {
+    color: #000;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: -0.0195em;
+    font-size: 22px;
+    line-height: 28px;
+}
+.leave-content-title {
+    color: #000;
+    font-weight: 600;
+    text-align: left;
+    letter-spacing: 0.0145em;
+    font-size: 14px;
+    line-height: 20px
+}
+.leave-content {
+    color: #000;
+    font-weight: 400;
+    text-align: left;
+    letter-spacing: 0.0145em;
+    font-size: 14px;
+    line-height: 20px;
+    text-indent: -8px;
+    margin-left: 8px;
+}
+.css-hr {
+    border: none;
+    width: 100%;
+    border-bottom: 1px solid #e1e2e3;
+    width: 100%;
+}
+.leave-usertitle {
+    color: var(--theme-palette-colors-black-100);
+    font-weight: var(--text-weight-headline-bold);
+    text-align: left;
+    letter-spacing: var(--text-spacing-headline);
+    font-size: var(--text-size-headline);
+    line-height: var(--text-height-headline);
+}
+.leave-usertitle-div {
+    padding: 9px 12px;
+    min-height: 50px;
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid #e1e2e3;
+    margin-bottom: 30px;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.leave-img-div {
+    border-radius: 50%;
+    border: 1px solid #e1e2e3;
+    background-color: #fff;
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+.css-14ka8e>img {
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.leave-user-email {
+    color: #000;
+    font-weight: 400;
+    text-align: left;
+    letter-spacing: 0.0056em;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 8px;
+}
+.css-x9lqwe {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-image: initial;
+    border-bottom: 1px solid var(--theme-palette-colors-bluegray-200);
+    width: 100%;
+}
+.leave-checkbox-wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    min-height: 25px;
+    width: 100%;
+    margin: 10px 0px;
+}
+.css-div {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 3px;
+    border: 1px solid #ececec;
+}
+.leave-agree {
+    opacity: 0;
+    width: calc(100% - 90px);
+    /*height: 100%;*/
+    position: absolute;
+    cursor: pointer;
+}
+.leave-agree-div {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+.leave-check {
+    color: #888;
+    font-weight: 400;
+    text-align: left;
+    letter-spacing: 0.0096em;
+    font-size: 15px;
+    line-height: 22px;
+    margin: 0px 0px 0px 7px;
+    word-break: keep-all;
+}
+.css-slacj2 {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 3px;
+    border: 1px solid var(--theme-palette-colors-gray-200);
+}
+.css-31p8kg {
+    opacity: 0;
+    width: calc(100% - 90px);
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+}
+.css-1smbjja {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+.css-1nizjn9 {
+    color: var(--theme-palette-colors-gray-600);
+    font-weight: var(--text-weight-bodyalt-normal);
+    text-align: left;
+    letter-spacing: var(--text-spacing-bodyalt);
+    font-size: var(--text-size-bodyalt);
+    line-height: var(--text-height-bodyalt);
+    margin: 0px 0px 0px 7px;
+    word-break: keep-all;
+}
+.css-checkbox {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    border-radius: 3px;
+    border: none;
+    background-color:#36f;
+}
+.css-checkimg {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    fill: currentColor;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    font-size: inherit;
+}
+.checkbox-span {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: inherit;
+    -webkit-box-align: inherit;
+    -ms-flex-align: inherit;
+    align-items: inherit;
+    -webkit-box-pack: inherit;
+    -ms-flex-pack: inherit;
+    -webkit-justify-content: inherit;
+    justify-content: inherit;
+}
+.leave-agree-btn:disabled {
+    color: #ccc;
+    background-color: #f2f4f7;
+    border: none;
+    cursor: default;
+}
+.leave-agree-btn {
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+    border: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: #36f;
+    border: none;
+}
+.leave-agree-btn:disabled span {
+    color: #ccc;
+}
+.leave-agree-btn span {
+    color: #fff;
+}
+.leave-span {
+    color: #000;
+    font-weight: var(--text-weight-body-bold);
+    text-align: left;
+    letter-spacing: 0.0056em;
+    font-size: 16px;
+    line-height: 24px;
+}
+.leave-close-btn {
+    width: 100%;
+    height: 50px;
+    min-height: 50px;
+    border-radius: 25px;
+    border: none;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+}
+.leave-close-btn>span {
+    color: #939393;
+}
