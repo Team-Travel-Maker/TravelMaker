@@ -753,6 +753,14 @@
     position: absolute;
     cursor: pointer;
 }
+
+.all-agree-checkbox {
+    opacity: 0;
+    width: calc(100% - 90px);
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+}
 .agree-check-p-container {
     display: flex;
     flex: 1 1 0%;
@@ -837,11 +845,58 @@
     -webkit-justify-content: inherit;
     justify-content: inherit;
 }
+
+.marketing-agree-checkbox-span {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: inherit;
+    -webkit-box-align: inherit;
+    -ms-flex-align: inherit;
+    align-items: inherit;
+    -webkit-box-pack: inherit;
+    -ms-flex-pack: inherit;
+    -webkit-justify-content: inherit;
+    justify-content: inherit;
+}
 .confirm-label svg {
     color: rgb(136, 136, 136);
     margin-right: 7px;
 }
 .agree-checkbox-svg {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 1em;
+    height: 1.5em;
+    display: inline-block;
+    fill: currentColor;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    font-size: inherit;
+    display: none;
+}
+
+
+.marketing-agree-checkbox-svg {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 1em;
+    height: 0.8em;
+    display: inline-block;
+    fill: currentColor;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    font-size: inherit;
+}
+
+.disagree-checkbox-svg {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -855,6 +910,7 @@
     flex-shrink: 0;
     font-size: inherit;
 }
+
 .confirm-p {
     color: var(--theme-palette-colors-gray-600);
     font-weight: var(--text-weight-body-normal);
@@ -924,3 +980,11 @@
     display: none;
    color: var(--theme-palette-colors-red-400);
 }
+
+/*.agree-checkbox-span{*/
+/*    display: none;*/
+/*}*/
+
+/*.disagree-checkbox-span{*/
+/*    display: block;*/
+/*}*/

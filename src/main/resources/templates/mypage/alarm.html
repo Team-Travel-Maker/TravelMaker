@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>알림</title>
+    <link rel="stylesheet" href="/css/header/header.css"/>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/mypage/alarm.css">
+</head>
+<body>
+<div th:replace="~{header/header :: #header}"></div>
+<div class="Padding_padding___Nyki"></div>
+<div class="container-profile">
+    <nav role="presentation" class="nav">
+        <h2 class="nav-title">
+            <p>계정 설정</p>
+            <button type="button" class="nav-button">계정 설정<span
+                    class="nav-subTitle">알림 설정</span>
+                <span class="nav-open-icon"></span></button>
+        </h2>
+    </nav>
+
+    <div class="settings-className">
+        <div class="aside-className">
+            <dl>
+                <dd>
+                    <ul>
+<!--                        <li class=""><a href="#" class="">추천 네트워크 설정</a></li>-->
+                        <li class="active"><a href="#" class="">알림 설정</a></li>
+                        <li class=""><a href="#" class="">비밀번호 설정</a></li>
+                        <li class=""><a href="#" class="">회원 탈퇴</a></li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+        <!--        -->
+        <section>
+            <div class="oneIdNotification">
+                <div class="oneIdNotification-Notification"><h3
+                        class="oneIdNotification-Notification-header">이메일</h3>
+                    <div class="oneIdNotification-Notification-body">
+                        <div class="notificationItem-Notification-item"><h3>혜택/이벤트 알림</h3>
+                            <div class="notificationItem-Notification-item-contents">
+                                <dl>
+                                    <dt>유익한 커리어 소식과 다양한 교육/컨퍼런스 등의 소식을 받을 수 있습니다.</dt>
+                                    <dd>
+                                        <input type="checkbox" id="toggle1" hidden>
+                                        <label for="toggle1" class="toggleSwitch notificationItem-Switch notificationItem-Switch-on">
+                                            <span class="toggleButton"></span>
+                                        </label>
+                                        <div class="switcher"></div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="notificationItem-Notification-item"><h3>추천 포지션 정보 수신</h3>
+                            <div class="notificationItem-Notification-item-contents">
+                                <dl>
+                                    <dt>내 직군 직무에 맞는 채용공고 소식을 받을 수 있습니다.</dt>
+                                    <dd>
+                                        <input type="checkbox" id="toggle2" hidden>
+                                        <label for="toggle2" class="toggleSwitch notificationItem-Switch notificationItem-Switch-on">
+                                            <span class="toggleButton"></span>
+                                        </label>
+                                        <div class="switcher"></div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="oneId">
+                    <h3 class="oneIdNotification-Notification-header">문자 메시지</h3>
+                    <div class="oneIdNotification-Notification-body">
+                        <div class="notificationItem-Notification-item"><h3>혜택/이벤트 알림</h3>
+                            <div class="notificationItem-Notification-item-contents">
+                                <dl>
+                                    <dt>채용 소식과 교육/컨퍼런스, 커리어 콘텐츠, 이벤트 등 맞춤 정보를 받을 수 있습니다.</dt>
+                                    <dd>
+                                        <input type="checkbox" id="toggle3" hidden>
+                                        <label for="toggle3" class="toggleSwitch notificationItem-Switch notificationItem-Switch-on">
+                                            <span class="toggleButton"></span>
+                                        </label>
+                                            <div class="switcher"></div>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="oneIdNotification-Notification-footer">앱 푸시 항목은 [원티드] 앱 내 알림 설정에서 변경 가능합니다.</div>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

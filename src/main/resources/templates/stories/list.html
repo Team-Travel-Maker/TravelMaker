@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Travel Maker</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        .async-hide {
+            opacity: 0 !important;
+        }
+    </style>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/header/header.css"/>
+    <link rel="stylesheet" href="/css/shop/shop-list.css"/>
+    <link rel="stylesheet" href="/css/mypage/bookmarks.css">
+    <link rel="stylesheet" href="/css/stories/story-list.css">
+</head>
+<body>
+<!-- 헤더 -->
+<div th:replace="~{header/header :: #header}"></div>
+
+<div class="story-list-container">
+    <span class="story-list-title">업체 스토리</span>
+    <div>
+        <div class="select-btn-container">
+            <button
+                    type="button"
+                    class="location-select-btn">
+                <span class="location-title-span">지역</span>
+                <span class="location-span">전 국</span>
+            </button>
+            <div
+                    class="select-container">
+                <div class="select-box-container">
+                    <select class="order-selector">
+                        <option value="new" selected="">최신순</option>
+                        <option value="popular">인기순</option>
+                    </select>
+                    <svg width="8" height="7" viewBox="0 0 8 7" fill="none" xmlns="https://www.w3.org/2000/svg">
+                        <path d="M7.33334 0.494202C7.85691 0.494202 8.14842 1.1611 7.82205 1.61224L4.50038 6.20371C4.25071 6.54882 3.77503 6.54971 3.5243 6.20554L0.179295 1.61408C-0.149094 1.16332 0.14211 0.494202 0.666672 0.494202H7.33334Z"
+                              fill="#333"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="registration-btn-div">
+                <button
+                        type="button"
+                        class="registration-btn">
+                    <span class="registration-span">업체 스토리 등록</span>
+                </button>
+            </div>
+        </div>
+        <hr class="hr-top">
+        <div class="select-wrap">
+            <div class="left-arrow-wrap">
+                <button type="button">
+                                                        <span class="left-arrow">
+                                                            <svg class="left-arrow-svg" viewBox="0 0 18 18"><path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path></svg>
+                                                        </span>
+                </button>
+            </div>
+            <div class="right-arrow-wrap">
+                <button type="button">
+                                                        <span class="right-arrow">
+                                                            <svg class="right-arrow-svg" viewBox="0 0 18 18"><path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path></svg>
+                                                        </span>
+                </button>
+            </div>
+            <div class="select-container">
+                <div class="location-category-wrap">
+                    <button type="button" class="location-category now-button">
+                                                            <span>
+                                                                전 국
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                서 울
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                부 산
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                인 천
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                대 구
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                대 전
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                세 종
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                광 주
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                울 산
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                경기도
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                충청북도
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                충청남도
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                전라북도
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                전라남도
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                경상북도
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                경상남도
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                강원도
+                                                            </span>
+                    </button>
+                    <button type="button" class="location-category">
+                                                            <span>
+                                                                제주도
+                                                            </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="hr-bottom">
+    <div class="container-profile">
+        <div class="bookmark-container">
+            <div class="list">
+                <div class="list-container">
+                    <ul>
+                        <!--여기서 반복-->
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <!--                        첫번째 게시물-->
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <a href="#">
+                                    <!--이미지-->
+                                    <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
+                                    </header>
+
+                                    <div class="body">
+                                        <div class="card-theme">숙박 청소 개선</div>
+                                        <div class="card-userName">J호텔 직원</div>
+                                        <div class="card-address">제주도 서귀포 J호텔</div>
+                                        <div class="card-location"><span>제주도</span></div>
+                                        <div class="card-badge"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="/js/stories/story-list.js"></script>
+</html>

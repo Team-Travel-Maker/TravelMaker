@@ -1,0 +1,219 @@
+@media (min-width: 1200px) {
+    .story-list-container {
+        margin: 0 auto;
+        padding: 30px 0 50px;
+    }
+}
+@media (min-width: 1200px) {
+    .story-list-container {
+        width: 87.72%;
+    }
+}
+@media (min-width: 935px) {
+
+}
+.story-list-container {
+    position: relative;
+    max-width: 1060px;
+    background-color: #fff;
+}
+.story-list-title {
+    padding-top: 3px;
+    margin-right: 15.5px;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 700;
+    color: #333;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    white-space: nowrap;
+}
+.select-btn-container {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex: auto;
+    flex: auto;
+    -ms-flex-pack: left;
+    justify-content: left;
+    max-width: none;
+    margin: 15px 0px;
+}
+.select-btn-container {
+    height: 40px;
+}
+.select-btn-container .location-select-btn {
+    -ms-flex-align: center;
+    align-items: center;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    height: 40px;
+    padding: 0 15px!important;
+    margin-bottom: 0;
+    border-radius: 5px;
+    border: 1px solid #ececec;
+    position: relative;
+}
+.select-btn-container .location-select-btn>span:first-child {
+    margin-right: 15px;
+}
+.select-btn-container .location-select-btn>span {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: normal;
+    color: #333;
+    white-space: nowrap;
+}
+.select-btn-container .location-select-btn>span:last-of-type {
+    color: #36f!important;
+    font-weight: 600;
+    margin-right: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.region-span {
+    font-weight: 600;
+    color: #333;
+}
+.registration-btn-div {
+    height: 40px;
+    margin-left: auto;
+    position: relative;
+}
+
+.registration-btn {
+    -ms-flex-align: center;
+    align-items: center;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    height: 40px;
+    padding: 0 15px!important;
+    margin-bottom: 0;
+    border-radius: 30px;
+    border: 1px solid #ececec;
+    position: relative;
+    background-color: #3366ff;
+}
+.registration-btn>span {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: normal;
+    color: #FFFFFF;
+    white-space: nowrap;
+}
+
+
+.select-container {
+    height: 40px;
+    /*margin-left: auto;*/
+    position: relative;
+}
+.select-box-container {
+    margin-left: 10px;
+    padding: 0;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ececec;
+    background-color: #fff;
+    position: relative;
+    width: 100px;
+}
+.order-selector {
+    background: none;
+    appearance: none;
+    position: relative;
+    width: 100%;
+    min-width: 98px;
+    height: 100%;
+    padding-left: 15px;
+    border: #e0e0e0;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+.select-box-container>svg {
+    right: 10px;
+    color: #666;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.hr-top {
+    height: 1px;
+    margin: 0;
+    border: none;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    background-color: #e1e2e4;
+}
+.hr-bottom {
+    height: 1px;
+    margin: 0;
+    border: none;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    background-color: #e1e2e4;
+}
+@media (min-width: 1200px){
+    .container-profile {
+        width: 100% !important;
+        margin-top: 30px;
+    }
+}
+.list-container>ul li {
+    width: 24.8% !important;
+    padding: 10px;
+    list-style: none;
+    display: inline-block;
+    vertical-align: top;
+}
+.card .body .card-address, .card .body .card-userName {
+    font-size: 14px;
+    line-height: normal;
+    text-align: left;
+    word-break: break-word;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.card .body .card-address{
+    font-weight: 400;
+    color: #999;
+}
+/* 왼쪽 */
+.left-arrow-wrap{
+    top: 152px;
+    left: -9px;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    background: -webkit-gradient(linear,left top,right top,color-stop(21.82%,#fff),to(hsla(0,0%,100%,0)));
+    background: linear-gradient(90deg,#fff 21.82%,hsla(0,0%,100%,0));
+    display: flex;
+    width: 35px;
+    position: absolute;
+    align-items: center;
+    display: none;
+    z-index: 1;
+}
+/* 오른쪽 */
+.right-arrow-wrap{
+    top: 152px;
+    right: -9px;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    background: -webkit-gradient(linear,right top,left top,color-stop(21.82%,#fff),to(hsla(0,0%,100%,0)));
+    background: linear-gradient(270deg,#fff 21.82%,hsla(0,0%,100%,0));
+    display: flex;
+    width: 40px;
+    position: absolute;
+    align-items: center;
+    z-index: 1;
+}

@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>커뮤니티</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>이용후기</title>
+    <link rel="stylesheet" href="/css/common.css"/>
+    <link rel="stylesheet" href="/css/header/header.css"/>
     <link rel="stylesheet" href="/css/community/community-list.css">
 </head>
 
 <body>
 <div class="Padding_padding"></div>
 <!-- 전체 container -->
+<div th:replace="~{header/header :: #header}"></div>
 <div class="container">
     <!-- 사이드  -->
     <aside class="mycommunity-aside">
