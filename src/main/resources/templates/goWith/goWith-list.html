@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함께가요 목록</title>
+</head>
+
+<link rel="stylesheet" href="/css/go-with/go-with.css">
+<link rel="stylesheet" href="/css/common.css"/>
+<link rel="stylesheet" href="/css/header/header.css">
+
+<body>
+
+<!-- 헤더 -->
+<div th:replace="~{header/header :: #header}"></div>
+
+<div class="content-wrapper">
+    <aside class="sidebar-wrapper">
+        <div class="sidebar-asideArea">
+            <div class="miniProfile-wrapper">
+                <h2 class="miniProfile-title">내 정보</h2>
+                <button type="button" class="miniProfile-link">
+                    <div class="userAvatar miniProfile-avatar">
+                        <img src="https://static.wanted.co.kr/oneid-user/profile_default.png" alt="">
+                    </div>
+                    <div class="miniProfile-userName-wrapper">
+                        <div class="miniProfile-userInfo">
+                            <span class="miniProfile-userName">정범진</span>
+                            <div class="miniProfile-badges userBadge">
+                                <div class="userInfo-userCareer">
+                                    <div class="userInfo-userBadge" data-id="518">왕관</div>
+                                    <div class="userInfo-userBadge">서울</div>
+                                    <div class="userInfo-userBadge">ISFP</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="miniProfile-rightArrow">
+                        <svg width="18" height="18">
+                            <path d="M5.21967 2.21967C5.48594 1.9534 5.9026 1.9292 6.19621 2.14705L6.28033 2.21967L12.5303 8.46967C12.7966 8.73594 12.8208 9.1526 12.6029 9.44621L12.5303 9.53033L6.28033 15.7803C5.98744 16.0732 5.51256 16.0732 5.21967 15.7803C4.9534 15.5141 4.9292 15.0974 5.14705 14.8038L5.21967 14.7197L10.939 9L5.21967 3.28033C4.9534 3.01406 4.9292 2.5974 5.14705 2.30379L5.21967 2.21967Z" fill="#666666"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+            <div class="recommendedProfile-wrapper">
+                <h3 class="recommendedProfile-title">업데이트된 추천 프로필</h3>
+                <p class="recommendedProfile-subTitle">관심있는 프로필을 찾아보세요.</p>
+                <div class="recommendedProfile-rows">
+                    <a class="recommendedProfile-item" href="/community/profile/UbV5n7qVuWas9mqGoA23L7">
+                        <div class="userAvatar recommendedProfile-avatar">
+                            <img src="https://static.wanted.co.kr/open_profile/avatar/35f6b43f56659e75572dca6131716ba06e1fd8950e11c3ac1d91d52fc399dca1" alt="">
+                        </div>
+                        <div class="recommendedProfile-userName">박몽수</div>
+                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommendedProfile-rightArrow">
+                            <path d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z"></path>
+                        </svg>
+                    </a>
+                    <a class="recommendedProfile-item" href="/community/profile/KJ4fp9MzA7DDwg5bYRmjKB">
+                        <div class="userAvatar recommendedProfile-avatar">
+                            <img src="https://s3.ap-northeast-2.amazonaws.com/wanted-public/profile_default.png" alt="">
+                        </div>
+                        <div class="recommendedProfile-userName">깔깔</div>
+                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommendedProfile-rightArrow">
+                            <path d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z"></path>
+                        </svg>
+                    </a>
+                    <a class="recommendedProfile-item" href="/community/profile/7ZiVpmQApCWAWg9EW69Nf5">
+                        <div class="userAvatar recommendedProfile-avatar">
+                            <img src="https://static.wanted.co.kr/community/avatar/482a925cc6a864abe279d9e491d8135372b11be9481a2c28d53fb1c56f8b7193" alt="">
+                        </div>
+                        <div class="recommendedProfile-userName">JiHwan Leo Hyun</div>
+                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommendedProfile-rightArrow">
+                            <path d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z"></path>
+                        </svg>
+                    </a>
+                    <a class="recommendedProfile-item" href="/community/profile/4v8fNZksRXurhUGJBY2zhU">
+                        <div class="userAvatar recommendedProfile-avatar">
+                            <img src="https://static.wanted.co.kr/oneid-user/4v8fNZksRXurhUGJBY2zhU/G6NVRfZLNHQB6L7b8XunU9.jpg" alt="">
+                        </div>
+                        <div class="recommendedProfile-userName">말랑콩떡</div>
+                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommendedProfile-rightArrow">
+                            <path d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z"></path>
+                        </svg>
+                    </a>
+                    <a class="recommendedProfile-item" href="/community/profile/YwaLPThHv8bH9FT6R6K29k">
+                        <div class="userAvatar recommendedProfile-avatar">
+                            <img src="https://static.wanted.co.kr/images/avatars/322418/c8ceb804.jpg" alt="">
+                        </div>
+                        <div class="recommendedProfile-userName">고독한명언가</div>
+                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommendedProfile-rightArrow">
+                            <path d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="recommendedProfile-actions">
+                    <button class="Button-root Button-outlined Button-outlinedAssistive Button-outlinedSizeMedium Button-fullWidth">
+                        <span class="Button-label">
+                            새로운 프로필 보기
+                            <span class="Button-endIcon Button-endIcon-sizeMedium">
+                                <span class="svgIcon-root">
+                                    <svg class="svgIcon-rootSvg" viewBox="0 0 24 24">
+                                        <path d="M7.37374 2.7578C7.62384 2.29823 8.19915 2.12841 8.65872 2.37851L12.453 4.44332L12.5682 4.51706C12.8266 4.70995 12.962 5.0165 12.9465 5.3242C12.9472 5.33886 12.9475 5.35361 12.9475 5.36843C12.9475 5.67552 12.8014 5.94849 12.5749 6.1216L10.2985 9.54035L10.2123 9.65118C9.90279 9.99393 9.38074 10.0674 8.98483 9.80382L8.874 9.71768C8.53125 9.40817 8.45772 8.88612 8.72135 8.49021L9.9678 6.61778C7.12241 7.48689 5.05275 10.1333 5.05275 13.2632C5.05275 17.1001 8.1632 20.2105 12.0001 20.2105C13.869 20.2105 15.6179 19.471 16.913 18.176C18.2081 16.8809 18.9475 15.132 18.9475 13.2632C18.9475 11.3954 18.208 9.64641 16.9127 8.35009C16.5429 7.97997 16.5431 7.38013 16.9132 7.01031C17.2834 6.64048 17.8832 6.64072 18.253 7.01084C19.8998 8.65888 20.8423 10.8879 20.8423 13.2632C20.8423 15.6396 19.8997 17.8688 18.2528 19.5158C16.6058 21.1627 14.3766 22.1053 12.0001 22.1053C7.11676 22.1053 3.15801 18.1465 3.15801 13.2632C3.15801 9.34005 5.71295 6.01369 9.2497 4.8572L7.75303 4.04277L7.64425 3.97373C7.26808 3.69759 7.14449 3.17907 7.37374 2.7578Z"></path>
+                                    </svg>
+                                </span>
+                            </span>
+                        </span>
+                        <span class="Button-interaction"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <main class="contentList-wrapper">
+        <div class="contentList-categories">
+            <div class="interestCategory-wrapper">
+                <div class="interestTagSlide interestCategory-slide">
+                    <div class="scrollSnap scrollSnap-hide interestTagSlide-slide">
+                        <div class="scrollSnap-scroll scrollSnap-hide scrollSnap-scrollX scrollSnap-contain scrollSnap-mandatory tagSlide scrollSnap-interestTagSlide" style="overflow-x: hidden">
+                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item Button-local">
+                                <span class="Button-label">추천</span>
+                                <span class="Button-interaction"></span>
+                            </button>
+                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item Button-local">
+                                <span class="Button-label">전체</span>
+                                <span class="Button-interaction"></span>
+                            </button>
+                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item Button-local">
+                                <span class="Button-label">서울</span>
+                                <span class="Button-interaction"></span>
+                            </button>
+                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item Button-local">
+                                <span class="Button-label">경기</span>
+                                <span class="Button-interaction"></span>
+                            </button>
+                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item Button-local">
+                                <span class="Button-label">강원</span>
+                                <span class="Button-interaction"></span>
+                            </button>
+                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item Button-local">
+                                <span class="Button-label">충남</span>
+                                <span class="Button-interaction"></span>
+                            </button>
+                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item Button-local">
+                                <span class="Button-label">충북</span>
+                                <span class="Button-interaction"></span>
+                            </button>
+                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item Button-local">
+                                <span class="Button-label">경남</span>
+                                <span class="Button-interaction"></span>
+                            </button>
+                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item Button-local">
+                                <span class="Button-label">경북</span>
+                                <span class="Button-interaction"></span>
+                            </button>
+                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item Button-local">
+                                <span class="Button-label">전남</span>
+                                <span class="Button-interaction"></span>
+                            </button>
+                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item Button-local">
+                                <span class="Button-label">전북</span>
+                                <span class="Button-interaction"></span>
+                            </button>
+                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item Button-local">
+                                <span class="Button-label">부산</span>
+                                <span class="Button-interaction"></span>
+                            </button>
+                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item Button-local">
+                                <span class="Button-label">제주</span>
+                                <span class="Button-interaction"></span>
+                            </button>
+                        </div>
+                        <div class="tagSlide-arrow tagSlide-leftArrow">
+                            <button type="button">
+                                <span class="svgIcon-root">
+                                    <svg class="svgIcon-rootSvg" viewBox="0 0 18 18">
+                                        <path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                        <div class="tagSlide-arrow tagSlide-rightArrow tagSlide-arrowVisible">
+                            <button type="button">
+                                <span class="svgIcon-root">
+                                    <svg class="svgIcon-rootSvg" viewBox="0 0 18 18">
+                                        <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path>
+                                    </svg>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="button" class="interestTagSlide-more">
+                        <svg width="18" height="18" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M12 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 12 10zm7 0a2 2 0 1 1-.001 4.001A2 2 0 0 1 19 10zM5 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 5 10z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="mobileProfile-wrapper">
+                    <button type="button">
+                        <div class="userAvatar mobileProfile-avatar">
+                            <img src="https://static.wanted.co.kr/oneid-user/profile_default.png" alt="">
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="contentList-body">
+            <section class="topPickPostView">
+                <div class="topPickPostView-header">
+                    <div class="topPickPostView-header-title">
+                        <h2 class="topPickPostView-wantedPickTitle">이번 주 많이 본 글  🏆</h2>
+                    </div>
+                    <nav class="topPickPostView-pageNav">
+                        <span class="topPickPostView-pageNum topPickPostView-pageNum-current">1</span>
+                        <span class="topPickPostView-pageNum">/</span>
+                        <span class="topPickPostView-pageNum">2</span>
+                        <button type="button" disabled class="topPickPostView-pageNav-prevBtn">
+                            <span class="svgIcon-root">
+                                <svg class="svgIcon-rootSvg" viewBox="0 0 18 18">
+                                    <path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path>
+                                </svg>
+                            </span>
+                        </button>
+                        <button type="button" class="topPickPostView-pageNav-nextBtn">
+                            <span class="svgIcon-root">
+                                <svg class="svgIcon-rootSvg" viewBox="0 0 18 18">
+                                    <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </nav>
+                </div>
+                <div class="topPickPostView-verticalPostList">
+                    <article class="topPickPostItem topPickPostItem-color">
+                        <a href="/community/post/9520">
+                            <div class="topPickPostItem-category">추천</div>
+                            <h3 class="topPickPostItem-title">강원도 홍천으로 같이 놀러 가실 분~!</h3>
+                        </a>
+                        <a href="/community/profile/gtmB2dAZBtmAzktPzJUDB5">
+                            <div class="userInfo-postUserInfo topPickPostItem-userInfo">
+                                <div class="userInfo-horizontalBox">
+                                    <div class="userInfo-avatarWrapper avatar-wrapper">
+                                        <div class="userAvatar userInfo-avatar avatar">
+                                            <img src="https://static.wanted.co.kr/oneid-user/gtmB2dAZBtmAzktPzJUDB5/AwWCYr2xrFVNNS7novAe2p.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <span class="userInfo-userName userName">먹보</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="topPickPostItem topPickPostItem-color">
+                        <a href="/community/post/9520">
+                            <div class="topPickPostItem-category">추천</div>
+                            <h3 class="topPickPostItem-title">경주로 놀러 갑니다!!</h3>
+                        </a>
+                        <a href="/community/profile/gtmB2dAZBtmAzktPzJUDB5">
+                            <div class="userInfo-postUserInfo topPickPostItem-userInfo">
+                                <div class="userInfo-horizontalBox">
+                                    <div class="userInfo-avatarWrapper avatar-wrapper">
+                                        <div class="userAvatar userInfo-avatar avatar">
+                                            <img src="https://static.wanted.co.kr/oneid-user/gtmB2dAZBtmAzktPzJUDB5/AwWCYr2xrFVNNS7novAe2p.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <span class="userInfo-userName userName">훙힝행</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                    <article class="topPickPostItem topPickPostItem-color">
+                        <a href="/community/post/9520">
+                            <div class="topPickPostItem-category">추천</div>
+                            <h3 class="topPickPostItem-title">메타가 쓰레드라는 앱을 출시했네요</h3>
+                        </a>
+                        <a href="/community/profile/gtmB2dAZBtmAzktPzJUDB5">
+                            <div class="userInfo-postUserInfo topPickPostItem-userInfo">
+                                <div class="userInfo-horizontalBox">
+                                    <div class="userInfo-avatarWrapper avatar-wrapper">
+                                        <div class="userAvatar userInfo-avatar avatar">
+                                            <img src="https://static.wanted.co.kr/oneid-user/gtmB2dAZBtmAzktPzJUDB5/AwWCYr2xrFVNNS7novAe2p.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <span class="userInfo-userName userName">훙힝행</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </section>
+            <section class="postWriteBtn-wrapper">
+                <div class="userAvatar postWriteBtn-avatar">
+                    <img src="https://static.wanted.co.kr/oneid-user/profile_default.png" alt="avatar image">
+                </div>
+                <button type="button" class="postWriteBtn-writeBtn">
+                    함께 가고 싶은 곳을 이야기 해 주세요!
+                    <span class="postWriteBtn-writeIcon">
+                        <span class="svgIcon-root">
+                            <svg class="svgIcon-rootSvg" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M17.9338 2.08059C17.5629 1.80534 17.0366 1.83583 16.7002 2.17212L3.43579 15.4323L3.33867 15.5461C3.22211 15.7068 3.1582 15.9013 3.1582 16.1023V19.8947L3.16685 20.0233C3.22958 20.4857 3.62596 20.8421 4.10558 20.8421H7.2678L7.39635 20.8335C7.85877 20.7707 8.21517 20.3744 8.21517 19.8947L8.20652 19.7662C8.14379 19.3038 7.74742 18.9474 7.2678 18.9474H5.05168V16.4956L13.2631 8.28674L15.7123 10.7359L9.7494 16.6985L9.65767 16.8047C9.38244 17.1756 9.41297 17.7019 9.74927 18.0383C10.1192 18.4083 10.719 18.4083 11.0891 18.0384L21.8281 7.30155L21.9198 7.1953C22.195 6.82447 22.1645 6.29818 21.8283 5.96181L18.04 2.17233L17.9338 2.08059ZM17.0521 9.39616L19.8181 6.63032L17.3688 4.18232L14.6031 6.94717L17.0521 9.39616Z"></path>
+                            </svg>
+                        </span>
+                    </span>
+                </button>
+            </section>
+            <section class="recommendedPostView-wrapper">
+                <div class="recommendedPostTags">
+                    <h2>새로 올라온 관심글   💘</h2>
+                    <div class="recommendedPostTags-tagList" role="button">
+                        <ul>
+                            <li class="recommendedPostTags-tag">
+                                #
+                                서울
+                            </li>
+                            <li class="recommendedPostTags-tag">
+                                #
+                                ISFP
+                            </li>
+                            <li class="recommendedPostTags-tag">
+                                #
+                                맛집탐방
+                            </li>
+                            <li class="recommendedPostTags-tag">
+                                #
+                                1박 2일
+                            </li>
+                        </ul>
+                        <span class="svgIcon-root">
+                            <svg class="svgIcon-rootSvg" viewBox="0 0 18 18">
+                                <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- 게시물 -->
+                <article class="postItem">
+                    <div class="postItem-top">
+                        <a href="/community/profile/8gKFHyFwd4sSvaVWPSojfD">
+                            <div class="userInfo-postBox">
+                                <div class="userInfo-verticalArea">
+                                    <div class="userInfo-avatarWrapper avatar-wrapper">
+                                        <div class="userAvatar userInfo-avatar avatar">
+                                            <img src="https://static.wanted.co.kr/oneid-user/8gKFHyFwd4sSvaVWPSojfD/25182303880e93285ed1347ace3115874b9f2693e22327ccdf9c2ad17eb9be56" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="userInfo-verticalBox">
+                                        <div class="userInfo-wrapper">
+                                            <div class="userInfo-userName userName">범범</div>
+                                            <div class="userInfo-userCareer">
+                                                <div class="userInfo-userBadge" data-id="518">왕관</div>
+                                                <div class="userInfo-userBadge">서울</div>
+                                                <div class="userInfo-userBadge">ISFP</div>
+                                            </div>
+                                        </div>
+                                        <span class="userInfo-createAt create-time">7시간 전</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="postItem-body postItem-image" href="/community/post/9577">
+                        <h3 class="postItem-title">강원도 홍천으로 같이 놀러 가실 분~!</h3>
+                        <p class="postItem-content">
+                            #모각챌 #이모티콘챌린지 #카카오이모티콘도전
+                            [모각챌: 이모티콘 창작 도전 편 참여자 모집]
+
+                            신청하기: https://forms.gle/pjFYNpR4WynNj1aG8
+                            상세소개: https://bit.ly/3pxIWr0
+
+                            안녕하세요
+                            이모티콘 창작에 도전하고 싶은데
+                            실행하지 못했거나 중간에 포기한 경험 있으신가요?
+
+                            카카오 이모티콘 작가에 도전하는 분들과 챌린지를 진행해보려고 합니다!
+                            이모티콘 출시 경험이 있는 그루와 함께 6주 동안 도전해보세요!
+
+
+                            🙋‍♀️아이디에이션부터 최종 완성까지 함께 할게요
+                            1. 도전 성공에 필수적인 마일스톤을 공개할게요!
+                            2. 참여자들과 함께 작업하며 의지를 불태울 수 있어요!
+                            3. 상호 활발한 피드백을 제공해요!
+                            *챌린지 성공 시 인증서 제공, 활동 우수자에게 기프티콘 제공
+
+                            📌모집기간은 7월 19일(수)까지, 첫 모임(OT)는 7월 23일(일)에 진행됩니다.
+                            📌매주 디스코드에서 함께 작업하고 마지막 주차에 함께 작품을 제출합니다.
+                            📌참가비 5만원 *참가비는 7/22까지 전액 환불 가능
+
+                            문의처
+                            revi@innovirus.biz
+                            https://open.kakao.com/o/gMNLeCWd
+                        </p>
+                        <picture>
+                            <source media="(min-width: 1200px)" srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=384&amp;q=90">
+                            <img class="postItemImage" src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=310&amp;q=90" alt="post-img" srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=310&amp;q=90 1x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=620&amp;q=90 2x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=930&amp;q=90 3x">
+                        </picture>
+                        <div class="postItem-tagList">
+                            <button type="button" class="postItem-tag">맛집탐방</button>
+                            <button type="button" class="postItem-tag">ISFP</button>
+                            <button type="button" class="postItem-tag">강원도</button>
+                        </div>
+                        <div class="postItem-bottom">
+                            <div class="Button-btn postItem-like">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z"></path>
+                                </svg>
+                                <span class="Button-count count">1</span>
+                            </div>
+                            <div class="Button-btn postItem-comments" >
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)" d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z"></path>
+                                </svg>
+                                <span class="Button-count count">1</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                <article class="postItem">
+                    <div class="postItem-top">
+                        <a href="/community/profile/8gKFHyFwd4sSvaVWPSojfD">
+                            <div class="userInfo-postBox">
+                                <div class="userInfo-verticalArea">
+                                    <div class="userInfo-avatarWrapper avatar-wrapper">
+                                        <div class="userAvatar userInfo-avatar avatar">
+                                            <img src="https://static.wanted.co.kr/oneid-user/8gKFHyFwd4sSvaVWPSojfD/25182303880e93285ed1347ace3115874b9f2693e22327ccdf9c2ad17eb9be56" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="userInfo-verticalBox">
+                                        <div class="userInfo-wrapper">
+                                            <div class="userInfo-userName userName">범범</div>
+                                            <div class="userInfo-userCareer">
+                                                <div class="userInfo-userBadge" data-id="518">서울</div>
+                                                <div class="userInfo-userBadge">ISFP</div>
+                                            </div>
+                                        </div>
+                                        <span class="userInfo-createAt create-time">7시간 전</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="postItem-body postItem-image" href="/community/post/9577">
+                        <h3 class="postItem-title">강원도 홍천으로 같이 놀러 가실 분~!</h3>
+                        <p class="postItem-content">
+                            #모각챌 #이모티콘챌린지 #카카오이모티콘도전
+                            [모각챌: 이모티콘 창작 도전 편 참여자 모집]
+
+                            신청하기: https://forms.gle/pjFYNpR4WynNj1aG8
+                            상세소개: https://bit.ly/3pxIWr0
+
+                            안녕하세요
+                            이모티콘 창작에 도전하고 싶은데
+                            실행하지 못했거나 중간에 포기한 경험 있으신가요?
+
+                            카카오 이모티콘 작가에 도전하는 분들과 챌린지를 진행해보려고 합니다!
+                            이모티콘 출시 경험이 있는 그루와 함께 6주 동안 도전해보세요!
+
+
+                            🙋‍♀️아이디에이션부터 최종 완성까지 함께 할게요
+                            1. 도전 성공에 필수적인 마일스톤을 공개할게요!
+                            2. 참여자들과 함께 작업하며 의지를 불태울 수 있어요!
+                            3. 상호 활발한 피드백을 제공해요!
+                            *챌린지 성공 시 인증서 제공, 활동 우수자에게 기프티콘 제공
+
+                            📌모집기간은 7월 19일(수)까지, 첫 모임(OT)는 7월 23일(일)에 진행됩니다.
+                            📌매주 디스코드에서 함께 작업하고 마지막 주차에 함께 작품을 제출합니다.
+                            📌참가비 5만원 *참가비는 7/22까지 전액 환불 가능
+
+                            문의처
+                            revi@innovirus.biz
+                            https://open.kakao.com/o/gMNLeCWd
+                        </p>
+                        <picture>
+                            <source media="(min-width: 1200px)" srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=384&amp;q=90">
+                            <img class="postItemImage" src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=310&amp;q=90" alt="post-img" srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=310&amp;q=90 1x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=620&amp;q=90 2x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=930&amp;q=90 3x">
+                        </picture>
+                        <div class="postItem-tagList">
+                            <button type="button" class="postItem-tag">맛집탐방</button>
+                            <button type="button" class="postItem-tag">ISFP</button>
+                            <button type="button" class="postItem-tag">강원도</button>
+                        </div>
+                        <div class="postItem-bottom">
+                            <div class="Button-btn postItem-like">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z"></path>
+                                </svg>
+                                <span class="Button-count count">1</span>
+                            </div>
+                            <div class="Button-btn postItem-comments" >
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)" d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z"></path>
+                                </svg>
+                                <span class="Button-count count">1</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                <article class="postItem">
+                    <div class="postItem-top">
+                        <a href="/community/profile/8gKFHyFwd4sSvaVWPSojfD">
+                            <div class="userInfo-postBox">
+                                <div class="userInfo-verticalArea">
+                                    <div class="userInfo-avatarWrapper avatar-wrapper">
+                                        <div class="userAvatar userInfo-avatar avatar">
+                                            <img src="https://static.wanted.co.kr/oneid-user/8gKFHyFwd4sSvaVWPSojfD/25182303880e93285ed1347ace3115874b9f2693e22327ccdf9c2ad17eb9be56" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="userInfo-verticalBox">
+                                        <div class="userInfo-wrapper">
+                                            <div class="userInfo-userName userName">범범</div>
+                                            <div class="userInfo-userCareer">
+                                                <div class="userInfo-userBadge" data-id="518">서울</div>
+                                                <div class="userInfo-userBadge">ISFP</div>
+                                            </div>
+                                        </div>
+                                        <span class="userInfo-createAt create-time">7시간 전</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <a class="postItem-body postItem-image" href="/community/post/9577">
+                        <h3 class="postItem-title">강원도 홍천으로 같이 놀러 가실 분~!</h3>
+                        <p class="postItem-content">
+                            #모각챌 #이모티콘챌린지 #카카오이모티콘도전
+                            [모각챌: 이모티콘 창작 도전 편 참여자 모집]
+
+                            신청하기: https://forms.gle/pjFYNpR4WynNj1aG8
+                            상세소개: https://bit.ly/3pxIWr0
+
+                            안녕하세요
+                            이모티콘 창작에 도전하고 싶은데
+                            실행하지 못했거나 중간에 포기한 경험 있으신가요?
+
+                            카카오 이모티콘 작가에 도전하는 분들과 챌린지를 진행해보려고 합니다!
+                            이모티콘 출시 경험이 있는 그루와 함께 6주 동안 도전해보세요!
+
+
+                            🙋‍♀️아이디에이션부터 최종 완성까지 함께 할게요
+                            1. 도전 성공에 필수적인 마일스톤을 공개할게요!
+                            2. 참여자들과 함께 작업하며 의지를 불태울 수 있어요!
+                            3. 상호 활발한 피드백을 제공해요!
+                            *챌린지 성공 시 인증서 제공, 활동 우수자에게 기프티콘 제공
+
+                            📌모집기간은 7월 19일(수)까지, 첫 모임(OT)는 7월 23일(일)에 진행됩니다.
+                            📌매주 디스코드에서 함께 작업하고 마지막 주차에 함께 작품을 제출합니다.
+                            📌참가비 5만원 *참가비는 7/22까지 전액 환불 가능
+
+                            문의처
+                            revi@innovirus.biz
+                            https://open.kakao.com/o/gMNLeCWd
+                        </p>
+                        <picture>
+                            <source media="(min-width: 1200px)" srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=384&amp;q=90">
+                            <img class="postItemImage" src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=310&amp;q=90" alt="post-img" srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=310&amp;q=90 1x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=620&amp;q=90 2x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=930&amp;q=90 3x">
+                        </picture>
+                        <div class="postItem-tagList">
+                            <button type="button" class="postItem-tag">맛집탐방</button>
+                            <button type="button" class="postItem-tag">ISFP</button>
+                            <button type="button" class="postItem-tag">충남</button>
+                        </div>
+                        <div class="postItem-bottom">
+                            <div class="Button-btn postItem-like">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z"></path>
+                                </svg>
+                                <span class="Button-count count">1</span>
+                            </div>
+                            <div class="Button-btn postItem-comments" >
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)" d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z"></path>
+                                </svg>
+                                <span class="Button-count count">1</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </section>
+        </div>
+    </main>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="/js/goWith/goWith-list.js"></script>
+
+</html>

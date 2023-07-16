@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계정관리</title>
+<!--        <link rel="stylesheet" href="/css/common.css"/>-->
+<!--        <link rel="stylesheet" href="/css/header/header.css"/>-->
+    <link rel="stylesheet" href="/css/mypage/accountManage.css">
+</head>
+<body>
+<div class="container">
+    <div class="account-container">
+        <!--    프로필-->
+        <section class="img-profile-section">
+            <div class="img-profile-div">
+                <img width="80" height="80" src="https://static.wanted.co.kr/oneid-user/profile_default.png">
+                <label class="img-profile-label">
+                    <input accept="image/*" type="file" id="input-file" style="display: none;">
+                    <span class="img-profile-span">
+                    <svg viewBox="0 0 15 15" class="css-1h47l4s"><path
+                            d="m11.697 0.14712c-0.2936-0.2179-0.7103-0.19376-0.9766 0.072463l-10.501 10.498-0.076884 0.09c-0.092277 0.1273-0.14287 0.2812-0.14287 0.4404v3.0023l0.0068466 0.1018c0.049662 0.366 0.36346 0.6482 0.74315 0.6482h2.5034l0.10177-0.0068c0.36607-0.0497 0.64823-0.3635 0.64823-0.7432l-0.00685-0.1018c-0.04966-0.366-0.36346-0.6482-0.74315-0.6482h-1.7544v-1.941l6.5007-6.4987 1.9389 1.9389-4.7206 4.7203-0.07262 0.0841c-0.21789 0.2936-0.19372 0.7103 0.07252 0.9766 0.29286 0.2929 0.76774 0.2929 1.0607 1e-4l8.5017-8.5 0.0726-0.0841c0.2179-0.29358 0.1937-0.71023-0.0725-0.97652l-2.999-3-0.0841-0.072632zm-0.698 5.7915 2.1897-2.1896-1.939-1.938-2.1895 2.1888 1.9388 1.9388z"
+                            clip-rule="evenodd" fill="currentColor" fill-rule="evenodd"></path></svg>
+                </span>
+                </label>
+            </div>
+            <p class="profile-name">김광민님, 환영해요.</p>
+        </section>
+        <section class="account-section">
+            <p class="account-management">계정 관리</p>
+            <p class="account-management-p">서비스에서 사용하는 내 계정 정보를 관리할 수 있습니다.</p>
+            <ul class="account-ul">
+                <li class="account-wrapper">
+                    <p class="account-p">이메일</p>
+                    <p class="account-email">kgm970910@gmail.com</p></li>
+                <li class="account-wrapper">
+                    <p class="account-p">이름</p>
+                    <p class="account-name">김광민</p>
+                    <span class="css-span">
+                    <svg viewBox="0 0 8 14" color="var(--theme-palette-colors-gray-600)" class="css-1atlpo9">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M0.969605 13.0303C1.2625 13.3232 1.73737 13.3232 2.03027 13.0303L7.53027 7.53033C7.82316 7.23744 7.82316 6.76257 7.53027 6.46967L2.03033 0.969673C1.73744 0.676778 1.26257 0.676775 0.969673 0.969667C0.676778 1.26256 0.676776 1.73743 0.969667 2.03033L5.93928 7L0.969605 11.9697C0.676712 12.2626 0.676712 12.7374 0.969605 13.0303Z"
+                              fill="var(--theme-palette-colors-gray-600)"></path></svg>
+                </span>
+                </li>
+                <li class="account-wrapper">
+                    <p class="account-p">휴대폰 번호</p>
+                    <p class="account-phone">+82 010-7421-8523</p>
+                    <span class="css-span">
+                    <svg viewBox="0 0 8 14" class="css-1atlpo9">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M0.969605 13.0303C1.2625 13.3232 1.73737 13.3232 2.03027 13.0303L7.53027 7.53033C7.82316 7.23744 7.82316 6.76257 7.53027 6.46967L2.03033 0.969673C1.73744 0.676778 1.26257 0.676775 0.969673 0.969667C0.676778 1.26256 0.676776 1.73743 0.969667 2.03033L5.93928 7L0.969605 11.9697C0.676712 12.2626 0.676712 12.7374 0.969605 13.0303Z"
+                              fill="var(--theme-palette-colors-gray-600)"></path></svg></span>
+                </li>
+                <li class="account-wrapper">
+                    <p class="account-p">소셜 로그인 관리</p>
+                    <p class="account-social">연결 안됨</p>
+                    <span class="css-span">
+                    <svg viewBox="0 0 8 14" color="var(--theme-palette-colors-gray-600)" class="css-1atlpo9"><path
+                            fill-rule="evenodd" clip-rule="evenodd"
+                            d="M0.969605 13.0303C1.2625 13.3232 1.73737 13.3232 2.03027 13.0303L7.53027 7.53033C7.82316 7.23744 7.82316 6.76257 7.53027 6.46967L2.03033 0.969673C1.73744 0.676778 1.26257 0.676775 0.969673 0.969667C0.676778 1.26256 0.676776 1.73743 0.969667 2.03033L5.93928 7L0.969605 11.9697C0.676712 12.2626 0.676712 12.7374 0.969605 13.0303Z"
+                            fill="var(--theme-palette-colors-gray-600)"></path></svg></span>
+                </li>
+            </ul>
+        </section>
+        <section class="account-section">
+            <p class="account-management">개인 정보 보호</p>
+            <p class="account-management-p">내 계정을 안전하게 보호하기 위한 정보를 관리할 수 있습니다.</p>
+            <ul class="account-ul">
+                <li class="account-wrapper">
+                    <p class="account-p">비밀번호 변경</p>
+                </li>
+                <li class="account-wrapper">
+                    <p class="account-p">회원 탈퇴</p>
+                </li>
+            </ul>
+        </section>
+
+        <!--    모달창-->
+        <div class="modal-name">
+            <div data-testid="Modal" class="modal-container">
+                <div class="modal-div">
+                    <div class="modal-div-css"></div>
+                    <div class="modal-div-css2"><p data-testid="Typography" color="var(--theme-palette-colors-black-100)"
+                                               class="modal-div-p">
+                        <p data-testid="Typography" color="var(--theme-palette-colors-black-100)" class="modal-div-p2">
+                            이름</p></p></div>
+                    <div class="modal-btn-div">
+                        <button type="button" class="modal-btn">
+                            <span class="css-span"><svg viewBox="0 0 24 24" class="css-ckhhlt"><path
+                                d="M17.97 19.03a.749.749 0 1 0 1.06-1.06l-6.5-6.5a.749.749 0 0 0-1.06 0l-6.5 6.5a.749.749 0 1 0 1.06 1.06L12 13.06l5.97 5.97zM12 10.94 6.03 4.97a.749.749 0 1 0-1.06 1.06l6.5 6.5a.749.749 0 0 0 1.06 0l6.5-6.5a.749.749 0 1 0-1.06-1.06L12 10.94z"></path></svg></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-form-wrapper">
+                    <form>
+                        <div class="modal-form-div"><input type="text" placeholder="이름을 입력해주세요." name="username"
+                                                        data-testid="Input_username" class="white-gray" value="김광민">
+                        </div>
+                        <div class="modal-submit-div">
+                            <button type="button" data-testid="Button" class="modal-submit-close"><span
+                                    data-testid="Typography" color="var(--theme-palette-colors-black-100)"
+                                    class="change-color">취소</span></button>
+                            <button type="submit" data-testid="Button" class="css-1jkqjay"><span
+                                    data-testid="Typography" color="var(--theme-palette-colors-black-100)"
+                                    class="change-color">저장</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--        휴대폰 번호 모달-->
+        <div class="modal-phone">
+        <div data-testid="Modal" class="modal-container">
+            <div class="modal-div">
+                <div class="modal-div-css"></div>
+                <div class="modal-div-css2">
+                    <p class="modal-div-p">
+                    <p class="modal-div-p2">휴대폰 번호</p>
+                    </p>
+                </div>
+                <div class="modal-btn-div">
+                    <button type="button" class="modal-btn">
+                        <span class="css-span">
+                            <svg viewBox="0 0 24 24" class="css-ckhhlt"><path d="M17.97 19.03a.749.749 0 1 0 1.06-1.06l-6.5-6.5a.749.749 0 0 0-1.06 0l-6.5 6.5a.749.749 0 1 0 1.06 1.06L12 13.06l5.97 5.97zM12 10.94 6.03 4.97a.749.749 0 1 0-1.06 1.06l6.5 6.5a.749.749 0 0 0 1.06 0l6.5-6.5a.749.749 0 1 0-1.06-1.06L12 10.94z"></path></svg></span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-form-wrapper">
+                <form>
+                    <div class="modal-form-div">
+                        <div>
+                            <div class="modal-select-div"><select class="modal-select">
+                                <option value="KR">South Korea +82</option>
+                                <option value="JP">Japan +81</option>
+                                <option value="TW">Taiwan +886</option>
+                                <option value="HK">Hong Kong +852</option>
+                                <option value="SG">Singapore +65</option>
+                                <option value="AF">Afghanistan +93</option>
+                                <option value="AL">Albania +355</option>
+                                <option value="DZ">Algeria +213</option>
+                                <option value="AO">Angola +244</option>
+                                <option value="AR">Argentina +54</option>
+                                <option value="AM">Armenia +374</option>
+                                <option value="AW">Aruba +297</option>
+                                <option value="AU">Australia +61</option>
+                                <option value="AT">Austria +43</option>
+                                <option value="AZ">Azerbaijan +994</option>
+                                <option value="BH">Bahrain +973</option>
+                                <option value="BD">Bangladesh +880</option>
+                                <option value="BY">Belarus +375</option>
+                                <option value="BE">Belgium +32</option>
+                                <option value="BZ">Belize +501</option>
+                                <option value="BJ">Benin +229</option>
+                                <option value="BT">Bhutan +975</option>
+                                <option value="BO">Bolivia +591</option>
+                                <option value="BW">Botswana +267</option>
+                                <option value="BR">Brazil +55</option>
+                                <option value="BN">Brunei +673</option>
+                                <option value="BG">Bulgaria +359</option>
+                                <option value="BF">Burkina Faso +226</option>
+                                <option value="KH">Cambodia +855</option>
+                                <option value="CM">Cameroon +237</option>
+                                <option value="CA">Canada +1</option>
+                                <option value="CL">Chile +56</option>
+                                <option value="CN">China +86</option>
+                                <option value="CX">Christmas Island +61</option>
+                                <option value="CC">Cocos Islands +61</option>
+                                <option value="CO">Colombia +57</option>
+                                <option value="KM">Comoros +269</option>
+                                <option value="CR">Costa Rica +506</option>
+                                <option value="HR">Croatia +385</option>
+                                <option value="CU">Cuba +53</option>
+                                <option value="CW">Curacao +599</option>
+                                <option value="CY">Cyprus +357</option>
+                                <option value="CZ">Czech Republic +420</option>
+                                <option value="DK">Denmark +45</option>
+                                <option value="DJ">Djibouti +253</option>
+                                <option value="EC">Ecuador +593</option>
+                                <option value="EG">Egypt +20</option>
+                                <option value="SV">El Salvador +503</option>
+                                <option value="GQ">Equatorial Guinea +240</option>
+                                <option value="EE">Estonia +372</option>
+                                <option value="ET">Ethiopia +251</option>
+                                <option value="FO">Faroe Islands +298</option>
+                                <option value="FJ">Fiji +679</option>
+                                <option value="FI">Finland +358</option>
+                                <option value="FR">France +33</option>
+                                <option value="PF">French Polynesia +689</option>
+                                <option value="GM">Gambia +220</option>
+                                <option value="GE">Georgia +995</option>
+                                <option value="DE">Germany +49</option>
+                                <option value="GH">Ghana +233</option>
+                                <option value="GR">Greece +30</option>
+                                <option value="GL">Greenland +299</option>
+                                <option value="GT">Guatemala +502</option>
+                                <option value="GN">Guinea +224</option>
+                                <option value="GY">Guyana +592</option>
+                                <option value="HT">Haiti +509</option>
+                                <option value="HN">Honduras +504</option>
+                                <option value="HU">Hungary +36</option>
+                                <option value="IS">Iceland +354</option>
+                                <option value="IN">India +91</option>
+                                <option value="ID">Indonesia +62</option>
+                                <option value="IR">Iran +98</option>
+                                <option value="IQ">Iraq +964</option>
+                                <option value="IE">Ireland +353</option>
+                                <option value="IL">Israel +972</option>
+                                <option value="IT">Italy +39</option>
+                                <option value="JO">Jordan +962</option>
+                                <option value="KZ">Kazakhstan +7</option>
+                                <option value="KE">Kenya +254</option>
+                                <option value="XK">Kosovo +383</option>
+                                <option value="KW">Kuwait +965</option>
+                                <option value="KG">Kyrgyzstan +996</option>
+                                <option value="LA">Laos +856</option>
+                                <option value="LV">Latvia +371</option>
+                                <option value="LB">Lebanon +961</option>
+                                <option value="LY">Libya +218</option>
+                                <option value="LI">Liechtenstein +423</option>
+                                <option value="LT">Lithuania +370</option>
+                                <option value="LU">Luxembourg +352</option>
+                                <option value="MO">Macau +853</option>
+                                <option value="MK">Macedonia +389</option>
+                                <option value="MG">Madagascar +261</option>
+                                <option value="MW">Malawi +265</option>
+                                <option value="MY">Malaysia +60</option>
+                                <option value="MV">Maldives +960</option>
+                                <option value="ML">Mali +223</option>
+                                <option value="MT">Malta +356</option>
+                                <option value="MH">Marshall Islands +692</option>
+                                <option value="MR">Mauritania +222</option>
+                                <option value="MU">Mauritius +230</option>
+                                <option value="MX">Mexico +52</option>
+                                <option value="MD">Moldova +373</option>
+                                <option value="MN">Mongolia +976</option>
+                                <option value="ME">Montenegro +382</option>
+                                <option value="MA">Morocco +212</option>
+                                <option value="MZ">Mozambique +258</option>
+                                <option value="MM">Myanmar +95</option>
+                                <option value="NA">Namibia +264</option>
+                                <option value="NP">Nepal +977</option>
+                                <option value="NL">Netherlands +31</option>
+                                <option value="NC">New Caledonia +687</option>
+                                <option value="NZ">New Zealand +64</option>
+                                <option value="NI">Nicaragua +505</option>
+                                <option value="NE">Niger +227</option>
+                                <option value="NG">Nigeria +234</option>
+                                <option value="NO">Norway +47</option>
+                                <option value="OM">Oman +968</option>
+                                <option value="PK">Pakistan +92</option>
+                                <option value="PW">Palau +680</option>
+                                <option value="PS">Palestine +970</option>
+                                <option value="PA">Panama +507</option>
+                                <option value="PG">Papua New Guinea +675</option>
+                                <option value="PY">Paraguay +595</option>
+                                <option value="PE">Peru +51</option>
+                                <option value="PH">Philippines +63</option>
+                                <option value="PL">Poland +48</option>
+                                <option value="PT">Portugal +351</option>
+                                <option value="QA">Qatar +974</option>
+                                <option value="RE">Reunion +262</option>
+                                <option value="RO">Romania +40</option>
+                                <option value="RU">Russia +7</option>
+                                <option value="RW">Rwanda +250</option>
+                                <option value="WS">Samoa +685</option>
+                                <option value="SA">Saudi Arabia +966</option>
+                                <option value="SN">Senegal +221</option>
+                                <option value="RS">Serbia +381</option>
+                                <option value="SC">Seychelles +248</option>
+                                <option value="SL">Sierra Leone +232</option>
+                                <option value="SK">Slovakia +421</option>
+                                <option value="SI">Slovenia +386</option>
+                                <option value="SB">Solomon Islands +677</option>
+                                <option value="SO">Somalia +252</option>
+                                <option value="ZA">South Africa +27</option>
+                                <option value="SS">South Sudan +211</option>
+                                <option value="ES">Spain +34</option>
+                                <option value="LK">Sri Lanka +94</option>
+                                <option value="SD">Sudan +249</option>
+                                <option value="SR">Suriname +597</option>
+                                <option value="SE">Sweden +46</option>
+                                <option value="CH">Switzerland +41</option>
+                                <option value="SY">Syria +963</option>
+                                <option value="TJ">Tajikistan +992</option>
+                                <option value="TZ">Tanzania +255</option>
+                                <option value="TH">Thailand +66</option>
+                                <option value="TG">Togo +228</option>
+                                <option value="TO">Tonga +676</option>
+                                <option value="TN">Tunisia +216</option>
+                                <option value="TR">Turkey +90</option>
+                                <option value="TM">Turkmenistan +993</option>
+                                <option value="UG">Uganda +256</option>
+                                <option value="UA">Ukraine +380</option>
+                                <option value="AE">United Arab Emirates +971</option>
+                                <option value="GB">United Kingdom +44</option>
+                                <option value="US">United States +1</option>
+                                <option value="UY">Uruguay +598</option>
+                                <option value="UZ">Uzbekistan +998</option>
+                                <option value="VU">Vanuatu +678</option>
+                                <option value="VE">Venezuela +58</option>
+                                <option value="VN">Vietnam +84</option>
+                                <option value="YE">Yemen +967</option>
+                                <option value="ZM">Zambia +260</option>
+                                <option value="ZW">Zimbabwe +263</option>
+                            </select>
+                                <div class="arrow-btn-div">
+                                    <span class="css-span">
+                                    <svg viewBox="0 0 10 6" class="css-1h47l4s"><path fill-rule="evenodd" clip-rule="evenodd" d="M5 3.93934L1.28033 0.21967C0.987437 -0.0732233 0.512563 -0.0732233 0.21967 0.21967C-0.0732233 0.512563 -0.0732233 0.987437 0.21967 1.28033L4.46967 5.53033C4.76256 5.82322 5.23744 5.82322 5.53033 5.53033L9.78033 1.28033C10.0732 0.987437 10.0732 0.512563 9.78033 0.21967C9.48744 -0.0732233 9.01256 -0.0732233 8.71967 0.21967L5 3.93934Z" fill="var(--theme-palette-colors-gray-900)"></path></svg></span></div>
+                            </div>
+                            <div class="modal-phone-input-div">
+                                <input type="text" placeholder="(예시) 01013245768" name="mobile" class="white-gray" value="" readonly="">
+                                <button type="button" data-testid="Button" class="change-phone-btn">
+                                    <span class="change-color">번호 변경</span></button>
+                            </div>
+                            <div class="modal-phone-input-div">
+                                <input type="text" placeholder="인증번호를 입력해주세요." name="authCode" readonly="" class="white-gray" value=""></div>
+                            <p class="phone-certification">인증되었습니다.</p></div>
+                    </div>
+                    <div class="modal-submit-div">
+                        <button type="button" data-testid="Button" class="modal-submit-close"><span data-testid="Typography"
+                                                                                             color="var(--theme-palette-colors-black-100)"
+                                                                                             class="change-color">취소</span>
+                        </button>
+                        <button type="submit" disabled="" data-testid="Button" class="css-1jkqjay"><span
+                                data-testid="Typography" color="var(--theme-palette-colors-black-100)"
+                                class="change-color">저장</span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+        <!--        비밀번호 변경 모달-->
+        <div class="modal-password">
+            <div data-testid="Modal" class="modal-container">
+                <div class="modal-div">
+                    <div class="modal-div-css"></div>
+                    <div class="modal-div-css2">
+                        <p class="modal-div-p">
+                        <p class="modal-div-p2">비밀번호 변경</p></p></div>
+                    <div class="modal-btn-div">
+                        <button type="button" class="modal-btn"><span class="css-span">
+                            <svg viewBox="0 0 24 24" class="css-ckhhlt"><path d="M17.97 19.03a.749.749 0 1 0 1.06-1.06l-6.5-6.5a.749.749 0 0 0-1.06 0l-6.5 6.5a.749.749 0 1 0 1.06 1.06L12 13.06l5.97 5.97zM12 10.94 6.03 4.97a.749.749 0 1 0-1.06 1.06l6.5 6.5a.749.749 0 0 0 1.06 0l6.5-6.5a.749.749 0 1 0-1.06-1.06L12 10.94z"></path></svg></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-form-wrapper">
+                    <form>
+                        <div class="modal-form-div">
+                            <div class="css-11ayfj7">
+                                <label for="email" class="password-css">현재 비밀번호</label>
+                            </div>
+                            <input type="password" placeholder="비밀번호를 입력해주세요." name="oldPassword"
+                                   data-testid="Input_oldPassword" class="white-gray" value="">
+                            <div class="css-11ayfj7"><label class="password-css">새 비밀번호</label></div>
+                            <input type="password" placeholder="새 비밀번호를 입력해주세요." name="password"
+                                   data-testid="Input_password" class="white-gray" value=""><input type="password"
+                                                                                                   placeholder="새 비밀번호를 다시 한번 입력해주세요."
+                                                                                                   name="passwordConfirm"
+                                                                                                   class="white-gray"
+                                                                                                   value="">
+                            <p class="password-bottom">
+                                영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 16자 이하로 입력해주세요.</p></div>
+                        <div class="modal-submit-div">
+                            <button type="button" class="modal-submit-close"><span
+                                    class="change-color">취소</span>
+                            </button>
+                            <button type="submit" data-testid="Button" class="css-1jkqjay" disabled=""><span
+                                    data-testid="Typography" color="var(--theme-palette-colors-black-100)"
+                                    class="change-color">저장</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<!--<script src="../../static/js/mypage/accountModal.js"></script>-->
+<script src="/js/mypage/accountModal.js"></script>
+</html>

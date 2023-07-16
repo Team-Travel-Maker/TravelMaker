@@ -13,15 +13,32 @@ public class CommunityController {
 
 //    이용 후기
     @GetMapping("review/list")
-    public void goToCommunityList(){;}
+    public void goToCReviewList(){;}
 
     @GetMapping("review/write")
-    public void goToWrite(){;}
+    public void goToReviewWrite(){;}
 
     @GetMapping("review/detail")
-    public void goToDetail(){;}
+    public void goToReviewDetail(){;}
 
 //    개선 요청
-//    목록 작성 상세 수정
+    @GetMapping("request/list")
+    public void goToRequestList(){;}
+
+    @GetMapping("request/write")
+    public void goToRequestWrite(){;}
+
+    @GetMapping("request/detail")
+    public void goToRequestDetail(){;}
+
 //    소통
+    @GetMapping("board/list")
+    public void goToBoardList(){;}
+
+    @GetMapping("board/detail")
+    public void goToBoardDetail(){;}
+
+    @GetMapping("board/write")
+    public void goToBoardWrite(){;}
+
 }
