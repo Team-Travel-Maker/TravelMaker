@@ -38,6 +38,13 @@ a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, bo
     --nav-height: 50px;
 }
 
+/*@media (min-width: 768px) and (max-width: 991px){
+    :root {
+        --nav-height: 110px;
+    }
+}*/
+
+
 html {
     font-size: 10px;
     -webkit-font-smoothing: antialiased;
