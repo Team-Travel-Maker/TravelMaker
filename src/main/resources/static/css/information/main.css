@@ -242,7 +242,7 @@ ul.promoted-noticeList > li > a {
 /*메인 이미지 모바일 동적 변경을 위한 스타일*/
 @media (max-width: 767px) {
     .hero-image {
-        background-image: url(/images/informataion/고객센터메인화면2.jpg);
+        background-image: url('/images/informataion/고객센터메인화면2.jpg');
     }
 }
 
@@ -418,7 +418,7 @@ ul.primary-menu-list-wrap > li > a {
     background-color: rgba(204, 96, 47, 0);
 }
 .hero-image {
-    background-image: url('/images/informataion/고객센터메인화면1.jpg');
+    background-image: url('/images/information/고객센터메인화면1.jpg');
     background-size: cover;
     /*메인화면 이미지 중앙처리 [S]*/
     background-position: center center;
