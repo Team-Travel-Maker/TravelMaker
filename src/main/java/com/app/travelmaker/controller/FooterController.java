@@ -7,14 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Slf4j
-@RequestMapping(value = "/header/*")
-public class HeaderController {
-    // 헤더
-    @GetMapping("signedIn-header")
-    public void goToSignedInHeader(){;}
+@RequestMapping(value = "/footer/*")
+public class FooterController {
 
-    @GetMapping("main-header")
-    public void goToMainHeader(){;}
-
+    @GetMapping("footer")
+    public void goToFooter(){;}
 }
 

@@ -723,10 +723,9 @@
     height: 100%;
 }
 
-@media (min-width: 1200px){
-    .CompanyTag_companyTag__rnoHO {
-        margin: 0 auto;
-    }
+.CompanyTag_companyTag__rnoHO {
+    position: relative;
+    max-width: 1060px;
 }
 
 @media (min-width: 1200px){
@@ -735,9 +734,10 @@
     }
 }
 
-.CompanyTag_companyTag__rnoHO {
-    position: relative;
-    max-width: 1060px;
+@media (min-width: 1200px){
+    .CompanyTag_companyTag__rnoHO {
+        margin: 0 auto;
+    }
 }
 
 .TitleList_titleList__GaKzt {
