@@ -14,6 +14,7 @@
 <body>
 <div th:replace="~{header/header :: #header}"></div>
 <div class="Padding_padding___Nyki"></div>
+
 <main class="CommunityWrite">
     <form id="write">
         <div class="Header_CommunityWriteHeader">
@@ -22,7 +23,7 @@
                     <button
                             class="Button_root Button_contained"
                             type="submit" form="write" aria-label="registration button" disabled=""><span
-                            class="Button_label">등록하기</span></button>
+                            class="Button_label">수정하기</span></button>
                 </div>
             </div>
         </div>
@@ -31,6 +32,7 @@
                 <div class="TagPanel">
                     <div class="TagPanel_tagMessage"><span>태그 작성</span> <span
                             class="TagPanel_tagMessage_required">*</span></div>
+
                     <style>
                         .tagify {
                             border: 0;
@@ -39,6 +41,7 @@
                             --tag-inset-shadow-size: 2em;
                         }
                     </style>
+
                     <input placeholder="태그를 추가해 주세요.">
                 </div>
                 <!-- 제목 작성-->
@@ -93,6 +96,7 @@
         </label>
     </div>
 </main>
+
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
