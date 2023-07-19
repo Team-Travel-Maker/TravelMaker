@@ -521,6 +521,112 @@ img {
     background: linear-gradient(90deg,#fff 21.82%,hsla(0,0%,100%,0));
 }
 
+/* 화살표 */
+
+/* 왼쪽 */
+.left-arrow-wrap{
+    left: -14px;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    background: -webkit-gradient(linear,left top,right top,color-stop(21.82%,#fff),to(hsla(0,0%,100%,0)));
+    background: linear-gradient(90deg,#fff 21.82%,hsla(0,0%,100%,0));
+    display: flex;
+    width: 35px;
+    position: absolute;
+    align-items: center;
+    display: none;
+    z-index: 1;
+}
+
+.left-arrow-wrap > button{
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    min-width: 30px;
+    min-height: 30px;
+    border: 1px solid #e1e2e4;
+    border-radius: 50%;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.05);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.05);
+    color: #8a8a8a;
+    position: relative;
+}
+
+.left-arrow{
+    display: flex;
+    align-items: inherit;
+    justify-content: inherit;
+}
+
+.left-arrow-svg{
+    user-select: none;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    fill: currentColor;
+    flex-shrink: 0;
+    font-size: inherit;
+}
+
+/* 오른쪽 */
+
+.right-arrow-wrap{
+    right: -14px;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    background: -webkit-gradient(linear,right top,left top,color-stop(21.82%,#fff),to(hsla(0,0%,100%,0)));
+    background: linear-gradient(270deg,#fff 21.82%,hsla(0,0%,100%,0));
+    display: flex;
+    width: 40px;
+    position: absolute;
+    align-items: center;
+    z-index: 1;
+}
+
+.right-arrow-wrap>button{
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    min-width: 30px;
+    min-height: 30px;
+    border: 1px solid #e1e2e4;
+    border-radius: 50%;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.05);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,.05);
+    color: #8a8a8a;
+    position: relative;
+}
+
+.right-arrow{
+    display: flex;
+    align-items: inherit;
+    justify-content: inherit;
+}
+
+.right-arrow-svg{
+    user-select: none;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    fill: currentColor;
+    flex-shrink: 0;
+    font-size: inherit;
+}
+
 @media (min-width: 1200px) {
     .tagSlide-arrow {
         width: 80px;

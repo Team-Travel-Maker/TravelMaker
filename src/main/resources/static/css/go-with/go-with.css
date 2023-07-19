@@ -319,7 +319,6 @@ img {
 
 /* 왼쪽 */
 .left-arrow-wrap{
-    top: 80px;
     left: -14px;
     -ms-flex-pack: start;
     justify-content: flex-start;
@@ -373,7 +372,6 @@ img {
 /* 오른쪽 */
 
 .right-arrow-wrap{
-    top: 80px;
     right: -14px;
     -ms-flex-pack: end;
     justify-content: flex-end;

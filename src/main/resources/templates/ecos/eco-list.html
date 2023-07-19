@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>에코인증 목록</title>
 </head>
@@ -14,9 +15,10 @@
 <body>
 
 <!-- 헤더 -->
-<div th:replace="~{header/header :: #header}"></div>
+<!--<div th:replace="~{header/header :: #header}"></div>-->
 
 <div class="content-wrapper">
+    <!-- 사이드 바 -->
     <aside class="sidebar-wrapper">
         <div class="sidebar-asideArea">
             <div class="miniProfile-wrapper">
@@ -43,149 +45,87 @@
                     </span>
                 </button>
             </div>
-            <div class="recommendedProfile-wrapper">
-                <h3 class="recommendedProfile-title">업데이트된 추천 프로필</h3>
-                <p class="recommendedProfile-subTitle">관심있는 프로필을 찾아보세요.</p>
-                <div class="recommendedProfile-rows">
-                    <a class="recommendedProfile-item" href="/community/profile/UbV5n7qVuWas9mqGoA23L7">
-                        <div class="userAvatar recommendedProfile-avatar">
-                            <img src="https://static.wanted.co.kr/open_profile/avatar/35f6b43f56659e75572dca6131716ba06e1fd8950e11c3ac1d91d52fc399dca1" alt="">
-                        </div>
-                        <div class="recommendedProfile-userName">박몽수</div>
-                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommendedProfile-rightArrow">
-                            <path d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z"></path>
-                        </svg>
-                    </a>
-                    <a class="recommendedProfile-item" href="/community/profile/KJ4fp9MzA7DDwg5bYRmjKB">
-                        <div class="userAvatar recommendedProfile-avatar">
-                            <img src="https://s3.ap-northeast-2.amazonaws.com/wanted-public/profile_default.png" alt="">
-                        </div>
-                        <div class="recommendedProfile-userName">깔깔</div>
-                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommendedProfile-rightArrow">
-                            <path d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z"></path>
-                        </svg>
-                    </a>
-                    <a class="recommendedProfile-item" href="/community/profile/7ZiVpmQApCWAWg9EW69Nf5">
-                        <div class="userAvatar recommendedProfile-avatar">
-                            <img src="https://static.wanted.co.kr/community/avatar/482a925cc6a864abe279d9e491d8135372b11be9481a2c28d53fb1c56f8b7193" alt="">
-                        </div>
-                        <div class="recommendedProfile-userName">JiHwan Leo Hyun</div>
-                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommendedProfile-rightArrow">
-                            <path d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z"></path>
-                        </svg>
-                    </a>
-                    <a class="recommendedProfile-item" href="/community/profile/4v8fNZksRXurhUGJBY2zhU">
-                        <div class="userAvatar recommendedProfile-avatar">
-                            <img src="https://static.wanted.co.kr/oneid-user/4v8fNZksRXurhUGJBY2zhU/G6NVRfZLNHQB6L7b8XunU9.jpg" alt="">
-                        </div>
-                        <div class="recommendedProfile-userName">말랑콩떡</div>
-                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommendedProfile-rightArrow">
-                            <path d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z"></path>
-                        </svg>
-                    </a>
-                    <a class="recommendedProfile-item" href="/community/profile/YwaLPThHv8bH9FT6R6K29k">
-                        <div class="userAvatar recommendedProfile-avatar">
-                            <img src="https://static.wanted.co.kr/images/avatars/322418/c8ceb804.jpg" alt="">
-                        </div>
-                        <div class="recommendedProfile-userName">고독한명언가</div>
-                        <svg width="6" height="13" viewBox="0 0 6 13" fill="#888888" class="recommendedProfile-rightArrow">
-                            <path d="M0.34467 10.4697C0.0517767 10.7626 0.0517767 11.2374 0.34467 11.5303C0.637563 11.8232 1.11244 11.8232 1.40533 11.5303L5.65533 7.28033C5.94822 6.98744 5.94822 6.51256 5.65533 6.21967L1.40533 1.96967C1.11244 1.67678 0.637563 1.67678 0.34467 1.96967C0.0517767 2.26256 0.0517767 2.73744 0.34467 3.03033L4.06434 6.75L0.34467 10.4697Z"></path>
-                        </svg>
-                    </a>
-                </div>
-                <div class="recommendedProfile-actions">
-                    <button class="Button-root Button-outlined Button-outlinedAssistive Button-outlinedSizeMedium Button-fullWidth">
-                        <span class="Button-label">
-                            새로운 프로필 보기
-                            <span class="Button-endIcon Button-endIcon-sizeMedium">
-                                <span class="svgIcon-root">
-                                    <svg class="svgIcon-rootSvg" viewBox="0 0 24 24">
-                                        <path d="M7.37374 2.7578C7.62384 2.29823 8.19915 2.12841 8.65872 2.37851L12.453 4.44332L12.5682 4.51706C12.8266 4.70995 12.962 5.0165 12.9465 5.3242C12.9472 5.33886 12.9475 5.35361 12.9475 5.36843C12.9475 5.67552 12.8014 5.94849 12.5749 6.1216L10.2985 9.54035L10.2123 9.65118C9.90279 9.99393 9.38074 10.0674 8.98483 9.80382L8.874 9.71768C8.53125 9.40817 8.45772 8.88612 8.72135 8.49021L9.9678 6.61778C7.12241 7.48689 5.05275 10.1333 5.05275 13.2632C5.05275 17.1001 8.1632 20.2105 12.0001 20.2105C13.869 20.2105 15.6179 19.471 16.913 18.176C18.2081 16.8809 18.9475 15.132 18.9475 13.2632C18.9475 11.3954 18.208 9.64641 16.9127 8.35009C16.5429 7.97997 16.5431 7.38013 16.9132 7.01031C17.2834 6.64048 17.8832 6.64072 18.253 7.01084C19.8998 8.65888 20.8423 10.8879 20.8423 13.2632C20.8423 15.6396 19.8997 17.8688 18.2528 19.5158C16.6058 21.1627 14.3766 22.1053 12.0001 22.1053C7.11676 22.1053 3.15801 18.1465 3.15801 13.2632C3.15801 9.34005 5.71295 6.01369 9.2497 4.8572L7.75303 4.04277L7.64425 3.97373C7.26808 3.69759 7.14449 3.17907 7.37374 2.7578Z"></path>
-                                    </svg>
-                                </span>
-                            </span>
-                        </span>
-                        <span class="Button-interaction"></span>
-                    </button>
-                </div>
-            </div>
         </div>
     </aside>
+
+<!--  메인컨텐츠  -->
     <main class="contentList-wrapper">
         <div class="contentList-categories">
             <div class="interestCategory-wrapper">
-                <div class="interestTagSlide interestCategory-slide">
-                    <div class="scrollSnap scrollSnap-hide interestTagSlide-slide">
-                        <div class="scrollSnap-scroll scrollSnap-hide scrollSnap-scrollX scrollSnap-contain scrollSnap-mandatory tagSlide scrollSnap-interestTagSlide" style="overflow-x: hidden">
-                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item">
-                                <span class="Button-label">추천</span>
-                                <span class="Button-interaction"></span>
+                <div class="interestTagSlide interestCategory-slide select-wrap">
+                    <div class="left-arrow-wrap">
+                        <button type="button">
+                    <span class="left-arrow">
+                        <svg class="left-arrow-svg" viewBox="0 0 18 18">
+                            <path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path>
+                        </svg>
+                    </span>
+                        </button>
+                    </div>
+                    <div class="right-arrow-wrap">
+                        <button type="button">
+                    <span class="right-arrow">
+                        <svg class="right-arrow-svg" viewBox="0 0 18 18">
+                            <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path>
+                        </svg>
+                    </span>
+                        </button>
+                    </div>
+                    <div class="select-container scrollSnap scrollSnap-hide interestTagSlide-slide">
+                        <div class="location-category-wrap Button-label">
+                            <button type="button" class="location-category now-button ">
+                                <span>전 체</span>
                             </button>
-                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item">
-                                <span class="Button-label">전체</span>
-                                <span class="Button-interaction"></span>
+                            <button type="button" class="location-category ">
+                                <span>서 울</span>
                             </button>
-                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item">
-                                <span class="Button-label">서울</span>
-                                <span class="Button-interaction"></span>
+                            <button type="button" class="location-category ">
+                                <span>경기도</span>
                             </button>
-                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item">
-                                <span class="Button-label">경기</span>
-                                <span class="Button-interaction"></span>
+                            <button type="button" class="location-category ">
+                                <span>인 천</span>
                             </button>
-                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item">
-                                <span class="Button-label">강원</span>
-                                <span class="Button-interaction"></span>
+                            <button type="button" class="location-category ">
+                                <span>강원도</span>
                             </button>
-                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item">
-                                <span class="Button-label">충남</span>
-                                <span class="Button-interaction"></span>
+                            <button type="button" class="location-category ">
+                                <span>세 종</span>
                             </button>
-                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item">
-                                <span class="Button-label">충북</span>
-                                <span class="Button-interaction"></span>
+                            <button type="button" class="location-category ">
+                                <span>충청남도</span>
                             </button>
-                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item">
-                                <span class="Button-label">경남</span>
-                                <span class="Button-interaction"></span>
+                            <button type="button" class="location-category ">
+                                <span>충청북도</span>
                             </button>
-                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item">
-                                <span class="Button-label">경북</span>
-                                <span class="Button-interaction"></span>
+                            <button type="button" class="location-category ">
+                                <span>대 전</span>
                             </button>
-                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item">
-                                <span class="Button-label">전남</span>
-                                <span class="Button-interaction"></span>
+                            <button type="button" class="location-category ">
+                                <span>전라남도</span>
                             </button>
-                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item">
-                                <span class="Button-label">전북</span>
-                                <span class="Button-interaction"></span>
+                            <button type="button" class="location-category ">
+                                <span>전라북도</span>
                             </button>
-                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item">
-                                <span class="Button-label">부산</span>
-                                <span class="Button-interaction"></span>
+                            <button type="button" class="location-category ">
+                                <span>광 주</span>
                             </button>
-                            <button class="Button-root Button-outlined Button-outlinedPrimary Button-outlinedSizeMedium interestCategory-item">
-                                <span class="Button-label">제주</span>
-                                <span class="Button-interaction"></span>
+                            <button type="button" class="location-category ">
+                                <span>경상남도</span>
                             </button>
-                        </div>
-                        <div class="tagSlide-arrow tagSlide-leftArrow">
-                            <button type="button">
-                                <span class="svgIcon-root">
-                                    <svg class="svgIcon-rootSvg" viewBox="0 0 18 18">
-                                        <path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path>
-                                    </svg>
-                                </span>
+                            <button type="button" class="location-category ">
+                                <span>경상북도</span>
                             </button>
-                        </div>
-                        <div class="tagSlide-arrow tagSlide-rightArrow tagSlide-arrowVisible">
-                            <button type="button">
-                                <span class="svgIcon-root">
-                                    <svg class="svgIcon-rootSvg" viewBox="0 0 18 18">
-                                        <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path>
-                                    </svg>
-                                </span>
+                            <button type="button" class="location-category ">
+                                <span>대 구</span>
+                            </button>
+                            <button type="button" class="location-category ">
+                                <span>울 산</span>
+                            </button>
+                            <button type="button" class="location-category ">
+                                <span>부 산</span>
+                            </button>
+                            <button type="button" class="location-category ">
+                                <span>제주도</span>
                             </button>
                         </div>
                     </div>
