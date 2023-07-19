@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Slf4j
-@RequestMapping(value = "/ecos/*")
+@RequestMapping("/ecos/*")
 public class EcoController {
 
 //    에코인증 목록

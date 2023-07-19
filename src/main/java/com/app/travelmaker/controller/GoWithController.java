@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Slf4j
-@RequestMapping(value = "/goWith/*")
+@RequestMapping("/goWith/*")
 public class GoWithController {
 
 //    함께가요 목록
