@@ -13,8 +13,7 @@ public class HeaderController {
     @GetMapping("signedIn-header")
     public void goToSignedInHeader(){;}
 
-    @GetMapping("main-header")
+    @GetMapping("header")
     public void goToMainHeader(){;}
 
 }
-
