@@ -260,6 +260,10 @@
     will-change: opacity;
 }
 
+.button-interaction:hover {
+    opacity: .05;
+}
+
 .top-banner-next-button {
     display: flex;
     align-items: center;
@@ -695,6 +699,11 @@
         min-height: 36px;
     }
 }
+
+.nav-arrow-button:hover {
+    border: 1px solid #aaa;
+}
+
 .nav-arrow-button:disabled {
     cursor: not-allowed;
     opacity: .7;
@@ -877,6 +886,10 @@
     background-color: var(--button-color);
     transition: opacity .2s ease;
     will-change: opacity;
+}
+
+.card-body-button-interaction:hover {
+    opacity: .05;
 }
 
 .separator {
@@ -1112,7 +1125,7 @@
     padding: 14px 0;
 }
 
-.current-card-body.title {
+.current-card-body .title {
     position: relative;
     color: #333;
     font-size: 18px;
@@ -1128,7 +1141,7 @@
     -webkit-box-orient: vertical;
 }
 
-.current-card-body.store {
+.current-card-body .store {
     font-size: 14px;
     line-height: normal;
     text-align: left;
@@ -1142,15 +1155,15 @@
     font-weight: 600;
 }
 
-.current-card-body.tooltip-container {
+.current-card-body .tooltip-container {
     position: relative;
 }
 
-.current-card-body.tooltip-container.tooltip-label {
+.current-card-body .tooltip-container .tooltip-label {
     position: relative;
 }
 
-.current-card-body.tooltip-container.tooltip-label.tooltip-label-container {
+.current-card-body .tooltip-container .tooltip-label .tooltip-label-container {
     border-radius: 2px;
     background-color: #fff;
     display: inline-block;
@@ -1164,13 +1177,13 @@
     color: #00aead;
 }
 
-.current-card-body.tooltip-container.tooltip-label.tooltip-label-container>span {
+.current-card-body .tooltip-container .tooltip-label .tooltip-label-container>span {
     position: relative;
     line-height: 19px;
     top: -1px;
 }
 
-.current-card-body.tooltip-container.tooltip-label.tooltip-content {
+.current-card-body .tooltip-container .tooltip-label .tooltip-content {
     color: #333;
     font-size: 12px;
     font-weight: 400;
@@ -1189,7 +1202,7 @@
     transform: translateX(-50%);
 }
 
-.current-card-body.location {
+.current-card-body .location {
     font-size: 14px;
     line-height: normal;
     text-align: left;
@@ -1203,13 +1216,13 @@
     color: #999;
 }
 
-.current-card-body.location.address-dot {
+.current-card-body .location .address-dot {
     margin: 0 3px;
     top: -4px;
     position: relative;
 }
 
-.current-card-body.etc {
+.current-card-body .etc {
     margin-top: 10px;
     color: #333;
     font-size: 14px;
