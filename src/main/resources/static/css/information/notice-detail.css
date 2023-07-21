@@ -202,6 +202,7 @@ body.helpcenter-enable {
 }
 main {
     flex: 1 0 auto;
+    margin-bottom: 100px;
 }
 body img,
 body iframe {
@@ -405,4 +406,8 @@ ol.breadcrumbs li:first-child a:before {
     font-weight: 600;
     margin-bottom: 40px;
     margin-top: 40px;
+}
+
+.FooterLinks_logo {
+    color: black;
 }

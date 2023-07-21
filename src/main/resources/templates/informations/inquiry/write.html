@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <title>Travel Maker</title>
@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/information/inquiry-write.css"/>
     <link rel="stylesheet" href="/css/admin/modal.css"/>
+    <link rel="stylesheet" href="/css/footer/footer.css">
 </head>
 <body class="helpcenter-enable">
 <div class="modal">
@@ -197,10 +198,8 @@
             </div>
         </section>
     </div>
-
 </main>
-</div>
-</div>
+<footer id="footer" th:replace="~{/footer/footer::footer}"></footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
