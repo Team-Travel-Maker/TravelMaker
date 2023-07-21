@@ -11,14 +11,15 @@
         }
     </style>
     <link rel="stylesheet" href="/css/common.css"/>
-    <link rel="stylesheet" href="/css/header/header.css"/>
     <link rel="stylesheet" href="/css/shop/shop-list.css"/>
     <link rel="stylesheet" href="/css/mypage/bookmarks.css">
     <link rel="stylesheet" href="/css/stories/story-list.css">
+    <link rel="stylesheet" href="/css/header/header.css"/>
+    <link rel="stylesheet" href="/css/footer/footer.css">
 </head>
 <body>
 <!-- 헤더 -->
-<!--<div th:replace="~{header/header :: #header}"></div>-->
+<div th:replace="~{header/header :: #header}"></div>
 
 <div class="story-list-container">
     <span class="story-list-title">업체 스토리</span>
@@ -453,6 +454,7 @@
         </div>
     </div>
 </div>
+<footer id="footer" th:replace="~{/footer/footer::footer}"></footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="/js/stories/story-list.js"></script>

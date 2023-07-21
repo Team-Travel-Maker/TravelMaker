@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
 
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/common.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/information/notice-list.css"/>
+    <link rel="stylesheet" href="/css/footer/footer.css">
 </head>
 <body class="helpcenter-enable">
 
@@ -227,6 +228,14 @@
                 <nav class="pagination">
                     <ul>
 
+                        <li class="pagination-first">
+                            <a href="#" rel="nofollow">«</a>
+                        </li>
+
+                        <li class="pagination-prev">
+                            <a href="#" rel="prev nofollow">‹</a>
+                        </li>
+
                         <li class="pagination-current">
                             <span>1</span>
                         </li>
@@ -248,35 +257,12 @@
 
                     </ul>
                 </nav>
-                <br>
-                <nav class="pagination">
-                    <ul>
-
-                        <li class="pagination-first">
-                            <a href="#" rel="nofollow">«</a>
-                        </li>
-
-                        <li class="pagination-prev">
-                            <a href="#" rel="prev nofollow">‹</a>
-                        </li>
-
-                        <li>
-                            <a href="#" rel="prev nofollow">1</a>
-                        </li>
-
-                        <li class="pagination-current">
-                            <span>2</span>
-                        </li>
-
-                    </ul>
-                </nav>
             </div>
         </div>
     </div>
 </main>
 
-</div>
-</div>
+<footer id="footer" th:replace="~{/footer/footer::footer}"></footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
