@@ -3,14 +3,16 @@ const $storyBuyWrap = $('.theme-wrap');
 
 $(window).scroll(function () {
     let height = $(document).scrollTop();
-    if(height == 1000){
+    console.log(height);
+    if(height > 1500){
         $storyBuyWrap.addClass("not-fixed");
         $storyBuyWrap.removeClass("fixed");
         $storyBuyWrap.removeClass("story-buy-wrap");
-    }else if(height <=1000){
+    }else{
         $storyBuyWrap.removeClass("not-fixed");
         $storyBuyWrap.addClass("fixed");
         $storyBuyWrap.addClass("story-buy-wrap");
     }
 })
+
 
