@@ -21,9 +21,15 @@ public class CommunityController {
     @GetMapping("review/detail")
     public void goToReviewDetail(){;}
 
+    @GetMapping("review/update")
+    public void goToReviewUpdate(){;}
+
 //    개선 요청
     @GetMapping("request/list")
     public void goToRequestList(){;}
+
+    @GetMapping("request/update")
+    public void goToRequsetUpdate(){;}
 
     @GetMapping("request/write")
     public void goToRequestWrite(){;}
@@ -37,6 +43,9 @@ public class CommunityController {
 
     @GetMapping("board/detail")
     public void goToBoardDetail(){;}
+
+    @GetMapping("board/update")
+    public void goToBoardUpdate(){;}
 
     @GetMapping("board/write")
     public void goToBoardWrite(){;}

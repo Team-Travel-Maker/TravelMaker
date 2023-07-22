@@ -13,7 +13,7 @@ import java.util.Map;
 
 @Controller
 @Slf4j
-@RequestMapping(value = "/goWith/*")
+@RequestMapping("/goWith/*")
 public class GoWithController {
 
 

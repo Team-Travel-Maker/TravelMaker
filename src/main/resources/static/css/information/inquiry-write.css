@@ -141,7 +141,7 @@ html, body {
 }
 [role="main"] {
     min-height: 70vh;
-    margin-bottom: -30px;
+    margin-bottom: 100px;
 }
 @charset "utf-8";
 body.helpcenter-enable {
@@ -568,4 +568,9 @@ label {
 #request_custom_fields_360025875971_error
 {
     display: none;
+}
+
+
+.FooterLinks_logo {
+    color: black;
 }

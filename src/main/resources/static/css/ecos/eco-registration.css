@@ -250,7 +250,7 @@ button {
 }
 
 .tagPanel {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .tagPanel .tagPanel-message {
@@ -631,6 +631,10 @@ div#modal-wrap span{
 .modal-btn:hover{
     color: #36f;
     border-color: #36f;
+}
+
+#write{
+    letter-spacing: 0.4px;
 }
 
 

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Maker</title>
+</head>
+
+<link rel="stylesheet" href="/css/common.css"/>
+<link rel="stylesheet" href="/css/community/community-write.css">
+<link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/css/header/header.css"/>
+
+<body>
+<div th:replace="~{header/header :: #header}"></div>
+<div class="Padding_padding___Nyki"></div>
+
+<main class="CommunityWrite">
+    <form id="write">
+        <div class="Header_CommunityWriteHeader">
+            <div class="Header_CommunityWriteHeader_content">
+                <div class="Header_CommunityWriteHeader_button">
+                    <button
+                            class="Button_root Button_contained"
+                            type="submit" form="write" aria-label="registration button" disabled=""><span
+                            class="Button_label">수정하기</span></button>
+                </div>
+            </div>
+        </div>
+        <div class="CommunityWrite_content">
+            <div class="CommunityWritePaper">
+                <div class="TagPanel">
+                    <div class="TagPanel_tagMessage"><span>태그 작성</span> <span
+                            class="TagPanel_tagMessage_required">*</span></div>
+
+                    <style>
+                        .tagify {
+                            border: 0;
+                            --tag-border-radius: 20px;
+                            --tag-pad: 0.6em 1.2em;
+                            --tag-inset-shadow-size: 2em;
+                        }
+                    </style>
+
+                    <input placeholder="태그를 추가해 주세요.">
+                </div>
+                <!-- 제목 작성-->
+                <div class="AutoTextarea CommunityWrite-titleWrapper">
+                    <textarea class="AutoTextarea_AutoTextarea" name="title" placeholder="제목을 입력해주세요." required=""
+                              style="height: 38px;"></textarea>
+                    <textarea class="AutoTextarea_AutoTextarea AutoTextarea_AutoTextarea_hidden" readonly=""
+                              style="height: 30px;">
+
+                    </textarea></div>
+                <div class="CommunityWrite-contentWrapper">
+                    <div class="AutoTextarea">
+                        <!-- 내용작성  -->
+                        <textarea class="AutoTextarea_AutoTextarea" name="content" placeholder="내용을 작성해주세요." required=""
+                                  style="height: 56px;"></textarea><textarea
+                            class="AutoTextarea_AutoTextarea AutoTextarea_AutoTextarea_hidden"
+                            readonly="" style=""></textarea>
+                    </div>
+                    <!--사진 -->
+                    <!--                    <div class="CommunityWrite-photosWrap">-->
+                    <!--                        <button type="button" aria-label="photo remove button">-->
+                    <!--                            <svg xmlns="" width="22" height="22" viewBox="0 0 22 22" fill="none"><circle opacity="0.5" cx="11" cy="11" r="10.5" fill="black" stroke="#FEFEFE"></circle><path fill-rule="evenodd" clip-rule="evenodd" d="M8.06427 7.42318C7.88484 7.29004 7.63021 7.30484 7.46749 7.46756C7.2885 7.64655 7.2885 7.93675 7.46749 8.11574L10.3517 11L7.46749 13.8842L7.42312 13.9356C7.28998 14.1151 7.30478 14.3697 7.46749 14.5324L7.5189 14.5768C7.69833 14.7099 7.95296 14.6951 8.11568 14.5324L10.9999 11.6484L13.8842 14.5324L13.9356 14.5768C14.115 14.7099 14.3696 14.6951 14.5323 14.5324C14.7113 14.3534 14.7113 14.0632 14.5323 13.8842L11.6481 11L14.5323 8.11574L14.5767 8.06433C14.7099 7.8849 14.6951 7.63027 14.5323 7.46756L14.4809 7.42318C14.3015 7.29004 14.0469 7.30484 13.8842 7.46756L10.9999 10.3516L8.11568 7.46756L8.06427 7.42318Z" fill="#333333"></path><mask id="mask0_2_1815" maskUnits="userSpaceOnUse" x="7" y="7" width="8" height="8"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.06427 7.42318C7.88484 7.29004 7.63021 7.30484 7.46749 7.46756C7.2885 7.64655 7.2885 7.93675 7.46749 8.11574L10.3517 11L7.46749 13.8842L7.42312 13.9356C7.28998 14.1151 7.30478 14.3697 7.46749 14.5324L7.5189 14.5768C7.69833 14.7099 7.95296 14.6951 8.11568 14.5324L10.9999 11.6484L13.8842 14.5324L13.9356 14.5768C14.115 14.7099 14.3696 14.6951 14.5323 14.5324C14.7113 14.3534 14.7113 14.0632 14.5323 13.8842L11.6481 11L14.5323 8.11574L14.5767 8.06433C14.7099 7.8849 14.6951 7.63027 14.5323 7.46756L14.4809 7.42318C14.3015 7.29004 14.0469 7.30484 13.8842 7.46756L10.9999 10.3516L8.11568 7.46756L8.06427 7.42318Z" fill="white"></path></mask><g mask="url(#mask0_2_1815)"><rect x="5.5" y="5.5" width="11" height="11" fill="#FEFEFE"></rect></g></svg></button><img src="blob:https://www.wanted.co.kr/43c269be-4746-4227-9633-d50ac14b1836" alt="community-write-img">-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+        </div>
+    </form>
+    <!--파일 -->
+
+    <input id="upload1" class="upload" type="file" style="display: none">
+    <!--    첨부파일-->
+    <div class="CommunityWrite_CommunityPhotoButton">
+        <label for="upload1">
+            <button type="button" class="PhotoButton_PhotoButton" onclick="openFile()">
+                <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M7.52489 11.47L9.9908 13.9387L15.4533 8.46998C15.7462 8.17668 16.2216 8.17668 16.5145 8.46998L22.5076 14.47C22.6481 14.6106 22.727 14.8012 22.727 15V19.0395C22.727 19.4539 22.3909 19.7897 21.9765 19.7895L1.99951 19.7763C1.58501 19.776 1.24932 19.4396 1.25 19.0251L1.273 4.99877C1.27368 4.58465 1.60987 4.24946 2.02399 4.25L22.001 4.27632C22.4163 4.27686 22.7521 4.61486 22.75 5.0302L22.727 9.4677C22.7248 9.88191 22.3873 10.216 21.9731 10.2138C21.5589 10.2117 21.2249 9.87414 21.227 9.45993L21.2461 5.77532L2.77177 5.75099L2.75123 18.2768L21.227 18.289V15.3104L15.9839 10.0613L10.5214 15.53C10.2285 15.8233 9.75313 15.8233 9.46017 15.53L6.99425 13.0613L5.52718 14.53C5.23446 14.8231 4.75959 14.8234 4.46653 14.5306C4.17346 14.2379 4.17319 13.763 4.46591 13.47L6.46361 11.47C6.75658 11.1767 7.23192 11.1767 7.52489 11.47ZM9 9.75H5C4.58579 9.75 4.25 9.41421 4.25 9C4.25 8.58579 4.58579 8.25 5 8.25H9C9.41421 8.25 9.75 8.58579 9.75 9C9.75 9.41421 9.41421 9.75 9 9.75Z"
+                          fill="currentColor"></path>
+                    <mask id="mask0_150_2361" maskUnits="userSpaceOnUse" x="1" y="4" width="22" height="16">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M7.52489 11.47L9.9908 13.9387L15.4533 8.46998C15.7462 8.17668 16.2216 8.17668 16.5145 8.46998L22.5076 14.47C22.6481 14.6106 22.727 14.8012 22.727 15V19.0395C22.727 19.4539 22.3909 19.7897 21.9765 19.7895L1.99951 19.7763C1.58501 19.776 1.24932 19.4396 1.25 19.0251L1.273 4.99877C1.27368 4.58465 1.60987 4.24946 2.02399 4.25L22.001 4.27632C22.4163 4.27686 22.7521 4.61486 22.75 5.0302L22.727 9.4677C22.7248 9.88191 22.3873 10.216 21.9731 10.2138C21.5589 10.2117 21.2249 9.87414 21.227 9.45993L21.2461 5.77532L2.77177 5.75099L2.75123 18.2768L21.227 18.289V15.3104L15.9839 10.0613L10.5214 15.53C10.2285 15.8233 9.75313 15.8233 9.46017 15.53L6.99425 13.0613L5.52718 14.53C5.23446 14.8231 4.75959 14.8234 4.46653 14.5306C4.17346 14.2379 4.17319 13.763 4.46591 13.47L6.46361 11.47C6.75658 11.1767 7.23192 11.1767 7.52489 11.47ZM9 9.75H5C4.58579 9.75 4.25 9.41421 4.25 9C4.25 8.58579 4.58579 8.25 5 8.25H9C9.41421 8.25 9.75 8.58579 9.75 9C9.75 9.41421 9.41421 9.75 9 9.75Z"
+                              fill="white"></path>
+                    </mask>
+                    <g mask="url(#mask0_150_2361)">
+                        <rect width="24" height="24" fill="currentColor"></rect>
+                    </g>
+                </svg>
+                <span>
+                (<em> 0 </em>/1)
+            </span>
+            </button>
+        </label>
+    </div>
+</main>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="https://unpkg.com/@yaireo/tagify"></script>
+<script src="/js/stories/story-write.js"></script>
+</html>
