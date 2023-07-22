@@ -611,6 +611,10 @@ div.warn-modal {
     padding: 24px;
 }
 
+.modal-contentWrap{
+    margin-bottom: 20px;
+}
+
 div#modal-wrap span{
     display: block;
 }
@@ -636,6 +640,20 @@ div#modal-wrap span{
 #write{
     letter-spacing: 0.4px;
 }
+
+.submit-wrap{
+    letter-spacing: 0.5px;
+
+}
+
+.submit-wrap:hover{
+    color: #36f;
+    border-color: #36f;
+}
+
+
+
+
 
 
 

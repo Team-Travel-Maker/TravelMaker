@@ -9,12 +9,12 @@
 
 <link rel="stylesheet" href="/css/go-with/go-with.css">
 <link rel="stylesheet" href="/css/common.css"/>
-<link rel="stylesheet" href="/css/header/mainHeader.css">
+<link rel="stylesheet" href="/css/header/header.css">
 
 <body>
 
 <!-- 헤더 -->
-<!--<div th:replace="~{header/main-header :: #header}"></div>-->
+<div th:replace="~{header/header :: #header}"></div>
 
 <div class="content-wrapper">
     <aside class="sidebar-wrapper">
@@ -283,6 +283,24 @@
                             </div>
                         </a>
                     </article>
+                    <article class="topPickPostItem topPickPostItem-color">
+                        <a href="/community/post/9520">
+                            <div class="topPickPostItem-category">추천</div>
+                            <h3 class="topPickPostItem-title">메타가 쓰레드라는 앱을 출시했네요</h3>
+                        </a>
+                        <a href="/community/profile/gtmB2dAZBtmAzktPzJUDB5">
+                            <div class="userInfo-postUserInfo topPickPostItem-userInfo">
+                                <div class="userInfo-horizontalBox">
+                                    <div class="userInfo-avatarWrapper avatar-wrapper">
+                                        <div class="userAvatar userInfo-avatar avatar">
+                                            <img src="https://static.wanted.co.kr/oneid-user/gtmB2dAZBtmAzktPzJUDB5/AwWCYr2xrFVNNS7novAe2p.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <span class="userInfo-userName userName">훙힝행</span>
+                                </div>
+                            </div>
+                        </a>
+                    </article>
                 </div>
             </section>
             <section class="postWriteBtn-wrapper">
@@ -330,7 +348,7 @@
                     </div>
                 </div>
 
-                <article class="postItem" th:each="">
+                <article class="postItem">
                     <div class="postItem-top">
                         <a href="/community/profile/8gKFHyFwd4sSvaVWPSojfD">
                             <div class="userInfo-postBox">

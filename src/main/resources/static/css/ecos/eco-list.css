@@ -1,10 +1,4 @@
-body{
-    overflow-x: hidden;
-}
 
-html{
-    scroll-behavior: smooth;
-}
 
 .content-wrapper *, .content-wrapper :after, .content-wrapper :before {
     -webkit-box-sizing: border-box;

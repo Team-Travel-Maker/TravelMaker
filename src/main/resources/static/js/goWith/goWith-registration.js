@@ -1,4 +1,4 @@
-// 모달
+// 모달 띄우기
 const modal = $("button.modalOpen");
 
 modal.on("click", e => {
@@ -22,6 +22,7 @@ $("div.modal").on("click", function(){
         $("div.modal").fadeOut(500);
     }
 });
+
 
 //esc 키를 이용한 닫기 설정 - keyup이벤트 : 키보드를 누르고 뗄떼 발생
 $(document).on('keyup',function(evt){
@@ -47,23 +48,56 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     // 선택된 태그 취소 버튼 감춰놓기!
-    $(".tagPanel-scroll").children().css("display", "none");
+    $(".tagPanel-localScroll").children().css("display", "none");
+    $(".tagPanel-mbtiScroll").children().css("display", "none");
 
-    // MBTI 선택
-    $('.modal-btn.mbti-btn').click(function() {
-        let selectedMBTI = $(this).val();
-        $('.tagPanel-selectedTag').children('span:first-child').text(selectedMBTI);
-        $(".tagPanel-scroll").children().css("display", "flex");
-        $(".tagPanel-placeholder").hide();
-        $('.modal').hide();
+
+    // 선택 될 태그의 값을 변수로 사용하기 위해 선언
+    let selectedLocal = $('.local-btn').click(function (e) {
+        e.val();
+        console.log(e.val());
+    })
+    let selectedMBTI = $('.mbti-btn').val();
+
+    // 여행 지역 및 MBTI 선택
+    $('.Button-submit').click(function(){
+        $('.tagPanel-selectedLocal').children('span:first-child').text(selectedLocal);
+        $(".tagPanel-localScroll").children().css("display", "flex");
+        $('.tagPanel-selectedMBTI').children('span:first-child').text(selectedMBTI);
+        $(".tagPanel-mbtiScroll").children().css("display", "flex");
+        if(selectedMBTI != null && selectedLocal != null){
+            $(".tagPanel-placeholder").hide();
+            $('.modal').hide();
+        }
+    });
+
+
+    // // MBTI 선택
+    // $('.modal-btn.mbti-btn').click(function() {
+    //     let selectedMBTI = $(this).val();
+    //     if(selectedMBTI != null) {
+    //         $('.tagPanel-selectedMBTI').children('span:first-child').text(selectedMBTI);
+    //         $(".tagPanel-mbtiScroll").children().css("display", "flex");
+    //         $(".tagPanel-placeholder").hide();
+    //         $('.modal').hide();
+    //     }
+    // });
+    //
+    //
+    // 여행 지역 선택 취소
+    $('.selectedLocal-deletedBtn').click(function() {
+        let selectedLocal = $(this).val("");
+        $('.tagPanel-selectedLocal').children('span:first-child').text(selectedLocal);
+        $(".tagPanel-placeholder").show();
+        $(".tagPanel-mbtiScroll").children().css("display", "none");
     });
 
     // MBTI 선택 취소
-    $('.selectedTag-deletedBtn').click(function() {
+    $('.selectedMBTI-deletedBtn').click(function() {
         let selectedMBTI = $(this).val("");
-        $('.tagPanel-selectedTag').children('span:first-child').text(selectedMBTI);
+        $('.tagPanel-selectedMBTI').children('span:first-child').text(selectedMBTI);
         $(".tagPanel-placeholder").show();
-        $(".tagPanel-scroll").children().css("display", "none");
+        $(".tagPanel-LocalScroll").children().css("display", "none");
     });
 
 
