@@ -354,3 +354,8 @@ nav.pagination li.pagination-current span {
 .nav li {
     display: inline-block;
 }
+
+
+.FooterLinks_logo {
+    color: black;
+}
