@@ -262,25 +262,6 @@ img {
     padding: 0 23px;
 }
 
-.Button-root {
-    --button-color: #171717;
-    position: relative;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    vertical-align: middle;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    line-height: normal;
-    border: none;
-    /*background-color: none;*/
-    cursor: pointer;
-    white-space: nowrap;
-}
-
 .Button-fullWidth {
     width: 100%;
 }
@@ -318,6 +299,25 @@ img {
     -ms-flex-pack: inherit;
     justify-content: inherit;
     color: inherit;
+}
+
+.Button-root {
+    --button-color: #171717;
+    position: relative;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    vertical-align: middle;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: normal;
+    border: none;
+    /*background-color: none;*/
+    cursor: pointer;
+    white-space: nowrap;
 }
 
 .Button-endIcon {
