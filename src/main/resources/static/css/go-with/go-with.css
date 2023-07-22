@@ -1463,7 +1463,9 @@ div#modal-wrap span{
     display: block;
 }
 
-
+/*모바일 => 브라우저 창 width가 768px보다 작아지는 순간부터 적용 */
+/*@media all and (max-width: 768px){*/
+/*}*/
 
 
 

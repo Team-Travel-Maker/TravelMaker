@@ -646,11 +646,20 @@ div#modal-wrap span{
 
 }
 
-.submit-wrap:hover{
+.btn-hover:hover{
     color: #36f;
     border-color: #36f;
 }
 
+.selected{
+    color: #36f;
+    border-color: #36f;
+}
+
+.onSubmit{
+    background-color: #36f;
+    color: #f9f9f9;
+}
 
 
 
