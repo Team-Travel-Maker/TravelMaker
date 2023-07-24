@@ -118,6 +118,8 @@ $(document).ready(function() {
             console.log("데이터 가져옴")
             $('.tagPanel-selectedLocal').children('span:first-child').text(selectedLocalVal);
             $('.tagPanel-selectedMBTI').children('span:first-child').text(selectedMBTIVal);
+            $(".tagPanel-localScroll").children().css("display", "flex");
+            $(".tagPanel-mbtiScroll").children().css("display", "flex");
             $(".tagPanel-placeholder").hide();
             $('.modal').hide();
             console.log("선택한 지역 : " + selectedLocalVal);
@@ -131,15 +133,50 @@ $(document).ready(function() {
     $('.selectedLocal-deletedBtn').click(function() {
         $('.tagPanel-selectedLocal').children('span:first-child').text('');
         $(".tagPanel-placeholder").show();
-        $(".tagPanel-mbtiScroll").children().css("display", "none");
+        $(".tagPanel-LocalScroll").children().css("display", "none");
     });
 
     // MBTI 선택 취소
     $('.selectedMBTI-deletedBtn').click(function() {
         $('.tagPanel-selectedMBTI').children('span:first-child').text('');
         $(".tagPanel-placeholder").show();
-        $(".tagPanel-LocalScroll").children().css("display", "none");
+        $(".tagPanel-mbtiScroll").children().css("display", "none");
     });
+
+
+//    제목
+    const titleText = $('.writePaper-title').children('textarea:first-child');
+    let titleTextVal = titleText.val();
+
+    console.log(titleText.val());
+
+
+//    내용
+    const contentText = $('.writePaper-content').children('textarea:first-child');
+    let contnetTextVal = contentText.val();
+
+    console.log(contentText.val());
+
+    $('.Button-btn').removeClass('.Button-label');
+
+
+
+
+//    이미지 업로드
+    $('.PhotoButton').click(function (e) {
+        e.preventDefault();
+        $('#upload-image').click();
+    })
+
+
+
+
+
+
+
+
+
+
 
 
 
