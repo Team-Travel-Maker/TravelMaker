@@ -1,73 +1,69 @@
 /*슬라이드 배너*/
-const banner = document.querySelector(("div.banner-list"));
-const image_divs = document.querySelectorAll("div.banner-wrap");
-const first_div = document.querySelector("#first-temp");
-const last_div = document.querySelector("#last-temp");
-const prev = document.querySelector("div.top-banner-prev-button");
-const next = document.querySelector("top-banner-next-button.next");
+const banner = document.querySelector("div.banner-list");
 let count = 1;
-let check = true;
-let clickCheck = false;
-let temp;
 
-// image_divs.forEach((image_div, i) => image_div.style.backgroundImage = `url(00${i + 1}.png)`);
-// first_div.style.backgroundImage = `url(006.png)`;
-// last_div.style.backgroundImage = `url(001.png)`;
 
-let slide = setInterval(() => autoSlide(), 2000);
-
-prev.addEventListener("click", function(){
-    if(!check) {return;}
-    check = false;
-    clearInterval(slide);
-    banner.style.transform = `translate(${-1060 * --count}px)`;
-    banner.style.transition = "transform 0.7s"
-
-    if(count == 0) {
-        setTimeout(() => {
-            banner.style.transition = "transform 0s";
-            banner.style.transform = `translate(-5300px)`;
-        }, 700);
-        count = 63;
-    }
-    changeButtonStyle();
-    slide = setInterval(() => autoSlide(), 2000);
-    setTimeout(() => {check = true}, 700);
-});
-
-next.addEventListener("click", function(){
-    if(!check) {return;}
-    check = false;
-    clearInterval(slide);
-    banner.style.transform = `translate(${-1060 * ++count}px)`;
-    banner.style.transition = "transform 0.7s"
-
-    if(count == 7) {
-        setTimeout(() => {
-            banner.style.transition = "transform 0s";
-            banner.style.transform = `translate(-1060px)`;
-        }, 700);
-        count = 1;
-    }
-    changeButtonStyle();
-    slide = setInterval(() => autoSlide(), 2000);
-    setTimeout(() => {check = true}, 700);
-});
-
+// 슬라이드 함수
 function autoSlide(){
-    check = false;
-    banner.style.transform = `translate(${-1060 * ++count}px)`;
-    banner.style.transition = "transform 0.7s"
-
-    if(count == 7) {
-        setTimeout(() => {
-            banner.style.transition = "transform 0s";
-            banner.style.transform = `translate(-1060px)`;
-        }, 700);
+    banner.style.transition = "transform 0.5s"
+    count ++;
+    if(count == 5){
+        banner.style.transform = `translate(-${782 + 1084 * count}px)`;
+        setTimeout(function(){
+            banner.style.transition = "transform 0s"
+            banner.style.transform = "translate(-1866px)";
+        }, 500);
         count = 1;
+    }else {
+        // 왼쪽으로 -782(고정값) + 1084 * count 만큼 이동한다.
+        banner.style.transform = `translate(-${782 + 1084 * count}px)`;
     }
-    changeButtonStyle();
-    setTimeout(() => {
-        check = true;
-    }, 700);
 }
+
+banner.style.transform = "translate(-1866px)";
+
+// 4초마다 슬라이드 함수 실행
+let inter = setInterval(autoSlide, 4000);
+
+// prev, next button 구현
+const arrows = document.querySelectorAll(".arrow");
+let arrowButtonCheck = true;
+arrows.forEach(arrow => {
+    arrow.addEventListener("click", function(){
+        if(arrowButtonCheck){
+            arrowButtonCheck = false;
+            clearInterval(inter);
+            banner.style.transition = "transform 0.5s"
+            let arrowName = arrow.className;
+            if(arrowName == 'arrow top-banner-prev-button'){
+                count--;
+                if(count == 0){
+                    banner.style.transform = `translate(-782px)`;
+                    setTimeout(function(){
+                        banner.style.transition = "transform 0s"
+                        banner.style.transform = `translate(-${782 + 1084*4}px)`;
+                    }, 500);
+                    count = 4;
+                }else{
+                    banner.style.transform = `translate(-${782 + 1084 * count}px)`;
+                }
+            }else{
+                count++;
+                if(count == 5) {
+                    banner.style.transform = `translate(-${782 + 1084*count}px)`;
+                    setTimeout(function(){
+                        banner.style.transition = "transform 0s"
+                        banner.style.transform = "translate(-1866px)";
+                    }, 500);
+                    count = 0;
+                }else{
+                    banner.style.transform = `translate(-${782 + 1084*count}px)`;
+                }
+            }
+            inter = setInterval(autoSlide, 4000);
+            setTimeout(function(){
+                arrowButtonCheck = true;
+            }, 500);
+        }
+    });
+});

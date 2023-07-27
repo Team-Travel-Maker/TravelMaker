@@ -31,6 +31,9 @@ public class MyPageController {
 // 회원탈퇴
     @GetMapping("withdrawal")
     public void goToWithDrawal(){;}
+// 업체 등록
+    @GetMapping("company/registration")
+    public void goToRegistration(){;}
 
 //  포인트
     @GetMapping("points")
