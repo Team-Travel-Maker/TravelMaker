@@ -1,4 +1,4 @@
-package com.app.travelmaker.controller;
+package com.app.travelmaker.controller.theme;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
