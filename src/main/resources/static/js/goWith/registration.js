@@ -79,6 +79,9 @@ const submitBtn = $('.Button-submit');
 let titleCheck = false;
 let contentCheck = false;
 
+// 등록하기 버튼 변수 선언
+const btn = $('.Button-root');
+
 
 $(document).ready(function() {
 
@@ -185,8 +188,52 @@ $(document).ready(function() {
 
     console.log(contentText.val());
 
-    $('.Button-btn').removeClass('.Button-label');
 
+
+    //등록하기 버튼 색 들어오게하기
+    function checkSubmitButton() {
+        let title = $('.AutoTextarea-textarea[name="title"]').val().trim();
+        let content = $('.AutoTextarea-textarea[name="content"]').val().trim();
+
+        // title과 content 둘 중 하나라도 비어있는 경우 버튼 비활성화
+        if (title === '' || content === '') {
+            $('.Button-btn').attr('disabled', true);
+            // btn.css('backgroundColor', '');
+            // btn.css('color', '');
+            btn.css('backgroundColor', '#f2f4f7')
+            btn.css('color', '#ccc')
+            console.log("css 제거")
+        } else {
+            $('.Button-btn').attr('disabled', false);
+            btn.css('backgroundColor','#36f');
+            btn.css('color','#fff');
+            console.log("css 추가")
+        }
+    }
+
+    // 텍스트 입력 시 등록하기 버튼 상태 변경
+    $('.AutoTextarea-textarea').on('input', function() {
+        checkSubmitButton();
+    });
+
+
+
+
+    // 텍스트 영역의 높이를 자동으로 조절하는 함수
+    function autoResizeTextarea() {
+        // 모든 텍스트 영역 요소를 선택합니다
+        $('.AutoTextarea-textarea').each(function() {
+            let $this = $(this);
+
+            // 스크롤 높이를 임시로 0으로 설정한 후, 스크롤 높이를 콘텐츠 높이에 맞게 조절합니다
+            $this.css('height', 0);
+            $this.css('height', $this[0].scrollHeight + 'px');
+        });
+    }
+
+    // 페이지 로드 시와 텍스트 영역 내용이 변경될 때 자동으로 autoResizeTextarea 함수를 호출합니다
+    autoResizeTextarea();
+    $('.AutoTextarea-textarea').on('input', autoResizeTextarea);
 
 
 

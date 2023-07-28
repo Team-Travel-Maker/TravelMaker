@@ -142,7 +142,7 @@ button {
     font-weight: 600;
 }
 
-.Button-contained, .Button-primary {
+.Button-primary {
     color: #fff;
     background-color: #36f;
 }
