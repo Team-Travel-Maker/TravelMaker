@@ -1,4 +1,4 @@
-@charset "utf-8";
+@charset "UTF-8";
 
 * {
     box-sizing: border-box;
@@ -635,10 +635,10 @@ div#modal-wrap span{
     border-radius: 20px;
 }
 
-.modal-btn:hover{
-    color: #36f;
-    border-color: #36f;
-}
+/*.modal-btn:hover{*/
+/*    color: #36f;*/
+/*    border-color: #36f;*/
+/*}*/
 
 #write{
     letter-spacing: 0.4px;
@@ -662,6 +662,26 @@ div#modal-wrap span{
 .onSubmit{
     background-color: #36f;
     color: #f9f9f9;
+}
+
+
+
+
+/* 반응형 */
+@media (max-width:990px){
+    /* 등록하기 버튼을 최하단에 배치 */
+    .registration-headerBtn {
+        display: flex;
+        position: fixed;
+        bottom: 20px; /* 원하는 높이로 조정하여 버튼의 수직 위치를 조정합니다. */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 999;
+    }
+
+    .writePaper-title{
+        font-size: 20px;
+    }
 }
 
 

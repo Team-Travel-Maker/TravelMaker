@@ -2,8 +2,6 @@
 const selectedLocal = $('.local-btn');
 const selectedMBTI = $('.mbti-btn');
 
-let selectedLocalVal = '';
-let selectedMBTIVal = '';
 
 // 모달 띄우기
 const modal = $("button.modalOpen");
@@ -66,20 +64,31 @@ $(document).ready(function() {
 //     })
 // }
 
+// 처음 페이지가 로딩되었을 때 선택 된 데이터가 없게 선언
+let selectedLocalVal = '';
+let selectedMBTIVal = '';
+
+// 태그 선택 체크
+let localCheck = false;
+let mbtiCheck = false;
+
 // 완료 버튼 변수 선언
 const submitBtn = $('.Button-submit');
 
+// 글 제목, 내용 체크
+let titleCheck = false;
+let contentCheck = false;
+
+
 $(document).ready(function() {
-    // 선택된 태그 취소 버튼 감춰놓기!
+
+
+    // 태그 취소 버튼 감춰놓기!
     $(".tagPanel-localScroll").children().css("display", "none");
     $(".tagPanel-mbtiScroll").children().css("display", "none");
 
-    // 태그 선택 전에는 완료 버튼 비활성화
-    if(selectedLocal.val() == null || selectedMBTI.val() == null){
-        submitBtn.disabled();
-    } else if(selectedLocal.val() != null || selectedMBTI.val() != null){
-        submitBtn.addClass('.onSubmit');
-    }
+    // selectedLocalVal == '' && selectedMBTIVal == '' ? $('.submit-wrap').removeClass('btn-hover') : submitBtn.addClass('onSubmit');
+
 
     // 여행 지역 선택
     selectedLocal.on('click', function () {
@@ -87,10 +96,15 @@ $(document).ready(function() {
             selectedLocal.removeClass('selected');
         });
         $(this).addClass('selected');
+        localCheck = true;
         selectedLocalVal = $(this).val();
+        if(localCheck == true && mbtiCheck == true){
+            $('.submit-wrap').addClass('btn-hover');
+            submitBtn.addClass('onSubmit');
+        }
         $('.tagPanel-selectedLocal').children('span:first-child').text(selectedLocalVal);
-        console.log($(this).val());
-        console.log(selectedLocalVal);
+        console.log("선택한 지역 : " + selectedLocalVal);
+        console.log(localCheck.valueOf())
     });
 
 // MBTI 선택
@@ -99,15 +113,29 @@ $(document).ready(function() {
             selectedMBTI.removeClass('selected');
         });
         $(this).addClass('selected');
+        mbtiCheck = true;
         selectedMBTIVal = $(this).val();
+        if(localCheck == true && mbtiCheck == true){
+            $('.submit-wrap').addClass('btn-hover');
+            submitBtn.addClass('onSubmit');
+        }
         $('.tagPanel-selectedMBTI').children('span:first-child').text(selectedMBTIVal);
-        console.log($(this).val());
-        console.log(selectedMBTIVal);
+        console.log("선택한 MBTI : " + selectedMBTIVal);
+        console.log(mbtiCheck.valueOf())
     });
 
 
-    console.log("선택한 지역 : " + selectedLocalVal);
-    console.log("선택한 MBTI : " + selectedMBTIVal);
+    // 지역과 MBTI 태그 둘 다 선택하기 전에는 완료 버튼 비활성화 하기!
+    if(localCheck == false && mbtiCheck == false){
+        $('.submit-wrap').removeClass('btn-hover')
+
+    }
+
+    if(localCheck == true && mbtiCheck == true){
+        $('.submit-wrap').addClass('btn-hover');
+        submitBtn.addClass('onSubmit');
+    }
+
 
     submitBtn.on('click', function () {
         if(selectedLocalVal == '' || selectedMBTIVal == ''){
@@ -122,8 +150,8 @@ $(document).ready(function() {
             $(".tagPanel-mbtiScroll").children().css("display", "flex");
             $(".tagPanel-placeholder").hide();
             $('.modal').hide();
-            console.log("선택한 지역 : " + selectedLocalVal);
-            console.log("선택한 MBTI : " + selectedMBTIVal);
+            console.log("선택한 지역2 : " + selectedLocalVal);
+            console.log("선택한 MBTI2 : " + selectedMBTIVal);
         }
     })
 
@@ -132,14 +160,14 @@ $(document).ready(function() {
     // 여행 지역 선택 취소
     $('.selectedLocal-deletedBtn').click(function() {
         $('.tagPanel-selectedLocal').children('span:first-child').text('');
-        $(".tagPanel-placeholder").show();
-        $(".tagPanel-LocalScroll").children().css("display", "none");
+        $(".local-placeholder").show();
+        $(".tagPanel-localScroll").children().css("display", "none");
     });
 
     // MBTI 선택 취소
     $('.selectedMBTI-deletedBtn').click(function() {
         $('.tagPanel-selectedMBTI').children('span:first-child').text('');
-        $(".tagPanel-placeholder").show();
+        $(".mbti-placeholder").show();
         $(".tagPanel-mbtiScroll").children().css("display", "none");
     });
 

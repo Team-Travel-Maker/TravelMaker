@@ -17,7 +17,6 @@
 <!-- 헤더 -->
 <div th:replace="~{header/header :: #header}"></div>
 
-<div style="padding-top: 50px"></div>
 
 
 <!-- 함께가요 등록 -->
@@ -46,6 +45,7 @@
                 </div>
             </div>
         </div>
+<!--        태그선택 부분-->
         <div class="registration-contentWrapper">
             <div class="registration-writePaper">
                 <div class="tagPanel">
@@ -61,7 +61,7 @@
                                 <path d="M17.7432 10.6482C17.6935 10.2822 17.3797 10 17 10C16.5858 10 16.25 10.3358 16.25 10.75V16.25H10.75L10.6482 16.2568C10.2822 16.3065 10 16.6203 10 17C10 17.4142 10.3358 17.75 10.75 17.75H16.25V23.25L16.2568 23.3518C16.3065 23.7178 16.6203 24 17 24C17.4142 24 17.75 23.6642 17.75 23.25V17.75H23.25L23.3518 17.7432C23.7178 17.6935 24 17.3797 24 17C24 16.5858 23.6642 16.25 23.25 16.25H17.75V10.75L17.7432 10.6482Z" fill="#666666"></path>
                             </svg>
                         </button>
-                        <button type="button" class="tagPanel-placeholder modalOpen" aria-label="Open Select Tag Modal">
+                        <button type="button" class="tagPanel-placeholder modalOpen local-placeholder" aria-label="Open Select Tag Modal">
                             <picture>
                                 <source type="image/webp" srcset="https://static.wanted.co.kr/images/community/tag_empty.webp 1x, https://static.wanted.co.kr/images/community/tag_empty@2x.webp 2x, https://static.wanted.co.kr/images/community/tag_empty@3x.webp 3x">
                                 <img srcset="https://static.wanted.co.kr/images/community/tag_empty.png 1x, https://static.wanted.co.kr/images/community/tag_empty@2x.png 2x, https://static.wanted.co.kr/images/community/tag_empty@3x.png 3x" src="https://static.wanted.co.kr/images/community/tag_empty@3x.png" alt="empty tag">
@@ -98,7 +98,7 @@
                                 <path d="M17.7432 10.6482C17.6935 10.2822 17.3797 10 17 10C16.5858 10 16.25 10.3358 16.25 10.75V16.25H10.75L10.6482 16.2568C10.2822 16.3065 10 16.6203 10 17C10 17.4142 10.3358 17.75 10.75 17.75H16.25V23.25L16.2568 23.3518C16.3065 23.7178 16.6203 24 17 24C17.4142 24 17.75 23.6642 17.75 23.25V17.75H23.25L23.3518 17.7432C23.7178 17.6935 24 17.3797 24 17C24 16.5858 23.6642 16.25 23.25 16.25H17.75V10.75L17.7432 10.6482Z" fill="#666666"></path>
                             </svg>
                         </button>
-                        <button type="button" class="tagPanel-placeholder modalOpen" aria-label="Open Select Tag Modal">
+                        <button type="button" class="tagPanel-placeholder modalOpen mbti-placeholder" aria-label="Open Select Tag Modal">
                             <picture>
                                 <source type="image/webp" srcset="https://static.wanted.co.kr/images/community/tag_empty.webp 1x, https://static.wanted.co.kr/images/community/tag_empty@2x.webp 2x, https://static.wanted.co.kr/images/community/tag_empty@3x.webp 3x">
                                 <img srcset="https://static.wanted.co.kr/images/community/tag_empty.png 1x, https://static.wanted.co.kr/images/community/tag_empty@2x.png 2x, https://static.wanted.co.kr/images/community/tag_empty@3x.png 3x" src="https://static.wanted.co.kr/images/community/tag_empty@3x.png" alt="empty tag">
@@ -123,13 +123,14 @@
                         </div>
                     </div>
                 </div>
+<!--                텍스트 입력 부분-->
                 <div class="AutoTextarea writePaper-title">
-                    <textarea class="AutoTextarea-textarea" name="title" placeholder="제목을 입력해주세요." required style="height: 38px;"></textarea>
+                    <textarea class="AutoTextarea-textarea" name="title" placeholder="제목을 입력해주세요." style="height: 38px;"></textarea>
                     <textarea class="AutoTextarea-textarea AutoTextarea-hidden" readonly style="height: 38px;"></textarea>
                 </div>
                 <div class="writePaper-content">
                     <div class="AutoTextarea">
-                        <textarea class="AutoTextarea-textarea" name="content" placeholder="내용을 작성해주세요." required style="height: 28px;"></textarea>
+                        <textarea class="AutoTextarea-textarea" name="content" placeholder="내용을 작성해주세요." style="height: 28px;"></textarea>
                         <textarea class="AutoTextarea-textarea AutoTextarea-hidden" readonly style="height: 28px;"></textarea>
                     </div>
                 </div>
@@ -306,6 +307,6 @@
 </body>
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="/js/goWith/goWith-registration.js"></script>
+<script src="/js/goWith/registration.js"></script>
 
 </html>
