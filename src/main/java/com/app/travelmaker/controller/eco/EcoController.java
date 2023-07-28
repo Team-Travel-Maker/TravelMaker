@@ -1,4 +1,4 @@
-package com.app.travelmaker.controller;
+package com.app.travelmaker.controller.eco;
 
 
 import lombok.extern.slf4j.Slf4j;
