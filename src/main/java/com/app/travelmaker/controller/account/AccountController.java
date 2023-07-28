@@ -1,4 +1,4 @@
-package com.app.travelmaker.controller;
+package com.app.travelmaker.controller.account;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Slf4j
 @RequestMapping("/accounts/*")
-public class LoginController {
+public class AccountController {
 
     //로그인
     @GetMapping("login/login")
