@@ -1,4 +1,4 @@
-@charset "utf-8";
+@charset "UTF-8";
 
 * {
     box-sizing: border-box;
@@ -142,7 +142,7 @@ button {
     font-weight: 600;
 }
 
-.Button-contained, .Button-primary {
+.Button-primary {
     color: #fff;
     background-color: #36f;
 }
@@ -227,7 +227,7 @@ button {
 .registration-contentWrapper {
     position: relative;
     width: 100%;
-    padding-top: 60px;
+    /*padding-top: 60px;*/
 }
 
 @media (min-width: 1200px) {
@@ -299,7 +299,8 @@ button {
     background-image: linear-gradient(90deg,#fff 21.82%,hsla(0,0%,100%,0));
 }
 
- .tagPanel .tagPanel-tagWrapper .tagPanel-slider .tagPanel-scroll {
+ .tagPanel .tagPanel-tagWrapper .tagPanel-slider .tagPanel-mbtiScroll,
+ .tagPanel .tagPanel-tagWrapper .tagPanel-slider .tagPanel-localScroll {
      display: -ms-flexbox;
      display: flex;
      overflow-x: auto;
@@ -323,7 +324,8 @@ button {
     margin-right: 16px;
 }
 
-.tagPanel .tagPanel-tagWrapper .tagPanel-selectedTag {
+.tagPanel .tagPanel-tagWrapper .tagPanel-selectedMBTI,
+.tagPanel .tagPanel-tagWrapper .tagPanel-selectedLocal{
     height: 34px;
     display: -ms-flexbox;
     display: flex;
@@ -338,7 +340,8 @@ button {
     font-size: 14px;
 }
 
-.tagPanel .tagPanel-tagWrapper .selectedTag-deletedBtn {
+.tagPanel .tagPanel-tagWrapper .selectedMBTI-deletedBtn,
+.tagPanel .tagPanel-tagWrapper .selectedLocal-deletedBtn{
     margin-left: 3px;
     margin-bottom: 2px;
     width: 18px;
@@ -611,6 +614,10 @@ div.warn-modal {
     padding: 24px;
 }
 
+.modal-contentWrap{
+    margin-bottom: 20px;
+}
+
 div#modal-wrap span{
     display: block;
 }
@@ -628,14 +635,57 @@ div#modal-wrap span{
     border-radius: 20px;
 }
 
-.modal-btn:hover{
-    color: #36f;
-    border-color: #36f;
-}
+/*.modal-btn:hover{*/
+/*    color: #36f;*/
+/*    border-color: #36f;*/
+/*}*/
 
 #write{
     letter-spacing: 0.4px;
 }
+
+.submit-wrap{
+    letter-spacing: 0.5px;
+
+}
+
+.btn-hover:hover{
+    color: #36f;
+    border-color: #36f;
+}
+
+.selected{
+    color: #36f;
+    border-color: #36f;
+}
+
+.onSubmit{
+    background-color: #36f;
+    color: #f9f9f9;
+}
+
+
+
+
+/* 반응형 */
+@media (max-width:990px){
+    /* 등록하기 버튼을 최하단에 배치 */
+    .registration-headerBtn {
+        display: flex;
+        position: fixed;
+        bottom: 20px; /* 원하는 높이로 조정하여 버튼의 수직 위치를 조정합니다. */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 999;
+    }
+
+    .writePaper-title{
+        font-size: 20px;
+    }
+}
+
+
+
 
 
 

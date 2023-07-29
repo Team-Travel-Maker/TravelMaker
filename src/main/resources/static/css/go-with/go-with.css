@@ -264,6 +264,11 @@ img {
     position: relative;
 }
 
+.Button-label:hover{
+    color: #36f;
+    border-color: #36f;
+}
+
 /* 카테고리 지역 메뉴 */
 
 .location-category-wrap{
@@ -525,6 +530,8 @@ img {
     transition: opacity .2s ease;
     will-change: opacity;
 }
+
+
 
 .contentList-wrapper {
     width: 100%;
@@ -955,6 +962,16 @@ img {
     .topPickPostItem .topPickPostItem-userInfo {
         max-width: 192px;
     }
+}
+
+article.postItem:after{
+    display: block;
+    width: calc(100% - 30px);
+    content: "";
+    height: 1px;
+    background-color: #ececec;
+    position: absolute;
+    bottom: 0;
 }
 
 .topPickPostItem .topPickPostItem-userInfo {
@@ -1446,7 +1463,9 @@ div#modal-wrap span{
     display: block;
 }
 
-
+/*모바일 => 브라우저 창 width가 768px보다 작아지는 순간부터 적용 */
+/*@media all and (max-width: 768px){*/
+/*}*/
 
 
 
