@@ -1348,6 +1348,11 @@ ol, ul {
     margin-left: 9px;
 }
 
+@media (max-width: 1000px) {
+    .topPickPostItem{
+        padding-top: 60px;
+    }
+}
 
 
 
