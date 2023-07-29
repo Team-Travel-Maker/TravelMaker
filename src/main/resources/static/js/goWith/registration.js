@@ -80,7 +80,7 @@ let titleCheck = false;
 let contentCheck = false;
 
 // 등록하기 버튼 변수 선언
-const btn = $('.Button-root');
+const btn = $('.btn-toggle');
 
 
 $(document).ready(function() {
@@ -93,39 +93,7 @@ $(document).ready(function() {
     // selectedLocalVal == '' && selectedMBTIVal == '' ? $('.submit-wrap').removeClass('btn-hover') : submitBtn.addClass('onSubmit');
 
 
-    // 여행 지역 선택
-    selectedLocal.on('click', function () {
-        selectedLocal.each( (e) => {
-            selectedLocal.removeClass('selected');
-        });
-        $(this).addClass('selected');
-        localCheck = true;
-        selectedLocalVal = $(this).val();
-        if(localCheck == true && mbtiCheck == true){
-            $('.submit-wrap').addClass('btn-hover');
-            submitBtn.addClass('onSubmit');
-        }
-        $('.tagPanel-selectedLocal').children('span:first-child').text(selectedLocalVal);
-        console.log("선택한 지역 : " + selectedLocalVal);
-        console.log(localCheck.valueOf())
-    });
 
-// MBTI 선택
-    selectedMBTI.on('click', function () {
-        selectedMBTI.each( (e) => {
-            selectedMBTI.removeClass('selected');
-        });
-        $(this).addClass('selected');
-        mbtiCheck = true;
-        selectedMBTIVal = $(this).val();
-        if(localCheck == true && mbtiCheck == true){
-            $('.submit-wrap').addClass('btn-hover');
-            submitBtn.addClass('onSubmit');
-        }
-        $('.tagPanel-selectedMBTI').children('span:first-child').text(selectedMBTIVal);
-        console.log("선택한 MBTI : " + selectedMBTIVal);
-        console.log(mbtiCheck.valueOf())
-    });
 
 
     // 지역과 MBTI 태그 둘 다 선택하기 전에는 완료 버튼 비활성화 하기!
@@ -142,7 +110,7 @@ $(document).ready(function() {
 
     submitBtn.on('click', function () {
         if(selectedLocalVal == '' || selectedMBTIVal == ''){
-            submitBtn.attr("disabled", true);
+            // submitBtn.attr("disabled", true);
             submitBtn.parent().removeClass("btn-hover");
             console.log("왜 호버 안없어져?")
         } else if (selectedLocalVal != '' && selectedMBTIVal != ''){
@@ -157,6 +125,44 @@ $(document).ready(function() {
             console.log("선택한 MBTI2 : " + selectedMBTIVal);
         }
     })
+
+    // 여행 지역 선택
+    selectedLocal.on('click', function () {
+        selectedLocal.each( (e) => {
+            selectedLocal.removeClass('selected');
+        });
+        $(this).addClass('selected');
+        localCheck = true;
+        selectedLocalVal = $(this).val();
+
+        if(localCheck == true && mbtiCheck == true){
+            $('.submit-wrap').addClass('btn-hover');
+            submitBtn.addClass('onSubmit');
+            checkSubmitButton();
+        }
+        $('.tagPanel-selectedLocal').children('span:first-child').text(selectedLocalVal);
+        console.log("선택한 지역 : " + selectedLocalVal);
+        console.log(localCheck.valueOf())
+    });
+
+    // MBTI 선택
+    selectedMBTI.on('click', function () {
+        selectedMBTI.each( (e) => {
+            selectedMBTI.removeClass('selected');
+        });
+        $(this).addClass('selected');
+        mbtiCheck = true;
+        selectedMBTIVal = $(this).val();
+
+        if(localCheck == true && mbtiCheck == true){
+            $('.submit-wrap').addClass('btn-hover');
+            submitBtn.addClass('onSubmit');
+            checkSubmitButton();
+        }
+        $('.tagPanel-selectedMBTI').children('span:first-child').text(selectedMBTIVal);
+        console.log("선택한 MBTI : " + selectedMBTIVal);
+        console.log(mbtiCheck.valueOf())
+    });
 
 
 
@@ -189,24 +195,28 @@ $(document).ready(function() {
     console.log(contentText.val());
 
 
-
     //등록하기 버튼 색 들어오게하기
     function checkSubmitButton() {
         let title = $('.AutoTextarea-textarea[name="title"]').val().trim();
         let content = $('.AutoTextarea-textarea[name="content"]').val().trim();
 
+        if(localCheck === false || mbtiCheck === false){
+            $('.Button-btn').attr('disabled', true);
+            $('.registration-headerBtn').removeClass('valid');
+        } else {
+            $('.Button-btn').attr('disabled', false);
+            $('.registration-headerBtn').addClass('valid');
+        }
+
         // title과 content 둘 중 하나라도 비어있는 경우 버튼 비활성화
-        if (title === '' || content === '') {
+        if (title === '' || content === '' || selectedLocalVal === '' || selectedMBTIVal === '') {
             $('.Button-btn').attr('disabled', true);
             // btn.css('backgroundColor', '');
             // btn.css('color', '');
-            btn.css('backgroundColor', '#f2f4f7')
-            btn.css('color', '#ccc')
             console.log("css 제거")
         } else {
             $('.Button-btn').attr('disabled', false);
-            btn.css('backgroundColor','#36f');
-            btn.css('color','#fff');
+            $('.registration-headerBtn').addClass('valid');
             console.log("css 추가")
         }
     }
@@ -235,6 +245,11 @@ $(document).ready(function() {
     autoResizeTextarea();
     $('.AutoTextarea-textarea').on('input', autoResizeTextarea);
 
+    function autoCheckTag(){
+
+    }
+
+
 
 
 //    이미지 업로드
@@ -256,6 +271,5 @@ $(document).ready(function() {
 
 
 });
-
 
 
