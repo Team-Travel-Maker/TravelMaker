@@ -80,7 +80,7 @@ let titleCheck = false;
 let contentCheck = false;
 
 // 등록하기 버튼 변수 선언
-const btn = $('.Button-root');
+const btn = $('.btn-toggle');
 
 
 $(document).ready(function() {
@@ -118,6 +118,7 @@ $(document).ready(function() {
         $(this).addClass('selected');
         mbtiCheck = true;
         selectedMBTIVal = $(this).val();
+
         if(localCheck == true && mbtiCheck == true){
             $('.submit-wrap').addClass('btn-hover');
             submitBtn.addClass('onSubmit');
@@ -142,7 +143,7 @@ $(document).ready(function() {
 
     submitBtn.on('click', function () {
         if(selectedLocalVal == '' || selectedMBTIVal == ''){
-            submitBtn.attr("disabled", true);
+            // submitBtn.attr("disabled", true);
             submitBtn.parent().removeClass("btn-hover");
             console.log("왜 호버 안없어져?")
         } else if (selectedLocalVal != '' && selectedMBTIVal != ''){
@@ -189,24 +190,22 @@ $(document).ready(function() {
     console.log(contentText.val());
 
 
-
     //등록하기 버튼 색 들어오게하기
     function checkSubmitButton() {
         let title = $('.AutoTextarea-textarea[name="title"]').val().trim();
         let content = $('.AutoTextarea-textarea[name="content"]').val().trim();
 
+
         // title과 content 둘 중 하나라도 비어있는 경우 버튼 비활성화
-        if (title === '' || content === '') {
+        if (title === '' || content === '' || selectedLocalVal === '' || selectedMBTIVal === '') {
             $('.Button-btn').attr('disabled', true);
             // btn.css('backgroundColor', '');
             // btn.css('color', '');
-            btn.css('backgroundColor', '#f2f4f7')
-            btn.css('color', '#ccc')
+
             console.log("css 제거")
         } else {
             $('.Button-btn').attr('disabled', false);
-            btn.css('backgroundColor','#36f');
-            btn.css('color','#fff');
+            $('.registration-headerBtn').addClass('valid');
             console.log("css 추가")
         }
     }
