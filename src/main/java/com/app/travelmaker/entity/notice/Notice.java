@@ -1,12 +1,13 @@
-package com.app.travelmaker.entity.tag;
+package com.app.travelmaker.entity.notice;
 
+
+import com.app.travelmaker.auditing.Period;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
-import org.springframework.boot.SpringApplicationExtensionsKt;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,30 +16,37 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
- * Tag Entity (댓글)
+ * Notice Entity (공지 사항)
  * */
 
 @Entity
-@Table(name = "TBL_TAG")
+@Table(name = "TBL_NOTICE")
 @Getter @ToString
-@SQLDelete(sql = "UPDATE TBL_TAG SET DELETED = 1 WHERE ID = ?")
+@SQLDelete(sql = "UPDATE TBL_NOTICE SET DELETED = 1 WHERE ID = ?")
 @Where(clause = "DELETED = 0")
-public class Tag {
+public class Notice extends Period {
 
     /**
-     * Tag PK (태그 고유 번호)
+     * Notice PK(고유 번호)
      * */
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
 
     /**
-     * Tag Content (태그 내용)
+     * Notice_TITLE(공지 제목)
      * */
-    @NotNull private String content;
+    @NotNull private String noticeTitle;
 
     /**
-     * Tag Status (태그 삭제 상태)
+     * Notice_CONTENT(공지 내용)
+     * */
+    @NotNull private String noticeContent;
+
+    /**
+     * Notice Status (공지 삭제 상태)
      * */
     private boolean deleted = Boolean.FALSE;
+
 }
