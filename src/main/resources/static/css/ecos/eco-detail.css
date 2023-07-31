@@ -624,6 +624,18 @@ input, input:focus, input[type=text], textarea {
 }
 
 
+@media (max-width: 768px) {
+    .sidebar-wrapper, .header-padding{
+        display: none;
+    }
+
+    .post-wrapper{
+        padding-top: 15px;
+        width: 100%;
+    }
+}
+
+
 
 
 
