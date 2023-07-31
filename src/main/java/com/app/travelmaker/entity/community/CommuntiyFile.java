@@ -1,4 +1,4 @@
-package com.app.travelmaker.entity.goWith;
+package com.app.travelmaker.entity.community;
 
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.entity.eco.Eco;
@@ -12,26 +12,26 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 
 /**
- * GoWith File Entity (같이 가요 파일 중간 테이블)
+ * CommunityFile Entity (커뮤니티 파일 중간 테이블)
  * */
 
 @Entity
-@Table(name = "TBL_GOWITH_FILE")
-@Getter @ToString
-@SQLDelete(sql = "UPDATE TBL_GOWITH_FILE SET DELETED = 1 WHERE ID = ?")
+@Table(name = "TBL_COMMUNITY_FILE")
+@Getter
+@ToString
+@SQLDelete(sql = "UPDATE TBL_COMMUNITY_FILE SET DELETED = 1 WHERE ID = ?")
 @Where(clause = "DELETED = 0")
-
-public class GoWithFile extends Period {
+public class CommuntiyFile extends Period {
 
     /**
-     * GoWith File PK(고유 번호)
+     * CommunityFile PK(커뮤니티 파일 중간 테이블 고유 번호)
      * */
     @Id
     @EqualsAndHashCode.Include
     private Long id;
 
     /**
-     * GoWith File FK(슈퍼키 서브키)
+     * CommunityFile FK(슈퍼키 서브키)
      * PK 이자 FK 연결 FILE 의 PK 와 연결됌 (N : 1)
      * */
     @MapsId
@@ -40,13 +40,13 @@ public class GoWithFile extends Period {
     private File file;
 
     /**
-     * GoWith (같이 가요와 연관 관계) (N : 1)
+     * Community (커뮤니티와 연관 관계) (N : 1)
      * */
     @ManyToOne(fetch = FetchType.LAZY)
-    private GoWith goWith;
+    private Community community;
 
     /**
-     * GoWith File Status (같이 가요 파일  중간 테이블 삭제 상태)
+     * CommunityFile Status (커뮤니티 파일  중간 테이블 삭제 상태)
      * */
     private boolean deleted = Boolean.FALSE;
 }

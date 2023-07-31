@@ -1,8 +1,7 @@
-package com.app.travelmaker.entity.eco;
+package com.app.travelmaker.entity.community;
 
 import com.app.travelmaker.auditing.Period;
-import com.app.travelmaker.entity.file.File;
-import com.app.travelmaker.entity.notice.Notice;
+import com.app.travelmaker.entity.eco.Eco;
 import com.app.travelmaker.entity.reply.Reply;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,25 +12,25 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 
 /**
- * EcoReply Entity (에코 인증 댓글 중간 테이블)
+ * CommunityReply Entity (커뮤니티 댓글 중간 테이블)
  * */
 
 @Entity
-@Table(name = "TBL_ECO_REPLY")
+@Table(name = "TBL_COMMUNITY_REPLY")
 @Getter @ToString
-@SQLDelete(sql = "UPDATE TBL_ECO_REPLY SET DELETED = 1 WHERE ID = ?")
+@SQLDelete(sql = "UPDATE TBL_COMMUNITY_REPLY SET DELETED = 1 WHERE ID = ?")
 @Where(clause = "DELETED = 0")
-public class EcoReply extends Period {
+public class CommunityReply extends Period {
 
     /**
-     * EcoReply PK(에코 인증 댓글 중간 테이블 고유 번호)
+     * CommunityReply PK(커뮤니티 댓글 중간 테이블 고유 번호)
      * */
     @Id
     @EqualsAndHashCode.Include
     private Long id;
 
     /**
-     * EcoReply FK(슈퍼키 서브키)
+     * CommunityReply FK(슈퍼키 서브키)
      * PK 이자 FK 연결 Reply의 PK 와 연결됌 (N : 1)
      * */
     @MapsId
@@ -42,13 +41,13 @@ public class EcoReply extends Period {
 
 
     /**
-     * Eco (Eco 와 연관 관계) (N : 1)
+     * Community (Community 와 연관 관계) (N : 1)
      * */
     @ManyToOne(fetch = FetchType.LAZY)
-    private Eco eco;
+    private Community community;
 
     /**
-     * EcoReply Status (에코 인증 댓글 중간 테이블 삭제 상태)
+     * CommunityReply Status (커뮤니티 댓글 중간 테이블 삭제 상태)
      * */
     private boolean deleted = Boolean.FALSE;
 

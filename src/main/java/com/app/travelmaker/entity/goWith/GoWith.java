@@ -2,6 +2,7 @@ package com.app.travelmaker.entity.goWith;
 
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.entity.mebmer.Member;
+import com.app.travelmaker.type.GoWithRegionType;
 import com.app.travelmaker.type.MbtiType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -42,6 +43,15 @@ public class GoWith extends Period {
     @NotNull private String goWithContent;
 
 
+    /**
+     * GoWith Region Type (같이가요 여행 지역)
+    * */
+    @NotNull @Enumerated(EnumType.STRING)
+    private GoWithRegionType goWithRegionType;
+
+    /**
+     * GoWith MBTI (같이가요 MBTI)
+    * */
     @NotNull @Enumerated(EnumType.STRING)
     private MbtiType goWithMbti;
 

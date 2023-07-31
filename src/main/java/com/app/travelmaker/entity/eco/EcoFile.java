@@ -24,7 +24,7 @@ import javax.persistence.*;
 public class EcoFile extends Period {
 
     /**
-     * Eco File PK(고유 번호)
+     * Eco File PK(에코 인증 파일 중간 테이블 고유 번호)
      * */
     @Id
     @EqualsAndHashCode.Include

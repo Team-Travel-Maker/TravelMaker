@@ -12,7 +12,7 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 
 /**
- * GoWithReply Entity (에코 인증)
+ * GoWithReply Entity (같이 가요 댓글 중간 테이블)
  * */
 
 @Entity
@@ -41,13 +41,13 @@ public class GoWithReply extends Period {
 
 
     /**
-     * GoWith (Eco 와 연관 관계) (N : 1)
+     * GoWith (같이 가요와 연관 관계) (N : 1)
      * */
     @ManyToOne(fetch = FetchType.LAZY)
     private GoWith goWith;
 
     /**
-     * GoWithReply Status (함꼐 가요 댓글 중간 테이블 삭제 상태)
+     * GoWithReply Status (같이 가요 댓글 중간 테이블 삭제 상태)
      * */
     private boolean deleted = Boolean.FALSE;
 }
