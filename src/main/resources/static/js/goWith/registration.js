@@ -94,6 +94,26 @@ $(document).ready(function() {
 
 
 
+<<<<<<< HEAD
+// MBTI 선택
+    selectedMBTI.on('click', function () {
+        selectedMBTI.each( (e) => {
+            selectedMBTI.removeClass('selected');
+        });
+        $(this).addClass('selected');
+        mbtiCheck = true;
+        selectedMBTIVal = $(this).val();
+
+        if(localCheck == true && mbtiCheck == true){
+            $('.submit-wrap').addClass('btn-hover');
+            submitBtn.addClass('onSubmit');
+        }
+        $('.tagPanel-selectedMBTI').children('span:first-child').text(selectedMBTIVal);
+        console.log("선택한 MBTI : " + selectedMBTIVal);
+        console.log(mbtiCheck.valueOf())
+    });
+=======
+>>>>>>> ae2bbbd8100456d12d4b51cdd46aa3d4bdb03d72
 
 
     // 지역과 MBTI 태그 둘 다 선택하기 전에는 완료 버튼 비활성화 하기!
