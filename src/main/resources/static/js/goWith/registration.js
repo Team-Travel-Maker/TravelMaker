@@ -181,18 +181,18 @@ $(document).ready(function() {
     });
 
 
-//    제목
-    const titleText = $('.writePaper-title').children('textarea:first-child');
-    let titleTextVal = titleText.val();
-
-    console.log(titleText.val());
-
-
-//    내용
-    const contentText = $('.writePaper-content').children('textarea:first-child');
-    let contnetTextVal = contentText.val();
-
-    console.log(contentText.val());
+// //    제목
+//     const titleText = $('.writePaper-title').children('textarea:first-child');
+//     let titleTextVal = titleText.val();
+//
+//     console.log(titleText.val());
+//
+//
+// //    내용
+//     const contentText = $('.writePaper-content').children('textarea:first-child');
+//     let contnetTextVal = contentText.val();
+//
+//     console.log(contentText.val());
 
 
     //등록하기 버튼 색 들어오게하기
