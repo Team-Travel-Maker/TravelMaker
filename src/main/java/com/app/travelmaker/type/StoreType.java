@@ -18,8 +18,4 @@ public enum  StoreType {
     private final String code;
     private final String name;
 
-    StoreType(String code, String name) {
-        this.code = code;
-        this.name = name;
-    }
 }

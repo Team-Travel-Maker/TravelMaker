@@ -20,8 +20,5 @@ public enum FileType {
     private final String code;
     private final String name;
 
-    FileType(String code, String name) {
-        this.code = code;
-        this.name = name;
-    }
+
 }

@@ -20,8 +20,5 @@ public enum  MemberJoinAccountType {
     private final String code;
     private final String name;
 
-    MemberJoinAccountType(String code, String name) {
-        this.code = code;
-        this.name = name;
-    }
+
 }
