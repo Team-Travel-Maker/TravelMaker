@@ -38,7 +38,7 @@ public class Eco extends Period {
     @NotNull private String ecoContent;
 
     /**
-     * GoWith Status (에코 인증 삭제 상태)
+     * Eco Status (에코 인증 삭제 상태)
      * */
     private boolean deleted = Boolean.FALSE;
 

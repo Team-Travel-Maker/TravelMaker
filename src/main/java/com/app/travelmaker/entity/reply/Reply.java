@@ -31,17 +31,17 @@ public class Reply extends Period {
     /**
      * Reply Content (댓글 내용)
      * */
-    @NotNull private String content;
+    @NotNull private String replyContent;
 
     /**
      * Reply Group (댓글 소속)
      * */
-    @NotNull private Long group;
+    @NotNull private Long replyGroup;
 
     /**
      * Reply depth (댓글/ 대댓글 구분 depth)
      * */
-    @NotNull private Long depth;
+    @NotNull private Long replyDepth;
 
     /**
      * Reply Status (댓글 삭제 상태)

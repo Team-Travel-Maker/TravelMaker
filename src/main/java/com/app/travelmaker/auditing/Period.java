@@ -1,28 +1,22 @@
 package com.app.travelmaker.auditing;
 
 import lombok.Getter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
+import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
 import java.time.LocalDateTime;
 
+@EntityListeners(AuditingEntityListener.class)
 @MappedSuperclass
 @Getter
 public class Period {
-    @Column(updatable = false)
-    private LocalDateTime registerDate;
-    private LocalDateTime updateDate;
-
-
-    @PrePersist
-    public void create(){
-        this.registerDate = LocalDateTime.now();
-        this.updateDate = LocalDateTime.now();
-    }
-
-    @PrePersist
-    public void update(){
-        this.updateDate = LocalDateTime.now();
-    }
+    @CreatedDate
+    private LocalDateTime createdDate;
+    @LastModifiedDate
+    private LocalDateTime updatedDate;
 }

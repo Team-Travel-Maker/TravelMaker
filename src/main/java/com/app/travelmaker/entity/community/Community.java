@@ -44,6 +44,11 @@ public class Community extends Period {
      * */
     @NotNull private String communityCategory;
 
+    /**
+     * Community Status (커뮤니티 삭제 상태)
+     * */
+    private boolean deleted = Boolean.FALSE;
+
 
     /**
      * Member 연관 관계 (N : 1)

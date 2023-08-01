@@ -3,21 +3,19 @@ package com.app.travelmaker.type;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @RequiredArgsConstructor
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum  MemberType {
+public enum CsType {
     /**
-     * COMPANY : COMPANY(업체 회원)
-     * GENERAL : GENERAL(일반 회원)
-     * ADMIN : ADMIN(관리자)
+     * INQUIRY : 문의
+     * DECLARATION : 신고
      * */
-    COMPANY("COMPANY", "업체"),
-    GENERAL("GENERAL", "일반"),
-    ADMIN("ADMIN", "관리자");
+    INQUIRY("INQUIRY", "문의"),
+    DECLARATION("DECLARATION", "신고");
 
     private final String code;
     private final String name;
-
 }

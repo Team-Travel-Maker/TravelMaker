@@ -94,6 +94,7 @@ $(document).ready(function() {
 
 
 
+<<<<<<< HEAD
 // MBTI 선택
     selectedMBTI.on('click', function () {
         selectedMBTI.each( (e) => {
@@ -111,6 +112,8 @@ $(document).ready(function() {
         console.log("선택한 MBTI : " + selectedMBTIVal);
         console.log(mbtiCheck.valueOf())
     });
+=======
+>>>>>>> ae2bbbd8100456d12d4b51cdd46aa3d4bdb03d72
 
 
     // 지역과 MBTI 태그 둘 다 선택하기 전에는 완료 버튼 비활성화 하기!
@@ -217,9 +220,16 @@ $(document).ready(function() {
         let title = $('.AutoTextarea-textarea[name="title"]').val().trim();
         let content = $('.AutoTextarea-textarea[name="content"]').val().trim();
 
+        if(localCheck === false || mbtiCheck === false){
+            $('.Button-btn').attr('disabled', true);
+            $('.registration-headerBtn').removeClass('valid');
+        } else {
+            $('.Button-btn').attr('disabled', false);
+            $('.registration-headerBtn').addClass('valid');
+        }
 
         // title과 content 둘 중 하나라도 비어있는 경우 버튼 비활성화
-        if (title === '' || content === '' || localCheck === false || mbtiCheck === false) {
+        if (title === '' || content === '' || selectedLocalVal === '' || selectedMBTIVal === '') {
             $('.Button-btn').attr('disabled', true);
             // btn.css('backgroundColor', '');
             // btn.css('color', '');

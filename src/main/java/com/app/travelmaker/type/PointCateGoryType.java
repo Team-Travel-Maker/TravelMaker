@@ -7,15 +7,13 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum  MemberType {
+public enum PointCateGoryType {
     /**
-     * COMPANY : COMPANY(업체 회원)
-     * GENERAL : GENERAL(일반 회원)
-     * ADMIN : ADMIN(관리자)
+     * USE : USE(사용)
+     * EARN : EARN(적립)
      * */
-    COMPANY("COMPANY", "업체"),
-    GENERAL("GENERAL", "일반"),
-    ADMIN("ADMIN", "관리자");
+    USE("USE", "사용"),
+    EARN("EARN", "적립");
 
     private final String code;
     private final String name;
