@@ -20,4 +20,5 @@ public enum  MemberType {
     private final String code;
     private final String name;
 
+
 }

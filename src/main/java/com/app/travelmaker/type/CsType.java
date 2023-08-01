@@ -18,4 +18,6 @@ public enum CsType {
 
     private final String code;
     private final String name;
+
+
 }

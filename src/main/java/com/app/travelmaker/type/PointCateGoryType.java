@@ -18,4 +18,6 @@ public enum PointCateGoryType {
     private final String code;
     private final String name;
 
+
+
 }

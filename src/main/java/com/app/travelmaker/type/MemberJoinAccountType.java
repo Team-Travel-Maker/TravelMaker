@@ -20,4 +20,5 @@ public enum  MemberJoinAccountType {
     private final String code;
     private final String name;
 
+
 }
