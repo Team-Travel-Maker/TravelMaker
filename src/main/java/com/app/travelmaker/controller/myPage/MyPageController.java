@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/mypage/*")
 public class MyPageController {
 
-//    내가 작성한 게시물
+    // 내가 작성한 게시물
     @GetMapping("my/posts")
     public void goToPosts(){;}
 
     // 내가 작성한 댓글
     @GetMapping("my/comments")
     public void goToComments(){;}
+
+    //  나의 문의/신고 내역
+    @GetMapping("my/list-detail")
+    public void goToMyList(){;}
+
 
 
 //   알림
@@ -51,4 +56,7 @@ public class MyPageController {
 //  보유 상품권?
     @GetMapping("giftCard")
     public void goToGiftCard(){;}
+
+
+
 }
