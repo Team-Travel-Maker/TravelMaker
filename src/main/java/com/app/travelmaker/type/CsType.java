@@ -17,4 +17,9 @@ public enum CsType {
 
     private final String code;
     private final String name;
+
+    CsType(String code, String name) {
+        this.code = code;
+        this.name = name;
+    }
 }

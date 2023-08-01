@@ -20,4 +20,8 @@ public enum  MemberType {
     private final String code;
     private final String name;
 
+    MemberType(String code, String name) {
+        this.code = code;
+        this.name = name;
+    }
 }
