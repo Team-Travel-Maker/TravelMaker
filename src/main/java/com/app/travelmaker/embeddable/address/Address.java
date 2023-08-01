@@ -1,4 +1,4 @@
-package com.app.travelmaker.entity.address;
+package com.app.travelmaker.embeddable.address;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -12,9 +12,10 @@ public enum PointCateGoryType {
      * USE : USE(사용)
      * EARN : EARN(적립)
      * */
-    COMPANY("USE", "사용"),
-    GENERAL("EARN", "적립");
+    USE("USE", "사용"),
+    EARN("EARN", "적립");
 
     private final String code;
     private final String name;
+
 }

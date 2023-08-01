@@ -1,9 +1,9 @@
-package com.app.travelmaker.entity.pay;
+package com.app.travelmaker.entity.store;
 
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.embeddable.address.Address;
-import com.app.travelmaker.entity.giftcard.GiftCard;
 import com.app.travelmaker.entity.mebmer.Member;
+import com.app.travelmaker.type.StoreType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
@@ -14,18 +14,18 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
- * Pay Entity (결제)
+ * Store Entity (업체)
  * */
 
 @Entity
-@Table(name = "TBL_PAY")
+@Table(name = "TBL_STORE")
 @Getter
 @ToString
-@SQLDelete(sql = "UPDATE TBL_PAY SET DELETED = 1 WHERE ID = ?")
+@SQLDelete(sql = "UPDATE TBL_STORE SET DELETED = 1 WHERE ID = ?")
 @Where(clause = "DELETED = 0")
-public class Pay extends Period {
+public class Store extends Period {
     /**
-     * Pay PK (결제 고유 번호)
+     * Store PK (테마 고유 번호)
      * */
     @Id
     @GeneratedValue
@@ -33,27 +33,33 @@ public class Pay extends Period {
     private Long id;
 
     /**
-     * Pay Total Price  (결제 포인트 총 가격)
+     * Store Title (업체 이름)
      * */
-    @NotNull private Integer payTotalPrice;
+    @NotNull
+    private String storeTitle;
 
     /**
-     * Pay Address(상품권 받을 주소)
+     * Store Content (업체 설명)
      * */
+    @NotNull private String storeContent;
+
+    /**
+     * Store Address (업체 주소)
+     * */
+
     @Embedded @NotNull private Address address;
 
+    @NotNull private StoreType storeType;
+
     /**
-     * Member와 연관 관계  (N : 1)
+     * Store Status (업체 삭제 상태)
+     * */
+    private boolean deleted = Boolean.FALSE;
+
+    /**
+     * Member Entity 와 연관 관계 (N : 1)
      * */
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
-
-    /**
-     * GiftCard와 연관 관계  (N : 1)
-     * */
-    @ManyToOne(fetch = FetchType.LAZY)
-    private GiftCard giftCard;
-
-
 
 }

@@ -1,13 +1,13 @@
 package com.app.travelmaker.entity.mebmer;
 
 import com.app.travelmaker.auditing.Period;
-import com.app.travelmaker.entity.address.Address;
+import com.app.travelmaker.embeddable.address.Address;
+import com.app.travelmaker.embeddable.alarm.Alarm;
 import com.app.travelmaker.type.FileType;
 import com.app.travelmaker.type.MemberJoinAccountType;
 import com.app.travelmaker.type.MemberType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -45,12 +45,17 @@ public class Member extends Period {
     @NotNull private String memberPw;
 
     /**
+     * Member ALARM (알람 설정 여부)
+     * */
+    @Embedded @NotNull private Alarm alarm;
+
+    /**
      * Member Address(회원 주소)
      * */
     @Embedded @NotNull private Address address;
 
     /**
-     * Member PHONE(회원 전화번호)
+     * Member PHONE(회원 전화 번호)
      * */
     @NotNull private String memberPhone;
 
