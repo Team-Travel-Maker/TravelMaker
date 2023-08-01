@@ -66,7 +66,7 @@ public class Member extends Period {
     /**
      * Member ECO POINT(회원 에코 포인트)
      * */
-    @NotNull private String memberEcoPoint;
+    @NotNull private Integer memberEcoPoint;
 
     /**
      * Member JOIN ACCOUNT(SNS 로그인 여부)
