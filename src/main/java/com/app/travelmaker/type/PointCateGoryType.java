@@ -18,4 +18,9 @@ public enum PointCateGoryType {
     private final String code;
     private final String name;
 
+
+    PointCateGoryType(String code, String name) {
+        this.code = code;
+        this.name = name;
+    }
 }

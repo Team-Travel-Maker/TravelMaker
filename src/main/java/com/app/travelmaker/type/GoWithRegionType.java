@@ -48,4 +48,8 @@ public enum GoWithRegionType {
     private final String code;
     private final String name;
 
+    GoWithRegionType(String code, String name) {
+        this.code = code;
+        this.name = name;
+    }
 }
