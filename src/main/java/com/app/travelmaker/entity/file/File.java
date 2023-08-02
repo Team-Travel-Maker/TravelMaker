@@ -9,10 +9,7 @@ import lombok.ToString;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 
@@ -22,6 +19,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "TBL_FILE")
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_FILE SET DELETED = 1 WHERE ID = ?")

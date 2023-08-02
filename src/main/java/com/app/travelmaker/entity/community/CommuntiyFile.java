@@ -21,23 +21,7 @@ import javax.persistence.*;
 @ToString
 @SQLDelete(sql = "UPDATE TBL_COMMUNITY_FILE SET DELETED = 1 WHERE ID = ?")
 @Where(clause = "DELETED = 0")
-public class CommuntiyFile extends Period {
-
-    /**
-     * CommunityFile PK(커뮤니티 파일 중간 테이블 고유 번호)
-     * */
-    @Id
-    @EqualsAndHashCode.Include
-    private Long id;
-
-    /**
-     * CommunityFile FK(슈퍼키 서브키)
-     * PK 이자 FK 연결 FILE 의 PK 와 연결됌 (N : 1)
-     * */
-    @MapsId
-    @JoinColumn(name = "ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private File file;
+public class CommuntiyFile extends File {
 
     /**
      * Community (커뮤니티와 연관 관계) (N : 1)

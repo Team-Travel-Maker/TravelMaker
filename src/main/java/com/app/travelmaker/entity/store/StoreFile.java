@@ -21,23 +21,7 @@ import javax.persistence.*;
 @ToString
 @SQLDelete(sql = "UPDATE TBL_STORE_FILE SET DELETED = 1 WHERE ID = ?")
 @Where(clause = "DELETED = 0")
-public class StoreFile extends Period {
-
-    /**
-     * Store File PK(업체 파일 중간 테이블 고유 번호)
-     * */
-    @Id
-    @EqualsAndHashCode.Include
-    private Long id;
-
-    /**
-     * Store File FK(슈퍼키 서브키)
-     * PK 이자 FK 연결 FILE 의 PK 와 연결됌 (N : 1)
-     * */
-    @MapsId
-    @JoinColumn(name = "ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private File file;
+public class StoreFile extends File {
 
     /**
      * Store (업체 와 연관 관계) (N : 1)

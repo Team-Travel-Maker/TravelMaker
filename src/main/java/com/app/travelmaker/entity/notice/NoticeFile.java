@@ -20,23 +20,7 @@ import javax.persistence.*;
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_NOTICE_FILE SET DELETED = 1 WHERE ID = ?")
 @Where(clause = "DELETED = 0")
-public class NoticeFile extends Period {
-
-    /**
-     * Notice File PK(고유 번호)
-     * */
-    @Id
-    @EqualsAndHashCode.Include
-    private Long id;
-
-    /**
-     * Notice File FK(슈퍼키 서브키)
-     * PK 이자 FK 연결 FILE 의 PK 와 연결됌 (N : 1)
-     * */
-    @MapsId
-    @JoinColumn(name = "ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private File file;
+public class NoticeFile extends File {
 
     /**
      * Notice (NOTICE 와 연관 관계) (N : 1)
