@@ -45,6 +45,11 @@ public class Member extends Period {
     @NotNull private String memberPw;
 
     /**
+     * Member Name(회원 이름)
+     * */
+    @NotNull private String memberName;
+
+    /**
      * Member ALARM (알람 설정 여부)
      * */
     @Embedded @NotNull private Alarm alarm;
