@@ -45,6 +45,7 @@ public class CustomService extends Period {
     /**
      * Custom Service Type (문의/신고)
      * */
+    @Enumerated(EnumType.STRING)
     @NotNull private CsType csType;
 
     /**
