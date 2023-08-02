@@ -8,10 +8,7 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 import org.springframework.boot.SpringApplicationExtensionsKt;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -19,6 +16,7 @@ import javax.validation.constraints.NotNull;
  * */
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "TBL_TAG")
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_TAG SET DELETED = 1 WHERE ID = ?")

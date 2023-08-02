@@ -21,23 +21,7 @@ import javax.persistence.*;
 @SQLDelete(sql = "UPDATE TBL_GOWITH_FILE SET DELETED = 1 WHERE ID = ?")
 @Where(clause = "DELETED = 0")
 
-public class GoWithFile extends Period {
-
-    /**
-     * GoWith File PK(고유 번호)
-     * */
-    @Id
-    @EqualsAndHashCode.Include
-    private Long id;
-
-    /**
-     * GoWith File FK(슈퍼키 서브키)
-     * PK 이자 FK 연결 FILE 의 PK 와 연결됌 (N : 1)
-     * */
-    @MapsId
-    @JoinColumn(name = "ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private File file;
+public class GoWithFile extends File {
 
     /**
      * GoWith (같이 가요와 연관 관계) (N : 1)

@@ -19,25 +19,7 @@ import javax.persistence.*;
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_STORY_REPLY SET DELETED = 1 WHERE ID = ?")
 @Where(clause = "DELETED = 0")
-public class StoryReply extends Period {
-
-    /**
-     * StoryReply PK(고유 번호)
-     * */
-    @Id
-    @EqualsAndHashCode.Include
-    private Long id;
-
-    /**
-     * StoryReply FK(슈퍼키 서브키)
-     * PK 이자 FK 연결 Reply의 PK 와 연결됌 (N : 1)
-     * */
-    @MapsId
-    @JoinColumn(name = "ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Reply reply;
-
-
+public class StoryReply extends Reply {
 
     /**
      * Story (스토리와 연관 관계) (N : 1)

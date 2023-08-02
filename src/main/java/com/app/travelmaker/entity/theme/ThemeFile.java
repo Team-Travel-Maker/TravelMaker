@@ -21,23 +21,7 @@ import javax.persistence.*;
 @ToString
 @SQLDelete(sql = "UPDATE TBL_THEME_FILE SET DELETED = 1 WHERE ID = ?")
 @Where(clause = "DELETED = 0")
-public class ThemeFile extends Period {
-
-    /**
-     * Theme File PK(테마 파일 중간 테이블 고유 번호)
-     * */
-    @Id
-    @EqualsAndHashCode.Include
-    private Long id;
-
-    /**
-     * Theme File FK(슈퍼키 서브키)
-     * PK 이자 FK 연결 FILE 의 PK 와 연결됌 (N : 1)
-     * */
-    @MapsId
-    @JoinColumn(name = "ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private File file;
+public class ThemeFile extends File {
 
     /**
      * Theme (테마 와 연관 관계) (N : 1)

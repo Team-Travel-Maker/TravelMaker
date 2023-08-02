@@ -20,25 +20,7 @@ import javax.persistence.*;
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_GOWITH_REPLY SET DELETED = 1 WHERE ID = ?")
 @Where(clause = "DELETED = 0")
-public class GoWithReply extends Period {
-
-    /**
-     * GoWithReply PK(고유 번호)
-     * */
-    @Id
-    @EqualsAndHashCode.Include
-    private Long id;
-
-    /**
-     * GoWithReply FK(슈퍼키 서브키)
-     * PK 이자 FK 연결 Reply의 PK 와 연결됌 (N : 1)
-     * */
-    @MapsId
-    @JoinColumn(name = "ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Reply reply;
-
-
+public class GoWithReply extends Reply {
 
     /**
      * GoWith (같이 가요와 연관 관계) (N : 1)

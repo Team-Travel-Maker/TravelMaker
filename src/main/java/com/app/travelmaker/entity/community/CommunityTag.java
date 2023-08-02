@@ -21,23 +21,8 @@ import javax.persistence.*;
 @ToString
 @SQLDelete(sql = "UPDATE TBL_COMMUNITY_TAG SET DELETED = 1 WHERE ID = ?")
 @Where(clause = "DELETED = 0")
-public class CommunityTag extends Period {
+public class CommunityTag extends Tag {
 
-    /**
-     * CommunityTag PK (커뮤니티 태그 중간 테이블 고유 번호)
-     * */
-    @Id
-    @EqualsAndHashCode.Include
-    private Long id;
-
-    /**
-     * CommunityTag FK(슈퍼키 서브키)
-     * PK 이자 FK 연결 Tag의 PK 와 연결됌 (N : 1)
-     * */
-    @MapsId
-    @JoinColumn(name = "ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Tag tag;
 
     /**
      * Community (Eco 와 연관 관계) (N : 1)
