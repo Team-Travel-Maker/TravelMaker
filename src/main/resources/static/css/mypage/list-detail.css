@@ -978,15 +978,15 @@ img {
     }
 }
 
-article.postItem:after{
-    display: block;
-    width: calc(100% - 30px);
-    content: "";
-    height: 1px;
-    background-color: #ececec;
-    position: absolute;
-    bottom: 0;
-}
+/*article.postItem:after{*/
+/*    display: block;*/
+/*    width: calc(100% - 30px);*/
+/*    content: "";*/
+/*    height: 1px;*/
+/*    background-color: #ececec;*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*}*/
 
 .topPickPostItem .topPickPostItem-userInfo {
     max-width: 220px;
@@ -1680,7 +1680,7 @@ div.board-content {
 }
 
 .inquiry-content{
-    min-height: 320px;
+    height: auto;
 }
 
 .board-info-box {
@@ -1934,11 +1934,108 @@ div#paging-wrap {
 .search-input-container input{
     border: solid 1px #ececec;
     border-radius: 5px;
-    border-style: solid;
+
 }
 
 
 
+/* 삭제 버튼 */
+.Button-deleteBtn{
+    border: solid 1px #ececec;
+    --button-color: #ececec;
+    color: var(--button-color);
+    -webkit-box-shadow: 0 0 0 1px var(--button-color) inset;
+    box-shadow: 0 0 0 1px var(--button-color) inset;
+}
+
+/* 전체 테이블을 감싸는 div */
+.post-table {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+}
+
+/* 테이블 헤더 */
+.post-row.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 테이블 행 */
+.post-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 테이블 셀 */
+.post-row>div {
+    flex: 1;
+    padding: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* 마지막 열 스타일 (답변 여부) */
+.post-row>div:last-child {
+    color: #ff0000;
+}
+
+/* 상세 내용 부분 */
+.post-content {
+    display: none;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+
+
+/* 반응형 */
+
+@media (max-width: 768px) {
+    .content-wrapper{
+        width: inherit;
+    }
+
+    .sidebar-wrapper{
+        display: none;
+    }
+
+    .postItem{
+        margin-top: 50px;
+    }
+
+    .search{
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .contentList-wrapper{
+        height: auto;
+
+    }
+
+    .interestTagSlide{
+        margin: 5px;
+    }
+
+    .search-wrap{
+        display: flex;
+    }
+
+}
 
 
 
