@@ -45,9 +45,10 @@ $(document).ready(function() {
         $(".post-content[data-content='" + postContent + "']").slideToggle('slow');
     });
 
-    function slideContent(postContent) {
 
-    }
+    $('#allSelect').on("click", function (e) {
+        $('.inquiryCheckbox').
+    })
 
 
 
