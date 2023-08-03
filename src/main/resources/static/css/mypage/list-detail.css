@@ -317,8 +317,8 @@ img {
 }
 
 .now-button{
-    --button-color: #36f;
-    color: #36f;
+    --button-color: #36f !important;
+    color: #36f !important;
     box-shadow: 0 0 0 1px #36f inset;
 }
 
@@ -821,8 +821,9 @@ img {
     width: 100%;
     margin-bottom: 10px;
     margin-top: 15px;
-    margin-left: 20px;
+    margin-left: 16px;
 }
+
 
 .topPickPostView-header-title::after{
     display: block;
