@@ -50,6 +50,11 @@ public class GiftCard extends Period {
     @NotNull private String giftCardRegionDetail;
 
     /**
+     * Gift Card Price (상품권 사용 가격)
+     * */
+    @NotNull private Integer giftCardPrice;
+
+    /**
      * Gift Card Status (상품권 삭제 상태)
      * */
     private boolean deleted = Boolean.FALSE;
