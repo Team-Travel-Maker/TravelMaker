@@ -32,6 +32,8 @@ $(document).ready(function() {
 
 
     // 체크박스
+
+    // 전체 선택 및 전체 선택 해제
     $("#allSelect").click(function() {
         if($("#allSelect").is(":checked")) {
             $("input[name=check]").prop("checked", true);
@@ -45,20 +47,39 @@ $(document).ready(function() {
         }
     });
 
+
+    // 부분 선택 및 부분 선택 해제 & 모든 체크박스 선택했을 때 전체선택 버튼도 체크 되게
     $("input[name=check]").click(function() {
         let total = $("input[name=check]").length;
         let checked = $("input[name=check]:checked").length;
 
-        $(this).prop("checked", true)
+
+        // $(this).prop("checked") ? $(this).prop("checked") : !$(this).prop("checked")
+        $(this).prop("checked") ? onChecked() : noChecked();
 
         if(total != checked){
             $("#allSelect").prop("checked", false);
-            $(".Button-btn").removeClass("now-button");
         } else {
             $("#allSelect").prop("checked", true);
-            $(".Button-btn").addClass("now-button");
         }
+
+        if(checked > 0){
+            $(".Button-btn").addClass("now-button");
+        } else {
+            $(".Button-btn").removeClass("now-button");
+        }
+
     });
+
+    function onChecked() {
+        $(this).prop("checked")
+        $(".Button-btn").addClass("now-button");
+    }
+
+    function noChecked() {
+        !$(this).prop("checked")
+    }
+
 
 
 
