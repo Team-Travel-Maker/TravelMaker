@@ -21,23 +21,6 @@ $(document).ready(function() {
     }
 
 
-
-
-    // $(".post-title").on("click", function(e) {
-    //     let postContent = $(this).data("content");
-    //
-    //     e.preventDefault(); // 기본 링크 동작 방지
-    //     console.log("내용 펼치기!")
-    //     console.log(postContent)
-    //
-    //     // 클릭한 글의 상세 내용 펼침/접힘 토글 (아래 방향)
-    //
-    //     // $(this).closest("tr").next(".post-content").slideToggle();
-    //     $(".post-content[data-content='" + postContent + "']").slideToggle(300);
-    //
-    //     console.log($(this).closest("tr").next(".post-content"))
-    // });
-
     $(".post-title").on("click", function (e) {
         e.preventDefault(); // 기본 링크 동작 방지
 
@@ -45,9 +28,63 @@ $(document).ready(function() {
         $(".post-content[data-content='" + postContent + "']").slideToggle('slow');
     });
 
-    function slideContent(postContent) {
 
+
+
+    // 체크박스
+
+    // 전체 선택 및 전체 선택 해제
+    $("#allSelect").click(function() {
+        if($("#allSelect").is(":checked")) {
+            $("input[name=check]").prop("checked", true);
+            // 체크박스 전체 선택 했을 때 삭제 버튼 활성화
+            $(".Button-btn").addClass("now-button");
+        }
+        else {
+            $("input[name=check]").prop("checked", false);
+            // 체크박스 전체 선택 해제 했을 때 삭제 버튼 비활성화
+            $(".Button-btn").removeClass("now-button");
+        }
+    });
+
+
+    // 부분 선택 및 부분 선택 해제 & 모든 체크박스 선택했을 때 전체선택 버튼도 체크 되게
+    $("input[name=check]").click(function() {
+        let total = $("input[name=check]").length;
+        let checked = $("input[name=check]:checked").length;
+
+
+        // $(this).prop("checked") ? $(this).prop("checked") : !$(this).prop("checked")
+        $(this).prop("checked") ? onChecked() : noChecked();
+
+        if(total != checked){
+            $("#allSelect").prop("checked", false);
+        } else {
+            $("#allSelect").prop("checked", true);
+        }
+
+        if(checked > 0){
+            $(".Button-btn").addClass("now-button");
+        } else {
+            $(".Button-btn").removeClass("now-button");
+        }
+
+    });
+
+    function onChecked() {
+        $(this).prop("checked")
+        $(".Button-btn").addClass("now-button");
     }
+
+    function noChecked() {
+        !$(this).prop("checked")
+    }
+
+
+
+
+
+
 
 
 
@@ -59,20 +96,7 @@ $(document).ready(function() {
 
 
 
-// 체크박스
 
-// $("#allSelect").click(function() {
-//     if($("#allSelect").is(":checked")) $("input[name=check]").prop("checked", true);
-//     else $("input[name=check]").prop("checked", false);
-// });
-//
-// $("input[name=check]").click(function() {
-//     var total = $("input[name=check]").length;
-//     var checked = $("input[name=check]:checked").length;
-//
-//     if(total != checked) $("#allSelect").prop("checked", false);
-//     else $("#allSelect").prop("checked", true);
-// });
-//
-// const pageButton = $(".page-button");
+
+
 
