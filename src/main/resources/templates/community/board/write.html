@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/header/header.css"/>
     <link rel="stylesheet" href="/css/community/community-write.css">
     <link rel="stylesheet" href="/css/community/modal.css">
+    <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/css/mypage/interestsRegion.css">
 </head>
 
@@ -36,32 +37,41 @@
         <div class="CommunityWrite_content">
             <div class="CommunityWritePaper">
                 <div class="TagPanel">
-                    <div class="TagPanel_tagMessage"><span>태그 선택</span> <span
-                            class="TagPanel_tagMessage_hint">(1~3개)</span> <span
-                            class="TagPanel_tagMessage_required">*</span></div>
-                    <div class="TagPanel_tagWrapper">
-                        <button type="button" id="write-openModal">
-                            <svg
-                                    width="34" height="34" viewBox="0 0 34 34">
-                                <path
-                                        d="M0 17C0 7.61116 7.61116 0 17 0V0C26.3888 0 34 7.61116 34 17V17C34 26.3888 26.3888 34 17 34V34C7.61116 34 0 26.3888 0 17V17Z"
-                                        fill="#F2F4F7"></path>
-                                <path
-                                        d="M17.7432 10.6482C17.6935 10.2822 17.3797 10 17 10C16.5858 10 16.25 10.3358 16.25 10.75V16.25H10.75L10.6482 16.2568C10.2822 16.3065 10 16.6203 10 17C10 17.4142 10.3358 17.75 10.75 17.75H16.25V23.25L16.2568 23.3518C16.3065 23.7178 16.6203 24 17 24C17.4142 24 17.75 23.6642 17.75 23.25V17.75H23.25L23.3518 17.7432C23.7178 17.6935 24 17.3797 24 17C24 16.5858 23.6642 16.25 23.25 16.25H17.75V10.75L17.7432 10.6482Z"
-                                        fill="#666666"></path>
-                            </svg>
-                        </button>
-                        <button type="button" class="TagPanel_tagPlaceholder"
-                                aria-label="Open Select Tag Modal">
-                            <picture>
-                                <source type="image/webp"
-                                        srcset="https://static.wanted.co.kr/images/community/tag_empty.webp 1x, https://static.wanted.co.kr/images/community/tag_empty@2x.webp 2x, https://static.wanted.co.kr/images/community/tag_empty@3x.webp 3x">
-                                <img srcset="https://static.wanted.co.kr/images/community/tag_empty.png 1x, https://static.wanted.co.kr/images/community/tag_empty@2x.png 2x, https://static.wanted.co.kr/images/community/tag_empty@3x.png 3x"
-                                     src="https://static.wanted.co.kr/images/community/tag_empty@3x.png"
-                                     alt="empty tag"></picture>
-                        </button>
+                    <div class="TagPanel_tagMessage"><span>태그 작성</span>
+                        <span class="TagPanel_tagMessage_required">*</span></div>
+                    <style>
+                        .tagify {
+                            border: 0;
+                            --tag-border-radius: 20px;
+                            --tag-pad: 0.6em 1.2em;
+                            --tag-inset-shadow-size: 2em;
+                        }
+                    </style>
+                    <input placeholder="태그를 추가해 주세요.">
 
-                    </div>
+                    <!--                    <div class="TagPanel_tagWrapper">-->
+                    <!--                        <button type="button" id="write-openModal">-->
+                    <!--                            <svg-->
+                    <!--                                    width="34" height="34" viewBox="0 0 34 34">-->
+                    <!--                                <path-->
+                    <!--                                        d="M0 17C0 7.61116 7.61116 0 17 0V0C26.3888 0 34 7.61116 34 17V17C34 26.3888 26.3888 34 17 34V34C7.61116 34 0 26.3888 0 17V17Z"-->
+                    <!--                                        fill="#F2F4F7"></path>-->
+                    <!--                                <path-->
+                    <!--                                        d="M17.7432 10.6482C17.6935 10.2822 17.3797 10 17 10C16.5858 10 16.25 10.3358 16.25 10.75V16.25H10.75L10.6482 16.2568C10.2822 16.3065 10 16.6203 10 17C10 17.4142 10.3358 17.75 10.75 17.75H16.25V23.25L16.2568 23.3518C16.3065 23.7178 16.6203 24 17 24C17.4142 24 17.75 23.6642 17.75 23.25V17.75H23.25L23.3518 17.7432C23.7178 17.6935 24 17.3797 24 17C24 16.5858 23.6642 16.25 23.25 16.25H17.75V10.75L17.7432 10.6482Z"-->
+                    <!--                                        fill="#666666"></path>-->
+                    <!--                            </svg>-->
+                    <!--                        </button>-->
+                    <!--                        <button type="button" class="TagPanel_tagPlaceholder"-->
+                    <!--                                aria-label="Open Select Tag Modal">-->
+                    <!--                            <picture>-->
+                    <!--                                <source type="image/webp"-->
+                    <!--                                        srcset="https://static.wanted.co.kr/images/community/tag_empty.webp 1x, https://static.wanted.co.kr/images/community/tag_empty@2x.webp 2x, https://static.wanted.co.kr/images/community/tag_empty@3x.webp 3x">-->
+                    <!--                                <img srcset="https://static.wanted.co.kr/images/community/tag_empty.png 1x, https://static.wanted.co.kr/images/community/tag_empty@2x.png 2x, https://static.wanted.co.kr/images/community/tag_empty@3x.png 3x"-->
+                    <!--                                     src="https://static.wanted.co.kr/images/community/tag_empty@3x.png"-->
+                    <!--                                     alt="empty tag"></picture>-->
+                    <!--                        </button>-->
+
+                    <!--                    </div>-->
                 </div>
                 <!-- 제목 작성-->
                 <div class="AutoTextarea CommunityWrite-titleWrapper">
@@ -118,28 +128,8 @@
 
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="https://unpkg.com/@yaireo/tagify"></script>
 <script src="/js/community/review-write.js"></script>
 <script src="/js/community/write-modal.js"></script>
-<script>
-    const $openModal = $('#write-openModal');
 
-    $openModal.on('click', function () {
-        showModal(modalMessage);
-        const $spanTags = $('.location-category>span');
-        const $locationBtns =$('.location-category');
-
-        $locationBtns.on("click", function(){
-            if(!$(this).hasClass("now-button")){
-                $(this).addClass("now-button");
-                $(this).children().addClass('span-color');
-
-            }else{ $(this).removeClass("now-button");
-                $(this).children().removeClass('span-color');
-            }
-        });
-    });
-
-
-
-</script>
 </html>

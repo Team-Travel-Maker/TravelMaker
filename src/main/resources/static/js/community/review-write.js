@@ -13,25 +13,20 @@ $(document).ready(function() {
 
     // 페이지 로드 시와 텍스트 영역 내용이 변경될 때 자동으로 autoResizeTextarea 함수를 호출합니다
     autoResizeTextarea();
-    $('.AutoTextarea_AutoTextarea').on('input', autoResizeTextarea);
+
 });
 
 
 //등록하기 버튼 색 들어오게하기
 const btn = $('.Button_root');
 
-$('.AutoTextarea_AutoTextarea').on('change',function(){
+$('.AutoTextarea_AutoTextarea').on('input',function(){
 
-const write1 = $('.AutoTextarea_AutoTextarea').eq(0).val().length;
-// console.log(write1);
-const write2 = $('.AutoTextarea_AutoTextarea').eq(2).val().length;
-// console.log(write2);
+    const write1 = $('.AutoTextarea_AutoTextarea').eq(0).val().length;
+    const write2 = $('.AutoTextarea_AutoTextarea').eq(2).val().length;
     if(write1 && write2){
         btn.css('backgroundColor','#36f');
         btn.css('color','#fff');
-        // color: #fff;
-        // background-color: #36f;
-        // btn.addClass("Button_contained");
     }else if(!write1 || !write2){
         btn.css('backgroundColor', '');
         btn.css('color', '');
@@ -49,6 +44,12 @@ document.getElementById('upload1').addEventListener('change', handleFileSelect);
 function handleFileSelect(event) {
     // 선택한 파일의 정보를 가져옵니다
     const file = event.target.files[0];
-
-
 }
+
+var input = document.querySelector('input')
+var tagify = new Tagify(input);
+
+// 태그가 추가되면 이벤트 발생
+tagify.on('add', function() {
+    console.log(tagify.value); // 입력된 태그 정보 객체
+})
