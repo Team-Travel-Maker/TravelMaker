@@ -112,9 +112,9 @@ $(document).ready(function() {
     function onChecked() {
         $(this).prop("checked");
         if($(this).is($("input[name=questionChk]"))){
-            console.log($("input[name=questionChk]"));
+            console.log("어떤 인풋?" +$("input[name=questionChk]"));
             $(".Button-qBtn").addClass("now-button");
-        } else{
+        } else if($(this).is($("input[name=repotChk]"))){
             $(".Button-rBtn").addClass("now-button");
         }
     }
