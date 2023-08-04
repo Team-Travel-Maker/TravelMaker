@@ -1468,6 +1468,9 @@ div#modal-wrap span{
     .topPickPostItem{
         padding-top: 60px;
     }
+    .postWriteBtn-wrapper{
+        width: 70%;
+    }
 }
 
 
