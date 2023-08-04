@@ -193,7 +193,7 @@
                     <div class="delete-box-layout">
                         <div class="delete-box" style="margin-right: 16px;">
                             <button
-                                    class="Button-btn Button-root Button-sizeMedium Button-deleteBtn Button-outlinedSizeMedium Button-outlined"
+                                    class="Button-btn Button-root Button-sizeMedium Button-deleteBtn Button-outlinedSizeMedium Button-outlined Button-qBtn"
                                     onclick="deleteInquiries(getSelectedInquiryIds())">
                                 삭제하기
                             </button>
@@ -220,7 +220,7 @@
                             <!-- 문의 글 목록 행 -->
                             <div class="post-row">
                                 <div class="checkbox-line">
-                                    <input type="checkbox" class="inquiryCheckbox" name="check" />
+                                    <input type="checkbox" class="inquiryCheckbox questionChk" name="questionChk" />
                                 </div>
                                 <div>1</div>
                                 <div>
@@ -281,7 +281,7 @@
 
                             <div class="post-row">
                                 <div class="checkbox-line">
-                                    <input type="checkbox" class="inquiryCheckbox" name="check" />
+                                    <input type="checkbox" class="inquiryCheckbox questionChk" name="questionChk" />
                                 </div>
                                 <div>2</div>
                                 <div>
@@ -368,7 +368,7 @@
                     <div class="delete-box-layout">
                         <div class="delete-box" style="margin-right: 35px;">
                             <button
-                                    class="Button-btn Button-root Button-sizeMedium Button-deleteBtn Button-outlinedSizeMedium Button-outlined"
+                                    class="Button-btn Button-root Button-sizeMedium Button-deleteBtn Button-outlinedSizeMedium Button-outlined Button-rBtn"
                                     onclick="deleteInquiries(getSelectedInquiryIds())">
                                 삭제하기
                             </button>
@@ -381,7 +381,7 @@
                             <!-- 테이블 헤더 -->
                             <div class="post-row header-row">
                                 <div class="checkbox-line">
-                                    <input type="checkbox" id="allSelect1" />
+                                    <input type="checkbox" id="allSelect-repot" />
                                 </div>
                                 <div>No</div>
                                 <div>신고 제목</div>
@@ -392,10 +392,10 @@
                                 <div>답변 여부</div>
                             </div>
 
-                            <!-- 문의 글 목록 행 -->
+                            <!-- 신고 글 목록 행 -->
                             <div class="post-row">
                                 <div class="checkbox-line">
-                                    <input type="checkbox" class="inquiryCheckbox" name="check" />
+                                    <input type="checkbox" class="inquiryCheckbox repotChk" name="repotChk" />
                                 </div>
                                 <div>1</div>
                                 <div>
@@ -456,7 +456,7 @@
 
                             <div class="post-row">
                                 <div class="checkbox-line">
-                                    <input type="checkbox" class="inquiryCheckbox" name="check" />
+                                    <input type="checkbox" class="inquiryCheckbox repotChk" name="repotChk" />
                                 </div>
                                 <div>2</div>
                                 <div>
