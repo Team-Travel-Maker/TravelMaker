@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/header/header.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
     <link rel="stylesheet" href="/css/mypage/points.css">
+    <link rel="stylesheet" href="/css/mypage/company-list.css">
 </head>
 <body>
 <div th:replace="~{header/header :: #header}"></div>
@@ -17,8 +18,8 @@
 <div class="container-profile">
     <nav role="presentation" class="nav">
         <h2 class="nav-title">
-            <p>포인트</p>
-            <button type="button" class="nav-button">포인트</button>
+            <p>포인트 내역</p>
+                <button type="button" class="nav-button">포인트</button>
         </h2>
     </nav>
     <div class="point">
@@ -30,7 +31,7 @@
                         <div class="point-value">0<sub> P</sub></div>
                         <div class="point-expire">7일 이내 소멸 포인트 0 p</div>
                     </div>
-<!--                    i 아이콘-->
+                    <!--                    i 아이콘-->
                     <div class="points-tooltip">
                         <div class="tooltip tooltip-tooltip">
                             <span class="tooltip-label">보유 포인트</span>
@@ -61,23 +62,112 @@
                 </div>
             </div>
         </div>
-        <div class="list">
-            <div class="list-empty">적립내역이 없습니다</div>
-        </div>
     </div>
-</div>
+
+        <section class="body">
+            <!--                <div class="body-div">-->
+            <!--                    <div>-->
+            <!--                        <button class="btn button-root button-outlined"-->
+            <!--                                disabled="">-->
+            <!--                            <span class="btn-label">삭제</span>-->
+            <!--                        </button>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <div class="info-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="checkbox-line">
+                            <input type="checkbox" id="allSelect">
+                        </th>
+                        <th>No</th>
+                        <th>상품권 이름</th>
+                        <th>상품 갯수</th>
+                        <th>적립/사용내용</th>
+                        <th>적립</th>
+                        <th>사용</th>
+                        <th>일시</th>
+                        <th>포인트 잔액</th>
+                    </tr>
+                    </thead>
+                    <!--답변 미완료 -->
+                    <tbody>
+                    <tr>
+                        <td class="checkbox-line">
+                            <input type="checkbox" class="inquiryCheckbox" name="check">
+                        </td>
+                        <td>
+                            1
+                        </td>
+                        <td>강원도 감자 상품권</td>
+                        <td>2</td>
+                        <td>상품권 전환</td>
+                        <td>4000</td>
+                        <td></td>
+                        <td>2023/07/22</td>
+                        <td>2300</td>
+                    </tr>
+                    <tr>
+                        <td class="checkbox-line">
+                            <input type="checkbox" class="inquiryCheckbox" name="check">
+                        </td>
+                        <td>
+                            2
+                        </td>
+                        <td>서울 감자 상품권</td>
+                        <td>2</td>
+                        <td>상품권 전환</td>
+                        <td></td>
+                        <td>5000</td>
+                        <td>2023/07/22</td>
+                        <td>2300</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+    <!--페이징 처리-->
+    <!--            <ul th:with="-->
+    <!--            nowPage = ${pagination.number + 1},-->
+    <!--            pageSize = ${pagination.size},-->
+    <!--            totalPages = ${pagination.totalPages},-->
+    <!--            endPage = ${((nowPage - 1) / pageSize + 1) * pageSize},-->
+    <!--            startPage = ${endPage - pageSize + 1},-->
+    <!--            realEndPage = ${endPage < totalPages ? endPage : totalPages},-->
+    <!--            first = ${pagination.first}, last = ${pagination.last}-->
+    <!--        ">-->
+    <!--                <li th:classappend="${startPage == 1} ? 'none'" class="prev">-->
+    <!--                    <a th:href="@{/product/list(page=${startPage-2})}" th:text="＜＜"></a>-->
+    <!--                </li>-->
+    <!--                <li th:classappend="${first} ? 'none'" class="prev">-->
+    <!--                    <a th:href="@{/product/list(page=${nowPage-2})}" th:text="＜"></a>-->
+    <!--                </li>-->
+    <!--                <li th:each="page : ${#numbers.sequence(startPage, realEndPage)}">-->
+    <!--                    <a th:if="${nowPage != page}" th:href="@{/product/list(page=${page-1})}" th:text="${page}"></a>-->
+    <!--                    <span style="color: #ff0000" th:unless="${nowPage != page}" th:text="${page}"></span>-->
+    <!--                </li>-->
+    <!--                <li th:classappend="${last} ? 'none'" class="next">-->
+    <!--                    <a th:href="@{/product/list(page=${nowPage})}" th:text="＞"></a>-->
+    <!--                </li>-->
+    <!--                <li th:classappend="${endPage >= totalPages} ? 'none'" class="prev">-->
+    <!--                    <a th:href="@{/product/list(page=${endPage})}" th:text="＞＞"></a>-->
+    <!--                </li>-->
+    <!--            </ul>-->
+    <!--    </div>-->
+    <!--            <div class="list-empty">적립내역이 없습니다</div>-->
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script>
     let $btnI = $('.tooltip-trigger');
-    let $tooltip =$('.tooltip-tooltip-body');
+    let $tooltip = $('.tooltip-tooltip-body');
     console.log($btnI);
     console.log($tooltip);
-    $btnI.on('click',function(){
+    $btnI.on('click', function () {
 
-        if($tooltip.is(':hidden')){
+        if ($tooltip.is(':hidden')) {
             $tooltip.show();
-        }else {
+        } else {
             $tooltip.hide();
         }
 
@@ -86,4 +176,5 @@
     //     tooltip.classList.add('.tooltip-tooltip-body.is-show');
     // })
 </script>
+<script src="/js/mypage/company-list.js"></script>
 </html>
