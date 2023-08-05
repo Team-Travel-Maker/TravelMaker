@@ -20,7 +20,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "TBL_TAG")
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_TAG SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class Tag {
 
     /**

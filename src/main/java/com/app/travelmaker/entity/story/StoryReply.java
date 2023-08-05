@@ -18,7 +18,6 @@ import javax.persistence.*;
 @Table(name = "TBL_STORY_REPLY")
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_STORY_REPLY SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class StoryReply extends Reply {
 
     /**

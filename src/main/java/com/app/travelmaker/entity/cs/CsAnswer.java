@@ -18,7 +18,6 @@ import javax.validation.constraints.NotNull;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_CS_ANSWER SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class CsAnswer extends Period {
     /**
      * Custom Service Answer PK (문의/신고 답변 고유 번호)

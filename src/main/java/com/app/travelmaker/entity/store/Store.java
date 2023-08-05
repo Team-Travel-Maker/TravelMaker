@@ -3,12 +3,11 @@ package com.app.travelmaker.entity.store;
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.embeddable.address.Address;
 import com.app.travelmaker.entity.mebmer.Member;
-import com.app.travelmaker.type.StoreType;
+import com.app.travelmaker.constant.StoreType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,7 +21,6 @@ import javax.validation.constraints.NotNull;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_STORE SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class Store extends Period {
     /**
      * Store PK (테마 고유 번호)

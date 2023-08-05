@@ -20,7 +20,6 @@ import javax.persistence.*;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_COMMUNITY_LIKE SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class CommunityLike extends Period {
     /**
      * Community Like PK (커뮤니티 좋아요 고유 번호)

@@ -20,7 +20,6 @@ import javax.persistence.*;
 @Table(name = "TBL_ECO_REPLY")
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_ECO_REPLY SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class EcoReply extends Reply {
 
     /**
