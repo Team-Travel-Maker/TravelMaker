@@ -20,7 +20,6 @@ import javax.validation.constraints.NotNull;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_STORY SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class Story extends Period {
 
     /**

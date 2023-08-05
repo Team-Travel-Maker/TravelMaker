@@ -19,7 +19,6 @@ import javax.persistence.*;
 @Table(name = "TBL_THEME_TAG")
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_THEME_TAG SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class ThemeTag extends Tag {
 
     /**

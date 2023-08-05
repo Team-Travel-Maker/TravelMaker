@@ -1,13 +1,12 @@
 package com.app.travelmaker.entity.file;
 
 import com.app.travelmaker.auditing.Period;
-import com.app.travelmaker.type.FileType;
+import com.app.travelmaker.constant.FileType;
+import com.app.travelmaker.entity.mebmer.Member;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -23,7 +22,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "TBL_FILE")
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_FILE SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class File extends Period {
     /**
      * File PK(고유 번호)
@@ -66,5 +64,8 @@ public class File extends Period {
      * File Status (파일 삭제 상태)
      * */
     private boolean deleted = Boolean.FALSE;
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "file")
+    private Member member;
 
 }

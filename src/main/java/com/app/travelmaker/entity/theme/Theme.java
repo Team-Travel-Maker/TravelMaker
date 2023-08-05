@@ -21,7 +21,6 @@ import java.time.LocalDateTime;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_THEME SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class Theme extends Period {
     /**
      * Theme PK (테마 고유 번호)

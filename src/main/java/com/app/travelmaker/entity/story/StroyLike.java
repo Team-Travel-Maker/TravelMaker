@@ -19,7 +19,6 @@ import javax.persistence.*;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_STORY_LIKE SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class StroyLike extends Period {
     /**
      * Story Like PK (스토리 좋아요 고유 번호)

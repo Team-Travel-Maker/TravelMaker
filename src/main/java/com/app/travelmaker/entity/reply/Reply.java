@@ -16,7 +16,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "TBL_REPLY")
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_REPLY SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class Reply extends Period {
 
     /**

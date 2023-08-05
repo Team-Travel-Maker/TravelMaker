@@ -1,23 +1,23 @@
-package com.app.travelmaker.type;
+package com.app.travelmaker.constant;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @Getter
 @RequiredArgsConstructor
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum CsType {
+public enum PointCateGoryType {
     /**
-     * INQUIRY : 문의
-     * DECLARATION : 신고
+     * USE : USE(사용)
+     * EARN : EARN(적립)
      * */
-    INQUIRY("INQUIRY", "문의"),
-    DECLARATION("DECLARATION", "신고");
+    USE("USE", "사용"),
+    EARN("EARN", "적립");
 
     private final String code;
     private final String name;
+
 
 
 }

@@ -19,7 +19,6 @@ import javax.persistence.*;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_GIFT_CARD_FILE SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class GiftCardFile extends File {
 
     /**

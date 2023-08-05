@@ -19,7 +19,6 @@ import javax.persistence.*;
 @Table(name = "TBL_COMMUNITY_REPLY")
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_COMMUNITY_REPLY SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class CommunityReply extends Reply {
 
     /**

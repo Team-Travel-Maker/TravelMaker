@@ -1,4 +1,4 @@
-package com.app.travelmaker.type;
+package com.app.travelmaker.constant;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;

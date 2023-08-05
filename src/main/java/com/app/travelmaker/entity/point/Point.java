@@ -3,12 +3,11 @@ package com.app.travelmaker.entity.point;
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.entity.eco.Eco;
 import com.app.travelmaker.entity.mebmer.Member;
-import com.app.travelmaker.type.PointCateGoryType;
+import com.app.travelmaker.constant.PointCateGoryType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,7 +21,6 @@ import javax.validation.constraints.NotNull;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_POINT SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class Point extends Period {
     /**
      * Point PK (포인트 고유 번호)
