@@ -170,14 +170,14 @@
 
             <!-- 문의 내역 -->
             <section class="recommendedPostView-wrapper" id="question" data-category="question">
-                <div class="topPickPostView-header" style="margin-left: 35px;">
+                <div class="topPickPostView-header" >
                     <div class="topPickPostView-header-title">
                         <span>나의 문의 내역</span>
                     </div>
                 </div>
                 <div class="search" style="display: flex; justify-content: space-between">
                     <!-- 헤더 -->
-                    <div class="search-wrap" style="margin-left: 32px;">
+                    <div class="search-wrap" style="margin-left: 16px;">
                         <form>
                             <div class="search-container">
                                 <!-- 검색창 -->
@@ -191,9 +191,9 @@
                         <!-- 검색창 눌렀을 때 나오는 메뉴 -->
                     </div>
                     <div class="delete-box-layout">
-                        <div class="delete-box" style="margin-right: 35px;">
+                        <div class="delete-box" style="margin-right: 16px;">
                             <button
-                                    class="Button-btn Button-root Button-sizeMedium Button-deleteBtn Button-outlinedSizeMedium Button-outlined"
+                                    class="Button-btn Button-root Button-sizeMedium Button-deleteBtn Button-outlinedSizeMedium Button-outlined Button-qBtn"
                                     onclick="deleteInquiries(getSelectedInquiryIds())">
                                 삭제하기
                             </button>
@@ -220,11 +220,11 @@
                             <!-- 문의 글 목록 행 -->
                             <div class="post-row">
                                 <div class="checkbox-line">
-                                    <input type="checkbox" class="inquiryCheckbox" name="check" />
+                                    <input type="checkbox" class="inquiryCheckbox questionChk" name="questionChk" />
                                 </div>
                                 <div>1</div>
                                 <div>
-                                    <a href="#" class="post-title" data-content="question-content">문의 제목1</a>
+                                    <a href="#" class="post-title" data-content="question-content1">문의 제목1</a>
                                 </div>
                                 <div>이종문</div>
                                 <div>닉네임</div>
@@ -233,7 +233,7 @@
                                 <div>답변 미완료</div>
                             </div>
 
-                            <div class="board-info-box-layout post-content" data-content="question-content">
+                            <div class="board-info-box-layout post-content" data-content="question-content1">
                                 <!-- 상세 내용 부분 -->
                                 <div class="board-info-box">
                                     <div class="board-info-title-box">
@@ -281,7 +281,7 @@
 
                             <div class="post-row">
                                 <div class="checkbox-line">
-                                    <input type="checkbox" class="inquiryCheckbox" name="check" />
+                                    <input type="checkbox" class="inquiryCheckbox questionChk" name="questionChk" />
                                 </div>
                                 <div>2</div>
                                 <div>
@@ -338,232 +338,21 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
-
-<!--                        <div class="info-table">-->
-<!--                            <table>-->
-<!--                                <thead>-->
-<!--                                <tr>-->
-<!--                                    <th class="checkbox-line">-->
-<!--                                        <input type="checkbox" id="allSelect" />-->
-<!--                                    </th>-->
-<!--                                    <th>No</th>-->
-<!--                                    <th>문의 제목</th>-->
-<!--                                    <th>작성자 명</th>-->
-<!--                                    <th>작성자 닉네임</th>-->
-<!--                                    <th>작성 날짜</th>-->
-<!--                                    <th>문의/신고</th>-->
-<!--                                    <th>답변 여부</th>-->
-<!--                                </tr>-->
-<!--                                </thead>-->
-<!--                                &lt;!&ndash;답변 미완료 &ndash;&gt;-->
-<!--                                <tr class="post-row">-->
-<!--                                    <td class="checkbox-line">-->
-<!--                                        <input type="checkbox" class="inquiryCheckbox" name="check"/>-->
-<!--                                    </td>-->
-<!--                                    <td>1</td>-->
-<!--                                    <td>-->
-<!--                                        <a th:href="@{/admins/inquiry/detail}"-->
-<!--                                           class="post-title"-->
-<!--                                           data-content="question-content">문의 제목1</a>-->
-<!--                                    </td>-->
-<!--                                    <td th:text="이종문" class="postSelect">-->
-<!--                                    <td th:text="닉네임">-->
-<!--                                    </td>-->
-<!--                                    <td th:text="날짜"></td>-->
-<!--                                    <td th:text="문의"></td>-->
-<!--                                    <td style="color:#ff0000">답변 미완료</td>-->
-<!--                                </tr>-->
-<!--                                <section class="board-info-box-layout post-content" data-content="question-content" style="display: none;">-->
-<!--                                    <div class="board-info-box">-->
-<!--                                        <div class="board-info-title-box">-->
-<!--                                            <span>문의글 상세보기</span>-->
-<!--                                        </div>-->
-<!--                                        <hr />-->
-<!--                                        <div class="info-table">-->
-<!--                                            <div class="board-title">-->
-<!--                                                <span class="span-bold">제목 :</span>-->
-<!--                                                &lt;!&ndash; 제목 &ndash;&gt;-->
-<!--                                                <span>제목 불러오기 </span>-->
-<!--                                            </div>-->
-<!--                                            <div class="board-info board-writer">-->
-<!--                                                <span class="span-bold">작성자 :</span>-->
-<!--                                                &lt;!&ndash; 작성자 명 &ndash;&gt;-->
-<!--                                                <span>이름 불러오기 </span>-->
-<!--                                            </div>-->
-<!--                                            <div class="board-info board-register-date">-->
-<!--                                                <span class="span-bold">작성 날짜 :</span>-->
-<!--                                                &lt;!&ndash; 작성 날짜 &ndash;&gt;-->
-<!--                                                <span>작성 날짜 불러오기</span>-->
-<!--                                            </div>-->
-<!--                                            <div class="board-info board-update-date">-->
-<!--                                                <span class="span-bold">수정 날짜 :</span>-->
-<!--                                                &lt;!&ndash; 작성 날짜 &ndash;&gt;-->
-<!--                                                <span>작성 날짜 불러오기</span>-->
-<!--                                            </div>-->
-<!--                                            <div class="board-info board-register-date">-->
-<!--                                                <span class="span-bold">문의/신고 :</span>-->
-<!--                                                &lt;!&ndash; 작성 날짜 &ndash;&gt;-->
-<!--                                                <span>문의인지 신고인지 불러오기</span>-->
-<!--                                            </div>-->
-<!--                                            <hr />-->
-<!--                                            &lt;!&ndash; 게시판 내용 &ndash;&gt;-->
-<!--                                            <div class="inquiry-content">문의 내용 불러오기</div>-->
-<!--                                            <hr />-->
-<!--                                            <div class="answer-button-wrapper modify-button-wrapper">-->
-<!--                                                <button>-->
-<!--                                                    답변하기-->
-<!--                                                </button>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </section>-->
-<!--                                &lt;!&ndash;답변 완료 &ndash;&gt;-->
-<!--                                <tr class="postSelect">-->
-<!--                                    <td class="checkbox-line">-->
-<!--                                        <input-->
-<!--                                                type="checkbox"-->
-<!--                                                class="inquiryCheckbox"-->
-<!--                                                name="check"/>-->
-<!--                                    </td>-->
-<!--                                    <td>2</td>-->
-<!--                                    <td>-->
-<!--                                        <a th:href="@{/admins/inquiry/answer-detail}" class="post-title">문의 제목2</a>-->
-<!--                                    </td>-->
-<!--                                    <td th:text="이종문">-->
-<!--                                    <td th:text="닉네임">-->
-<!--                                    </td>-->
-<!--                                    <td th:text="날짜"></td>-->
-<!--                                    <td th:text="신고" style="color:#ff0000"></td>-->
-<!--                                    <td style="color:#0fa34c">답변 완료</td>-->
-<!--                                </tr>-->
-<!--                                <tr class="postSelect">-->
-<!--                                    <td class="checkbox-line">-->
-<!--                                        <input-->
-<!--                                                type="checkbox"-->
-<!--                                                class="inquiryCheckbox"-->
-<!--                                                name="check"/>-->
-<!--                                    </td>-->
-<!--                                    <td>3</td>-->
-<!--                                    <td>-->
-<!--                                        <a th:href="@{/admins/inquiry/answer-detail}" class="post-title">문의 제목3</a>-->
-<!--                                    </td>-->
-<!--                                    <td th:text="이종문">-->
-<!--                                    <td th:text="닉네임">-->
-<!--                                    </td>-->
-<!--                                    <td th:text="날짜"></td>-->
-<!--                                    <td th:text="신고" style="color:#ff0000"></td>-->
-<!--                                    <td style="color:#0fa34c">답변 완료</td>-->
-<!--                                </tr>-->
-<!--                            </table>-->
-<!--                        </div>-->
                     </div>
-                </article>
-
-
-                <article class="postItem">
-                    <div class="postItem-top">
-                        <a href="/community/profile/8gKFHyFwd4sSvaVWPSojfD">
-                            <div class="userInfo-postBox">
-                                <div class="userInfo-verticalArea">
-                                    <div class="userInfo-avatarWrapper avatar-wrapper">
-                                        <div class="userAvatar userInfo-avatar avatar">
-                                            <img src="https://static.wanted.co.kr/oneid-user/8gKFHyFwd4sSvaVWPSojfD/25182303880e93285ed1347ace3115874b9f2693e22327ccdf9c2ad17eb9be56"
-                                                 alt="">
-                                        </div>
-                                    </div>
-                                    <div class="userInfo-verticalBox">
-                                        <div class="userInfo-wrapper">
-                                            <div class="userInfo-userName userName">범범</div>
-                                            <div class="userInfo-userCareer">
-                                                <div class="userInfo-userBadge" data-id="518">서울</div>
-                                                <div class="userInfo-userBadge">ISFP</div>
-                                            </div>
-                                        </div>
-                                        <span class="userInfo-createAt create-time">7시간 전</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <a class="postItem-body postItem-image" href="/community/post/9577">
-                        <h3 class="postItem-title">강원도 홍천으로 같이 놀러 가실 분~!</h3>
-                        <p class="postItem-content">
-                            #모각챌 #이모티콘챌린지 #카카오이모티콘도전
-                            [모각챌: 이모티콘 창작 도전 편 참여자 모집]
-
-                            신청하기: https://forms.gle/pjFYNpR4WynNj1aG8
-                            상세소개: https://bit.ly/3pxIWr0
-
-                            안녕하세요
-                            이모티콘 창작에 도전하고 싶은데
-                            실행하지 못했거나 중간에 포기한 경험 있으신가요?
-
-                            카카오 이모티콘 작가에 도전하는 분들과 챌린지를 진행해보려고 합니다!
-                            이모티콘 출시 경험이 있는 그루와 함께 6주 동안 도전해보세요!
-
-
-                            🙋‍♀️아이디에이션부터 최종 완성까지 함께 할게요
-                            1. 도전 성공에 필수적인 마일스톤을 공개할게요!
-                            2. 참여자들과 함께 작업하며 의지를 불태울 수 있어요!
-                            3. 상호 활발한 피드백을 제공해요!
-                            *챌린지 성공 시 인증서 제공, 활동 우수자에게 기프티콘 제공
-
-                            📌모집기간은 7월 19일(수)까지, 첫 모임(OT)는 7월 23일(일)에 진행됩니다.
-                            📌매주 디스코드에서 함께 작업하고 마지막 주차에 함께 작품을 제출합니다.
-                            📌참가비 5만원 *참가비는 7/22까지 전액 환불 가능
-
-                            문의처
-                            revi@innovirus.biz
-                            https://open.kakao.com/o/gMNLeCWd
-                        </p>
-                        <picture>
-                            <source media="(min-width: 1200px)"
-                                    srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=384&amp;q=90">
-                            <img class="postItemImage"
-                                 src="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=310&amp;q=90"
-                                 alt="post-img"
-                                 srcset="https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=310&amp;q=90 1x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=620&amp;q=90 2x, https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fcommunity%2F2023%2F7%2F612be97e2a451055360f25116d315edc5470ecd39a557d24e7d3d6b0d9c2f137&amp;w=930&amp;q=90 3x">
-                        </picture>
-                        <div class="postItem-tagList">
-                            <button type="button" class="postItem-tag">맛집탐방</button>
-                            <button type="button" class="postItem-tag">ISFP</button>
-                            <button type="button" class="postItem-tag">강원도</button>
-                        </div>
-                        <div class="postItem-bottom">
-                            <div class="Button-btn postItem-like">
-                                <svg width="18" height="18" viewBox="0 0 18 18">
-                                    <path fill="currentColor"
-                                          d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
-                                    </path>
-                                </svg>
-                                <span class="Button-count count">1</span>
-                            </div>
-                            <div class="Button-btn postItem-comments">
-                                <svg width="18" height="18" viewBox="0 0 18 18">
-                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
-                                          d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
-                                    </path>
-                                </svg>
-                                <span class="Button-count count">1</span>
-                            </div>
-                        </div>
-                    </a>
                 </article>
             </section>
 
             <!-- 신고 내역 -->
-            <section class="recommendedPostView-wrapper" id="repot" data-category="repot" style="display: none;">
-                <div class="topPickPostView-header" style="margin-left: 35px;">
+            <section class="recommendedPostView-wrapper" id="repot" data-category="repot" style="display: none">
+                <div class="topPickPostView-header">
                     <div class="topPickPostView-header-title">
                         <span>나의 신고 내역</span>
                     </div>
                 </div>
-                <div style="display: flex; justify-content: space-between">
+                <div class="search" style="display: flex; justify-content: space-between">
                     <!-- 헤더 -->
-                    <div class="search-wrap" style="margin-left: 32px;">
+                    <div class="search-wrap" style="margin-left: 16px;">
                         <form>
                             <div class="search-container">
                                 <!-- 검색창 -->
@@ -576,12 +365,10 @@
                         </form>
                         <!-- 검색창 눌렀을 때 나오는 메뉴 -->
                     </div>
-
                     <div class="delete-box-layout">
-                        <div class="delete-box" style="margin-right: 35px;">
+                        <div class="delete-box" style="margin-right: 16px;">
                             <button
-                                    class="Button-btn Button-root Button-outlined Button-label
-                                Button-outlinedSizeMedium Button-btn Button-root "
+                                    class="Button-btn Button-root Button-sizeMedium Button-deleteBtn Button-outlinedSizeMedium Button-outlined Button-rBtn"
                                     onclick="deleteInquiries(getSelectedInquiryIds())">
                                 삭제하기
                             </button>
@@ -590,83 +377,260 @@
                 </div>
                 <article class="postItem">
                     <div class="postItem-top">
-                        <div class="info-table">
-                            <table>
-                                <thead>
-                                <tr>
-                                    <th class="checkbox-line">
-                                        <input type="checkbox" id="" />
-                                    </th>
-                                    <th>No</th>
-                                    <th>문의 제목</th>
-                                    <th>작성자 명</th>
-                                    <th>작성자 닉네임</th>
-                                    <th>작성 날짜</th>
-                                    <th>문의/신고</th>
-                                    <th>답변 여부</th>
-                                </tr>
-                                </thead>
-                                <!--답변 미완료 -->
-                                <tr>
-                                    <td class="checkbox-line">
-                                        <input
-                                                type="checkbox"
-                                                class="inquiryCheckbox"
-                                                name="check"/>
-                                    </td>
-                                    <td>1</td>
-                                    <td>
-                                        <a th:href="@{/admins/inquiry/detail}">신고 제목1</a>
-                                    </td>
-                                    <td th:text="이종문">
-                                    <td th:text="닉네임">
-                                    </td>
-                                    <td th:text="날짜"></td>
-                                    <td th:text="문의"></td>
-                                    <td style="color:#ff0000">답변 미완료</td>
-                                </tr>
-                                <!--답변 완료 -->
-                                <tr>
-                                    <td class="checkbox-line">
-                                        <input
-                                                type="checkbox"
-                                                class="inquiryCheckbox"
-                                                name="check"/>
-                                    </td>
-                                    <td>2</td>
-                                    <td>
-                                        <a th:href="@{/admins/inquiry/answer-detail}">신고 제목2</a>
-                                    </td>
-                                    <td th:text="이종문">
-                                    <td th:text="닉네임">
-                                    </td>
-                                    <td th:text="날짜"></td>
-                                    <td th:text="신고" style="color:#ff0000"></td>
-                                    <td style="color:#0fa34c">답변 완료</td>
-                                </tr>
-                                <tr>
-                                    <td class="checkbox-line">
-                                        <input
-                                                type="checkbox"
-                                                class="inquiryCheckbox"
-                                                name="check"/>
-                                    </td>
-                                    <td>3</td>
-                                    <td>
-                                        <a th:href="@{/admins/inquiry/answer-detail}">신고 제목3</a>
-                                    </td>
-                                    <td th:text="이종문">
-                                    <td th:text="닉네임">
-                                    </td>
-                                    <td th:text="날짜"></td>
-                                    <td th:text="신고" style="color:#ff0000"></td>
-                                    <td style="color:#0fa34c">답변 완료</td>
-                                </tr>
-                            </table>
+                        <div class="post-table">
+                            <!-- 테이블 헤더 -->
+                            <div class="post-row header-row">
+                                <div class="checkbox-line">
+                                    <input type="checkbox" id="allSelect-repot" />
+                                </div>
+                                <div>No</div>
+                                <div>신고 제목</div>
+                                <div>작성자 명</div>
+                                <div>작성자 닉네임</div>
+                                <div>작성 날짜</div>
+                                <div>문의/신고</div>
+                                <div>답변 여부</div>
+                            </div>
+
+                            <!-- 신고 글 목록 행 -->
+                            <div class="post-row">
+                                <div class="checkbox-line">
+                                    <input type="checkbox" class="inquiryCheckbox repotChk" name="repotChk" />
+                                </div>
+                                <div>1</div>
+                                <div>
+                                    <a href="#" class="post-title" data-content="question-content1">문의 제목1</a>
+                                </div>
+                                <div>이종문</div>
+                                <div>닉네임</div>
+                                <div>날짜</div>
+                                <div>문의</div>
+                                <div>답변 미완료</div>
+                            </div>
+
+                            <div class="board-info-box-layout post-content" data-content="question-content1">
+                                <!-- 상세 내용 부분 -->
+                                <div class="board-info-box">
+                                    <div class="board-info-title-box">
+                                        <span>문의글 상세보기</span>
+                                    </div>
+                                    <hr />
+                                    <div class="info-table">
+                                        <div class="board-title">
+                                            <span class="span-bold">제목 :</span>
+                                            <!-- 제목 -->
+                                            <span>제목 불러오기 </span>
+                                        </div>
+                                        <div class="board-info board-writer">
+                                            <span class="span-bold">작성자 :</span>
+                                            <!-- 작성자 명 -->
+                                            <span>이름 불러오기 </span>
+                                        </div>
+                                        <div class="board-info board-register-date">
+                                            <span class="span-bold">작성 날짜 :</span>
+                                            <!-- 작성 날짜 -->
+                                            <span>작성 날짜 불러오기</span>
+                                        </div>
+                                        <div class="board-info board-update-date">
+                                            <span class="span-bold">수정 날짜 :</span>
+                                            <!-- 작성 날짜 -->
+                                            <span>작성 날짜 불러오기</span>
+                                        </div>
+                                        <div class="board-info board-register-date">
+                                            <span class="span-bold">문의/신고 :</span>
+                                            <!-- 작성 날짜 -->
+                                            <span>문의인지 신고인지 불러오기</span>
+                                        </div>
+                                        <hr />
+                                        <!-- 게시판 내용 -->
+                                        <div class="inquiry-content">신고 내용 불러오기</div>
+                                        <hr />
+                                        <div class="answer-button-wrapper modify-button-wrapper">
+                                            <button>
+                                                답변하기
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="post-row">
+                                <div class="checkbox-line">
+                                    <input type="checkbox" class="inquiryCheckbox repotChk" name="repotChk" />
+                                </div>
+                                <div>2</div>
+                                <div>
+                                    <a href="#" class="post-title" data-content="question-content">문의 제목2</a>
+                                </div>
+                                <div>이종문</div>
+                                <div>닉네임</div>
+                                <div>날짜</div>
+                                <div>문의</div>
+                                <div>답변 미완료</div>
+                            </div>
+                            <div class="board-info-box-layout post-content" data-content="question-content">
+                                <!-- 상세 내용 부분 -->
+                                <div class="board-info-box">
+                                    <div class="board-info-title-box">
+                                        <span>문의글 상세보기2</span>
+                                    </div>
+                                    <hr />
+                                    <div class="info-table">
+                                        <div class="board-title">
+                                            <span class="span-bold">제목 :</span>
+                                            <!-- 제목 -->
+                                            <span>제목 불러오기2 </span>
+                                        </div>
+                                        <div class="board-info board-writer">
+                                            <span class="span-bold">작성자 :</span>
+                                            <!-- 작성자 명 -->
+                                            <span>이름 불러오기2 </span>
+                                        </div>
+                                        <div class="board-info board-register-date">
+                                            <span class="span-bold">작성 날짜 :</span>
+                                            <!-- 작성 날짜 -->
+                                            <span>작성 날짜 불러오기2</span>
+                                        </div>
+                                        <div class="board-info board-update-date">
+                                            <span class="span-bold">수정 날짜 :</span>
+                                            <!-- 작성 날짜 -->
+                                            <span>작성 날짜 불러오기2</span>
+                                        </div>
+                                        <div class="board-info board-register-date">
+                                            <span class="span-bold">문의/신고 :</span>
+                                            <!-- 작성 날짜 -->
+                                            <span>문의인지 신고인지 불러오기2</span>
+                                        </div>
+                                        <hr />
+                                        <!-- 게시판 내용 -->
+                                        <div class="inquiry-content">문의 내용 불러오기2</div>
+                                        <hr />
+                                        <div class="answer-button-wrapper modify-button-wrapper">
+                                            <button>
+                                                답변하기2
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </article>
             </section>
+
+            <!-- 신고 내역 -->
+<!--            <section class="recommendedPostView-wrapper" id="repot1" data-category="repot" style="display: none;">-->
+<!--                <div class="topPickPostView-header" style="margin-left: 35px;">-->
+<!--                    <div class="topPickPostView-header-title">-->
+<!--                        <span>나의 신고 내역</span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div style="display: flex; justify-content: space-between">-->
+<!--                    &lt;!&ndash; 헤더 &ndash;&gt;-->
+<!--                    <div class="search-wrap" style="margin-left: 32px;">-->
+<!--                        <form>-->
+<!--                            <div class="search-container">-->
+<!--                                &lt;!&ndash; 검색창 &ndash;&gt;-->
+<!--                                <div class="search-input-container">-->
+<!--                                    <input class="search-input" type="search" name="keyword" placeholder="제목, 이름 또는 닉네임을 입력하세요" style="width: 450px; padding: 11px;">-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; 검색 버튼 누르기 &ndash;&gt;-->
+<!--                                <button style="display: none" type="submit"></button>-->
+<!--                            </div>-->
+<!--                        </form>-->
+<!--                        &lt;!&ndash; 검색창 눌렀을 때 나오는 메뉴 &ndash;&gt;-->
+<!--                    </div>-->
+
+<!--                    <div class="delete-box-layout">-->
+<!--                        <div class="delete-box" style="margin-right: 35px;">-->
+<!--                            <button-->
+<!--                                    class="Button-btn Button-root Button-outlined Button-label-->
+<!--                                Button-outlinedSizeMedium Button-btn Button-root "-->
+<!--                                    onclick="deleteInquiries(getSelectedInquiryIds())">-->
+<!--                                삭제하기-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <article class="postItem">-->
+<!--                    <div class="postItem-top">-->
+<!--                        <div class="info-table">-->
+<!--                            <table>-->
+<!--                                <thead>-->
+<!--                                <tr>-->
+<!--                                    <th class="checkbox-line">-->
+<!--                                        <input type="checkbox" id="" />-->
+<!--                                    </th>-->
+<!--                                    <th>No</th>-->
+<!--                                    <th>문의 제목</th>-->
+<!--                                    <th>작성자 명</th>-->
+<!--                                    <th>작성자 닉네임</th>-->
+<!--                                    <th>작성 날짜</th>-->
+<!--                                    <th>문의/신고</th>-->
+<!--                                    <th>답변 여부</th>-->
+<!--                                </tr>-->
+<!--                                </thead>-->
+<!--                                &lt;!&ndash;답변 미완료 &ndash;&gt;-->
+<!--                                <tr>-->
+<!--                                    <td class="checkbox-line">-->
+<!--                                        <input-->
+<!--                                                type="checkbox"-->
+<!--                                                class="inquiryCheckbox"-->
+<!--                                                name="check"/>-->
+<!--                                    </td>-->
+<!--                                    <td>1</td>-->
+<!--                                    <td>-->
+<!--                                        <a th:href="@{/admins/inquiry/detail}">신고 제목1</a>-->
+<!--                                    </td>-->
+<!--                                    <td th:text="이종문">-->
+<!--                                    <td th:text="닉네임">-->
+<!--                                    </td>-->
+<!--                                    <td th:text="날짜"></td>-->
+<!--                                    <td th:text="문의"></td>-->
+<!--                                    <td style="color:#ff0000">답변 미완료</td>-->
+<!--                                </tr>-->
+<!--                                &lt;!&ndash;답변 완료 &ndash;&gt;-->
+<!--                                <tr>-->
+<!--                                    <td class="checkbox-line">-->
+<!--                                        <input-->
+<!--                                                type="checkbox"-->
+<!--                                                class="inquiryCheckbox"-->
+<!--                                                name="check"/>-->
+<!--                                    </td>-->
+<!--                                    <td>2</td>-->
+<!--                                    <td>-->
+<!--                                        <a th:href="@{/admins/inquiry/answer-detail}">신고 제목2</a>-->
+<!--                                    </td>-->
+<!--                                    <td th:text="이종문">-->
+<!--                                    <td th:text="닉네임">-->
+<!--                                    </td>-->
+<!--                                    <td th:text="날짜"></td>-->
+<!--                                    <td th:text="신고" style="color:#ff0000"></td>-->
+<!--                                    <td style="color:#0fa34c">답변 완료</td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <td class="checkbox-line">-->
+<!--                                        <input-->
+<!--                                                type="checkbox"-->
+<!--                                                class="inquiryCheckbox"-->
+<!--                                                name="check"/>-->
+<!--                                    </td>-->
+<!--                                    <td>3</td>-->
+<!--                                    <td>-->
+<!--                                        <a th:href="@{/admins/inquiry/answer-detail}">신고 제목3</a>-->
+<!--                                    </td>-->
+<!--                                    <td th:text="이종문">-->
+<!--                                    <td th:text="닉네임">-->
+<!--                                    </td>-->
+<!--                                    <td th:text="날짜"></td>-->
+<!--                                    <td th:text="신고" style="color:#ff0000"></td>-->
+<!--                                    <td style="color:#0fa34c">답변 완료</td>-->
+<!--                                </tr>-->
+<!--                            </table>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </article>-->
+<!--            </section>-->
         </div>
     </main>
 
@@ -674,6 +638,7 @@
 </div>
 
 </body>
+
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="/js/mypage/list-detail.js"></script>
 

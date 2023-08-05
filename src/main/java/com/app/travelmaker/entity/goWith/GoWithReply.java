@@ -19,7 +19,6 @@ import javax.persistence.*;
 @Table(name = "TBL_GOWITH_REPLY")
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_GOWITH_REPLY SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class GoWithReply extends Reply {
 
     /**

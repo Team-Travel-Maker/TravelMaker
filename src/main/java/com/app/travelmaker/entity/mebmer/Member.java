@@ -3,14 +3,14 @@ package com.app.travelmaker.entity.mebmer;
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.embeddable.address.Address;
 import com.app.travelmaker.embeddable.alarm.Alarm;
-import com.app.travelmaker.type.FileType;
-import com.app.travelmaker.type.MemberJoinAccountType;
-import com.app.travelmaker.type.MemberType;
+import com.app.travelmaker.constant.FileType;
+import com.app.travelmaker.constant.MemberJoinAccountType;
+import com.app.travelmaker.constant.Role;
+import com.app.travelmaker.entity.file.File;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -23,7 +23,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "TBL_MEMBER")
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_MEMBER SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class Member extends Period {
 
     /**
@@ -71,7 +70,7 @@ public class Member extends Period {
      * (A : ADMIN 관리자)
      * */
     @Enumerated(EnumType.STRING)
-    @NotNull private MemberType memberType;
+    @NotNull private Role memberRole;
 
     /**
      * Member ECO POINT(회원 에코 포인트)
@@ -101,11 +100,13 @@ public class Member extends Period {
      *   CONTENT_REPRESENTATIVE : 내용 이미지
      *
      * */
-    private String fileName;
+
+
+/*    private String fileName;
     private String fileUuid;
     private String filePath;
     private FileType fileType;
-    private Long fileSize;
+    private Long fileSize;*/
 
     /**
      * Member SNS PROFILE (SNS 계정일 경우 프로필 사진 링크)
@@ -117,13 +118,8 @@ public class Member extends Period {
      * */
     private boolean deleted = Boolean.FALSE;
 
-
-
-
-
-
-
-
+    @OneToOne(fetch = FetchType.LAZY)
+    @NotNull private File file;
 
 
 

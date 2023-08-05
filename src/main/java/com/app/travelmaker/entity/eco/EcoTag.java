@@ -20,7 +20,6 @@ import javax.persistence.*;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_ECO_TAG SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class EcoTag extends Tag {
 
     /**

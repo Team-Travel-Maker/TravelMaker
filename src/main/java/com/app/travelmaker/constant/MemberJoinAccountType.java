@@ -1,4 +1,4 @@
-package com.app.travelmaker.type;
+package com.app.travelmaker.constant;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
@@ -7,15 +7,18 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum  StoreType {
+public enum  MemberJoinAccountType {
     /**
-     * RESTAURANT : 음식점
-     * LODGMENT :숙박
+     * KAKAO : 카카오
+     * NAVER : 네이버
+     * GENERAL : 일반
      * */
-    RESTAURANT("RESTAURANT", "음식점"),
-    LODGMENT("LODGMENT", "숙박");
+    KAKAO("KAKAO", "카카오"),
+    NAVER("NAVER", "네이버"),
+    GENERAL("GENERAL", "일반회원");
 
     private final String code;
     private final String name;
+
 
 }

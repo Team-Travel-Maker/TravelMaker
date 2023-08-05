@@ -20,7 +20,6 @@ import javax.persistence.*;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_STORE_FILE SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class StoreFile extends File {
 
     /**

@@ -22,7 +22,6 @@ import javax.validation.constraints.NotNull;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_GIFT_CARD SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class GiftCard extends Period {
     /**
      * Gift Card PK (상품권 고유 번호)
@@ -48,6 +47,11 @@ public class GiftCard extends Period {
      * ex) 춘천
      * */
     @NotNull private String giftCardRegionDetail;
+
+    /**
+     * Gift Card Price (상품권 사용 가격)
+     * */
+    @NotNull private Integer giftCardPrice;
 
     /**
      * Gift Card Status (상품권 삭제 상태)

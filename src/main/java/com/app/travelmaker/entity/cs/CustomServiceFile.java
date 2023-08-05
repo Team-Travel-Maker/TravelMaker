@@ -21,7 +21,6 @@ import javax.persistence.Table;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_CUSTOM_SERVICE_FILE SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class CustomServiceFile extends File {
 
     /**

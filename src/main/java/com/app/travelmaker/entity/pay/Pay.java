@@ -22,7 +22,6 @@ import javax.validation.constraints.NotNull;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_PAY SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class Pay extends Period {
     /**
      * Pay PK (결제 고유 번호)

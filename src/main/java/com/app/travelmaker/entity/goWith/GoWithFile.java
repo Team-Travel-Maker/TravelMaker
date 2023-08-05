@@ -19,8 +19,6 @@ import javax.persistence.*;
 @Table(name = "TBL_GOWITH_FILE")
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_GOWITH_FILE SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
-
 public class GoWithFile extends File {
 
     /**

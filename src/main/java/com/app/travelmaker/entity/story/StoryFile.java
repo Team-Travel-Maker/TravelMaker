@@ -19,8 +19,6 @@ import javax.persistence.*;
 @Table(name = "TBL_STORY_FILE")
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_STORY_FILE SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
-
 public class StoryFile extends File {
 
     /**

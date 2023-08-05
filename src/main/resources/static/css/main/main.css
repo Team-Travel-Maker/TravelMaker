@@ -1235,3 +1235,11 @@
     overflow: hidden;
 }
 
+
+/*이종문 css 추가*/
+.not-allow{
+    cursor: not-allowed;
+    opacity: .7;
+    color: #ddd;
+    border: 1px solid #eee;
+}

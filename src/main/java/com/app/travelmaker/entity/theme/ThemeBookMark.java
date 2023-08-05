@@ -19,7 +19,6 @@ import javax.persistence.*;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_THEME_BOOKMARK SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class ThemeBookMark extends Period {
     /**
      * Theme Book Mark PK (테마 고유 번호)

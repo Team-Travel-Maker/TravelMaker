@@ -21,23 +21,6 @@ $(document).ready(function() {
     }
 
 
-
-
-    // $(".post-title").on("click", function(e) {
-    //     let postContent = $(this).data("content");
-    //
-    //     e.preventDefault(); // 기본 링크 동작 방지
-    //     console.log("내용 펼치기!")
-    //     console.log(postContent)
-    //
-    //     // 클릭한 글의 상세 내용 펼침/접힘 토글 (아래 방향)
-    //
-    //     // $(this).closest("tr").next(".post-content").slideToggle();
-    //     $(".post-content[data-content='" + postContent + "']").slideToggle(300);
-    //
-    //     console.log($(this).closest("tr").next(".post-content"))
-    // });
-
     $(".post-title").on("click", function (e) {
         e.preventDefault(); // 기본 링크 동작 방지
 
@@ -45,9 +28,106 @@ $(document).ready(function() {
         $(".post-content[data-content='" + postContent + "']").slideToggle('slow');
     });
 
-    function slideContent(postContent) {
 
+
+
+    // 체크박스
+
+    // 전체 선택 및 전체 선택 해제
+    $("#allSelect").click(function() {
+        if($("#allSelect").is(":checked")) {
+            $("input[name=questionChk]").prop("checked", true);
+            // 체크박스 전체 선택 했을 때 삭제 버튼 활성화
+            $(".Button-qBtn").addClass("now-button");
+        }
+        else {
+            $("input[name=questionChk]").prop("checked", false);
+            // 체크박스 전체 선택 해제 했을 때 삭제 버튼 비활성화
+            $(".Button-qBtn").removeClass("now-button");
+        }
+    });
+    $("#allSelect-repot").click(function() {
+        if($("#allSelect-repot").is(":checked")) {
+            $("input[name=repotChk]").prop("checked", true);
+            // 체크박스 전체 선택 했을 때 삭제 버튼 활성화
+            $(".Button-rBtn").addClass("now-button");
+        }
+        else {
+            $("input[name=repotChk]").prop("checked", false);
+            // 체크박스 전체 선택 해제 했을 때 삭제 버튼 비활성화
+            $(".Button-rBtn").removeClass("now-button");
+        }
+    });
+
+
+    // 부분 선택 및 부분 선택 해제 & 모든 체크박스 선택했을 때 전체선택 버튼도 체크 되게
+    $("input[name=questionChk]").click(function() {
+
+        let questionTotal = $(".questionChk").length;
+        let questionChk = $("input[name=questionChk]:checked").length;
+
+        console.log("문의 토탈 체크 : " + questionTotal);
+        console.log("문의 선택 체크 : " + questionChk);
+
+        $(this).prop("checked") ? onChecked() : noChecked();
+
+        if(questionTotal != questionChk){
+            $("#allSelect").prop("checked", false);
+        } else {
+            $("#allSelect").prop("checked", true);
+        }
+
+        // 선택 된 체크박스가 없으면 삭제버튼 비활성화
+        if(questionChk > 0){
+            $(".Button-qBtn").addClass("now-button");
+        } else {
+            $(".Button-qBtn").removeClass("now-button");
+        }
+
+    });
+
+    $("input[name=repotChk]").click(function() {
+        let repotTotal = $(".repotChk").length;
+        let repotChk = $("input[name=repotChk]:checked").length;
+
+        console.log("신고 토탈 체크 : " + repotTotal);
+        console.log("신고 선택 체크 : " + repotChk);
+
+        $(this).prop("checked") ? onChecked() : noChecked();
+
+        if(repotTotal != repotChk){
+            $("#allSelect-repot").prop("checked", false);
+        } else {
+            $("#allSelect-repot").prop("checked", true);
+        }
+
+        if(repotChk > 0){
+            $(".Button-rBtn").addClass("now-button");
+        } else {
+            $(".Button-rBtn").removeClass("now-button");
+        }
+
+    });
+
+    function onChecked() {
+        $(this).prop("checked");
+        if($(this).is($("input[name=questionChk]"))){
+            console.log("어떤 인풋?" +$("input[name=questionChk]"));
+            $(".Button-qBtn").addClass("now-button");
+        } else if($(this).is($("input[name=repotChk]"))){
+            $(".Button-rBtn").addClass("now-button");
+        }
     }
+
+    function noChecked() {
+        !$(this).prop("checked")
+    }
+
+
+
+
+
+
 
 
 
@@ -59,20 +139,7 @@ $(document).ready(function() {
 
 
 
-// 체크박스
 
-// $("#allSelect").click(function() {
-//     if($("#allSelect").is(":checked")) $("input[name=check]").prop("checked", true);
-//     else $("input[name=check]").prop("checked", false);
-// });
-//
-// $("input[name=check]").click(function() {
-//     var total = $("input[name=check]").length;
-//     var checked = $("input[name=check]:checked").length;
-//
-//     if(total != checked) $("#allSelect").prop("checked", false);
-//     else $("#allSelect").prop("checked", true);
-// });
-//
-// const pageButton = $(".page-button");
+
+
 

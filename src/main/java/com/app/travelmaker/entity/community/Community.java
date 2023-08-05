@@ -19,7 +19,6 @@ import javax.validation.constraints.NotNull;
 @Table(name = "TBL_COMMUNITY")
 @Getter @ToString
 @SQLDelete(sql = "UPDATE TBL_COMMUNITY SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
 public class Community extends Period {
 
     /**

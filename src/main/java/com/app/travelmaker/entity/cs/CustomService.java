@@ -2,12 +2,9 @@ package com.app.travelmaker.entity.cs;
 
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.entity.mebmer.Member;
-import com.app.travelmaker.type.CsType;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import com.app.travelmaker.constant.CsType;
+import lombok.*;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -21,7 +18,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @ToString
 @SQLDelete(sql = "UPDATE TBL_CUSTOM_SERVICE SET DELETED = 1 WHERE ID = ?")
-@Where(clause = "DELETED = 0")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CustomService extends Period {
 
     /**
