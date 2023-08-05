@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Maker</title>
+</head>
+
+<link rel="stylesheet" href="/css/common.css"/>
+<link rel="stylesheet" href="/css/mypage/main.css"/>
+<link rel="stylesheet" href="/css/header/header.css"/>
+
+<body>
+<div class="header-main-padding">
+    <div th:replace="~{header/signedIn-header :: #header}"></div>
+</div>
+<section class="main-section">
+    <h2 class="main-title">MY 페이지</h2>
+    <div class="main-container">
+        <aside class="main-aside">
+            <div class="aside-container">
+                <div class="aside-profile">
+                    <div class="profile-avatar-root profile-avatar-size profile-avatar-circle">
+                        <img alt="이수정 프로필 이미지"
+                             src="https://static.wanted.co.kr/oneid-user/7FphjrQG6VkrZRGDSTvWxe/28969e42962d9b53fb6952d38113d3e903b831f0f53822add47d337aa32ff206"
+                             class="profile-avatar-img"
+                             style="vertical-align: middle;"></div>
+                    <a href="https://id.wanted.jobs/profile/myinfo?amp_device_id=X-L6RuM4_ePsYwBaOEdFHU&amp;service=wanted"
+                       class="aside-profile-img" target="_blank">
+                        <dl>
+                            <dt>이수정</dt>
+                            <dd>dodunge@naver.com</dd>
+                            <dd>010-5478-3506</dd>
+                        </dl>
+                    </a>
+                    <div class="aside-interest-tags">
+                        <a href="/profile/interests" class="">
+                            <p>
+                                <em>관심태그</em>
+                                <span class="aside-interest-tags-span">IT/기술, UX/UI, 데이터, 커리어고민, 개발, 취업/이직, 인간관계, 회사생활</span>
+                            </p>
+                            <svg width="12" height="12" viewBox="0 0 12 12">
+                                <path fill="currentColor"
+                                  d="M3.345 9.72a.75.75 0 0 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25a.75.75 0 0 0-1.06 1.06L7.065 6l-3.72 3.72z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="aside-point">
+                    <a href="/profile/point" class="">
+                        <span>포인트</span>
+                        <strong>0P</strong>
+                    </a>
+                </div>
+                <div class="aside-inquiry">
+                    <a href="/profile/status?type=matchup-offers" class="">
+                        <span>업체 등록</span>
+                    </a>
+                    <a href="/profile/status?type=matchup-likes" class="">
+                        <span>문의/신고</span>
+                        <strong class="">0</strong>
+                    </a>
+                    <a href="/profile/status?type=matchup-opens" class="">
+                        <span>보유 상품권</span>
+                        <strong class="">0</strong>
+                    </a>
+                </div>
+                <div class="aside_setting">
+                    <a href="/profile/settings" class="">계정 설정</a>
+                </div>
+            </div>
+        </aside>
+        <section class="main-body-section">
+            <div class="replies-manage">
+                <h2 class="replies-h2">MY 댓글관리</h2>
+                <ul class="replies-ul">
+                    <li>
+                        <a href="/status/applications?status=complete" class="">
+                            <em class="">0</em>
+                            <span>MY 커뮤니티</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/status/applications?status=pass" class="">
+                            <em class="">0</em>
+                            <span>MY 에코</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/status/applications?status=hire" class="">
+                            <em class="">0</em>
+                            <span>MY 같이가요</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bookmark-like-manage">
+                <div class="manage-info">
+                    <div class="manage-title">
+                        <h2>북마크</h2>
+                        <a href="/profile/bookmarks" class="">총 2개 전체보기
+                            <svg width="12" height="12" viewBox="0 0 12 12">
+                                <path fill="currentColor"
+                                      d="M3.345 9.72a.75.75 0 0 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25a.75.75 0 0 0-1.06 1.06L7.065 6l-3.72 3.72z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <ul>
+                        <li class="manage-info-li">
+                            <a href="/wd/172523" class="">
+                                <div class="manage-info-logo"
+                                    style="background-image: url(&quot;https://static.wanted.co.kr/images/wdes/0_4.97dbde22.jpg&quot;);"></div>
+                                <div class="manage-info-content">
+                                    <h3>Technical Product Manager · Lunit INSIGHT</h3>
+                                    <div>
+                                        <p>루닛(Lunit)</p>
+                                        <span>서울·한국</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="manage-info-li">
+                            <a href="/wd/155943" class="">
+                                <div class="manage-info-logo"
+                                     style="background-image: url(&quot;https://static.wanted.co.kr/images/wdes/0_4.5849d88e.png&quot;);"></div>
+                                <div class="manage-info-content">
+                                    <h3>프론트엔드 개발자 (4년 이상)</h3>
+                                    <div>
+                                        <p>한국모바일결제</p>
+                                        <span>서울·한국</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="manage-info">
+                    <div class="manage-title">
+                        <h2>좋아요</h2>
+                        <a href="/profile/likes" class="">총 5개 전체보기
+                            <svg width="12" height="12" viewBox="0 0 12 12">
+                                <path fill="currentColor"
+                                    d="M3.345 9.72a.75.75 0 0 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25a.75.75 0 0 0-1.06 1.06L7.065 6l-3.72 3.72z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <ul data-cy="mywanted-list-likes">
+                        <li class="manage-info-li">
+                            <a href="/wd/173529" class="">
+                                <div class="manage-info-logo"
+                                     style="background-image: url(&quot;https://static.wanted.co.kr/images/wdes/0_4.482feb4d.jpg&quot;);"></div>
+                                <div class="manage-info-content">
+                                    <h3>스크린앱개발팀 앱 개발 및 관리 팀장</h3>
+                                    <div>
+                                        <p>카카오VX</p>
+                                        <span>경기·한국</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="manage-info-li">
+                            <a href="/wd/173553" class="">
+                                <div class="manage-info-logo"
+                                     style="background-image: url(&quot;https://static.wanted.co.kr/images/wdes/0_4.5847db43.png&quot;);"></div>
+                                <div class="manage-info-content"><h3>Android 개발자</h3>
+                                    <div>
+                                        <p>비모소프트</p>
+                                        <span>경기·한국</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="manage-info-li">
+                            <a href="/wd/173760" class="">
+                            <div class="manage-info-logo"
+                                 style="background-image: url(&quot;https://static.wanted.co.kr/images/wdes/0_4.44607544.jpg&quot;);"></div>
+                            <div class="manage-info-content">
+                                <h3>웹서비스 풀스택 개발자</h3>
+                                <div>
+                                    <p>시지온</p>
+                                    <span>서울·한국</span>
+                                </div>
+                            </div>
+                        </a></li>
+                        <li class="manage-info-li">
+                            <a href="/wd/173766" class="">
+                            <div class="manage-info-logo"
+                                 style="background-image: url(&quot;https://static.wanted.co.kr/images/wdes/0_4.3cc734fa.jpg&quot;);"></div>
+                            <div class="manage-info-content">
+                                <h3>백엔드 개발자(3년 이상)</h3>
+                                <div>
+                                    <p>넥스원소프트</p>
+                                    <span>서울·한국</span>
+                                </div>
+                            </div>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+</body>
+</html>
