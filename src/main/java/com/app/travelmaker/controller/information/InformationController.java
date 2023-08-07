@@ -1,5 +1,6 @@
 package com.app.travelmaker.controller.information;
 
+import com.app.travelmaker.domain.cs.CustomServiceDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,7 @@ public class InformationController {
 
     // 문의 / 신고 등록 화면
     @GetMapping("inquiry/write")
-    public void goToInquiryWrite(){;}
+    public void goToInquiryWrite(CustomServiceDTO customServiceDTO){;}
 
     // 일반회원 자주 묻는 질문 목록
     @GetMapping("faq/general-list")

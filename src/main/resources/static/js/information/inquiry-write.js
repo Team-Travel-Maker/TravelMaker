@@ -21,6 +21,32 @@ const $subjectErr = $('#request_subject_error')
 const $descriptionErr = $('#request_description_error')
 const $agreeErr = $('#request_custom_fields_360025875971_error')
 
+
+
+
+let customService = (function () {
+    function write(form, callback){
+        $.ajax({
+            url: `/api/informations/write`,
+            type: `post`,
+            enctype: "multipart/form-data", //form data 설정
+            processData : false,
+            contentType : false,
+            data: form,
+            success: function(){
+                if(callback){
+                    callback();
+                }
+            },
+            error: function () {
+                alert("들어옴")
+            }
+        })
+    }
+    return {write: write};
+})();
+
+
 // 휴대폰 입력시 유효성 검사 및 입력 방지
 $phoneInput.on('input',function() {
     let numericVal = $(this).val().replace(/[^0-9]/g, '');
@@ -49,7 +75,7 @@ $submitBtn.on('click', function () {
     $descriptionErr.hide();
     $agreeErr.hide();
 
-    if($nameInput.val() == "") {
+/*    if($nameInput.val() == "") {
         $nameErr.css("display","table");
     }
     
@@ -57,7 +83,7 @@ $submitBtn.on('click', function () {
         $emailErr.css("display","table");
     } else if(!fn_emailChk($emailInput.val())){
         $emailFormatErr.css("display","table");
-    }
+    }*/
     
     if($subjectInput.val() == "") {
         $subjectErr.show();
@@ -71,13 +97,45 @@ $submitBtn.on('click', function () {
         $agreeErr.show();
     }
     
-    if($nameInput.val() != ""
+/*    if($nameInput.val() != ""
         && $emailInput.val() != ""
         && fn_emailChk($emailInput.val())
         && $subjectInput.val() != ""
         && $descriptionTextarea.val() != ""
         && $agreeCheckbox.is(':checked')) {
         showWarnModal("문의·신고 등록이 완료되었습니다.");
+
+        customService.write($writeTextarea.val(), function(){
+            $("#replies-wrap ul").html("");
+            page = 0;
+            customService.getList(showList);
+        });
+
+
+        return;
+    }*/
+
+
+
+    /*이종문*/
+    if($subjectInput.val() != ""
+        && $descriptionTextarea.val() != ""
+        && $agreeCheckbox.is(':checked')) {
+        showWarnModal("문의·신고 등록이 완료되었습니다.");
+        $('.modal').on("click", function () {
+
+            const csDTO = {
+                "csTitle" : $('#request_subject').val(),
+                "csContent" : $('#request_description').val(),
+                "csType" : $('#cs-type').val()
+            }
+            const form = new FormData();
+            form.append("customServiceDTO", new Blob([JSON.stringify(csDTO)], { type: "application/json" }));
+            customService.write(form,function () {
+                location.href="/main/main"
+            })
+        })
         return;
     }
-}) 
+
+})

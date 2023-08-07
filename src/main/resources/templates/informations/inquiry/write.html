@@ -88,29 +88,27 @@
         <section class="form-column">
             <h2 class="hc_title rq_title" style="font-size: 1.5em;">문의·신고</h2>
             <div class="form" style="margin-bottom: 40px;">
-                <form id="new_request" class="request-form" data-form="" data-form-type="request"
-                      action="" accept-charset="UTF-8" method="post">
+                <form id="new_request" class="request-form" name="register" method="post">
                     <div class="form-field string required request_custom_fields_360025875831">
                         <label>문의·신고 선택</label>
                         <div class="select-div">
-                            <select name="request[custom_fields_360025875831]"
-                                    id="request_custom_fields_360025875831" aria-required="true">
-                                <option>문의</option>
-                                <option>신고</option>
+                            <select id="cs-type" name="csType">
+                                <option value="INQUIRY">문의</option>
+                                <option value="DECLARATION">신고</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="form-field string required request_custom_fields_360025837872"><label
+<!--                    <div class="form-field string required request_custom_fields_360025837872"><label
                             for="request_custom_fields_360025837872">이름</label>
-                        <input type="text" name="request[custom_fields_36002583787]"
+                        <input type="text" th:field="*{}"
                                id="request_custom_fields_360025837872" aria-required="true"
                                class="name-input"
                                placeholder="가입하신 이름를 기입해주세요.">
                     </div>
-                    <div id="request_anonymous_requester_name_error" class="notification notification-error notification-inline">요청자 이름:  반드시 입력해야 합니다.</div>
+                    <div id="request_anonymous_requester_name_error" class="notification notification-error notification-inline">요청자 이름:  반드시 입력해야 합니다.</div>-->
 
-                    <div class="form-field string required request_anonymous_requester_email"><label
+<!--                    <div class="form-field string required request_anonymous_requester_email"><label
                             for="request_anonymous_requester_email">이메일 주소</label>
                         <input type="text" name="request[anonymous_requester_email]"
                                id="request_anonymous_requester_email" aria-required="true"
@@ -118,11 +116,11 @@
                                placeholder="가입하신 이메일 주소를 기입해주세요.">
                     </div>
                     <div id="request_anonymous_requester_email_error" class="notification notification-error notification-inline">요청자 이메일:  반드시 입력해야 합니다.</div>
-                    <div id="request_anonymous_requester_email_format_error" class="notification notification-error notification-inline">요청자 이메일: 이메일 형식이 올바르지 않습니다.</div>
+                    <div id="request_anonymous_requester_email_format_error" class="notification notification-error notification-inline">요청자 이메일: 이메일 형식이 올바르지 않습니다.</div>-->
 
                     <div class="form-field string  required  request_subject">
                         <label id="request_subject_label" for="request_subject">제목</label>
-                        <input type="text" name="request[subject]" id="request_subject" maxlength="150" size="150"
+                        <input type="text" name="csTitle" id="request_subject" maxlength="150" size="150"
                                class="subject-input"
                                placeholder="문의 또는 신고 제목을 작성해 주세요.">
                     </div>
@@ -130,18 +128,18 @@
 
                     <div class="form-field text  required  request_description">
                         <label id="request_description_label" for="request_description">설명</label>
-                        <textarea name="request[description]" id="request_description" aria-required="true"
+                        <textarea name="csContent" id="request_description" aria-required="true"
                                   class="description-textarea"
                                   placeholder="상세한 문의 사항을 기입해주세요. 저희 지원 스태프가 영업일 기준 1~2일 이내 가능한 빨리 답변 드릴 수 있도록 노력하겠습니다."></textarea>
                     </div>
                     <div id="request_description_error" class="notification notification-error notification-inline">설명: 반드시 입력해야 합니다.</div>
 
-                    <div class="form-field string  optional  request_custom_fields_360025837612">
+        <!--            <div class="form-field string  optional  request_custom_fields_360025837612">
                         <label id="request_custom_fields_360025837612_label" for="request_custom_fields_360025837612">연락처</label>
                         <input type="text" name="request[custom_fields][360025837612]"
                                id="request_custom_fields_360025837612" step="1" aria-required="false" class="phone-number-input"
                                placeholder="&quot; - &quot; 없이 번호만 입력">
-                    </div>
+                    </div>-->
 
                     <div class="form-field">
                         <label for="request-attachments">
@@ -201,6 +199,10 @@
 </main>
 <footer id="footer" th:replace="~{/footer/footer::footer}"></footer>
 </body>
+<script th:inline="javascript">
+    let cs = [[${customServiceDTO}]];
+    console.log(cs)
+</script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/js/information/inquiry-write.js"></script>

@@ -3,9 +3,8 @@ package com.app.travelmaker.entity.file;
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.constant.FileType;
 import com.app.travelmaker.entity.mebmer.Member;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
@@ -21,6 +20,8 @@ import javax.validation.constraints.NotNull;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "TBL_FILE")
 @Getter @ToString
+@SuperBuilder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE TBL_FILE SET DELETED = 1 WHERE ID = ?")
 public class File extends Period {
     /**
@@ -68,4 +69,12 @@ public class File extends Period {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "file")
     private Member member;
 
+  /*  @Builder
+    public File(String fileName, String fileUuid,String filePath,  FileType fileType, Long fileSize) {
+        this.fileName = fileName;
+        this.fileUuid = fileUuid;
+        this.filePath = filePath;
+        this.fileType = fileType;
+        this.fileSize = fileSize;
+    }*/
 }
