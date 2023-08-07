@@ -7,9 +7,8 @@ import com.app.travelmaker.constant.FileType;
 import com.app.travelmaker.constant.MemberJoinAccountType;
 import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.entity.file.File;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
@@ -22,6 +21,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "TBL_MEMBER")
 @Getter @ToString
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE TBL_MEMBER SET DELETED = 1 WHERE ID = ?")
 public class Member extends Period {
 
@@ -119,7 +119,7 @@ public class Member extends Period {
     private boolean deleted = Boolean.FALSE;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @NotNull private File file;
+    private File file;
 
 
 

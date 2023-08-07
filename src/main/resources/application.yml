@@ -13,7 +13,7 @@ spring:
   #jpa
   jpa:
     hibernate:
-      ddl-auto: create #Entity와 DB 스키마 비교 후 수정 사항 반영(컬럼 추가)
+      ddl-auto: update #Entity와 DB 스키마 비교 후 수정 사항 반영(컬럼 추가)
 
     #jpa format
     properties:

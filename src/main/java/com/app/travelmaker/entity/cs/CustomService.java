@@ -4,6 +4,7 @@ import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.constant.CsType;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "TBL_CUSTOM_SERVICE")
 @Getter
 @ToString
+@SuperBuilder
 @SQLDelete(sql = "UPDATE TBL_CUSTOM_SERVICE SET DELETED = 1 WHERE ID = ?")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CustomService extends Period {
@@ -56,4 +58,11 @@ public class CustomService extends Period {
      * */
     private boolean deleted = Boolean.FALSE;
 
+/*    @Builder
+    public CustomService(@NotNull String csTitle, @NotNull String csContent, @NotNull CsType csType, Member member) {
+        this.csTitle = csTitle;
+        this.csContent = csContent;
+        this.csType = csType;
+        this.member = member;
+    }*/
 }
