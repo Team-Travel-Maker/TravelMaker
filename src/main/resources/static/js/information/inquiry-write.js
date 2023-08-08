@@ -21,13 +21,20 @@ const $subjectErr = $('#request_subject_error')
 const $descriptionErr = $('#request_description_error')
 const $agreeErr = $('#request_custom_fields_360025875971_error')
 
+const form = new FormData();
 
+let formData = new FormData();
+
+let csDTO = {"files" : []}
+
+
+/*let test= {}*/
 
 
 let customService = (function () {
     function write(form, callback){
         $.ajax({
-            url: `/api/informations/write`,
+            url: `/api/informations`,
             type: `post`,
             enctype: "multipart/form-data", //form data 설정
             processData : false,
@@ -37,9 +44,6 @@ let customService = (function () {
                 if(callback){
                     callback();
                 }
-            },
-            error: function () {
-                alert("들어옴")
             }
         })
     }
@@ -47,7 +51,7 @@ let customService = (function () {
 })();
 
 
-// 휴대폰 입력시 유효성 검사 및 입력 방지
+/*// 휴대폰 입력시 유효성 검사 및 입력 방지
 $phoneInput.on('input',function() {
     let numericVal = $(this).val().replace(/[^0-9]/g, '');
 
@@ -65,7 +69,7 @@ function fn_emailChk(email) {
         return false;
     }
     return true;
-}
+}*/
 
 $submitBtn.on('click', function () {
     $nameErr.hide();
@@ -117,19 +121,22 @@ $submitBtn.on('click', function () {
 
 
 
-    /*이종문*/
+
+
+
+
     if($subjectInput.val() != ""
         && $descriptionTextarea.val() != ""
         && $agreeCheckbox.is(':checked')) {
+
         showWarnModal("문의·신고 등록이 완료되었습니다.");
         $('.modal').on("click", function () {
 
-            const csDTO = {
-                "csTitle" : $('#request_subject').val(),
-                "csContent" : $('#request_description').val(),
-                "csType" : $('#cs-type').val()
-            }
-            const form = new FormData();
+            csDTO.csTitle = $('#request_subject').val()
+            csDTO.csContent = $('#request_description').val()
+            csDTO.csType = $('#cs-type').val()
+            console.log(csDTO);
+
             form.append("customServiceDTO", new Blob([JSON.stringify(csDTO)], { type: "application/json" }));
             customService.write(form,function () {
                 location.href="/main/main"
@@ -138,4 +145,105 @@ $submitBtn.on('click', function () {
         return;
     }
 
+})
+
+/*이종문 추가*/
+
+/*파일 인풋태그*/
+const $fileInput = $('#request-attachments');
+
+const $fileListContainer = $('#request-attachments-pool');
+
+//삭제 카운트
+let count = 0;
+let sizes = [];
+let name = [];
+// 새파일
+let text = "";
+// 화면에 추가하기 위한 변수선언
+let plusText = "";
+// 파일 인풋
+
+$fileInput.on("change", function () {
+    formData = new FormData();
+
+    csDTO.files =[];
+
+    plusText =""
+    //파일 이름 담는 배열 새로 파일이 담길 때마다 초기화
+    name = [];
+    sizes = [];
+    // input hidden 파일 수정할 때마다 초기화
+    text = "";
+
+    // 다음 파일들
+    let files = $(this)[0].files;
+
+    //경로 생성을 위한 yy/mm/dd 설정
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth() + 1;
+    let date = now.getDate();
+
+
+    month = month < 10 ? "0" + month : month;
+    date = date < 10 ? "0" + date : date;
+
+    let filePath = year + "/" + month + "/" + date
+
+    $(files).each((i, file) => {
+        formData.append("uploadFile", file);
+        sizes.push(files[i].size);
+        name.push(files[i].name);
+
+    // ajax로 통신하기 전에 alert 띄우고 막기
+    if(sizes[i] > 41943040){
+        alert("파일 사이즈가 너무 큽니다.")
+        return false;
+    }
+
+
+    // 화면상에만 추가되어 보이기
+    plusText += `
+                   <li class="upload-item" data-upload-item="" aria-busy="false">
+                                <a class="upload-link" target="_blank" data-upload-link="" href="/images/information/notice1.png">${name[i]}</a>
+                                <span class="upload-remove" data-upload-remove=""></span>
+                    </li>
+                `
+    })
+
+    // 아래 파일 정보 input 태그 생성 막고 input 안에 value 초기화
+    for (let i = 0; i < sizes.length; i++) {
+        if(sizes[i] > 41943040){
+            $(this).val("");
+            return;
+        }
+    }
+
+    $fileListContainer.html(plusText);
+
+    //담긴 파일이 없으면 ajax 호출전 리턴
+    if(files.length == 0){return;}
+    $.ajax({
+        url        : "/api/cs/files/upload",
+        type       : "post",
+        async: false,
+        data       : formData,
+        contentType: false,
+        processData: false,
+        success    : function (uuids) {
+            for (let i = 0; i < uuids.length; i++) {
+                let test= {}
+                test.filePath = filePath
+                test.fileName = name[i]
+                test.fileSize = sizes[i]
+                test.fileUuid = uuids[i]
+                test.fileType = "GENERAL"
+                csDTO.files.push(test);
+            }
+        },
+        error      : function () {
+            alert("예상치 못한 오류 발생입니다.")
+        }
+    })
 })

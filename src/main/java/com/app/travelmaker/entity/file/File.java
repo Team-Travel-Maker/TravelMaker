@@ -54,7 +54,8 @@ public class File extends Period {
      *   CONTENT_REPRESENTATIVE : 내용 이미지
      *
      * */
-    @NotNull private FileType fileType;
+    @Enumerated(EnumType.STRING)
+    private FileType fileType;
 
     /**
      * FileSize(파일 사이즈)
