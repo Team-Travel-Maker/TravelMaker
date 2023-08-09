@@ -91,43 +91,45 @@
                                             </tr>
                                         </thead>
                                         <!--답변 미완료 -->
-                                        <tr>
-                                            <td class="checkbox-line">
-                                                <input
-                                                        type="checkbox"
-                                                        class="inquiryCheckbox"
-                                                        name="check"/>
-                                            </td>
-                                            <td>1</td>
-                                            <td>
-                                                <a th:href="@{/admins/inquiry/detail}">문의 제목</a>
-                                            </td>
-                                            <td th:text="이종문">
-                                            <td th:text="닉네임">
-                                            </td>
-                                            <td th:text="날짜"></td>
-                                            <td th:text="문의"></td>
-                                            <td style="color:#ff0000">답변 미완료</td>
-                                        </tr>
-                                        <!--답변 완료 -->
-                                        <tr>
-                                            <td class="checkbox-line">
-                                                <input
-                                                        type="checkbox"
-                                                        class="inquiryCheckbox"
-                                                        name="check"/>
-                                            </td>
-                                            <td>2</td>
-                                            <td>
-                                                <a th:href="@{/admins/inquiry/answer-detail}">문의 제목</a>
-                                            </td>
-                                            <td th:text="이종문">
-                                            <td th:text="닉네임">
-                                            </td>
-                                            <td th:text="날짜"></td>
-                                            <td th:text="신고" style="color:#ff0000"></td>
-                                            <td style="color:#0fa34c">답변 완료</td>
-                                        </tr>
+                                        <tbody class="inquiry-list-container">
+                                             <!--   <tr>
+                                                    <td class="checkbox-line">
+                                                        <input
+                                                                type="checkbox"
+                                                                class="inquiryCheckbox"
+                                                                name="check"/>
+                                                    </td>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <a th:href="@{/admins/inquiry/detail}">문의 제목</a>
+                                                    </td>
+                                                    <td th:text="이종문">
+                                                    <td th:text="닉네임">
+                                                    </td>
+                                                    <td th:text="날짜"></td>
+                                                    <td th:text="문의"></td>
+                                                    <td style="color:#ff0000">답변 미완료</td>
+                                                </tr>
+                                                &lt;!&ndash;답변 완료 &ndash;&gt;
+                                                <tr>
+                                                    <td class="checkbox-line">
+                                                        <input
+                                                                type="checkbox"
+                                                                class="inquiryCheckbox"
+                                                                name="check"/>
+                                                    </td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <a th:href="@{/admins/inquiry/answer-detail}">문의 제목</a>
+                                                    </td>
+                                                    <td th:text="이종문">
+                                                    <td th:text="닉네임">
+                                                    </td>
+                                                    <td th:text="날짜"></td>
+                                                    <td th:text="신고" style="color:#ff0000"></td>
+                                                    <td style="color:#0fa34c">답변 완료</td>
+                                                </tr>-->
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -154,4 +156,6 @@
     <script src="/js/admin/checkbox.js"></script>
     <script src="/js/admin/sidemenu.js"></script>
     <script src="/js/admin/modal.js"></script>
+    <script src="/js/admin/inquiry/list.js"></script>
+
 </html>
