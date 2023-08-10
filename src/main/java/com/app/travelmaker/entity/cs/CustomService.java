@@ -4,6 +4,8 @@ import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.constant.CsType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.Hibernate;
@@ -56,7 +58,6 @@ public class CustomService extends Period implements Serializable {
     /**
      * Member 와 연관관계 (N : 1)
      * */
-
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 

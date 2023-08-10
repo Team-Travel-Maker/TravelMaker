@@ -1,7 +1,6 @@
 package com.app.travelmaker.repository.cs;
 
 import com.app.travelmaker.domain.cs.CustomServiceDTO;
-import com.app.travelmaker.domain.cs.CustomServiceResponseDTO;
 import com.app.travelmaker.entity.cs.CustomService;
 import com.app.travelmaker.entity.cs.QCustomService;
 import com.app.travelmaker.entity.cs.QCustomServiceFile;
@@ -37,7 +36,6 @@ public class CustomServiceDSLImpl implements CustomServiceDSL {
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetch();
-
 
         Long count = query.select(customService.count()).from(customService).fetchOne();
 

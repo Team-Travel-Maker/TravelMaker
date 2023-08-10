@@ -8,6 +8,7 @@ import com.app.travelmaker.constant.MemberJoinAccountType;
 import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.entity.file.File;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;

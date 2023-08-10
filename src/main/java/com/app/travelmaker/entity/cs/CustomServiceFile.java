@@ -32,6 +32,7 @@ public class CustomServiceFile extends File implements Serializable {
     /**
      * Custom Service (문의 신고 와 연관 관계) (N : 1)
      * */
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private CustomService customService;
 
