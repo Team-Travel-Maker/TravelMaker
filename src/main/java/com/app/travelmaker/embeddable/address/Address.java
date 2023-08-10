@@ -2,6 +2,7 @@ package com.app.travelmaker.embeddable.address;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
@@ -10,6 +11,7 @@ import javax.validation.constraints.NotNull;
 @Embeddable
 @Getter
 @Setter
+@ToString
 public class Address {
     /**
      * address (주소)

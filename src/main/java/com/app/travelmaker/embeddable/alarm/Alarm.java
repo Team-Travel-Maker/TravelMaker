@@ -2,6 +2,7 @@ package com.app.travelmaker.embeddable.alarm;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Embeddable;
 import javax.validation.constraints.NotNull;
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotNull;
 @Embeddable
 @Getter
 @Setter
+@ToString
 public class Alarm {
     /**
      * emailBenefitEvent (알람이벤트 동의)

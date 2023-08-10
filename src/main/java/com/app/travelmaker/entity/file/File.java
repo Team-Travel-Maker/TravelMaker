@@ -3,12 +3,14 @@ package com.app.travelmaker.entity.file;
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.constant.FileType;
 import com.app.travelmaker.entity.mebmer.Member;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 
 /**
@@ -23,7 +25,7 @@ import javax.validation.constraints.NotNull;
 @SuperBuilder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE TBL_FILE SET DELETED = 1 WHERE ID = ?")
-public class File extends Period {
+public class File extends Period implements Serializable {
     /**
      * File PK(고유 번호)
      * */
