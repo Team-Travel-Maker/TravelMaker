@@ -1,7 +1,13 @@
 package com.app.travelmaker.domain.file;
 
 import com.app.travelmaker.constant.FileType;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
+@Data
+@NoArgsConstructor
 public class FileDTO {
     private Long id;
     private String fileName;

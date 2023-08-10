@@ -13,7 +13,7 @@ spring:
   #jpa
   jpa:
     hibernate:
-      ddl-auto: create #Entity와 DB 스키마 비교 후 수정 사항 반영(컬럼 추가)
+      ddl-auto: update #Entity와 DB 스키마 비교 후 수정 사항 반영(컬럼 추가)
 
     #jpa format
     properties:
@@ -25,3 +25,11 @@ spring:
   output:
     ansi:
       enabled: always
+
+  #multipart
+  servlet:
+    multipart:
+      enabled: true
+      max-request-size: 40MB
+      max-file-size: 40MB
+      file-size-threshold: 100MB
