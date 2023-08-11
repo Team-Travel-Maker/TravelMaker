@@ -11,7 +11,7 @@ $(document).ready(function () {
                 success: function(result){
                     console.log(result);
                     if(callback){
-                        callback();
+                        callback(result);
                     }
                 }
             })
@@ -26,6 +26,7 @@ $(document).ready(function () {
         let text=``;
 
         result.content.forEach(inquiry => {
+            console.log(inquiry.memberEmail)
             text += `
                        <tr>
                                                     <td class="checkbox-line">
@@ -34,15 +35,15 @@ $(document).ready(function () {
                                                                 class="inquiryCheckbox"
                                                                 name="check"/>
                                                     </td>
-                                                    <td>1</td>
+                                                    <td>${inquiry.id}</td>
                                                     <td>
-                                                        <a th:href="@{/admins/inquiry/detail}">문의 제목</a>
+                                                        <a>${inquiry.csTitle}</a>
                                                     </td>
-                                                    <td th:text="이종문"></td>
-                                                    <td th:text="닉네임"></td>
+                                                    <td>${inquiry.memberName}</td>
+                                                    <td>${inquiry.memberEmail}</td>
                                                     </td>
-                                                    <td th:text="날짜"></td>
-                                                    <td th:text="문의"></td>
+                                                    <td>${inquiry.createdDate}</td>
+                                                    <td>${inquiry.csType.name}</td>
                                                     <td style="color:#ff0000">답변 미완료</td>
                                                 </tr>
             
@@ -51,6 +52,8 @@ $(document).ready(function () {
 
 
         })
+
+        $inquiryListContainer.html(text);
 
     }
 

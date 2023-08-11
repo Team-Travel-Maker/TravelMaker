@@ -25,5 +25,5 @@ public class CustomServiceResponseDTO {
     private String memberEmail;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private List<File> files= new ArrayList<>();
+    private List<FileDTO> files= new ArrayList<>();
 }

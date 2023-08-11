@@ -1,6 +1,7 @@
 package com.app.travelmaker.service.cs;
 
 import com.app.travelmaker.domain.cs.CustomServiceDTO;
+import com.app.travelmaker.domain.cs.CustomServiceResponseDTO;
 import com.app.travelmaker.domain.file.FileDTO;
 import com.app.travelmaker.entity.cs.CustomService;
 import com.app.travelmaker.entity.cs.CustomServiceFile;
@@ -27,7 +28,7 @@ public class CustomSerivceServiceImpl implements CustomSerivceService {
 
 
     @Override
-    public Page<CustomService> getList(Pageable pageable) {
+    public Page<CustomServiceResponseDTO> getList(Pageable pageable) {
         return customServiceRepository.getListWithPage(pageable);
     }
 

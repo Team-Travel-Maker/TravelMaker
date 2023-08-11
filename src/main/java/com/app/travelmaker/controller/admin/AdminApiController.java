@@ -1,6 +1,7 @@
 package com.app.travelmaker.controller.admin;
 
 import com.app.travelmaker.domain.cs.CustomServiceDTO;
+import com.app.travelmaker.domain.cs.CustomServiceResponseDTO;
 import com.app.travelmaker.entity.cs.CustomService;
 import com.app.travelmaker.repository.member.MemberRepository;
 import com.app.travelmaker.service.cs.CustomSerivceService;
@@ -24,7 +25,7 @@ public class AdminApiController {
     private final CustomSerivceService customSerivceService;
 
     @GetMapping("inquiry/list")
-    public Page<CustomService> getList(@PageableDefault(page = 0, size = 10) Pageable pageable){
+    public Page<CustomServiceResponseDTO> getList(@PageableDefault(page = 0, size = 10) Pageable pageable){
 
         return  customSerivceService.getList(pageable);
     }
