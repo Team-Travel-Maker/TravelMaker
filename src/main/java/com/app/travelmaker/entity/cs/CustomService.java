@@ -58,6 +58,7 @@ public class CustomService extends Period implements Serializable {
     /**
      * Member 와 연관관계 (N : 1)
      * */
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
