@@ -49,13 +49,13 @@ public class CustomServiceDSLImpl implements CustomServiceDSL {
     public Page<CustomServiceResponseDTO> getListWithPage(Pageable pageable) {
 
         final List<FileDTO> files = query.select(Projections.fields(FileDTO.class,
-                file.id,
-                file.fileName,
-                file.filePath,
-                file.fileSize,
-                file.fileUuid,
-                file.fileType
-        )).from(file).fetch();
+                customServiceFile.id,
+                customServiceFile.fileName,
+                customServiceFile.filePath,
+                customServiceFile.fileSize,
+                customServiceFile.fileUuid,
+                customServiceFile.fileType
+        )).from(customServiceFile).where(customServiceFile.customService.eq(customService)).fetch();
 
 
         List<CustomServiceResponseDTO> customServices = query.select(Projections.fields(CustomServiceResponseDTO.class,
@@ -63,6 +63,8 @@ public class CustomServiceDSLImpl implements CustomServiceDSL {
                 customService.csTitle,
                 customService.csContent,
                 customService.csType,
+                customService.createdDate,
+                customService.updatedDate,
                 member.memberName,
                 member.memberEmail
         )).from(customService).innerJoin(member).on(member.id.eq(customService.member.id))
