@@ -7,12 +7,15 @@ import com.app.travelmaker.constant.FileType;
 import com.app.travelmaker.constant.MemberJoinAccountType;
 import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.entity.file.File;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
  * Member Entity (회원)
@@ -23,7 +26,7 @@ import javax.validation.constraints.NotNull;
 @Getter @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE TBL_MEMBER SET DELETED = 1 WHERE ID = ?")
-public class Member extends Period {
+public class Member extends Period implements Serializable {
 
     /**
      * Member PK(고유 번호)

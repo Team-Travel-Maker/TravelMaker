@@ -10,6 +10,8 @@ import com.app.travelmaker.repository.file.FileRepository;
 import com.app.travelmaker.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -22,6 +24,12 @@ public class CustomSerivceServiceImpl implements CustomSerivceService {
     private final CustomServiceRepository customServiceRepository;
     private final CustomServiceFileRepository customServiceFileRepository;
     private final MemberRepository memberRepository;
+
+
+    @Override
+    public Page<CustomService> getList(Pageable pageable) {
+        return customServiceRepository.getListWithPage(pageable);
+    }
 
     @Override
     public void register(CustomServiceDTO customServiceDTO) {
