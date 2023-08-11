@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/mypage/*")
 public class MyPageController {
 
+    // 마이페이지 메인
+    @GetMapping("main")
+    public void goToMain(){;}
+
     // 내가 작성한 게시물
     @GetMapping("my/posts")
     public void goToPosts(){;}

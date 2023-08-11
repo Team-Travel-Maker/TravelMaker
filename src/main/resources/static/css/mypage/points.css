@@ -236,3 +236,7 @@ button {
 .eco-list>li{
     padding: 20px;
 }
+
+.info-table {
+    padding-top: 220px !important;
+}
