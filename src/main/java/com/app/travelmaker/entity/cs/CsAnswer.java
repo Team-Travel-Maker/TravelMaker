@@ -1,9 +1,9 @@
 package com.app.travelmaker.entity.cs;
 
 import com.app.travelmaker.auditing.Period;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -16,7 +16,9 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "TBL_CS_ANSWER")
 @Getter
-@ToString
+@SuperBuilder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@ToString(exclude = "customService")
 @SQLDelete(sql = "UPDATE TBL_CS_ANSWER SET DELETED = 1 WHERE ID = ?")
 public class CsAnswer extends Period {
     /**
@@ -42,4 +44,6 @@ public class CsAnswer extends Period {
      * Custom Service Answer Stauts (문의/신고 답변 삭제 상태)
      * */
     private boolean deleted = Boolean.FALSE;
+
+
 }

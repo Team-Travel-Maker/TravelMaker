@@ -70,13 +70,7 @@ public class CustomService extends Period implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "customService")
     private List<CustomServiceFile> customServiceFile = new ArrayList<>();
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customService")
+    private List<CsAnswer> CsAnswers = new ArrayList<>();
 
-
-/*    @Builder
-    public CustomService(@NotNull String csTitle, @NotNull String csContent, @NotNull CsType csType, Member member) {
-        this.csTitle = csTitle;
-        this.csContent = csContent;
-        this.csType = csType;
-        this.member = member;
-    }*/
 }

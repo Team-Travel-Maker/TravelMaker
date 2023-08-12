@@ -1,13 +1,13 @@
 package com.app.travelmaker.service.cs;
 
-import com.app.travelmaker.domain.cs.CustomServiceDTO;
-import com.app.travelmaker.domain.cs.CustomServiceResponseDTO;
-import com.app.travelmaker.domain.file.FileDTO;
+import com.app.travelmaker.domain.cs.request.CsAnswerDTO;
+import com.app.travelmaker.domain.cs.request.CustomServiceDTO;
+import com.app.travelmaker.domain.cs.response.CustomServiceResponseDTO;
 import com.app.travelmaker.entity.cs.CustomService;
 import com.app.travelmaker.entity.cs.CustomServiceFile;
+import com.app.travelmaker.repository.cs.CsAnswerRepository;
 import com.app.travelmaker.repository.cs.CustomServiceFileRepository;
 import com.app.travelmaker.repository.cs.CustomServiceRepository;
-import com.app.travelmaker.repository.file.FileRepository;
 import com.app.travelmaker.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,14 +15,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class CustomSerivceServiceImpl implements CustomSerivceService {
 
     private final CustomServiceRepository customServiceRepository;
+    private final CsAnswerRepository csAnswerRepository;
     private final CustomServiceFileRepository customServiceFileRepository;
     private final MemberRepository memberRepository;
 
@@ -30,6 +29,16 @@ public class CustomSerivceServiceImpl implements CustomSerivceService {
     @Override
     public Page<CustomServiceResponseDTO> getList(Pageable pageable) {
         return customServiceRepository.getListWithPage(pageable);
+    }
+
+    @Override
+    public void answerRegister(CsAnswerDTO csAnswerDTO) {
+        csAnswerRepository.save(toEntity(csAnswerDTO));
+    }
+
+    @Override
+    public void answerModify(CsAnswerDTO csAnswerDTO) {
+        csAnswerRepository.save(toEntity(csAnswerDTO));
     }
 
     @Override
@@ -62,8 +71,8 @@ public class CustomSerivceServiceImpl implements CustomSerivceService {
     }
 
     @Override
-    public CustomService findById(Long id) {
-        CustomService foundCustomService = customServiceRepository.findById(id).orElseThrow(() -> {throw new RuntimeException();});
+    public CustomServiceResponseDTO detail(Long id) {
+        CustomServiceResponseDTO foundCustomService = customServiceRepository.detail(id).orElseThrow(() -> {throw new RuntimeException();});
         return foundCustomService;
     }
 }

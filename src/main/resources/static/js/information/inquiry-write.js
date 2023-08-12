@@ -100,28 +100,6 @@ $submitBtn.on('click', function () {
     if(!$agreeCheckbox.is(':checked')) {
         $agreeErr.show();
     }
-    
-/*    if($nameInput.val() != ""
-        && $emailInput.val() != ""
-        && fn_emailChk($emailInput.val())
-        && $subjectInput.val() != ""
-        && $descriptionTextarea.val() != ""
-        && $agreeCheckbox.is(':checked')) {
-        showWarnModal("문의·신고 등록이 완료되었습니다.");
-
-        customService.write($writeTextarea.val(), function(){
-            $("#replies-wrap ul").html("");
-            page = 0;
-            customService.getList(showList);
-        });
-
-
-        return;
-    }*/
-
-
-
-
 
 
 

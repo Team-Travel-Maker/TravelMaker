@@ -41,10 +41,4 @@ public class CustomServiceFile extends File implements Serializable {
      * */
     private boolean deleted = Boolean.FALSE;
 
-
-/*    @Builder
-    public CustomServiceFile(@NotNull String fileName, @NotNull String fileUuid, @NotNull String filePath, @NotNull FileType fileType, @NotNull Long fileSize, CustomService customService) {
-        super(fileName, fileUuid, filePath, fileType, fileSize);
-        this.customService = customService;
-    }*/
 }
