@@ -1,6 +1,6 @@
 package com.app.travelmaker.controller.information;
 
-import com.app.travelmaker.domain.cs.CustomServiceDTO;
+import com.app.travelmaker.domain.cs.request.CustomServiceDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

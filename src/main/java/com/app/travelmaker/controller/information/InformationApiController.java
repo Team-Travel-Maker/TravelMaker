@@ -1,13 +1,10 @@
 package com.app.travelmaker.controller.information;
 
 
-import com.app.travelmaker.domain.cs.CustomServiceDTO;
-import com.app.travelmaker.entity.cs.CustomService;
+import com.app.travelmaker.domain.cs.request.CustomServiceDTO;
 import com.app.travelmaker.service.cs.CustomSerivceService;
-import lombok.Generated;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Slice;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

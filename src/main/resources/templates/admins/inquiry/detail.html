@@ -6,16 +6,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>관리자 페이지- 문의 게시판 상세보기</title>
         <link rel="stylesheet" href="/css/admin/sidemenu.css" />
-        <link rel="stylesheet" href="/css/admin/admin-board-detail.css" />
+<!--        <link rel="stylesheet" href="/css/admin/admin-board-detail.css" />-->
         <link rel="stylesheet" href="/css/admin/admin-inquire-detail.css" />
         <link rel="stylesheet" href="/css/admin/admin-board.css">
         <link rel="stylesheet" href="/css/admin/admin-board-proposal.css">
         <link rel="stylesheet" href="/css/admin/admin-common.css">
+        <link rel="stylesheet" href="/css/admin/sidemenu.css">
+        <link rel="stylesheet" href="/css/admin/admin-board-proposal-modify.css">
         <link rel="icon" href="/images/logo/favicon.png" />
+        <link rel="stylesheet" href="/css/admin/modal.css"/>
     </head>
 
     <body>
-        <div>
+    <!-- 모달 부분 -->
+    <div class="modal">
+        <div class="warn-modal">
+            <div id="content-wrap"></div>
+        </div>
+    </div>
+
+    <div>
             <div class="info-title-box info-title-box-flex">
                 <div class="logo-box-layout">
                     <div class="logo-box">
@@ -48,47 +58,24 @@
                         </div>
 
                         <!-- 내용 섹션 -->
-                        <section class="board-info-box-layout">
+                        <section class="board-info-box-layout"></section>
+                        <!--답변 있을 때섹션-->
+                        <section class="board-info-box-layout"></section>
+                        <!--답변 달기-->
+                        <section style="display: none" class="board-info-box-layout">
                             <div class="board-info-box">
                                 <div class="board-info-title-box">
-                                    <span>문의글 상세보기</span>
+                                    <span>문의 답변</span>
                                 </div>
-                                <hr />
                                 <div class="info-table">
-                                    <div class="board-title">
-                                        <span class="span-bold">제목 :</span>
-                                        <!-- 제목 -->
-                                        <span>제목 불러오기 </span>
-                                    </div>
-                                    <div class="board-info board-writer">
-                                        <span class="span-bold">작성자 :</span>
-                                        <!-- 작성자 명 -->
-                                        <span>이름 불러오기 </span>
-                                    </div>
-                                    <div class="board-info board-register-date">
-                                        <span class="span-bold">작성 날짜 :</span>
-                                        <!-- 작성 날짜 -->
-                                        <span>작성 날짜 불러오기</span>
-                                    </div>
-                                    <div class="board-info board-update-date">
-                                        <span class="span-bold">수정 날짜 :</span>
-                                        <!-- 작성 날짜 -->
-                                        <span>작성 날짜 불러오기</span>
-                                    </div>
-                                    <div class="board-info board-register-date">
-                                        <span class="span-bold">문의/신고 :</span>
-                                        <!-- 작성 날짜 -->
-                                        <span>문의인지 신고인지 불러오기</span>
-                                    </div>
-                                    <hr />
-                                    <!-- 게시판 내용 -->
-                                    <div class="inquiry-content">문의 내용 불러오기</div>
-                                    <hr />
-                                    <div class="answer-button-wrapper modify-button-wrapper">
-                                        <button>
-                                            답변하기
-                                        </button>
-                                    </div>
+                                        <hr>
+                                        <div>
+                                            <textarea class="board-content" id="boardContent" name="boardContent"></textarea>
+                                        </div>
+                                        <hr>
+                                        <div>
+                                            <button type="button" class="btn-done write-btn">등록</button>
+                                        </div>
                                 </div>
                             </div>
                         </section>
@@ -99,6 +86,11 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/js/admin/sidemenu.js"></script>
+    <script src="/js/admin/modal.js"></script>
+    <script inline="javascript">
+        let customServiceId = [[${customServiceId}]];
+    </script>
+    <script src="/js/admin/inquiry/detail.js"></script>
     <script>
         //답변하기로 이동만 해놓기
         const answer = $('.answer-button-wrapper button');

@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     const $inquiryListContainer = $('.inquiry-list-container');
-
+    let text=``;
 
     let customService = (function () {
         function getList(callback){
@@ -20,13 +20,10 @@ $(document).ready(function () {
     })();
 
     customService.getList(showList);
-
-
     function showList(result) {
-        let text=``;
+        text=''
 
         result.content.forEach(inquiry => {
-            console.log(inquiry.memberEmail)
             text += `
                        <tr>
                                                     <td class="checkbox-line">
@@ -37,20 +34,21 @@ $(document).ready(function () {
                                                     </td>
                                                     <td>${inquiry.id}</td>
                                                     <td>
-                                                        <a>${inquiry.csTitle}</a>
+                                                        <a href="/admins/inquiry/detail/${inquiry.id}">${inquiry.csTitle}</a>
                                                     </td>
                                                     <td>${inquiry.memberName}</td>
                                                     <td>${inquiry.memberEmail}</td>
                                                     </td>
                                                     <td>${inquiry.createdDate}</td>
                                                     <td>${inquiry.csType.name}</td>
-                                                    <td style="color:#ff0000">답변 미완료</td>
-                                                </tr>
-            
-                     `
+                                                    `
+                    if(inquiry.csAnswers.length == 0){
+                        text += `<td style="color:#ff0000">답변 미완료</td>`
 
-
-
+                    }else {
+                        text += `<td style="color:green">답변 완료</td>`
+                    }
+               text+= `</tr>`
         })
 
         $inquiryListContainer.html(text);
