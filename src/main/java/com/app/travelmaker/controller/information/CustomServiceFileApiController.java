@@ -56,8 +56,8 @@ public class CustomServiceFileApiController {
 
 
 //        파일 다운로드
-    @GetMapping("download")
-    public ResponseEntity<Resource> download(Long id) throws UnsupportedEncodingException {
+    @GetMapping("download/{id}")
+    public ResponseEntity<Resource> download(@PathVariable(required = true) Long id) throws UnsupportedEncodingException {
         AtomicReference<String> fileName = new AtomicReference<>("");
 
         customServiceFileService.findById(id).ifPresent(file -> {
