@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -38,7 +39,6 @@ public class CustomServiceDSLImpl implements CustomServiceDSL {
                 customServiceFile.customService.id.as("customServiceId")
         )).from(customServiceFile).where(customServiceFile.customService.id.eq(customService.id).and(customServiceFile.deleted.eq(false))).fetch();
 
-        log.info(files.toString());
 
         final List<CsAnswerResponseDTO> csAnswers = query.select(Projections.fields(CsAnswerResponseDTO.class,
                 csAnswer.id,
@@ -74,13 +74,10 @@ public class CustomServiceDSLImpl implements CustomServiceDSL {
                     }
                 }).collect(Collectors.toList());
 
-        log.info(customServices.toString());
 
         Long count = query.select(customService.count()).from(customService).fetchOne();
 
         return new PageImpl<>(customServices, pageable, count);
-
-
     }
     @Override
     public Optional<CustomServiceResponseDTO> detail(Long id) {

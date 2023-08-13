@@ -10,6 +10,8 @@ import com.app.travelmaker.entity.file.File;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface CustomSerivceService {
 
     /*문의*/
@@ -18,6 +20,8 @@ public interface CustomSerivceService {
     public CustomServiceResponseDTO detail(Long id);
 
     public void register(CustomServiceDTO customServiceDTO);
+
+    public void inquiryDelete(List<Long> ids);
 
 
     /*답변*/
