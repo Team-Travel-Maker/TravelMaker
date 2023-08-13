@@ -41,7 +41,6 @@ public class fileApiController {
     @PostMapping("upload")
     public List<String> upload(@RequestParam("uploadFile") List<MultipartFile> uploadFiles, @RequestPart(value = "fileSize", required = false)FileSize fileSize) throws IOException {
 
-        log.info(fileSize.toString());
         String path = "C:/upload/" + getPath();
         List<String> uuids = new ArrayList<>();
         File file = new File(path);
