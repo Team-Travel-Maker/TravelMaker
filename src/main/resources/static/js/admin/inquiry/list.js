@@ -16,7 +16,6 @@ $(document).ready(function () {
                 type: `get`,
                 async: false,
                 success: function(result){
-                    console.log(result)
                     if(callback){
                         callback(result);
                     }
@@ -24,7 +23,7 @@ $(document).ready(function () {
             })
         }
 
-       function deleteInquiry(callback){
+       function deleteInquiry(){
             $.ajax({
                 url: `/api/admins/inquiry`,
                 type: `delete`,
@@ -33,8 +32,7 @@ $(document).ready(function () {
                 processData : false,
                 contentType : false,
                 data: form,
-                success: function(callback){
-                    if(callback) callback();
+                success: function(){
                 }
             })
         }
@@ -97,6 +95,7 @@ $(document).ready(function () {
        form.append("ids", new Blob([JSON.stringify(deleteIds)],{ type: "application/json" }))
         customService.deleteInquiry();
         customService.getList(showList);
+        showWarnModal("삭제되었습니다");
     })
 
 
