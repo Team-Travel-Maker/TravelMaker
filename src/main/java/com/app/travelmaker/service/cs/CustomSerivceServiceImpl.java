@@ -14,16 +14,22 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import java.util.List;
 
 @Service
 @Slf4j
 @RequiredArgsConstructor
+@Transactional(rollbackFor =Exception.class)
 public class CustomSerivceServiceImpl implements CustomSerivceService {
 
     private final CustomServiceRepository customServiceRepository;
     private final CsAnswerRepository csAnswerRepository;
     private final CustomServiceFileRepository customServiceFileRepository;
     private final MemberRepository memberRepository;
+
 
 
     @Override
@@ -56,7 +62,6 @@ public class CustomSerivceServiceImpl implements CustomSerivceService {
                 CustomService foundCustomService = customServiceRepository.findById(id).orElseThrow(() -> {
                     throw new RuntimeException();
                 });
-
                 customServiceFileRepository.save(CustomServiceFile.builder().customService(foundCustomService)
                         .fileName(customServiceDTO.getFiles().get(i).getFileName())
                         .fileSize(customServiceDTO.getFiles().get(i).getFileSize())
@@ -65,9 +70,22 @@ public class CustomSerivceServiceImpl implements CustomSerivceService {
                         .filePath(customServiceDTO.getFiles().get(i).getFilePath())
                         .build());
             }
-
         }
 
+    }
+
+    /*문의 삭제*/
+    @Override
+    public void inquiryDelete(List<Long> ids) {
+        /*문의 삭제하면 안에 답변 파일 삭제 상태로 변경*/
+        ids.stream().forEach(id -> {
+            customServiceRepository.findById(id)
+                    .ifPresent(customService ->{
+                        customService.getCsAnswers().forEach(answer-> csAnswerRepository.delete(answer));
+                        customService.getCustomServiceFile().forEach(file -> customServiceFileRepository.deleteById(file.getId()));
+                    });
+             customServiceRepository.deleteById(id);
+        });
     }
 
     @Override

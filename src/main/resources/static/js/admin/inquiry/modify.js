@@ -12,8 +12,6 @@ $(document).ready(function () {
                 url: `/api/admins/inquiry/modify/${customServiceId}`,
                 type: `get`,
                 success: function(result){
-                    console.log(result);
-                    console.log("다시 들어옴")
                     if(callback){
                         callback(result);
                     }
