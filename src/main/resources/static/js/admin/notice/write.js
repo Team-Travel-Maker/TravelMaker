@@ -21,33 +21,31 @@ $(document).ready(function () {
 
     let noticeService = (function () {
 
-        function getDetail(callback){
-            $.ajax({
-                url: `/api/admins/notice/detail/${noticeId}`,
-                type: `get`,
-                success: function(result){
-                    console.log(result);
-                    if(callback){
-                        callback(result);
+        if(noticeId != ""){
+            function getDetail(callback){
+                $.ajax({
+                    url: `/api/admins/notice/detail/${noticeId}`,
+                    type: `get`,
+                    success: function(result){
+                        console.log(result);
+                        if(callback){
+                            callback(result);
+                        }
                     }
-                }
-            })
+                })
+            }
         }
 
-        function write(){
+        function write(form, callback){
             $.ajax({
-                url: `/api/admins/answer/${customServiceId}`,
+                url: `/api/admins/notice`,
                 type: `post`,
                 enctype: "multipart/form-data", //form data 설정
                 processData : false,
                 contentType : false,
                 data: form,
                 success: function(){
-                    showWarnModal("답변이 등록 되었습니다.")
-                    $(".modal").on("click", function () {
-                        location.href = `/admins/inquiry/detail/${customServiceId}`
-                    })
-                    console.log("성공")
+                  if(callback) callback();
                 }
             })
         }
@@ -55,10 +53,12 @@ $(document).ready(function () {
         return {write : write, getDetail : getDetail}
     })()
 
-    
-    /*상세*/
-    noticeService.getDetail(showDetail);
-    
+
+    if(noticeId != ""){
+        /*상세*/
+        noticeService.getDetail(showDetail);
+    }
+
     
     function showDetail(result) {
         let fileName = result.files[0].filePath + "/t_" + result.files[0].fileUuid + "_" + result.files[0].fileName;

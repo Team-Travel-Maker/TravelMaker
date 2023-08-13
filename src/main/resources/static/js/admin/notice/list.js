@@ -1,7 +1,11 @@
 $(document).ready(function () {
 
+    const form = new FormData();
+
     let text ="";
     const $noticeListContainer = $('.notice-list');
+
+    let deleteIds = [];
 
     let noticeService = (function () {
 
@@ -19,7 +23,21 @@ $(document).ready(function () {
                 })
             }
 
-        return {getList: getList};
+        function deleteNotice(){
+            $.ajax({
+                url: `/api/admins/notice`,
+                type: `delete`,
+                async: false,
+                enctype: "multipart/form-data", //form data 설정
+                processData : false,
+                contentType : false,
+                data: form,
+                success: function(){
+                }
+            })
+        }
+
+        return {getList: getList, deleteNotice : deleteNotice};
 
     })()
 
@@ -51,6 +69,22 @@ $(document).ready(function () {
 
         });
     }
+
+
+    /*삭제버튼*/
+    $('.delete-button').on("click",async function () {
+        const deletedIdxs = [];
+        $('.noticeCheckbox').each((index,checkBox) => {
+            if($(checkBox).is(":checked")){
+                deleteIds.push($(checkBox).val());
+                deletedIdxs.push(index);
+            }
+        })
+        form.append("ids", new Blob([JSON.stringify(deleteIds)],{ type: "application/json" }))
+        noticeService.deleteNotice();
+        noticeService.getList(showList);
+        showWarnModal("삭제되었습니다");
+    })
 
 
 

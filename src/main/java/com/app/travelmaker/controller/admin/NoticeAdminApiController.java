@@ -39,4 +39,9 @@ public class NoticeAdminApiController {
         return noticeService.detail(id);
     }
 
+    @DeleteMapping("")
+    public void delete(@RequestPart(required = true) List<Long> ids){
+        noticeService.noticeDelete(ids);
+    }
+
 }

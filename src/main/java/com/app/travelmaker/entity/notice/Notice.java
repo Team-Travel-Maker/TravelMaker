@@ -3,10 +3,7 @@ package com.app.travelmaker.entity.notice;
 
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.entity.cs.CustomServiceFile;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
@@ -24,6 +21,7 @@ import java.util.List;
 @Table(name = "TBL_NOTICE")
 @Getter @ToString
 @SuperBuilder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE TBL_NOTICE SET DELETED = 1 WHERE ID = ?")
 public class Notice extends Period {
 

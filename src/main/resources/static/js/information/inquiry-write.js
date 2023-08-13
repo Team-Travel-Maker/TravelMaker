@@ -203,7 +203,7 @@ $fileInput.on("change", function () {
     //담긴 파일이 없으면 ajax 호출전 리턴
     if(files.length == 0){return;}
     $.ajax({
-        url        : "/api/cs/files/upload",
+        url        : "/api/files/upload",
         type       : "post",
         async: false,
         data       : formData,

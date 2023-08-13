@@ -14,11 +14,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(rollbackFor =Exception.class)
 public class NoticeServiceImpl implements NoticeService {
 
     private final NoticeRepository noticeRepository;
@@ -32,6 +35,18 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public NoticeResponseDTO detail(Long id) {
         return noticeRepository.detail(id).orElseThrow(() -> {throw new RuntimeException();});
+    }
+
+    @Override
+    public void noticeDelete(List<Long> ids) {
+        /*문의 삭제하면 안에 답변 파일 삭제 상태로 변경*/
+        ids.stream().forEach(id -> {
+            noticeRepository.findById(id)
+                    .ifPresent(notice ->{
+                        notice.getNoticeFiles().forEach(file -> noticeFileRepository.deleteById(file.getId()));
+                    });
+            noticeRepository.deleteById(id);
+        });
     }
 
     @Override
