@@ -1,11 +1,11 @@
-package com.app.travelmaker.service.cs;
+package com.app.travelmaker.service.file;
 
 import com.app.travelmaker.domain.file.FileDTO;
 import com.app.travelmaker.entity.file.File;
 
 import java.util.Optional;
 
-public interface CustomServiceFileService {
+public interface FileService {
 
     public void register(FileDTO fileDTO);
 

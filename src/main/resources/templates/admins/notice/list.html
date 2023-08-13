@@ -11,10 +11,18 @@
         <link rel="stylesheet" href="/css/admin/admin-board-proposal.css">
         <link rel="stylesheet" href="/css/admin/admin-common.css">
         <link rel="icon" href="/images/logo/favicon.png">
+        <link rel="stylesheet" href="/css/admin/modal.css"/>
     </head>
 
     <body>
-        <div>
+    <!-- 모달 부분 -->
+    <div class="modal">
+        <div class="warn-modal">
+            <div id="content-wrap"></div>
+        </div>
+    </div>
+
+    <div>
             <div class="info-title-box info-title-box-flex">
                 <div class="logo-box-layout">
                     <div class="logo-box">
@@ -88,99 +96,9 @@
                                             <th>공지사항 제목</th>
                                             <th>등록일</th>
                                             <th>수정일</th>
-                                            <th>대표 이미지</th>
                                         </tr>
                                         </thead>
-                                        <tbody class="notice-list">
-
-                                        <!-- 타임리프로 이미지 제외한 화면 그리기 -->
-                                        <tr>
-                                            <td class="checkbox-line">
-                                                <input
-                                                        type="checkbox"
-                                                        class="noticeCheckbox"
-                                                        name="check"/>
-                                            </td>
-                                            <td>1</td>
-                                            <td>
-                                                <a>공지사항 제목1</a>
-                                            </td>
-                                            <td>2023-06-01 09:57:40</td>
-                                            <td>2023-06-01 09:57:40</td>
-                                            <td class="image-wrap">
-                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="checkbox-line">
-                                                <input
-                                                        type="checkbox"
-                                                        class="noticeCheckbox"
-                                                        name="check"/>
-                                            </td>
-                                            <td>1</td>
-                                            <td>
-                                                <a>공지사항 제목1</a>
-                                            </td>
-                                            <td>2023-06-01 09:57:40</td>
-                                            <td>2023-06-01 09:57:40</td>
-                                            <td class="image-wrap">
-                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="checkbox-line">
-                                                <input
-                                                        type="checkbox"
-                                                        class="noticeCheckbox"
-                                                        name="check"/>
-                                            </td>
-                                            <td>1</td>
-                                            <td>
-                                                <a>공지사항 제목1</a>
-                                            </td>
-                                            <td>2023-06-01 09:57:40</td>
-                                            <td>2023-06-01 09:57:40</td>
-                                            <td class="image-wrap">
-                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="checkbox-line">
-                                                <input
-                                                        type="checkbox"
-                                                        class="noticeCheckbox"
-                                                        name="check"/>
-                                            </td>
-                                            <td>1</td>
-                                            <td>
-                                                <a>공지사항 제목1</a>
-                                            </td>
-                                            <td>2023-06-01 09:57:40</td>
-                                            <td>2023-06-01 09:57:40</td>
-                                            <td class="image-wrap">
-                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="checkbox-line">
-                                                <input
-                                                        type="checkbox"
-                                                        class="noticeCheckbox"
-                                                        name="check"/>
-                                            </td>
-                                            <td>1</td>
-                                            <td>
-                                                <a>공지사항 제목1</a>
-                                            </td>
-                                            <td>2023-06-01 09:57:40</td>
-                                            <td>2023-06-01 09:57:40</td>
-                                            <td class="image-wrap">
-                                                <img src="/images/admin/write-icon.png" style="width: 30px; height: 30px">
-                                            </td>
-                                        </tr>
-
-                                        </tbody>
+                                        <tbody class="notice-list"></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -207,11 +125,6 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/js/admin/sidemenu.js"></script>
     <script src="/js/admin/checkbox.js"></script>
-    <script>
-        const tbodyTd = $('.info-table tbody td a')
-
-        tbodyTd.on("click", function () {
-            location.href=`/admins/notice/detail`;
-        });
-    </script>
+    <script src="/js/admin/modal.js"></script>
+    <script src="/js/admin/notice/list.js"></script>
 </html>
