@@ -29,26 +29,7 @@ public class CustomServiceDSLImpl implements CustomServiceDSL {
     @Override
     public Page<CustomServiceResponseDTO> getListWithPage(Pageable pageable) {
 
-        final List<CustomServiceFileDTO> files = query.select(Projections.fields(CustomServiceFileDTO.class,
-                customServiceFile.id,
-                customServiceFile.fileName,
-                customServiceFile.filePath,
-                customServiceFile.fileSize,
-                customServiceFile.fileUuid,
-                customServiceFile.fileType,
-                customServiceFile.customService.id.as("customServiceId")
-        )).from(customServiceFile).where(customServiceFile.customService.id.eq(customService.id).and(customServiceFile.deleted.eq(false))).fetch();
-
-
-        final List<CsAnswerResponseDTO> csAnswers = query.select(Projections.fields(CsAnswerResponseDTO.class,
-                csAnswer.id,
-                csAnswer.answerContent,
-                csAnswer.createdDate,
-                csAnswer.updatedDate,
-                csAnswer.customService.id.as("customServiceId"),
-                csAnswer.deleted
-        )).from(csAnswer).where(csAnswer.customService.eq(customService).and(csAnswer.deleted.eq(false))).fetch();
-
+        final List<CsAnswerResponseDTO> csAnswers = getAnswers();
 
         List<CustomServiceResponseDTO> customServices = query.select(Projections.fields(CustomServiceResponseDTO.class,
                 customService.id,
@@ -66,9 +47,6 @@ public class CustomServiceDSLImpl implements CustomServiceDSL {
                 .limit(pageable.getPageSize())
                 .fetch()
                 .stream().peek(data -> {
-                    if(files != null){
-                        files.stream().filter(file -> file.getCustomServiceId().equals(data.getId())).forEach(file-> data.getFiles().add(file));
-                    }
                     if(csAnswers != null){
                         csAnswers.stream().filter(answer -> answer.getCustomServiceId().equals(data.getId())).forEach(answer -> data.getCsAnswers().add(answer));
                     }
@@ -82,24 +60,8 @@ public class CustomServiceDSLImpl implements CustomServiceDSL {
     @Override
     public Optional<CustomServiceResponseDTO> detail(Long id) {
 
-        final List<CustomServiceFileDTO> files = query.select(Projections.fields(CustomServiceFileDTO.class,
-                customServiceFile.id,
-                customServiceFile.fileName,
-                customServiceFile.filePath,
-                customServiceFile.fileSize,
-                customServiceFile.fileUuid,
-                customServiceFile.fileType,
-                customServiceFile.customService.id.as("customServiceId")
-        )).from(customServiceFile).where(customServiceFile.customService.eq(customService).and(customServiceFile.deleted.eq(false))).fetch();
-
-        final List<CsAnswerResponseDTO> csAnswers = query.select(Projections.fields(CsAnswerResponseDTO.class,
-                csAnswer.id,
-                csAnswer.answerContent,
-                csAnswer.createdDate,
-                csAnswer.updatedDate,
-                csAnswer.customService.id.as("customServiceId"),
-                csAnswer.deleted
-        )).from(csAnswer).where(csAnswer.customService.eq(customService).and(csAnswer.deleted.eq(false))).fetch();
+        final List<CustomServiceFileDTO> files = getFiles();
+        final List<CsAnswerResponseDTO> csAnswers = getAnswers();
 
 
         Optional<CustomServiceResponseDTO> foundCustomService = Optional.ofNullable(query.select(Projections.fields(CustomServiceResponseDTO.class,
@@ -126,5 +88,28 @@ public class CustomServiceDSLImpl implements CustomServiceDSL {
 
         return foundCustomService;
 
+    }
+
+    private List<CsAnswerResponseDTO>  getAnswers(){
+        return query.select(Projections.fields(CsAnswerResponseDTO.class,
+                csAnswer.id,
+                csAnswer.answerContent,
+                csAnswer.createdDate,
+                csAnswer.updatedDate,
+                csAnswer.customService.id.as("customServiceId"),
+                csAnswer.deleted
+        )).from(csAnswer).where(csAnswer.customService.eq(customService).and(csAnswer.deleted.eq(false))).fetch();
+    }
+
+    private List<CustomServiceFileDTO> getFiles(){
+        return query.select(Projections.fields(CustomServiceFileDTO.class,
+                customServiceFile.id,
+                customServiceFile.fileName,
+                customServiceFile.filePath,
+                customServiceFile.fileSize,
+                customServiceFile.fileUuid,
+                customServiceFile.fileType,
+                customServiceFile.customService.id.as("customServiceId")
+        )).from(customServiceFile).where(customServiceFile.customService.id.eq(customService.id).and(customServiceFile.deleted.eq(false))).fetch();
     }
 }

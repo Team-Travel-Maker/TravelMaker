@@ -1,4 +1,4 @@
-package com.app.travelmaker.service.cs;
+package com.app.travelmaker.service.file;
 
 import com.app.travelmaker.domain.file.FileDTO;
 import com.app.travelmaker.entity.file.File;
@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CustomServiceFileServiceImpl implements CustomServiceFileService {
+public class FileServiceImpl implements FileService {
 
     private final FileRepository fileRepository;
     @Override

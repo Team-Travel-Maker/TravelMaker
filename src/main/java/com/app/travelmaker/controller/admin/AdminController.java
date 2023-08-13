@@ -36,8 +36,11 @@ public class AdminController {
     public void goToNoticeWrite(){;}
 
     //상세
-    @GetMapping("notice/detail")
-    public void goToNoticeDetail(){;}
+    @GetMapping(path = {"notice/detail/{id}", "notice/modify/{id}"})
+    public String goToNoticeDetail(@PathVariable Long id, Model model, HttpServletRequest request){
+        model.addAttribute("noticeId", id);
+        return "/admins/notice/" + request.getRequestURI().split("/")[3];
+        }
     //수정
     @GetMapping("notice/modify")
     public void goToNoticeModify(){;}

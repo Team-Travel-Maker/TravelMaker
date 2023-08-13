@@ -26,7 +26,7 @@ import java.util.Optional;
 @Slf4j
 @Transactional(rollbackFor =Exception.class)
 @RequestMapping("api/admins/*")
-public class AdminApiController {
+public class CustomServiceAdminApiController {
 
     private final CustomSerivceService customSerivceService;
     private final CsAnswerRepository csAnswerRepository;
