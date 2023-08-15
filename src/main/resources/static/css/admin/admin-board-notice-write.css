@@ -102,7 +102,7 @@ input[type=text] {
 
 textarea {
 	font-family: 'GmarketSansMedium';
-	overflow: scroll;
+	overflow: auto;
 	width: 100%;
 	border: none;
 	outline: none;

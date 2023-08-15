@@ -79,7 +79,7 @@ public class Member extends Period implements Serializable {
     /**
      * Member ECO POINT(회원 에코 포인트)
      * */
-    @NotNull private Integer memberEcoPoint;
+    private Integer memberEcoPoint;
 
     /**
      * Member JOIN ACCOUNT(SNS 로그인 여부)
@@ -93,7 +93,7 @@ public class Member extends Period implements Serializable {
     /**
      * Member INTEREST REGION(회원 흥미 지역)
      * */
-    @NotNull private String memberInterestRegion;
+    private String memberInterestRegion;
 
     /**
      *  Member File 부분

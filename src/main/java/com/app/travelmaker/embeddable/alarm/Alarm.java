@@ -15,15 +15,15 @@ public class Alarm {
     /**
      * emailBenefitEvent (알람이벤트 동의)
      * */
-    @NotNull private boolean emailBenefitEvent= Boolean.FALSE;
+    @NotNull private boolean emailBenefitEvent;
 
     /**
      * emailSuggestion (알람 제안 동의)
      * */
-    @NotNull private boolean emailSuggestion = Boolean.FALSE;
+    @NotNull private boolean emailSuggestion;
 
     /**
      * snsBenefitEvent (SNS 수신 동의)
      * */
-    @NotNull private boolean snsBenefitEvent= Boolean.FALSE;
+    @NotNull private boolean snsBenefitEvent;
 }

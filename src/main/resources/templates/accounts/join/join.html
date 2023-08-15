@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko_KR">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -10,7 +10,7 @@
             opacity: 0 !important;
         }
     </style>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+<!--    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>-->
     <link rel="stylesheet" href="/css/login/join-common.css">
     <link rel="stylesheet" href="/css/login/join.css">
     <link rel="stylesheet" href="/css/admin/modal.css"/>
@@ -689,6 +689,10 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="/js/login/join.js"></script>
 <script src="/js/admin/modal.js"></script>
+<script th:inline="javascript">
+    let memberEmail = [[${memberEmail}]];
+        $('#email').val(memberEmail);
+</script>
+<script src="/js/login/join.js"></script>
 </html>

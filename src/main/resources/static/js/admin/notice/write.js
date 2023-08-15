@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    console.log("인식")
+    let fileForm = /(.*?)\.(jpg|jpeg|png)$/;
 
     const $detailContainer = $('.board-info-box-layout');
 
@@ -118,6 +118,12 @@ $(document).ready(function () {
 // 파일 인풋
 
     $fileInput.on("change", function () {
+
+        if(!$(this).val().match(fileForm)){
+            alert("이미지 파일만 업로드 가능합니다.")
+            return;
+        }
+
         let i = $fileInput.index($(this));
 
         formData = new FormData();
