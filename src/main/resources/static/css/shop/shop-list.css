@@ -81,7 +81,7 @@
 }
 
 .gift-card header {
-  padding-bottom: 75%;
+  padding-bottom: 50%;
   position: relative;
   background-size: cover;
   background-position: 50%;
@@ -520,6 +520,6 @@
 .line-css{
     border-bottom: 1px solid #e1e2e3;
     margin: 0 auto 20px;
-    width: 261px;
+    width: 300px;
 
 }

@@ -24,6 +24,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "TBL_MEMBER")
 @Getter @ToString
+@SuperBuilder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE TBL_MEMBER SET DELETED = 1 WHERE ID = ?")
 public class Member extends Period implements Serializable {

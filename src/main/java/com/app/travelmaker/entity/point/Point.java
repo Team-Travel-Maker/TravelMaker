@@ -4,9 +4,8 @@ import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.entity.eco.Eco;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.constant.PointCateGoryType;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
@@ -20,6 +19,8 @@ import javax.validation.constraints.NotNull;
 @Table(name = "TBL_POINT")
 @Getter
 @ToString
+@SuperBuilder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE TBL_POINT SET DELETED = 1 WHERE ID = ?")
 public class Point extends Period {
     /**

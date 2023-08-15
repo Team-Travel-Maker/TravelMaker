@@ -4,9 +4,8 @@ import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.embeddable.address.Address;
 import com.app.travelmaker.entity.giftcard.GiftCard;
 import com.app.travelmaker.entity.mebmer.Member;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -21,6 +20,8 @@ import javax.validation.constraints.NotNull;
 @Table(name = "TBL_PAY")
 @Getter
 @ToString
+@SuperBuilder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE TBL_PAY SET DELETED = 1 WHERE ID = ?")
 public class Pay extends Period {
     /**
@@ -30,6 +31,16 @@ public class Pay extends Period {
     @GeneratedValue
     @EqualsAndHashCode.Include
     private Long id;
+
+    /**
+     * Recipient Name  (받는 사람 이름)
+     * */
+    @NotNull private String recipientName;
+
+    /**
+     * Pay Total Count  (구매 상품권 개수)
+     * */
+    @NotNull private Integer payTotalCount;
 
     /**
      * Pay Total Price  (결제 포인트 총 가격)
