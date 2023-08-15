@@ -20,4 +20,5 @@ public class NoticeResponseDTO {
     private LocalDateTime updatedDate;
     private boolean deleted;
     private List<NoticeFileResponseDTO> files= new ArrayList<>();
+    private List<Long> deleteFiles = new ArrayList<>();
 }
