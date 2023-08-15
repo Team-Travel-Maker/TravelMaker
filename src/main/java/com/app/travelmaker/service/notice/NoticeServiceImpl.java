@@ -10,6 +10,7 @@ import com.app.travelmaker.entity.notice.NoticeFile;
 import com.app.travelmaker.repository.notice.NoticeFileRepository;
 import com.app.travelmaker.repository.notice.NoticeRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 @Transactional(rollbackFor =Exception.class)
 public class NoticeServiceImpl implements NoticeService {
@@ -30,6 +32,33 @@ public class NoticeServiceImpl implements NoticeService {
     @Override
     public Page<NoticeResponseDTO> getListWithPage(Pageable pageable) {
         return noticeRepository.getListWithPage(pageable);
+    }
+
+
+    @Override
+    public void modifyNotice(NoticeRequestDTO noticeRequestDTO) {
+        noticeRequestDTO.getDeleteFiles().forEach(id -> noticeFileRepository.deleteById(id));
+        Notice foundNotice = noticeRepository.findById(noticeRequestDTO.getId()).orElseThrow(() -> {
+            throw new RuntimeException();
+        });
+        noticeRequestDTO.setCreatedDate(foundNotice.getCreatedDate());
+
+        log.info(foundNotice.getCreatedDate().toString());
+
+        noticeRepository.save(toEntity(noticeRequestDTO));
+        if(noticeRequestDTO.getFiles().size() >0){
+            for (int i = 0; i < noticeRequestDTO.getFiles().size(); i++) {
+
+                noticeFileRepository.save(NoticeFile.builder().notice(foundNotice)
+                        .fileName(noticeRequestDTO.getFiles().get(i).getFileName())
+                        .fileSize(noticeRequestDTO.getFiles().get(i).getFileSize())
+                        /*공지사항은 내용 사진 밖에 없다 1개*/
+                        .fileType(FileType.CONTENT_REPRESENTATIVE)
+                        .fileUuid(noticeRequestDTO.getFiles().get(i).getFileUuid())
+                        .filePath(noticeRequestDTO.getFiles().get(i).getFilePath())
+                        .build());
+            }
+        }
     }
 
     @Override

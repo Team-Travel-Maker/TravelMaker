@@ -21,11 +21,15 @@ public interface NoticeService {
 
     public void noticeDelete(List<Long> ids);
 
+    public void modifyNotice(NoticeRequestDTO noticeRequestDTO);
+
 
     default Notice toEntity(NoticeRequestDTO noticeRequestDTO){
         return Notice.builder()
+                .id(noticeRequestDTO.getId())
                 .noticeTitle(noticeRequestDTO.getNoticeTitle())
                 .noticeContent(noticeRequestDTO.getNoticeContent())
+                .createdDate(noticeRequestDTO.getCreatedDate())
                 .build();
     }
 }

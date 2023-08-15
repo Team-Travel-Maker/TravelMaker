@@ -61,13 +61,11 @@ $(document).ready(function () {
 
     
     function showDetail(result) {
-        let fileName = result.files[0].filePath + "/t_" + result.files[0].fileUuid + "_" + result.files[0].fileName;
-        console.log(result.files[0]);
         noticeText =`
                       <div class="board-info-box">
                         <div class="board-info-title-box" style="position: relative">
                             <span>공지사항 상세보기</span>
-                            <a class="btn-done">수정 하기</a>
+                            <a class="btn-done modify-btn">수정 하기</a>
                         </div>
                         <div class="info-table">
                             <div class="info-member">
@@ -88,13 +86,18 @@ $(document).ready(function () {
                                 <span>${result.updatedDate}</span>
                             </div>
                             <hr />
-                            <div class="info-member">
+                            `
+                            if(result.files.length !=0){
+                                let fileName = result.files[0].filePath + "/t_" + result.files[0].fileUuid + "_" + result.files[0].fileName;
+                                noticeText+= `  <div class="info-member">
                                 <span class="span-bold">내용 이미지</span>
                                 <br>
                                 <!-- 대표 이미지 -->
                                 <span class="notice-image"><img src="/api/files/display?fileName=${fileName}" alt=""></span>
-                            </div>
-                        </div>
+                            </div>`
+                            }
+                           noticeText+= `
+                         </div>
                         <hr />
                         <div class="info-table">
                             <div>${result.noticeContent}</div>
@@ -108,13 +111,10 @@ $(document).ready(function () {
 
 
 //삭제 카운트
-    let count = 0;
     let sizes = [];
     let name = [];
 // 새파일
     let text = "";
-// 화면에 추가하기 위한 변수선언
-    let plusText = "";
 // 파일 인풋
 
     $fileInput.on("change", function () {
@@ -250,5 +250,10 @@ $(document).ready(function () {
         })
     })
 
+    $(document).on("click", ".modify-btn", function () {
+        if(noticeId != ""){
+            location.href = `/admins/notice/modify/${noticeId}`
+        }
+    })
 
 })

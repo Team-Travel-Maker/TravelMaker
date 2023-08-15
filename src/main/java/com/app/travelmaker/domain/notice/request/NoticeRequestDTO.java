@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,10 +13,11 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class NoticeRequestDTO {
-
     private Long id;
     private String noticeTitle;
     private String noticeContent;
+    private LocalDateTime createdDate;
     private List<FileDTO> files = new ArrayList<>();
+    private List<Long> deleteFiles = new ArrayList<>();
 
 }

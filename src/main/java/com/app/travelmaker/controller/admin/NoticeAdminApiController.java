@@ -34,6 +34,12 @@ public class NoticeAdminApiController {
         return noticeService.getListWithPage(pageable);
     }
 
+    @PutMapping("")
+    public void modify(@RequestPart(required = true, value = "noticeRequestDTO") NoticeRequestDTO noticeRequestDTO){
+        noticeService.modifyNotice(noticeRequestDTO);
+    }
+
+
     @GetMapping(path = {"detail/{id}", "modify/{id}"})
     public NoticeResponseDTO detail(@PathVariable Long id){
         return noticeService.detail(id);
