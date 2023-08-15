@@ -26,7 +26,7 @@ import java.io.Serializable;
 @ToString(exclude = "customService")
 @SuperBuilder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@SQLDelete(sql = "UPDATE TBL_CUSTOM_SERVICE_FILE SET DELETED = 1 WHERE ID = ?")
+@SQLDelete(sql = "UPDATE TBL_FILE SET DELETED = 1 WHERE ID = ?")
 public class CustomServiceFile extends File implements Serializable {
 
     /**
@@ -36,15 +36,4 @@ public class CustomServiceFile extends File implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private CustomService customService;
 
-    /**
-     * Custom Service File Status (문의 신고파일  중간 테이블 삭제 상태)
-     * */
-    private boolean deleted = Boolean.FALSE;
-
-
-/*    @Builder
-    public CustomServiceFile(@NotNull String fileName, @NotNull String fileUuid, @NotNull String filePath, @NotNull FileType fileType, @NotNull Long fileSize, CustomService customService) {
-        super(fileName, fileUuid, filePath, fileType, fileSize);
-        this.customService = customService;
-    }*/
 }

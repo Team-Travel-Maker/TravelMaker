@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/admin/admin-board.css">
     <link rel="stylesheet" href="/css/admin/admin-board-proposal.css">
     <link rel="stylesheet" href="/css/admin/admin-common.css">
+    <link rel="stylesheet" href="/css/admin/admin-board-detail.css">
     <link rel="stylesheet" href="/css/admin/modal.css"/>
     <link rel="icon" href="/images/logo/favicon.png">
 
@@ -57,64 +58,9 @@
                         </div>
 
                         <!-- 내용 섹션 -->
-                        <section class="board-info-box-layout">
-                            <div class="board-info-box">
-                                <div class="board-info-title-box">
-                                    <span>문의글</span>
-                                </div>
-                                <div class="info-table">
-                                    <div class="board-title">
-                                        <span class="span-bold">제목 :</span>
-                                        <!-- 제목 -->
-                                        <span>문의글 제목 불러오기</span>
-                                    </div>
-                                    <div class="board-info board-writer">
-                                        <span class="span-bold">작성자 :</span>
-                                        <!-- 작성자 명 -->
-                                        <span>문의 작성자 명 불러오기</span>
-                                    </div>
-                                    <div class="board-info board-register-date">
-                                        <span class="span-bold">작성 날짜 :</span>
-                                        <!-- 작성 날짜 -->
-                                        <span>문의글 작성 날짜 불러오기</span>
-                                    </div>
-                                    <div class="board-info board-register-date">
-                                        <span class="span-bold">문의/신고 :</span>
-                                        <!-- 작성 날짜 -->
-                                        <span>문의인지 신고인지 불러오기</span>
-                                    </div>
-                                    <hr>
-                                    <!-- 작성 내용 -->
-                                    <div class="board-content">문의 내용 불러오기</div>
-                                </div>
-                        </section>
-                        <section class="board-info-box-layout">
-                            <div class="board-info-box">
-                                <div class="board-info-title-box">
-                                    <span>등록 답변</span>
-                                </div>
-                                <div class="info-table">
-                                    <div class="board-info board-register-date">
-                                        <span class="span-bold">작성 날짜 :</span>
-
-                                        <!-- 등록 날짜 -->
-                                        <span>답변 날짜 불러오기</span>
-                                    </div>
-                                    <form  method="post" id="answerModifyForm" name="answerModifyForm">
-                                        <input type="hidden" name="id">
-                                        <hr>
-                                        <!-- 등록 내용 -->
-                                        <div>
-                                            <textarea class="board-content" id="answerContent" name="answerContent">답변했던 내용 불러오기</textarea>
-                                        </div>
-                                        <hr>
-                                        <div>
-                                            <button type="button" class="btn-done">수정</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </section>
+                        <section class="board-info-box-layout"></section>
+                        <!-- 답변 섹션-->
+                        <section class="board-info-box-layout"></section>
                         <div style="height: 50px;"></div>
                     </div>
                 </div>
@@ -124,20 +70,8 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/js/admin/sidemenu.js"></script>
     <script src="/js/admin/modal.js"></script>
-    <script>
-
-        $("button.btn-done").on("click", function(){
-
-            if($("#answerContent").val() == "") {
-                showWarnModal("답변 내용을 입력해주세요.");
-                $("#answerContent").focus();
-                return false;
-            };
-            showWarnModal("수정 되었습니다.");
-            setTimeout(function () {
-                // $("#answerModifyForm").submit();
-            }, 1500);
-        });
+    <script inline="javascript">
+        let customServiceId = [[${customServiceId}]];
     </script>
-
+    <script src="/js/admin/inquiry/modify.js"></script>
 </html>

@@ -2,8 +2,12 @@ package com.app.travelmaker.controller.admin;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @Slf4j
@@ -32,8 +36,12 @@ public class AdminController {
     public void goToNoticeWrite(){;}
 
     //상세
-    @GetMapping("notice/detail")
-    public void goToNoticeDetail(){;}
+    @GetMapping(path = {"notice/detail/{id}", "notice/modify/{id}"})
+    public String goToNoticeDetail(@PathVariable(value = "id", required = true) Long id, Model model, HttpServletRequest request){
+        model.addAttribute("noticeId", id);
+        return "/admins/notice/" + request.getRequestURI().split("/")[3];
+        }
+
     //수정
     @GetMapping("notice/modify")
     public void goToNoticeModify(){;}
@@ -45,9 +53,12 @@ public class AdminController {
     @GetMapping("inquiry/list")
     public void goToInquiryList(){;}
 
-    //상세 답변 미완료
-    @GetMapping("inquiry/detail")
-    public void goToInquiryDetail(){;}
+    //상세 답변 미완료 및 답변 수정
+    @GetMapping(path = {"inquiry/detail/{id}","inquiry/modify/{id}"})
+    public String goToDetail (@PathVariable(required = true) Long id, Model model, HttpServletRequest request){
+        model.addAttribute("customServiceId", id);
+        return "/admins/inquiry/" + request.getRequestURI().split("/")[3];
+    }
 
     //상세 답변 완료된
     @GetMapping("inquiry/answer-detail")
@@ -56,9 +67,6 @@ public class AdminController {
     //답변 작성
     @GetMapping("inquiry/write")
     public void goToInquiryAnswerWrite(){;}
-    //답변 수정
-    @GetMapping("inquiry/modify")
-    public void goToInquiryAnswerModify(){;}
 
 //    커뮤니티 관리
 

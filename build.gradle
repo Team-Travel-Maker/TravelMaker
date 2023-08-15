@@ -20,6 +20,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'net.coobird:thumbnailator:0.4.8'
     implementation 'org.hibernate:hibernate-validator:7.0.5.Final'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'

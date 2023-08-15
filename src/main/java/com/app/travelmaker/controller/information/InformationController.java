@@ -1,9 +1,11 @@
 package com.app.travelmaker.controller.information;
 
-import com.app.travelmaker.domain.cs.CustomServiceDTO;
+import com.app.travelmaker.domain.cs.request.CustomServiceDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -20,8 +22,11 @@ public class InformationController {
     public void goToNoticeList(){;}
 
     // 공지 사항 상세
-    @GetMapping("notice/detail")
-    public void goToNoticeDetail(){;}
+    @GetMapping("notice/detail/{id}")
+    public String goToNoticeDetail(@PathVariable Long id, Model model){
+        model.addAttribute("noticeId", id);
+        return "/informations/notice/detail";
+    }
 
     // 문의 / 신고 등록 화면
     @GetMapping("inquiry/write")

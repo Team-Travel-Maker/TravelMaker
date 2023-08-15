@@ -59,9 +59,7 @@
 
                             <div class="delete-box-layout">
                                 <div class="delete-box">
-                                    <button
-                                            class="deleteButton delete-button"
-                                            onclick="deleteInquiries(getSelectedInquiryIds())">
+                                    <button class="deleteButton delete-button">
                                         삭제하기
                                     </button>
                                 </div>
@@ -84,7 +82,7 @@
                                                 <th>No</th>
                                                 <th>문의 제목</th>
                                                 <th>작성자 명</th>
-                                                <th>작성자 닉네임</th>
+                                                <th>작성자 이메일</th>
                                                 <th>작성 날짜</th>
                                                 <th>문의/신고</th>
                                                 <th>답변 여부</th>
@@ -137,15 +135,6 @@
 
                         <!-- 페이지 부분 -->
                         <div id="paging-wrap">
-                            <a class="member-change-page paging paging-move">
-                                <img src="/images/admin/prev.png" width="15px"></a>
-                            <th:block>
-                                <a class="paging paging-checked">1</a>
-                                <a class="member-change-page paging">2</a>
-                            </th:block>
-                            <a class="member-change-page paging paging-move">
-                                <img src="/images/admin/next.png" width="15px"></a>
-                            <div></div>
                         </div>
                     </div>
                 </div>

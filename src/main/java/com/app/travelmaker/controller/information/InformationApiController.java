@@ -1,19 +1,20 @@
 package com.app.travelmaker.controller.information;
 
 
-import com.app.travelmaker.domain.cs.CustomServiceDTO;
-import com.app.travelmaker.entity.cs.CustomService;
+import com.app.travelmaker.domain.cs.request.CustomServiceDTO;
 import com.app.travelmaker.service.cs.CustomSerivceService;
-import lombok.Generated;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Slice;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @Slf4j
 @RequestMapping("api/informations")
+@Transactional(rollbackFor =Exception.class)
 public class InformationApiController {
 
     private final CustomSerivceService customSerivceService;

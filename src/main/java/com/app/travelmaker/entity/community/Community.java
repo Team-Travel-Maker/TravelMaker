@@ -1,6 +1,7 @@
 package com.app.travelmaker.entity.community;
 
 import com.app.travelmaker.auditing.Period;
+import com.app.travelmaker.constant.CommunityType;
 import com.app.travelmaker.entity.mebmer.Member;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -41,7 +42,8 @@ public class Community extends Period {
     /**
      * Community Category (커뮤니티 카테고리)
      * */
-    @NotNull private String communityCategory;
+    @Enumerated(EnumType.STRING)
+    @NotNull private CommunityType communityCategory;
 
     /**
      * Community Status (커뮤니티 삭제 상태)
