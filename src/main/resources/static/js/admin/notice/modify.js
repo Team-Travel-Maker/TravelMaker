@@ -1,6 +1,8 @@
 $(document).ready(function () {
     const $detailContainer =$('.board-info-box-layout')
 
+    let fileForm = /(.*?)\.(jpg|jpeg|png)$/;
+
     let noticeText =''
     let flag;
     const form = new FormData();
@@ -138,6 +140,11 @@ $(document).ready(function () {
         let text = "";
 
         $fileInput.on("change", function () {
+            if(!$(this).val().match(fileForm)){
+                alert("이미지 파일만 업로드 가능합니다.")
+                return;
+            }
+
             $(this).attr("disabled", true);
             let i = $fileInput.index($(this));
 

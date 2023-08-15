@@ -33,3 +33,8 @@ spring:
       max-request-size: 40MB
       max-file-size: 40MB
       file-size-threshold: 100MB
+
+coolsms:
+  api:
+    key: "NCSAIGM8SGCYHUGE"
+    secret: "IUDYW1NN4DROTS0VHS2IZLAC4GB77FZT"

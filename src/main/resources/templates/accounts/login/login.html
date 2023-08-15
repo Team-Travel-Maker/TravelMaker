@@ -27,7 +27,6 @@
                                       fill="var(--theme-palette-colors-black-100)"></path>
                             </svg>
                         </span></div>
-                    <form>
                         <h1
                             color="var(--theme-palette-colors-black-100)"
                             class="login-h1-comment">하나의 계정으로<br>더욱 편리하게</h1>
@@ -48,13 +47,13 @@
                                 placeholder="이메일을 입력해주세요."
                                 name="email_input"
                                 class="email-input email-format-error-input"
-                                value="">
+                                >
                         </div>
                         <p
                             color="var(--theme-palette-colors-red-400)"
                             class="email-format-error-p">올바른 이메일을 입력해주세요.</p>
                         <button
-                            type="submit"
+                            type="button"
                             data-attribute-id="signupLogin__start"
                             data-method="email"
                             class="continue-email-button"
@@ -145,6 +144,8 @@
                         <p
                             color="var(--theme-palette-colors-gray-600)"
                             class="copyrigth-p">© TravelMaker, Inc.</p>
+                    <form id="join-form" action="/accounts/join/join" method="post">
+                        <input type="hidden" name="memberEmail" id="member-email">
                     </form>
                 </div>
             </div>

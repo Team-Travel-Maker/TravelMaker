@@ -207,6 +207,7 @@ function fn_mbtlnumChk(mbtlnum){
 
 // 인증 번호 눌렀을 때 함수
 $phoneChkBtn.on("click", function(){
+
     console.log("인증번호 버튼 누름");
     // 인증번호 재전송으로 바뀌고 버튼 비활성화 됨
     $("#phone-check-button-span").html("인증번호 재전송");
@@ -226,6 +227,49 @@ $phoneChkBtn.on("click", function(){
     counter = 0;
     setinterval = setInterval(timeIt, 1200);
     joinBtnCheck()
+
+   /* const to = $('#mobile').val();
+
+    $.ajax ({
+        url: '/api/accounts/check/sendSMS',
+        type: 'GET',
+        data: {
+            "to" : to
+        },
+        success: function(data) {
+            const checkNum = data;
+            $codeChkBtn.on('click', function () {
+                const userNum = $chkCode.val();
+                if(checkNum === userNum) {
+                    $chkTimeInP.hide();
+                    $chkTimeInTimeP.hide();
+                    $chkTimeOutP.hide();
+                    $chkTimeOutTimeP.hide();
+                    $chkCodeWrongP.hide();
+                    $chkCodeOkP.show();
+                    $phoneChkBtn.attr("disabled", true);
+                    $chkCode.attr("disabled", true);
+                    $codeChkBtn.attr("disabled", true);
+                    // 인증 시간 초기화
+                    clearInterval(setinterval);
+                    counter = 0;
+                    showWarnModal("인증에 성공하셨습니다")
+                }
+                else {
+                    $chkTimeInP.hide();
+                    $chkTimeInTimeP.hide();
+                    $chkTimeOutP.hide();
+                    $chkTimeOutTimeP.show();
+                    $chkCodeWrongP.show();
+                    showWarnModal('인증 실패하였습니다. 다시 입력해주세요.')
+                }
+                joinBtnCheck()
+            });
+
+        }
+    });*/
+
+
 })
 
 // 인증 번호 입력란 유효성 검사
@@ -569,9 +613,67 @@ function joinBtnCheck() {
     }
 }
 
+
+let member = {};
+
+
+
 $joinBtn.on('click', function () {
-    showWarnModal("회원가입이 정상적으로 처리 되었습니다.");
-    setTimeout(function () {
-        // $("#answerWriteForm").submit();
-    }, 1500);
+    member.memberEmail = $('#email').val();
+    member.memberName = $('#join-name').val();
+    if($('.join-member-type-button').eq(0).hasClass('is-selected')){
+        member.memberRole = "GENERAL"
+    }else{
+        member.memberRole = "COMPANY"
+    }
+    member.postCode = $('#zip-code').val()
+    member.address = $('#address').val()
+    member.addressDetail = $('#address-detail').val()
+    member.memberPw = $('#password').val();
+    member.memberPhone = $('#mobile').val();
+    if($('.marketing-agree-checkbox-span').css("display") == "none"){
+        member.emailBenefitEvent = false
+        member.emailSuggestion = false
+        member.snsBenefitEvent = false
+    }else{
+        member.emailBenefitEvent = true
+        member.emailSuggestion = true
+        member.snsBenefitEvent = true
+    }
+
+    joinService.join(member,success);
+
+
 })
+
+
+
+let joinService = (function () {
+    function join(member, callback) {
+        $.ajax({
+            url: `/api/accounts/join`,
+            type: `post`,
+            data : member,
+            async: false,
+            success: function(){
+                if(callback) callback();
+            },
+            error : function () {
+                alert("알수 없는 오류")
+            }
+        })
+
+    }
+    return {join : join}
+})()
+
+function success() {
+    showWarnModal("회원가입이 정상적으로 처리 되었습니다.");
+    $('.modal').on("click", function () {
+        location.href=`/accounts/login/login`;
+    })
+}
+
+
+
+
