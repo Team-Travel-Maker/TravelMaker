@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko_KR">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -38,7 +38,7 @@
                             <div class="pass-logo-right"></div>
                         </div>
                         <div class="pass-body-container">
-                            <form>
+                            <form  name="login" action="/accounts/password/input" method="post">
                                 <div class="pass-body-label-container">
                                     <label
                                         color="var(--theme-palette-colors-gray-600)"
@@ -46,6 +46,7 @@
                                         class="pass-label">비밀번호</label>
                                 </div>
                                 <div class="pass-input-container pass-mode">
+                                    <input id="email_input" type="hidden" name="email_input">
                                     <input
                                         id="password"
                                         type="password"
@@ -136,5 +137,11 @@
         </div>
     </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script th:inline="javascript">
+    let memberEmail = [[${memberEmail}]];
+    console.log(memberEmail);
+    $('#email_input').val(memberEmail);
+    console.log($('#email_input').val())
+</script>
 <script src="/js/login/pass.js"></script>
 </html>

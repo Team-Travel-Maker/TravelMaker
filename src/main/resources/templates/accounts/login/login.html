@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -41,13 +41,15 @@
                                     for="email_input"
                                     class="email-label">이메일</label>
                             </div>
+                            <form name="login" action="/accounts/login/login" method="post">
                             <input
                                 id="email_input"
                                 type="email"
                                 placeholder="이메일을 입력해주세요."
-                                name="email_input"
+                                name="memberEmail"
                                 class="email-input email-format-error-input"
                                 >
+                            </form>
                         </div>
                         <p
                             color="var(--theme-palette-colors-red-400)"

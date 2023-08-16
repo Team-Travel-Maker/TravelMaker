@@ -6,10 +6,12 @@ import com.app.travelmaker.domain.member.request.MemberRequestDTO;
 import com.app.travelmaker.embeddable.address.Address;
 import com.app.travelmaker.embeddable.alarm.Alarm;
 import com.app.travelmaker.entity.mebmer.Member;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
-public interface MemberService {
+public interface MemberService extends UserDetailsService {
 
-    public void join(MemberRequestDTO memberRequestDTO);
+    public void join(MemberRequestDTO memberRequestDTO, PasswordEncoder passwordEncoder);
 
     public boolean checkId(String memberEmail);
 

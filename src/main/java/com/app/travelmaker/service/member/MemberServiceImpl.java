@@ -2,12 +2,16 @@ package com.app.travelmaker.service.member;
 
 import com.app.travelmaker.domain.member.request.MemberRequestDTO;
 import com.app.travelmaker.entity.mebmer.Member;
+import com.app.travelmaker.provider.MemberDetail;
 import com.app.travelmaker.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -23,7 +27,8 @@ public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
 
     @Override
-    public void join(MemberRequestDTO memberRequestDTO) {
+    public void join(MemberRequestDTO memberRequestDTO, PasswordEncoder passwordEncoder) {
+        memberRequestDTO.setMemberPw(passwordEncoder.encode(memberRequestDTO.getMemberPw()));
         memberRepository.save(toEntity(memberRequestDTO));
     }
 
@@ -33,6 +38,17 @@ public class MemberServiceImpl implements MemberService {
         Optional<Member> foundMemberEmail = memberRepository.findByMemberEmail(memberEmail);
         foundMemberEmail.ifPresentOrElse((member) -> checkResult.set(true),()-> checkResult.set(false));
         return checkResult.get();
+    }
+
+    //    spring security에서 DBMS의 회원 정보를 가져올 때 사용될 메소드
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Member member = memberRepository.findByMemberEmail(username).orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
+        return MemberDetail.builder()
+                .memberId(member.getMemberEmail())
+                .memberPassword(member.getMemberPw())
+                .memberRole(member.getMemberRole())
+                .build();
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.app.travelmaker.repository.member.MemberRepository;
 import com.app.travelmaker.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class AccountApiController {
 
     private final MemberService memberService;
+    private final PasswordEncoder passwordEncoder;
 
     /*아이디 중복 체크*/
     @PostMapping("check")
@@ -32,7 +34,7 @@ public class AccountApiController {
     @PostMapping("join")
     public void join(MemberRequestDTO memberRequestDTO){
         log.info(memberRequestDTO.toString());
-        memberService.join(memberRequestDTO);
+        memberService.join(memberRequestDTO, passwordEncoder);
     }
 
 
