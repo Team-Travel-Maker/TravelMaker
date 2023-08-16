@@ -80,7 +80,10 @@ $passModeInput.find('input').on("input", function () {
 
 // 다음 버튼 눌렀을 때 비번이 다르면 에러 입력창과 에러 메세지
 $nextBtn.on("click", function () {
-    console.log("다음 버튼 클릭")
+
+    document.login.submit();
+
+/*    console.log("다음 버튼 클릭")
     console.log($testPass);
     console.log($passModeInput.find('input').val());
     if ($testPass == $passModeInput.find('input').val()
@@ -110,7 +113,7 @@ $nextBtn.on("click", function () {
         $wrongPassMsg.hide();
         $overTimeMsg.show();
         $nextBtn.attr("disabled", true);
-    }
+    }*/
 })
 
 

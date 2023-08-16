@@ -62,7 +62,8 @@ $(document).ready(function () {
                     $('#join-form').submit();
                 }else{
                     /*아이디 있음*/
-                    location.href =`/accounts/password/input`
+                    document.login.submit();
+                    /*location.href =`/accounts/password/input`*/
                 }
             }
         })

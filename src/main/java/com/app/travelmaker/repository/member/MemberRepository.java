@@ -12,4 +12,6 @@ public interface MemberRepository extends JpaRepository<Member, Long>, MemberDSL
 
     public Optional<Member> findByMemberEmail(String memberEmail);
 
+    //    아이디로 전체 정보 조회
+
 }

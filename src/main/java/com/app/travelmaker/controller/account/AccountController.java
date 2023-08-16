@@ -3,9 +3,7 @@ package com.app.travelmaker.controller.account;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -16,6 +14,14 @@ public class AccountController {
     //로그인
     @GetMapping("login/login")
     public void goToLogin(){;}
+
+    @PostMapping("login/login")
+    public String processUsername(String memberEmail, RedirectAttributes redirectAttributes) {
+        log.info(memberEmail);
+        redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
+        return "redirect:/accounts/password/input"; // 비밀번호 입력 페이지로 리다이렉트
+    }
+
 
     //회원 가입
     @PostMapping("join/join")
@@ -43,9 +49,13 @@ public class AccountController {
     @GetMapping("password/input")
     public void goToPassword(){;}
 
+
+
     //비밀번호 재설정 이메일 전송 확인 화면
     @GetMapping("password/email")
     public void goToPasswordEmail(){;}
+
+
 
     //비밀번호 재설정 화면
     @GetMapping("password/reset")
