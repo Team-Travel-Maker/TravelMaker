@@ -15,7 +15,7 @@ import java.util.Enumeration;
 
 @Component
 public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHandler {
-    private static String uri = "/main/main";
+    private static String path = "/main/main";
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -25,21 +25,13 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
 
         // 있을 경우 URI 등 정보를 가져와서 사용
         if (savedRequest != null) {
-            uri = savedRequest.getRedirectUrl();
-
+            String anotherPath = savedRequest.getRedirectUrl();
             // 세션에 저장된 객체를 다 사용한 뒤에는 지워줘서 메모리 누수 방지
             requestCache.removeRequest(request, response);
-
-            System.out.println(uri);
+            response.sendRedirect(anotherPath);
+            return;
         }
-
-        // 세션 Attribute 확인
-        Enumeration<String> list = request.getSession().getAttributeNames();
-        while (list.hasMoreElements()) {
-            System.out.println(list.nextElement());
-        }
-
-        response.sendRedirect(uri);
+        response.sendRedirect(path);
     }
 
 }

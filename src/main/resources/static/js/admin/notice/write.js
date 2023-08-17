@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    let fileForm = /(.*?)\.(jpg|jpeg|png)$/;
+    let fileForm = /\.(jpg|gif|tif|bmp|png)$/i;
 
     const $detailContainer = $('.board-info-box-layout');
 

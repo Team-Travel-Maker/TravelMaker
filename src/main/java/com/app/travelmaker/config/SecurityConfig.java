@@ -16,6 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
@@ -40,6 +41,7 @@ public class SecurityConfig {
 
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
     private final AuthenticationFailureHandler authenticationFailureHandler;
+    private final LogoutSuccessHandler logoutSuccessHandler;
 
 
 /*    private final UserDetailsService userDetailsService;*/
@@ -83,7 +85,7 @@ public class SecurityConfig {
                 .failureHandler(authenticationFailureHandler) // 인증 실패 시 핸들러
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher(LOGOUT_PATH)) // logout 요청 경로를 가로챈다.
-                .logoutSuccessUrl(LOGIN_PAGE) // logout 성공 시 이동할 경로 작성
+                .logoutSuccessHandler(logoutSuccessHandler) // logout 성공 시 이동할 경로 작성
                 .invalidateHttpSession(Boolean.TRUE)
                 .and()
                 .csrf().disable()
