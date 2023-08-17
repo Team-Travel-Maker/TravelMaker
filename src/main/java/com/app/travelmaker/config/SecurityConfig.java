@@ -24,11 +24,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Slf4j
 public class SecurityConfig {
     private static final String FAVICON_PATH = "/favicon.ico";
-    private static final String MAIN_PATH = "/main/**";
+    /*private static final String MAIN_PATH = "/main/**";*/
+        /*문의 글 쓰기*/
+    private static final String INFORMATION_PATH = "/informations/inquiry/write"; 
     private static final String ADMIN_PATH = "/admins/**";
     private static final String LOGIN_PAGE = "/accounts/login/login";
     private static final String LOGIN_PAGE2 = "/accounts/password/input";
-    private static final String LOGOUT_PATH = "/member/logout";
+    private static final String LOGOUT_PATH = "/accounts/logout";
 
     private static final String REMEMBER_ME_TOKEN_KEY = "hava a nice day";
     private static final int REMEMBER_ME_TOKEN_EXPIRED = 60 * 60 * 24 * 14;
@@ -86,9 +88,8 @@ public class SecurityConfig {
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers(MAIN_PATH).authenticated() // 보안 검사를 하겠다.
                 .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name()) //ADMIN 권한이 있는 회원은 접근 가능
-                .antMatchers(MAIN_PATH).hasAnyRole(Role.ADMIN.name(), Role.GENERAL.name(), Role.COMPANY.name()); //3 중 아무나
+                .antMatchers(INFORMATION_PATH).hasAnyRole(Role.ADMIN.name(), Role.GENERAL.name(), Role.COMPANY.name()); //3 중 아무나
     /*            .and()
                 .oauth2Login()
                 .userInfoEndpoint();*/

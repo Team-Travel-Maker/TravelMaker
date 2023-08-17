@@ -1,16 +1,23 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleag.org">
+<html lang="en" xmlns:th="http://www.thymeleag.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/common.css">
     <link rel="stylesheet" href="/css/main/main.css">
     <link rel="stylesheet" href="/css/header/header.css">
     <link rel="stylesheet" href="/css/footer/footer.css">
-    <title>Document</title>
+    <link rel="icon" href="/images/logo/favicon.png">
+    <title>Travel Maker</title>
 </head>
 <body>
     <main>
-        <div th:replace="~{header/header :: #header}"></div>
+        <th:block sec:authorize="!isAuthenticated()">
+            <div  th:replace="~{header/header :: #header}"></div>
+        </th:block>
+        <th:block sec:authorize="isAuthenticated()">
+            <div  th:replace="~{header/signedin-header :: #signedin-header}"></div>
+        </th:block>
         <section class="section">
             <div class="top-banner">
                 <button class="arrow top-banner-prev-button">
