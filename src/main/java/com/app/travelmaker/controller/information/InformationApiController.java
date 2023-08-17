@@ -1,6 +1,7 @@
 package com.app.travelmaker.controller.information;
 
 
+import com.app.travelmaker.common.CommonSupport;
 import com.app.travelmaker.domain.cs.request.CustomServiceDTO;
 import com.app.travelmaker.service.cs.CustomSerivceService;
 import lombok.RequiredArgsConstructor;
@@ -15,13 +16,14 @@ import java.util.List;
 @Slf4j
 @RequestMapping("api/informations")
 @Transactional(rollbackFor =Exception.class)
-public class InformationApiController {
+public class InformationApiController extends CommonSupport {
 
     private final CustomSerivceService customSerivceService;
 
 
     @PostMapping("")
     public void write(@RequestPart(required = true, value = "customServiceDTO") CustomServiceDTO customServiceDTO){
+        customServiceDTO.setMember(authenticationInfo());
         customSerivceService.register(customServiceDTO);
     }
 

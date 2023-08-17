@@ -1,7 +1,7 @@
 $(document).ready(function () {
     const $detailContainer =$('.board-info-box-layout')
 
-    let fileForm = /(.*?)\.(jpg|jpeg|png)$/;
+    let fileForm = /\.(jpg|gif|tif|bmp|png)$/i;
 
     let noticeText =''
     let flag;

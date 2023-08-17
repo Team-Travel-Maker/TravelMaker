@@ -49,10 +49,6 @@ public class CustomSerivceServiceImpl implements CustomSerivceService {
 
     @Override
     public void register(CustomServiceDTO customServiceDTO) {
-        /*나중에 세션으로 대체*/
-        memberRepository.findById(1L).ifPresent(member -> {
-            customServiceDTO.setMember(member);
-        });
 
         Long id = customServiceRepository.save(toEntity(customServiceDTO)).getId();
 

@@ -12,27 +12,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/information/notice-list.css"/>
     <link rel="stylesheet" href="/css/footer/footer.css">
+    <link rel="icon" href="/images/logo/favicon.png">
 </head>
 <body class="helpcenter-enable">
 
-<header class="header">
-    <div class="header-inner container">
-        <div class="row">
-            <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="logo" style="padding: 0px 0px 12px;">
-                    <a href="#">
-                        <img src="//theme.zdassets.com/theme_assets/9309779/480a35976bf401a88dd7388d8f5c19d77227cd35.png"
-                             alt="원티드로고" id="heder_logo_image">
-                    </a>
-                    <a href="#">
-                        <img src="//theme.zdassets.com/theme_assets/9309779/e5142629ce02b25eae55476f21e3ad5525958812.png"
-                             alt="고객센터로고" id="heder_logo_image">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+<div  th:replace="~{informations/header/informations-sub-header :: #sub-header}"></div>
 
 <main role="main">
     <section class="breadcrumb"></section>

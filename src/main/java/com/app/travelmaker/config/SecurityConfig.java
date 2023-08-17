@@ -16,6 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
@@ -24,11 +25,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Slf4j
 public class SecurityConfig {
     private static final String FAVICON_PATH = "/favicon.ico";
-    private static final String MAIN_PATH = "/main/**";
+    /*private static final String MAIN_PATH = "/main/**";*/
+        /*문의 글 쓰기*/
+    private static final String INFORMATION_PATH = "/informations/inquiry/write"; 
     private static final String ADMIN_PATH = "/admins/**";
     private static final String LOGIN_PAGE = "/accounts/login/login";
     private static final String LOGIN_PAGE2 = "/accounts/password/input";
-    private static final String LOGOUT_PATH = "/member/logout";
+    private static final String LOGOUT_PATH = "/accounts/logout";
 
     private static final String REMEMBER_ME_TOKEN_KEY = "hava a nice day";
     private static final int REMEMBER_ME_TOKEN_EXPIRED = 60 * 60 * 24 * 14;
@@ -38,6 +41,7 @@ public class SecurityConfig {
 
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
     private final AuthenticationFailureHandler authenticationFailureHandler;
+    private final LogoutSuccessHandler logoutSuccessHandler;
 
 
 /*    private final UserDetailsService userDetailsService;*/
@@ -81,14 +85,13 @@ public class SecurityConfig {
                 .failureHandler(authenticationFailureHandler) // 인증 실패 시 핸들러
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher(LOGOUT_PATH)) // logout 요청 경로를 가로챈다.
-                .logoutSuccessUrl(LOGIN_PAGE) // logout 성공 시 이동할 경로 작성
+                .logoutSuccessHandler(logoutSuccessHandler) // logout 성공 시 이동할 경로 작성
                 .invalidateHttpSession(Boolean.TRUE)
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers(MAIN_PATH).authenticated() // 보안 검사를 하겠다.
                 .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name()) //ADMIN 권한이 있는 회원은 접근 가능
-                .antMatchers(MAIN_PATH).hasAnyRole(Role.ADMIN.name(), Role.GENERAL.name(), Role.COMPANY.name()); //3 중 아무나
+                .antMatchers(INFORMATION_PATH).hasAnyRole(Role.ADMIN.name(), Role.GENERAL.name(), Role.COMPANY.name()); //3 중 아무나
     /*            .and()
                 .oauth2Login()
                 .userInfoEndpoint();*/
