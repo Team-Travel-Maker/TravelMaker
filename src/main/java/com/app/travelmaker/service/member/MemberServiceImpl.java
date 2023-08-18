@@ -9,12 +9,19 @@ import lombok.extern.slf4j.Slf4j;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -40,16 +47,35 @@ public class MemberServiceImpl implements MemberService {
         return checkResult.get();
     }
 
+
     //    spring security에서 DBMS의 회원 정보를 가져올 때 사용될 메소드
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Member member = memberRepository.findByMemberEmail(username).orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
+        Member member = memberRepository.findByMemberEmail(username).orElseThrow(() -> new BadCredentialsException(username + " not found"));
+
+        if(member.isDeleted()){throw new InternalAuthenticationServiceException("탈퇴한 회원입니다.");};
+
         return MemberDetail.builder()
                 .id(member.getId())
                 .memberId(member.getMemberEmail())
                 .memberPassword(member.getMemberPw())
                 .memberRole(member.getMemberRole())
                 .build();
+    }
+
+    @Override
+    public Page<Member> getList(Pageable pageable) {
+        return memberRepository.getList(pageable);
+    }
+
+    @Override
+    public void modifyStatus(List<Long> ids) {
+        ids.forEach(id ->memberRepository.modifyStatus(id));
+    }
+
+    @Override
+    public void modifyType(List<Long> ids) {
+        ids.forEach(id ->memberRepository.modifyType(id));
     }
 
     @Override

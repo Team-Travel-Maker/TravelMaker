@@ -13,8 +13,15 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <link rel="stylesheet" href="/css/login/login-common.css">
     <link rel="stylesheet" href="/css/login/login.css">
+    <link rel="stylesheet" href="/css/admin/modal.css" />
 </head>
 <body style="overflow: unset;">
+<!-- 모달 부분 -->
+<div class="modal">
+    <div class="warn-modal">
+        <div id="content-wrap"></div>
+    </div>
+</div>
 <div id="login__next">
     <div class="login-div1">
         <div class="login-div2">
@@ -155,6 +162,17 @@
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="/js/admin/modal.js"></script>
+<script th:inline="javascript">
+    let error = [[${error}]];
+    let exception = [[${exception}]];
+    if(error){
+        if(exception == "error1"){showWarnModal("아이디 또는 비밀번호를 잘못 입력했습니다.")}
+        else if(exception == "error2"){showWarnModal("탈퇴된 계정입니다")}
+        else{ showWarnModal("알 수 없는 오류입니다.")}
+
+    }
+</script>
 <script src="/js/login/login.js"></script>
 </body>
 </html>

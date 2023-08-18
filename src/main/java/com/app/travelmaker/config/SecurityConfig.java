@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationDetailsSource;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -25,13 +26,13 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Slf4j
 public class SecurityConfig {
     private static final String FAVICON_PATH = "/favicon.ico";
-    /*private static final String MAIN_PATH = "/main/**";*/
         /*문의 글 쓰기*/
     private static final String INFORMATION_PATH = "/informations/inquiry/write"; 
     private static final String ADMIN_PATH = "/admins/**";
     private static final String LOGIN_PAGE = "/accounts/login/login";
     private static final String LOGIN_PAGE2 = "/accounts/password/input";
     private static final String LOGOUT_PATH = "/accounts/logout";
+    private static final String LOGOUT_SUCCESS_PATH = "/main/main";
 
     private static final String REMEMBER_ME_TOKEN_KEY = "hava a nice day";
     private static final int REMEMBER_ME_TOKEN_EXPIRED = 60 * 60 * 24 * 14;
@@ -40,8 +41,7 @@ public class SecurityConfig {
     private final AuthenticationEntryPoint authenticationEntryPoint;
 
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
-    private final AuthenticationFailureHandler authenticationFailureHandler;
-    private final LogoutSuccessHandler logoutSuccessHandler;
+    private final AuthenticationFailureHandler customAuthenticationFailureHandler;
 
 
 /*    private final UserDetailsService userDetailsService;*/
@@ -82,11 +82,11 @@ public class SecurityConfig {
                 .loginProcessingUrl(LOGIN_PAGE2) // 로그인 과정 중간 페이지 이 페이지에서 파라미터 2개 넘겨서 성공하면 인증완료
                 .passwordParameter("password")
                 .successHandler(authenticationSuccessHandler) // 인증 성공 시 핸들러
-                .failureHandler(authenticationFailureHandler) // 인증 실패 시 핸들러
+                .failureHandler(customAuthenticationFailureHandler) // 인증 실패 시 핸들러
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher(LOGOUT_PATH)) // logout 요청 경로를 가로챈다.
-                .logoutSuccessHandler(logoutSuccessHandler) // logout 성공 시 이동할 경로 작성
                 .invalidateHttpSession(Boolean.TRUE)
+                .logoutSuccessUrl(LOGOUT_SUCCESS_PATH)
                 .and()
                 .csrf().disable()
                 .authorizeRequests()

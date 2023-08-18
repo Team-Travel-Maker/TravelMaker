@@ -38,6 +38,7 @@ public class AccountApiController {
     }
 
 
+
     @GetMapping("/check/sendSMS")
     public String sendSMS(String to) {
         return memberService.certifiedPhoneNumber(to);

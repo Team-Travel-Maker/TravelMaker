@@ -29,9 +29,9 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
             // 세션에 저장된 객체를 다 사용한 뒤에는 지워줘서 메모리 누수 방지
             requestCache.removeRequest(request, response);
             response.sendRedirect(anotherPath);
-            return;
+        }else{
+            response.sendRedirect(path);
         }
-        response.sendRedirect(path);
     }
 
 }
