@@ -1,5 +1,6 @@
 package com.app.travelmaker.service.mypage.company;
 
+import com.app.travelmaker.common.CommonSupport;
 import com.app.travelmaker.domain.mypage.company.StoreDTO;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.entity.store.Store;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class StoreServiceImpl implements StoreService {
+public class StoreServiceImpl extends CommonSupport implements StoreService {
 
     private final StoreRepository storeRepository;
     private final StoreFileRepository storeFileRepository;
@@ -26,8 +27,9 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public void addStore(StoreDTO request) {
         // 세션으로 가져오기
-        Member member = memberRepository.findById(32L)
-                .orElseThrow(() -> new RuntimeException("사용자 없음 에러 발생"));
+//        Member member = memberRepository.findById(32L)
+//                .orElseThrow(() -> new RuntimeException("사용자 없음 에러 발생"));
+        Member member = authenticationInfo();
 
         // 업체 등록하기
         Store store = storeRepository.save(toStoreEntity(request, member));
@@ -42,8 +44,10 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public List<StoreDTO> getAllStore() {
         // 세션으로 가져오기
-        Member member = memberRepository.findById(32L)
-                .orElseThrow(() -> new RuntimeException("사용자 없음 에러 발생"));
+//        Member member = memberRepository.findById(32L)
+//                .orElseThrow(() -> new RuntimeException("사용자 없음 에러 발생"));
+
+        Member member = authenticationInfo();
         return storeRepository.getAllStore(member.getId());
     }
 
