@@ -140,10 +140,10 @@ $submitBtn.on("click", function () {
         error: function () {
             alert("통신실패!!!!");
         },
-        success: function(data){
+        success: function(url){
             showWarnModal("업체 등록이 완료되었습니다.")
             $(".modal").on("click", function () {
-                location.href = data
+                location.href = url
             })
             console.log("성공")
         }

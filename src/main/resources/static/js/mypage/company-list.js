@@ -87,9 +87,6 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '.store-tr', function(e) {
-        //const thisContent = $(this).closest("tr").find('.content-box').find("div");
-        //const thisContent = $(this);
-
         console.log($(this).attr("id"));
         window.location.href = "/mypage/company/edit?storeId="+$(this).attr("id");
     })
@@ -114,56 +111,17 @@ $(document).ready(function () {
             type: "DELETE", //전송방식을 지정한다 (POST,GET)
             url: "/api/myPages/store",
             data: {"storeIdList" : JSON.stringify(selectedValues)},
-            dataType: "json",
+            dataType: "text",
             error: function () {
                 alert("통신실패!!!!");
             },
-            success: function (stores) {
-                let text = "";
-                console.log("통신성공" + "OK");
-                console.log(stores);
-                if (stores.length > 0) {
-                    $.each(stores, function (i) {
-                        allId.push(stores[i].id+"");
-                        text += '<tr id="' +
-                            stores[i].id +
-                            '"' +
-                            '           >\n' +
-                            '        <td class="checkbox-line">\n' +
-                            '            <input type="checkbox" class="storeCheckbox" name="check">\n' +
-                            '        </td>\n' +
-                            '        <td>\n' +
-                            stores[i].storeTitle +
-                            '           \n' +
-                            '        </td>\n' +
-                            '        <td>' +
-                            stores[i].storeType.name +
-                            '        </td>\n' +
-                            '        <td>' +
-                            stores[i].address.address +
-                            '        <br>\n' +
-                            stores[i].address.addressDetail.split("|")[1] +
-                            '        </td>\n' +
-                            '        <td>' +
-                            stores[i].updatedDate.replace("T", " ").replace(/\..*/,'') +
-                            '        </td>\n' +
-                            '        <td>' +
-                            stores[i].storeStatus.name +
-                            '        </td>\n' +
-                            '        <td class="image-wrap">\n' +
-                            '            <img src="/files/' +
-                            stores[i].files[0].filePath + "/" +
-                            stores[i].files[0].fileUuid + "_" +
-                            stores[i].files[0].fileName +
-                            '           " style="width: 100px; height: 100px">\n' +
-                            '        </td>\n' +
-                            '    </tr>';
-                    })
-                } else {
-                    text += "등록한 업체가 존재하지 않습니다."
-                }
-
-                $storeList.html(text);
+            success: function(url){
+                console.log(url)
+                showWarnModal("선택한 업체가 삭제되었습니다.")
+                $(".modal").on("click", function () {
+                    location.href = url
+                })
+                console.log("통신성공" + "OK")
             }
         });
     })
