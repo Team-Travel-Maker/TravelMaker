@@ -1,4 +1,4 @@
-package com.app.travelmaker.domain.mypage;
+package com.app.travelmaker.domain.mypage.my;
 
 import com.app.travelmaker.domain.shop.GiftCardFileDTO;
 import lombok.AllArgsConstructor;
