@@ -23,9 +23,6 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         String errorMessage;
 
-        logger.info(exception.getClass());
-        logger.info(exception.toString());
-
         /** error1 : 아이디 비밀번호 틀림*/
         if(exception instanceof BadCredentialsException){errorMessage = "error1";}
         /** error2 : 탈퇴 계정*/

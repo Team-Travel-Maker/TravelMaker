@@ -13,6 +13,7 @@ $(document).ready(function () {
 
     let deleteIds = [];
 
+
     /*실제 페이지*/
     let page = 0;
     /*화면 페이지*/
@@ -30,9 +31,13 @@ $(document).ready(function () {
 
 
     let customService = (function () {
-        function getList(callback, page){
+        function getList(callback, page, keyword){
+            let path = ``;
+            if(keyword){path=`/api/admins/inquiry/list?page=`+page +`&keyword=` + keyword}
+            else{path =`/api/admins/inquiry/list?page=`+page}
+
             $.ajax({
-                url: `/api/admins/inquiry/list?page=`+page,
+                url: path,
                 type: `get`,
                 async: false,
                 success: function(result){
@@ -62,7 +67,7 @@ $(document).ready(function () {
     })();
 
 
-    customService.getList(showList, page);
+    customService.getList(showList, page, "");
     function showList(result) {
         $inquiryListContainer.html('');
         $pagingWrap.html('');
@@ -169,6 +174,13 @@ $(document).ready(function () {
         showWarnModal("삭제되었습니다");
     })
 
+    $(".search-input").keydown(function(e) {
+        if( e.keyCode == 13 ){
+           let keyword= $(this).val();
+            console.log(keyword);
+            customService.getList(showList,0,keyword);
+        }
+    });
 
 
 })

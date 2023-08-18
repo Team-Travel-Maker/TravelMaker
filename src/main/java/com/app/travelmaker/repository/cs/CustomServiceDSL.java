@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface CustomServiceDSL {
 
-    public Page<CustomServiceResponseDTO> getListWithPage(Pageable pageable);
+    public Page<CustomServiceResponseDTO> getListWithPage(Pageable pageable, String keyword);
 
     public Optional<CustomServiceResponseDTO> detail(Long id);
 }
