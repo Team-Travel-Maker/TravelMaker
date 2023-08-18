@@ -51,7 +51,6 @@ table {
 }
 
 .info-table {
-	padding: 20px 20px 0px 20px;
 	margin: 0 auto;
 }
 
@@ -197,4 +196,15 @@ div#paging-wrap {
 	display: flex;
 	padding: 15px;
 	justify-content: center;
+}
+
+.search-input{
+	box-shadow: 2px 2px 7px -2px grey;
+	font-family: 'GmarketSansMedium';
+	border: none;
+	width: 450px;
+	padding: 11px;
+	height: 50px;
+	background-color: #fff;
+	font-weight: bold;
 }

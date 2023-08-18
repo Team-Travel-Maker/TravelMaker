@@ -12,55 +12,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/information/main.css"/>
     <link rel="stylesheet" href="/css/footer/footer.css">
+    <link rel="icon" href="/images/logo/favicon.png">
 </head>
 <body class="helpcenter-enable">
 <div></div>
-<header class="header ">
-    <div class="header-inner container clearfix">
-        <div class="row">
-            <div class="col-md-3 col-sm-4 col-xs-12">
-                <div class="logo">
-                    <a href="https://www.wanted.co.kr">
-                        <img src="//theme.zdassets.com/theme_assets/9309779/480a35976bf401a88dd7388d8f5c19d77227cd35.png"
-                             alt="원티드로고" id="heder_logo_image">
-                    </a>
-                    <a href="https://help.wanted.co.kr/hc/ko">
-                        <img src="//theme.zdassets.com/theme_assets/9309779/e5142629ce02b25eae55476f21e3ad5525958812.png"
-                             alt="고객센터로고" id="heder_logo_image">
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-9 col-sm-8 col-xs-12" id="header-request-btn">
-                <nav class="primary-menu menu">
-                    <div class="container-menu">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-target=".navbar-mind-collapse"
-                                    onclick="location.href='#';">
-                                <img src="/images/information/문의신고버튼.png"
-                                     id="request_btn_img">
-                            </button>
-                        </div>
-                        <div class="row">
-                            <div class="navbar-collapse navbar-mind-collapse main-menu collapse pull-right"
-                                 style="padding-right: 13px;">
-                                <ul id="drophover" class="nav navbar-nav primary-menu-list-wrap">
-                                    <li style="border:1px solid #f5f5f5;border-radius:30px;text-align: center;background-color:#3366FF">
-                                        <a href="#"
-                                           style="padding:11px 40px 10px 40px;color: #FFFFFF !important;font-weight: 600;">
-                                            문의·신고
-                                            <img src="/images/information/문의신고버튼.png"
-                                                 alt="requests_icon">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </div>
-</header>
+<div  th:replace="~{informations/header/informations-main-header :: #main-header}"></div>
 
 <main role="main">
     <style>

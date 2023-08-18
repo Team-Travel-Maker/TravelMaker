@@ -82,20 +82,23 @@ $(document).ready(function () {
                             <!-- 작성 날짜 -->
                             <span>${result.csType.name}</span>
                         </div>
+                        <div class="board-info">
+                            <span class="span-bold">첨부 파일 :</span>
                         `
             if(result.files.length > 0){
                 result.files.forEach(file => {
                     console.log(file);
                     csText +=`
-                        <div class="board-info">
-                            <span class="span-bold">문의 파일 다운로드 :</span>
                             <!--파일-->
-                            <span style="color:blue"><a href="/api/cs/files/download/${file.id}">${file.fileName}</a></span>
-                        </div>
+                            <br>
+                            <span style="color:blue"><a href="/api/files/download/${file.id}">${file.fileName}</a></span>
                          `
                 })
+            }else{
+           csText+= `<span>파일 없음</span>`
             }
             csText +=   `
+                        </div>
                         <hr>
                         <!-- 작성 내용 -->
                         <div class="board-content">${result.csContent}</div>

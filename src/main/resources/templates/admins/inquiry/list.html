@@ -48,7 +48,7 @@
                                     <div class="search-container">
                                         <!-- 검색창 -->
                                         <div class="search-input-container">
-                                            <input class="search-input deleteButton delete-button" type="search" name="keyword" placeholder="제목, 이름 또는 닉네임을 입력하세요" style="width: 450px; padding: 11px;">
+                                            <input class="search-input" type="search" name="keyword" placeholder="제목, 이름 또는 닉네임을 입력하세요" style="width: 450px; padding: 11px;">
                                         </div>
                                         <!-- 검색 버튼 누르기 -->
                                         <button style="display: none" type="submit"></button>
@@ -59,9 +59,7 @@
 
                             <div class="delete-box-layout">
                                 <div class="delete-box">
-                                    <button
-                                            class="deleteButton delete-button"
-                                            onclick="deleteInquiries(getSelectedInquiryIds())">
+                                    <button class="deleteButton delete-button">
                                         삭제하기
                                     </button>
                                 </div>
@@ -137,15 +135,6 @@
 
                         <!-- 페이지 부분 -->
                         <div id="paging-wrap">
-                            <a class="member-change-page paging paging-move">
-                                <img src="/images/admin/prev.png" width="15px"></a>
-                            <th:block>
-                                <a class="paging paging-checked">1</a>
-                                <a class="member-change-page paging">2</a>
-                            </th:block>
-                            <a class="member-change-page paging paging-move">
-                                <img src="/images/admin/next.png" width="15px"></a>
-                            <div></div>
                         </div>
                     </div>
                 </div>

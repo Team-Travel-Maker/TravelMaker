@@ -5,24 +5,28 @@ import com.app.travelmaker.domain.cs.response.CustomServiceResponseDTO;
 import com.app.travelmaker.entity.cs.CsAnswer;
 import com.app.travelmaker.entity.cs.CustomService;
 import com.app.travelmaker.repository.cs.CsAnswerRepository;
+import com.app.travelmaker.repository.cs.CustomServiceFileRepository;
 import com.app.travelmaker.repository.cs.CustomServiceRepository;
+import com.app.travelmaker.repository.file.FileRepository;
 import com.app.travelmaker.service.cs.CustomSerivceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
 @Slf4j
+@Transactional(rollbackFor =Exception.class)
 @RequestMapping("api/admins/*")
-public class AdminApiController {
-
+public class CustomServiceAdminApiController {
 
     private final CustomSerivceService customSerivceService;
     private final CsAnswerRepository csAnswerRepository;
@@ -38,6 +42,12 @@ public class AdminApiController {
     @GetMapping(path = {"inquiry/detail/{id}", "inquiry/modify/{id}"})
     public CustomServiceResponseDTO detail(@PathVariable Long id){
         return customSerivceService.detail(id);
+    }
+
+    /*문의삭제*/
+    @DeleteMapping("inquiry")
+    public void inquiryDelete(@RequestPart(value = "ids") List<Long> ids){
+        customSerivceService.inquiryDelete(ids);
     }
 
     /*답변 등록*/

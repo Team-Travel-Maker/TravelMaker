@@ -404,14 +404,14 @@
 /* 오른쪽 메뉴 */
 .coupon-buy-wrap{
     order: 12;
-    width: 340px;
+    width: 390px;
     position: absolute;
     right: calc((100% - 1060px)/2);
 }
 
 .coupon-buy-container>header{
     margin-top: 23px;
-    width: 340px;
+    width: 400px;
     border: 1px solid #e1e2e3;
     background-color: #fff;
     padding: 24px 20px;

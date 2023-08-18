@@ -1,18 +1,23 @@
-package com.app.travelmaker.controller.information;
+package com.app.travelmaker.controller.file;
 
-import com.app.travelmaker.service.cs.CustomServiceFileService;
+import com.app.travelmaker.domain.file.FileSize;
+import com.app.travelmaker.service.file.FileService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
@@ -22,31 +27,40 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 
-@Controller
+@RestController
 @Slf4j
 @RequiredArgsConstructor
-@RequestMapping("api/cs/files/*")
-public class CustomServiceFileApiController {
+@Transactional(rollbackFor =Exception.class)
+@RequestMapping("api/files/*")
+public class fileApiController {
 
-    private final CustomServiceFileService customServiceFileService;
+    private final FileService fileService;
+
 
     //    파일 업로드
     @PostMapping("upload")
-    @ResponseBody
-    public List<String> upload(@RequestParam("uploadFile") List<MultipartFile> uploadFiles) throws IOException {
+    public List<String> upload(@RequestParam("uploadFile") List<MultipartFile> uploadFiles, @RequestPart(value = "fileSize", required = false)FileSize fileSize) throws IOException {
+
         String path = "C:/upload/" + getPath();
         List<String> uuids = new ArrayList<>();
         File file = new File(path);
-        //경로가 존재하지 않으면 그 상위 폴더까지 만들어준다. mkdir 와 mkdirs의 차이
+
         if(!file.exists()){file.mkdirs();}
 
-        // input file 태그에 다중 파일 반복 돌려서 저장
         for (int i=0; i<uploadFiles.size(); i++){
             uuids.add(UUID.randomUUID().toString());
             uploadFiles.get(i).transferTo(new File(path, uuids.get(i) + "_" + uploadFiles.get(i).getOriginalFilename()));
+            if(uploadFiles.get(i).getContentType().startsWith("image")){
+                FileOutputStream out = new FileOutputStream(new File(path, "t_" + uuids.get(i) + "_" + uploadFiles.get(i).getOriginalFilename()));
+                if(fileSize !=null){
+                    Integer height = fileSize.getHeight();
+                    Integer width = fileSize.getWidth();
+                    Thumbnailator.createThumbnail(uploadFiles.get(i).getInputStream(), out, height, width);
+                }
+                out.close();
+            }
         }
 
-        // js 에서 submit을 통해 uuids 배열을 ajax 결과로 반환하여 사용한다.
         return uuids;
     }
 
@@ -54,13 +68,19 @@ public class CustomServiceFileApiController {
         return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
     }
 
+    //    파일 불러오기
+    @GetMapping("display")
+    public byte[] display(String fileName) throws IOException{
+        return FileCopyUtils.copyToByteArray(new File("C:/upload/", fileName));
+    }
 
-//        파일 다운로드
+
+    //        파일 다운로드
     @GetMapping("download/{id}")
     public ResponseEntity<Resource> download(@PathVariable(required = true) Long id) throws UnsupportedEncodingException {
         AtomicReference<String> fileName = new AtomicReference<>("");
 
-        customServiceFileService.findById(id).ifPresent(file -> {
+        fileService.findById(id).ifPresent(file -> {
             fileName.set(file.getFilePath() + "/" + file.getFileUuid() + "_" + file.getFileName());
         });
 
