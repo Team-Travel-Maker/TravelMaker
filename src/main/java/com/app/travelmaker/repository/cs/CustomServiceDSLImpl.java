@@ -4,6 +4,7 @@ import com.app.travelmaker.domain.cs.response.CsAnswerResponseDTO;
 import com.app.travelmaker.domain.cs.response.CustomServiceFileDTO;
 import com.app.travelmaker.domain.cs.response.CustomServiceResponseDTO;
 import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,9 @@ public class CustomServiceDSLImpl implements CustomServiceDSL {
     private JPAQueryFactory query;
 
     @Override
-    public Page<CustomServiceResponseDTO> getListWithPage(Pageable pageable) {
+    public Page<CustomServiceResponseDTO> getListWithPage(Pageable pageable,String keyword) {
+
+        log.info(keyword);
 
         final List<CsAnswerResponseDTO> csAnswers = getAnswers();
 
@@ -41,7 +44,8 @@ public class CustomServiceDSLImpl implements CustomServiceDSL {
                 member.memberName,
                 member.memberEmail
         )).from(customService).innerJoin(customService.member, member)
-                .where(customService.deleted.eq(false))
+                .on(customService.deleted.eq(false))
+                .where(containsKeyword(keyword))
                 .orderBy(customService.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -53,7 +57,7 @@ public class CustomServiceDSLImpl implements CustomServiceDSL {
                 }).collect(Collectors.toList());
 
 
-        Long count = query.select(customService.count()).from(customService).fetchOne();
+        Long count = query.select(customService.count()).from(customService).where(containsKeyword(keyword)).fetchOne();
 
         return new PageImpl<>(customServices, pageable, count);
     }
@@ -112,4 +116,13 @@ public class CustomServiceDSLImpl implements CustomServiceDSL {
                 customServiceFile.customService.id.as("customServiceId")
         )).from(customServiceFile).where(customServiceFile.customService.id.eq(customService.id).and(customServiceFile.deleted.eq(false))).fetch();
     }
+
+    private BooleanExpression containsKeyword(String keyword) {
+        if(keyword == null || keyword.isEmpty()) {
+            return null;
+        }
+        return customService.csTitle.contains(keyword).or(customService.member.memberName.contains(keyword));
+    }
+
+
 }

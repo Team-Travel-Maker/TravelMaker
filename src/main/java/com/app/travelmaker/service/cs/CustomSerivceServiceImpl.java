@@ -33,8 +33,8 @@ public class CustomSerivceServiceImpl implements CustomSerivceService {
 
 
     @Override
-    public Page<CustomServiceResponseDTO> getList(Pageable pageable) {
-        return customServiceRepository.getListWithPage(pageable);
+    public Page<CustomServiceResponseDTO> getList(Pageable pageable, String keyword) {
+        return customServiceRepository.getListWithPage(pageable,keyword);
     }
 
     @Override

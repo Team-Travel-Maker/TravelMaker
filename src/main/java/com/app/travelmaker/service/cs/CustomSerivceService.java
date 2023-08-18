@@ -15,7 +15,7 @@ import java.util.List;
 public interface CustomSerivceService {
 
     /*문의*/
-    public Page<CustomServiceResponseDTO> getList(Pageable pageable);
+    public Page<CustomServiceResponseDTO> getList(Pageable pageable, String keyword);
 
     public CustomServiceResponseDTO detail(Long id);
 

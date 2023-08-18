@@ -34,8 +34,9 @@ public class CustomServiceAdminApiController {
 
     /*문의 목록*/
     @GetMapping("inquiry/list")
-    public Page<CustomServiceResponseDTO> getList(@PageableDefault(page = 0, size = 10) Pageable pageable){
-        return  customSerivceService.getList(pageable);
+    public Page<CustomServiceResponseDTO> getList(@PageableDefault(page = 0, size = 10) Pageable pageable,@RequestParam(value = "keyword", required = false) String keyword){
+        log.info(keyword);
+        return  customSerivceService.getList(pageable,keyword);
     }
 
     /*문의 상세*/
