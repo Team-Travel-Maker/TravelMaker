@@ -13,6 +13,104 @@ const $sub2X = $('.sub2-x');
 
 const uploadFiles = [];
 
+const queryParams = new URLSearchParams(window.location.search);
+const storeId = queryParams.get('storeId');
+
+console.log('Received item ID:', storeId);
+
+// 업데이트 업체 아이디
+let $hiddenStoreId;
+let subChk = 0;
+
+$(document).ready(function () {
+    $.ajax({
+        type: "GET", //전송방식을 지정한다 (POST,GET)
+        url: "/api/myPages/store?storeId=" + storeId,
+        dataType: "json",
+        error: function () {
+            alert("통신실패!!!!");
+        },
+        success: function (store) {
+            console.log("통신성공" + "OK");
+            console.log(store);
+
+            $hiddenStoreId = store.id;
+
+            $inputTag.eq(0).val(store.storeTitle);
+            $inputTextArea.eq(0).val(store.storeContent);
+            $inputTag.eq(1).val(store.address.postcode);
+            $inputTag.eq(3).val(store.address.address);
+            const ad = store.address.addressDetail.split("|");
+            $inputTag.eq(4).val(ad[0]);
+            $inputTag.eq(5).val(ad[1]);
+            $inputTag.eq(6).val(ad[2]);
+            $('#category').val(store.storeType.code).prop("selected",true);
+
+            const fileLength = store.files.length;
+            if(fileLength == 0) return;
+            store.files.forEach((file, i) => {
+                console.log(i)
+                console.log(file);
+                if(2 == fileLength) {
+                    if (file.fileType == "REPRESENTATIVE") {
+                        $thumbnailAttach.show()
+                        $thumbnailImg.show();
+                        $thumbnailX.show();
+                        $thumbnailImg.attr("src", "/files/" +
+                            file.filePath + "/" +
+                            file.fileUuid + "_" +
+                            file.fileName);
+                    } else if(subChk == 0) {
+                        $sub1Attach.show()
+                        $sub1Img.show();
+                        $sub1X.show();
+                        $sub1Img.attr("src", "/files/" +
+                            file.filePath + "/" +
+                            file.fileUuid + "_" +
+                            file.fileName);
+                    } else {
+                        $sub2Attach.show()
+                        $sub2Img.show();
+                        $sub2X.show();
+                        $sub2Img.attr("src", "/files/" +
+                            file.filePath + "/" +
+                            file.fileUuid + "_" +
+                            file.fileName);
+                    }
+                }
+                if(2 == fileLength) {
+                    if (file.fileType == "REPRESENTATIVE") {
+                        $thumbnailAttach.show()
+                        $thumbnailImg.show();
+                        $thumbnailX.show();
+                        $thumbnailImg.attr("src", "/files/" +
+                            store.files[0].filePath + "/" +
+                            store.files[0].fileUuid + "_" +
+                            store.files[0].fileName);
+                    } else {
+                        $sub1Attach.show()
+                        $sub1Img.show();
+                        $sub1X.show();
+                        $sub1Img.attr("src", "/files/" +
+                            file.filePath + "/" +
+                            file.fileUuid + "_" +
+                            file.fileName);
+                    }
+                }
+                if(1 == fileLength) {
+                    $thumbnailAttach.show()
+                    $thumbnailImg.show();
+                    $thumbnailX.show();
+                    $thumbnailImg.attr("src", "/files/" +
+                        file.filePath + "/" +
+                        file.fileUuid + "_" +
+                        file.fileName);
+                }
+            })
+        }
+    });
+});
+
 $thumbnailFile.on('change', function(event) {
     uploadFiles[0] = event.target.files[0];
     var reader = new FileReader();

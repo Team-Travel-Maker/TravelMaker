@@ -2,7 +2,6 @@ package com.app.travelmaker.service.shop;
 
 import com.app.travelmaker.domain.shop.GiftCardDTO;
 import com.app.travelmaker.domain.shop.purchase.PurchaseRequestDTO;
-import com.app.travelmaker.domain.mypage.MyPageGiftCardDTO;
 import com.app.travelmaker.entity.giftcard.GiftCard;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.entity.pay.Pay;
@@ -15,7 +14,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
