@@ -11,10 +11,15 @@
     <link rel="stylesheet" href="/css/common.css" />
     <link rel="stylesheet" href="/css/footer/footer.css">
     <link rel="stylesheet" href="/css/mypage/company-list.css">
+    <link rel="stylesheet" href="/css/admin/modal.css"/>
 </head>
 <body>
+<div class="modal">
+    <div class="warn-modal">
+        <div id="content-wrap"></div>
+    </div>
+</div>
 <div th:replace="~{header/header :: #header}"></div>
-<div class="Padding_padding___Nyki"></div>
 <div class="wrapper">
     <nav role="presentation" class="nav-nav">
         <h2 class="nav-title">
@@ -24,8 +29,7 @@
         <section class="body">
             <div class="body-div">
                 <div>
-                    <button class="btn button-root button-outlined"
-                            disabled="">
+                    <button id="delete-btn" class="btn button-root button-outlined">
                         <span class="btn-label">삭제</span>
                     </button>
                 </div>
@@ -37,8 +41,8 @@
                         <th class="checkbox-line">
                             <input type="checkbox" id="allSelect">
                         </th>
-                        <th>제목</th>
                         <th>업체명</th>
+                        <th>업체 종류</th>
                         <th>주소</th>
                         <th>작성 날짜</th>
                         <th>진행 상태</th>
@@ -46,38 +50,22 @@
                     </tr>
                     </thead>
                     <!--답변 미완료 -->
-                    <tbody>
-                    <tr>
-                        <td class="checkbox-line">
-                            <input type="checkbox" class="inquiryCheckbox" name="check">
-                        </td>
-                        <td>
-                            스타벅스 등록
-                        </td>
-                        <td>Starbucks</td>
-                        <td>서울 강남 역삼역 231</td>
-                        <td>2023/07/22</td>
-                        <td>등록 완료</td>
-                        <td class="image-wrap">
-                            <img src="/images/logo/favicon.png" style="width: 100px; height: 100px">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="checkbox-line">
-                            <input type="checkbox" class="inquiryCheckbox" name="check">
-                        </td>
-                        <td>
-                            스타벅스 등록
-                        </td>
-                        <td>Starbucks</td>
-                        <td>서울 강남 역삼역 231</td>
-                        <td>2023/07/22</td>
-                        <td>등록 완료</td>
-                        <td class="image-wrap">
-                            <img src="/images/logo/favicon.png" style="width: 100px; height: 100px">
-                        </td>
-                    </tr>
-
+                    <tbody class="store-list">
+<!--                    <tr>-->
+<!--                        <td class="checkbox-line">-->
+<!--                            <input type="checkbox" class="inquiryCheckbox" name="check">-->
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                            스타벅스 등록-->
+<!--                        </td>-->
+<!--                        <td>Starbucks</td>-->
+<!--                        <td>서울 강남 역삼역 231</td>-->
+<!--                        <td>2023/07/22</td>-->
+<!--                        <td>등록 완료</td>-->
+<!--                        <td class="image-wrap">-->
+<!--                            <img src="/images/logo/favicon.png" style="width: 100px; height: 100px">-->
+<!--                        </td>-->
+<!--                    </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -88,4 +76,5 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="/js/mypage/company-list.js"></script>
+<script src="/js/admin/modal.js"></script>
 </html>

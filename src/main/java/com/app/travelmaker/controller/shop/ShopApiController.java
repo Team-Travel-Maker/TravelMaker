@@ -5,7 +5,6 @@ import com.app.travelmaker.domain.shop.purchase.PurchaseRequestDTO;
 import com.app.travelmaker.service.shop.GiftCardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +36,6 @@ public class ShopApiController {
     @PostMapping
     public ResponseEntity<?> purchaseGiftCard(@RequestBody PurchaseRequestDTO request) {
         giftCardService.addPurchase(request);
-        return ResponseEntity.ok("/mypage/points/");
+        return ResponseEntity.ok("/mypage/giftCard/");
     }
 }
