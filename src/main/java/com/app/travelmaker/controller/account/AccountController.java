@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @Slf4j
 @RequestMapping("/accounts/*")
@@ -13,7 +15,12 @@ public class AccountController {
 
     //로그인
     @GetMapping("login/login")
-    public void goToLogin(){;}
+    public void goToLogin(@RequestParam(value = "error", required = false) boolean error,
+                          @RequestParam(value = "exception", required = false) String exception,
+                          Model model){
+                model.addAttribute("error", error);
+                model.addAttribute("exception", exception);
+        ;}
 
     @PostMapping("login/login")
     public String processUsername(String memberEmail, RedirectAttributes redirectAttributes) {

@@ -6,14 +6,23 @@ import com.app.travelmaker.domain.member.request.MemberRequestDTO;
 import com.app.travelmaker.embeddable.address.Address;
 import com.app.travelmaker.embeddable.alarm.Alarm;
 import com.app.travelmaker.entity.mebmer.Member;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.List;
 
 public interface MemberService extends UserDetailsService {
 
     public void join(MemberRequestDTO memberRequestDTO, PasswordEncoder passwordEncoder);
 
     public boolean checkId(String memberEmail);
+
+    public Page<Member> getList(Pageable pageable);
+
+    public void modifyStatus(List<Long> ids);
+    public void modifyType(List<Long> ids);
 
 
     public String certifiedPhoneNumber(String to);
