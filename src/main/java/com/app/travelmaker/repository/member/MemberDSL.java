@@ -9,6 +9,8 @@ public interface MemberDSL {
 
     public Page<Member> getList(Pageable pageable);
 
+    public Integer memberCount(String memberEmail);
+
     public void modifyStatus(Long id);
     public void modifyType(Long id);
 }

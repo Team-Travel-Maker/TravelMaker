@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
@@ -29,6 +30,8 @@ public class CustomSerivceServiceImpl implements CustomSerivceService {
     private final CsAnswerRepository csAnswerRepository;
     private final CustomServiceFileRepository customServiceFileRepository;
     private final MemberRepository memberRepository;
+
+    private final HttpSession session;
 
 
 

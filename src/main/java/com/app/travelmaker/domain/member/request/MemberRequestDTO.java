@@ -5,6 +5,7 @@ import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.embeddable.address.Address;
 import com.app.travelmaker.embeddable.alarm.Alarm;
 import com.app.travelmaker.entity.file.File;
+import com.app.travelmaker.entity.mebmer.Member;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 
 @Component
 @Data
@@ -31,5 +33,4 @@ public class MemberRequestDTO {
     private Role memberRole;
     private MemberJoinAccountType memberJoinAccountType;
     private String memberInterestRegion;
-
 }

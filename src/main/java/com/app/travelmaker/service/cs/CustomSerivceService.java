@@ -7,12 +7,13 @@ import com.app.travelmaker.domain.file.FileDTO;
 import com.app.travelmaker.entity.cs.CsAnswer;
 import com.app.travelmaker.entity.cs.CustomService;
 import com.app.travelmaker.entity.file.File;
+import com.app.travelmaker.service.MemberSupport;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-public interface CustomSerivceService {
+public interface CustomSerivceService extends MemberSupport {
 
     /*문의*/
     public Page<CustomServiceResponseDTO> getList(Pageable pageable, String keyword);
@@ -37,7 +38,7 @@ public interface CustomSerivceService {
                             .csTitle(customServiceDTO.getCsTitle())
                             .csContent(customServiceDTO.getCsContent())
                             .csType(customServiceDTO.getCsType())
-                            .member(customServiceDTO.getMember())
+                            .member(toMemberEntity(customServiceDTO.getMemberResponseDTO()))
                             .build();
 
     }
