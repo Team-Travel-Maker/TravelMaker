@@ -1,5 +1,7 @@
 package com.app.travelmaker.handler;
 
+import com.app.travelmaker.common.CommonSupport;
+import com.app.travelmaker.common.TestSupport;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
@@ -10,12 +12,15 @@ import org.springframework.stereotype.Component;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Enumeration;
 
 @Component
-public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHandler {
+public class AuthenticationSuccessHandlerImpl extends TestSupport implements AuthenticationSuccessHandler {
     private static String path = "/main/main";
+
+
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -23,6 +28,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
         RequestCache requestCache = new HttpSessionRequestCache();
         SavedRequest savedRequest = requestCache.getRequest(request, response);
 
+        authenticationInfo();
         // 있을 경우 URI 등 정보를 가져와서 사용
         if (savedRequest != null) {
             String anotherPath = savedRequest.getRedirectUrl();
