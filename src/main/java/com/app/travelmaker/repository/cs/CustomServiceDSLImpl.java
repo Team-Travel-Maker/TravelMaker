@@ -57,7 +57,7 @@ public class CustomServiceDSLImpl implements CustomServiceDSL {
                 }).collect(Collectors.toList());
 
 
-        Long count = query.select(customService.count()).from(customService).where(containsKeyword(keyword)).fetchOne();
+        Long count = query.select(customService.count()).from(customService).where(customService.deleted.eq(false).and(containsKeyword(keyword))).fetchOne();
 
         return new PageImpl<>(customServices, pageable, count);
     }

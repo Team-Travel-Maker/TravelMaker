@@ -80,6 +80,8 @@
         $inquiryListContainer.html(text);
 
         pagaing(result.pageable.pageSize,result.totalElements,result.pageable.pageNumber);
+
+        $('#allSelect').prop("checked", false);
     }
 
 
@@ -87,15 +89,15 @@
 
     /*삭제버튼*/
     $('.delete-button').on("click",async function () {
+        form.delete("ids");
+        deleteIds = [];
         console.log( $('.inquiryCheckbox'));
-        const $inquiryListTr = $('.inquiry-list-container tr');
-        const deletedIdxs = [];
         $('.inquiryCheckbox').each((index,checkBox) => {
             if($(checkBox).is(":checked")){
                 deleteIds.push($(checkBox).val());
-                deletedIdxs.push(index);
             }
         })
+        console.log(deleteIds);
        form.append("ids", new Blob([JSON.stringify(deleteIds)],{ type: "application/json" }))
         customService.deleteInquiry();
         customService.getList(showList);
@@ -105,7 +107,6 @@
     $(".search-input").keydown(function(e) {
         if( e.keyCode == 13 ){
            let keyword= $(this).val();
-            console.log(keyword);
             customService.getList(showList,0,keyword);
         }
     });

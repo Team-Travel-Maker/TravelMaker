@@ -16,7 +16,6 @@ public class MemberResponseDTO {
 
     private Long id;
     private String memberEmail;
-    private String memberPw;
     private String memberName;
     private boolean emailBenefitEvent;
     private boolean emailSuggestion;
@@ -35,7 +34,6 @@ public class MemberResponseDTO {
     public MemberResponseDTO(Member member){
         this.id = member.getId();
         this.memberEmail = member.getMemberEmail();
-        this.memberPw = member.getMemberPw();
         this.memberName = member.getMemberName();
         this.emailBenefitEvent = member.getAlarm().isEmailBenefitEvent();
         this.emailSuggestion = member.getAlarm().isEmailSuggestion();

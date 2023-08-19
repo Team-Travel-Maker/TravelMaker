@@ -30,7 +30,6 @@ public interface MemberSupport {
                 .memberJoinAccountType(memberResponseDTO.getMemberJoinAccountType())
                 .memberPhone(memberResponseDTO.getMemberPhone())
                 .memberName(memberResponseDTO.getMemberName())
-                .memberPw(memberResponseDTO.getMemberPw())
                 .memberRole(memberResponseDTO.getMemberRole())
                 .createdDate(memberResponseDTO.getCreatedDate())
                 .updatedDate(memberResponseDTO.getUpdatedDate())

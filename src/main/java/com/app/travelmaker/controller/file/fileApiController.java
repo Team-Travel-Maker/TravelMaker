@@ -56,6 +56,8 @@ public class fileApiController {
                     Integer height = fileSize.getHeight();
                     Integer width = fileSize.getWidth();
                     Thumbnailator.createThumbnail(uploadFiles.get(i).getInputStream(), out, height, width);
+                }else{
+                    Thumbnailator.createThumbnail(uploadFiles.get(i).getInputStream(), out, 100, 100);
                 }
                 out.close();
             }

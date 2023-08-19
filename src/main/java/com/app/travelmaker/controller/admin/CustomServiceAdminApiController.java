@@ -48,6 +48,8 @@ public class CustomServiceAdminApiController {
     /*문의삭제*/
     @DeleteMapping("inquiry")
     public void inquiryDelete(@RequestPart(value = "ids") List<Long> ids){
+
+        log.info(ids.toString());
         customSerivceService.inquiryDelete(ids);
     }
 

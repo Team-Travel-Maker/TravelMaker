@@ -1,8 +1,10 @@
 package com.app.travelmaker.repository.member;
 
 import com.app.travelmaker.constant.Role;
+import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.entity.mebmer.QMember;
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,8 +36,26 @@ public class MemberDSLImpl implements MemberDSL {
     }
 
     @Override
-    public Page<Member> getList(Pageable pageable) {
-        List<Member> members = query.selectFrom(member)
+    public Page<MemberResponseDTO> getList(Pageable pageable) {
+        List<MemberResponseDTO> members = query.select(Projections.fields(MemberResponseDTO.class,
+                member.id,
+                member.memberEmail,
+                member.memberName,
+                member.alarm.emailBenefitEvent.as("emailBenefitEvent"),
+                member.alarm.emailSuggestion.as("emailSuggestion"),
+                member.alarm.snsBenefitEvent.as("snsBenefitEvent"),
+                member.address.address.as("address"),
+                member.address.addressDetail.as("addressDetail"),
+                member.address.postcode.as("postCode"),
+                member.memberPhone,
+                member.memberRole,
+                member.memberEcoPoint,
+                member.memberJoinAccountType,
+                member.memberInterestRegion,
+                member.createdDate,
+                member.updatedDate
+                 ))
+                .from(member)
                 .orderBy(member.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -81,6 +101,26 @@ public class MemberDSLImpl implements MemberDSL {
         }else if(foundRole.getCode().equals("COMPANY")){
             query.update(member)
                     .set(member.memberRole, Role.GENERAL)
+                    .set(member.updatedDate, LocalDateTime.now())
+                    .where(member.id.eq(id))
+                    .execute();
+        }
+    }
+
+    @Override
+    public void modifyAdmin(Long id) {
+
+        Role foundRole = query.select(member.memberRole).from(member).where(member.id.eq(id)).fetchOne();
+
+        if(foundRole.getCode().equals("ADMIN")){
+            query.update(member)
+                    .set(member.memberRole, Role.GENERAL)
+                    .set(member.updatedDate, LocalDateTime.now())
+                    .where(member.id.eq(id))
+                    .execute();
+        }else if(foundRole.getCode().equals("COMPANY") || foundRole.getCode().equals("GENERAL")){
+            query.update(member)
+                    .set(member.memberRole, Role.ADMIN)
                     .set(member.updatedDate, LocalDateTime.now())
                     .where(member.id.eq(id))
                     .execute();

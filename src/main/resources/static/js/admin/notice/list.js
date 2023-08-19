@@ -66,7 +66,7 @@
                         </td>
                         <td>${notice.createdDate}</td>
                         <td>${notice.updatedDate}</td>
-                    </tr>-->
+                    </tr>
                     `
         });
         $noticeListContainer.html(text);
@@ -74,17 +74,19 @@
 
     }
 
+
     /*삭제버튼*/
     $('.delete-button').on("click",async function () {
-        const deletedIdxs = [];
+        form.delete("ids");
+        deleteIds = [];
         $('.noticeCheckbox').each((index,checkBox) => {
             if($(checkBox).is(":checked")){
                 deleteIds.push($(checkBox).val());
-                deletedIdxs.push(index);
             }
         })
         form.append("ids", new Blob([JSON.stringify(deleteIds)],{ type: "application/json" }))
         noticeService.deleteNotice();
         noticeService.getList(showList);
         showWarnModal("삭제되었습니다");
+        $('#allSelect').prop("checked", false);
     })

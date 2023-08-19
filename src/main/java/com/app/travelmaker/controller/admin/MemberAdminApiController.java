@@ -1,5 +1,6 @@
 package com.app.travelmaker.controller.admin;
 
+import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
@@ -22,17 +23,20 @@ public class MemberAdminApiController {
     private final MemberService memberService;
 
     @GetMapping("")
-    public Page<Member> getList(@PageableDefault(page = 0, size = 10) Pageable pageable){
+    public Page<MemberResponseDTO> getList(@PageableDefault(page = 0, size = 10) Pageable pageable){
         return memberService.getList(pageable);
     }
 
     @PutMapping("status")
-    public void modifyStatus(@RequestPart List<Long> ids){
-        memberService.modifyStatus(ids);
+    public void modifyStatus(@RequestPart List<Long> statusIds){
+        memberService.modifyStatus(statusIds);
     }
 
     @PutMapping("type")
-    public void modifyType(@RequestPart List<Long> ids){
-        memberService.modifyType(ids);
+    public void modifyType(@RequestPart List<Long> typeIds){
+        memberService.modifyType(typeIds);
     }
+
+    @PutMapping("admin")
+    public void modifyAdmin(@RequestPart List<Long> adminIds){ memberService.modifyAdmin(adminIds);}
 }

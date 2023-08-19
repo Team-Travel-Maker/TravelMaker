@@ -1,6 +1,7 @@
 package com.app.travelmaker.service.member;
 
 import com.app.travelmaker.domain.member.request.MemberRequestDTO;
+import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.provider.MemberDetail;
 import com.app.travelmaker.repository.member.MemberRepository;
@@ -65,18 +66,23 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Page<Member> getList(Pageable pageable) {
+    public Page<MemberResponseDTO> getList(Pageable pageable) {
         return memberRepository.getList(pageable);
     }
 
     @Override
-    public void modifyStatus(List<Long> ids) {
-        ids.forEach(id ->memberRepository.modifyStatus(id));
+    public void modifyStatus(List<Long> statusIds) {
+        statusIds.forEach(id ->memberRepository.modifyStatus(id));
     }
 
     @Override
-    public void modifyType(List<Long> ids) {
-        ids.forEach(id ->memberRepository.modifyType(id));
+    public void modifyType(List<Long> typeIds) {
+        typeIds.forEach(id ->memberRepository.modifyType(id));
+    }
+
+    @Override
+    public void modifyAdmin(List<Long> adminIds) {
+        adminIds.forEach(id ->memberRepository.modifyAdmin(id));
     }
 
     @Override

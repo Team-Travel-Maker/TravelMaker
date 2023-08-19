@@ -58,6 +58,9 @@ public class Store extends Period {
     @Enumerated(EnumType.STRING)
     @NotNull private StoreStatus storeStatus;
 
+    /** 관리자 결과 내용 담을 컬럼*/
+    private String storeResult;
+
     /**
      * Store Status (업체 삭제 상태)
      * */
