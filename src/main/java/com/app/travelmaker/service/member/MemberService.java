@@ -3,6 +3,7 @@ package com.app.travelmaker.service.member;
 import com.app.travelmaker.constant.MemberJoinAccountType;
 import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.domain.member.request.MemberRequestDTO;
+import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.embeddable.address.Address;
 import com.app.travelmaker.embeddable.alarm.Alarm;
 import com.app.travelmaker.entity.mebmer.Member;
@@ -19,10 +20,11 @@ public interface MemberService extends UserDetailsService {
 
     public boolean checkId(String memberEmail);
 
-    public Page<Member> getList(Pageable pageable);
+    public Page<MemberResponseDTO> getList(Pageable pageable);
 
-    public void modifyStatus(List<Long> ids);
-    public void modifyType(List<Long> ids);
+    public void modifyStatus(List<Long> statusIds);
+    public void modifyType(List<Long> typeIds);
+    public void modifyAdmin(List<Long> adminIds);
 
 
     public String certifiedPhoneNumber(String to);

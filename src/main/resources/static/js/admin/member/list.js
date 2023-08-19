@@ -1,37 +1,22 @@
 $(document).ready(function () {
 
     const form = new FormData();
-    const form2 = new FormData();
 
-    /*페이징 감싸는 wrap*/
-    const $pagingWrap = $('#paging-wrap');
 
     /*맴버 목록*/
     const $memberListWrap = $('.member-list-wrap');
 
-    let pagingText= "";
 
     const $modifyStatusBtn = $('.modify-status');
     const $modifyTypeBtn = $('.modify-type');
+    const $modifyAdminBtn = $('.modify-admin');
 
     let text=``;
 
 
     let memberIds = []
 
-    /*실제 페이지*/
-    let page = 0;
-    /*화면 페이지*/
-    let page2 =1;
-    /*page는 0, 1로 나누어서 계산하기 위한 변수*/
-    let nextPage;
-    /*고대 문법/*/
-    let rowCount;
-    let pageCount;
-    let total;
-    let endPage;
-    let startPage;
-    let realEnd;
+
 
     let memberService = (function () {
 
@@ -72,20 +57,37 @@ $(document).ready(function () {
                 processData : false,
                 contentType : false,
                 async: false,
-                data: form2,
+                data: form,
                 success: function(){
                     alert("성공");
                 }
             })
         }
 
-        return {getList : getList, modifyType: modifyType, modifyStatus : modifyStatus}
+        function modifyAdmin(){
+            $.ajax({
+                url: `/api/admins/member/admin`,
+                type: `put`,
+                enctype: "multipart/form-data", //form data 설정
+                processData : false,
+                contentType : false,
+                async: false,
+                data: form,
+                success: function(){
+                    alert("성공");
+                }
+            })
+        }
+
+        return {getList : getList, modifyType: modifyType, modifyStatus : modifyStatus, modifyAdmin : modifyAdmin}
     })()
 
     memberService.getList(showList, page)
 
     function showList(result){
+        $pagingWrap.html('');
         text='';
+        pagingText='';
         $memberListWrap.html('');
         result.content.forEach(member =>{
             text +=
@@ -122,11 +124,15 @@ $(document).ready(function () {
                     `
         })
         $memberListWrap.html(text)
+
+        pagaing(result.pageable.pageSize,result.totalElements,result.pageable.pageNumber);
+
+        $('#allSelect').prop("checked", false);
     }
 
 
     $modifyStatusBtn.on("click", function () {
-        form.delete("ids");
+        form.delete("statusIds");
         memberIds =[];
         const $checkBoxs = $('.member-checkbox');
         $checkBoxs.each((i,box) => {
@@ -134,15 +140,14 @@ $(document).ready(function () {
                 memberIds.push($(box).val());
             }
         })
-        console.log(memberIds);
-        form.append("ids", new Blob([JSON.stringify(memberIds)],{ type: "application/json" }))
+        form.append("statusIds", new Blob([JSON.stringify(memberIds)],{ type: "application/json" }))
         memberService.modifyStatus()
         memberService.getList(showList)
     })
 
 
     $modifyTypeBtn.on("click", function () {
-        form2.delete("ids");
+        form.delete("typeIds");
         memberIds =[];
         const $checkBoxs = $('.member-checkbox');
         $checkBoxs.each((i,box) => {
@@ -151,9 +156,24 @@ $(document).ready(function () {
             }
         })
 
-        console.log(memberIds);
-        form2.append("ids", new Blob([JSON.stringify(memberIds)],{ type: "application/json" }))
+        form.append("typeIds", new Blob([JSON.stringify(memberIds)],{ type: "application/json" }))
         memberService.modifyType()
         memberService.getList(showList)
     })
+
+    $modifyAdminBtn.on("click", function () {
+        form.delete("adminIds");
+        memberIds =[];
+        const $checkBoxs = $('.member-checkbox');
+        $checkBoxs.each((i,box) => {
+            if($(box).is(":checked")){
+                memberIds.push($(box).val());
+            }
+        })
+
+        form.append("adminIds", new Blob([JSON.stringify(memberIds)],{ type: "application/json" }))
+        memberService.modifyAdmin()
+        memberService.getList(showList)
+    })
+
 })
