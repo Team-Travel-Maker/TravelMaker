@@ -3,6 +3,7 @@ package com.app.travelmaker.controller.information;
 
 import com.app.travelmaker.common.CommonSupport;
 import com.app.travelmaker.domain.cs.request.CustomServiceDTO;
+import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.service.cs.CustomSerivceService;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,9 @@ public class InformationApiController {
 
     @PostMapping("")
     public void write(@RequestPart(required = true, value = "customServiceDTO") CustomServiceDTO customServiceDTO){
-        customServiceDTO.setMember((Member) session.getAttribute("member"));
+        final MemberResponseDTO memberDTO = (MemberResponseDTO) session.getAttribute("member");
+        log.info(memberDTO.toString());
+        customServiceDTO.setMemberResponseDTO(memberDTO);
         customSerivceService.register(customServiceDTO);
     }
 

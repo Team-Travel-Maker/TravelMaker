@@ -41,10 +41,11 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public boolean checkId(String memberEmail) {
-        AtomicBoolean checkResult = new AtomicBoolean(false);
-        Optional<Member> foundMemberEmail = memberRepository.findByMemberEmail(memberEmail);
-        foundMemberEmail.ifPresentOrElse((member) -> checkResult.set(true),()-> checkResult.set(false));
-        return checkResult.get();
+
+        final Integer count = memberRepository.memberCount(memberEmail);
+
+        if(count >0){return true;}
+        else{return false;}
     }
 
 

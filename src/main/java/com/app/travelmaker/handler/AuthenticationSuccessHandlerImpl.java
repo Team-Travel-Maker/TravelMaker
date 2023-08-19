@@ -25,7 +25,9 @@ public class AuthenticationSuccessHandlerImpl extends LoginSupport implements Au
         RequestCache requestCache = new HttpSessionRequestCache();
         SavedRequest savedRequest = requestCache.getRequest(request, response);
 
+        /*로그인 정보 세션에 담기*/
         authenticationInfo();
+
         // 있을 경우 URI 등 정보를 가져와서 사용
         if (savedRequest != null) {
             String anotherPath = savedRequest.getRedirectUrl();

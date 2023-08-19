@@ -1,5 +1,6 @@
 package com.app.travelmaker.common;
 
+import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.provider.MemberDetail;
 import com.app.travelmaker.repository.member.MemberRepository;
@@ -25,7 +26,7 @@ public abstract class LoginSupport {
                 throw new RuntimeException("아이디가 없습니다");
             });
             httpSession.invalidate();
-            httpSession.setAttribute("member", member);
+            httpSession.setAttribute("member", new MemberResponseDTO(member));
         }else{
             throw new RuntimeException("인증 회원 정보 없음");
         }

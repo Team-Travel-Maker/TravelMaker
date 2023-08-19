@@ -20,6 +20,11 @@ public class MemberDSLImpl implements MemberDSL {
     private JPAQueryFactory query;
 
     @Override
+    public Integer memberCount(String memberEmail) {
+        return query.select(member.count()).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne().intValue();
+    }
+
+    @Override
     public long updateMemberPoints(Long memberId, Integer giftCardTotalPrice) {
         return query.update(member)
                 .set(member.memberEcoPoint, member.memberEcoPoint.subtract(giftCardTotalPrice))
