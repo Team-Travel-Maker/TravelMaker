@@ -11,7 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import javax.servlet.http.HttpSession;
 
 @Slf4j
-public abstract class TestSupport {
+public abstract class LoginSupport {
 
     @Autowired
     private MemberRepository memberRepository;
