@@ -26,7 +26,6 @@ public class AccountController {
 
     @PostMapping("login/login")
     public String processUsername(String memberEmail, RedirectAttributes redirectAttributes) {
-        log.info(memberEmail);
         redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
         return "redirect:/accounts/password/input"; // 비밀번호 입력 페이지로 리다이렉트
     }
