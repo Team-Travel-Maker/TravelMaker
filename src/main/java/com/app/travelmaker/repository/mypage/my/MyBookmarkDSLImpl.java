@@ -22,7 +22,7 @@ public class MyBookmarkDSLImpl implements MyBookmarkDSL{
     public List<MyBookmarkDTO> getBookMarks(Long memberId) {
         final List<MyBookmarkFileDTO> files =
                 query.select(Projections.fields(MyBookmarkFileDTO.class,
-                        themeBookMark.id,
+                        themeFile.id,
                         themeFile.fileName,
                         themeFile.filePath,
                         themeFile.fileSize,
@@ -37,22 +37,23 @@ public class MyBookmarkDSLImpl implements MyBookmarkDSL{
         return query.select(
                 Projections.fields(MyBookmarkDTO.class,
                         themeBookMark.id,
-                        theme.id,
+                        theme.id.as("themeId"),
                         theme.themeTitle,
                         theme.themeContent,
                         theme.themeStartDate,
                         theme.themeEndDate
-                        )
-        ).from(themeBookMark, theme)
-                .where(themeBookMark.theme.id.eq(theme.id)
-                        .and(themeBookMark.member.id.eq(memberId))
+                )
+        ).from(themeBookMark)
+                .join(theme)
+                .on(themeBookMark.theme.id.eq(theme.id))
+                .where((themeBookMark.member.id.eq(memberId))
                         .and(themeBookMark.deleted.eq(false))
                 )
                 .orderBy(themeBookMark.id.desc())
                 .fetch()
                 .stream().peek(data -> {
                     if (files != null) {
-                        files.stream().filter(file -> file.getBookmarkId().equals(data.getId())).forEach(file -> data.getFiles().add(file));
+                        files.stream().filter(file -> file.getBookmarkId().equals(data.getThemeId())).forEach(file -> data.getFiles().add(file));
                     }
                 }).collect(Collectors.toList());
     }
