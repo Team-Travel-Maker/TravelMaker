@@ -27,11 +27,6 @@ public abstract class LoginSupport {
             });
             httpSession.invalidate();
             httpSession.setAttribute("member", new MemberResponseDTO(member));
-
-            log.info("******************");
-            log.info(member.toString());
-            log.info(httpSession.getAttribute("member").toString());
-
             return (MemberResponseDTO)httpSession.getAttribute("member");
         }else{
             throw new RuntimeException("인증 회원 정보 없음");

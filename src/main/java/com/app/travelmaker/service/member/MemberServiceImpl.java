@@ -78,10 +78,8 @@ public class MemberServiceImpl implements MemberService, OAuth2UserService<OAuth
             if (member.getMemberJoinAccountType().getCode().equals(MemberJoinAccountType.KAKAO.getCode()) ||
                     member.getMemberJoinAccountType().getCode().equals(MemberJoinAccountType.NAVER.getCode())
             ) {
-                log.info("들어모2");
                 joinCheckType.set(JoinCheckType.SNS);
             }else{
-                log.info("들어모3");
                 joinCheckType.set(JoinCheckType.FALSE);
             }
         },()->{
