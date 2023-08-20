@@ -34,7 +34,7 @@ public class MyGiftCardDSLImpl implements MyGiftCardDSL{
                 file.fileUuid,
                 file.filePath
                 )
-            ).from(giftCard, pay, member, giftCardFile, file)
+            ).from(giftCard, pay, giftCardFile, file)
                 .where(giftCard.deleted.eq(false)
                         .and(giftCard.id.eq(pay.giftCard.id))
                         .and(giftCard.id.eq(giftCardFile.giftCard.id))

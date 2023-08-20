@@ -95,7 +95,7 @@ ol,ul{
     list-style: none;
 }
 .list-container>ul li {
-    width: 24%;
+    width: 25%;
     padding: 10px;
     list-style: none;
     display: inline-block;
@@ -190,4 +190,7 @@ a {
     display: block;
     content: "";
     clear: both;
+}
+html::-webkit-scrollbar {
+    display: none;
 }

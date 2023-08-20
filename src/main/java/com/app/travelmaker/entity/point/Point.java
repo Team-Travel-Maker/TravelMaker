@@ -39,6 +39,7 @@ public class Point extends Period {
     /**
      * Point Category ( 사용/적립 )
      * */
+    @Enumerated(EnumType.STRING)
     @NotNull private PointCateGoryType pointCateGoryType;
 
     /**
