@@ -21,7 +21,11 @@ $(document).ready(function () {
                         '    ">\n' +
                         '        <div class="card">\n' +
                         '            <a href="#">\n' +
-                        '                <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F29147%2Forp7cickvk9aipmp__400_400.jpg&amp;w=400&amp;q=75&quot;);">\n' +
+                        '                <header style="background-image: url(/files/' +
+                                                bookmarks[i].files[0].filePath + '/' +
+                                                bookmarks[i].files[0].fileUuid + '_' +
+                                                bookmarks[i].files[0].fileName +
+                        '                       );">\n' +
                         '                    <button id="' +
                                                         bookmarks[i].id +
                         '                               "\n' +

@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class MyBookmarkDTO {
     private Long id;
-    private Long themId;
+    private Long themeId;
     private String themeTitle;
     private String themeContent;
     private LocalDateTime themeStartDate;

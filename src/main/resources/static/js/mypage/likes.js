@@ -1,82 +1,219 @@
 const $likeList = $('.like-list');
+const type = {
+    "COMMUNITY" : "커뮤니티",
+    "STORY" : "스토리"
+}
+Object.freeze(type); // 객체를 동결시키기 위함
+console.log(type.COMMUNITY);
 
 $(document).ready(function () {
+
     console.log("좋아요 페이지")
-    $.ajax({
-        type: "GET", //전송방식을 지정한다 (POST,GET)
-        url: "/api/myPages/likes",
-        dataType: "json",
-        error: function () {
-            alert("통신실패!!!!");
-        },
-        success: function (likes) {
-            let text = "";
-            console.log("통신성공" + "OK");
-            console.log(likes);
-            if (likes.length > 0) {
-                $.each(likes, function (i) {
-                    const content = bookmarks[i].themeContent.length <= 25 ? bookmarks[i].themeContent : bookmarks[i].themeContent.substring(0, 25) + '...';
-                    text += '<li id="' +
-                                bookmarks[i].themeId +
-                        '    ">\n' +
-                        '        <div class="card">\n' +
-                        '            <a href="#">\n' +
-                        '                <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F29147%2Forp7cickvk9aipmp__400_400.jpg&amp;w=400&amp;q=75&quot;);">\n' +
-                        '                    <button id="' +
-                                                        bookmarks[i].id +
-                        '                               "\n' +
-                        '                            class="bookmark-btn" type="button">\n' +
-                        '                        <svg width="22" height="22" viewBox="0 0 18 18" fill="none" xmlns="https://www.w3.org/2000/svg">\n' +
-                        '                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.58065 1C3.25997 1 3 1.26206 3 1.58533V16.4138C3 16.8632 3.48164 17.145 3.86873 16.922L9.00004 13.9662L14.1313 16.922C14.5184 17.145 15 16.8632 15 16.4138V1.58533C15 1.26206 14.74 1 14.4194 1H9.00004H3.58065ZM8.71195 12.7838C8.89046 12.681 9.10961 12.681 9.28812 12.7838L13.8387 15.4052V2.17067H9.00004H4.1613V15.4052L8.71195 12.7838Z" fill="white"></path><path d="M9.28812 12.7838C9.10961 12.681 8.89046 12.681 8.71195 12.7838L4.1613 15.4052V2.17067H9.00004H13.8387V15.4052L9.28812 12.7838Z" fill="#3366FF"></path>\n' +
-                        '                        </svg>\n' +
-                        '                    </button>\n' +
-                        '                </header>\n' +
-                        '                 <div class="body">\n' +
-                        '                    <div class="card-theme">' +
-                                                    bookmarks[i].themeTitle +
-                        '                    </div>\n' +
-                        '                    <div class="card-userName">' +
-                                                    bookmarks[i].themeStartDate.split("T")[0] +
-                                                    ' ~ ' +
-                                                    bookmarks[i].themeEndDate.split("T")[0] +
-                        '                    </div>\n' +
-                        '                    <div class="card-grade">' +
-                                                    content +
-                        '                    </div>\n' +
-                        '                    <div class="card-badge"></div>\n' +
-                        '                </div>\n' +
-                        '            </a>\n' +
-                        '        </div>\n' +
-                        '    </li>'
-                })
-            } else {
-                text += "좋아요 정보가 없습니다."
-            }
-
-            //$likeList.html(text);
-        }
-    });
-
-    $(document).on('click', '.bookmark-btn', function(e) {
-        console.log("북마크 버튼 클릭")
-        console.log($(this).closest("li").attr("id"));
-        const bookmarkId = $(this).closest("li").attr("id");
-
+    if ($('.like-type').val() == "COMMUNITY") getCommunityLikes();
+    function getCommunityLikes() {
         $.ajax({
-            type: "DELETE",
-            url: "/api/myPages/bookmarks?bookmarkId="+bookmarkId,
-            dataType: "text",
+            type: "GET", //전송방식을 지정한다 (POST,GET)
+            url: "/api/myPages/communityLikes",
+            dataType: "json",
+            async: false,
             error: function () {
                 alert("통신실패!!!!");
             },
-            success: function (url) {
-                showWarnModal("선택한 항목이 북마크에서 삭제되었습니다.")
-                $(".modal").on("click", function () {
-                    location.href = url
-                })
-                console.log("통신성공" + "OK")
+            success: function (likes) {
+                let text = "";
+                console.log("통신성공" + "OK");
+                console.log(likes);
+                if (likes.length > 0) {
+                    $.each(likes, function (i) {
+                        const content = likes[i].communityContent.length <= 25 ? likes[i].communityContent : likes[i].communityContent.substring(0, 25) + '...';
+                        text += '<li id="' +
+                                    likes[i].communityId +
+                            '    ">\n' +
+                            '        <div class="card">\n' +
+                            '            <a href="#">\n' +
+                            '                <header style="background-image: url(/files/' +
+                                                    likes[i].files[0].filePath + '/' +
+                                                    likes[i].files[0].fileUuid + '_' +
+                                                    likes[i].files[0].fileName +
+                            '                       );">\n' +
+                            '                    <button id="' +
+                                                            likes[i].id +
+                            '                               "\n' +
+                            '                        type="button" class="like-btn">\n' +
+                            '                        <span class="svgIcon-root">\n' +
+                            '                            <svg class="svgIcon-svg" viewBox="0 0 24 24">\n' +
+                            '                                <path d="M11.9999 6.49201L13.4848 5.00461C15.5225 2.9634 18.8529 2.9634 20.8905 5.00445C22.9308 7.04707 22.9308 10.3876 20.8928 12.4291L13.4587 19.9397L13.4565 19.9419C13.067 20.332 12.5427 20.5339 11.9999 20.5261C11.4563 20.5339 10.9319 20.3321 10.5402 19.9397L3.10804 12.4311C1.06908 10.3875 1.06908 7.04719 3.10835 5.00445C5.14712 2.96345 8.47614 2.96345 10.5151 5.00461L11.9999 6.49201Z"></path>\n' +
+                            '                            </svg>\n' +
+                            '                        </span>' +
+                                                        likes[i].communityLikeCount +
+                            '                           \n' +
+                            '                    </button>\n' +
+                            '                </header>\n' +
+                            '                <div class="body">\n' +
+                            '                    <div class="card-theme">' +
+                                                    likes[i].communityTitle +
+                            '                    </div>\n' +
+                            '                    <div class="card-userName">' +
+                                                    content +
+                            '                    </div>\n' +
+                            '                    <div class="card-grade">' +
+                                                    likes[i].memberName +
+                            '                    </div>\n' +
+                            '                    <div class="card-grade">' +
+                                                    likes[i].updatedDate.split("T")[0] +
+                            '                    </div>\n' +
+                            '                    <div class="card-location"><span>' +
+                                                    likes[i].communityCategory.name +
+                            '                    </span></div>\n' +
+                            '                    <div class="card-badge"></div>\n' +
+                            '                </div>\n' +
+                            '            </a>\n' +
+                            '        </div>\n' +
+                            '    </li>'
+
+                    })
+                } else {
+                    text += "좋아요 정보가 없습니다."
+                }
+
+                $likeList.html(text);
             }
         });
+    }
+
+    function getStoryLikes() {
+        $.ajax({
+            type: "GET", //전송방식을 지정한다 (POST,GET)
+            url: "/api/myPages/storyLikes",
+            dataType: "json",
+            async: false,
+            error: function () {
+                alert("통신실패!!!!");
+            },
+            success: function (likes) {
+                let text = "";
+                console.log("통신성공" + "OK");
+                console.log(likes);
+                if (likes.length > 0) {
+                    $.each(likes, function (i) {
+                        const content = likes[i].storyContent.length <= 25 ? likes[i].storyContent : likes[i].storyContent.substring(0, 25) + '...';
+                        text += '<li id="' +
+                                    likes[i].storyId +
+                            '    ">\n' +
+                            '        <div class="card">\n' +
+                            '            <a href="#">\n' +
+                            '                <header style="background-image: url(/files/' +
+                                                        likes[i].files[0].filePath + '/' +
+                                                        likes[i].files[0].fileUuid + '_' +
+                                                        likes[i].files[0].fileName +
+                            '                       );">\n' +
+                            '                    <button id="' +
+                                                        likes[i].id +
+                            '                               "\n' +
+                            '                        type="button" class="like-btn">\n' +
+                            '                        <span class="svgIcon-root">\n' +
+                            '                            <svg class="svgIcon-svg" viewBox="0 0 24 24">\n' +
+                            '                                <path d="M11.9999 6.49201L13.4848 5.00461C15.5225 2.9634 18.8529 2.9634 20.8905 5.00445C22.9308 7.04707 22.9308 10.3876 20.8928 12.4291L13.4587 19.9397L13.4565 19.9419C13.067 20.332 12.5427 20.5339 11.9999 20.5261C11.4563 20.5339 10.9319 20.3321 10.5402 19.9397L3.10804 12.4311C1.06908 10.3875 1.06908 7.04719 3.10835 5.00445C5.14712 2.96345 8.47614 2.96345 10.5151 5.00461L11.9999 6.49201Z"></path>\n' +
+                            '                            </svg>\n' +
+                            '                        </span>' +
+                                                            likes[i].storyLikeCount +
+                            '                           \n' +
+                            '                    </button>\n' +
+                            '                </header>\n' +
+                            '                <div class="body">\n' +
+                            '                    <div class="card-theme">' +
+                                                            likes[i].storyTitle +
+                            '                    </div>\n' +
+                            '                    <div class="card-userName">' +
+                                                            content +
+                            '                    </div>\n' +
+                            '                    <div class="card-grade">' +
+                                                            likes[i].memberName +
+                            '                    </div>\n' +
+                            '                    <div class="card-grade">' +
+                                                            likes[i].updatedDate.split("T")[0] +
+                            '                    </div>\n' +
+                            '                    <div class="card-badge"></div>\n' +
+                            '                </div>\n' +
+                            '            </a>\n' +
+                            '        </div>\n' +
+                            '    </li>'
+                    })
+                } else {
+                    text += "좋아요 정보가 없습니다."
+                }
+
+                $likeList.html(text);
+            }
+        });
+    }
+
+    function deleteCommunityLike(likeId) {
+        $.ajax({
+            type: "DELETE",
+            url: "/api/myPages/communityLikes?communityLikeId="+likeId,
+            dataType: "text",
+            async: false,
+            error: function () {
+                alert("통신실패!!!!");
+            },
+            success: function (result) {
+                console.log(result + "OK")
+                showWarnModal("선택한 항목이 좋아요에서 삭제되었습니다.")
+                $(".modal").on("click", function () {
+                    getCommunityLikes()
+                })
+            }
+        });
+    }
+
+    function deleteStoryLike(likeId) {
+        $.ajax({
+            type: "DELETE",
+            url: "/api/myPages/storyLikes?storyLikeId="+likeId,
+            dataType: "text",
+            async: false,
+            error: function () {
+                alert("통신실패!!!!");
+            },
+            success: function (result) {
+                console.log(result + "OK")
+                showWarnModal("선택한 항목이 좋아요에서 삭제되었습니다.")
+                $(".modal").on("click", function () {
+                    getStoryLikes()
+                })
+            }
+        });
+    }
+
+    // 커뮤니티, 스토리 좋아요 리스트 가져오기
+    $(document).on('change', '.like-type', function(e) {
+        const $likeTypeP = $('.like-type-p');
+        console.log($(this).val())
+        const likeType = $(this).val();
+        if (likeType=="COMMUNITY") {
+            $likeTypeP.text(type.COMMUNITY)
+            getCommunityLikes();
+        } else {
+            $likeTypeP.text(type.STORY)
+            getStoryLikes();
+        }
+        console.log("선택 바뀜");
     })
-    
+
+    // 커뮤니티, 스토리 좋아요 삭제
+    $(document).on('click', '.like-btn', function(e) {
+        console.log("좋아요 버튼 클릭")
+        console.log($(this).attr("id"));
+        console.log($('.like-type').val());
+
+        const likeId = $(this).attr("id");
+
+        if ($('.like-type').val()=="COMMUNITY") {
+            deleteCommunityLike(likeId);
+        } else {
+            deleteStoryLike(likeId);
+        }
+
+    })
 })
