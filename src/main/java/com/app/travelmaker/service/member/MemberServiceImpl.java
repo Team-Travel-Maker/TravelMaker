@@ -1,7 +1,14 @@
 package com.app.travelmaker.service.member;
 
+import com.app.travelmaker.constant.JoinCheckType;
+import com.app.travelmaker.constant.MemberJoinAccountType;
+import com.app.travelmaker.constant.Role;
+import com.app.travelmaker.domain.member.OAuthAttributes;
 import com.app.travelmaker.domain.member.request.MemberRequestDTO;
+import com.app.travelmaker.domain.member.response.MemberJoinResponseDTO;
 import com.app.travelmaker.domain.member.response.MemberResponseDTO;
+import com.app.travelmaker.embeddable.address.Address;
+import com.app.travelmaker.embeddable.alarm.Alarm;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.provider.MemberDetail;
 import com.app.travelmaker.repository.member.MemberRepository;
@@ -9,49 +16,85 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
+import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicBoolean;
+import javax.servlet.http.HttpSession;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class MemberServiceImpl implements MemberService {
+public class MemberServiceImpl implements MemberService, OAuth2UserService<OAuth2UserRequest, OAuth2User> {
 
     private final MemberRepository memberRepository;
+    private final HttpSession session;
 
     @Override
     public void join(MemberRequestDTO memberRequestDTO, PasswordEncoder passwordEncoder) {
-        memberRequestDTO.setMemberPw(passwordEncoder.encode(memberRequestDTO.getMemberPw()));
+        if(memberRequestDTO.getMemberPw() != null){
+            memberRequestDTO.setMemberPw(passwordEncoder.encode(memberRequestDTO.getMemberPw()));
+        }
         memberRepository.save(toEntity(memberRequestDTO));
     }
 
     @Override
-    public boolean checkId(String memberEmail) {
+    @Transactional
+    public void join(MemberRequestDTO memberRequestDTO) {
+        memberRepository.findByMemberEmail(memberRequestDTO.getMemberEmail()).ifPresent(member -> {
+            memberRepository.oauthJoin(memberRequestDTO);
+        });
+    }
 
-        final Integer count = memberRepository.memberCount(memberEmail);
+    @Override
+    public Member findByMemberEmail(String memberEmail) {
+        return memberRepository.findByMemberEmail(memberEmail).orElseThrow(()-> {throw new RuntimeException("회원을 찾을 수 없습니다");});
+    }
 
-        if(count >0){return true;}
-        else{return false;}
+    @Override
+    public JoinCheckType memberCheckForOauthAndLogin(String memberEmail) {
+
+        AtomicReference<JoinCheckType> joinCheckType = new AtomicReference<>();
+
+        Optional<MemberJoinResponseDTO> memberJoinResponseDTO = memberRepository.memberCheckForOauthAndLogin(memberEmail);
+
+        memberJoinResponseDTO.ifPresentOrElse((member)->{
+            log.info(member.getMemberJoinAccountType().getCode());
+            if (member.getMemberJoinAccountType().getCode().equals(MemberJoinAccountType.KAKAO.getCode()) ||
+                    member.getMemberJoinAccountType().getCode().equals(MemberJoinAccountType.NAVER.getCode())
+            ) {
+                log.info("들어모2");
+                joinCheckType.set(JoinCheckType.SNS);
+            }else{
+                log.info("들어모3");
+                joinCheckType.set(JoinCheckType.FALSE);
+            }
+        },()->{
+            joinCheckType.set(JoinCheckType.TRUE);
+        });
+
+        return  joinCheckType.get();
     }
 
 
     //    spring security에서 DBMS의 회원 정보를 가져올 때 사용될 메소드
     @Override
+    @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Member member = memberRepository.findByMemberEmail(username).orElseThrow(() -> new BadCredentialsException(username + " not found"));
 
@@ -63,6 +106,46 @@ public class MemberServiceImpl implements MemberService {
                 .memberPassword(member.getMemberPw())
                 .memberRole(member.getMemberRole())
                 .build();
+    }
+
+
+    @Override
+    @Transactional
+    public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
+        //        로그인 완료 후 정보를 담기 위한 준비
+        OAuth2UserService<OAuth2UserRequest, OAuth2User> delegate = new DefaultOAuth2UserService();
+        //        로그인된 사용자의 정보 불러오기
+        OAuth2User oAuth2User = delegate.loadUser(userRequest);
+
+        //        어떤 기업의 OAuth를 사용했는 지의 구분(naver, kakao, mac, facebook,...)
+        String registrationId = userRequest.getClientRegistration().getRegistrationId();
+        String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
+        OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
+
+        Member member = saveOrUpdate(attributes);
+
+        if(member.getId() == null){
+            memberRepository.save(member);
+        }else{
+            member.update(attributes.getName(), attributes.getSnsProfile(), attributes.getEmail());
+        }
+
+        session.setAttribute("member", new MemberResponseDTO(member));
+        log.info("==========================================");
+        log.info(((MemberResponseDTO)session.getAttribute("member")).getMemberEmail());
+        log.info("==========================================");
+
+        return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(member.getMemberRole().getSecurityRole())), attributes.getAttributes(), attributes.getNameAttributeKey());
+    }
+
+    @Transactional
+    public Member saveOrUpdate(OAuthAttributes attributes){
+
+        Member memberForSavingOrUpdating = memberRepository.findByMemberEmail(attributes.getEmail())
+                .map(member -> member.update(attributes.getName(), attributes.getSnsProfile(), attributes.getEmail()))
+                .orElse(attributes.toEntity());
+
+        return memberForSavingOrUpdating;
     }
 
     @Override

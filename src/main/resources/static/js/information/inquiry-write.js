@@ -117,7 +117,7 @@ $submitBtn.on('click', function () {
 
             form.append("customServiceDTO", new Blob([JSON.stringify(csDTO)], { type: "application/json" }));
             customService.write(form,function () {
-                location.href="/main/main"
+                location.href="/"
             })
         })
         return;

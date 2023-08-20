@@ -28,6 +28,7 @@ public class MemberResponseDTO {
     private Integer memberEcoPoint;
     private MemberJoinAccountType memberJoinAccountType;
     private String memberInterestRegion;
+    private String snsProFile;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
 
@@ -46,6 +47,7 @@ public class MemberResponseDTO {
         this.memberEcoPoint = member.getMemberEcoPoint();
         this.memberJoinAccountType = member.getMemberJoinAccountType();
         this.memberInterestRegion = member.getMemberInterestRegion();
+        this.snsProFile = member.getSnsProfile();
         this.createdDate = member.getCreatedDate();
         this.updatedDate = member.getUpdatedDate();
     }

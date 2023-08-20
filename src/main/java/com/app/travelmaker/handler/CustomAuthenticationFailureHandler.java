@@ -34,6 +34,7 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
 
         setDefaultFailureUrl(URI + "?error=true&exception=" + errorMessage);
 
+
         super.onAuthenticationFailure(request, response, exception);
     }
 }

@@ -56,15 +56,22 @@ $(document).ready(function () {
             dataType: "json",
             success: function(result){
                 console.log(result);
-                if(!result){
-                    /*아이디 없음*/
+
+                if(result.code == "SNS"){
+                   showWarnModal("SNS 계정입니다")
+                    return;
+                }
+
+                if(result.code == "FALSE"){
+                    document.login.submit();
+                    return;
+                }
+                if(result.code == "TRUE"){
                     $('#member-email').val(checkEmail.memberEmail);
                     $('#join-form').submit();
-                }else{
-                    /*아이디 있음*/
-                    document.login.submit();
-                    /*location.href =`/accounts/password/input`*/
+                    return;
                 }
+
             }
         })
 

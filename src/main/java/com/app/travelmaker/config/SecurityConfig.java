@@ -32,7 +32,7 @@ public class SecurityConfig {
     private static final String LOGIN_PAGE = "/accounts/login/login";
     private static final String LOGIN_PAGE2 = "/accounts/password/input";
     private static final String LOGOUT_PATH = "/accounts/logout";
-    private static final String LOGOUT_SUCCESS_PATH = "/main/main";
+    private static final String LOGOUT_SUCCESS_PATH = "/";
 
     private static final String REMEMBER_ME_TOKEN_KEY = "hava a nice day";
     private static final int REMEMBER_ME_TOKEN_EXPIRED = 60 * 60 * 24 * 14;
@@ -91,13 +91,14 @@ public class SecurityConfig {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name()) //ADMIN 권한이 있는 회원은 접근 가능
-                .antMatchers(INFORMATION_PATH).hasAnyRole(Role.ADMIN.name(), Role.GENERAL.name(), Role.COMPANY.name()); //3 중 아무나
-    /*            .and()
+                .antMatchers(INFORMATION_PATH).hasAnyRole(Role.ADMIN.name(), Role.GENERAL.name(), Role.COMPANY.name()) //3 중 아무나
+                .and()
                 .oauth2Login()
-                .userInfoEndpoint();*/
+                .userInfoEndpoint().and().successHandler(authenticationSuccessHandler);
 
         return http.build();
     }
+
 }
 
 
