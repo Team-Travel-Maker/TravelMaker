@@ -690,16 +690,16 @@ let joinService = (function () {
 })()
 
 function success() {
-    showWarnModal("회원가입이 정상적으로 처리 되었습니다. 로그인해주세요");
+    showWarnModal("회원가입이 정상적으로 처리 되었습니다.");
     $('.modal').on("click", function () {
         location.href=`/accounts/login/login`;
     })
 }
 
 function oauthSuccess() {
-    showWarnModal("회원가입이 정상적으로 처리 되었습니다. SNS로 로그인 해주세요");
+    showWarnModal("SNS 계정 가입이 완료 되었습니다.");
     $('.modal').on("click", function () {
-        location.href=`/accounts/login/login`;
+        location.href=`/oauth2/authorization/kakao`;
     })
 }
 
