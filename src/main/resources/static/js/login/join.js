@@ -598,19 +598,38 @@ function allCheckTest(thisAll){
 
 /* ---------- 가입 버튼 관련 처리 함수 ----------*/
 function joinBtnCheck() {
-    if($nameInput.val().length > 0 &&
-        $zipCode.val().length > 0 &&
-        $addressDetail.val().length > 0 &&
-        $(".find-check-ok-p").css("display") == "block" &&
-        $(".new-pass-possible-p").css("display") == "block" &&
-        $('.agree-checkbox').eq(0).is(":checked") &&
-        $('.agree-checkbox').eq(1).is(":checked")&&
-        $('.agree-checkbox').eq(2).is(":checked")
-    ) {
-        $joinBtn.attr("disabled", false);
-    } else {
-        $joinBtn.attr("disabled", true);
+
+    console.log($('.new-pass-container').length);
+
+    if($('.new-pass-container').length != 0){
+        if($nameInput.val().length > 0 &&
+            $zipCode.val().length > 0 &&
+            $addressDetail.val().length > 0 &&
+            $(".find-check-ok-p").css("display") == "block" &&
+            $(".new-pass-possible-p").css("display") == "block" &&
+            $('.agree-checkbox').eq(0).is(":checked") &&
+            $('.agree-checkbox').eq(1).is(":checked")&&
+            $('.agree-checkbox').eq(2).is(":checked")
+        ) {
+            $joinBtn.attr("disabled", false);
+        } else {
+            $joinBtn.attr("disabled", true);
+        }
+    }else{
+        if($nameInput.val().length > 0 &&
+            $zipCode.val().length > 0 &&
+            $addressDetail.val().length > 0 &&
+            $(".find-check-ok-p").css("display") == "block" &&
+            $('.agree-checkbox').eq(0).is(":checked") &&
+            $('.agree-checkbox').eq(1).is(":checked")&&
+            $('.agree-checkbox').eq(2).is(":checked")
+        ) {
+            $joinBtn.attr("disabled", false);
+        } else {
+            $joinBtn.attr("disabled", true);
+        }
     }
+
 }
 
 
@@ -641,8 +660,11 @@ $joinBtn.on('click', function () {
         member.snsBenefitEvent = true
     }
 
-    joinService.join(member,success);
-
+    if($('.new-pass-container').length != 0) {
+        joinService.join(member, success);
+    }else{
+        joinService.join(member, oauthSuccess);
+    }
 
 })
 
@@ -668,7 +690,14 @@ let joinService = (function () {
 })()
 
 function success() {
-    showWarnModal("회원가입이 정상적으로 처리 되었습니다.");
+    showWarnModal("회원가입이 정상적으로 처리 되었습니다. 로그인해주세요");
+    $('.modal').on("click", function () {
+        location.href=`/accounts/login/login`;
+    })
+}
+
+function oauthSuccess() {
+    showWarnModal("회원가입이 정상적으로 처리 되었습니다. SNS로 로그인 해주세요");
     $('.modal').on("click", function () {
         location.href=`/accounts/login/login`;
     })

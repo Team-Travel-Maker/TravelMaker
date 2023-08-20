@@ -28,7 +28,6 @@ public class InformationApiController {
     @PostMapping("")
     public void write(@RequestPart(required = true, value = "customServiceDTO") CustomServiceDTO customServiceDTO){
         final MemberResponseDTO memberDTO = (MemberResponseDTO) session.getAttribute("member");
-        log.info(memberDTO.toString());
         customServiceDTO.setMemberResponseDTO(memberDTO);
         customSerivceService.register(customServiceDTO);
     }

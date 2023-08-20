@@ -1,7 +1,11 @@
 package com.app.travelmaker.repository.member;
 
 import com.app.travelmaker.constant.Role;
+import com.app.travelmaker.domain.member.request.MemberRequestDTO;
+import com.app.travelmaker.domain.member.response.MemberJoinResponseDTO;
 import com.app.travelmaker.domain.member.response.MemberResponseDTO;
+import com.app.travelmaker.embeddable.address.Address;
+import com.app.travelmaker.embeddable.alarm.Alarm;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.entity.mebmer.QMember;
 import com.querydsl.core.types.Projections;
@@ -11,8 +15,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
+import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import static com.app.travelmaker.entity.mebmer.QMember.*;
 import static com.app.travelmaker.entity.notice.QNotice.notice;
@@ -20,10 +26,17 @@ import static com.app.travelmaker.entity.notice.QNotice.notice;
 public class MemberDSLImpl implements MemberDSL {
     @Autowired
     private JPAQueryFactory query;
+    @Autowired
+    private EntityManager entityManager;
 
     @Override
-    public Integer memberCount(String memberEmail) {
-        return query.select(member.count()).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne().intValue();
+    public Optional<MemberJoinResponseDTO> memberCheckForOauthAndLogin(String memberEmail) {
+        MemberJoinResponseDTO memberJoinResponseDTO = query.select(Projections.fields(MemberJoinResponseDTO.class,
+                member.memberEmail,
+                member.memberJoinAccountType
+        )).from(member)
+                .where(member.memberEmail.eq(memberEmail)).fetchOne();
+        return Optional.ofNullable(memberJoinResponseDTO);
     }
 
     @Override
@@ -125,5 +138,25 @@ public class MemberDSLImpl implements MemberDSL {
                     .where(member.id.eq(id))
                     .execute();
         }
+    }
+
+    @Override
+    public void oauthJoin(MemberRequestDTO memberRequestDTO) {
+        query.update(member)
+                .set(member.address.address, memberRequestDTO.getAddress())
+                .set(member.address.addressDetail, memberRequestDTO.getAddressDetail())
+                .set(member.address.postcode, memberRequestDTO.getPostCode())
+                .set(member.alarm.emailBenefitEvent, memberRequestDTO.isEmailSuggestion())
+                .set(member.alarm.emailSuggestion, memberRequestDTO.isEmailBenefitEvent())
+                .set(member.alarm.snsBenefitEvent, memberRequestDTO.isSnsBenefitEvent())
+                .set(member.memberPhone, memberRequestDTO.getMemberPhone())
+                .set(member.memberRole, memberRequestDTO.getMemberRole())
+                .set(member.memberName, memberRequestDTO.getMemberName())
+                .set(member.updatedDate, LocalDateTime.now())
+                .where(member.memberEmail.eq(memberRequestDTO.getMemberEmail()))
+                .execute();
+
+/*        entityManager.flush();
+        entityManager.clear();*/
     }
 }

@@ -10,6 +10,25 @@ spring:
     username: travelmaker
     password: 1234
 
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-name: kakao
+            client-id: 203551701f571bf408f7a5ead87437b9
+            client-secret: lTm2Qya6pN9HfzjtZEL4eduTmobBL7Tv
+            redirect-uri: http://localhost:10000/login/oauth2/code/kakao
+            client-authentication-method: POST
+            authorization-grant-type: authorization_code
+            scope: account_email,profile_nickname, profile_image
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: kakao_account
+
   #jpa
   jpa:
     hibernate:
@@ -26,6 +45,10 @@ spring:
     ansi:
       enabled: always
 
+  #Redis
+  session:
+    store-type: redis
+
   #multipart
   servlet:
     multipart:
@@ -34,7 +57,9 @@ spring:
       max-file-size: 40MB
       file-size-threshold: 100MB
 
+
 coolsms:
   api:
     key: "NCSAIGM8SGCYHUGE"
     secret: "IUDYW1NN4DROTS0VHS2IZLAC4GB77FZT"
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@
                     style="width: 17px; height: 14px; object-fit: contain"
                   />
                 </button>
-                <a href="/main/main" class="main-logo">
+                <a href="/" class="main-logo">
                     <?xml version="1.0" encoding="utf-8"?>
                     <!-- Generator: Adobe Illustrator 27.4.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
                     <svg version="1.1" id="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -90,10 +90,16 @@
                   <li class="profile-container">
                       <button type="button" class="profile-button">
                           <div class="profile">
-                              <div class="profile-img" style="
+                              <th:block th:if="${session.member.getMemberJoinAccountType().getCode().equals('KAKAO')}">
+                              <div class="profile-img" th:style="'background-image:url(' + ${session.member.getSnsProFile()} + ');'">
+                              </div>
+                              </th:block>
+                              <th:block th:if="${session.member.getMemberJoinAccountType().getCode().equals('GENERAL')}">
+                                  <div class="profile-img" style="
                                   background-image: url(https://static.wanted.co.kr/oneid-user/profile_default.png), url(https://static.wanted.co.kr/images/profile_default.png);
                               ">
-                              </div>
+                                  </div>
+                              </th:block>
                           </div>
                       </button>
                       <span class="new" style="background-color: rgb(51, 102, 255); width: 13px; height: 13px;">

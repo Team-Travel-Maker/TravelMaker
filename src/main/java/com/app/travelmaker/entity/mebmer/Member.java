@@ -16,6 +16,7 @@ import org.hibernate.annotations.SQLDelete;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  * Member Entity (회원)
@@ -45,7 +46,7 @@ public class Member extends Period implements Serializable {
     /**
      * Member PW(회원 비밀번호)
      * */
-    @NotNull private String memberPw;
+    private String memberPw;
 
     /**
      * Member Name(회원 이름)
@@ -55,17 +56,17 @@ public class Member extends Period implements Serializable {
     /**
      * Member ALARM (알람 설정 여부)
      * */
-    @Embedded @NotNull private Alarm alarm;
+    @Embedded private Alarm alarm;
 
     /**
      * Member Address(회원 주소)
      * */
-    @Embedded @NotNull private Address address;
+    @Embedded private Address address;
 
     /**
      * Member PHONE(회원 전화 번호)
      * */
-    @NotNull private String memberPhone;
+    private String memberPhone;
 
     /**
      * Member TYPE(회원)
@@ -126,6 +127,33 @@ public class Member extends Period implements Serializable {
     private File file;
 
 
+/*sns 계정을 위한 setter*/
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
+    }
+
+    public void setSnsProfile(String snsProfile) {
+        this.snsProfile = snsProfile;
+    }
+
+    public void setMemberEmail(String memberEmail) {
+        this.memberEmail = memberEmail;
+    }
+
+/*    public void setAlarm(Alarm alarm) { this.alarm = alarm; }
+
+    public void setAddress(Address address) { this.address = address; }
+
+    public void setMemberPhone(String memberPhone) { this.memberPhone = memberPhone; }
+
+    public void setMemberJoinAccountType(MemberJoinAccountType memberJoinAccountType) { this.memberJoinAccountType = memberJoinAccountType; }*/
+
+    public Member update(String memberName, String snsProfile, String memberEmail){
+        this.setMemberName(memberName);
+        this.setSnsProfile(snsProfile);
+        this.setMemberEmail(memberEmail);
+        return this;
+    }
 
 
 }

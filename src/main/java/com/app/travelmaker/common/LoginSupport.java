@@ -19,7 +19,7 @@ public abstract class LoginSupport {
     @Autowired
     private HttpSession httpSession;
 
-    public void authenticationInfo() {
+    public MemberResponseDTO authenticationInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication.getPrincipal()!=null){
             Member member = memberRepository.findById(((MemberDetail) authentication.getPrincipal()).getId()).orElseThrow(() -> {
@@ -27,6 +27,12 @@ public abstract class LoginSupport {
             });
             httpSession.invalidate();
             httpSession.setAttribute("member", new MemberResponseDTO(member));
+
+            log.info("******************");
+            log.info(member.toString());
+            log.info(httpSession.getAttribute("member").toString());
+
+            return (MemberResponseDTO)httpSession.getAttribute("member");
         }else{
             throw new RuntimeException("인증 회원 정보 없음");
         }
