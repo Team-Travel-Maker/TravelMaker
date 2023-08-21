@@ -7,14 +7,22 @@
         <title>관리자 페이지- 업체 게시판 상세보기</title>
         <link rel="stylesheet" href="/css/admin/sidemenu.css" />
         <link rel="stylesheet" href="/css/admin/admin-board-detail.css" />
+        <link rel="stylesheet" href="/css/admin/admin-board-proposal-modify.css">
         <link rel="stylesheet" href="/css/admin/admin-inquire-detail.css" />
         <link rel="stylesheet" href="/css/admin/admin-board.css">
         <link rel="stylesheet" href="/css/admin/admin-board-proposal.css">
         <link rel="stylesheet" href="/css/admin/admin-common.css">
         <link rel="icon" href="/images/logo/favicon.png" />
+        <link rel="stylesheet" href="/css/admin/modal.css"/>
     </head>
 
     <body>
+        <!-- 모달 부분 -->
+        <div class="modal">
+            <div class="warn-modal">
+                <div id="content-wrap"></div>
+            </div>
+        </div>
         <div>
             <div class="info-title-box info-title-box-flex">
                 <div class="logo-box-layout">
@@ -48,84 +56,8 @@
                         </div>
 
                         <!-- 내용 섹션 -->
-                        <section class="board-info-box-layout">
-                            <div class="board-info-box">
-                                <div class="board-info-title-box">
-                                    <span>업체 상세보기</span>
-                                </div>
-                                <hr />
-                                <div class="info-table">
-                                    <div class="board-title">
-                                        <span class="span-bold">회원 ID :</span>
-                                        <!-- 신청 제목 -->
-                                        <span>회원 ID 불러오기 </span>
-                                    </div>
-                                    <div class="board-info board-writer">
-                                        <span class="span-bold">업체명 :</span>
-                                        <!-- 업체명 -->
-                                        <span>업체명 불러오기 </span>
-                                    </div>
-                                    <div class="board-info board-writer">
-                                        <span class="span-bold">업체 주소 :</span>
-                                        <!-- 업체주소 -->
-                                        <span>업체주소 불러오기 </span>
-                                    </div>
-                                    <div class="board-info board-register-date">
-                                        <span class="span-bold">작성 날짜 :</span>
-                                        <!-- 작성 날짜 -->
-                                        <span>작성 날짜 불러오기</span>
-                                    </div>
-                                    <div class="board-info board-update-date">
-                                        <span class="span-bold">수정 날짜 :</span>
-                                        <!-- 작성 날짜 -->
-                                        <span>작성 날짜 불러오기</span>
-                                    </div>
-                                    <div class="board-info board-register-date">
-                                        <span class="span-bold">종류 : </span>
-                                        <!-- 작성 날짜 -->
-                                        <span>숙박인지 음식인지 불러오기</span>
-                                    </div>
-                                    <div class="board-info board-register-date">
-                                        <span class="span-bold">상태 : </span>
-                                        <!-- 작성 날짜 -->
-                                        <span>대기 / 승인 / 반려 불러오기</span>
-                                    </div>
-                                    <hr />
-                                    <div class="info-member">
-                                        <span class="span-bold">대표 이미지</span>
-                                        <br>
-                                        <!-- 대표 이미지 -->
-                                        <span class="notice-image">대표이미지불러오기</span>
-                                    </div>
-                                    <hr />
-                                    <div class="info-member">
-                                        <span class="span-bold">내용 이미지</span>
-                                        <br>
-                                        <!-- 대표 이미지 -->
-                                        <span class="notice-image">내용 이미지 불러오기</span>
-                                    </div>
-                                    <hr />
-                                    <!-- 게시판 내용 -->
-                                    <div class="board-content">업체 신청 내용 불러오기
-                                        업체 신청 내용 불러오기
-                                        업체 신청 내용 불러오기
-                                        업체 신청 내용 불러오기
-                                        업체 신청 내용 불러오기
-                                        업체 신청 내용 불러오기
-                                        업체 신청 내용 불러오기
-                                        업체 신청 내용 불러오기
-                                        업체 신청 내용 불러오기
-                                        업체 신청 내용 불러오기
-                                    </div>
-                                    <hr />
-                                    <div class="answer-button-wrapper modify-button-wrapper">
-                                        <button>
-                                            답변하기
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
+                        <section class="board-info-box-layout"></section>
+                        <section class="board-info-box-layout"></section>
                     </div>
                 </div>
             </div>
@@ -133,13 +65,9 @@
     </body>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="/js/admin/sidemenu.js"></script>
-    <script>
-        //답변하기로 이동만 해놓기
-        const answer = $('.answer-button-wrapper button');
-
-        answer.on("click", function () {
-            location.href=`/admins/company/write`
-        })
-
+    <script src="/js/admin/modal.js"></script>
+    <script th:inline="javascript">
+        let storeId = [[${storeId}]];
     </script>
+    <script src="/js/admin/store/detail.js"></script>
 </html>

@@ -107,8 +107,11 @@ public class AdminController {
     public void goToCompanyList(){;}
 
     // 업체 상세
-    @GetMapping("store/detail")
-    public void goToCompanyDetail(){;}
+    @GetMapping("store/detail/{id}")
+    public String goToCompanyDetail(@PathVariable Long id, Model model){
+        model.addAttribute("storeId", id);
+        return "/admins/store/detail";
+        }
 
     //업체 신청 답변
     @GetMapping("store/write")

@@ -6,6 +6,7 @@ import com.app.travelmaker.domain.mypage.company.StoreFileDTO;
 import com.app.travelmaker.embeddable.address.Address;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.entity.store.StoreFile;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
