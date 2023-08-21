@@ -1,18 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:display="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>좋아요</title>
     <link rel="stylesheet" href="/css/header/header.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
     <link rel="stylesheet" href="/css/mypage/likes.css">
+    <link rel="stylesheet" href="/css/admin/modal.css"/>
 </head>
 <body style="background-color: #f8f8f8;">
+<div class="modal">
+    <div class="warn-modal">
+        <div id="content-wrap"></div>
+    </div>
+</div>
 <div th:replace="~{header/header :: #header}"></div>
 <div class="container-profile">
     <nav role="presentation" class="nav">
         <h2 class="nav-title">
-            <p>좋아요</p>
+            <div style="display: inline-block;width: 91.5%;">
+                <p style="display: inline-block;">좋아요 - </p>
+                <p style="display: inline-block;" class="like-type-p">커뮤니티</p>
+            </div>
+            <select name="like-type" id="like-type" class="like-type" style="border-radius:10px;padding:5px;font-size:15px;">
+                <option value="COMMUNITY">커뮤니티</option>
+                <option value="STORY">스토리</option>
+            </select>
             <button type="button" class="nav-button">
                 좋아요
             </button>
@@ -22,230 +35,40 @@
     <div class="bookmark-container">
         <div class="list">
             <div class="list-container">
-                <ul>
+                <ul class="like-list">
                     <!--여기서 반복-->
-                    <li>
-                        <div class="card">
-                            <a href="#">
-                                <!--이미지-->
-                                <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F4088%2Foueptcfbm51jzaj2__400_400.jpg&amp;w=400&amp;q=75&quot;);">
-                                    <button type="button" class="like-btn">
-                                        <span class="svgIcon-root">
-                                            <svg class="svgIcon-svg" viewBox="0 0 24 24">
-                                                <path d="M11.9999 6.49201L13.4848 5.00461C15.5225 2.9634 18.8529 2.9634 20.8905 5.00445C22.9308 7.04707 22.9308 10.3876 20.8928 12.4291L13.4587 19.9397L13.4565 19.9419C13.067 20.332 12.5427 20.5339 11.9999 20.5261C11.4563 20.5339 10.9319 20.3321 10.5402 19.9397L3.10804 12.4311C1.06908 10.3875 1.06908 7.04719 3.10835 5.00445C5.14712 2.96345 8.47614 2.96345 10.5151 5.00461L11.9999 6.49201Z"></path>
-                                            </svg>
-                                        </span>3
-                                    </button>
-                                </header>
+<!--                    <li>-->
+<!--                        <div class="card">-->
+<!--                            <a href="#">-->
+<!--                                &lt;!&ndash;이미지&ndash;&gt;-->
+<!--                                <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F4088%2Foueptcfbm51jzaj2__400_400.jpg&amp;w=400&amp;q=75&quot;);">-->
+<!--                                    <button type="button" class="like-btn">-->
+<!--                                        <span class="svgIcon-root">-->
+<!--                                            <svg class="svgIcon-svg" viewBox="0 0 24 24">-->
+<!--                                                <path d="M11.9999 6.49201L13.4848 5.00461C15.5225 2.9634 18.8529 2.9634 20.8905 5.00445C22.9308 7.04707 22.9308 10.3876 20.8928 12.4291L13.4587 19.9397L13.4565 19.9419C13.067 20.332 12.5427 20.5339 11.9999 20.5261C11.4563 20.5339 10.9319 20.3321 10.5402 19.9397L3.10804 12.4311C1.06908 10.3875 1.06908 7.04719 3.10835 5.00445C5.14712 2.96345 8.47614 2.96345 10.5151 5.00461L11.9999 6.49201Z"></path>-->
+<!--                                            </svg>-->
+<!--                                        </span>3-->
+<!--                                    </button>-->
+<!--                                </header>-->
 
-                                <div class="body">
-                                    <div class="card-theme">광명동굴 테마 패키지</div>
-                                    <div class="card-userName">1a2a3</div>
-                                    <div class="card-grade">새싹이</div>
-                                    <div class="card-location"><span>서울</span></div>
-                                    <div class="card-badge"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+<!--                                <div class="body">-->
+<!--                                    <div class="card-theme">광명동굴 테마 패키지</div>-->
+<!--                                    <div class="card-userName">1a2a3</div>-->
+<!--                                    <div class="card-grade">새싹이</div>-->
+<!--                                    <div class="card-location"><span>서울</span></div>-->
+<!--                                    <div class="card-badge"></div>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </li>-->
                     <!--                        //첫번째 게시물-->
-<!--더미데이터-->
-                    <li>
-                        <div class="card">
-                            <a href="#">
-                                <!--이미지-->
-                                <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F4088%2Foueptcfbm51jzaj2__400_400.jpg&amp;w=400&amp;q=75&quot;);">
-                                    <button type="button" class="like-btn">
-                                        <span class="svgIcon-root">
-                                            <svg class="svgIcon-svg" viewBox="0 0 24 24">
-                                                <path d="M11.9999 6.49201L13.4848 5.00461C15.5225 2.9634 18.8529 2.9634 20.8905 5.00445C22.9308 7.04707 22.9308 10.3876 20.8928 12.4291L13.4587 19.9397L13.4565 19.9419C13.067 20.332 12.5427 20.5339 11.9999 20.5261C11.4563 20.5339 10.9319 20.3321 10.5402 19.9397L3.10804 12.4311C1.06908 10.3875 1.06908 7.04719 3.10835 5.00445C5.14712 2.96345 8.47614 2.96345 10.5151 5.00461L11.9999 6.49201Z"></path>
-                                            </svg>
-                                        </span>3
-                                    </button>
-                                </header>
-
-                                <div class="body">
-                                    <div class="card-theme">광명동굴 테마 패키지</div>
-                                    <div class="card-userName">1a2a3</div>
-                                    <div class="card-grade">새싹이</div>
-                                    <div class="card-location"><span>서울</span></div>
-                                    <div class="card-badge"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card">
-                            <a href="#">
-                                <!--이미지-->
-                                <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F4088%2Foueptcfbm51jzaj2__400_400.jpg&amp;w=400&amp;q=75&quot;);">
-                                    <button type="button" class="like-btn">
-                                        <span class="svgIcon-root">
-                                            <svg class="svgIcon-svg" viewBox="0 0 24 24">
-                                                <path d="M11.9999 6.49201L13.4848 5.00461C15.5225 2.9634 18.8529 2.9634 20.8905 5.00445C22.9308 7.04707 22.9308 10.3876 20.8928 12.4291L13.4587 19.9397L13.4565 19.9419C13.067 20.332 12.5427 20.5339 11.9999 20.5261C11.4563 20.5339 10.9319 20.3321 10.5402 19.9397L3.10804 12.4311C1.06908 10.3875 1.06908 7.04719 3.10835 5.00445C5.14712 2.96345 8.47614 2.96345 10.5151 5.00461L11.9999 6.49201Z"></path>
-                                            </svg>
-                                        </span>3
-                                    </button>
-                                </header>
-
-                                <div class="body">
-                                    <div class="card-theme">광명동굴 테마 패키지</div>
-                                    <div class="card-userName">1a2a3</div>
-                                    <div class="card-grade">새싹이</div>
-                                    <div class="card-location"><span>서울</span></div>
-                                    <div class="card-badge"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card">
-                            <a href="#">
-                                <!--이미지-->
-                                <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F4088%2Foueptcfbm51jzaj2__400_400.jpg&amp;w=400&amp;q=75&quot;);">
-                                    <button type="button" class="like-btn">
-                                        <span class="svgIcon-root">
-                                            <svg class="svgIcon-svg" viewBox="0 0 24 24">
-                                                <path d="M11.9999 6.49201L13.4848 5.00461C15.5225 2.9634 18.8529 2.9634 20.8905 5.00445C22.9308 7.04707 22.9308 10.3876 20.8928 12.4291L13.4587 19.9397L13.4565 19.9419C13.067 20.332 12.5427 20.5339 11.9999 20.5261C11.4563 20.5339 10.9319 20.3321 10.5402 19.9397L3.10804 12.4311C1.06908 10.3875 1.06908 7.04719 3.10835 5.00445C5.14712 2.96345 8.47614 2.96345 10.5151 5.00461L11.9999 6.49201Z"></path>
-                                            </svg>
-                                        </span>3
-                                    </button>
-                                </header>
-
-                                <div class="body">
-                                    <div class="card-theme">광명동굴 테마 패키지</div>
-                                    <div class="card-userName">1a2a3</div>
-                                    <div class="card-grade">새싹이</div>
-                                    <div class="card-location"><span>서울</span></div>
-                                    <div class="card-badge"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card">
-                            <a href="#">
-                                <!--이미지-->
-                                <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F4088%2Foueptcfbm51jzaj2__400_400.jpg&amp;w=400&amp;q=75&quot;);">
-                                    <button type="button" class="like-btn">
-                                        <span class="svgIcon-root">
-                                            <svg class="svgIcon-svg" viewBox="0 0 24 24">
-                                                <path d="M11.9999 6.49201L13.4848 5.00461C15.5225 2.9634 18.8529 2.9634 20.8905 5.00445C22.9308 7.04707 22.9308 10.3876 20.8928 12.4291L13.4587 19.9397L13.4565 19.9419C13.067 20.332 12.5427 20.5339 11.9999 20.5261C11.4563 20.5339 10.9319 20.3321 10.5402 19.9397L3.10804 12.4311C1.06908 10.3875 1.06908 7.04719 3.10835 5.00445C5.14712 2.96345 8.47614 2.96345 10.5151 5.00461L11.9999 6.49201Z"></path>
-                                            </svg>
-                                        </span>3
-                                    </button>
-                                </header>
-
-                                <div class="body">
-                                    <div class="card-theme">광명동굴 테마 패키지</div>
-                                    <div class="card-userName">1a2a3</div>
-                                    <div class="card-grade">새싹이</div>
-                                    <div class="card-location"><span>서울</span></div>
-                                    <div class="card-badge"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card">
-                            <a href="#">
-                                <!--이미지-->
-                                <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F4088%2Foueptcfbm51jzaj2__400_400.jpg&amp;w=400&amp;q=75&quot;);">
-                                    <button type="button" class="like-btn">
-                                        <span class="svgIcon-root">
-                                            <svg class="svgIcon-svg" viewBox="0 0 24 24">
-                                                <path d="M11.9999 6.49201L13.4848 5.00461C15.5225 2.9634 18.8529 2.9634 20.8905 5.00445C22.9308 7.04707 22.9308 10.3876 20.8928 12.4291L13.4587 19.9397L13.4565 19.9419C13.067 20.332 12.5427 20.5339 11.9999 20.5261C11.4563 20.5339 10.9319 20.3321 10.5402 19.9397L3.10804 12.4311C1.06908 10.3875 1.06908 7.04719 3.10835 5.00445C5.14712 2.96345 8.47614 2.96345 10.5151 5.00461L11.9999 6.49201Z"></path>
-                                            </svg>
-                                        </span>3
-                                    </button>
-                                </header>
-
-                                <div class="body">
-                                    <div class="card-theme">광명동굴 테마 패키지</div>
-                                    <div class="card-userName">1a2a3</div>
-                                    <div class="card-grade">새싹이</div>
-                                    <div class="card-location"><span>서울</span></div>
-                                    <div class="card-badge"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card">
-                            <a href="#">
-                                <!--이미지-->
-                                <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F4088%2Foueptcfbm51jzaj2__400_400.jpg&amp;w=400&amp;q=75&quot;);">
-                                    <button type="button" class="like-btn">
-                                        <span class="svgIcon-root">
-                                            <svg class="svgIcon-svg" viewBox="0 0 24 24">
-                                                <path d="M11.9999 6.49201L13.4848 5.00461C15.5225 2.9634 18.8529 2.9634 20.8905 5.00445C22.9308 7.04707 22.9308 10.3876 20.8928 12.4291L13.4587 19.9397L13.4565 19.9419C13.067 20.332 12.5427 20.5339 11.9999 20.5261C11.4563 20.5339 10.9319 20.3321 10.5402 19.9397L3.10804 12.4311C1.06908 10.3875 1.06908 7.04719 3.10835 5.00445C5.14712 2.96345 8.47614 2.96345 10.5151 5.00461L11.9999 6.49201Z"></path>
-                                            </svg>
-                                        </span>3
-                                    </button>
-                                </header>
-
-                                <div class="body">
-                                    <div class="card-theme">광명동굴 테마 패키지</div>
-                                    <div class="card-userName">1a2a3</div>
-                                    <div class="card-grade">새싹이</div>
-                                    <div class="card-location"><span>서울</span></div>
-                                    <div class="card-badge"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card">
-                            <a href="#">
-                                <!--이미지-->
-                                <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F4088%2Foueptcfbm51jzaj2__400_400.jpg&amp;w=400&amp;q=75&quot;);">
-                                    <button type="button" class="like-btn">
-                                        <span class="svgIcon-root">
-                                            <svg class="svgIcon-svg" viewBox="0 0 24 24">
-                                                <path d="M11.9999 6.49201L13.4848 5.00461C15.5225 2.9634 18.8529 2.9634 20.8905 5.00445C22.9308 7.04707 22.9308 10.3876 20.8928 12.4291L13.4587 19.9397L13.4565 19.9419C13.067 20.332 12.5427 20.5339 11.9999 20.5261C11.4563 20.5339 10.9319 20.3321 10.5402 19.9397L3.10804 12.4311C1.06908 10.3875 1.06908 7.04719 3.10835 5.00445C5.14712 2.96345 8.47614 2.96345 10.5151 5.00461L11.9999 6.49201Z"></path>
-                                            </svg>
-                                        </span>3
-                                    </button>
-                                </header>
-
-                                <div class="body">
-                                    <div class="card-theme">광명동굴 테마 패키지</div>
-                                    <div class="card-userName">1a2a3</div>
-                                    <div class="card-grade">새싹이</div>
-                                    <div class="card-location"><span>서울</span></div>
-                                    <div class="card-badge"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="card">
-                            <a href="#">
-                                <!--이미지-->
-                                <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F4088%2Foueptcfbm51jzaj2__400_400.jpg&amp;w=400&amp;q=75&quot;);">
-                                    <button type="button" class="like-btn">
-                                        <span class="svgIcon-root">
-                                            <svg class="svgIcon-svg" viewBox="0 0 24 24">
-                                                <path d="M11.9999 6.49201L13.4848 5.00461C15.5225 2.9634 18.8529 2.9634 20.8905 5.00445C22.9308 7.04707 22.9308 10.3876 20.8928 12.4291L13.4587 19.9397L13.4565 19.9419C13.067 20.332 12.5427 20.5339 11.9999 20.5261C11.4563 20.5339 10.9319 20.3321 10.5402 19.9397L3.10804 12.4311C1.06908 10.3875 1.06908 7.04719 3.10835 5.00445C5.14712 2.96345 8.47614 2.96345 10.5151 5.00461L11.9999 6.49201Z"></path>
-                                            </svg>
-                                        </span>3
-                                    </button>
-                                </header>
-
-                                <div class="body">
-                                    <div class="card-theme">광명동굴 테마 패키지</div>
-                                    <div class="card-userName">1a2a3</div>
-                                    <div class="card-grade">새싹이</div>
-                                    <div class="card-location"><span>서울</span></div>
-                                    <div class="card-badge"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="/js/mypage/likes.js"></script>
+<script src="/js/admin/modal.js"></script>
 </html>

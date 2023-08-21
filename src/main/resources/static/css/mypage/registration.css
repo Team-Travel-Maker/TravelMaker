@@ -17,6 +17,7 @@
 .div-wrapper {
     height: auto;
     padding-bottom: 90px;
+
 }
 .wrapper {
     width: 650px;
@@ -126,13 +127,14 @@
     background-color: #F7F7F8;
     color: #30303029;
     cursor: not-allowed;
-    width: 100%;
+    width: 75%;
     height: 50px;
     border-radius: 25px;
     font-size: 16px;
     line-height: 22px;
     font-weight: 600;
     gap: 5px;
+    margin: 25px auto;
 }
 .ok-btn {
     display: flex;
@@ -145,13 +147,14 @@
     text-align: center;
     background: rgb(51, 102, 255);
     color: #FFFFFF;
-    width: 100%;
+    width: 75%;
     height: 50px;
     border-radius: 25px;
     font-size: 16px;
     line-height: 22px;
     font-weight: 600;
     gap: 5px;
+    margin: 25px auto;
 }
 textarea{
 
@@ -176,30 +179,9 @@ div.attach-wrap {
     display: flex;
     justify-content: center;
 }
-label.attach {
-    position: relative;
-    flex-shrink: 0;
-    justify-content: center;
-    width: 104px;
-    height: 104px;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #827f7f;
-    margin-top: 16px;
-    cursor: pointer;
-}
-label.attach img.thumbnail {
-    display: none;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-}
-div.x {
+div.thumbnail-x {
     display: none;
     color: rgb(255, 255, 255);
-    position: absolute;
     top: -15px;
     right: 0px;
     width: 24px;
@@ -209,15 +191,114 @@ div.x {
     background: rgba(33, 35, 41, 0.5);
     border-radius: 0px 4px;
 }
-div.x img {
+div.thumbnail-x img {
     width: 100%;
     filter: invert(0.9);
 }
-label.attach h6.plus {
+div.sub1-x {
+    display: none;
+    color: rgb(255, 255, 255);
+    top: -15px;
+    right: 0px;
+    width: 24px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    background: rgba(33, 35, 41, 0.5);
+    border-radius: 0px 4px;
+}
+div.sub1-x img {
+    width: 100%;
+    filter: invert(0.9);
+}
+div.sub2-x {
+    display: none;
+    color: rgb(255, 255, 255);
+    top: -15px;
+    right: 0px;
+    width: 24px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    background: rgba(33, 35, 41, 0.5);
+    border-radius: 0px 4px;
+}
+div.sub2-x img {
+    width: 100%;
+    filter: invert(0.9);
+}
+label h6.plus {
     font-size: 40px;
     font-weight: 100;
     line-height: 1em;
 }
-label.attach h6 {
+label h6 {
     font-weight: 400;
+}
+input:read-only[type="text"] {
+    background-color: #eeeeee;
+    cursor: not-allowed;
+}
+
+label.thumbnail-attach {
+    position: relative;
+    flex-shrink: 0;
+    justify-content: center;
+    width: 500px;
+    height: 350px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #827f7f;
+    margin-top: 16px;
+    cursor: pointer;
+}
+label.thumbnail-attach img.thumbnail-img {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+label.sub1-attach {
+    position: relative;
+    flex-shrink: 0;
+    justify-content: center;
+    width: 500px;
+    height: 350px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #827f7f;
+    margin-top: 16px;
+    cursor: pointer;
+}
+label.sub1-attach img.sub1-img {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+label.sub2-attach {
+    position: relative;
+    flex-shrink: 0;
+    justify-content: center;
+    width: 500px;
+    height: 350px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #827f7f;
+    margin-top: 16px;
+    cursor: pointer;
+}
+label.sub2-attach img.sub2-img {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }

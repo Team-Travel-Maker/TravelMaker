@@ -1,16 +1,19 @@
 package com.app.travelmaker.entity.store;
 
 import com.app.travelmaker.auditing.Period;
+import com.app.travelmaker.constant.StoreStatus;
 import com.app.travelmaker.embeddable.address.Address;
+import com.app.travelmaker.entity.cs.CustomServiceFile;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.constant.StoreType;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Store Entity (업체)
@@ -20,6 +23,8 @@ import javax.validation.constraints.NotNull;
 @Table(name = "TBL_STORE")
 @Getter
 @ToString
+@SuperBuilder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE TBL_STORE SET DELETED = 1 WHERE ID = ?")
 public class Store extends Period {
     /**
@@ -47,7 +52,14 @@ public class Store extends Period {
 
     @Embedded @NotNull private Address address;
 
+    @Enumerated(EnumType.STRING)
     @NotNull private StoreType storeType;
+
+    @Enumerated(EnumType.STRING)
+    @NotNull private StoreStatus storeStatus;
+
+    /** 관리자 결과 내용 담을 컬럼*/
+    private String storeResult;
 
     /**
      * Store Status (업체 삭제 상태)
@@ -59,5 +71,8 @@ public class Store extends Period {
      * */
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "store")
+    private List<StoreFile> storeFiles = new ArrayList<>();
 
 }

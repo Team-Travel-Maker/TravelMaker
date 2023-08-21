@@ -35,7 +35,8 @@ public class GiftCardDSLImpl implements GiftCardDSL {
                         giftCardFile.filePath,
                         giftCardFile.fileSize,
                         giftCardFile.fileUuid,
-                        giftCardFile.fileType, giftCardFile.giftCard.id.as("giftCardId")
+                        giftCardFile.fileType,
+                        giftCardFile.giftCard.id.as("giftCardId")
                 )).from(giftCardFile).where(giftCardFile.giftCard.id.eq(giftCard.id).and(giftCardFile.deleted.eq(false)).and(giftCard.giftCardRegion.eq(giftCardRegion))).fetch();
 
         return query.select(
@@ -65,7 +66,8 @@ public class GiftCardDSLImpl implements GiftCardDSL {
                         giftCardFile.filePath,
                         giftCardFile.fileSize,
                         giftCardFile.fileUuid,
-                        giftCardFile.fileType, giftCardFile.giftCard.id.as("giftCardId")
+                        giftCardFile.fileType,
+                        giftCardFile.giftCard.id.as("giftCardId")
                 )).from(giftCardFile).where(giftCardFile.giftCard.id.eq(giftCard.id).and(giftCardFile.deleted.eq(false))).fetch();
 
         return query.select(

@@ -103,23 +103,23 @@ public class AdminController {
 //    업체 관리
 
     // 업체 목록
-    @GetMapping("company/list")
+    @GetMapping("store/list")
     public void goToCompanyList(){;}
 
     // 업체 상세
-    @GetMapping("company/detail")
+    @GetMapping("store/detail")
     public void goToCompanyDetail(){;}
 
     //업체 신청 답변
-    @GetMapping("company/write")
+    @GetMapping("store/write")
     public void goToCompanyWrite(){;}
 
     //업체 답변 수정
-    @GetMapping("company/modify")
+    @GetMapping("store/modify")
     public void goToCompanyModify(){;}
 
     //업체 신청 답변 받은 상세
-    @GetMapping("company/answer-detail")
+    @GetMapping("store/answer-detail")
     public void goToCompanyAnswerDetail(){;}
 
 

@@ -3,9 +3,8 @@ package com.app.travelmaker.entity.store;
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.entity.file.File;
 import com.app.travelmaker.entity.theme.Theme;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -19,7 +18,9 @@ import javax.persistence.*;
 @Table(name = "TBL_STORE_FILE")
 @Getter
 @ToString
-@SQLDelete(sql = "UPDATE TBL_STORE_FILE SET DELETED = 1 WHERE ID = ?")
+@SuperBuilder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@SQLDelete(sql = "UPDATE TBL_FILE SET DELETED = 1 WHERE ID = ?")
 public class StoreFile extends File {
 
     /**

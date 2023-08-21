@@ -386,79 +386,81 @@
                                 인증되었습니다.
                             </p>
                         </div>
-                        <div class="new-pass-container">
-                            <div class="new-pass-label-container">
-                                <label
-                                    for="password"
+                        <th:block th:if="${oauthMember == null}">
+                            <div class="new-pass-container">
+                                <div class="new-pass-label-container">
+                                    <label
+                                        for="password"
+                                        color="var(--theme-palette-colors-gray-600)"
+                                        class="new-pass-label">새 비밀번호</label>
+                                </div>
+                                <input
+                                    id="password"
+                                    type="password"
+                                    placeholder="새 비밀번호를 입력해주세요."
+                                    name="password"
+                                    class="new-pass-input new-pass-format-error"
+                                    value="">
+                                <div class="security-level-low">
+                                    <div class="security-level-container">
+                                        <span color="#f342a0" class="low-level-on-span"></span>
+                                        <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
+                                        <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
+                                    </div>
+                                    <div class="security-level-text-container">
+                                        <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
+                                        <p data-testid="Typography" color="#f342a0" class="security-level-low-p">약함</p>
+                                    </div>
+                                </div>
+                                <div class="security-level-normal">
+                                    <div class="security-level-container">
+                                        <span color="#00bdde" class="normal-level-on-span"></span>
+                                        <span color="#00bdde" class="normal-level-on-span"></span>
+                                        <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
+                                    </div>
+                                    <div class="security-level-text-container">
+                                        <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
+                                        <p data-testid="Typography" color="#00bdde" class="security-level-normal-p">보통</p>
+                                    </div>
+                                </div>
+                                <div class="security-level-high">
+                                    <div class="security-level-container">
+                                        <span color="#07ba9c" class="high-level-on-span"></span>
+                                        <span color="#07ba9c" class="high-level-on-span"></span>
+                                        <span color="#07ba9c" class="high-level-on-span"></span>
+                                    </div>
+                                    <div class="security-level-text-container">
+                                        <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
+                                        <p data-testid="Typography" color="#07ba9c" class="security-level-high-p">강함</p>
+                                    </div>
+                                </div>
+                                <p
+                                    color="var(--theme-palette-colors-red-400)"
+                                    id="pass-format-wrong"
+                                    class="new-pass-error-p">올바르지 않은 비밀번호입니다.
+                                </p>
+                                <input
+                                    type="password"
+                                    placeholder="새 비밀번호를 다시 한번 입력해주세요."
+                                    name="passwordConfirm"
+                                    class="new-pass-confirm-input new-pass-confirm-format-error"
+                                    value="">
+                                <p
+                                    color="var(--theme-palette-colors-red-400)"
+                                    id="pass-not-match"
+                                    class="new-pass-error-p">비밀번호가 서로 일치하지 않습니다.
+                                </p>
+                                <p
+                                    color="rgb(7, 186, 156)"
+                                    id="pass-available"
+                                    class="new-pass-possible-p">사용 가능한 비밀번호입니다.
+                                </p>
+                                <p
                                     color="var(--theme-palette-colors-gray-600)"
-                                    class="new-pass-label">새 비밀번호</label>
+                                    class="new-pass-format-explain-p">영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 16자 이하로
+                                    입력해주세요.</p>
                             </div>
-                            <input
-                                id="password"
-                                type="password"
-                                placeholder="새 비밀번호를 입력해주세요."
-                                name="password"
-                                class="new-pass-input new-pass-format-error"
-                                value="">
-                            <div class="security-level-low">
-                                <div class="security-level-container">
-                                    <span color="#f342a0" class="low-level-on-span"></span>
-                                    <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
-                                    <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
-                                </div>
-                                <div class="security-level-text-container">
-                                    <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
-                                    <p data-testid="Typography" color="#f342a0" class="security-level-low-p">약함</p>
-                                </div>
-                            </div>
-                            <div class="security-level-normal">
-                                <div class="security-level-container">
-                                    <span color="#00bdde" class="normal-level-on-span"></span>
-                                    <span color="#00bdde" class="normal-level-on-span"></span>
-                                    <span color="rgba(112, 115, 124, 0.08)" class="level-off-span"></span>
-                                </div>
-                                <div class="security-level-text-container">
-                                    <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
-                                    <p data-testid="Typography" color="#00bdde" class="security-level-normal-p">보통</p>
-                                </div>
-                            </div>
-                            <div class="security-level-high">
-                                <div class="security-level-container">
-                                    <span color="#07ba9c" class="high-level-on-span"></span>
-                                    <span color="#07ba9c" class="high-level-on-span"></span>
-                                    <span color="#07ba9c" class="high-level-on-span"></span>
-                                </div>
-                                <div class="security-level-text-container">
-                                    <p data-testid="Typography" color="#8A8A8A" class="security-level-p">비밀번호 보안 수준</p>
-                                    <p data-testid="Typography" color="#07ba9c" class="security-level-high-p">강함</p>
-                                </div>
-                            </div>
-                            <p
-                                color="var(--theme-palette-colors-red-400)"
-                                id="pass-format-wrong"
-                                class="new-pass-error-p">올바르지 않은 비밀번호입니다.
-                            </p>
-                            <input
-                                type="password"
-                                placeholder="새 비밀번호를 다시 한번 입력해주세요."
-                                name="passwordConfirm"
-                                class="new-pass-confirm-input new-pass-confirm-format-error"
-                                value="">
-                            <p
-                                color="var(--theme-palette-colors-red-400)"
-                                id="pass-not-match"
-                                class="new-pass-error-p">비밀번호가 서로 일치하지 않습니다.
-                            </p>
-                            <p
-                                color="rgb(7, 186, 156)"
-                                id="pass-available"
-                                class="new-pass-possible-p">사용 가능한 비밀번호입니다.
-                            </p>
-                            <p
-                                color="var(--theme-palette-colors-gray-600)"
-                                class="new-pass-format-explain-p">영문 대소문자, 숫자, 특수문자를 3가지 이상으로 조합해 8자 이상 16자 이하로
-                                입력해주세요.</p>
-                        </div>
+                        </th:block>
                         <div class="join-agree-container">
                             <div class="agree-check-container">
                                 <span class="agree-checkbox-span">
@@ -693,7 +695,15 @@
 <script src="/js/admin/modal.js"></script>
 <script th:inline="javascript">
     let memberEmail = [[${memberEmail}]];
-        $('#email').val(memberEmail);
+    let oauthMember = [[${oauthMember}]];
+    console.log(memberEmail);
+
+    if(memberEmail !=null){
+        $('#email').val(memberEmail);}
+    if(oauthMember !=null){
+        $('#email').val(oauthMember);
+    }
+
 </script>
 <script src="/js/login/join.js"></script>
 </html>

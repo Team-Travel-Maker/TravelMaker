@@ -1,8 +1,8 @@
 package com.app.travelmaker.service.shop;
 
+import com.app.travelmaker.common.CommonSupport;
 import com.app.travelmaker.domain.shop.GiftCardDTO;
 import com.app.travelmaker.domain.shop.purchase.PurchaseRequestDTO;
-import com.app.travelmaker.domain.mypage.MyPageGiftCardDTO;
 import com.app.travelmaker.entity.giftcard.GiftCard;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.entity.pay.Pay;
@@ -15,11 +15,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class GiftCardServiceImpl implements GiftCardService{
+public class GiftCardServiceImpl extends CommonSupport implements GiftCardService {
     private final GiftCardRepository giftCardRepository;
     private final PayRepository payRepository;
     private final MemberRepository memberRepository;
@@ -40,8 +39,9 @@ public class GiftCardServiceImpl implements GiftCardService{
         // 1. member 테이블에 포인트 갱신
         memberRepository.updateMemberPoints(request.getMemberId(), request.getPayTotalPrice());
 
-        Member member = memberRepository.findById(request.getMemberId())
-                .orElseThrow(() -> new RuntimeException("사용자 없음 에러 발생"));
+//        Member member = memberRepository.findById(request.getMemberId())
+//                .orElseThrow(() -> new RuntimeException("사용자 없음 에러 발생"));
+        Member member = authenticationInfo();
 
         GiftCard giftCard = giftCardRepository.findById(request.getGiftCardId())
                 .orElseThrow(() -> new RuntimeException("상품권 없음 에러 발생"));

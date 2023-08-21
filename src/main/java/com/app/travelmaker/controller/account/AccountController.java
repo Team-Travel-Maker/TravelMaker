@@ -1,10 +1,14 @@
 package com.app.travelmaker.controller.account;
 
+import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 @Slf4j
@@ -13,15 +17,25 @@ public class AccountController {
 
     //로그인
     @GetMapping("login/login")
-    public void goToLogin(){;}
+    public void goToLogin(@RequestParam(value = "error", required = false) boolean error,
+                          @RequestParam(value = "exception", required = false) String exception,
+                          Model model){
+                model.addAttribute("error", error);
+                model.addAttribute("exception", exception);
+        ;}
 
     @PostMapping("login/login")
     public String processUsername(String memberEmail, RedirectAttributes redirectAttributes) {
-        log.info(memberEmail);
         redirectAttributes.addFlashAttribute("memberEmail", memberEmail);
         return "redirect:/accounts/password/input"; // 비밀번호 입력 페이지로 리다이렉트
     }
 
+
+    @GetMapping("join/join")
+    public void goToJoinForm(HttpSession session, Model model){
+        model.addAttribute("oauthMember", ((MemberResponseDTO)session.getAttribute("member")).getMemberEmail());
+        session.invalidate();
+        ;}
 
     //회원 가입
     @PostMapping("join/join")

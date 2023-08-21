@@ -5,11 +5,10 @@
     <title>보유 상품권</title>
     <link rel="stylesheet" href="/css/common.css"/>
     <link rel="stylesheet" href="/css/header/header.css"/>
-    <link rel="stylesheet" href="/css/mypage/bookmarks.css">
+    <link rel="stylesheet" href="/css/mypage/coupon.css">
 </head>
-<body>
+<body style="background-color: #f8f8f8;">
 <div th:replace="~{header/header :: #header}"></div>
-<div class="Padding_padding___Nyki"></div>
 <div class="container-profile">
     <div class="bookmark-container">
         <nav role="presentation" class="nav">
@@ -20,25 +19,25 @@
         </nav>
         <div class="list">
             <div class="list-container">
-                <ul>
+                <ul class="shop-list">
                     <!--여기서 반복-->
-                    <li>
-                        <div class="card">
-                            <a href="#">
-                                <!--이미지-->
-                                <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">
-                                </header>
+<!--                    <li>-->
+<!--                        <div class="card">-->
+<!--                            <a href="#">-->
+<!--                                &lt;!&ndash;이미지&ndash;&gt;-->
+<!--                                <header style="background-image: url(&quot;https://image.wanted.co.kr/optimize?src=https%3A%2F%2Fstatic.wanted.co.kr%2Fimages%2Fcompany%2F31678%2Fdswdjc99ynqdmnli__400_400.jpg&w=400&q=75&quot;);">-->
+<!--                                </header>-->
 
-                                <div class="body">
-                                    <div class="card-theme">숙박 청소 개선</div>
-                                    <div class="card-userName">J호텔 직원</div>
-                                    <div class="card-address">제주도 서귀포 J호텔</div>
-                                    <div class="card-location"><span>제주도</span></div>
-                                    <div class="card-badge"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
+<!--                                <div class="body">-->
+<!--                                    <div class="card-theme">숙박 청소 개선</div>-->
+<!--                                    <div class="card-userName">J호텔 직원</div>-->
+<!--                                    <div class="card-address">제주도 서귀포 J호텔</div>-->
+<!--                                    <div class="card-location"><span>제주도</span></div>-->
+<!--                                    <div class="card-badge"></div>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </li>-->
                 </ul>
             </div>
         </div>
@@ -47,5 +46,5 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-
+<script src="/js/mypage/coupon.js"></script>
 </html>

@@ -14,10 +14,12 @@ public enum Role {
      * COMPANY : COMPANY(업체 회원)
      * GENERAL : GENERAL(일반 회원)
      * ADMIN : ADMIN(관리자)
+     * WAIT : WAIT
      * */
     COMPANY("COMPANY", "업체"),
     GENERAL("GENERAL", "일반"),
-    ADMIN("ADMIN", "관리자");
+    ADMIN("ADMIN", "관리자"),
+    WAIT("WAIT", "회원 권한 대기");
 
     private final String code;
     private final String name;

@@ -43,6 +43,9 @@ public class MyPageController {
 // 업체 등록
     @GetMapping("company/registration")
     public void goToRegistration(){;}
+    // 업체 등록
+    @GetMapping("company/edit")
+    public void goToEdit(){;}
 // 업체 목록
     @GetMapping("company/list")
     public void goToList(){;}

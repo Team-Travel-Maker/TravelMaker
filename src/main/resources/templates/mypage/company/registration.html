@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>업체 등록하기</title>
+    <link rel="stylesheet" href="/css/common.css"/>
     <link rel="stylesheet" href="/css/mypage/registration.css">
+    <link rel="stylesheet" href="/css/admin/modal.css"/>
 </head>
 <body>
+<div class="modal">
+    <div class="warn-modal">
+        <div id="content-wrap"></div>
+    </div>
+</div>
 <section class="company-container">
     <div class="wrapper">
         <header class="company-header">
@@ -15,7 +22,7 @@
             <div class="company-header-line"></div>
         </header>
 
-        <form action="" class="company-form">
+        <form action="" class="company-form" enctype="multipart/form-data">
             <section class="content-wrapper">
                 <div class="div-wrapper">
                     <h1>업체 정보를 등록해 주세요.</h1>
@@ -38,7 +45,7 @@
 
                     <div class="company-div islQSM">
                         <span>업체 주소</span>
-                        <input class="input-style" type="text" id="postCode" placeholder="우편번호">
+                        <input class="input-style" type="text" id="postCode" placeholder="우편번호" readonly>
                         <p class="has-error">우편번호를 입력해주세요.</p>
                         <input class="input-style" type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
                     </div>
@@ -57,17 +64,17 @@
                     <div class="company-div islQSM">
                         <label for="category">종류</label>
                         <select name="company" id="category" class="input-style">
-                            <option value="food">음식점</option>
-                            <option value="lodgment">숙박</option>
+                            <option value="RESTAURANT">음식점</option>
+                            <option value="LODGMENT">숙박</option>
                         </select>
                     </div>
 
                     <div class="attach-wrap">
-                        <label for="upload1" class="attach">
-                            <img src="" class="thumbnail">
-                            <div class="x">
-                                <img src="/images/admin/x.png">
-                            </div>
+                        <div class="thumbnail-x">
+                            <img src="/images/admin/x.png">
+                        </div>
+                        <label for="upload1" class="thumbnail-attach">
+                            <img src="" class="thumbnail-img">
                             <h6 class="plus">+</h6>
                             <h6 style="text-align: center">
                                 대표 이미지<br>(썸네일 부분)
@@ -76,11 +83,11 @@
                         </label>
                     </div>
                     <div class="attach-wrap">
-                        <label for="upload1" class="attach">
-                            <img src="" class="thumbnail">
-                            <div class="x">
-                                <img src="/images/admin/x.png">
-                            </div>
+                        <div class="sub1-x">
+                            <img src="/images/admin/x.png">
+                        </div>
+                        <label for="upload2" class="sub1-attach">
+                            <img src="" class="sub1-img">
                             <h6 class="plus">+</h6>
                             <h6 style="text-align: center">
                                 이미지<br>
@@ -89,11 +96,11 @@
                         </label>
                     </div>
                     <div class="attach-wrap">
-                        <label for="upload1" class="attach">
-                            <img src="" class="thumbnail">
-                            <div class="x">
-                                <img src="/images/admin/x.png">
-                            </div>
+                        <div class="sub2-x">
+                            <img src="/images/admin/x.png">
+                        </div>
+                        <label for="upload3" class="sub2-attach">
+                            <img src="" class="sub2-img">
                             <h6 class="plus">+</h6>
                             <h6 style="text-align: center">
                                 이미지<br>
@@ -101,9 +108,9 @@
                             <span class="file-size"></span>
                         </label>
                     </div>
-                    <input type="file" id="upload1" class="upload" style="display: none;">
-                    <input type="file" id="upload2" class="upload" style="display: none;">
-                    <input type="file" id="upload3" class="upload" style="display: none;">
+                    <input type="file" id="upload1" class="upload" accept="image/png, image/jpeg" style="display: none;">
+                    <input type="file" id="upload2" class="upload" accept="image/png, image/jpeg" style="display: none;">
+                    <input type="file" id="upload3" class="upload" accept="image/png, image/jpeg" style="display: none;">
                     <!--        신청 제목 : 신청 제목 불러오기-->
                     <!--        업체명 : 업체명 불러오기-->
                     <!--        업체 주소 : 업체주소 불러오기-->
@@ -114,7 +121,7 @@
                     <!--        대표이미지불러오기-->
                     <!--        일반 이미지-->
                     <!--        일반이미지불러오기-->
-                    <button class="submit-btn" type="button">업체등록하기</button>
+                    <button class="submit-btn" type="button" onclick="">업체등록하기</button>
                 </div>
             </section>
         </form>
@@ -124,4 +131,5 @@
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/js/mypage/registration.js"></script>
+<script src="/js/admin/modal.js"></script>
 </html>

@@ -27,7 +27,18 @@
     <div class="info-title-box info-title-box-flex">
         <div class="logo-box-layout">
             <div class="logo-box">
-                <img src="/images/admin/wegether.svg" style="padding-top: 17px" />
+                <?xml version="1.0" encoding="utf-8"?>
+                <svg version="1.1" id="레이어_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                     y="0px" viewBox="0 0 88 25" style="width: 150px" xml:space="preserve">
+                                    <style type="text/css">
+                                        .st0{fill:none;}
+                                        .st1{stroke:#000000;stroke-width:0.25;stroke-miterlimit:10;}
+                                        .st2{font-family:'BerlinSansFBDemi-Bold';}
+                                        .st3{font-size:14px;}
+                                    </style>
+                    <rect class="st0" width="88" height="25"/>
+                    <text transform="matrix(1 0 0 1 1.647 18.3975)" class="st1 st2 st3">Travel Maker</text>
+                            </svg>
             </div>
 
         </div>
@@ -62,10 +73,13 @@
 
                     <div class="box-layout">
                         <div class="delete-box">
-                            <button class="delete-button">회원 상태 변경</button>
+                            <button class="delete-button modify-status">회원 상태 변경</button>
                         </div>
                         <div class="change-box">
-                            <button class="change-button">개인/업체 변경</button>
+                            <button class="change-button modify-type">개인/업체 변경</button>
+                        </div>
+                        <div class="change-box">
+                            <button class="change-button modify-admin">관리자 설정</button>
                         </div>
                     </div>
                 </div>
@@ -88,65 +102,12 @@
                                     <th>개인/업체</th>
                                     <th>아이디</th>
                                     <th>이름</th>
-                                    <th>닉네임</th>
                                     <th>핸드폰 번호</th>
                                     <th>가입 날짜</th>
                                     <th>탈퇴 날짜</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="checkbox-line">
-                                        <input
-                                                type="checkbox"
-                                                class="memberCheckbox"
-                                                name="check"/>
-                                    </td>
-                                    <td>1</td>
-                                    <td style="color:#0fa34c">일반 회원</td>
-                                    <td>개인</td>
-                                    <td>ljm1234@naver.com</td>
-                                    <td>이종문</td>
-                                    <td>야미</td>
-                                    <td>01040573327</td>
-                                    <td>2023-06-01 09:57:40</td>
-                                    <td>2023-06-01 09:57:40</td>
-                                </tr>
-                                <tr>
-                                    <td class="checkbox-line">
-                                        <input
-                                                type="checkbox"
-                                                class="memberCheckbox"
-                                                name="check"/>
-                                    </td>
-                                    <td>2</td>
-                                    <td style="color:#ff0000">탈퇴 회원</td>
-                                    <td style="color:blue">업체</td>
-                                    <td>ljm1234@naver.com</td>
-                                    <td>이종문</td>
-                                    <td>야미</td>
-                                    <td>01040573327</td>
-                                    <td>2023-06-01 09:57:40</td>
-                                    <td>2023-06-01 09:57:40</td>
-                                </tr>
-                                <tr>
-                                    <td class="checkbox-line">
-                                        <input
-                                                type="checkbox"
-                                                class="memberCheckbox"
-                                                name="check"/>
-                                    </td>
-                                    <td>3</td>
-                                    <td style="color:#0fa34c">일반 회원</td>
-                                    <td>개인</td>
-                                    <td>ljm1234@naver.com</td>
-                                    <td>이종문</td>
-                                    <td>야미</td>
-                                    <td>01040573327</td>
-                                    <td>2023-06-01 09:57:40</td>
-                                    <td>2023-06-01 09:57:40</td>
-                                </tr>
-                                </tbody>
+                                <tbody class="member-list-wrap"></tbody>
                             </table>
                         </div>
                     </div>
@@ -172,8 +133,9 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/admin/checkbox.js"></script>
-<script src="/js/admin/page.js"></script>
-<script src="/js/admin/paging.js"></script>
 <script src="/js/admin/sidemenu.js"></script>
 <script src="/js/admin/modal.js"></script>
+<script src="/js/admin/page.js"></script>
+<script src="/js/admin/member/list.js"></script>
+<script src="/js/admin/pagingBtn.js"></script>
 </html>
