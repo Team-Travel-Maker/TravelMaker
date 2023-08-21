@@ -3,7 +3,7 @@ $(document).ready(function() {
     function autoResizeTextarea() {
         // 모든 텍스트 영역 요소를 선택합니다
         $('.AutoTextarea_AutoTextarea').each(function() {
-            var $this = $(this);
+            let $this = $(this);
 
             // 스크롤 높이를 임시로 0으로 설정한 후, 스크롤 높이를 콘텐츠 높이에 맞게 조절합니다
             $this.css('height', 0);
@@ -46,10 +46,21 @@ function handleFileSelect(event) {
     const file = event.target.files[0];
 }
 
-var input = document.querySelector('input')
-var tagify = new Tagify(input);
+let input = document.querySelector('input')
+let tagify = new Tagify(input);
 
 // 태그가 추가되면 이벤트 발생
 tagify.on('add', function() {
     console.log(tagify.value); // 입력된 태그 정보 객체
 })
+
+// 글 등록 버튼
+const writeForm = $(".rt-btn");
+
+//
+let postDTO =
+
+$("button.rt-btn").on("click", function(){
+    console.log(writeForm.val());
+    $(writeForm).submit();
+});

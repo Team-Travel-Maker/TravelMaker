@@ -23,14 +23,15 @@
 </div>
 
 <main class="CommunityWrite">
-    <form id="write">
+    <form th:action="@{/board/write}" method="post" id="write" name="writeForm" th:object="${postDTO}">
         <div class="Header_CommunityWriteHeader">
             <div class="Header_CommunityWriteHeader_content">
                 <div class="Header_CommunityWriteHeader_button">
                     <button
                             class="Button_root Button_contained"
-                            type="submit" form="write" aria-label="registration button" disabled=""><span
-                            class="Button_label">등록하기</span></button>
+                            type="button" form="write" aria-label="registration button" disabled="">
+                        <span class="Button_label rt-btn">등록하기</span>
+                    </button>
                 </div>
             </div>
         </div>

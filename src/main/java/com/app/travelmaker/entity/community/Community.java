@@ -3,9 +3,8 @@ package com.app.travelmaker.entity.community;
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.constant.CommunityType;
 import com.app.travelmaker.entity.mebmer.Member;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -19,6 +18,8 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "TBL_COMMUNITY")
 @Getter @ToString
+@SuperBuilder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE TBL_COMMUNITY SET DELETED = 1 WHERE ID = ?")
 public class Community extends Period {
 

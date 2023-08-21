@@ -9,3 +9,9 @@ $categoryBtns.on('click',function(){
     }
 });
 
+$(document).ready(function () {
+    $(".selected").addClass("category-btn-list")
+})
+
+
+
