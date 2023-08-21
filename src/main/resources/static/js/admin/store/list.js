@@ -44,7 +44,7 @@ function showList(result) {
             }
         })
 
-        text += `
+                 text += `
                     <tr>
                         <td class="checkbox-line">
                             <input
@@ -54,10 +54,18 @@ function showList(result) {
                                     value="${store.id}"/>
                         </td>
                         <td>${store.id}</td>
-                        <td class="waiting">${store.storeStatus.name}</td>
+                        `
+            if(store.storeStatus.code=="PENDING") {
+                 text+= `<td class="waiting">${store.storeStatus.name}</td>`
+            }else if(store.storeStatus.code=="APPROVED"){
+                text+= `<td class="approval">${store.storeStatus.name}</td>`
+            }else{
+                text+= `<td class="companion">${store.storeStatus.name}</td>`
+            }
+                 text+= `
                         <td>${store.memberEmail}</td>
                         <td>
-                            <a href="#">${store.storeTitle}</a>
+                            <a href="/admins/store/detail/${store.id}">${store.storeTitle}</a>
                         </td>
                         <td>${store.storeType.name}</td>
                         <td>${store.createdDate}</td>

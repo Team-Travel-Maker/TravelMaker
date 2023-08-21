@@ -191,9 +191,7 @@ div.board-content {
     font-weight: bold;
     color: #fff;
     border: none;
-    position: absolute;
+    position: static;
     padding-top: 9px;
-    right: 22px;
-    top: 15px;
     text-align: center;
 }
