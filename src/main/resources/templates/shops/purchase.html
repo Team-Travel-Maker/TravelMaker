@@ -35,6 +35,8 @@
                                 <span>필수 입력 항목입니다.</span>
                             </div>
                             <form>
+                                <input type="hidden" class="member-id" th:value="${session.member.id}">
+                                <input type="hidden" class="member-point" th:value="${session.member.memberEcoPoint}">
                                 <section class="first-input-container">
                                     <div class="first-input-title">
                                         <button type="button" class="title-btn active">

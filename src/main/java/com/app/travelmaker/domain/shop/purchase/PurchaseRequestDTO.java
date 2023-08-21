@@ -38,7 +38,9 @@ public class PurchaseRequestDTO {
         return Point.builder()
                 .member(member)
                 .pointCateGoryType(PointCateGoryType.USE)
-                .pointHistory(giftCardTile + " 구매")
+                .pointHistory(giftCardTile + " " + payTotalCount + "매 구매")
+                .pointBalance(member.getMemberEcoPoint())
+                .point(payTotalPrice)
                 .build();
    }
 }

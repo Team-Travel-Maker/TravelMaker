@@ -125,4 +125,8 @@ $(document).ready(function () {
             }
         });
     })
+
+    $('#registration-btn').on('click', function () {
+        window.location.href = "/mypage/company/registration"
+    })
 });

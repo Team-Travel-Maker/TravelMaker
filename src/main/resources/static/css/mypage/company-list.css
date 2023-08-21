@@ -23,23 +23,22 @@
     color : #333;
     padding: 50px 0 20px;
 }
-.body{
-    width: 94.5283018868%;
-}
 .body-div>div , .body-div>div div {
     display: flex;
 }
-.body-div>div{
-justify-content: space-between;
-font-weight: 600;
-font-size: 14px;
-height: 32px;
-margin-bottom: -17px;
+.body-div>div {
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 14px;
+    height: 32px;
+    margin-bottom: -17px;
+    display: block;
 }
 
 .body-div button{
     letter-spacing: .0145em;
-    left: 906px;
+    left: 910px;
+    margin-right: 5px;
 }
 
 .btn{

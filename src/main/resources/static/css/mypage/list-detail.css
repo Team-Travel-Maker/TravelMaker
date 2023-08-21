@@ -2042,3 +2042,7 @@ div#paging-wrap {
 .body {
     background-color: #f8f8f8 !important;
 }
+
+html::-webkit-scrollbar {
+    display: none;
+}
