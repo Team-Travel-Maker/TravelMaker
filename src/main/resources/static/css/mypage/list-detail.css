@@ -1693,7 +1693,7 @@ div.board-content {
     margin: 0 !important;
 }
 
-.modify-button-wrapper {
+.modify-wrapper {
     margin: 0;
     padding-top: 16px;
 }
@@ -1984,11 +1984,6 @@ div#paging-wrap {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-}
-
-/* 마지막 열 스타일 (답변 여부) */
-.post-row>div:last-child {
-    color: #ff0000;
 }
 
 /* 상세 내용 부분 */
