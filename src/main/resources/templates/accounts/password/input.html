@@ -144,4 +144,36 @@
     console.log($('#email_input').val())
 </script>
 <script src="/js/login/pass.js"></script>
+<script>
+    $('.pass-init-update-button').on("click", function () {
+        $.ajax({
+            url: `/api/accounts/check/email`,
+            type: `post`,
+            data : {"memberEmail" : $('#email_input').val()},
+            dataType: "json",
+            async : false,
+            success: function(result){
+                sendEmail(result);
+                location.href=`/accounts/password/email/${result}`
+            }
+        })
+    })
+
+    function sendEmail(result) {
+        $.ajax({
+            url: `/api/accounts/change-pw`,
+            type: `post`,
+            data : {"memberEmail" : $('#email_input').val(),
+                    "id" : result
+            },
+            dataType: "json",
+            async : false,
+            success: function(){
+            }
+        })
+
+
+    }
+
+</script>
 </html>

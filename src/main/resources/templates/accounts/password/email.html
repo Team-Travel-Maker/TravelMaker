@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en_US">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset='utf-8'>
         <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -39,12 +39,12 @@
                             <div class="pass-email-email-container">
                                 <p
                                     color="var(--theme-palette-colors-black-100)"
-                                    class="pass-email-email-p">user@naver.com</p>
+                                    class="pass-email-email-p" th:text="${id}"></p>
                             </div>
                             <button type="button" data-testid="Button" class="pass-email-goto-main-button">
                                 <span
                                     color="var(--theme-palette-colors-black-100)"
-                                    class="pass-email-goto-main-span">메인으로 돌아가기</span>
+                                    class="pass-email-goto-main-span" onclick="location.href='/'">메인으로 돌아가기</span>
                             </button>
                         </div>
                     </div>

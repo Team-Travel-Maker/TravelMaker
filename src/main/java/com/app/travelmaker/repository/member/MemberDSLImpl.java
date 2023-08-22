@@ -4,10 +4,6 @@ import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.domain.member.request.MemberRequestDTO;
 import com.app.travelmaker.domain.member.response.MemberJoinResponseDTO;
 import com.app.travelmaker.domain.member.response.MemberResponseDTO;
-import com.app.travelmaker.embeddable.address.Address;
-import com.app.travelmaker.embeddable.alarm.Alarm;
-import com.app.travelmaker.entity.mebmer.Member;
-import com.app.travelmaker.entity.mebmer.QMember;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +17,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.app.travelmaker.entity.mebmer.QMember.*;
-import static com.app.travelmaker.entity.notice.QNotice.notice;
 
 public class MemberDSLImpl implements MemberDSL {
     @Autowired
@@ -155,8 +150,18 @@ public class MemberDSLImpl implements MemberDSL {
                 .set(member.updatedDate, LocalDateTime.now())
                 .where(member.memberEmail.eq(memberRequestDTO.getMemberEmail()))
                 .execute();
+    }
 
-/*        entityManager.flush();
-        entityManager.clear();*/
+    @Override
+    public List<MemberJoinResponseDTO> findMemberEmailByMemberPhone(String memberPhoneNumber) {
+        return query.select(Projections.fields(MemberJoinResponseDTO.class,
+                member.memberEmail,
+                member.memberJoinAccountType))
+                .from(member).where(member.memberPhone.eq(memberPhoneNumber)).fetch();
+    }
+
+    @Override
+    public Optional<Long> findIdByMemberEmail(String memberEmail) {
+       return Optional.ofNullable(query.select(member.id).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne());
     }
 }
