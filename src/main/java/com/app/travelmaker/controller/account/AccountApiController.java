@@ -2,22 +2,19 @@ package com.app.travelmaker.controller.account;
 
 import com.app.travelmaker.constant.JoinCheckType;
 import com.app.travelmaker.domain.member.request.MemberRequestDTO;
+import com.app.travelmaker.domain.member.response.MemberJoinResponseDTO;
 import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.entity.mebmer.Member;
-import com.app.travelmaker.repository.member.MemberRepository;
+import com.app.travelmaker.service.mail.ChangePwSendMailService;
 import com.app.travelmaker.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityManager;
 import javax.servlet.http.HttpSession;
-import java.util.Optional;
-import java.util.Random;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.List;
 
 @RestController
 @RequestMapping("api/accounts/*")
@@ -29,6 +26,7 @@ public class AccountApiController {
     private final MemberService memberService;
     private final PasswordEncoder passwordEncoder;
     private final HttpSession session;
+    private final ChangePwSendMailService changePwSendMailService;
 
     /*아이디 중복 체크*/
     @PostMapping("check")
@@ -53,11 +51,28 @@ public class AccountApiController {
         }
     }
 
+    @PostMapping("find-id")
+    public List<MemberJoinResponseDTO> findId(String memberPhoneNumber){
+        return memberService.findByMemberPhone(memberPhoneNumber);
+    }
 
 
     @GetMapping("/check/sendSMS")
     public String sendSMS(String to) {
         return memberService.certifiedPhoneNumber(to);
     }
+
+    // 비밀번호 재설정 메일전송
+    @PostMapping("change-pw")
+    public void sendChangePwMail(String memberEmail, Long id) throws Exception{
+        changePwSendMailService.sendSimpleMessage(memberEmail, id);
+    }
+
+    @PostMapping("/check/email")
+    public Long sendMemberId(String memberEmail){
+        log.info(memberEmail);
+        return  memberService.findIdByMemberEmail(memberEmail);
+    }
+
 
 }

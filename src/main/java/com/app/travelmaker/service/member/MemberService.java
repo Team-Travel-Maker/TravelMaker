@@ -2,7 +2,6 @@ package com.app.travelmaker.service.member;
 
 import com.app.travelmaker.constant.JoinCheckType;
 import com.app.travelmaker.constant.MemberJoinAccountType;
-import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.domain.member.request.MemberRequestDTO;
 import com.app.travelmaker.domain.member.response.MemberJoinResponseDTO;
 import com.app.travelmaker.domain.member.response.MemberResponseDTO;
@@ -15,7 +14,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface MemberService extends UserDetailsService {
 
@@ -33,6 +31,9 @@ public interface MemberService extends UserDetailsService {
     public void modifyType(List<Long> typeIds);
     public void modifyAdmin(List<Long> adminIds);
 
+    public List<MemberJoinResponseDTO> findByMemberPhone(String memberPhoneNumber);
+
+    public Long findIdByMemberEmail(String memberEmail);
 
     public String certifiedPhoneNumber(String to);
 
