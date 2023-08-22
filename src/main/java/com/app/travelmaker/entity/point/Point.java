@@ -43,6 +43,16 @@ public class Point extends Period {
     @NotNull private PointCateGoryType pointCateGoryType;
 
     /**
+     * Point ( 적립, 사용 포인트 )
+     * */
+    @NotNull private Integer point;
+
+    /**
+     * Point Balance ( 포인트 잔액 )
+     * */
+    @NotNull private Integer pointBalance;
+
+    /**
      * ECO와 연관 관계  (N : 1)
      * */
     @ManyToOne(fetch = FetchType.LAZY)
