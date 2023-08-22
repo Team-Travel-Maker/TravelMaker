@@ -17,4 +17,14 @@ public class StoreAdminServiceImpl implements StoreAdminService {
     public Page<StoreResponseDTO> getList(Pageable pageable) {
         return storeRepository.getList(pageable);
     }
+
+    @Override
+    public StoreResponseDTO detail(Long id) {
+        return storeRepository.getDetail(id);
+    }
+
+    @Override
+    public void modifyStatus(StoreResponseDTO result) {
+        storeRepository.modifyStatus(result);
+    }
 }

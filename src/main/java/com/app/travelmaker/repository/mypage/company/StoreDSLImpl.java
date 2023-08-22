@@ -5,11 +5,13 @@ import com.app.travelmaker.domain.mypage.company.StoreFileDTO;
 import com.app.travelmaker.domain.store.response.StoreResponseDTO;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +19,7 @@ import static com.app.travelmaker.entity.mebmer.QMember.member;
 import static com.app.travelmaker.entity.store.QStore.store;
 import static com.app.travelmaker.entity.store.QStoreFile.storeFile;
 
+@Slf4j
 public class StoreDSLImpl implements StoreDSL {
     @Autowired
     private JPAQueryFactory query;
@@ -130,6 +133,45 @@ public class StoreDSLImpl implements StoreDSL {
 
     }
 
+    @Override
+    public StoreResponseDTO getDetail(Long id) {
+
+        StoreResponseDTO detail = query.select(Projections.fields(StoreResponseDTO.class,
+                store.id,
+                store.storeTitle,
+                store.storeContent,
+                store.address.address.as("address"),
+                store.address.addressDetail.as("addressDetail"),
+                store.address.postcode.as("postCode"),
+                store.storeType,
+                store.storeStatus,
+                store.storeResult,
+                store.createdDate,
+                store.updatedDate,
+                member.memberEmail
+        )).from(store)
+                .innerJoin(store.member, member)
+                .orderBy(store.id.desc())
+                .where(store.id.eq(id))
+                .fetchOne();
+
+        List<StoreFileDTO> files = getFiles();
+        files =files.stream().filter(file -> file.getStoreId().equals(detail.getId())).collect(Collectors.toList());
+        detail.setStoreFiles(files);
+
+        return detail;
+    }
+
+    @Override
+    public void modifyStatus(StoreResponseDTO result) {
+        query.update(store)
+                .set(store.storeStatus, result.getStoreStatus())
+                .set(store.storeResult, result.getStoreResult())
+                .set(store.updatedDate, LocalDateTime.now())
+                .where(store.id.eq(result.getId()))
+                .execute();
+    }
+
     private List<StoreFileDTO> getFiles(){
         return query.select(Projections.fields(StoreFileDTO.class,
                 storeFile.id,
@@ -141,5 +183,7 @@ public class StoreDSLImpl implements StoreDSL {
                 storeFile.store.id.as("storeId")
         )).from(storeFile).where(storeFile.store.id.eq(store.id).and(storeFile.deleted.eq(false))).fetch();
     }
+
+
 
 }
