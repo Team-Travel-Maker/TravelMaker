@@ -35,6 +35,9 @@ public interface MemberService extends UserDetailsService {
 
     public Long findIdByMemberEmail(String memberEmail);
 
+    public void resetPw(Long id, String password);
+
+
     public String certifiedPhoneNumber(String to);
 
     default Member toEntity(MemberRequestDTO memberRequestDTO){

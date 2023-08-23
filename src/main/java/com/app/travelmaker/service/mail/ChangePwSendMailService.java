@@ -8,16 +8,20 @@ import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 
 @Service
 @RequiredArgsConstructor
 public class ChangePwSendMailService {
 
+    private final HttpSession session;
+
     private final JavaMailSender emailsender; // Bean 등록해둔 MailConfig 를 emailsender
     private String  address = "http://localhost:10000/accounts/ok/reset"; // 비밀번호 재설정 주소
     // 메일 내용 작성
     public MimeMessage createMessage(String to, Long id) throws MessagingException, UnsupportedEncodingException {
+        session.setAttribute("check", id);
 //		System.out.println("보내는 대상 : " + to);
 
         MimeMessage message = emailsender.createMimeMessage();

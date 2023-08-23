@@ -1,6 +1,6 @@
 package com.app.travelmaker.handler;
 
-import com.app.travelmaker.common.LoginSupport;
+import com.app.travelmaker.common.AccountSupport;
 import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.provider.MemberDetail;
@@ -8,30 +8,24 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class AuthenticationSuccessHandlerImpl extends LoginSupport implements AuthenticationSuccessHandler {
+public class AuthenticationSuccessHandlerImpl extends AccountSupport implements AuthenticationSuccessHandler {
     private final HttpSession session;
     private static String path = "/";
     @Override
@@ -46,7 +40,7 @@ public class AuthenticationSuccessHandlerImpl extends LoginSupport implements Au
 
         /** OAuth 로그인 하여 추가 정보 입력하다가 메인으로 넘어가면 다시 로그인 했을때 다시 추가정보입력하게 검사*/
         if(list.get(0).toString().equals(Role.WAIT.getSecurityRole())){
-            MemberResponseDTO memberDTO = ((MemberResponseDTO)session.getAttribute("member"));
+            MemberResponseDTO memberDTO = authenticationInfo();
             if(memberDTO.getMemberPhone() == null){
                 response.sendRedirect("/accounts/join/join");
                 return;
@@ -64,16 +58,8 @@ public class AuthenticationSuccessHandlerImpl extends LoginSupport implements Au
             }
         }
 
-/*        log.info("===================");
-        log.info(String.valueOf(authentication.getPrincipal() instanceof  MemberDetail));
-        log.info("=================");
-        log.info(authentication.getName());
-        log.info(authentication.getPrincipal().toString());*/
-
            if(authentication.getPrincipal() instanceof MemberDetail){
             /** 일반 로그인 핸들러 기본적*/
-            /*로그인 정보 세션에 담기*/
-            authenticationInfo();
             // 있을 경우 URI 등 정보를 가져와서 사용
             if (savedRequest != null) {
                 String anotherPath = savedRequest.getRedirectUrl();

@@ -70,8 +70,13 @@ public class AccountApiController {
 
     @PostMapping("/check/email")
     public Long sendMemberId(String memberEmail){
-        log.info(memberEmail);
         return  memberService.findIdByMemberEmail(memberEmail);
+    }
+
+    @PostMapping("/reset/pw/{id}")
+    public void reset(@PathVariable Long id, String newPassword, HttpSession session){
+         session.setAttribute("check", id);
+        memberService.resetPw(id, newPassword);
     }
 
 
