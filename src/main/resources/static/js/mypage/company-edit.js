@@ -12,15 +12,25 @@ const $sub1X = $('.sub1-x');
 const $sub2X = $('.sub2-x');
 
 const uploadFiles = [];
+let fileDelChk = "no";
 
 const queryParams = new URLSearchParams(window.location.search);
 const storeId = queryParams.get('storeId');
 
 console.log('Received item ID:', storeId);
 
+// 파일 수정 채크
+let $fileChangeChk = 0;
+
 // 업데이트 업체 아이디
 let $hiddenStoreId;
 let subChk = 0;
+
+const status = {
+    "PENDING" : "대기",
+    "APPROVED" : "승인",
+    "REJECTED" : "반려"
+}
 
 $(document).ready(function () {
     $.ajax({
@@ -44,6 +54,15 @@ $(document).ready(function () {
             $inputTag.eq(4).val(ad[0]);
             $inputTag.eq(5).val(ad[1]);
             $inputTag.eq(6).val(ad[2]);
+            $('.store-status').text(store.storeStatus.name);
+            if(store.storeStatus.code == "PENDING") {
+                $('.store-status').css("color", "rgb(0, 189, 222)");
+            } else if(store.storeStatus.code == "APPROVED") {
+                $('.store-status').css("color", "rgb(7, 186, 156)");
+            } else {
+                $('.store-status').css("color", "red");
+            }
+            $('.status-result').text(store.storeResult);
             $('#category').val(store.storeType.code).prop("selected",true);
 
             const fileLength = store.files.length;
@@ -51,12 +70,13 @@ $(document).ready(function () {
             store.files.forEach((file, i) => {
                 console.log(i)
                 console.log(file);
-                if(2 == fileLength) {
-                    if (file.fileType == "REPRESENTATIVE") {
+                if(3 == fileLength) {
+                    console.log("여기여기" + file);
+                    if (file.fileType.code == "REPRESENTATIVE") {
                         $thumbnailAttach.show()
                         $thumbnailImg.show();
                         $thumbnailX.show();
-                        $thumbnailImg.attr("src", "/files/" +
+                        $thumbnailImg.attr("src", "/api/files/display?fileName=" +
                             file.filePath + "/" +
                             file.fileUuid + "_" +
                             file.fileName);
@@ -64,15 +84,16 @@ $(document).ready(function () {
                         $sub1Attach.show()
                         $sub1Img.show();
                         $sub1X.show();
-                        $sub1Img.attr("src", "/files/" +
+                        $sub1Img.attr("src", "/api/files/display?fileName=" +
                             file.filePath + "/" +
                             file.fileUuid + "_" +
                             file.fileName);
+                        subChk++;
                     } else {
                         $sub2Attach.show()
                         $sub2Img.show();
                         $sub2X.show();
-                        $sub2Img.attr("src", "/files/" +
+                        $sub2Img.attr("src", "/api/files/display?fileName=" +
                             file.filePath + "/" +
                             file.fileUuid + "_" +
                             file.fileName);
@@ -83,7 +104,7 @@ $(document).ready(function () {
                         $thumbnailAttach.show()
                         $thumbnailImg.show();
                         $thumbnailX.show();
-                        $thumbnailImg.attr("src", "/files/" +
+                        $thumbnailImg.attr("src", "/api/files/display?fileName=" +
                             store.files[0].filePath + "/" +
                             store.files[0].fileUuid + "_" +
                             store.files[0].fileName);
@@ -91,7 +112,7 @@ $(document).ready(function () {
                         $sub1Attach.show()
                         $sub1Img.show();
                         $sub1X.show();
-                        $sub1Img.attr("src", "/files/" +
+                        $sub1Img.attr("src", "/api/files/display?fileName=" +
                             file.filePath + "/" +
                             file.fileUuid + "_" +
                             file.fileName);
@@ -101,7 +122,7 @@ $(document).ready(function () {
                     $thumbnailAttach.show()
                     $thumbnailImg.show();
                     $thumbnailX.show();
-                    $thumbnailImg.attr("src", "/files/" +
+                    $thumbnailImg.attr("src", "/api/files/display?fileName=" +
                         file.filePath + "/" +
                         file.fileUuid + "_" +
                         file.fileName);
@@ -112,6 +133,8 @@ $(document).ready(function () {
 });
 
 $thumbnailFile.on('change', function(event) {
+    checkAll();
+    $fileChangeChk = 1;
     uploadFiles[0] = event.target.files[0];
     var reader = new FileReader();
 
@@ -127,6 +150,8 @@ $thumbnailFile.on('change', function(event) {
 });
 
 $thumbnailX.on('click', function () {
+    checkAll();
+    $fileChangeChk = 1;
     $thumbnailImg.attr("src", "");
     $thumbnailImg.hide()
     $thumbnailX.hide();
@@ -134,6 +159,8 @@ $thumbnailX.on('click', function () {
 })
 
 $sub1File.on('change', function(event) {
+    checkAll();
+    $fileChangeChk = 1;
     uploadFiles[1] = event.target.files[0];
     var reader = new FileReader();
 
@@ -149,6 +176,8 @@ $sub1File.on('change', function(event) {
 });
 
 $sub1X.on('click', function () {
+    checkAll();
+    $fileChangeChk = 1;
     $sub1Img.attr("src", "");
     $sub1Img.hide()
     $sub1X.hide();
@@ -156,6 +185,8 @@ $sub1X.on('click', function () {
 })
 
 $sub2File.on('change', function(event) {
+    checkAll();
+    $fileChangeChk = 1;
     uploadFiles[2] = event.target.files[0];
     var reader = new FileReader();
 
@@ -171,6 +202,8 @@ $sub2File.on('change', function(event) {
 });
 
 $sub2X.on('click', function () {
+    checkAll();
+    $fileChangeChk = 1;
     $sub2Img.attr("src", "");
     $sub2Img.hide()
     $sub2X.hide();
@@ -214,10 +247,17 @@ function checkAll() {
 }
 
 $submitBtn.on("click", function () {
-    console.log($inputTag.eq(6).val());
+    if ($fileChangeChk == 1 && uploadFiles.length != 0) {
+        setFile();
+    } else if ($fileChangeChk == 1 && uploadFiles.length == 0) {
+        fileDelChk = "yes";
+    } else {
+        storeDTO.files = [];
+    }
 
-    setFile();
+    console.log("=======여기여기여기여기"+storeDTO.files.toString())
 
+    storeDTO.id = storeId;
     storeDTO.storeTitle = $inputTag.eq(0).val()
     storeDTO.storeContent = $inputTextArea.eq(0).val()
     storeDTO.address.address = $inputTag.eq(3).val()
@@ -227,19 +267,20 @@ $submitBtn.on("click", function () {
     storeDTO.address.postcode = $inputTag.eq(1).val()
     storeDTO.storeType = $inputTag.eq(7).val()
     storeDTO.storeStatus = "PENDING"
+    storeDTO.storeResult = ""
 
     console.log(storeDTO);
 
     $.ajax({
-        url: `/api/myPages/store`,
-        type: `post`,
+        url: `/api/myPages/store?fileDel=` + fileDelChk,
+        type: `PUT`,
         data		:  JSON.stringify(storeDTO),
         contentType : "application/json",
         error: function () {
             alert("통신실패!!!!");
         },
         success: function(data){
-            showWarnModal("업체 등록이 완료되었습니다.")
+            showWarnModal("업체 수정이 완료되었습니다.")
             $(".modal").on("click", function () {
                 location.href = data
             })
@@ -248,12 +289,12 @@ $submitBtn.on("click", function () {
     })
 })
 
-function setFile() {
-    console.log(uploadFiles.length)
+function setFile(i) {
+    console.log("++++++++++++++++" + uploadFiles.length)
     if(uploadFiles.length == 0) {
         return;
-    } else if (uploadFiles[0].length == ""){
-        return;
+    } else if (!$thumbnailImg.attr('src')){
+        showWarnModal("썸네일부터 사진을 등록해 주세요.");
     }
 
     //파일 이름 담는 배열 새로 파일이 담길 때마다 초기화
@@ -271,6 +312,10 @@ function setFile() {
     date = date < 10 ? "0" + date : date;
 
     let filePath = year + "/" + month + "/" + date
+
+    console.log("====================")
+    console.log(uploadFiles);
+    console.log("====================")
 
     $(uploadFiles).each((i) => {
         console.log(uploadFiles[i])
@@ -310,7 +355,7 @@ function setFile() {
                 } else {
                     test.fileType = "GENERAL";
                 }
-                storeDTO.files.push(test);
+                storeDTO.files[i].push(test);
             }
         },
         error      : function () {

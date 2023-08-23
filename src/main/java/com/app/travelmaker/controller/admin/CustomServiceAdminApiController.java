@@ -39,6 +39,13 @@ public class CustomServiceAdminApiController {
         return  customSerivceService.getList(pageable,keyword);
     }
 
+    /*문의 목록 5개씩*/
+    @GetMapping("inquiry/listFive")
+    public Page<CustomServiceResponseDTO> getListFive(@PageableDefault(page = 0, size = 5) Pageable pageable,@RequestParam(value = "keyword", required = false) String keyword){
+        log.info(keyword);
+        return  customSerivceService.getList(pageable,keyword);
+    }
+
     /*문의 상세*/
     @GetMapping(path = {"inquiry/detail/{id}", "inquiry/modify/{id}"})
     public CustomServiceResponseDTO detail(@PathVariable Long id){
