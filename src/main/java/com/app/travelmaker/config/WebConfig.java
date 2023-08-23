@@ -2,6 +2,7 @@ package com.app.travelmaker.config;
 
 import com.app.travelmaker.interceptor.LoginInterceptor;
 import com.app.travelmaker.interceptor.MainInterceptor;
+import com.app.travelmaker.interceptor.ResetInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -19,6 +20,10 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/accounts/password/**");
         registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/accounts/account/**");
+        registry.addInterceptor(new LoginInterceptor())
+                .addPathPatterns("/accounts/join/**");
+        registry.addInterceptor(new ResetInterceptor())
+                .addPathPatterns("/accounts/ok/**");
 
     }
 

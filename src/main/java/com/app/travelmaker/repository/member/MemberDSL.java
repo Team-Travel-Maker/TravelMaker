@@ -22,6 +22,8 @@ public interface MemberDSL {
     public void modifyType(Long id);
     public void modifyAdmin(Long id);
 
+    public void resetPw(Long id, String newPassword);
+
     public List<MemberJoinResponseDTO> findMemberEmailByMemberPhone(String memberPhoneNumber);
 
     public Optional<Long> findIdByMemberEmail(String memberEmail);

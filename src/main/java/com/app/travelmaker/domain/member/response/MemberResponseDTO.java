@@ -1,9 +1,11 @@
 package com.app.travelmaker.domain.member.response;
 
+import com.app.travelmaker.constant.FileType;
 import com.app.travelmaker.constant.MemberJoinAccountType;
 import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.entity.mebmer.Member;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -31,6 +33,14 @@ public class MemberResponseDTO {
     private String snsProFile;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
+    private Long fileId;
+    private String fileName;
+    private String fileUuid;
+    private String filePath;
+    private FileType fileType;
+    private Long fileSize;
+
+
 
     public MemberResponseDTO(Member member){
         this.id = member.getId();
@@ -50,5 +60,13 @@ public class MemberResponseDTO {
         this.snsProFile = member.getSnsProfile();
         this.createdDate = member.getCreatedDate();
         this.updatedDate = member.getUpdatedDate();
+        if(member.getFile() != null){
+            this.fileId = member.getFile().getId();
+            this.fileName = member.getFile().getFileName();
+            this.fileUuid = member.getFile().getFileUuid();
+            this.filePath = member.getFile().getFilePath();
+            this.fileType = member.getFile().getFileType();
+            this.fileSize = member.getFile().getFileSize();
+        }
     }
 }

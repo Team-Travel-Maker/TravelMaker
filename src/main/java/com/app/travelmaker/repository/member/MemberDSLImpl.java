@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
@@ -21,8 +22,9 @@ import static com.app.travelmaker.entity.mebmer.QMember.*;
 public class MemberDSLImpl implements MemberDSL {
     @Autowired
     private JPAQueryFactory query;
+
     @Autowired
-    private EntityManager entityManager;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public Optional<MemberJoinResponseDTO> memberCheckForOauthAndLogin(String memberEmail) {
@@ -133,6 +135,15 @@ public class MemberDSLImpl implements MemberDSL {
                     .where(member.id.eq(id))
                     .execute();
         }
+    }
+
+    @Override
+    public void resetPw(Long id, String newPassword) {
+        query.update(member)
+                .set(member.memberPw, passwordEncoder.encode(newPassword))
+                .set(member.updatedDate, LocalDateTime.now())
+                .where(member.id.eq(id))
+                .execute();
     }
 
     @Override

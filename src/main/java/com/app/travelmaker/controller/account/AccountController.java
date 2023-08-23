@@ -1,6 +1,6 @@
 package com.app.travelmaker.controller.account;
 
-import com.app.travelmaker.domain.member.response.MemberResponseDTO;
+import com.app.travelmaker.common.AccountSupport;
 import com.app.travelmaker.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ import java.util.concurrent.atomic.AtomicReference;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/accounts/*")
-public class AccountController {
+public class AccountController extends AccountSupport {
 
     private final MemberRepository memberRepository;
 
@@ -38,7 +38,7 @@ public class AccountController {
 
     @GetMapping("join/join")
     public void goToJoinForm(HttpSession session, Model model){
-        model.addAttribute("oauthMember", ((MemberResponseDTO)session.getAttribute("member")).getMemberEmail());
+        model.addAttribute("oauthMember", authenticationInfo().getMemberEmail());
         session.invalidate();
         ;}
 
@@ -90,5 +90,7 @@ public class AccountController {
 
     //비밀번호 재설정 성공 화면
     @GetMapping("ok/reset-ok")
-    public void goToPasswordResetOk(){;}
+    public void goToPasswordResetOk(HttpSession session){
+        session.invalidate();
+    }
 }
