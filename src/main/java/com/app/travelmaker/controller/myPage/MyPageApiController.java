@@ -85,6 +85,15 @@ public class MyPageApiController {
         return ResponseEntity.ok(store);
     }
 
+    // 업체 수정 api
+    @Transactional
+    @PutMapping("/store")
+    public ResponseEntity updateStore(@RequestBody StoreDTO request) {
+        storeService.updateStore(request);
+        log.info(request.toString());
+        return ResponseEntity.ok("/mypage/company/list");
+    }
+
     // 북마크 리스트 api
     @GetMapping("/bookmarks")
     public ResponseEntity<?> getBookmarks() {

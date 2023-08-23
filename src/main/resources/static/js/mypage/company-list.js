@@ -41,7 +41,7 @@ $(document).ready(function () {
                                     stores[i].storeStatus.name +
                         '        </td>\n' +
                         '        <td class="image-wrap">\n' +
-                        '            <img src="/files/' +
+                        '            <img src="/api/files/display?fileName=' +
                                     stores[i].files[0].filePath + "/" +
                                     stores[i].files[0].fileUuid + "_" +
                                     stores[i].files[0].fileName +

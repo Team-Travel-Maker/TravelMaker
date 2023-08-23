@@ -31,7 +31,7 @@ $(document).ready(function () {
                             '    ">\n' +
                             '        <div class="card">\n' +
                             '            <a href="#">\n' +
-                            '                <header style="background-image: url(/files/' +
+                            '                <header style="background-image: url(/api/files/display?fileName=' +
                                                     likes[i].files[0].filePath + '/' +
                                                     likes[i].files[0].fileUuid + '_' +
                                                     likes[i].files[0].fileName +
@@ -102,7 +102,7 @@ $(document).ready(function () {
                             '    ">\n' +
                             '        <div class="card">\n' +
                             '            <a href="#">\n' +
-                            '                <header style="background-image: url(/files/' +
+                            '                <header style="background-image: url(/api/files/display?fileName=' +
                                                         likes[i].files[0].filePath + '/' +
                                                         likes[i].files[0].fileUuid + '_' +
                                                         likes[i].files[0].fileName +

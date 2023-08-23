@@ -23,6 +23,7 @@ public class StoreDTO {
     private Address address;
     private StoreType storeType;
     private StoreStatus storeStatus;
+    private String storeResult;
     private LocalDateTime updatedDate;
     private List<StoreFileDTO> files = new ArrayList<>();
 }
