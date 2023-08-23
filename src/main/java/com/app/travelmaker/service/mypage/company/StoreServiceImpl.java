@@ -1,37 +1,37 @@
 package com.app.travelmaker.service.mypage.company;
 
 import com.app.travelmaker.common.CommonSupport;
+import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.domain.mypage.company.StoreDTO;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.entity.store.Store;
 import com.app.travelmaker.entity.store.StoreFile;
-import com.app.travelmaker.repository.member.MemberRepository;
 import com.app.travelmaker.repository.mypage.company.StoreFileRepository;
 import com.app.travelmaker.repository.mypage.company.StoreRepository;
+import com.app.travelmaker.service.MemberSupport;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class StoreServiceImpl extends CommonSupport implements StoreService {
+public class StoreServiceImpl extends CommonSupport implements StoreService, MemberSupport {
 
     private final StoreRepository storeRepository;
     private final StoreFileRepository storeFileRepository;
-    private final MemberRepository memberRepository;
+    private final HttpSession session;
 
     @Override
     public void addStore(StoreDTO request) {
-        // 세션으로 가져오기
-//        Member member = memberRepository.findById(32L)
-//                .orElseThrow(() -> new RuntimeException("사용자 없음 에러 발생"));
-        Member member = authenticationInfo();
-
+        Member member = toMemberEntity((MemberResponseDTO) session.getAttribute("member"));
         // 업체 등록하기
+        request.setStoreResult("");
         Store store = storeRepository.save(toStoreEntity(request, member));
 
         log.info("스토어에 등록된 아이디 : {}" , store.getId());
@@ -43,11 +43,8 @@ public class StoreServiceImpl extends CommonSupport implements StoreService {
 
     @Override
     public List<StoreDTO> getAllStore() {
+        Member member = toMemberEntity((MemberResponseDTO) session.getAttribute("member"));
         // 세션으로 가져오기
-//        Member member = memberRepository.findById(32L)
-//                .orElseThrow(() -> new RuntimeException("사용자 없음 에러 발생"));
-
-        Member member = authenticationInfo();
         return storeRepository.getAllStore(member.getId());
     }
 
@@ -68,5 +65,29 @@ public class StoreServiceImpl extends CommonSupport implements StoreService {
     @Override
     public StoreDTO getStore(Long storeId) {
         return storeRepository.getStore(storeId);
+    }
+
+    @Override
+    public void updateStore(StoreDTO request) {
+        Member member = toMemberEntity((MemberResponseDTO) session.getAttribute("member"));
+        Store foundStore = storeRepository.findById(request.getId()).get();
+
+        // 업체 수정하기
+        foundStore.setStoreTitle(request.getStoreTitle());
+        foundStore.setStoreContent(request.getStoreContent());
+        foundStore.setStoreResult(request.getStoreResult());
+        foundStore.setStoreStatus(request.getStoreStatus());
+        foundStore.setStoreType(request.getStoreType());
+        foundStore.getAddress().setAddress(request.getAddress().getAddress());
+        foundStore.getAddress().setAddressDetail(request.getAddress().getAddressDetail());
+        foundStore.getAddress().setPostcode(request.getAddress().getPostcode());
+
+        //storeRepository.save(foundStore);
+
+        if(request.getFiles().size() != 0) {
+            storeFileRepository.deleteAllByStoreId(request.getId());
+            // 새로운 업체 파일 등록
+            List<StoreFile> storeFiles = storeFileRepository.saveAll(request.getFiles().stream().map(storeFileDTO -> toStoreFileEntity(storeFileDTO, foundStore)).collect(Collectors.toList()));
+        }
     }
 }

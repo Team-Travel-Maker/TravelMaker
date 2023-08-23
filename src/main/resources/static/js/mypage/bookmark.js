@@ -21,7 +21,7 @@ $(document).ready(function () {
                         '    ">\n' +
                         '        <div class="card">\n' +
                         '            <a href="#">\n' +
-                        '                <header style="background-image: url(/files/' +
+                        '                <header style="background-image: url(/api/files/display?fileName=' +
                                                 bookmarks[i].files[0].filePath + '/' +
                                                 bookmarks[i].files[0].fileUuid + '_' +
                                                 bookmarks[i].files[0].fileName +

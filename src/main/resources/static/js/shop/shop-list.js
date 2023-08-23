@@ -97,7 +97,7 @@ $(document).ready(function () {
                             '       >\n' +
                             '        <div class="gift-card">\n' +
                             '            <a href="#">\n' +
-                            '                <header style="background-image: url(/files/' +
+                            '                <header style="background-image: url(/api/files/display?fileName=' +
                             giftCards[i].files[0].filePath + "/" +
                             giftCards[i].files[0].fileUuid + "_" +
                             giftCards[i].files[0].fileName + ');\n' +
@@ -153,7 +153,7 @@ $(document).ready(function () {
                             '       >\n' +
                             '        <div class="gift-card">\n' +
                             '            <a href="#">\n' +
-                            '                <header style="background-image: url(/files/' +
+                            '                <header style="background-image: url(/api/files/display?fileName=' +
                             giftCards[i].files[0].filePath + "/" +
                             giftCards[i].files[0].fileUuid + "_" +
                             giftCards[i].files[0].fileName + ');\n' +
