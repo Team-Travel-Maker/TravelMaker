@@ -1,19 +1,27 @@
 package com.app.travelmaker.service.shop;
 
 import com.app.travelmaker.common.CommonSupport;
+import com.app.travelmaker.constant.FileType;
+import com.app.travelmaker.domain.file.FileSize;
 import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.domain.shop.GiftCardDTO;
 import com.app.travelmaker.domain.shop.purchase.PurchaseRequestDTO;
 import com.app.travelmaker.entity.giftcard.GiftCard;
+import com.app.travelmaker.entity.giftcard.GiftCardFile;
 import com.app.travelmaker.entity.mebmer.Member;
+import com.app.travelmaker.entity.notice.Notice;
+import com.app.travelmaker.entity.notice.NoticeFile;
 import com.app.travelmaker.entity.pay.Pay;
 import com.app.travelmaker.entity.point.Point;
 import com.app.travelmaker.repository.member.MemberRepository;
 import com.app.travelmaker.repository.point.PointRepository;
+import com.app.travelmaker.repository.shop.GiftCardFileRepository;
 import com.app.travelmaker.repository.shop.GiftCardRepository;
 import com.app.travelmaker.repository.shop.purchase.PayRepository;
 import com.app.travelmaker.service.MemberSupport;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
@@ -27,6 +35,7 @@ public class GiftCardServiceImpl extends CommonSupport implements GiftCardServic
     private final MemberRepository memberRepository;
     private final PointRepository pointRepository;
     private final HttpSession session;
+    private final GiftCardFileRepository giftCardFileRepository;
 
     @Override
     public List<GiftCardDTO> getGiftCardListByGiftCardRegion(String giftCardRegion) {
@@ -57,5 +66,31 @@ public class GiftCardServiceImpl extends CommonSupport implements GiftCardServic
 
         // 3. point 히스토리에 등록
         Point point = pointRepository.save(request.toPointEntity(member, giftCard.getGiftCardTitle()));
+    }
+
+    @Override
+    public void register(GiftCardDTO giftCardDTO) {
+        Long id = giftCardRepository.save(toEntity(giftCardDTO)).getId();;
+
+        if(giftCardDTO.getFiles().size() >0){
+            for (int i = 0; i < giftCardDTO.getFiles().size(); i++) {
+
+                GiftCard foundGift = giftCardRepository.findById(id).orElseThrow(() -> {
+                    throw new RuntimeException();
+                });
+                giftCardFileRepository.save(GiftCardFile.builder().giftCard(foundGift)
+                        .fileName(giftCardDTO.getFiles().get(i).getFileName())
+                        .fileSize(giftCardDTO.getFiles().get(i).getFileSize())
+                        .fileType(FileType.REPRESENTATIVE)
+                        .fileUuid(giftCardDTO.getFiles().get(i).getFileUuid())
+                        .filePath(giftCardDTO.getFiles().get(i).getFilePath())
+                        .build());
+            }
+        }
+    }
+
+    @Override
+    public Page<GiftCardDTO> getListWithPage(Pageable pageable) {
+        return giftCardRepository.getListWithPage(pageable);
     }
 }
