@@ -4,16 +4,13 @@ import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.domain.member.request.MemberRequestDTO;
 import com.app.travelmaker.domain.member.response.MemberJoinResponseDTO;
 import com.app.travelmaker.domain.member.response.MemberResponseDTO;
-import com.app.travelmaker.embeddable.address.Address;
-import com.app.travelmaker.embeddable.alarm.Alarm;
-import com.app.travelmaker.entity.mebmer.Member;
-import com.app.travelmaker.entity.mebmer.QMember;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
@@ -21,13 +18,13 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.app.travelmaker.entity.mebmer.QMember.*;
-import static com.app.travelmaker.entity.notice.QNotice.notice;
 
 public class MemberDSLImpl implements MemberDSL {
     @Autowired
     private JPAQueryFactory query;
+
     @Autowired
-    private EntityManager entityManager;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public Optional<MemberJoinResponseDTO> memberCheckForOauthAndLogin(String memberEmail) {
@@ -141,6 +138,15 @@ public class MemberDSLImpl implements MemberDSL {
     }
 
     @Override
+    public void resetPw(Long id, String newPassword) {
+        query.update(member)
+                .set(member.memberPw, passwordEncoder.encode(newPassword))
+                .set(member.updatedDate, LocalDateTime.now())
+                .where(member.id.eq(id))
+                .execute();
+    }
+
+    @Override
     public void oauthJoin(MemberRequestDTO memberRequestDTO) {
         query.update(member)
                 .set(member.address.address, memberRequestDTO.getAddress())
@@ -155,8 +161,18 @@ public class MemberDSLImpl implements MemberDSL {
                 .set(member.updatedDate, LocalDateTime.now())
                 .where(member.memberEmail.eq(memberRequestDTO.getMemberEmail()))
                 .execute();
+    }
 
-/*        entityManager.flush();
-        entityManager.clear();*/
+    @Override
+    public List<MemberJoinResponseDTO> findMemberEmailByMemberPhone(String memberPhoneNumber) {
+        return query.select(Projections.fields(MemberJoinResponseDTO.class,
+                member.memberEmail,
+                member.memberJoinAccountType))
+                .from(member).where(member.memberPhone.eq(memberPhoneNumber)).fetch();
+    }
+
+    @Override
+    public Optional<Long> findIdByMemberEmail(String memberEmail) {
+       return Optional.ofNullable(query.select(member.id).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne());
     }
 }

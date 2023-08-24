@@ -1,7 +1,6 @@
 const $shopList = $('.shop-list');
 
 $(document).ready(function () {
-    console.log("여기 오는겨?")
     $.ajax({
         type: "GET", //전송방식을 지정한다 (POST,GET)
         url: "/api/myPages/giftCard",
@@ -17,7 +16,7 @@ $(document).ready(function () {
                 $.each(giftCards, function (i) {
                     text += '<li>' +
                         '        <div class="card">\n' +
-                        '                <header style="background-image: url(/files/' +
+                        '                <header style="background-image: url(/api/files/display?fileName=' +
                                             giftCards[i].filePath + '/' +
                                             giftCards[i].fileUuid + '_' +
                                             giftCards[i].fileName + ');">' +

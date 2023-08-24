@@ -13,8 +13,6 @@
 </head>
 <body>
 <div th:replace="~{header/header :: #header}"></div>
-<div class="Padding_padding___Nyki"></div>
-
 <div class="container-profile">
     <nav role="presentation" class="nav">
         <h2 class="nav-title">
@@ -28,7 +26,7 @@
                 <div class="points-div">
                     <div class="points-point">
                         <div class="point-label">포인트</div>
-                        <div class="point-value">0<sub> P</sub></div>
+                        <div class="point-value" th:text="${session.member.memberEcoPoint}">0<sub> P</sub></div>
                         <div class="point-expire">7일 이내 소멸 포인트 0 p</div>
                     </div>
                     <!--                    i 아이콘-->
@@ -63,65 +61,41 @@
             </div>
         </div>
     </div>
-
+    <br><br><br><br><br><br><br><br><br>
+    <div style="float: right">
+        <div>
+            <select name="point-type" id="point-type" class="point-type" style="border-radius:10px;padding:5px 15px;font-size:15px;">
+                <option value="ALL">전체</option>
+                <option value="EARN">적립</option>
+                <option value="USE">사용</option>
+            </select>
+        </div>
+    </div>
         <section class="body">
-            <!--                <div class="body-div">-->
-            <!--                    <div>-->
-            <!--                        <button class="btn button-root button-outlined"-->
-            <!--                                disabled="">-->
-            <!--                            <span class="btn-label">삭제</span>-->
-            <!--                        </button>-->
-            <!--                    </div>-->
-            <!--                </div>-->
             <div class="info-table">
                 <table>
                     <thead>
                     <tr>
-                        <th class="checkbox-line">
-                            <input type="checkbox" id="allSelect">
-                        </th>
-                        <th>No</th>
-                        <th>상품권 이름</th>
-                        <th>상품 갯수</th>
-                        <th>적립/사용내용</th>
-                        <th>적립</th>
-                        <th>사용</th>
-                        <th>일시</th>
-                        <th>포인트 잔액</th>
+                        <th style="width: 100px;">No</th>
+                        <th>적립/사용 내용</th>
+                        <th style="width: 140px;">적립</th>
+                        <th style="width: 140px;">사용</th>
+                        <th style="width: 180px;">일시</th>
+                        <th style="width: 160px;">포인트 잔액</th>
                     </tr>
                     </thead>
                     <!--답변 미완료 -->
-                    <tbody>
-                    <tr>
-                        <td class="checkbox-line">
-                            <input type="checkbox" class="inquiryCheckbox" name="check">
-                        </td>
-                        <td>
-                            1
-                        </td>
-                        <td>강원도 감자 상품권</td>
-                        <td>2</td>
-                        <td>상품권 전환</td>
-                        <td>4000</td>
-                        <td></td>
-                        <td>2023/07/22</td>
-                        <td>2300</td>
-                    </tr>
-                    <tr>
-                        <td class="checkbox-line">
-                            <input type="checkbox" class="inquiryCheckbox" name="check">
-                        </td>
-                        <td>
-                            2
-                        </td>
-                        <td>서울 감자 상품권</td>
-                        <td>2</td>
-                        <td>상품권 전환</td>
-                        <td></td>
-                        <td>5000</td>
-                        <td>2023/07/22</td>
-                        <td>2300</td>
-                    </tr>
+                    <tbody class="points-tbody">
+<!--                    <tr>-->
+<!--                        <td>-->
+<!--                            1-->
+<!--                        </td>-->
+<!--                        <td>상품권 전환</td>-->
+<!--                        <td>4000</td>-->
+<!--                        <td></td>-->
+<!--                        <td>2023/07/22</td>-->
+<!--                        <td>2300</td>-->
+<!--                    </tr>-->
                     </tbody>
                 </table>
             </div>
@@ -172,9 +146,6 @@
         }
 
     });
-    // btnI.addEventListener('click',function(){
-    //     tooltip.classList.add('.tooltip-tooltip-body.is-show');
-    // })
 </script>
-<script src="/js/mypage/company-list.js"></script>
+<script src="/js/mypage/points.js"></script>
 </html>

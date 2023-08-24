@@ -2,16 +2,15 @@ package com.app.travelmaker.service.member;
 
 import com.app.travelmaker.constant.JoinCheckType;
 import com.app.travelmaker.constant.MemberJoinAccountType;
-import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.domain.member.OAuthAttributes;
 import com.app.travelmaker.domain.member.request.MemberRequestDTO;
 import com.app.travelmaker.domain.member.response.MemberJoinResponseDTO;
 import com.app.travelmaker.domain.member.response.MemberResponseDTO;
-import com.app.travelmaker.embeddable.address.Address;
-import com.app.travelmaker.embeddable.alarm.Alarm;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.provider.MemberDetail;
+import com.app.travelmaker.provider.MemberOauthDetail;
 import com.app.travelmaker.repository.member.MemberRepository;
+import com.app.travelmaker.service.MemberSupport;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.nurigo.java_sdk.api.Message;
@@ -103,9 +102,15 @@ public class MemberServiceImpl implements MemberService, OAuth2UserService<OAuth
                 .memberId(member.getMemberEmail())
                 .memberPassword(member.getMemberPw())
                 .memberRole(member.getMemberRole())
+                .memberResponseDTO(new MemberResponseDTO(member))
                 .build();
     }
 
+
+    @Override
+    public List<MemberJoinResponseDTO> findByMemberPhone(String memberPhoneNumber) {
+        return memberRepository.findMemberEmailByMemberPhone(memberPhoneNumber);
+    }
 
     @Override
     @Transactional
@@ -128,12 +133,7 @@ public class MemberServiceImpl implements MemberService, OAuth2UserService<OAuth
             member.update(attributes.getName(), attributes.getSnsProfile(), attributes.getEmail());
         }
 
-        session.setAttribute("member", new MemberResponseDTO(member));
-        log.info("==========================================");
-        log.info(((MemberResponseDTO)session.getAttribute("member")).getMemberEmail());
-        log.info("==========================================");
-
-        return new DefaultOAuth2User(Collections.singleton(new SimpleGrantedAuthority(member.getMemberRole().getSecurityRole())), attributes.getAttributes(), attributes.getNameAttributeKey());
+        return new MemberOauthDetail(new MemberResponseDTO(member),Collections.singleton(new SimpleGrantedAuthority(member.getMemberRole().getSecurityRole())), attributes.getAttributes(), attributes.getNameAttributeKey());
     }
 
     @Transactional
@@ -144,6 +144,11 @@ public class MemberServiceImpl implements MemberService, OAuth2UserService<OAuth
                 .orElse(attributes.toEntity());
 
         return memberForSavingOrUpdating;
+    }
+
+    @Override
+    public void resetPw(Long id, String password) {
+        memberRepository.resetPw(id, password);
     }
 
     @Override
@@ -164,6 +169,12 @@ public class MemberServiceImpl implements MemberService, OAuth2UserService<OAuth
     @Override
     public void modifyAdmin(List<Long> adminIds) {
         adminIds.forEach(id ->memberRepository.modifyAdmin(id));
+    }
+
+
+    @Override
+    public Long findIdByMemberEmail(String memberEmail) {
+        return memberRepository.findIdByMemberEmail(memberEmail).orElseThrow(()->{throw new RuntimeException("아이디를 찾을 수 없습니다");});
     }
 
     @Override

@@ -1,15 +1,18 @@
 package com.app.travelmaker.controller.myPage;
 
+import com.app.travelmaker.constant.PointCateGoryType;
 import com.app.travelmaker.domain.mypage.company.StoreDTO;
 import com.app.travelmaker.domain.mypage.my.MyBookmarkDTO;
 import com.app.travelmaker.domain.mypage.my.MyCommunityLikeDTO;
 import com.app.travelmaker.domain.mypage.my.MyGiftCardDTO;
 import com.app.travelmaker.domain.mypage.my.MyStoryLikeDTO;
+import com.app.travelmaker.domain.mypage.my.point.MyPointDTO;
 import com.app.travelmaker.service.mypage.company.StoreService;
 import com.app.travelmaker.service.mypage.my.MyBookmarkService;
 import com.app.travelmaker.service.mypage.my.MyCommunityLikeService;
 import com.app.travelmaker.service.mypage.my.MyGiftCardService;
 import com.app.travelmaker.service.mypage.my.MyStoryLikeService;
+import com.app.travelmaker.service.mypage.my.point.MyPointService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +35,7 @@ public class MyPageApiController {
     private final MyBookmarkService myBookmarkService;
     private final MyCommunityLikeService myCommunityLikeService;
     private final MyStoryLikeService myStoryLikeService;
+    private final MyPointService myPointService;
 
     // 나의 상품권 목록
     @GetMapping("giftCard")
@@ -81,6 +85,15 @@ public class MyPageApiController {
         return ResponseEntity.ok(store);
     }
 
+    // 업체 수정 api
+    @Transactional
+    @PutMapping("/store")
+    public ResponseEntity updateStore(@RequestBody StoreDTO request) {
+        storeService.updateStore(request);
+        log.info(request.toString());
+        return ResponseEntity.ok("/mypage/company/list");
+    }
+
     // 북마크 리스트 api
     @GetMapping("/bookmarks")
     public ResponseEntity<?> getBookmarks() {
@@ -124,5 +137,28 @@ public class MyPageApiController {
         log.info("스토리 좋아요 아이디:{}",storyLikeId);
         myStoryLikeService.deleteStoryLike(storyLikeId);
         return ResponseEntity.ok("통신 성공");
+    }
+
+    // 포인트 내역 전체 조회
+    @GetMapping("/points")
+    public ResponseEntity<?> getMyPoints() {
+        List<MyPointDTO> myPoints = myPointService.getMyPoints();
+        return ResponseEntity.ok(myPoints);
+    }
+
+    // 포인트 내역 조회(적립, 사용)
+    @GetMapping("/pointsByType")
+    public ResponseEntity<?> getMyPointsByPointType(@RequestParam String pointType) {
+        log.info(pointType);
+        PointCateGoryType pointCateGoryType = null;
+        if(PointCateGoryType.EARN.getCode().equals(pointType)) {
+            pointCateGoryType = PointCateGoryType.EARN;
+        } else {
+            pointCateGoryType = PointCateGoryType.USE;
+        }
+        log.info(pointType);
+        log.info(pointCateGoryType.toString());
+        List<MyPointDTO> myPoints = myPointService.getMyPointsByPointType(pointCateGoryType);
+        return ResponseEntity.ok(myPoints);
     }
 }

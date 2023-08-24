@@ -14,6 +14,7 @@ public interface StoreService {
     List<StoreDTO> getAllStore();
     void deleteStore(List<Long> storeIds);
     StoreDTO getStore(Long storeId);
+    void updateStore(StoreDTO request);
 
     default Store toStoreEntity(StoreDTO storeDTO, Member member){
         return Store.builder()
@@ -23,6 +24,7 @@ public interface StoreService {
                 .address(storeDTO.getAddress())
                 .storeType(storeDTO.getStoreType())
                 .storeStatus(storeDTO.getStoreStatus())
+                .storeResult(storeDTO.getStoreResult())
                 .build();
     }
 

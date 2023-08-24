@@ -39,26 +39,32 @@ public class Store extends Period {
      * Store Title (업체 이름)
      * */
     @NotNull
+    @Setter
     private String storeTitle;
 
     /**
      * Store Content (업체 설명)
      * */
+    @Setter
     @NotNull private String storeContent;
 
     /**
      * Store Address (업체 주소)
      * */
 
+    @Setter
     @Embedded @NotNull private Address address;
 
+    @Setter
     @Enumerated(EnumType.STRING)
     @NotNull private StoreType storeType;
 
+    @Setter
     @Enumerated(EnumType.STRING)
     @NotNull private StoreStatus storeStatus;
 
     /** 관리자 결과 내용 담을 컬럼*/
+    @Setter
     private String storeResult;
 
     /**

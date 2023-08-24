@@ -1,6 +1,3 @@
-.Padding_padding___Nyki {
-    height: 50px;
-}
 .container-profile {
     position: relative;
     max-width: 1060px;
@@ -235,8 +232,4 @@ button {
 }
 .eco-list>li{
     padding: 20px;
-}
-
-.info-table {
-    padding-top: 220px !important;
 }

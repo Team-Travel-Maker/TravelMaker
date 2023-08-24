@@ -1,19 +1,24 @@
 package com.app.travelmaker.controller.account;
 
-import com.app.travelmaker.domain.member.response.MemberResponseDTO;
+import com.app.travelmaker.common.AccountSupport;
+import com.app.travelmaker.repository.member.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Controller
 @Slf4j
+@RequiredArgsConstructor
 @RequestMapping("/accounts/*")
-public class AccountController {
+public class AccountController extends AccountSupport {
+
+    private final MemberRepository memberRepository;
 
     //로그인
     @GetMapping("login/login")
@@ -33,7 +38,7 @@ public class AccountController {
 
     @GetMapping("join/join")
     public void goToJoinForm(HttpSession session, Model model){
-        model.addAttribute("oauthMember", ((MemberResponseDTO)session.getAttribute("member")).getMemberEmail());
+        model.addAttribute("oauthMember", authenticationInfo().getMemberEmail());
         session.invalidate();
         ;}
 
@@ -66,16 +71,26 @@ public class AccountController {
 
 
     //비밀번호 재설정 이메일 전송 확인 화면
-    @GetMapping("password/email")
-    public void goToPasswordEmail(){;}
+    @GetMapping("password/email/{id}")
+    public String goToPasswordEmail(@PathVariable Long id, Model model){
+        AtomicReference<String> email= new AtomicReference<>("");
+        memberRepository.findById(id).ifPresent(member ->
+                email.set(member.getMemberEmail()));
+        model.addAttribute("id", email.get());
+        return "/accounts/password/email";
+    }
 
 
 
     //비밀번호 재설정 화면
-    @GetMapping("password/reset")
-    public void goToPasswordReset(){;}
+    @GetMapping("ok/reset")
+    public void goToPasswordReset(@RequestParam(required = true) Long id, Model model){
+        model.addAttribute("id", id);
+        }
 
     //비밀번호 재설정 성공 화면
-    @GetMapping("password/reset-ok")
-    public void goToPasswordResetOk(){;}
+    @GetMapping("ok/reset-ok")
+    public void goToPasswordResetOk(HttpSession session){
+        session.invalidate();
+    }
 }

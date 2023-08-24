@@ -75,7 +75,9 @@ public class StoreDSLImpl implements StoreDSL {
                 )).from(storeFile, store)
                         .where(storeFile.store.id.eq(store.id)
                                 .and(store.id.eq(storeId))
-                                .and(storeFile.deleted.eq(false))).fetch();
+                                .and(storeFile.deleted.eq(false)))
+                        .orderBy(storeFile.id.asc())
+                        .fetch();
 
         StoreDTO storeDTO = query.select(
                 Projections.fields(StoreDTO.class,
@@ -85,6 +87,7 @@ public class StoreDSLImpl implements StoreDSL {
                         store.address,
                         store.storeType,
                         store.storeStatus,
+                        store.storeResult,
                         store.updatedDate)
         ).from(store)
                 .where(store.id.eq(storeId)

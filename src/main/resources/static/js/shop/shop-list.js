@@ -68,6 +68,9 @@ const $shopList = $('.shop-list');
 
 /*--------------------------------------*/
 
+console.log($('.member-id').val())
+console.log($('.member-point').val())
+
 $(document).ready(function () {
     let purchaseRequestDTO;
 
@@ -94,7 +97,7 @@ $(document).ready(function () {
                             '       >\n' +
                             '        <div class="gift-card">\n' +
                             '            <a href="#">\n' +
-                            '                <header style="background-image: url(/files/' +
+                            '                <header style="background-image: url(/api/files/display?fileName=' +
                             giftCards[i].files[0].filePath + "/" +
                             giftCards[i].files[0].fileUuid + "_" +
                             giftCards[i].files[0].fileName + ');\n' +
@@ -150,7 +153,7 @@ $(document).ready(function () {
                             '       >\n' +
                             '        <div class="gift-card">\n' +
                             '            <a href="#">\n' +
-                            '                <header style="background-image: url(/files/' +
+                            '                <header style="background-image: url(/api/files/display?fileName=' +
                             giftCards[i].files[0].filePath + "/" +
                             giftCards[i].files[0].fileUuid + "_" +
                             giftCards[i].files[0].fileName + ');\n' +
@@ -242,7 +245,7 @@ $(document).ready(function () {
 
 // 버튼 클릭
     $locationBtns.on("click", function () {
-        //locationName.text($(this).text())
+        locationName.text($(this).text())
         $locationBtns.removeClass("now-button");
         if (!$(this).hasClass("now-button")) {
             $(this).addClass("now-button");
@@ -267,7 +270,7 @@ $(document).ready(function () {
     })
 
 //지역이름
-//const locationName = $('.location-name');
+const locationName = $('.location-name');
 
 //화살표 hover
 
@@ -413,16 +416,19 @@ $(document).ready(function () {
                     "addressDetail" : $deliveryInput.eq(4).val(),
                     "postcode" : $deliveryInput.eq(2).val()
                 },
-                "memberId" : 32, //#TODO 나중에 세션으로 변경
+                "memberId" : $('.member-id').val(),
                 "giftCardId" : Number($couponValue.val())
             };
 
+            //세션에 있는 member_eco_point로 살 수 있는지 확인
+            if($('.member-point').val() < qty * $couponPrice.val()) {
+                showWarnModal("포인트가 부족합니다.");
+                return;
+            }
+
             purchaseGiftCard(purchaseRequestDTO);
-            //showWarnModal("쿠폰 구매가 완료되었습니다.")
         }
-
     })
-
 });
 
 
