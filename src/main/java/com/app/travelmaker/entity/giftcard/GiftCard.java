@@ -1,9 +1,8 @@
 package com.app.travelmaker.entity.giftcard;
 
 import com.app.travelmaker.auditing.Period;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -21,6 +20,8 @@ import javax.validation.constraints.NotNull;
 @Table(name = "TBL_GIFT_CARD")
 @Getter
 @ToString
+@SuperBuilder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE TBL_GIFT_CARD SET DELETED = 1 WHERE ID = ?")
 public class GiftCard extends Period {
     /**

@@ -139,44 +139,5 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/admin/sidemenu.js"></script>
 <script src="/js/admin/modal.js"></script>
-<script>
-    $("button.btn-done").on("click", function () {
-
-        // 상품권 이름 유효성 검사
-        if ($("#notice-title").val() == "") {
-            showWarnModal("상품권 이름을 입력해주세요.");
-            $("#noticeTitle").focus();
-            return false;
-        };
-
-        // 상품권 지역 유효성 검사
-        if ($("#coupon-location").val() == "") {
-            showWarnModal("상품권 지역을 입력해주세요.");
-            $("#coupon-location").focus();
-            return false;
-        };
-
-
-        // 상품권 상세지역 유효성 검사
-        if ($("#coupon-location-detail").val() == "") {
-            showWarnModal("상품권 상세지역을 입력해주세요.");
-            $("#coupon-location-detail").focus();
-            return false;
-        };
-
-
-        // 상품권 가격 유효성 검사
-        if ($("#coupon-price").val() == "") {
-            showWarnModal("상품권 내용을 입력해주세요.");
-            $("#coupon-price").focus();
-            return false;
-        };
-
-        showWarnModal("등록 되었습니다.");
-
-        setTimeout(function () {
-            // $("#noticeWriteForm").submit();
-        }, 1500);
-    });
-</script>
+<script src="/js/admin/giftCard/write.js"></script>
 </html>
