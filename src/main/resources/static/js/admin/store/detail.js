@@ -4,9 +4,10 @@ let form = new FormData();
 let resultContent = {};
 let storeText =''
 let answerText =''
+let answerContent ='';
 
 
-let storeService = (function () {
+    let storeService = (function () {
 
     function changeStatus(){
         $.ajax({
@@ -147,9 +148,10 @@ function showDetail(result) {
                             </div>
                             `
             }else{
+              answerContent = `${result.storeResult}`;
                 storeText+=`
                          <hr />   
-                        <div class="board-content">
+                        <div class="board-content answer-content">
                         <span class="span-bold">등록 답변 : </span>
                         <br>
                         ${result.storeResult}
@@ -170,6 +172,7 @@ function showDetail(result) {
 }
 
 $(document).on("click",".answer-button-wrapper" ,function () {
+    answerText=''
     answerText+= `
                         <div class="board-info-box">
                             <div class="board-info-title-box">
@@ -191,6 +194,7 @@ $(document).on("click",".answer-button-wrapper" ,function () {
     $detailContainer.eq(1).html(answerText)
 })
 
+/** 일반 답변 등록*/
 $(document).on("click",'.change-result',function () {
     resultContent = {};
     form.delete("result");
@@ -203,5 +207,34 @@ $(document).on("click",'.change-result',function () {
         storeService.changeStatus();
         storeService.getDetail(showDetail);
     })
+})
+
+
+/** 답변이 있을때 수정 버튼*/
+$(document).on("click", '.modify-btn', function () {
+        $('.answer-content').hide();
+        answerText=''
+        answerText+= `
+                            <div class="board-info-box">
+                                <div class="board-info-title-box">
+                                    <span>업체 신청 답변 수정</span>
+                                </div>
+                                <div class="info-table">
+                                        <hr>
+                                        <div>
+                                            <textarea class="board-content" id="boardContent" name="boardContent"></textarea>
+                                        </div>
+                                        <hr>
+                                        <div>
+                                            <button id="APPROVED" type="button" class="btn-done change-result">승인</button>
+                                            <button id="REJECTED" type="button" class="btn-done change-result">반려</button>
+                                        </div>
+                                </div>
+                            </div>
+                        `
+        $detailContainer.eq(1).html(answerText)
+
+    $('#boardContent').text(answerContent);
+
 })
 

@@ -15,4 +15,5 @@ public interface StoreDSL {
     public StoreResponseDTO getDetail(Long id);
 
     public void modifyStatus(StoreResponseDTO result);
+
 }

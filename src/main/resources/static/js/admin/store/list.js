@@ -8,6 +8,19 @@ const $storeListContainer = $('.store-list');
 let deleteIds = [];
 
 let storeService = (function () {
+    function deleteStore(form){
+        $.ajax({
+            url: `/api/admins/store`,
+            type: `delete`,
+            async: false,
+            enctype: "multipart/form-data", //form data 설정
+            processData : false,
+            contentType : false,
+            data: form,
+            success: function(){
+            }
+        })
+    }
 
     function getList(callback,page){
         $.ajax({
@@ -22,7 +35,9 @@ let storeService = (function () {
             }
         })
     }
-    return {getList: getList};
+
+
+    return {getList: getList, deleteStore: deleteStore};
 
 })()
 
@@ -65,7 +80,7 @@ function showList(result) {
                  text+= `
                         <td>${store.memberEmail}</td>
                         <td>
-                            <a href="/admins/store/detail/${store.id}">${store.storeTitle}</a>
+                            <a href="/admins/store/detail/${store.id}" style="text-decoration:underline">${store.storeTitle}</a>
                         </td>
                         <td>${store.storeType.name}</td>
                         <td>${store.createdDate}</td>
@@ -80,3 +95,19 @@ function showList(result) {
     pagaing(result.pageable.pageSize,result.totalElements,result.pageable.pageNumber);
 
 }
+
+/*삭제버튼*/
+$('.delete-button').on("click",async function () {
+    form.delete("ids");
+    deleteIds = [];
+    $('.noticeCheckbox').each((index,checkBox) => {
+        if($(checkBox).is(":checked")){
+            deleteIds.push($(checkBox).val());
+        }
+    })
+    form.append("ids", new Blob([JSON.stringify(deleteIds)],{ type: "application/json" }))
+    storeService.deleteStore(form);
+    storeService.getList(showList);
+    showWarnModal("삭제되었습니다");
+    $('#allSelect').prop("checked", false);
+})

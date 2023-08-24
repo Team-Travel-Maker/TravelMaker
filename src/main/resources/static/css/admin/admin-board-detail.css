@@ -192,6 +192,6 @@ div.board-content {
     color: #fff;
     border: none;
     position: static;
-    padding-top: 9px;
+/*    padding-top: 9px;*/
     text-align: center;
 }

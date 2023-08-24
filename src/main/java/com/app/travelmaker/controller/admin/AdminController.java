@@ -60,13 +60,13 @@ public class AdminController {
         return "/admins/inquiry/" + request.getRequestURI().split("/")[3];
     }
 
-    //상세 답변 완료된
+/*    //상세 답변 완료된
     @GetMapping("inquiry/answer-detail")
     public void goToInquiryAnswerDetail(){;}
 
     //답변 작성
     @GetMapping("inquiry/write")
-    public void goToInquiryAnswerWrite(){;}
+    public void goToInquiryAnswerWrite(){;}*/
 
 //    커뮤니티 관리
 
@@ -113,7 +113,7 @@ public class AdminController {
         return "/admins/store/detail";
         }
 
-    //업체 신청 답변
+/*    //업체 신청 답변
     @GetMapping("store/write")
     public void goToCompanyWrite(){;}
 
@@ -123,7 +123,7 @@ public class AdminController {
 
     //업체 신청 답변 받은 상세
     @GetMapping("store/answer-detail")
-    public void goToCompanyAnswerDetail(){;}
+    public void goToCompanyAnswerDetail(){;}*/
 
 
 }
