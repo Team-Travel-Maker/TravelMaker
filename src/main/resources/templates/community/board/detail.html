@@ -10,7 +10,7 @@
 <body>
 <div th:replace="~{header/header :: #header}"></div>
 <div class="Padding_padding___Nyki"></div>
-<main class="community-post-detail">
+<main class="community-post-detail" th:object="${postDTO}">
     <aside class="communityPostDetail-side">
         <div>
             <div class="postleftside-top">
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="authorBox-vertical">
-                        <div class="authorBox-authorBox-username username">잠꾸</div>
+                        <div class="authorBox-authorBox-username username"></div>
                         <div class="author-info">
                             <div class="userinfo-badge">개발</div>
                             <div class="userinfo-badge">7년차</div>
@@ -69,7 +69,7 @@
                             </div>
                             <div class="authorBox-vertical">
                                 <div class="authorBox-authorbox-userinfo">
-                                    <div class="authorBox-authorBox-username username">잠꾸</div>
+                                    <div class="authorBox-authorBox-username username" th:name="${memberName}"></div>
                                     <div class="author-info">
                                         <div class="userinfo-badge" data-id="518">개발</div>
                                         <div class="userinfo-badge">7년차</div>

@@ -5,6 +5,7 @@ import com.app.travelmaker.constant.CommunityType;
 import com.app.travelmaker.domain.file.FileDTO;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@Data
+@Data @ToString
 @NoArgsConstructor
 public class PostDTO {
 
