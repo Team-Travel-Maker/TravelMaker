@@ -8,24 +8,18 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
@@ -51,7 +45,7 @@ public class AuthenticationSuccessHandlerImpl extends LoginSupport implements Au
                 response.sendRedirect("/accounts/join/join");
                 return;
             }
-        }else if(!(authentication.getPrincipal() instanceof  MemberDetail)){
+        }else if(!(authentication.getPrincipal() instanceof MemberDetail)){
             if (savedRequest != null) {
                 String anotherPath = savedRequest.getRedirectUrl();
                 // 세션에 저장된 객체를 다 사용한 뒤에는 지워줘서 메모리 누수 방지
