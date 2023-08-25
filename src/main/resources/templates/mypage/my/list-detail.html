@@ -33,11 +33,11 @@
                     </div>
                     <div class="miniProfile-userName-wrapper">
                         <div class="miniProfile-userInfo">
-                            <span class="miniProfile-userName">정범진</span>
+                            <span class="miniProfile-userName" th:text="${session.member.memberName}">정범진</span>
                             <div class="miniProfile-badges userBadge">
                                 <div class="userInfo-userCareer">
 <!--                                    <div class="userInfo-userBadge" data-id="518">왕관</div>-->
-                                    <div class="userInfo-userBadge">서울</div>
+                                    <div class="userInfo-userBadge" th:text="${session.member.address.split(' ')[0]}">서울</div>
                                 </div>
                             </div>
                         </div>
@@ -152,11 +152,11 @@
                                     class="location-category now-button select-category">
                                 <span>전 체</span>
                             </button>
-                            <button type="button" data-category="QUESTION"
+                            <button type="button" data-category="INQUIRY"
                                     class="location-category myQuestion select-category">
                                 <span>문 의</span>
                             </button>
-                            <button type="button" data-category="REPOT"
+                            <button type="button" data-category="DECLARATION"
                                     class="location-category myRepot select-category">
                                 <span>신 고</span>
                             </button>
@@ -180,11 +180,11 @@
                 <div class="search" style="display: flex; justify-content: space-between">
                     <!-- 헤더 -->
                     <div class="search-wrap" style="margin-left: 16px;">
-                        <form>
+                        <form id="search-form">
                             <div class="search-container">
                                 <!-- 검색창 -->
                                 <div class="search-input-container">
-                                    <input class="search-input" type="search" name="keyword" placeholder="제목, 이름 또는 닉네임을 입력하세요" style="width: 450px; padding: 11px;">
+                                    <input class="search-input" type="search" name="keyword" placeholder="찾고 싶은 제목을 입력하세요." style="width: 450px; padding: 11px;">
                                 </div>
                             </div>
                         </form>
@@ -209,171 +209,195 @@
 <!--                                    <input type="checkbox" id="allSelect" />-->
 <!--                                </div>-->
                                 <div>No</div>
-                                <div>문의 제목</div>
+                                <div>문의/신고 제목</div>
                                 <div>작성자 명</div>
-                                <div>작성자 닉네임</div>
+                                <div>작성자 메일</div>
                                 <div>작성 날짜</div>
                                 <div>문의/신고</div>
                                 <div>답변 여부</div>
                             </div>
-
-                            <!-- 문의 글 목록 행 -->
-                            <div class="post-row" style="text-align: center;">
-<!--                                <div class="checkbox-line">-->
-<!--                                    <input type="checkbox" class="inquiryCheckbox questionChk" name="questionChk" />-->
-<!--                                </div>-->
-                                <div>1</div>
-                                <div>
-                                    <a href="#" class="post-title" data-content="question-content1">문의 제목1</a>
+                            <div class="inquiry-list">
+                                <!-- 문의 글 목록 행 -->
+                                <div class="post-row" style="text-align: center;">
+                                    <!--                                <div class="checkbox-line">-->
+                                    <!--                                    <input type="checkbox" class="inquiryCheckbox questionChk" name="questionChk" />-->
+                                    <!--                                </div>-->
+                                    <div>1</div>
+                                    <div>
+                                        <a href="#" class="post-title" data-content="question-content1">문의 제목1</a>
+                                    </div>
+                                    <div>이종문</div>
+                                    <div>닉네임</div>
+                                    <div>날짜</div>
+                                    <div>문의</div>
+                                    <div>답변 미완료</div>
                                 </div>
-                                <div>이종문</div>
-                                <div>닉네임</div>
-                                <div>날짜</div>
-                                <div>문의</div>
-                                <div>답변 미완료</div>
-                            </div>
 
-                            <div class="board-info-box-layout post-content" data-content="question-content1">
-                                <!-- 상세 내용 부분 -->
-                                <div class="board-info-box">
-                                    <div class="board-info-title-box">
-                                        <span>문의글 상세보기</span>
-                                    </div>
-                                    <hr />
-                                    <div class="info-table">
-                                        <div class="board-title">
-                                            <span class="span-bold">제목 :</span>
-                                            <!-- 제목 -->
-                                            <span>제목 불러오기 </span>
-                                        </div>
-                                        <div class="board-info board-writer">
-                                            <span class="span-bold">작성자 :</span>
-                                            <!-- 작성자 명 -->
-                                            <span>이름 불러오기 </span>
-                                        </div>
-                                        <div class="board-info board-register-date">
-                                            <span class="span-bold">작성 날짜 :</span>
-                                            <!-- 작성 날짜 -->
-                                            <span>작성 날짜 불러오기</span>
-                                        </div>
-                                        <div class="board-info board-update-date">
-                                            <span class="span-bold">수정 날짜 :</span>
-                                            <!-- 작성 날짜 -->
-                                            <span>작성 날짜 불러오기</span>
-                                        </div>
-                                        <div class="board-info board-register-date">
-                                            <span class="span-bold">문의/신고 :</span>
-                                            <!-- 작성 날짜 -->
-                                            <span>문의인지 신고인지 불러오기</span>
+                                <div class="board-info-box-layout post-content" data-content="question-content1">
+                                    <!-- 상세 내용 부분 -->
+                                    <div class="board-info-box">
+                                        <div class="board-info-title-box">
+                                            <span>문의글 상세보기</span>
                                         </div>
                                         <hr />
-                                        <!-- 게시판 내용 -->
-                                        <div class="inquiry-content">문의 내용 불러오기</div>
-<!--                                        <hr />-->
-                                    </div>
-                                    <hr style="border: 0px;border-top: 19px solid #F9F9F9;margin-bottom: 0px !important;"/>
-                                    <div class="board-info-title-box">
-                                        <span>답변 상세보기</span>
-                                    </div>
-                                    <hr />
-                                    <div class="info-table">
-                                        <div class="board-info board-register-date">
-                                            <span class="span-bold">작성 날짜 :</span>
-                                            <!-- 작성 날짜 -->
-                                            <span>작성 날짜 불러오기</span>
+                                        <div class="info-table">
+                                            <div class="board-title">
+                                                <span class="span-bold">제목 :</span>
+                                                <!-- 제목 -->
+                                                <span>제목 불러오기 </span>
+                                            </div>
+                                            <div class="board-info board-writer">
+                                                <span class="span-bold">작성자 :</span>
+                                                <!-- 작성자 명 -->
+                                                <span>이름 불러오기 </span>
+                                            </div>
+                                            <div class="board-info board-register-date">
+                                                <span class="span-bold">작성 날짜 :</span>
+                                                <!-- 작성 날짜 -->
+                                                <span>작성 날짜 불러오기</span>
+                                            </div>
+                                            <div class="board-info board-update-date">
+                                                <span class="span-bold">수정 날짜 :</span>
+                                                <!-- 작성 날짜 -->
+                                                <span>작성 날짜 불러오기</span>
+                                            </div>
+                                            <div class="board-info board-register-date">
+                                                <span class="span-bold">문의/신고 :</span>
+                                                <!-- 작성 날짜 -->
+                                                <span>문의인지 신고인지 불러오기</span>
+                                            </div>
+                                            <hr />
+                                            <!-- 게시판 내용 -->
+                                            <div class="inquiry-content">문의 내용 불러오기</div>
+                                            <!--                                        <hr />-->
                                         </div>
-                                        <div class="board-info board-update-date">
-                                            <span class="span-bold">수정 날짜 :</span>
-                                            <!-- 작성 날짜 -->
-                                            <span>작성 날짜 불러오기</span>
+                                        <hr style="border: 0px;border-top: 19px solid #F9F9F9;margin-bottom: 0px !important;"/>
+                                        <div class="board-info-title-box">
+                                            <span>답변 상세보기</span>
                                         </div>
                                         <hr />
-                                        <div class="answer-wrapper modify-wrapper" style="padding-bottom: 15px">
-                                            답변 내용 불러오기1
+                                        <div class="info-table">
+                                            <div class="board-info board-register-date">
+                                                <span class="span-bold">작성 날짜 :</span>
+                                                <!-- 작성 날짜 -->
+                                                <span>작성 날짜 불러오기</span>
+                                            </div>
+                                            <div class="board-info board-update-date">
+                                                <span class="span-bold">수정 날짜 :</span>
+                                                <!-- 작성 날짜 -->
+                                                <span>작성 날짜 불러오기</span>
+                                            </div>
+                                            <hr />
+                                            <div class="answer-wrapper modify-wrapper" style="padding-bottom: 15px">
+                                                답변 내용 불러오기1
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="post-row" style="text-align: center;">
-<!--                                <div class="checkbox-line">-->
-<!--                                    <input type="checkbox" class="inquiryCheckbox questionChk" name="questionChk" />-->
-<!--                                </div>-->
-                                <div>2</div>
-                                <div>
-                                    <a href="#" class="post-title" data-content="question-content">문의 제목2</a>
+                                <div class="post-row" style="text-align: center;">
+                                    <!--                                <div class="checkbox-line">-->
+                                    <!--                                    <input type="checkbox" class="inquiryCheckbox questionChk" name="questionChk" />-->
+                                    <!--                                </div>-->
+                                    <div>2</div>
+                                    <div>
+                                        <a href="#" class="post-title" data-content="question-content">문의 제목2</a>
+                                    </div>
+                                    <div>이종문</div>
+                                    <div>닉네임</div>
+                                    <div>날짜</div>
+                                    <div>문의</div>
+                                    <div>답변 미완료</div>
                                 </div>
-                                <div>이종문</div>
-                                <div>닉네임</div>
-                                <div>날짜</div>
-                                <div>문의</div>
-                                <div>답변 미완료</div>
-                            </div>
-                            <div class="board-info-box-layout post-content" data-content="question-content">
-                                <!-- 상세 내용 부분 -->
-                                <div class="board-info-box">
-                                    <div class="board-info-title-box">
-                                        <span>문의글 상세보기2</span>
-                                    </div>
-                                    <hr />
-                                    <div class="info-table">
-                                        <div class="board-title">
-                                            <span class="span-bold">제목 :</span>
-                                            <!-- 제목 -->
-                                            <span>제목 불러오기2 </span>
-                                        </div>
-                                        <div class="board-info board-writer">
-                                            <span class="span-bold">작성자 :</span>
-                                            <!-- 작성자 명 -->
-                                            <span>이름 불러오기2 </span>
-                                        </div>
-                                        <div class="board-info board-register-date">
-                                            <span class="span-bold">작성 날짜 :</span>
-                                            <!-- 작성 날짜 -->
-                                            <span>작성 날짜 불러오기2</span>
-                                        </div>
-                                        <div class="board-info board-update-date">
-                                            <span class="span-bold">수정 날짜 :</span>
-                                            <!-- 작성 날짜 -->
-                                            <span>작성 날짜 불러오기2</span>
-                                        </div>
-                                        <div class="board-info board-register-date">
-                                            <span class="span-bold">문의/신고 :</span>
-                                            <!-- 작성 날짜 -->
-                                            <span>문의인지 신고인지 불러오기2</span>
+                                <div class="board-info-box-layout post-content" data-content="question-content">
+                                    <!-- 상세 내용 부분 -->
+                                    <div class="board-info-box">
+                                        <div class="board-info-title-box">
+                                            <span>문의글 상세보기2</span>
                                         </div>
                                         <hr />
-                                        <!-- 게시판 내용 -->
-                                        <div class="inquiry-content">문의 내용 불러오기2</div>
-                                    </div>
-                                    <hr style="border: 0px;border-top: 19px solid #F9F9F9;margin-bottom: 0px !important;"/>
-                                    <div class="board-info-title-box">
-                                        <span>답변 상세보기</span>
-                                    </div>
-                                    <hr />
-                                    <div class="info-table">
-                                        <div class="board-info board-register-date">
-                                            <span class="span-bold">작성 날짜 :</span>
-                                            <!-- 작성 날짜 -->
-                                            <span>작성 날짜 불러오기</span>
+                                        <div class="info-table">
+                                            <div class="board-title">
+                                                <span class="span-bold">제목 :</span>
+                                                <!-- 제목 -->
+                                                <span>제목 불러오기2 </span>
+                                            </div>
+                                            <div class="board-info board-writer">
+                                                <span class="span-bold">작성자 :</span>
+                                                <!-- 작성자 명 -->
+                                                <span>이름 불러오기2 </span>
+                                            </div>
+                                            <div class="board-info board-register-date">
+                                                <span class="span-bold">작성 날짜 :</span>
+                                                <!-- 작성 날짜 -->
+                                                <span>작성 날짜 불러오기2</span>
+                                            </div>
+                                            <div class="board-info board-update-date">
+                                                <span class="span-bold">수정 날짜 :</span>
+                                                <!-- 작성 날짜 -->
+                                                <span>작성 날짜 불러오기2</span>
+                                            </div>
+                                            <div class="board-info board-register-date">
+                                                <span class="span-bold">문의/신고 :</span>
+                                                <!-- 작성 날짜 -->
+                                                <span>문의인지 신고인지 불러오기2</span>
+                                            </div>
+                                            <hr />
+                                            <!-- 게시판 내용 -->
+                                            <div class="inquiry-content">문의 내용 불러오기2</div>
                                         </div>
-                                        <div class="board-info board-update-date">
-                                            <span class="span-bold">수정 날짜 :</span>
-                                            <!-- 작성 날짜 -->
-                                            <span>작성 날짜 불러오기</span>
+                                        <hr style="border: 0px;border-top: 19px solid #F9F9F9;margin-bottom: 0px !important;"/>
+                                        <div class="board-info-title-box">
+                                            <span>답변 상세보기</span>
                                         </div>
                                         <hr />
-                                        <div class="answer-wrapper modify-wrapper" style="padding-bottom: 15px">
-                                            답변 내용 불러오기2
+                                        <div class="info-table">
+                                            <div class="board-info board-register-date">
+                                                <span class="span-bold">작성 날짜 :</span>
+                                                <!-- 작성 날짜 -->
+                                                <span>작성 날짜 불러오기</span>
+                                            </div>
+                                            <div class="board-info board-update-date">
+                                                <span class="span-bold">수정 날짜 :</span>
+                                                <!-- 작성 날짜 -->
+                                                <span>작성 날짜 불러오기</span>
+                                            </div>
+                                            <hr />
+                                            <div class="answer-wrapper modify-wrapper" style="padding-bottom: 15px">
+                                                답변 내용 불러오기2
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div id="pagination-container">
+                            <ul class="pagination">
+                                <!-- 맨 처음 페이지로 가는 Button -->
+                                <li class="page-item" id="first">
+                                    <a class="page-link" href="#">First</a>
+                                </li>
+                                <!-- 이전 버튼 Button -->
+                                <li class="page-item" id="previous">
+                                    <a class="page-link" href="#"><img src="/images/admin/prev.png" width="15px"></a>
+                                </li>
+                                <!-- Page Numbers -->
+                                <li class="page-item" id="page-1">
+                                    <a class="page-link" href="#">1</a>
+                                </li>
+                                <!-- 다음 버튼 Button -->
+                                <li class="page-item" id="next">
+                                    <a class="page-link" href="#"><img src="/images/admin/next.png" width="15px"></a>
+                                </li>
+                                <!-- 마지막 페이지로 가는 Button -->
+                                <li class="page-item" id="last">
+                                    <a class="page-link" href="#">Last</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </article>
             </section>
-
             <!-- 신고 내역 -->
 <!--            <section class="recommendedPostView-wrapper" id="repot" data-category="repot" style="display: none">-->
 <!--                <div class="topPickPostView-header">-->
