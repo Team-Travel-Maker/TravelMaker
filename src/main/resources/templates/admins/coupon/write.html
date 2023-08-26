@@ -48,7 +48,7 @@
                 <!-- 헤더 -->
                 <div class="prev-button-layout">
                     <div>
-                        <a href="">
+                        <a th:href="@{/admins/coupon/list}">
                             <img src="/images/admin/prev-icon.png" class="prev-icon"/>
                         </a>
                         <a class="back-page" th:href="@{/admins/coupon/list}">리스트로 돌아가기</a>
@@ -120,12 +120,13 @@
                                         <h6 style="text-align: center">
                                             대표 이미지<br>(썸네일 부분)
                                         </h6>
+                                        <span class="file-size"></span>
                                     </label>
                                 </div>
                                 <input type="file" id="upload1" class="upload" style="display: none;">
                                 <input type="file" id="upload2" class="upload" style="display: none;">
                                 <div>
-                                    <button type="button" class="ok-button btn-done">등록 완료</button>
+                                    <button style="margin-top: 15px;" type="button" class="ok-button btn-done">등록 완료</button>
                                 </div>
                             </form>
                         </div>
@@ -139,5 +140,6 @@
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/admin/sidemenu.js"></script>
 <script src="/js/admin/modal.js"></script>
+<script> let couponId = "";</script>
 <script src="/js/admin/giftCard/write.js"></script>
 </html>

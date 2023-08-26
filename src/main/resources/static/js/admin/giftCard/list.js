@@ -23,21 +23,23 @@ let giftCardService = (function () {
         })
     }
 
-    function deleteNotice() {
+    function deleteGiftCard() {
         $.ajax({
-            url: `/api/admins/notice`,
+            url: `/api/admins/coupon`,
             type: `delete`,
             async: false,
             enctype: "multipart/form-data", //form data 설정
             processData: false,
             contentType: false,
             data: form,
-            success: function () {
+            success: function (response) {
+                console.log(response);
             }
+
         })
     }
 
-    return {getList: getList, deleteNotice: deleteNotice};
+    return {getList: getList, deleteGiftCard: deleteGiftCard};
 
 })()
 
@@ -61,7 +63,7 @@ function showList(result) {
                         </td>
                         <td>1</td>
                         <td>
-                            <a href="#" style="text-underline: black">${coupon.giftCardTitle}</a>
+                            <a href="/admins/coupon/detail/${coupon.id}" style="text-underline: black">${coupon.giftCardTitle}</a>
                         </td>
                         <td>${coupon.giftCardRegion}</td>
                         <td>${coupon.giftCardRegionDetail}</td>
@@ -91,8 +93,7 @@ function showList(result) {
 }
 
 
-/*
-/!*삭제버튼*!/
+/*삭제버튼*/
 $('.delete-button').on("click",async function () {
     form.delete("ids");
     deleteIds = [];
@@ -102,8 +103,8 @@ $('.delete-button').on("click",async function () {
         }
     })
     form.append("ids", new Blob([JSON.stringify(deleteIds)],{ type: "application/json" }))
-    noticeService.deleteNotice();
-    noticeService.getList(showList);
+    giftCardService.deleteGiftCard();
+    giftCardService.getList(showList);
     showWarnModal("삭제되었습니다");
     $('#allSelect').prop("checked", false);
-})*/
+})

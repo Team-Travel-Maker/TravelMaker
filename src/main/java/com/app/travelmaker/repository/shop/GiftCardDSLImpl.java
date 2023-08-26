@@ -20,6 +20,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.app.travelmaker.entity.giftcard.QGiftCard.*;
@@ -143,6 +144,27 @@ public class GiftCardDSLImpl implements GiftCardDSL {
         )).from(giftCardFile).where(giftCardFile.giftCard.id.eq(giftCard.id).and(giftCardFile.deleted.eq(false))).fetch();
     }
 
+    @Override
+    public Optional<GiftCardDTO> getDetail(Long id) {
+        final List<GiftCardFileDTO> files = getFiles();
 
+        final Optional<GiftCardDTO> foundGiftCard = Optional.ofNullable(query.select(Projections.fields(GiftCardDTO.class,
+                giftCard.id,
+                giftCard.giftCardPrice,
+                giftCard.giftCardRegion,
+                giftCard.giftCardRegionDetail,
+                giftCard.giftCardTitle,
+                giftCard.createdDate,
+                giftCard.updatedDate
+        )).from(giftCard)
+                .where(giftCard.deleted.eq(false).and(giftCard.id.eq(id))).fetchOne());
 
+        foundGiftCard.ifPresent((service) -> {
+            if(files != null){
+                files.stream().filter(file -> file.getGiftCardId().equals(service.getId())).forEach(file-> service.getFiles().add(file));
+            }
+        });
+
+        return foundGiftCard;
+    }
 }

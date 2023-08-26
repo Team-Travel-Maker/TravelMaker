@@ -1,16 +1,16 @@
 package com.app.travelmaker.entity.giftcard;
 
 import com.app.travelmaker.auditing.Period;
+import com.app.travelmaker.entity.notice.NoticeFile;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Gift Card Entity (지역 상품권)
@@ -53,6 +53,9 @@ public class GiftCard extends Period {
      * Gift Card Price (상품권 사용 가격)
      * */
     @NotNull private Integer giftCardPrice;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "giftCard")
+    private List<GiftCardFile> giftCardFiles = new ArrayList<>();
 
     /**
      * Gift Card Status (상품권 삭제 상태)
