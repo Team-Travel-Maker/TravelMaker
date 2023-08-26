@@ -1,23 +1,24 @@
 package com.app.travelmaker.controller.admin;
 
-import com.app.travelmaker.domain.file.FileSize;
 import com.app.travelmaker.domain.shop.GiftCardDTO;
-import com.app.travelmaker.entity.giftcard.GiftCard;
 import com.app.travelmaker.service.shop.GiftCardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @Slf4j
 @Transactional(rollbackFor =Exception.class)
 @RequestMapping("api/admins/coupon")
-public class CouponAdminApiController {
+public class GiftCardAdminApiController {
 
     private final GiftCardService giftCardService;
 
@@ -29,6 +30,21 @@ public class CouponAdminApiController {
     @PostMapping("")
     public void register(@RequestPart GiftCardDTO giftCardDTO){
         giftCardService.register(giftCardDTO);
+    }
+
+    @GetMapping(path = {"detail/{id}", "modify/{id}"})
+    public ResponseEntity<Object> detail(@PathVariable Long id){
+        return giftCardService.getDetail(id);
+    }
+
+    @PutMapping("")
+    public void modify(@RequestPart(required = true, value = "giftCardDTO") GiftCardDTO giftCardDTO){
+        giftCardService.modifyGiftCard(giftCardDTO);
+    }
+
+    @DeleteMapping("")
+    public ResponseEntity<Object> delete(@RequestPart List<Long> ids){
+        return giftCardService.deleteGiftCards(ids);
     }
 
 }

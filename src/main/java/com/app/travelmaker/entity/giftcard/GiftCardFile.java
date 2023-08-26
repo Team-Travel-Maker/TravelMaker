@@ -20,7 +20,7 @@ import javax.persistence.*;
 @ToString(exclude = "giftCard")
 @SuperBuilder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@SQLDelete(sql = "UPDATE TBL_GIFT_CARD_FILE SET DELETED = 1 WHERE ID = ?")
+@SQLDelete(sql = "UPDATE TBL_FILE SET DELETED = 1 WHERE ID = ?")
 public class GiftCardFile extends File {
 
     /**

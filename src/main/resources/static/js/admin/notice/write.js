@@ -65,7 +65,6 @@ $(document).ready(function () {
                       <div class="board-info-box">
                         <div class="board-info-title-box" style="position: relative">
                             <span>공지사항 상세보기</span>
-                            <a class="btn-done modify-btn">수정 하기</a>
                         </div>
                         <div class="info-table">
                             <div class="info-member">
@@ -102,6 +101,10 @@ $(document).ready(function () {
                         <div class="info-table">
                             <div>${result.noticeContent}</div>
                         </div>
+                        <hr>
+                        <div class="info-table">
+                         <a class="btn-done modify-btn" style="display: block; padding-top: 9px;">수정 하기</a> 
+                        </div> 
                       </div>
                     `
 
@@ -198,7 +201,7 @@ $(document).ready(function () {
 
                 let fileName = year + "/" + month + "/" + date + "/t_" + uuids[0] + "_" + name;
                 $("img.thumbnail").eq(i).attr("src", `/api/files/display?fileName=${fileName}`);
-
+                $('.file-size').html(`${(sizes[0] / 1024).toFixed(2)}KB`)
 
                 for (let i = 0; i < uuids.length; i++) {
                     let test= {}
@@ -225,6 +228,7 @@ $(document).ready(function () {
         $("div.x").eq(i).hide();
         $thumbnail.eq(i).attr('src', "");
         $thumbnail.eq(i).hide();
+        $('.file-size').html('');
     });
 
     $('.ok-button').on("click", function () {

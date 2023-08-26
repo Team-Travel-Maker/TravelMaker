@@ -68,7 +68,6 @@ public class NoticeServiceImpl implements NoticeService {
 
     @Override
     public void noticeDelete(List<Long> ids) {
-        /*문의 삭제하면 안에 답변 파일 삭제 상태로 변경*/
         ids.stream().forEach(id -> {
             noticeRepository.findById(id)
                     .ifPresent(notice ->{

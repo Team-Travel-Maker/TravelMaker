@@ -20,4 +20,5 @@ public class GiftCardDTO {
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
     private List<GiftCardFileDTO> files= new ArrayList<>();
+    private List<Long> deleteFiles = new ArrayList<>();
 }

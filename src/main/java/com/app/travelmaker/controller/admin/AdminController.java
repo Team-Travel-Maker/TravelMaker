@@ -93,8 +93,14 @@ public class AdminController {
     public void goToCouponWrite(){;}
 
     //상품권 상세
-    @GetMapping("coupon/detail")
-    public void goToCouponDetail(){;}
+    @GetMapping(path = {"coupon/detail/{id}", "coupon/modify/{id}"})
+    public String goToCouponDetail(@PathVariable(value = "id", required = true) Long id, Model model, HttpServletRequest request){
+        model.addAttribute("couponId", id);
+        return "/admins/coupon/" + request.getRequestURI().split("/")[3];
+    }
+
+
+
 
     //상품권 수정
     @GetMapping("coupon/modify")
