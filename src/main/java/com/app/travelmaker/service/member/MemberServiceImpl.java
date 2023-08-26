@@ -2,6 +2,7 @@ package com.app.travelmaker.service.member;
 
 import com.app.travelmaker.constant.JoinCheckType;
 import com.app.travelmaker.constant.MemberJoinAccountType;
+import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.domain.member.OAuthAttributes;
 import com.app.travelmaker.domain.member.request.MemberRequestDTO;
 import com.app.travelmaker.domain.member.response.MemberJoinResponseDTO;
@@ -140,8 +141,14 @@ public class MemberServiceImpl implements MemberService, OAuth2UserService<OAuth
     public Member saveOrUpdate(OAuthAttributes attributes){
 
         Member memberForSavingOrUpdating = memberRepository.findByMemberEmail(attributes.getEmail())
-                .map(member -> member.update(attributes.getName(), attributes.getSnsProfile(), attributes.getEmail()))
-                .orElse(attributes.toEntity());
+                .map(member -> {
+                    if(member.getMemberJoinAccountType().equals(MemberJoinAccountType.KAKAO)){
+                        member.update(attributes.getName(), attributes.getSnsProfile(), attributes.getEmail());
+                    }else{
+                        member.update(attributes.getName(), attributes.getSnsProfile(), attributes.getEmail(),attributes.getMobile());
+                    }
+                    return member;
+                }).orElse(attributes.toEntity());
 
         return memberForSavingOrUpdating;
     }

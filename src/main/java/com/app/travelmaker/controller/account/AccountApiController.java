@@ -42,11 +42,11 @@ public class AccountApiController {
         }else{
             memberService.join(memberRequestDTO);
             /*sns 계정 회원가입 할때 다시 session 에 넣어주기*/
-            Member member = memberService.findByMemberEmail(memberRequestDTO.getMemberEmail());
+ /*           Member member = memberService.findByMemberEmail(memberRequestDTO.getMemberEmail());
 
             MemberResponseDTO memberResponseDTO = new MemberResponseDTO(member);
 
-            session.setAttribute("member", memberResponseDTO);
+            session.setAttribute("member", memberResponseDTO);*/
 
         }
     }
