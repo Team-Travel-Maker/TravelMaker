@@ -39,6 +39,7 @@ public class GiftCardAdminApiController {
 
     @PutMapping("")
     public void modify(@RequestPart(required = true, value = "giftCardDTO") GiftCardDTO giftCardDTO){
+        log.info(giftCardDTO.toString());
         giftCardService.modifyGiftCard(giftCardDTO);
     }
 

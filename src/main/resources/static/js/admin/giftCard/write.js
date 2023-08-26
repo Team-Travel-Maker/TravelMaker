@@ -108,8 +108,8 @@ $(document).ready(function () {
                                 <div class="info-table">
                                     <!-- 대표 이미지 -->
                             `
-        if (result.giftCardFiles.length != 0) {
-            let fileName = result.giftCardFiles[0].filePath + "/t_" + result.giftCardFiles[0].fileUuid + "_" + result.giftCardFiles[0].fileName;
+        if (result.files.length != 0) {
+            let fileName = result.files[0].filePath + "/t_" + result.files[0].fileUuid + "_" + result.files[0].fileName;
             giftCardText += `  
                                   <div class="info-table">
                                     <!-- 대표 이미지 -->

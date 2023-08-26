@@ -110,13 +110,14 @@ $(document).ready(function () {
                                 </div>
                                 <hr/>
                             `
-        if(result.giftCardFiles.length !=0){
+        console.log(result);
+        if(result.files.length !=0){
             flag = true;
-            let fileName = result.giftCardFiles[0].filePath + "/t_" + result.giftCardFiles[0].fileUuid + "_" + result.giftCardFiles[0].fileName;
+            let fileName = result.files[0].filePath + "/t_" + result.files[0].fileUuid + "_" + result.files[0].fileName;
             giftCardText+= `    
                             <div class="attach-wrap">
                                 <label for="upload1" class="attach">
-                                    <img id="${result.giftCardFiles[0].id}" src="/api/files/display?fileName=${fileName}" class="thumbnail">
+                                    <img id="${result.files[0].id}" src="/api/files/display?fileName=${fileName}" class="thumbnail">
                                     <div class="x">
                                         <img src="/images/admin/x.png">
                                     </div>
@@ -124,7 +125,7 @@ $(document).ready(function () {
                                     <h6 style="text-align: center">
                                         내용 이미지
                                     </h6>
-                                    <span class="file-size">${(result.giftCardFiles[0].fileSize / 1024).toFixed(2)}KB</span>
+                                    <span class="file-size">${(result.files[0].fileSize / 1024).toFixed(2)}KB</span>
                                 </label>
                             </div>
                             <input type="file" id="upload1" class="upload" disabled style="display: none;">
@@ -329,6 +330,7 @@ $(document).ready(function () {
             return false;
         };*/
 
+        console.log(giftCardDTO);
 
         showWarnModal("상품권 수정이 완료되었습니다.");
         $('.modal').on("click", function () {

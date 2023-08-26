@@ -34,6 +34,7 @@ public interface GiftCardService {
                 .giftCardRegion(giftCardDTO.getGiftCardRegion())
                 .giftCardRegionDetail(giftCardDTO.getGiftCardRegionDetail())
                 .giftCardPrice(giftCardDTO.getGiftCardPrice())
+                .createdDate(giftCardDTO.getCreatedDate())
                 .build();
     }
 }

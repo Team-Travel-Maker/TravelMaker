@@ -21,16 +21,20 @@ import com.app.travelmaker.repository.shop.GiftCardRepository;
 import com.app.travelmaker.repository.shop.purchase.PayRepository;
 import com.app.travelmaker.service.MemberSupport;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class GiftCardServiceImpl extends CommonSupport implements GiftCardService, MemberSupport {
     private final GiftCardRepository giftCardRepository;
     private final PayRepository payRepository;
@@ -97,6 +101,7 @@ public class GiftCardServiceImpl extends CommonSupport implements GiftCardServic
         GiftCard foundGiftCard = giftCardRepository.findById(giftCardDTO.getId()).orElseThrow(() -> {
             throw new RuntimeException();
         });
+
         giftCardDTO.setCreatedDate(foundGiftCard.getCreatedDate());
 
         giftCardRepository.save(toEntity(giftCardDTO));
@@ -112,7 +117,9 @@ public class GiftCardServiceImpl extends CommonSupport implements GiftCardServic
                         .build());
             }
         }
-        return ResponseEntity.ok("수정 완료");
+
+        return ResponseEntity.status(HttpStatus.OK)
+                .body("수정 완료");
     }
 
 
@@ -136,10 +143,7 @@ public class GiftCardServiceImpl extends CommonSupport implements GiftCardServic
 
     @Override
     public ResponseEntity<Object> getDetail(Long id) {
-        final GiftCard giftCard = giftCardRepository.findById(id).orElseThrow(() -> {
-            throw new RuntimeException("상품권 없음");
-        });
-
+        final Optional<GiftCardDTO> giftCard = giftCardRepository.getDetail(id);
         return ResponseEntity.ok(giftCard);
     }
 }
