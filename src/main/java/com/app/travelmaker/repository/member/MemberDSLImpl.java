@@ -148,6 +148,7 @@ public class MemberDSLImpl implements MemberDSL {
 
     @Override
     public void oauthJoin(MemberRequestDTO memberRequestDTO) {
+
         query.update(member)
                 .set(member.address.address, memberRequestDTO.getAddress())
                 .set(member.address.addressDetail, memberRequestDTO.getAddressDetail())
@@ -155,12 +156,19 @@ public class MemberDSLImpl implements MemberDSL {
                 .set(member.alarm.emailBenefitEvent, memberRequestDTO.isEmailSuggestion())
                 .set(member.alarm.emailSuggestion, memberRequestDTO.isEmailBenefitEvent())
                 .set(member.alarm.snsBenefitEvent, memberRequestDTO.isSnsBenefitEvent())
-                .set(member.memberPhone, memberRequestDTO.getMemberPhone())
                 .set(member.memberRole, memberRequestDTO.getMemberRole())
                 .set(member.memberName, memberRequestDTO.getMemberName())
                 .set(member.updatedDate, LocalDateTime.now())
                 .where(member.memberEmail.eq(memberRequestDTO.getMemberEmail()))
                 .execute();
+        
+        /** 카카오면 폰번호 업데이트*/
+        if(memberRequestDTO.getMemberPhone() !=null){
+                    query.update(member)
+                    .set(member.memberPhone, memberRequestDTO.getMemberPhone())
+                    .where(member.memberEmail.eq(memberRequestDTO.getMemberEmail()))
+                    .execute();
+        }
     }
 
     @Override

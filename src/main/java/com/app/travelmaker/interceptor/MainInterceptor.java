@@ -25,6 +25,7 @@ public class MainInterceptor implements HandlerInterceptor {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         List<? extends GrantedAuthority> list = authentication.getAuthorities().stream().collect(Collectors.toList());
 
+
         /*익명 유저 로그인 창 허용*/
         if(authentication.getPrincipal().toString().equals("anonymousUser")){
             return true;

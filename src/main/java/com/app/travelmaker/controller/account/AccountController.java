@@ -38,6 +38,9 @@ public class AccountController extends AccountSupport {
 
     @GetMapping("join/join")
     public void goToJoinForm(HttpSession session, Model model){
+        if(authenticationInfo().getMemberJoinAccountType().getCode().equals("NAVER")){
+            model.addAttribute("naverCheck", true);
+        }
         model.addAttribute("oauthMember", authenticationInfo().getMemberEmail());
         session.invalidate();
         ;}
