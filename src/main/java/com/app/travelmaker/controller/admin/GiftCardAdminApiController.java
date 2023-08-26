@@ -38,9 +38,9 @@ public class GiftCardAdminApiController {
     }
 
     @PutMapping("")
-    public void modify(@RequestPart(required = true, value = "giftCardDTO") GiftCardDTO giftCardDTO){
-        log.info(giftCardDTO.toString());
-        giftCardService.modifyGiftCard(giftCardDTO);
+    public ResponseEntity<Object> modify(@RequestPart(required = true, value = "giftCardDTO") GiftCardDTO giftCardDTO){
+        final ResponseEntity<Object> objectResponseEntity = giftCardService.modifyGiftCard(giftCardDTO);
+        return objectResponseEntity;
     }
 
     @DeleteMapping("")
