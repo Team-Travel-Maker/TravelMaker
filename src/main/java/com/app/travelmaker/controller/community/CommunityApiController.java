@@ -37,9 +37,6 @@ public class CommunityApiController extends AccountSupport {
     public String viewPostDetail(@Param("id") Long id, Model model){
         PostDTO postDTO = communityService.postDetail(id);
 
-        System.out.println("디테일");
-
-        model.addAttribute("postDTO", postDTO);
 
         if(postDTO != null){
             model.addAttribute("post", postDTO);
