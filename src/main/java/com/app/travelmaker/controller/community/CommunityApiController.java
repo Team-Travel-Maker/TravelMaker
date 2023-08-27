@@ -3,6 +3,7 @@ package com.app.travelmaker.controller.community;
 import com.app.travelmaker.common.AccountSupport;
 import com.app.travelmaker.constant.CommunityType;
 import com.app.travelmaker.domain.community.PostDTO;
+import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.service.community.CommunityService;
 import io.lettuce.core.dynamic.annotation.Param;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +26,9 @@ public class CommunityApiController extends AccountSupport {
     private final CommunityService communityService;
 
     @GetMapping("board/list")
-    public List<PostDTO> getList(PostDTO postDTO){
+    public List<PostDTO> getList(PostDTO postDTO, Model model){
+//        model.addAttribute("postList", postList);
+
         return communityService.getPostList(postDTO);
     }
 
@@ -35,6 +38,8 @@ public class CommunityApiController extends AccountSupport {
         PostDTO postDTO = communityService.postDetail(id);
 
         System.out.println("디테일");
+
+        model.addAttribute("postDTO", postDTO);
 
         if(postDTO != null){
             model.addAttribute("post", postDTO);
@@ -49,33 +54,23 @@ public class CommunityApiController extends AccountSupport {
 
 
     @PostMapping("board/write")
-    public RedirectView write(@ModelAttribute PostDTO postDTO, RedirectAttributes redirectAttributes){
-
-        authenticationInfo();
-
+    public RedirectView write(@ModelAttribute PostDTO postDTO, RedirectAttributes redirectAttributes, Model model){
         String postTitle = postDTO.getPostTitle();
         String postContent = postDTO.getPostContent();
 
-        postDTO.getCreateTime();
 //        일단 하드코딩
         postDTO.setCommunityType(CommunityType.REVIEW);
 
         String memberName = authenticationInfo().getMemberName();
         Long id = authenticationInfo().getId();
 
-//        로그인정보에 담긴 memberId와 memberName을 postDTO에 담기
-        postDTO.setMemberId(id);
-        postDTO.setMemberName(memberName);
 
-        log.info("==[]==", postDTO.toString());
-        System.out.println("POST");
-        System.out.println(postTitle);
-        System.out.println(postContent);
+
         System.out.println("멤버 ID : " + id);
         System.out.println("멤버 이름 : " + memberName);
 
         communityService.write(postDTO);
-
+        model.addAttribute("postDTO", postDTO);
 
         redirectAttributes.addAttribute("id", postDTO.getId());
 

@@ -3,6 +3,8 @@ package com.app.travelmaker.domain.community;
 
 import com.app.travelmaker.constant.CommunityType;
 import com.app.travelmaker.domain.file.FileDTO;
+import com.app.travelmaker.entity.mebmer.Member;
+import com.app.travelmaker.entity.tag.Tag;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -24,9 +26,9 @@ public class PostDTO {
     private Long replyCount;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
-    private Long memberId;
-    private String memberName;
     private CommunityType communityType;
+    private Member member;
+    private Tag tag;
 
     private List<FileDTO> files = new ArrayList<>();
     private List<Long> fileIdsForDelete = new ArrayList<>();

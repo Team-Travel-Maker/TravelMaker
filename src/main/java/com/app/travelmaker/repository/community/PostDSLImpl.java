@@ -1,8 +1,6 @@
 package com.app.travelmaker.repository.community;
 
 import com.app.travelmaker.domain.community.PostDTO;
-import com.app.travelmaker.entity.community.QCommunity;
-import com.querydsl.core.types.EntityPath;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +18,7 @@ public class PostDSLImpl implements PostDSL {
 
     @Override
     public List<PostDTO> getPostList(PostDTO postDTO) {
-
+        query.select().from().where().fetch();
 
         return null;
     }
@@ -35,9 +33,9 @@ public class PostDSLImpl implements PostDSL {
                 community.communityCategory,
                 community.createdDate,
                 community.member.memberName,
-                community.member.id
+                community.member.id.as("memberId")
                 )).from(community)
-                .where(community.id.eq(id))
+                .where(community.id.eq(community.member.id))
                 .fetchOne());
 
 

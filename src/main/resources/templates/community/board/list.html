@@ -62,7 +62,7 @@
                     <div class="community-category-nav community-category-scrollsnap">
                         <div class="community-category-navTag community-category-scrollsnap1">
                             <!--일반 후기 -->
-                            <button class="category-Item category-Item-assist btn-outline-size btn-outline-assist btn-outlined">
+                            <button class="category-Item category-Item-assist btn-outline-size btn-outline-assist btn-outlined selected">
                                 <span class="category-btn-label">일반 후기</span>
                                 <span class="category-btn-label-interaction"></span>
                             </button>
@@ -115,131 +115,128 @@
                             <li class="postReview-tag">#서울</li>
                             <li class="postReview-tag">#빕스</li>
                         </ul>
-                        <span class="SvgIcon_SvgIcon__root__8vwon"><svg
-                                class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 18 18">
-                                    <path
-                                            d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z">
-                                    </path>
-                                </svg></span>
+                        <span class="SvgIcon_SvgIcon__root__8vwon">
+                            <svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 18 18">
+                                <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path>
+                            </svg>
+                        </span>
                     </div>
                 </div>
                 <!-- 목록 -->
-                <article class="PostItem_PostItem">
-                    <div class="PostItem_PostItem_top"><a
-                            href="">
-                        <div class="AuthorBox_AuthorBox">
-                            <div class="AuthorBox_AuthorBox_verticalArea">
-                                <div class="AuthorBox_avatar_wrapper">
-                                    <!-- 프로필 이미지 -->
-                                    <div class="mycommunity-myprofile-img  avatar">
-                                        <img src="https://static.wanted.co.kr/oneid-user/6m2fVJuPVURemknYfFVHDf/d3WNVAQRrj829gFa2qz4vj.jpg"
-                                             alt=""></div>
-                                </div>
-                                <div class="AuthorBox_AuthorBox__verticalBox">
-                                    <div class="AuthorBox_AuthorBox__userInfo">
-                                        <!--유저 이름-->
-                                        <div class="AuthorBox_AuthorBox_username username">개발뉴비</div>
-                                        <div class="Author-wrapper">
-                                            <!--등급-->
-                                            <div class="UserInfoGrade">계란</div>
-                                            <!-- 지역-->
-                                            <div class="UserInfoRegion">서울</div>
+                <article class="PostItem_PostItem" th:each="${postList}">
+                    <div class="PostItem_PostItem_top">
+                        <a href="">
+                            <div class="AuthorBox_AuthorBox">
+                                <div class="AuthorBox_AuthorBox_verticalArea">
+                                    <div class="AuthorBox_avatar_wrapper">
+                                        <!-- 프로필 이미지 -->
+                                        <div class="mycommunity-myprofile-img  avatar">
+                                            <img src="https://static.wanted.co.kr/oneid-user/6m2fVJuPVURemknYfFVHDf/d3WNVAQRrj829gFa2qz4vj.jpg" alt="">
                                         </div>
-                                        <!--등록 시간-->
-                                    </div><span class="postCreateTime create_time">11시간
-                                                전</span>
+                                    </div>
+                                    <div class="AuthorBox_AuthorBox__verticalBox">
+                                        <div class="AuthorBox_AuthorBox__userInfo">
+                                            <!--유저 이름-->
+                                            <div class="AuthorBox_AuthorBox_username username">개발뉴비</div>
+                                            <div class="Author-wrapper">
+                                                <!--등급-->
+                                                <div class="UserInfoGrade">계란</div>
+                                                <!-- 지역-->
+                                                <div class="UserInfoRegion">서울</div>
+                                            </div>
+                                            <!--등록 시간-->
+                                        </div>
+                                        <span class="postCreateTime create_time">11시간 전</span>
+                                    </div>
                                 </div>
                             </div>
+                        </a>
+                    </div>
+                    <a class="PostItem_body" href="/community/post/9318">
+                        <!--게시글 제목-->
+                        <h3 class="PostItem_title">개발자 선배님들</h3>
+                        <!-- 게시글 내용-->
+                        <p class="PostItem_content">안녕하세요. 저는 올해 3월에 졸업하고 취업을 준비하는 취준생입니다. 대학 내에서 프로젝트 몇 번과 공모전 수상 1번 그리고 자격증은 정처기와 adsp자격증 뿐인 평범한 취준생입니다. 웹 개발을</p>
+                        <div class="PostItem_tag_list"><button type="button" class="PostItem_tag">커리어고민</button>
+                            <button type="button" class="PostItem_tag">개발</button>
+                            <button type="button" class="PostItem_tag">IT/기술</button>
                         </div>
-                    </a></div><a class="PostItem_body" href="/community/post/9318">
-                    <!--게시글 제목-->
-                    <h3 class="PostItem_title">개발자 선배님들</h3>
-                    <!-- 게시글 내용-->
-                    <p class="PostItem_content">안녕하세요. 저는 올해 3월에 졸업하고 취업을 준비하는 취준생입니다. 대학 내에서 프로젝트 몇 번과 공모전 수상 1번 그리고 자격증은 정처기와 adsp자격증 뿐인 평범한 취준생입니다. 웹 개발을</p>
-                    <div class="PostItem_tag_list"><button type="button" class="PostItem_tag">커리어고민</button>
-                        <button type="button" class="PostItem_tag">개발</button>
-                        <button type="button" class="PostItem_tag">IT/기술</button>
-                    </div>
-                    <div class="PostItem_bottom">
-                        <div aria-label="like: 0" aria-pressed="false"
-                             class="button_btn_lg PostItem_like">
-                            <svg width="18" height="18" viewBox="0 0 18 18">
-                                <path fill="currentColor"
-                                      d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
-                                </path>
-                            </svg>
-                            <!--좋아요 갯수-->
-                            <span class="Button_count_L count">1</span></div>
-                        <div aria-label="comments: 2" aria-pressed="false"
-                             class="button_Button__lqb0B PostItem_comments">
-                            <svg width="18" height="18" viewBox="0 0 18 18">
-                                <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
-                                      d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
-                                </path>
-                            </svg>
-                            <!--댓글 갯수-->
-                            <span class="Button_count_L count">2</span></div>
-                    </div>
-                </a>
+                        <div class="PostItem_bottom">
+                            <div aria-label="like: 0" aria-pressed="false"
+                                 class="button_btn_lg PostItem_like">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z"></path>
+                                </svg>
+                                <!--좋아요 갯수-->
+                                <span class="Button_count_L count">1</span>
+                            </div>
+                            <div aria-label="comments: 2" aria-pressed="false" class="button_Button__lqb0B PostItem_comments">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)" d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z"></path>
+                                </svg>
+                                <!--댓글 갯수-->
+                                <span class="Button_count_L count">2</span>
+                            </div>
+                        </div>
+                    </a>
                 </article>
                 <!-- --------더미 데이터 시작------------------------------------------------      -->
                 <article class="PostItem_PostItem">
-                    <div class="PostItem_PostItem_top"><a
-                            href="">
-                        <div class="AuthorBox_AuthorBox">
-                            <div class="AuthorBox_AuthorBox_verticalArea">
-                                <div class="AuthorBox_avatar_wrapper">
-                                    <!-- 프로필 이미지 -->
-                                    <div class="mycommunity-myprofile-img  avatar">
-                                        <img src="https://static.wanted.co.kr/oneid-user/6m2fVJuPVURemknYfFVHDf/d3WNVAQRrj829gFa2qz4vj.jpg"
-                                             alt=""></div>
-                                </div>
-                                <div class="AuthorBox_AuthorBox__verticalBox">
-                                    <div class="AuthorBox_AuthorBox__userInfo">
-                                        <!--유저 이름-->
-                                        <div class="AuthorBox_AuthorBox_username username">개발뉴비</div>
-                                        <div class="Author-wrapper">
-                                            <!--등급-->
-                                            <div class="UserInfoGrade">계란</div>
-                                            <!-- 지역-->
-                                            <div class="UserInfoRegion">서울</div>
+                    <div class="PostItem_PostItem_top">
+                        <a href="">
+                            <div class="AuthorBox_AuthorBox">
+                                <div class="AuthorBox_AuthorBox_verticalArea">
+                                    <div class="AuthorBox_avatar_wrapper">
+                                        <!-- 프로필 이미지 -->
+                                        <div class="mycommunity-myprofile-img  avatar">
+                                            <img src="https://static.wanted.co.kr/oneid-user/6m2fVJuPVURemknYfFVHDf/d3WNVAQRrj829gFa2qz4vj.jpg" alt="">
                                         </div>
-                                        <!--등록 시간-->
-                                    </div><span class="postCreateTime create_time">11시간
-                                                전</span>
+                                    </div>
+                                    <div class="AuthorBox_AuthorBox__verticalBox">
+                                        <div class="AuthorBox_AuthorBox__userInfo">
+                                            <!--유저 이름-->
+                                            <div class="AuthorBox_AuthorBox_username username">개발뉴비</div>
+                                            <div class="Author-wrapper">
+                                                <!--등급-->
+                                                <div class="UserInfoGrade">계란</div>
+                                                <!-- 지역-->
+                                                <div class="UserInfoRegion">서울</div>
+                                            </div>
+                                            <!--등록 시간-->
+                                        </div><span class="postCreateTime create_time">11시간
+                                                    전</span>
+                                    </div>
                                 </div>
                             </div>
+                    </a>
+                    </div>
+                    <a class="PostItem_body" href="/community/post/9318">
+                        <!--게시글 제목-->
+                        <h3 class="PostItem_title">개발자 선배님들</h3>
+                        <!-- 게시글 내용-->
+                        <p class="PostItem_content">안녕하세요. 저는 올해 3월에 졸업하고 취업을 준비하는 취준생입니다. 대학 내에서 프로젝트 몇 번과 공모전 수상 1번 그리고 자격증은 정처기와 adsp자격증 뿐인 평범한 취준생입니다. 웹 개발을</p>
+                        <div class="PostItem_tag_list"><button type="button" class="PostItem_tag">커리어고민</button>
+                            <button type="button" class="PostItem_tag">개발</button>
+                            <button type="button" class="PostItem_tag">IT/기술</button>
                         </div>
-                    </a></div><a class="PostItem_body" href="/community/post/9318">
-                    <!--게시글 제목-->
-                    <h3 class="PostItem_title">개발자 선배님들</h3>
-                    <!-- 게시글 내용-->
-                    <p class="PostItem_content">안녕하세요. 저는 올해 3월에 졸업하고 취업을 준비하는 취준생입니다. 대학 내에서 프로젝트 몇 번과 공모전 수상 1번 그리고 자격증은 정처기와 adsp자격증 뿐인 평범한 취준생입니다. 웹 개발을</p>
-                    <div class="PostItem_tag_list"><button type="button" class="PostItem_tag">커리어고민</button>
-                        <button type="button" class="PostItem_tag">개발</button>
-                        <button type="button" class="PostItem_tag">IT/기술</button>
-                    </div>
-                    <div class="PostItem_bottom">
-                        <div aria-label="like: 0" aria-pressed="false"
-                             class="button_btn_lg PostItem_like">
-                            <svg width="18" height="18" viewBox="0 0 18 18">
-                                <path fill="currentColor"
-                                      d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z">
-                                </path>
-                            </svg>
-                            <!--좋아요 갯수-->
-                            <span class="Button_count_L count">1</span></div>
-                        <div aria-label="comments: 2" aria-pressed="false"
-                             class="button_Button__lqb0B PostItem_comments">
-                            <svg width="18" height="18" viewBox="0 0 18 18">
-                                <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)"
-                                      d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z">
-                                </path>
-                            </svg>
-                            <!--댓글 갯수-->
-                            <span class="Button_count_L count">2</span></div>
-                    </div>
-                </a>
+                        <div class="PostItem_bottom">
+                            <div aria-label="like: 0" aria-pressed="false"
+                                 class="button_btn_lg PostItem_like">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z"></path>
+                                </svg>
+                                <!--좋아요 갯수-->
+                                <span class="Button_count_L count">1</span>
+                            </div>
+                            <div aria-label="comments: 2" aria-pressed="false" class="button_Button__lqb0B PostItem_comments">
+                                <svg width="18" height="18" viewBox="0 0 18 18">
+                                    <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)" d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z"></path>
+                                </svg>
+                                <!--댓글 갯수-->
+                                <span class="Button_count_L count">2</span>
+                            </div>
+                        </div>
+                    </a>
                 </article>
                 <article class="PostItem_PostItem">
                     <div class="PostItem_PostItem_top"><a
