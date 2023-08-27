@@ -2,14 +2,16 @@ package com.app.travelmaker.entity.story;
 
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.entity.mebmer.Member;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import com.app.travelmaker.entity.store.StoreFile;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Story Entity (스토리)
@@ -19,6 +21,8 @@ import javax.validation.constraints.NotNull;
 @Table(name = "TBL_STORY")
 @Getter
 @ToString
+@SuperBuilder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE TBL_STORY SET DELETED = 1 WHERE ID = ?")
 public class Story extends Period {
 
@@ -51,4 +55,7 @@ public class Story extends Period {
      * */
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "story")
+    private List<StoryFile> storyFiles = new ArrayList<>();
 }

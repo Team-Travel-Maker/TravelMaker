@@ -131,5 +131,8 @@ public class AdminController {
     @GetMapping("store/answer-detail")
     public void goToCompanyAnswerDetail(){;}*/
 
+    /*스토리 목록*/
+    @GetMapping("story/list")
+    public void goToStoryList(){;}
 
 }
