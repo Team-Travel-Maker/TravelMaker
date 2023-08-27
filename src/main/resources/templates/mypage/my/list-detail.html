@@ -33,11 +33,11 @@
                     </div>
                     <div class="miniProfile-userName-wrapper">
                         <div class="miniProfile-userInfo">
-                            <span class="miniProfile-userName" th:text="${session.member.memberName}">정범진</span>
+                            <span class="miniProfile-userName" th:text="${#authentication.getPrincipal().memberResponseDTO.memberName}">정범진</span>
                             <div class="miniProfile-badges userBadge">
                                 <div class="userInfo-userCareer">
 <!--                                    <div class="userInfo-userBadge" data-id="518">왕관</div>-->
-                                    <div class="userInfo-userBadge" th:text="${session.member.address.split(' ')[0]}">서울</div>
+                                    <div class="userInfo-userBadge" th:text="${#authentication.getPrincipal().memberResponseDTO.address.split(' ')[0]}">서울</div>
                                 </div>
                             </div>
                         </div>

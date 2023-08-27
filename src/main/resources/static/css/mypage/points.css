@@ -233,3 +233,7 @@ button {
 .eco-list>li{
     padding: 20px;
 }
+
+html::-webkit-scrollbar {
+    display: none;
+}

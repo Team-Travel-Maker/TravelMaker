@@ -26,7 +26,7 @@
                 <div class="points-div">
                     <div class="points-point">
                         <div class="point-label">포인트</div>
-                        <div class="point-value" th:text="${session.member.memberEcoPoint}">0<sub> P</sub></div>
+                        <div class="point-value" th:text="${#authentication.getPrincipal().memberResponseDTO.memberEcoPoint}">0<sub> P</sub></div>
                         <div class="point-expire">7일 이내 소멸 포인트 0 p</div>
                     </div>
                     <!--                    i 아이콘-->

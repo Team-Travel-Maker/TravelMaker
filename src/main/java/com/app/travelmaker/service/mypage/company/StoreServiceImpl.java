@@ -1,7 +1,6 @@
 package com.app.travelmaker.service.mypage.company;
 
-import com.app.travelmaker.common.CommonSupport;
-import com.app.travelmaker.domain.member.response.MemberResponseDTO;
+import com.app.travelmaker.common.AccountSupport;
 import com.app.travelmaker.domain.mypage.company.StoreDTO;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.entity.store.Store;
@@ -13,23 +12,20 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class StoreServiceImpl extends CommonSupport implements StoreService, MemberSupport {
+public class StoreServiceImpl extends AccountSupport implements StoreService, MemberSupport {
 
     private final StoreRepository storeRepository;
     private final StoreFileRepository storeFileRepository;
-    private final HttpSession session;
 
     @Override
     public void addStore(StoreDTO request) {
-        Member member = toMemberEntity((MemberResponseDTO) session.getAttribute("member"));
+        Member member = toMemberEntity(authenticationInfo());
         // 업체 등록하기
         request.setStoreResult("");
         Store store = storeRepository.save(toStoreEntity(request, member));
@@ -43,7 +39,7 @@ public class StoreServiceImpl extends CommonSupport implements StoreService, Mem
 
     @Override
     public List<StoreDTO> getAllStore() {
-        Member member = toMemberEntity((MemberResponseDTO) session.getAttribute("member"));
+        Member member = toMemberEntity(authenticationInfo());
         // 세션으로 가져오기
         return storeRepository.getAllStore(member.getId());
     }
@@ -69,7 +65,7 @@ public class StoreServiceImpl extends CommonSupport implements StoreService, Mem
 
     @Override
     public void updateStore(StoreDTO request) {
-        Member member = toMemberEntity((MemberResponseDTO) session.getAttribute("member"));
+        Member member = toMemberEntity(authenticationInfo());
         Store foundStore = storeRepository.findById(request.getId()).get();
 
         // 업체 수정하기

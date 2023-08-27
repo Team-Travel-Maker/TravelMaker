@@ -76,7 +76,7 @@ $(document).ready(function () {
                     '    </tr>'
             })
         } else {
-            text += "포인트 내역이 존재하지 않습니다."
+            text += '<tr style="cursor:default"><td colspan="7"> 포인트 내역이 존재하지 않습니다. </td></tr>'
         }
 
         $pointsTbody.html(text);
