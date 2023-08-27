@@ -47,7 +47,7 @@ public class NoticeDSLImpl implements NoticeDSL {
                 .limit(pageable.getPageSize())
                 .fetch();
 
-        Long count = query.select(notice.count()).from(notice).fetchOne();
+        Long count = query.select(notice.count()).from(notice).where(notice.deleted.eq(false)).fetchOne();
 
         return new PageImpl<>(notices, pageable, count);
     }
