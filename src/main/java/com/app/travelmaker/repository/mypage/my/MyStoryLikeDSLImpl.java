@@ -1,12 +1,7 @@
 package com.app.travelmaker.repository.mypage.my;
 
-import com.app.travelmaker.domain.mypage.my.MyCommunityLikeDTO;
-import com.app.travelmaker.domain.mypage.my.MyCommunityLikeFileDTO;
 import com.app.travelmaker.domain.mypage.my.MyStoryLikeDTO;
 import com.app.travelmaker.domain.mypage.my.MyStoryLikeFileDTO;
-import com.app.travelmaker.entity.story.QStory;
-import com.app.travelmaker.entity.story.QStoryFile;
-import com.app.travelmaker.entity.story.QStroyLike;
 import com.querydsl.core.types.ExpressionUtils;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPAExpressions;
@@ -16,9 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.app.travelmaker.entity.community.QCommunity.community;
-import static com.app.travelmaker.entity.community.QCommunityLike.communityLike;
-import static com.app.travelmaker.entity.community.QCommuntiyFile.communtiyFile;
 import static com.app.travelmaker.entity.story.QStory.story;
 import static com.app.travelmaker.entity.story.QStoryFile.storyFile;
 import static com.app.travelmaker.entity.story.QStroyLike.stroyLike;

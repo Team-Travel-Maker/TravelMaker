@@ -2,14 +2,14 @@
 const form = new FormData();
 
 let text ="";
-const $storyListContainer = $('.story-list');
+const $communityListContainer = $('.community-list');
 
 let deleteIds = [];
 
-let storyService = (function () {
-    function deleteStory(form){
+let communityService = (function () {
+    function deleteCommunity(form){
         $.ajax({
-            url: `/api/admins/story`,
+            url: `/api/admins/community`,
             type: `delete`,
             async: false,
             enctype: "multipart/form-data", //form data 설정
@@ -23,7 +23,7 @@ let storyService = (function () {
 
     function getList(callback,page){
         $.ajax({
-            url: `/api/admins/story?page=` +page,
+            url: `/api/admins/community?page=` +page,
             type: `get`,
             async: false,
             success: function(result){
@@ -36,26 +36,24 @@ let storyService = (function () {
     }
 
 
-    return {getList: getList, deleteStory: deleteStory};
+    return {getList: getList, deleteCommunity: deleteCommunity};
 
 })()
 
 
-storyService.getList(showList);
+communityService.getList(showList);
 
 
 function showList(result) {
-    $storyListContainer.html('');
+    $communityListContainer.html('');
     $pagingWrap.html('');
     pagingText="";
     text="";
 
-    result.content.forEach(story => {
+    result.content.forEach(community => {
         let fileName;
-        story.files.forEach(file =>{
-            if(file.fileType.code == "CONTENT_REPRESENTATIVE"){
+        community.files.forEach(file =>{
                 fileName = file.filePath + "/t_" + file.fileUuid + "_" + file.fileName;
-            }
         })
 
         text += `
@@ -63,24 +61,25 @@ function showList(result) {
                         <td class="checkbox-line">
                             <input
                                     type="checkbox"
-                                    class="story-check-box"
+                                    class="community-check-box"
                                     name="check"
-                                    value="${story.id}"/>
+                                    value="${community.id}"/>
                         </td>
-                        <td>${story.id}</td>
-                        <td>${story.memberEmail}</td>
+                        <td>${community.id}</td>
+                        <td>${community.communityCategory.name}</td>
+                        <td>${community.memberEmail}</td>
                         <td>
-                            <a href="#" style="text-decoration:underline">${story.storyTitle}</a>
+                            <a href="#" style="text-decoration:underline">${community.communityTitle}</a>
                         </td>
-                        <td>${story.createdDate}</td>
-                        <td>${story.updatedDate}</td>
+                        <td>${community.createdDate}</td>
+                        <td>${community.updatedDate}</td>
                         <td class="image-wrap">
                             <img src="/api/files/display?fileName=${fileName}" style="width: 30px; height: 30px">
                         </td>
                     </tr>
                     `
     });
-    $storyListContainer.html(text);
+    $communityListContainer.html(text);
     pagaing(result.pageable.pageSize,result.totalElements,result.pageable.pageNumber);
 
 }
@@ -89,14 +88,14 @@ function showList(result) {
 $('.delete-button').on("click",async function () {
     form.delete("ids");
     deleteIds = [];
-    $('.story-check-box').each((index,checkBox) => {
+    $('.community-check-box').each((index,checkBox) => {
         if($(checkBox).is(":checked")){
             deleteIds.push($(checkBox).val());
         }
     })
     form.append("ids", new Blob([JSON.stringify(deleteIds)],{ type: "application/json" }))
-    storyService.deleteStory(form);
-    storyService.getList(showList);
+    communityService.deleteCommunity(form);
+    communityService.getList(showList);
     showWarnModal("삭제되었습니다");
     $('#allSelect').prop("checked", false);
 })
