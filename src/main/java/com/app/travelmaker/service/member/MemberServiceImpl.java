@@ -142,7 +142,8 @@ public class MemberServiceImpl implements MemberService, OAuth2UserService<OAuth
 
         Member memberForSavingOrUpdating = memberRepository.findByMemberEmail(attributes.getEmail())
                 .map(member -> {
-                    if(member.getMemberJoinAccountType().equals(MemberJoinAccountType.KAKAO)){
+                    if(member.getMemberJoinAccountType().equals(MemberJoinAccountType.KAKAO)
+                            || member.getMemberJoinAccountType().equals(MemberJoinAccountType.GOOGLE)){
                         member.update(attributes.getName(), attributes.getSnsProfile(), attributes.getEmail());
                     }else{
                         member.update(attributes.getName(), attributes.getSnsProfile(), attributes.getEmail(),attributes.getMobile());
