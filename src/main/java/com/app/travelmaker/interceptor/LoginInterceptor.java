@@ -1,6 +1,7 @@
 package com.app.travelmaker.interceptor;
 
 import com.app.travelmaker.common.AccountSupport;
+import com.app.travelmaker.constant.MemberJoinAccountType;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,8 +21,9 @@ public class LoginInterceptor extends AccountSupport implements HandlerIntercept
 
     String referer = request.getHeader("referer");
 
-        /**네이버 로그인은 전 주소를 남기지 않아 핸들러에서 다시 처리해주어야한다.*/
-        if(authenticationInfo() != null && authenticationInfo().getMemberJoinAccountType().getCode().equals("NAVER")){
+        if(authenticationInfo() != null && (authenticationInfo().getMemberJoinAccountType().equals(MemberJoinAccountType.NAVER)||
+                authenticationInfo().getMemberJoinAccountType().equals(MemberJoinAccountType.KAKAO) ||
+                authenticationInfo().getMemberJoinAccountType().equals(MemberJoinAccountType.GOOGLE))){
             return true;
         }
 
