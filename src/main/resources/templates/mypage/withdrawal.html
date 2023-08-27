@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,8 +8,14 @@
     <title>회원탈퇴</title>
     <link rel="stylesheet" href="/css/mypage/accountManage.css">
     <link rel="stylesheet" href="/css/mypage/withdrawal.css">
+    <link rel="stylesheet" href="/css/admin/modal.css"/>
 </head>
 <body>
+<div class="modal">
+    <div class="warn-modal">
+        <div id="content-wrap"></div>
+    </div>
+</div>
 <div class="container">
 <div class="withdrawal-div">
     <div class="withdrawal-div-margin">
@@ -34,7 +40,7 @@
                             <div class="leave-img-div">
                                 <img width="32" height="32" src="https://static.wanted.co.kr/oneid-user/profile_default.png">
                             </div>
-                            <p class="leave-user-email">kgm970910@gmail.com</p></div>
+                            <p class="leave-user-email" th:text="${#authentication.getPrincipal().memberResponseDTO.memberEmail}">kgm970910@gmail.com</p></div>
                     </div>
                     <div>
                         <div class="leave-checkbox-wrapper">
@@ -64,4 +70,5 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="/js/mypage/withdrawal.js"></script>
+<script src="/js/admin/modal.js"></script>
 </html>

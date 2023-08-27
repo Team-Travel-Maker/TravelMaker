@@ -124,6 +124,7 @@ public class Member extends Period implements Serializable {
     private boolean deleted = Boolean.FALSE;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @Setter
     private File file;
 
 

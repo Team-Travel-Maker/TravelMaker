@@ -1,9 +1,11 @@
 package com.app.travelmaker.repository.member;
 
 import com.app.travelmaker.constant.Role;
+import com.app.travelmaker.domain.file.FileDTO;
 import com.app.travelmaker.domain.member.request.MemberRequestDTO;
 import com.app.travelmaker.domain.member.response.MemberJoinResponseDTO;
 import com.app.travelmaker.domain.member.response.MemberResponseDTO;
+import com.app.travelmaker.entity.file.File;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -40,6 +41,33 @@ public class MemberDSLImpl implements MemberDSL {
     public long updateMemberPoints(Long memberId, Integer giftCardTotalPrice) {
         return query.update(member)
                 .set(member.memberEcoPoint, member.memberEcoPoint.subtract(giftCardTotalPrice))
+                .set(member.updatedDate, LocalDateTime.now())
+                .where(member.id.eq(memberId))
+                .execute();
+    }
+
+    @Override
+    public long updateEmailBenefitEventAlarm(Long memberId, boolean settingValue) {
+        return query.update(member)
+                .set(member.alarm.emailBenefitEvent, settingValue)
+                .set(member.updatedDate, LocalDateTime.now())
+                .where(member.id.eq(memberId))
+                .execute();
+    }
+
+    @Override
+    public long updateEmailSuggestionAlarm(Long memberId, boolean settingValue) {
+        return query.update(member)
+                .set(member.alarm.emailSuggestion, settingValue)
+                .set(member.updatedDate, LocalDateTime.now())
+                .where(member.id.eq(memberId))
+                .execute();
+    }
+
+    @Override
+    public long updateSnsBenefitEventAlarm(Long memberId, boolean settingValue) {
+        return query.update(member)
+                .set(member.alarm.snsBenefitEvent, settingValue)
                 .set(member.updatedDate, LocalDateTime.now())
                 .where(member.id.eq(memberId))
                 .execute();
@@ -182,5 +210,23 @@ public class MemberDSLImpl implements MemberDSL {
     @Override
     public Optional<Long> findIdByMemberEmail(String memberEmail) {
        return Optional.ofNullable(query.select(member.id).from(member).where(member.memberEmail.eq(memberEmail)).fetchOne());
+    }
+
+    @Override
+    public void updateMemberName(Long memberId, String memberName) {
+        query.update(member)
+                .set(member.memberName, memberName)
+                .set(member.updatedDate, LocalDateTime.now())
+                .where(member.id.eq(memberId))
+                .execute();
+    }
+
+    @Override
+    public void updateMobile(Long memberId, String mobile) {
+        query.update(member)
+                .set(member.memberPhone, mobile)
+                .set(member.updatedDate, LocalDateTime.now())
+                .where(member.id.eq(memberId))
+                .execute();
     }
 }
