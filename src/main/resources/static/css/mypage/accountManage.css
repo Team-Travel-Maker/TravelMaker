@@ -574,3 +574,13 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
+
+.css-1jkqjay:disabled {
+    color: var(--theme-palette-colors-gray-300);
+    background-color: var(--theme-palette-colors-bluegray-100);
+    border: none;
+    cursor: default;
+}
+.css-1jkqjay:disabled span {
+    color: var(--theme-palette-colors-gray-300);
+}

@@ -3,6 +3,7 @@ package com.app.travelmaker.controller.myPage;
 import com.app.travelmaker.constant.CsType;
 import com.app.travelmaker.constant.PointCateGoryType;
 import com.app.travelmaker.domain.cs.response.CustomServiceResponseDTO;
+import com.app.travelmaker.domain.file.FileDTO;
 import com.app.travelmaker.domain.mypage.company.StoreDTO;
 import com.app.travelmaker.domain.mypage.my.MyBookmarkDTO;
 import com.app.travelmaker.domain.mypage.my.MyCommunityLikeDTO;
@@ -14,6 +15,7 @@ import com.app.travelmaker.service.mypage.my.MyBookmarkService;
 import com.app.travelmaker.service.mypage.my.MyCommunityLikeService;
 import com.app.travelmaker.service.mypage.my.MyGiftCardService;
 import com.app.travelmaker.service.mypage.my.MyStoryLikeService;
+import com.app.travelmaker.service.mypage.my.account.MyAccountService;
 import com.app.travelmaker.service.mypage.my.customService.MyCustomServiceService;
 import com.app.travelmaker.service.mypage.my.point.MyPointService;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +27,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +46,7 @@ public class MyPageApiController {
     private final MyStoryLikeService myStoryLikeService;
     private final MyPointService myPointService;
     private final MyCustomServiceService myCustomServiceService;
+    private final MyAccountService myAccountService;
 
     /**
      * 상품권
@@ -92,7 +96,7 @@ public class MyPageApiController {
     }
 
     // 수정 업체 정보 api
-    @GetMapping("/store")
+    @GetMapping("store")
     public ResponseEntity<?> getStore(@RequestParam Long storeId) {
         StoreDTO store = storeService.getStore(storeId);
         return ResponseEntity.ok(store);
@@ -100,7 +104,7 @@ public class MyPageApiController {
 
     // 업체 수정 api
     @Transactional
-    @PutMapping("/store")
+    @PutMapping("store")
     public ResponseEntity updateStore(@RequestBody StoreDTO request) {
         storeService.updateStore(request);
         log.info(request.toString());
@@ -111,14 +115,14 @@ public class MyPageApiController {
      * 북마크
      */
     // 북마크 리스트 api
-    @GetMapping("/bookmarks")
+    @GetMapping("bookmarks")
     public ResponseEntity<?> getBookmarks() {
         List<MyBookmarkDTO> bookmarks = myBookmarkService.getBookmarks();
         return ResponseEntity.ok(bookmarks);
     }
 
     // 북마크 삭제 api
-    @DeleteMapping("/bookmarks")
+    @DeleteMapping("bookmarks")
     public ResponseEntity<?> deleteBookmark(@RequestParam Long bookmarkId) {
         log.info("북마크 아이디:{}",bookmarkId);
         myBookmarkService.deleteBookmark(bookmarkId);
@@ -129,14 +133,14 @@ public class MyPageApiController {
      * 좋아요
      */
     // 커뮤니티 좋아요 리스트 api
-    @GetMapping("/communityLikes")
+    @GetMapping("communityLikes")
     public ResponseEntity<?> getCommunityLikes() {
         List<MyCommunityLikeDTO> communityLikes = myCommunityLikeService.getCommunityLikes();
         return ResponseEntity.ok(communityLikes);
     }
 
     // 커뮤니티 좋아요 삭제 api
-    @DeleteMapping("/communityLikes")
+    @DeleteMapping("communityLikes")
     public ResponseEntity<?> deleteCommunityLike(@RequestParam Long communityLikeId) {
         log.info("커뮤니티 좋아요 아이디:{}",communityLikeId);
         myCommunityLikeService.deleteCommunityLike(communityLikeId);
@@ -144,14 +148,14 @@ public class MyPageApiController {
     }
 
     // 스토리 좋아요 리스트 api
-    @GetMapping("/storyLikes")
+    @GetMapping("storyLikes")
     public ResponseEntity<?> getStoryLikes() {
         List<MyStoryLikeDTO> storyLikes = myStoryLikeService.getStoryLikes();
         return ResponseEntity.ok(storyLikes);
     }
 
     // 스토리 좋아요 삭제 api
-    @DeleteMapping("/storyLikes")
+    @DeleteMapping("storyLikes")
     public ResponseEntity<?> deleteStoryLike(@RequestParam Long storyLikeId) {
         log.info("스토리 좋아요 아이디:{}",storyLikeId);
         myStoryLikeService.deleteStoryLike(storyLikeId);
@@ -163,14 +167,14 @@ public class MyPageApiController {
      * 포인트
      */
     // 포인트 내역 전체 조회
-    @GetMapping("/points")
+    @GetMapping("points")
     public ResponseEntity<?> getMyPoints() {
         List<MyPointDTO> myPoints = myPointService.getMyPoints();
         return ResponseEntity.ok(myPoints);
     }
 
     // 포인트 내역 조회(적립, 사용)
-    @GetMapping("/pointsByType")
+    @GetMapping("pointsByType")
     public ResponseEntity<?> getMyPointsByPointType(@RequestParam String pointType) {
         log.info(pointType);
         PointCateGoryType pointCateGoryType = null;
@@ -196,7 +200,6 @@ public class MyPageApiController {
         log.info(keyword);
         Page<CustomServiceResponseDTO> myListFive;
         if(csType == null) {
-            log.info("여기는 왔는가??");
             myListFive = myCustomServiceService.getMyListFive(pageable, keyword);
         } else {
             log.info(csType);
@@ -207,5 +210,85 @@ public class MyPageApiController {
             }
         }
         return ResponseEntity.ok(myListFive);
+    }
+
+    /**
+     * 알림 설정
+     */
+    @Transactional
+    @PutMapping("alarm")
+    public ResponseEntity<?> updateAlarm(@RequestParam(value = "settingValue") boolean settingValue,
+                                         @RequestParam(value = "alarm") String alarm){
+
+        if (alarm.equals("emailBenefitEvent")) {
+            myAccountService.updateEmailBenefitEventAlarm(settingValue);
+        } else if(alarm.equals("emailSuggestion")) {
+            myAccountService.updateEmailSuggestionAlarm(settingValue);
+        } else {
+            myAccountService.updateSnsBenefitEventAlarm(settingValue);
+        }
+
+        return ResponseEntity.ok("OK");
+    }
+
+    /**
+     * 알림 설정
+     */
+    @Transactional
+    @DeleteMapping("withdrawal")
+    public ResponseEntity<?> withdrawal(HttpSession session){
+        myAccountService.withdrawal();
+        session.invalidate();
+        return ResponseEntity.ok("/");
+    }
+
+    /**
+     *  게정 설정
+     */
+    // 일반회원 프로필 파일 등록 수정
+    @Transactional
+    @PostMapping("accountManager/uploadProfile")
+    public ResponseEntity<?> uploadProfile(@RequestBody FileDTO request) {
+        myAccountService.uploadProfile(request);
+        log.info(request.toString());
+        return ResponseEntity.ok("/mypage/accountManage");
+    }
+
+    // 이름 변경
+    @Transactional
+    @PutMapping("accountManager/name")
+    public ResponseEntity<?> updateMemberName(@RequestBody Map<String, String> request){
+        myAccountService.updateMemberName(request.get("memberName"));
+        return ResponseEntity.ok("/mypage/accountManage");
+    }
+
+    // 비번 변경전 비밀번호 확인
+    @Transactional
+    @PostMapping("accountManager/oldPassword")
+    public ResponseEntity<?> checkPassword(@RequestBody Map<String, String> request) {
+        Boolean result = myAccountService.checkPassword(request.get("oldPassword"));
+        if(result == true) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    // 비밀번호 변경
+    @Transactional
+    @PutMapping("accountManager/password")
+    public ResponseEntity<?> updatePassword(@RequestBody Map<String, String> request) {
+        myAccountService.updatePassword(request.get("newPassword"));
+        log.info(request.toString());
+        return ResponseEntity.ok("/mypage/accountManage");
+    }
+
+    // 전화번호 변경
+    @Transactional
+    @PutMapping("accountManager/mobile")
+    public ResponseEntity<?> updateMobile(@RequestBody Map<String, String> request) {
+        myAccountService.updateMobile(request.get("mobile"));
+        log.info(request.toString());
+        return ResponseEntity.ok("/mypage/accountManage");
     }
 }
