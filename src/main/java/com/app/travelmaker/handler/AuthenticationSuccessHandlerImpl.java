@@ -1,6 +1,7 @@
 package com.app.travelmaker.handler;
 
 import com.app.travelmaker.common.AccountSupport;
+import com.app.travelmaker.constant.MemberJoinAccountType;
 import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.provider.MemberDetail;
@@ -41,9 +42,7 @@ public class AuthenticationSuccessHandlerImpl extends AccountSupport implements 
         /** OAuth 로그인 하여 추가 정보 입력하다가 메인으로 넘어가면 다시 로그인 했을때 다시 추가정보입력하게 검사*/
         if(list.get(0).toString().equals(Role.WAIT.getSecurityRole())){
             MemberResponseDTO memberDTO = authenticationInfo();
-            if(memberDTO.getMemberJoinAccountType().getCode().equals("KAKAO")
-                    ||memberDTO.getMemberJoinAccountType().getCode().equals("NAVER") ){
-                log.info("여기가문제인가?") ;
+            if(!memberDTO.getMemberJoinAccountType().equals(MemberJoinAccountType.GENERAL)){
                 response.sendRedirect("/accounts/join/join");
                 return;
             }

@@ -29,6 +29,11 @@ spring:
             client-authentication-method: POST
             authorization-grant-type: authorization_code
             scope: account_email,profile_nickname, profile_image
+          google:
+            client-id: 57058654440-onk7osg3u89uskljt7mnimcdl2qo62v7.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: http://localhost:10000/login/oauth2/code/google
+            scope: email, profile
         provider:
           naver:
             authorization-uri: https://nid.naver.com/oauth2.0/authorize
