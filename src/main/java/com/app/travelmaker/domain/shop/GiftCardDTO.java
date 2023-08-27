@@ -3,6 +3,7 @@ package com.app.travelmaker.domain.shop;
 import com.app.travelmaker.entity.file.File;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,5 +17,8 @@ public class GiftCardDTO {
     private String giftCardRegion;
     private String giftCardRegionDetail;
     private Integer giftCardPrice;
+    private LocalDateTime createdDate;
+    private LocalDateTime updatedDate;
     private List<GiftCardFileDTO> files= new ArrayList<>();
+    private List<Long> deleteFiles = new ArrayList<>();
 }

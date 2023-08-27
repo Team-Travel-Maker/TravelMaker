@@ -94,6 +94,10 @@
                               <div class="profile-img" th:style="'background-image:url(' + ${#authentication.getPrincipal().memberResponseDTO.snsProFile} + ');'">
                               </div>
                               </th:block>
+                              <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('NAVER')}">
+                              <div class="profile-img" th:style="'background-image:url(' + ${#authentication.getPrincipal().memberResponseDTO.snsProFile} + ');'">
+                              </div>
+                              </th:block>
                               <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
                                   <div class="profile-img" style="
                                   background-image: url(https://static.wanted.co.kr/oneid-user/profile_default.png), url(https://static.wanted.co.kr/images/profile_default.png);

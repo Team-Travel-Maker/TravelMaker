@@ -1,6 +1,8 @@
 package com.app.travelmaker.controller.myPage;
 
+import com.app.travelmaker.constant.CsType;
 import com.app.travelmaker.constant.PointCateGoryType;
+import com.app.travelmaker.domain.cs.response.CustomServiceResponseDTO;
 import com.app.travelmaker.domain.mypage.company.StoreDTO;
 import com.app.travelmaker.domain.mypage.my.MyBookmarkDTO;
 import com.app.travelmaker.domain.mypage.my.MyCommunityLikeDTO;
@@ -12,9 +14,13 @@ import com.app.travelmaker.service.mypage.my.MyBookmarkService;
 import com.app.travelmaker.service.mypage.my.MyCommunityLikeService;
 import com.app.travelmaker.service.mypage.my.MyGiftCardService;
 import com.app.travelmaker.service.mypage.my.MyStoryLikeService;
+import com.app.travelmaker.service.mypage.my.customService.MyCustomServiceService;
 import com.app.travelmaker.service.mypage.my.point.MyPointService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +42,11 @@ public class MyPageApiController {
     private final MyCommunityLikeService myCommunityLikeService;
     private final MyStoryLikeService myStoryLikeService;
     private final MyPointService myPointService;
+    private final MyCustomServiceService myCustomServiceService;
 
+    /**
+     * 상품권
+     */
     // 나의 상품권 목록
     @GetMapping("giftCard")
     public ResponseEntity<?> goMyGiftCard() {
@@ -44,6 +54,9 @@ public class MyPageApiController {
         return ResponseEntity.ok(myGiftCardDTOS);
     }
 
+    /**
+     * 업체
+     */
     // 업체 등록 api
     @Transactional
     @PostMapping("store")
@@ -94,6 +107,9 @@ public class MyPageApiController {
         return ResponseEntity.ok("/mypage/company/list");
     }
 
+    /**
+     * 북마크
+     */
     // 북마크 리스트 api
     @GetMapping("/bookmarks")
     public ResponseEntity<?> getBookmarks() {
@@ -109,6 +125,9 @@ public class MyPageApiController {
         return ResponseEntity.ok("/mypage/bookmarks");
     }
 
+    /**
+     * 좋아요
+     */
     // 커뮤니티 좋아요 리스트 api
     @GetMapping("/communityLikes")
     public ResponseEntity<?> getCommunityLikes() {
@@ -139,6 +158,10 @@ public class MyPageApiController {
         return ResponseEntity.ok("통신 성공");
     }
 
+
+    /**
+     * 포인트
+     */
     // 포인트 내역 전체 조회
     @GetMapping("/points")
     public ResponseEntity<?> getMyPoints() {
@@ -160,5 +183,29 @@ public class MyPageApiController {
         log.info(pointCateGoryType.toString());
         List<MyPointDTO> myPoints = myPointService.getMyPointsByPointType(pointCateGoryType);
         return ResponseEntity.ok(myPoints);
+    }
+
+
+    /**
+     * 문의 신고
+     */
+    @GetMapping("inquiries")
+    public ResponseEntity<?> getMyListFive(@PageableDefault(page = 0, size = 5) Pageable pageable,
+                                           @RequestParam(value = "keyword", required = false) String keyword,
+                                           @RequestParam(value = "csType", required = false) String csType){
+        log.info(keyword);
+        Page<CustomServiceResponseDTO> myListFive;
+        if(csType == null) {
+            log.info("여기는 왔는가??");
+            myListFive = myCustomServiceService.getMyListFive(pageable, keyword);
+        } else {
+            log.info(csType);
+            if(CsType.INQUIRY.getCode().equals(csType)) {
+                myListFive = myCustomServiceService.getMyListFiveByType(pageable, keyword, CsType.INQUIRY);
+            } else {
+                myListFive = myCustomServiceService.getMyListFiveByType(pageable, keyword, CsType.DECLARATION);
+            }
+        }
+        return ResponseEntity.ok(myListFive);
     }
 }

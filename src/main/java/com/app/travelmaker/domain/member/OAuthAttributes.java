@@ -22,6 +22,7 @@ public class OAuthAttributes {
     private final String name;
     private final String email;
     private final String snsProfile;
+    private final String mobile;
     private final MemberJoinAccountType memberJoinAccountType;
 
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes){
@@ -31,7 +32,7 @@ public class OAuthAttributes {
 //        registrationId는 네이버 로그인일 경우 naver이고, 카카오 로그인일 경우 kakao이다.
         log.info("========================{}", registrationId);
         if("naver".equals(registrationId)){
-//            return ofNaver();
+            return ofNaver(userNameAttributeName, attributes);
         }
         return ofKaKao(userNameAttributeName, attributes);
     }
@@ -51,6 +52,22 @@ public class OAuthAttributes {
 
     }
 
+    private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes){
+        Map<String, Object> naverAccount = (Map<String, Object>)attributes.get(userNameAttributeName);
+        log.info("***************************");
+        log.info(naverAccount.toString());
+        return OAuthAttributes.builder()
+                .email((String)naverAccount.get("email"))
+                .name((String)naverAccount.get("name"))
+                .mobile((String)naverAccount.get("mobile"))
+                .snsProfile((String)naverAccount.get("profile_image"))
+                .nameAttributeKey(userNameAttributeName)
+                .attributes(attributes)
+                .memberJoinAccountType(MemberJoinAccountType.NAVER)
+                .build();
+
+    }
+
     public Member toEntity(){
         Alarm alarm = new Alarm();
         Address address = new Address();
@@ -63,11 +80,13 @@ public class OAuthAttributes {
         address.setAddressDetail("sns계정 수정될 예정");
         address.setPostcode("sns계정 수정될 예정");
 
+
         return Member.builder()
                 .memberName(name)
                 .memberEmail(email)
                 .snsProfile(snsProfile)
                 .memberRole(Role.WAIT)
+                .memberPhone(mobile == null ? "카카오" : mobile)
                 .memberJoinAccountType(memberJoinAccountType)
                 .alarm(alarm)
                 .address(address)

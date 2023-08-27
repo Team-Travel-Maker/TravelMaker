@@ -2,9 +2,10 @@
     const $inquiryListContainer = $('.inquiry-list-container');
     let text=``;
     let deleteIds = [];
+    let keyword='';
 
     let customService = (function () {
-        function getList(callback, page, keyword){
+        function getList(callback, page){
             let path = ``;
             if(keyword){path=`/api/admins/inquiry/list?page=`+page +`&keyword=` + keyword}
             else{path =`/api/admins/inquiry/list?page=`+page}
@@ -106,8 +107,8 @@
 
     $(".search-input").keydown(function(e) {
         if( e.keyCode == 13 ){
-           let keyword= $(this).val();
-            customService.getList(showList,0,keyword);
+           keyword= $(this).val();
+            customService.getList(showList,0);
         }
     });
 

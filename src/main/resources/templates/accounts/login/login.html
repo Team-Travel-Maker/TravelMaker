@@ -76,10 +76,11 @@
                             color="var(--theme-palette-colors-gray-500)"
                             class="another-account-p">또는</p>
                         <div class="another-account-container">
-                            <button
+                            <button sec:authorize="isAnonymous()"
                                 type="button"
                                 data-attribute-id="signupLogin__start"
                                 data-method="naver"
+                                onclick="location.href='/oauth2/authorization/naver'"
                                 class="naver-kakao-button">
                                 <span>
                                     <svg

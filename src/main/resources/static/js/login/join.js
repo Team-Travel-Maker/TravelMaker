@@ -615,6 +615,18 @@ function joinBtnCheck() {
         } else {
             $joinBtn.attr("disabled", true);
         }
+    }else if($('.naver-check').length ==0){
+        if($nameInput.val().length > 0 &&
+            $zipCode.val().length > 0 &&
+            $addressDetail.val().length > 0 &&
+            $('.agree-checkbox').eq(0).is(":checked") &&
+            $('.agree-checkbox').eq(1).is(":checked")&&
+            $('.agree-checkbox').eq(2).is(":checked")
+        ) {
+            $joinBtn.attr("disabled", false);
+        } else {
+            $joinBtn.attr("disabled", true);
+        }
     }else{
         if($nameInput.val().length > 0 &&
             $zipCode.val().length > 0 &&
@@ -662,8 +674,11 @@ $joinBtn.on('click', function () {
 
     if($('.new-pass-container').length != 0) {
         joinService.join(member, success);
-    }else{
-        joinService.join(member, oauthSuccess);
+    }else if($('.naver-check').length ==0){
+        joinService.join(member, naverOauthSuccess);
+    }
+    else{
+        joinService.join(member, kakaoOauthSuccess);
     }
 
 })
@@ -696,10 +711,16 @@ function success() {
     })
 }
 
-function oauthSuccess() {
-    showWarnModal("SNS 계정 가입이 완료 되었습니다.");
+function kakaoOauthSuccess() {
+    showWarnModal("카카오 계정 가입이 완료 되었습니다.");
     $('.modal').on("click", function () {
         location.href=`/oauth2/authorization/kakao`;
+    })
+}
+function naverOauthSuccess() {
+    showWarnModal("네이버 계정 가입이 완료 되었습니다.");
+    $('.modal').on("click", function () {
+        location.href = `/oauth2/authorization/naver`;
     })
 }
 

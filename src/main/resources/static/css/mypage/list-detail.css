@@ -1780,7 +1780,7 @@ table {
 }
 
 .info-table {
-    padding: 20px 20px 0px 20px;
+    padding: 10px 20px 0px 20px;
     margin: 0 auto;
 }
 
@@ -1955,6 +1955,27 @@ div#paging-wrap {
     flex-direction: column;
     border: 1px solid #ddd;
     border-collapse: collapse;
+}
+
+.pagination {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination a {
+    text-decoration: none;
+}
+
+.active {
+    font-weight: bold;
+    color: blue;
 }
 
 /* 테이블 헤더 */

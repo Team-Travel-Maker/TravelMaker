@@ -3,24 +3,25 @@ $(document).ready(function () {
 
     let fileForm = /\.(jpg|gif|tif|bmp|png)$/i;
 
-    let noticeText =''
+    let giftCardText =''
     let flag;
     const form = new FormData();
     let formData = new FormData();
-    let noticeRequestDTO = {"files" : [], "deleteFiles":[]}
-    let fileSize = {width : 575,height : 772}
+    let giftCardDTO = {"files" : [], "deleteFiles":[]}
+    let fileSize = {width: 250, height: 400}
 
 
-    let noticeService = (function () {
+    let giftCardService = (function () {
 
-        if(noticeId != ""){
-            function getDetail(callback){
+        if(couponId != "") {
+            function getDetail(callback) {
                 $.ajax({
-                    url: `/api/admins/notice/detail/${noticeId}`,
+                    url: `/api/admins/coupon/detail/${couponId}`,
                     type: `get`,
-                    success: function(result){
+                    async : false,
+                    success: function (result) {
                         console.log(result);
-                        if(callback){
+                        if (callback) {
                             callback(result);
                         }
                     }
@@ -30,13 +31,14 @@ $(document).ready(function () {
 
         function modify(form, callback){
             $.ajax({
-                url: `/api/admins/notice`,
+                url: `/api/admins/coupon`,
                 type: `put`,
+                async : false,
                 enctype: "multipart/form-data", //form data 설정
                 processData : false,
                 contentType : false,
                 data: form,
-                success: function(){
+                success: function(resposne){
                     if(callback) callback();
                 }
             })
@@ -45,44 +47,74 @@ $(document).ready(function () {
         return {modify : modify, getDetail : getDetail}
     })()
 
-    if(noticeId != ""){
+    if(couponId != "") {
         /*상세*/
-        noticeService.getDetail(showDetail);
+        giftCardService.getDetail(showDetail);
     }
 
     function showDetail(result) {
-        noticeText =`
-                      <div class="board-info-box">
-                            <div class="board-info-title-box">
-                                    <span>공지사항 수정하기</span>
-                                </div>
-                                <hr />
-                            <div class="info-table">
-                                    <input id="noticeId" type="hidden" name="id" value="${result.id}">
-                                    <div>
-                                        <input
-                                            id="noticeTitle"
+        giftCardText =`
+ <div class="board-info-box">
+                        <div class="board-info-title-box">
+                            <span>상품권 수정하기</span>
+                        </div>
+                        <hr/>
+                        <div class="info-table">
+                            <input id="gift-card-id" type="hidden" name="id" value="${result.id}">
+                                <div>
+                                    <input
                                             type="text"
                                             class="board-title"
-                                            name="noticeTitle"
-                                            placeholder="제목을 입력해주세요."
-                                            value="${result.noticeTitle}"
-                                        />
-                                    </div>
-                                    <hr />
-                                    <div>
-                                        <textarea
-                                            id="noticeContent"
-                                            class="board-content"
-                                            name="noticeContent"
-                                        ></textarea>
-                                    </div>
-                            <hr />
+                                            id="gift-card-title"
+                                            name="couponTitle"
+                                            placeholder="상품권 이름을 입력해주세요."
+                                            autocomplete="off"
+                                            value="${result.giftCardTitle}"
+                                    />
+                                </div>
+                                <hr/>
+                                <div>
+                                    <input
+                                            type="text"
+                                            class="board-title"
+                                            id="coupon-location"
+                                            name="couponLocation"
+                                            placeholder="상품권 지역을 입력해주세요. ex)서울, 경기도"
+                                            autocomplete="off"
+                                            value="${result.giftCardRegion}"
+                                    />
+                                </div>
+                                <hr/>
+                                <div>
+                                    <input
+                                            type="text"
+                                            class="board-title"
+                                            id="coupon-location-detail"
+                                            name="couponLocationDetail"
+                                            placeholder="상품권 지역을 입력해주세요. ex)춘천, 광주"
+                                            autocomplete="off"
+                                            value="${result.giftCardRegionDetail}"
+                                    />
+                                </div>
+                                <hr/>
+                                <div>
+                                    <input
+                                            type="text"
+                                            class="board-title"
+                                            id="coupon-price"
+                                            name="couponPrice"
+                                            placeholder="상품권 가격을 입력해주세요."
+                                            autocomplete="off"
+                                            value="${result.giftCardPrice}"
+                                    />
+                                </div>
+                                <hr/>
                             `
+        console.log(result);
         if(result.files.length !=0){
             flag = true;
             let fileName = result.files[0].filePath + "/t_" + result.files[0].fileUuid + "_" + result.files[0].fileName;
-            noticeText+= `    
+            giftCardText+= `    
                             <div class="attach-wrap">
                                 <label for="upload1" class="attach">
                                     <img id="${result.files[0].id}" src="/api/files/display?fileName=${fileName}" class="thumbnail">
@@ -100,7 +132,7 @@ $(document).ready(function () {
                             `
         }else{
             flag = false;
-            noticeText+=`
+            giftCardText+=`
                         <div class="attach-wrap">
                                 <label for="upload1" class="attach">
                                 <img src="" class="thumbnail">
@@ -117,16 +149,14 @@ $(document).ready(function () {
                                 <input type="file" id="upload1" class="upload" style="display: none;">
                 `
         }
-        noticeText+= `
+        giftCardText+= `
                   <div>
                         <button style="margin-top: 15px;" class="ok-button btn-done" type="button">수정 완료</button>
                   </div>
                     `
 
-        $detailContainer.html(noticeText);
+        $detailContainer.html(giftCardText);
 
-        /*텍스트 area 내용 채우기*/
-        $('.board-content').append(result.noticeContent);
 
         let $thumbnail = $("label.attach img.thumbnail");
 
@@ -150,7 +180,7 @@ $(document).ready(function () {
 
             formData = new FormData();
 
-            noticeRequestDTO.files =[];
+            giftCardDTO.files =[];
 
             flag=true;
 
@@ -233,7 +263,7 @@ $(document).ready(function () {
                         test.fileName = name[i]
                         test.fileSize = sizes[i]
                         test.fileUuid = uuids[i]
-                        noticeRequestDTO.files.push(test);
+                        giftCardDTO.files.push(test);
                         check()
                     }
                 },
@@ -252,8 +282,8 @@ $(document).ready(function () {
 
                 $("div.x").on("click", function(e){
                     e.preventDefault();
-                    noticeRequestDTO.files =[];
-                    noticeRequestDTO.deleteFiles = [];
+                    giftCardDTO.files =[];
+                    giftCardDTO.deleteFiles = [];
                     let i = $("div.x").index($(this));
                     sizes[i] = 0;
                     $("span.file-size").eq(i).text(sizes[i]);
@@ -265,7 +295,7 @@ $(document).ready(function () {
                     $thumbnail.eq(i).attr('src', "");
                     $thumbnail.eq(i).hide();
                     console.log($thumbnail.eq(i).attr("id"));
-                    noticeRequestDTO.deleteFiles.push($thumbnail.eq(i).attr("id"));
+                    giftCardDTO.deleteFiles.push($thumbnail.eq(i).attr("id"));
                 });
                 flag=false;
             }
@@ -274,29 +304,45 @@ $(document).ready(function () {
 
 
     $(document).on("click",'.ok-button', function () {
-        // 공지사항 제목 유효성 검사
-        if ($("#noticeTitle").val() == "") {
-            showWarnModal("공지사항 제목을 입력해주세요.");
-            $("#noticeTitle").focus();
+        if ($('#gift-card-title').val() == "") {
+            showWarnModal("기프트 카드 제목을 입력해주세요.");
+            $('#gift-card-title').focus();
             return false;
         };
-
-        // 공지사항 내용 유효성 검사
-        if ($("#noticeContent").val() == "") {
-            showWarnModal("공지사항 내용을 입력해주세요.");
-            $("#noticeContent").focus();
+        if ($('#coupon-location').val() == "") {
+            showWarnModal("기프트 카드 지역을 입력해주세요.");
+            $('#coupon-location').focus();
             return false;
         };
+        if ($('#coupon-location-detail').val() == "") {
+            showWarnModal("기프트 카드 지역 상세를 입력해주세요.");
+            $('#coupon-location-detail').focus();
+            return false;
+        };
+        if ($('#coupon-price').val() == "") {
+            showWarnModal("기프트 카드 가격을 입력해주세요.");
+            $('#coupon-price').focus();
+            return false;
+        };
+/*        if ($('.thumbnail').eq(0).attr('src', "")) {
+            showWarnModal("기프트 카드 사진은 필수입니다.");
+            $('.thumbnail').eq(0).focus();
+            return false;
+        };*/
 
-        showWarnModal("공지 수정이 완료되었습니다.");
+        console.log(giftCardDTO);
+
+        showWarnModal("상품권 수정이 완료되었습니다.");
         $('.modal').on("click", function () {
-            noticeRequestDTO.id = $('#noticeId').val();
-            noticeRequestDTO.noticeTitle = $('#noticeTitle').val()
-            noticeRequestDTO.noticeContent = $('#noticeContent').val()
+            giftCardDTO.id = $('#gift-card-id').val();
+            giftCardDTO.giftCardTitle = $('#gift-card-title').val()
+            giftCardDTO.giftCardRegion = $('#coupon-location').val()
+            giftCardDTO.giftCardRegionDetail = $('#coupon-location-detail').val()
+            giftCardDTO.giftCardPrice = $('#coupon-price').val()
 
-            form.append("noticeRequestDTO", new Blob([JSON.stringify(noticeRequestDTO)], { type: "application/json" }));
-            noticeService.modify(form,function () {
-                location.href="/admins/notice/detail/"+ noticeId;
+            form.append("giftCardDTO", new Blob([JSON.stringify(giftCardDTO)], { type: "application/json" }));
+            giftCardService.modify(form,function () {
+                location.href="/admins/coupon/detail/"+ couponId;
             })
         })
     })
