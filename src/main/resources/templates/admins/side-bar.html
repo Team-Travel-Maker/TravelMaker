@@ -27,36 +27,10 @@
                             <div>
                                 <img src="/images/admin/board-icon.png" class="icon">
                             </div>
-                            <a>
+                            <a th:href="@{/admins/community/list}">
                                 <span>커뮤니티 관리</span>
                             </a>
-                            <div class="triangle-button">
-                                <img src="/images/admin/arrow-icon.png"
-                                     class="icon triangle-icon triangle">
-                            </div>
                         </div>
-                        <ul class="menus1 menus" style="display: none;">
-                            <!-- <li class="select-menu">
-                                <a href="adminPage-boardList.jsp">
-                                    <span>전체 게시판</span>
-                                </a>
-                            </li> -->
-                            <li class="select-menu">
-                                <a th:href="@{/admins/review/list}">
-                                    <span>일반 후기</span>
-                                </a>
-                            </li>
-                            <li class="select-menu">
-                                <a th:href="@{/admins/improvement/list}">
-                                    <span>개선 요청</span>
-                                </a>
-                            </li>
-                            <li class="select-menu">
-                                <a th:href="@{/admins/community/list}">
-                                    <span>소통</span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <li class="menu">
                         <div class="menu-flex">

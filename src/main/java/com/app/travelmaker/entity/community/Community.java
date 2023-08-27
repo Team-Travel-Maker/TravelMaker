@@ -3,6 +3,7 @@ package com.app.travelmaker.entity.community;
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.constant.CommunityType;
 import com.app.travelmaker.entity.mebmer.Member;
+import com.app.travelmaker.entity.story.StoryFile;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
@@ -10,6 +11,8 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Community Entity (커뮤니티)
@@ -57,4 +60,7 @@ public class Community extends Period {
      * */
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "community")
+    private List<CommunityFile> communityFiles = new ArrayList<>();
 }
