@@ -33,8 +33,10 @@ public class OAuthAttributes {
         log.info("========================{}", registrationId);
         if("naver".equals(registrationId)){
             return ofNaver(userNameAttributeName, attributes);
+        }else if("kakao".equals(registrationId)){
+            return ofKaKao(userNameAttributeName, attributes);
         }
-        return ofKaKao(userNameAttributeName, attributes);
+        return ofGoogle(userNameAttributeName, attributes);
     }
 
     private static OAuthAttributes ofKaKao(String userNameAttributeName, Map<String, Object> attributes){
@@ -52,6 +54,20 @@ public class OAuthAttributes {
 
     }
 
+    private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes){
+        log.info("***************************");
+        log.info(attributes.toString());
+        return OAuthAttributes.builder()
+                .email((String)(attributes.get("email")))
+                .name((String)(attributes.get("name")))
+                .snsProfile((String)attributes.get("picture"))
+                .nameAttributeKey(userNameAttributeName)
+                .attributes(attributes)
+                .memberJoinAccountType(MemberJoinAccountType.GOOGLE)
+                .build();
+
+    }
+
     private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes){
         Map<String, Object> naverAccount = (Map<String, Object>)attributes.get(userNameAttributeName);
         log.info("***************************");
@@ -59,7 +75,7 @@ public class OAuthAttributes {
         return OAuthAttributes.builder()
                 .email((String)naverAccount.get("email"))
                 .name((String)naverAccount.get("name"))
-                .mobile((String)naverAccount.get("mobile"))
+                .mobile(naverAccount.get("mobile").toString().replaceAll("-",""))
                 .snsProfile((String)naverAccount.get("profile_image"))
                 .nameAttributeKey(userNameAttributeName)
                 .attributes(attributes)
@@ -86,7 +102,7 @@ public class OAuthAttributes {
                 .memberEmail(email)
                 .snsProfile(snsProfile)
                 .memberRole(Role.WAIT)
-                .memberPhone(mobile == null ? "카카오" : mobile)
+                .memberPhone(mobile == null ? "KAKAO OR GOOGLE" : mobile)
                 .memberJoinAccountType(memberJoinAccountType)
                 .alarm(alarm)
                 .address(address)
