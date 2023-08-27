@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
 public class AuthenticationSuccessHandlerImpl extends AccountSupport implements AuthenticationSuccessHandler {
     private final HttpSession session;
     private static String path = "/";
+    private final String ADMIN_PATH = "/admins/notice/list";
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
@@ -38,6 +39,14 @@ public class AuthenticationSuccessHandlerImpl extends AccountSupport implements 
         List<? extends GrantedAuthority> list = authentication.getAuthorities().stream().collect(Collectors.toList());
 
         log.info(list.get(0).toString());
+
+        
+        /** 관리자 로그인 핸들러*/
+        if(list.get(0).toString().equals(Role.ADMIN.getSecurityRole())){
+            response.sendRedirect(ADMIN_PATH);
+            return;
+        }
+
 
         /** OAuth 로그인 하여 추가 정보 입력하다가 메인으로 넘어가면 다시 로그인 했을때 다시 추가정보입력하게 검사*/
         if(list.get(0).toString().equals(Role.WAIT.getSecurityRole())){
