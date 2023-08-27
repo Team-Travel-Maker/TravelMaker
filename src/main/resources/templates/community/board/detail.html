@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="authorBox-vertical">
-                        <div class="authorBox-authorBox-username username"></div>
+                        <div class="authorBox-authorBox-username username" th:text="${memberName}"></div>
                         <div class="author-info">
                             <div class="userinfo-badge">개발</div>
                             <div class="userinfo-badge">7년차</div>
@@ -58,29 +58,32 @@
     <section class="communityPostDetail-contents">
         <article class="postDetail-contents">
             <div class="postContents-header">
-                <div class="postContents-author"><a
-                        href="/community/profile/3y3VD9cK82eAdgnyv2NhTJ">
-                    <div class="authorbox authorbox-xlarge">
-                        <div class="authorBox-authorbox-verticalArea">
-                            <div class="authorBox-avatarWrapper avatar-Wrapper">
-                                <div class="userAvater authorBox-avater avatar"><img
-                                        src="https://static.wanted.co.kr/open_profile/avatar/18bc9596a867766b497736f70014ccd6232f6c90a845c5a3cb3d5d310bc7537a"
-                                        alt=""></div>
-                            </div>
-                            <div class="authorBox-vertical">
-                                <div class="authorBox-authorbox-userinfo">
-                                    <div class="authorBox-authorBox-username username" th:name="${memberName}"></div>
-                                    <div class="author-info">
-                                        <div class="userinfo-badge" data-id="518">개발</div>
-                                        <div class="userinfo-badge">7년차</div>
-                                    </div>
+                <div class="postContents-author">
+                    <a href="/community/profile/3y3VD9cK82eAdgnyv2NhTJ">
+                        <div class="authorbox authorbox-xlarge">
+                            <div class="authorBox-authorbox-verticalArea">
+                                <div class="authorBox-avatarWrapper avatar-Wrapper">
+                                    <div class="userAvater authorBox-avater avatar"><img
+                                            src="https://static.wanted.co.kr/open_profile/avatar/18bc9596a867766b497736f70014ccd6232f6c90a845c5a3cb3d5d310bc7537a"
+                                            alt=""></div>
                                 </div>
-                                <span class="authorBox-authorbox-createAt create-time">4분 전</span></div>
+                                <div class="authorBox-vertical">
+                                    <div class="authorBox-authorbox-userinfo">
+                                        <div class="authorBox-authorBox-username username" th:text="${memberName}"></div>
+                                        <div class="author-info">
+                                            <div class="userinfo-badge" data-id="518">개발</div>
+                                            <div class="userinfo-badge">7년차</div>
+                                        </div>
+                                    </div>
+                                    <span class="authorBox-authorbox-createAt create-time" th:text="${createTime}"></span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </a></div>
+                    </a>
+                </div>
                 <h1 itemprop="headline" class="postContents-title">[기프티콘 제공 설문조사] 온라인 클래스 관련
-                    설문조사입니다.</h1></div>
+                    설문조사입니다.</h1>
+            </div>
             <div class="postContents-body">안녕하세요! 저희는 온라인 강의(클래스) 통합 관리 서비스를 기획중인 IT 동아리 DND의
                 6팀입니다.
                 저희는 커져가는 E-러닝 시장에서 흩어져 있는 다양한 온라인 강의 플랫폼들을 통합적으로 관리할 수 있는 서비스를 기획하고 있습니다!
@@ -88,7 +91,8 @@
                 예상 소요 시간: 2-3 분 내외입니다.
                 설문에 참여해 주신 분들 중 추첨을 통해 3분께 스타벅스 기프티콘을 드립니다.
                 설문 결과를 추합하고 서비스 개발이 마무리 된 뒤, 모든 정보는 폐기될 예정입니다.
-                참여에 감사드리며, 기타 문의사항은 <a href="mailto:hayeeun01@gmail.com" target="_blank" rel="noopener noreferrer">hayeeun01@gmail.com</a>
+                참여에 감사드리며, 기타 문의사항은
+                <a href="mailto:hayeeun01@gmail.com" target="_blank" rel="noopener noreferrer">hayeeun01@gmail.com</a>
                 으로 전송 부탁드립니다.
 
                 설문조사 링크: <a href="https://forms.gle/BYDyaKKPFq76gQjs5" target="_blank" rel="noopener noreferrer">https://forms.gle/BYDyaKKPFq76gQjs5</a>

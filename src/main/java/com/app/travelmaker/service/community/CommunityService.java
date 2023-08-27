@@ -20,6 +20,8 @@ public interface CommunityService {
 
 
 
+
+
     default Community toEntity(PostDTO postDTO){
         return Community.builder()
                 .id(postDTO.getId())
