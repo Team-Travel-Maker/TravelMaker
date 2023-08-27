@@ -672,6 +672,10 @@ $joinBtn.on('click', function () {
         member.snsBenefitEvent = true
     }
 
+    if(member.memberEmail.split("@")[1] == "gmail.com"){
+        joinService.join(member, googleOauthSuccess());
+        return;
+    }
     if($('.new-pass-container').length != 0) {
         joinService.join(member, success);
     }else if($('.naver-check').length ==0){
@@ -721,6 +725,12 @@ function naverOauthSuccess() {
     showWarnModal("네이버 계정 가입이 완료 되었습니다.");
     $('.modal').on("click", function () {
         location.href = `/oauth2/authorization/naver`;
+    })
+}
+function googleOauthSuccess() {
+    showWarnModal("구글 계정 가입이 완료 되었습니다.");
+    $('.modal').on("click", function () {
+        location.href = `/oauth2/authorization/google`;
     })
 }
 

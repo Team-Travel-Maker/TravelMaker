@@ -15,7 +15,8 @@ public enum  MemberJoinAccountType {
      * */
     KAKAO("KAKAO", "카카오"),
     NAVER("NAVER", "네이버"),
-    GENERAL("GENERAL", "일반회원");
+    GENERAL("GENERAL", "일반회원"),
+    GOOGLE("GOOGLE", "구글");
 
     private final String code;
     private final String name;
