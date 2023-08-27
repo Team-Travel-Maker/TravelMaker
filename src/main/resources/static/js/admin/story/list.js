@@ -2,14 +2,14 @@
 const form = new FormData();
 
 let text ="";
-const $storeListContainer = $('.store-list');
+const $storyListContainer = $('.story-list');
 
 let deleteIds = [];
 
-let storeService = (function () {
+let storyService = (function () {
     function deleteStore(form){
         $.ajax({
-            url: `/api/admins/store`,
+            url: `/api/admins/story`,
             type: `delete`,
             async: false,
             enctype: "multipart/form-data", //form data 설정
@@ -23,7 +23,7 @@ let storeService = (function () {
 
     function getList(callback,page){
         $.ajax({
-            url: `/api/admins/store?page=` +page,
+            url: `/api/admins/story?page=` +page,
             type: `get`,
             async: false,
             success: function(result){
@@ -41,19 +41,19 @@ let storeService = (function () {
 })()
 
 
-storeService.getList(showList);
+storyService.getList(showList);
 
 
 function showList(result) {
-    $storeListContainer.html('');
+    $storyListContainer.html('');
     $pagingWrap.html('');
     pagingText="";
     text="";
 
-    result.content.forEach(store => {
+    result.content.forEach(story => {
         let fileName;
-        store.storeFiles.forEach(file =>{
-            if(file.fileType.code == "REPRESENTATIVE"){
+        story.files.forEach(file =>{
+            if(file.fileType.code == "CONTENT_REPRESENTATIVE"){
                 fileName = file.filePath + "/t_" + file.fileUuid + "_" + file.fileName;
             }
         })
@@ -63,34 +63,24 @@ function showList(result) {
                         <td class="checkbox-line">
                             <input
                                     type="checkbox"
-                                    class="noticeCheckbox"
+                                    class="story-check-box"
                                     name="check"
-                                    value="${store.id}"/>
+                                    value="${story.id}"/>
                         </td>
-                        <td>${store.id}</td>
-                        `
-        if(store.storeStatus.code=="PENDING") {
-            text+= `<td class="waiting">${store.storeStatus.name}</td>`
-        }else if(store.storeStatus.code=="APPROVED"){
-            text+= `<td class="approval">${store.storeStatus.name}</td>`
-        }else{
-            text+= `<td class="companion">${store.storeStatus.name}</td>`
-        }
-        text+= `
-                        <td>${store.memberEmail}</td>
+                        <td>${story.id}</td>
+                        <td>${story.memberEmail}</td>
                         <td>
-                            <a href="/admins/store/detail/${store.id}" style="text-decoration:underline">${store.storeTitle}</a>
+                            <a href="#" style="text-decoration:underline">${story.storyTitle}</a>
                         </td>
-                        <td>${store.storeType.name}</td>
-                        <td>${store.createdDate}</td>
-                        <td>${store.updatedDate}</td>
+                        <td>${story.createdDate}</td>
+                        <td>${story.updatedDate}</td>
                         <td class="image-wrap">
                             <img src="/api/files/display?fileName=${fileName}" style="width: 30px; height: 30px">
                         </td>
                     </tr>
                     `
     });
-    $storeListContainer.html(text);
+    $storyListContainer.html(text);
     pagaing(result.pageable.pageSize,result.totalElements,result.pageable.pageNumber);
 
 }
@@ -99,14 +89,14 @@ function showList(result) {
 $('.delete-button').on("click",async function () {
     form.delete("ids");
     deleteIds = [];
-    $('.noticeCheckbox').each((index,checkBox) => {
+    $('.story-check-box').each((index,checkBox) => {
         if($(checkBox).is(":checked")){
             deleteIds.push($(checkBox).val());
         }
     })
     form.append("ids", new Blob([JSON.stringify(deleteIds)],{ type: "application/json" }))
-    storeService.deleteStore(form);
-    storeService.getList(showList);
+    storyService.deleteStore(form);
+    storyService.getList(showList);
     showWarnModal("삭제되었습니다");
     $('#allSelect').prop("checked", false);
 })

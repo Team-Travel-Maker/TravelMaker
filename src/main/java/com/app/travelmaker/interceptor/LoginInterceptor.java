@@ -21,9 +21,8 @@ public class LoginInterceptor extends AccountSupport implements HandlerIntercept
 
     String referer = request.getHeader("referer");
 
-        if(authenticationInfo() != null && (authenticationInfo().getMemberJoinAccountType().equals(MemberJoinAccountType.NAVER)||
-                authenticationInfo().getMemberJoinAccountType().equals(MemberJoinAccountType.KAKAO) ||
-                authenticationInfo().getMemberJoinAccountType().equals(MemberJoinAccountType.GOOGLE))){
+        /** 일반 로그인 아니고 SNS 로그인 시도 시 회원가입 추가 정보창으로 이동할 수 있게 */
+        if(authenticationInfo() != null && (!authenticationInfo().getMemberJoinAccountType().equals(MemberJoinAccountType.GENERAL))){
             return true;
         }
 
