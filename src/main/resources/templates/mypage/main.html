@@ -15,29 +15,67 @@
     <div th:replace="~{header/signedIn-header :: #header}"></div>
 </div>
 <section class="main-section">
+    <input type="hidden" class="member-type" th:value="${#authentication.getPrincipal().memberResponseDTO.memberRole.code}">
     <h2 class="main-title">MY 페이지</h2>
     <div class="main-container">
         <aside class="main-aside">
             <div class="aside-container">
                 <div class="aside-profile">
                     <div class="profile-avatar-root profile-avatar-size profile-avatar-circle">
-                        <img alt="이수정 프로필 이미지"
-                             src="https://static.wanted.co.kr/oneid-user/7FphjrQG6VkrZRGDSTvWxe/28969e42962d9b53fb6952d38113d3e903b831f0f53822add47d337aa32ff206"
-                             class="profile-avatar-img"
-                             style="vertical-align: middle;"></div>
-                    <a href="https://id.wanted.jobs/profile/myinfo?amp_device_id=X-L6RuM4_ePsYwBaOEdFHU&amp;service=wanted"
-                       class="aside-profile-a" target="_blank">
+                        <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
+                            <img alt="프로필 이미지"
+                                 th:src="${#authentication.getPrincipal().memberResponseDTO.snsProFile}"
+                                 class="profile-avatar-img"
+                                 style="vertical-align: middle;">
+                        </th:block>
+                        <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
+                            <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">
+                                <img alt="프로필 이미지"
+                                     th:src="'https://static.wanted.co.kr/oneid-user/profile_default.png'"
+                                     class="profile-avatar-img"
+                                     style="vertical-align: middle;">
+                            </th:block>
+                            <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">
+                                <img alt="프로필 이미지"
+                                     th:src="'/api/files/display?fileName=' +
+                                    ${#authentication.getPrincipal().memberResponseDTO.filePath} + '/' +
+                                    ${#authentication.getPrincipal().memberResponseDTO.fileUuid} + '_' +
+                                    ${#authentication.getPrincipal().memberResponseDTO.fileName}"
+                                     class="profile-avatar-img"
+                                     style="vertical-align: middle;">
+                            </th:block>
+
+                        </th:block>
+                    </div>
+                    <a href="/mypage/accountManage"
+                       class="aside-profile-a">
                         <dl>
-                            <dt>이수정</dt>
-                            <dd>dodunge@naver.com</dd>
-                            <dd>010-5478-3506</dd>
+                            <dt th:text="${#authentication.getPrincipal().memberResponseDTO.memberName}">이수정</dt>
+                            <dd th:text="${#authentication.getPrincipal().memberResponseDTO.memberEmail}">dodunge@naver.com</dd>
+                            <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('NAVER')}">
+                                <dd th:text="${#authentication.getPrincipal().memberResponseDTO.member}">010-5478-3506</dd>
+                            </th:block>
+                            <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('NAVER')}">
+                                <dd th:text="${#strings.substring(#authentication.getPrincipal().memberResponseDTO.memberPhone, 0, 3)} + '-' +
+                                             ${#strings.substring(#authentication.getPrincipal().memberResponseDTO.memberPhone, 3, 7)} + '-' +
+                                             ${#strings.substring(#authentication.getPrincipal().memberResponseDTO.memberPhone, 7)}">010-5478-3506</dd>
+                            </th:block>
+
                         </dl>
                     </a>
                     <div class="aside-interest-tags">
-                        <a href="/profile/interests" class="">
+                        <a href="/mypage/interestsRegion" class="">
                             <p>
                                 <em>관심태그</em>
-                                <span class="aside-interest-tags-span">IT/기술, UX/UI, 데이터, 커리어고민, 개발, 취업/이직, 인간관계, 회사생활</span>
+                                <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberInterestRegion == null
+                                            or #authentication.getPrincipal().memberResponseDTO.memberInterestRegion.equals('')}">
+                                    <span class="aside-interest-tags-span">관심지역이 없습니다.</span>
+                                </th:block>
+                                <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.memberInterestRegion == null
+                                            or #authentication.getPrincipal().memberResponseDTO.memberInterestRegion.equals('')}">
+                                    <span class="aside-interest-tags-span"
+                                          th:text="${#authentication.getPrincipal().memberResponseDTO.memberInterestRegion}"></span>
+                                </th:block>
                             </p>
                             <svg width="12" height="12" viewBox="0 0 12 12">
                                 <path fill="currentColor"
@@ -47,26 +85,41 @@
                     </div>
                 </div>
                 <div class="aside-point">
-                    <a href="/profile/point" class="">
+                    <a href="/mypage/points" class="">
                         <span>포인트</span>
-                        <strong>0P</strong>
+                        <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberEcoPoint==null}">
+                            <strong>0P</strong>
+                        </th:block>
+                        <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.memberEcoPoint==null}">
+                            <strong>
+                                <span th:text="${#authentication.getPrincipal().memberResponseDTO.memberEcoPoint}">0</span>P
+                            </strong>
+                        </th:block>
                     </a>
                 </div>
+                <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberRole.code.equals('COMPANY')}">
+                    <div class="aside-company">
+                        <a href="/mypage/company/list" class="my-company-list">
+                            <span>업체 목록</span>
+                            <strong class="company-cnt">0</strong>
+                        </a>
+                        <a href="/mypage/company/registration" class="">
+                            <span>업체 등록</span>
+                        </a>
+                    </div>
+                </th:block>
                 <div class="aside-inquiry">
-                    <a href="/profile/status?type=matchup-offers" class="">
-                        <span>업체 등록</span>
-                    </a>
-                    <a href="/profile/status?type=matchup-likes" class="">
+                    <a href="/mypage/my/list-detail" class="my-custom-service">
                         <span>문의/신고</span>
-                        <strong class="">0</strong>
+                        <strong class="custom-service-cnt">0</strong>
                     </a>
-                    <a href="/profile/status?type=matchup-opens" class="">
+                    <a href="/mypage/giftCard" class="my-giftcard-list">
                         <span>보유 상품권</span>
-                        <strong class="">0</strong>
+                        <strong class="gift-card-cnt">0</strong>
                     </a>
                 </div>
                 <div class="aside_setting">
-                    <a href="/profile/settings" class="">계정 설정</a>
+                    <a href="/mypage/alarm" class="">계정 설정</a>
                 </div>
             </div>
         </aside>
@@ -98,14 +151,15 @@
                 <div class="manage-info">
                     <div class="manage-title">
                         <h2>북마크</h2>
-                        <a href="/profile/bookmarks" class="">총 2개 전체보기
+                        <a href="/mypage/bookmarks" class="">
+                            총 <span class="bookmarks-count">2</span>개 전체보기
                             <svg width="12" height="12" viewBox="0 0 12 12">
                                 <path fill="currentColor"
                                       d="M3.345 9.72a.75.75 0 0 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25a.75.75 0 0 0-1.06 1.06L7.065 6l-3.72 3.72z"></path>
                             </svg>
                         </a>
                     </div>
-                    <ul>
+                    <ul class="bookmarks-list">
                         <li class="manage-info-li">
                             <a href="/wd/172523" class="">
                                 <div class="manage-info-logo"
@@ -137,14 +191,15 @@
                 <div class="manage-info">
                     <div class="manage-title">
                         <h2>좋아요</h2>
-                        <a href="/profile/likes" class="">총 5개 전체보기
+                        <a href="/mypage/likes" class="">
+                            총 <span class="likes-count">5</span>개 전체보기
                             <svg width="12" height="12" viewBox="0 0 12 12">
                                 <path fill="currentColor"
                                     d="M3.345 9.72a.75.75 0 0 0 1.06 1.06l4.25-4.25a.75.75 0 0 0 0-1.06l-4.25-4.25a.75.75 0 0 0-1.06 1.06L7.065 6l-3.72 3.72z"></path>
                             </svg>
                         </a>
                     </div>
-                    <ul data-cy="mywanted-list-likes">
+                    <ul class="likes-list">
                         <li class="manage-info-li">
                             <a href="/wd/173529" class="">
                                 <div class="manage-info-logo"
@@ -202,5 +257,6 @@
 </section>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="/js/header/header.js"></script>
+<script src="/js/mypage/main.js"></script>
 </body>
 </html>

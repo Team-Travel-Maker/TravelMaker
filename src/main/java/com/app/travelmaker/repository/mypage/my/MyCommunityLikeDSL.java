@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface MyCommunityLikeDSL {
     List<MyCommunityLikeDTO> getCommunityLikes(Long memberId);
+
+    Long getCommunityLikesCount(Long memberId);
+
+    List<MyCommunityLikeDTO> getCommunityLikesMax3(Long memberId);
 }

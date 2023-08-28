@@ -67,7 +67,7 @@
                   </a>
               </li>
               <li>
-                  <a href="#">
+                  <a href="/shops/purchase">
                       SHOP
                   </a>
               </li>
@@ -103,10 +103,17 @@
                               </div>
                               </th:block>
                               <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
-                                  <div class="profile-img" style="
-                                  background-image: url(https://static.wanted.co.kr/oneid-user/profile_default.png), url(https://static.wanted.co.kr/images/profile_default.png);
-                              ">
-                                  </div>
+                                  <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">
+                                      <div class="profile-img" th:style="'background-image:url(https://static.wanted.co.kr/oneid-user/profile_default.png'">
+                                      </div>
+                                  </th:block>
+                                  <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">
+                                      <div class="profile-img" th:style="'background-image:url(/api/files/display?fileName=' +
+                                                                        ${#authentication.getPrincipal().memberResponseDTO.filePath} + '/' +
+                                                                        ${#authentication.getPrincipal().memberResponseDTO.fileUuid} + '_' +
+                                                                        ${#authentication.getPrincipal().memberResponseDTO.fileName} + ');'">
+                                      </div>
+                                  </th:block>
                               </th:block>
                           </div>
                       </button>
@@ -117,27 +124,27 @@
                           <div class="mypage-dropdown-menu-wrap">
                               <ul class="mypage-dropdown-menu-ul mypage-dropdown-menu-ul2">
                                   <li class="mypage-dropdown-menu-li">
-                                      <a href="#" class="">
+                                      <a href="/mypage/main" class="">
                                           <span>MY 페이지</span>
                                       </a>
                                   </li>
                                   <li class="">
-                                      <a href="#" class="">
+                                      <a href="/mypage/alarm" class="">
                                           <span>계정 설정</span>
                                       </a>
                                   </li>
                                   <li class="">
-                                      <a href="#" class="">
+                                      <a href="/mypage/points" class="">
                                           <span>포인트</span>
                                       </a>
                                   </li>
                                   <li class="">
-                                      <a href="#" class="">
+                                      <a href="/mypage/likes" class="">
                                           <span>좋아요</span>
                                       </a>
                                   </li>
                                   <li class="">
-                                      <a href="#" class="">
+                                      <a href="/mypage/bookmarks" class="">
                                           <span>북마크</span>
                                       </a>
                                   </li>
@@ -147,14 +154,16 @@
                                       </a>
                                   </li>
                                   <li class="">
-                                      <a href="#" class="">
+                                          <a href="/mypage/my/list-detail" class="">
                                           <span>MY 문의/신고</span>
                                       </a>
                                   </li>
                                   <li>
-                                      <button type="button" class="is-logout">
-                                          <span>로그아웃</span>
-                                      </button>
+                                      <a href="/accounts/logout">
+                                          <button type="button" class="is-logout" style="padding-top: 20px !important;">
+                                              <span>로그아웃</span>
+                                          </button>
+                                      </a>
                                   </li>
                               </ul>
                           </div>

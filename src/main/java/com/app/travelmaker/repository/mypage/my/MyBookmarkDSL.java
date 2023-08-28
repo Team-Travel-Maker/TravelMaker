@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface MyBookmarkDSL {
     List<MyBookmarkDTO> getBookMarks(Long id);
+
+    Long getBookMarksCount(Long memberId);
+
+    List<MyBookmarkDTO> getBookMarksMax4(Long memberId);
 }

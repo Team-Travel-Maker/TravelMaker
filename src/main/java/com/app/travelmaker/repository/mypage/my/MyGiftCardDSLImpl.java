@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
+import static com.app.travelmaker.entity.cs.QCustomService.customService;
 import static com.app.travelmaker.entity.file.QFile.file;
 import static com.app.travelmaker.entity.giftcard.QGiftCard.giftCard;
 import static com.app.travelmaker.entity.giftcard.QGiftCardFile.giftCardFile;
@@ -43,5 +44,13 @@ public class MyGiftCardDSLImpl implements MyGiftCardDSL{
                 .orderBy(pay.id.desc())
                 .fetch();
 
+    }
+
+    @Override
+    public Long getGiftCardCount(Long memberId) {
+        return query.select(pay.count())
+                .from(pay)
+                .where(pay.member.id.eq(memberId))
+                .fetchOne();
     }
 }

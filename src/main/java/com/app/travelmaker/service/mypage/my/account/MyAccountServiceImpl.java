@@ -92,4 +92,10 @@ public class MyAccountServiceImpl extends AccountSupport implements MyAccountSer
         authenticationInfo().setMemberPhone(mobile);
         memberRepository.updateMobile(authenticationInfo().getId(), mobile);
     }
+
+    @Override
+    public void setInterestsRegion(String interestsStr) {
+        authenticationInfo().setMemberInterestRegion(interestsStr);
+        memberRepository.setInterestsRegion(authenticationInfo().getId(), interestsStr);
+    }
 }
