@@ -61,14 +61,11 @@ $(document).ready(function() {
                 const goWithList = data.content;
                 const hasNextPage = data.hasNext;
 
-                // 여기에서 goWithList 데이터를 가지고 화면에 추가하는 작업을 수행합니다.
-                // 예를 들어, DOM 요소를 생성하여 추가하거나 템플릿 엔진을 사용할 수 있습니다.
-                // 아래는 예시로 제목만 화면에 추가하는 부분입니다.
-                goWithList.forEach(goWith => {
-                    const item = document.createElement("div");
-                    item.textContent = goWith.title;
-                    document.getElementById("goWithList").appendChild(item);
-                });
+                // goWithList.forEach(goWith => {
+                //     const item = document.createElement("div");
+                //     item.textContent = goWith.title;
+                //     document.getElementById("goWithList").appendChild(item);
+                // });
 
                 if (hasNextPage) {
                     currentPage++;

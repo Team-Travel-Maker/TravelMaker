@@ -2,7 +2,7 @@ package com.app.travelmaker.domain.gowith;
 
 import com.app.travelmaker.constant.GoWithRegionType;
 import com.app.travelmaker.constant.MbtiType;
-import com.app.travelmaker.domain.member.response.MemberResponseDTO;
+import com.app.travelmaker.entity.mebmer.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,14 +20,14 @@ public class GoWithDTO {
         private Long id;
         private String goWithTitle;
         private String goWithContent;
+        private Long replyCount;
         private GoWithRegionType goWithRegionType;
         private MbtiType goWithMbti;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
-        @Builder.Default
+        private Member member;
+
         private List<GoWithFileDTO> files = new ArrayList<>();
-        @Builder.Default
         private boolean deleted = Boolean.FALSE;
-        private MemberResponseDTO member;
 
 }
