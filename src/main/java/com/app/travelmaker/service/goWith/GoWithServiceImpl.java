@@ -22,17 +22,6 @@ public class GoWithServiceImpl implements GoWithService {
         return goWithRepository.findAllWithSliceAndSorting(pageable,region);
     }
 
-    @Override
-    @Transactional
-    public Slice<GoWithDTO> getListBySlice(Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    @Transactional
-    public GoWithDTO toGoWithDTO(GoWith goWith) {
-        return null;
-    }
 
     @Override
     @Transactional
@@ -40,6 +29,22 @@ public class GoWithServiceImpl implements GoWithService {
         return goWithRepository.getList(pageable,region);
     }
 
+    @Override
+    @Transactional
+    public GoWithDTO getGoWith(Long id) {
+        return goWithRepository.getGoWith(id);
+    }
+
+    @Override
+    @Transactional
+    public void write(GoWithDTO goWithDTO) {
+        goWithRepository.save(toEntity(goWithDTO));
+    }
+
+    @Override
+    public void update(GoWithDTO goWithDTO) {
+
+    }
 //    @Override
 //    @Transactional
 //    public Slice<GoWithDTO> getListBySliceAndSorting(Pageable pageable, GoWithRegionType region) {

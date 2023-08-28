@@ -7,10 +7,9 @@ import com.app.travelmaker.repository.member.MemberRepository;
 import com.app.travelmaker.service.goWith.GoWithService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Slice;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -29,32 +28,31 @@ public class GoWithApiController {
 //        }else { //OAuth 로그인
 //
 //        }
+    //작성
+//    @PostMapping("goWith-registration")
+
     @GetMapping("goWith-list")
-    @ResponseBody
-//    public Slice<GoWithDTO> getList(@PageableDefault(page = 0, size = 10) Pageable pageable,
-//                                    @RequestParam(name="region",required = false)GoWithRegionType region) {
-//        final Slice<GoWithDTO> gowiths = goWithService.getListBySliceAndSorting(pageable, region);
-//        log.info("===========================================================");
-//        log.info("hasNext(): {}", gowiths.hasNext());
-////        return gowiths;
-//        if (region != null) {
-//            return goWithService.getListBySliceAndSorting(pageable, region);
-//        } else {
-//            return goWithService.getListBySlice(pageable);
-//        }
-    public ResponseEntity<Slice<GoWithDTO>> getList(
-            @PageableDefault(page = 0, size = 10) Pageable pageable,
-            @RequestParam(name = "region", required = false) GoWithRegionType region) {
+    public Page<GoWithDTO> getList(@PageableDefault(size = 10, page = 0) Pageable pageable, GoWithRegionType regionType){
+    return goWithService.getList(pageable,regionType);
+}
 
-        final Slice<GoWithDTO> gowiths = goWithService.getListBySliceAndSorting(pageable, region);
-        log.info("===========================================================");
-        log.info("hasNext(): {}", gowiths.hasNext());
-
-        if (region != null) {
-            return ResponseEntity.ok(goWithService.getListBySliceAndSorting(pageable, region));
-        } else {
-            return ResponseEntity.ok(goWithService.getListBySlice(pageable));
-        }
+    //    게시글 조회
+    @GetMapping("goWith-detail/{id}")
+    public GoWithDTO getPost(@PathVariable Long id) {
+        return goWithService.getGoWith(id);
     }
+
+    //게시글 수정
+    // @PutMapping("modify")
+    //    public void changeStatus(@RequestPart(value = "result") StoreResponseDTO result){
+    //        log.info(result.toString());
+    //        storeAdminService.modifyStatus(result);
+    //    }
+    //게시글 삭제
+    //    @DeleteMapping("")
+    //    public void delete(@RequestPart List<Long> ids){
+    //        storeAdminService.deleteStore(ids);
+    //    }
+    //}
 
 }

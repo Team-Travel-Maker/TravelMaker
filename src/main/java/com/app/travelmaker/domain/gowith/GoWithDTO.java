@@ -14,7 +14,6 @@ import java.util.List;
 
 @NoArgsConstructor
 @Data
-@Builder
 @AllArgsConstructor
 public class GoWithDTO {
         private Long id;

@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static com.app.travelmaker.entity.goWith.QGoWith.goWith;
@@ -21,6 +20,8 @@ public class GoWithDSLImpl implements GoWithDSL {
     @Autowired
     private JPAQueryFactory query;
 
+
+//무한 스크롤
     @Override
     public Slice<GoWith> findAllWithSliceAndSorting(Pageable pageable, GoWithRegionType region) {
 //        사용자가 요청한 페이지의 게시글 개수를 +1개 가져온다.
@@ -82,13 +83,35 @@ public class GoWithDSLImpl implements GoWithDSL {
     }
 
     @Override
-    public Optional<GoWithDTO> findGoWithById(Long id) {
-//        return Optional.ofNullable(query.selectFrom(goWith).where(goWith.id.eq(id)).fetchOne());
+    public GoWithDTO getGoWith(Long id) {
+        List<GoWithFileDTO> files = getFiles();
+        GoWithDTO goWithDTO =
+        query.select(Projections.fields(GoWithDTO.class,
+                goWith.id,
+                goWith.goWithTitle,
+                goWith.goWithContent,
+                goWith.goWithRegionType,
+                goWith.goWithMbti,
+                goWith.member.memberName,
+                goWith.createdDate
+        )).from(goWith)
+                .where(goWith.deleted.eq(false).and(goWith.id.eq(id))).fetchOne();
+
+        files =files.stream().filter(file -> file.getGoWithId().equals(goWithDTO.getId())).collect(Collectors.toList());
+        goWithDTO.setFiles(files);
+
+        return goWithDTO;
     }
 
-
-    @Override
-    public void delete(Long id) {
-
+    private List<GoWithFileDTO> getFiles() {
+        return query.select(Projections.fields(GoWithFileDTO.class,
+                goWithFile.id,
+                goWithFile.fileName,
+                goWithFile.filePath,
+                goWithFile.fileSize,
+                goWithFile.fileUuid,
+                goWithFile.fileType,
+                goWithFile.goWith.id.as("goWithId")
+        )).from(goWithFile).where(goWithFile.goWith.id.eq(goWith.id).and(goWithFile.deleted.eq(false))).fetch();
     }
 }
