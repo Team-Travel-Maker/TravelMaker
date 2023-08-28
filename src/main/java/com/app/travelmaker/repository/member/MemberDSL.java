@@ -35,4 +35,6 @@ public interface MemberDSL {
     void updateMemberName(Long memberId, String memberName);
 
     void updateMobile(Long memberId, String mobile);
+
+    void setInterestsRegion(Long memberId, String interestsStr);
 }

@@ -19,7 +19,7 @@
 <body style="background-color: #f8f8f8 !important;">
 
 <!-- 헤더 -->
-<div th:replace="~{header/header :: #header}"></div>
+<div  th:replace="~{header/signedin-header :: #signedin-header}"></div>
 
 <div class="content-wrapper">
     <!--    사이드 바 -->
@@ -174,7 +174,7 @@
             <section class="recommendedPostView-wrapper">
                 <div class="topPickPostView-header" >
                     <div class="topPickPostView-header-title">
-                        <span>나의 문의 내역</span>
+                        <span class="topPickPostView-header-title-span">나의 문의 내역</span>
                     </div>
                 </div>
                 <div class="search" style="display: flex; justify-content: space-between">
@@ -696,6 +696,6 @@
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="/js/mypage/list-detail.js"></script>
-
+<script src="/js/header/header.js"></script>
 
 </html>

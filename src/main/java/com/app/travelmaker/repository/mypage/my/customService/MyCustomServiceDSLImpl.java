@@ -109,6 +109,15 @@ public class MyCustomServiceDSLImpl implements MyCustomServiceDSL {
         return new PageImpl<>(customServices, pageable, count);
     }
 
+    @Override
+    public Long getCustomServiceCount(Long memberId) {
+        return query.select(customService.count())
+                .from(customService)
+                .where(customService.member.id.eq(memberId)
+                        .and(customService.deleted.eq(false)))
+                .fetchOne();
+    }
+
     private List<CsAnswerResponseDTO> getAnswers(Long memberId){
         return query.select(Projections.fields(CsAnswerResponseDTO.class,
                 csAnswer.id,

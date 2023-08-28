@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/mypage/company-list.css">
 </head>
 <body>
-<div th:replace="~{header/header :: #header}"></div>
+<div  th:replace="~{header/signedin-header :: #signedin-header}"></div>
 <div class="container-profile">
     <nav role="presentation" class="nav">
         <h2 class="nav-title">
@@ -26,7 +26,12 @@
                 <div class="points-div">
                     <div class="points-point">
                         <div class="point-label">포인트</div>
-                        <div class="point-value" th:text="${#authentication.getPrincipal().memberResponseDTO.memberEcoPoint}">0<sub> P</sub></div>
+                        <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberEcoPoint} == null">
+                            <div class="point-value">0<sub> P</sub></div>
+                        </th:block>
+                        <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.memberEcoPoint} == null">
+                            <div class="point-value" th:text="${#authentication.getPrincipal().memberResponseDTO.memberEcoPoint}">0<sub> P</sub></div>
+                        </th:block>
                         <div class="point-expire">7일 이내 소멸 포인트 0 p</div>
                     </div>
                     <!--                    i 아이콘-->
@@ -148,4 +153,5 @@
     });
 </script>
 <script src="/js/mypage/points.js"></script>
+<script src="/js/header/header.js"></script>
 </html>

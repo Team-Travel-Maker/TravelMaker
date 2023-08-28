@@ -584,3 +584,23 @@
 .css-1jkqjay:disabled span {
     color: var(--theme-palette-colors-gray-300);
 }
+
+/* 버튼 스타일 */
+.back-button {
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 50px;
+    left: 656px;
+}
+
+/* 버튼에 마우스를 올렸을 때 스타일 변경 */
+.back-button:hover {
+    background-color: #e1e2e3;
+}
+
+.back-button>img {
+    width: 50px;
+}

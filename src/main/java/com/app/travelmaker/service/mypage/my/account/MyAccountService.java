@@ -33,4 +33,6 @@ public interface MyAccountService {
     void updatePassword(String newPassword);
 
     void updateMobile(String mobile);
+
+    void setInterestsRegion(String interestsStr);
 }

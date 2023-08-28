@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>업체 등록하기</title>
@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/admin/modal.css"/>
 </head>
 <body>
+<div  th:replace="~{header/signedin-header :: #signedin-header}"></div>
 <div class="modal">
     <div class="warn-modal">
         <div id="content-wrap"></div>
@@ -18,6 +19,12 @@
         <header class="company-header">
             <div class="header-div">
                 <strong>업체 등록</strong>
+                <strong class="back-button" style="padding: 10px 30px;
+                               position: absolute;
+                               top: 8px;
+                               right: 0px;
+                               font-size: 20px;
+                               cursor: pointer"> ↩ </strong>
             </div>
             <div class="company-header-line"></div>
         </header>
@@ -132,4 +139,10 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="/js/mypage/registration.js"></script>
 <script src="/js/admin/modal.js"></script>
+<script src="/js/header/header.js"></script>
+<script>
+    $('.back-button').on('click', function () {
+        window.history.back();
+    })
+</script>
 </html>
