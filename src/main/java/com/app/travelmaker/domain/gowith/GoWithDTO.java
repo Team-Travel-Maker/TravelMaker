@@ -30,4 +30,12 @@ public class GoWithDTO {
         private List<GoWithFileDTO> files = new ArrayList<>();
         private boolean deleted = Boolean.FALSE;
 
+        @Builder
+        public GoWithDTO(Long id, String goWithTitle, String goWithContent, GoWithRegionType goWithRegionType, MbtiType goWithMbti) {
+                this.id = id;
+                this.goWithTitle = goWithTitle;
+                this.goWithContent = goWithContent;
+                this.goWithRegionType = goWithRegionType;
+                this.goWithMbti = goWithMbti;
+        }
 }
