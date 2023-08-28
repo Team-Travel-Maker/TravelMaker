@@ -42,11 +42,11 @@ public class AccountApiController {
         }else{
             memberService.join(memberRequestDTO);
             /*sns 계정 회원가입 할때 다시 session 에 넣어주기*/
-            Member member = memberService.findByMemberEmail(memberRequestDTO.getMemberEmail());
+ /*           Member member = memberService.findByMemberEmail(memberRequestDTO.getMemberEmail());
 
             MemberResponseDTO memberResponseDTO = new MemberResponseDTO(member);
 
-            session.setAttribute("member", memberResponseDTO);
+            session.setAttribute("member", memberResponseDTO);*/
 
         }
     }
@@ -70,8 +70,13 @@ public class AccountApiController {
 
     @PostMapping("/check/email")
     public Long sendMemberId(String memberEmail){
-        log.info(memberEmail);
         return  memberService.findIdByMemberEmail(memberEmail);
+    }
+
+    @PostMapping("/reset/pw/{id}")
+    public void reset(@PathVariable Long id, String newPassword, HttpSession session){
+         session.setAttribute("check", id);
+        memberService.resetPw(id, newPassword);
     }
 
 

@@ -397,3 +397,7 @@ TagPanel .TagPanel_tagWrapper .TagPanel_slider .TagPanel_scroll {
     box-shadow: 0 0 0 1px #36f inset;
     font-weight: 700;
 }
+
+.selected-cType{
+    margin-top: 10px;
+}

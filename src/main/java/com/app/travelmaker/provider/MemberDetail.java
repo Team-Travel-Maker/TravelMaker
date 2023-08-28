@@ -1,6 +1,7 @@
 package com.app.travelmaker.provider;
 
 import com.app.travelmaker.constant.Role;
+import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -20,14 +21,16 @@ public class MemberDetail implements UserDetails, Serializable {
     private String memberPassword;
     private Role memberRole;
     private Collection<? extends GrantedAuthority> authorities;
+    private MemberResponseDTO memberResponseDTO;
 
     @Builder
-    public MemberDetail(Long id, String memberId, String memberPassword, Role memberRole) {
+    public MemberDetail(Long id, String memberId, String memberPassword, Role memberRole, MemberResponseDTO memberResponseDTO) {
         this.id = id;
         this.memberId = memberId;
         this.memberPassword = memberPassword;
         this.memberRole = memberRole;
         this.authorities = AuthorityUtils.createAuthorityList(memberRole.getSecurityRole());
+        this.memberResponseDTO = memberResponseDTO;
     }
 
     @Override

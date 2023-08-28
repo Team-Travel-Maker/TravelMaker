@@ -288,7 +288,7 @@ $(document).ready(function () {
             return false;
         };
 
-        showWarnModal("공지 등록이 완료되었습니다.");
+        showWarnModal("공지 수정이 완료되었습니다.");
         $('.modal').on("click", function () {
             noticeRequestDTO.id = $('#noticeId').val();
             noticeRequestDTO.noticeTitle = $('#noticeTitle').val()

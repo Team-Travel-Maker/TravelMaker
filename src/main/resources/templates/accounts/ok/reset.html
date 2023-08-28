@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko_KR">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -10,7 +10,7 @@
             opacity: 0 !important;
         }
     </style>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+<!--    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>-->
     <link rel="stylesheet" href="/css/login/pass-common.css">
     <link rel="stylesheet" href="/css/login/password-reset.css">
 </head>
@@ -117,4 +117,19 @@
     </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="/js/login/pass-reset.js"></script>
+<script th:inline="javascript">
+    let memberId = [[${id}]]
+    console.log(memberId);
+    $continueBtn.on("click", function () {
+        $.ajax({
+            url: `/api/accounts/reset/pw/${memberId}`,
+            type: `post`,
+            data :{"newPassword" : $('#password').val()},
+            success: function(){
+                location.href=`/accounts/ok/reset-ok`;
+            },error:function () {
+            }
+        })
+    })
+</script>
 </html>

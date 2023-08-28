@@ -28,6 +28,6 @@ public class GiftCardFileDSLImpl implements GiftCardFileDSL {
                 giftCardFile.fileType,
                 giftCardFile.fileSize
             )
-        ).from(giftCardFile).where(giftCardFile.giftCard.id.eq(id)).fetch();
+        ).from(giftCardFile).where(giftCardFile.giftCard.id.eq(id).and(giftCardFile.deleted.eq(false))).fetch();
     }
 }

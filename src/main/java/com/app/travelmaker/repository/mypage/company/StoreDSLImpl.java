@@ -119,7 +119,7 @@ public class StoreDSLImpl implements StoreDSL {
                 store.updatedDate,
                 member.memberEmail
         )).from(store)
-                .innerJoin(store.member, member)
+                .innerJoin(store.member, member).on(store.deleted.eq(false))
                 .orderBy(store.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -186,7 +186,6 @@ public class StoreDSLImpl implements StoreDSL {
                 storeFile.store.id.as("storeId")
         )).from(storeFile).where(storeFile.store.id.eq(store.id).and(storeFile.deleted.eq(false))).fetch();
     }
-
 
 
 }

@@ -360,3 +360,7 @@
 .leave-close-btn>span {
     color: #939393;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}

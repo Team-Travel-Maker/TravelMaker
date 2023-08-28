@@ -14,7 +14,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <link rel="stylesheet" href="/css/login/login-common.css">
     <link rel="stylesheet" href="/css/login/login.css">
-    <link rel="stylesheet" href="/css/admin/modal.css" />
+    <link rel="stylesheet" href="/css/admin/modal.css"/>
 </head>
 <body style="overflow: unset;">
 <!-- 모달 부분 -->
@@ -35,126 +35,161 @@
                                       fill="var(--theme-palette-colors-black-100)"></path>
                             </svg>
                         </span></div>
-                        <h1
+                    <h1
                             color="var(--theme-palette-colors-black-100)"
                             class="login-h1-comment">하나의 계정으로<br>더욱 편리하게</h1>
-                        <h2
+                    <h2
                             color="var(--theme-palette-colors-gray-600)"
                             class="login-h2-comment">TeamMaker가 제공하는 서비스를<br>하나의 계정으로 모두 이용할 수 있습니다.</h2>
-                        <div>
-                            <div class="email-label-container">
-                                <label
+                    <div>
+                        <div class="email-label-container">
+                            <label
                                     data-testid="Typography"
                                     color="var(--theme-palette-colors-gray-600)"
                                     for="email_input"
                                     class="email-label">이메일</label>
-                            </div>
-                            <form name="login" action="/accounts/login/login" method="post">
-                            <input
-                                id="email_input"
-                                type="email"
-                                placeholder="이메일을 입력해주세요."
-                                name="memberEmail"
-                                class="email-input email-format-error-input"
-                                >
-                            </form>
                         </div>
-                        <p
+                        <form name="login" action="/accounts/login/login" method="post">
+                            <input
+                                    id="email_input"
+                                    type="email"
+                                    placeholder="이메일을 입력해주세요."
+                                    name="memberEmail"
+                                    class="email-input email-format-error-input"
+                            >
+                        </form>
+                    </div>
+                    <p
                             color="var(--theme-palette-colors-red-400)"
                             class="email-format-error-p">올바른 이메일을 입력해주세요.</p>
-                        <button
+                    <button
                             type="button"
                             data-attribute-id="signupLogin__start"
                             data-method="email"
                             class="continue-email-button"
                             disabled="">
                                 <span
-                                    color="var(--theme-palette-colors-black-100)"
-                                    class="continue-email-button-span">이메일로 계속하기</span>
-                        </button>
-                        <p
+                                        color="var(--theme-palette-colors-black-100)"
+                                        class="continue-email-button-span">이메일로 계속하기</span>
+                    </button>
+                    <p
                             color="var(--theme-palette-colors-gray-500)"
                             class="another-account-p">또는</p>
-                        <div class="another-account-container">
-                            <button
+                    <div class="another-account-container">
+                        <button sec:authorize="isAnonymous()"
                                 type="button"
                                 data-attribute-id="signupLogin__start"
                                 data-method="naver"
+                                onclick="location.href='/oauth2/authorization/naver'"
                                 class="naver-kakao-button">
                                 <span>
                                     <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="280"
-                                        height="280"
-                                        version="1.0"
-                                        viewBox="0 0 210 210">
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="280"
+                                            height="280"
+                                            version="1.0"
+                                            viewBox="0 0 210 210">
                                         <path
-                                            fill="#03C75AFF"
-                                            stroke="#03C75AFF"
-                                            d="M83 1.891C41.309 11.031 9.278 43.933 1.434 85.674c-2.24 11.923-1.55 34.532 1.389 45.501 10.001 37.323 38.228 65.578 76.002 76.079 6.564 1.824 10.354 2.133 26.175 2.133 15.821 0 19.611-.309 26.175-2.133 37.763-10.497 65.582-38.316 76.079-76.079 1.824-6.564 2.133-10.354 2.133-26.175 0-15.821-.309-19.611-2.133-26.175-10.5-37.772-38.696-65.944-76.079-76.012C119.963-.207 94.768-.689 83 1.891m7.321 64.359c.649.688 1.785 2.426 2.525 3.864.741 1.438 2.428 3.78 3.75 5.206C97.918 76.746 99 78.184 99 78.516 99 79.631 118.428 107 119.219 107c.429 0 .781-9.45.781-21V65h25v80.06l-12.662-.28-12.662-.28-2.088-3.692c-1.148-2.031-2.988-4.737-4.088-6.014-1.1-1.277-2.606-3.492-3.346-4.922-.741-1.43-2.428-3.766-3.75-5.192-1.322-1.426-2.404-2.861-2.404-3.189C104 120.369 91.601 103 90.8 103c-.44 0-.8 9.45-.8 21v21H65V65h12.071c8.362 0 12.434.384 13.25 1.25">
+                                                fill="#03C75AFF"
+                                                stroke="#03C75AFF"
+                                                d="M83 1.891C41.309 11.031 9.278 43.933 1.434 85.674c-2.24 11.923-1.55 34.532 1.389 45.501 10.001 37.323 38.228 65.578 76.002 76.079 6.564 1.824 10.354 2.133 26.175 2.133 15.821 0 19.611-.309 26.175-2.133 37.763-10.497 65.582-38.316 76.079-76.079 1.824-6.564 2.133-10.354 2.133-26.175 0-15.821-.309-19.611-2.133-26.175-10.5-37.772-38.696-65.944-76.079-76.012C119.963-.207 94.768-.689 83 1.891m7.321 64.359c.649.688 1.785 2.426 2.525 3.864.741 1.438 2.428 3.78 3.75 5.206C97.918 76.746 99 78.184 99 78.516 99 79.631 118.428 107 119.219 107c.429 0 .781-9.45.781-21V65h25v80.06l-12.662-.28-12.662-.28-2.088-3.692c-1.148-2.031-2.988-4.737-4.088-6.014-1.1-1.277-2.606-3.492-3.346-4.922-.741-1.43-2.428-3.766-3.75-5.192-1.322-1.426-2.404-2.861-2.404-3.189C104 120.369 91.601 103 90.8 103c-.44 0-.8 9.45-.8 21v21H65V65h12.071c8.362 0 12.434.384 13.25 1.25">
                                         </path>
                                     </svg>
                                 </span>
-                                <p
+                            <p
                                     color="var(--theme-palette-colors-gray-600)"
                                     class="button-p">Naver</p>
-                            </button>
-                            <button
+                        </button>
+                        <button sec:authorize="isAnonymous()"
+                                type="button"
+                                data-attribute-id="signupLogin__start"
+                                data-method="naver"
+                                onclick="location.href='/oauth2/authorization/google'"
+                                class="naver-kakao-button">
+                                <span>
+                                    <svg viewBox="0 0 57 56"
+                                         class="css-1h47l4s">
+                                        <path
+                                            fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M41.6657 28.3122C41.6657 27.34 41.5789 26.4044 41.4158 25.5068H28.5V30.8112H35.8813C35.5629 32.5255 34.5968 33.9792 33.1446 34.9514V38.3922H37.5758C40.1693 36.0044 41.6657 32.4889 41.6657 28.3122Z"
+                                            fill="#3D82F0">
+                                        </path>
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M28.5003 41.7146C32.2032 41.7146 35.3072 40.4864 37.5761 38.3927L33.1449 34.9504C31.9167 35.7733 30.3457 36.2594 28.5003 36.2594C24.9285 36.2594 21.9053 33.8472 20.8264 30.606H16.2443V34.1595C18.5011 38.6411 23.1396 41.7146 28.5003 41.7146Z"
+                                            fill="#31A752">
+                                        </path>
+                                        <path fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M20.8261 30.606C20.5518 29.7831 20.3964 28.9039 20.3964 28.0002C20.3964 27.0966 20.5518 26.2174 20.8261 25.3945V21.841H16.244C15.316 23.6924 14.7857 25.7877 14.7857 28.0002C14.7857 30.2128 15.316 32.3081 16.244 34.1595L20.8261 30.606Z"
+                                            fill="#F9BA00">
+                                        </path>
+                                        <path
+                                            fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M28.5003 19.7407C30.5133 19.7407 32.322 20.4325 33.7422 21.7917L37.6767 17.8588C35.3011 15.6447 32.1971 14.2855 28.5003 14.2855C23.1396 14.2855 18.5011 17.359 16.2443 21.842L20.8264 25.394C21.9053 22.1529 24.9285 19.7407 28.5003 19.7407Z"
+                                            fill="#E64234">
+                                        </path>
+                                    </svg>
+                                </span>
+                            <p color="var(--theme-palette-colors-gray-600)"
+                                    class="button-p">Google</p>
+                        </button>
+                        <button
                                 sec:authorize="isAnonymous()"
                                 type="button"
                                 data-attribute-id="signupLogin__start"
                                 data-method="kakao"
                                 class="naver-kakao-button"
                                 onclick="location.href='/oauth2/authorization/kakao'"
-                            >
+                        >
                                 <span>
                                     <svg viewbox="0 0 57 56">
                                         <path
-                                            d="M0.5 28C0.5 12.536 13.036 0 28.5 0C43.964 0 56.5 12.536 56.5 28C56.5 43.464 43.964 56 28.5 56C13.036 56 0.5 43.464 0.5 28Z"
-                                            fill="#FEE500"></path>
+                                                d="M0.5 28C0.5 12.536 13.036 0 28.5 0C43.964 0 56.5 12.536 56.5 28C56.5 43.464 43.964 56 28.5 56C13.036 56 0.5 43.464 0.5 28Z"
+                                                fill="#FEE500"></path>
                                         <path
-                                            fill-rule="evenodd"
-                                            clip-rule="evenodd"
-                                            d="M28.5 16.2063C21.5606 16.2063 15.9286 20.5812 15.9286 25.9617C15.9286 29.3183 18.1034 32.2474 21.4223 34.0326L20.0269 39.1492C20.0005 39.2509 20.006 39.3583 20.0424 39.4569C20.0788 39.5555 20.1446 39.6406 20.2307 39.7008C20.3169 39.761 20.4195 39.7934 20.5246 39.7937C20.6297 39.7939 20.7324 39.7621 20.8189 39.7023L26.9286 35.6417C27.444 35.6417 27.972 35.7297 28.5 35.7297C35.4394 35.7297 41.0714 31.3549 41.0714 25.9617C41.0714 20.5686 35.4394 16.2063 28.5 16.2063Z"
-                                            fill="#181600"></path>
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M28.5 16.2063C21.5606 16.2063 15.9286 20.5812 15.9286 25.9617C15.9286 29.3183 18.1034 32.2474 21.4223 34.0326L20.0269 39.1492C20.0005 39.2509 20.006 39.3583 20.0424 39.4569C20.0788 39.5555 20.1446 39.6406 20.2307 39.7008C20.3169 39.761 20.4195 39.7934 20.5246 39.7937C20.6297 39.7939 20.7324 39.7621 20.8189 39.7023L26.9286 35.6417C27.444 35.6417 27.972 35.7297 28.5 35.7297C35.4394 35.7297 41.0714 31.3549 41.0714 25.9617C41.0714 20.5686 35.4394 16.2063 28.5 16.2063Z"
+                                                fill="#181600"></path>
                                     </svg>
                                 </span>
-                                <p
+                            <p
                                     color="var(--theme-palette-colors-gray-600)"
                                     class="button-p">Kakao</p>
-                            </button>
-                        </div>
-                        <button type="button" class="forget-account-button" onclick="location.href=`/accounts/account/find`">
-                            <p
+                        </button>
+                    </div>
+                    <button type="button" class="forget-account-button"
+                            onclick="location.href=`/accounts/account/find`">
+                        <p
                                 color="var(--theme-palette-colors-gray-700)"
                                 class="forget-account-button-p">계정을 잊으셨나요?
-                                <span class="button-span">
+                            <span class="button-span">
                                     <svg
-                                        viewbox="0 0 12 12"
-                                        color="var(--theme-palette-colors-gray-600)"
-                                        class="button-span">
+                                            viewbox="0 0 12 12"
+                                            color="var(--theme-palette-colors-gray-600)"
+                                            class="button-span">
                                         <path
-                                            d="M3.34467 9.71967C3.05178 10.0126 3.05178 10.4874 3.34467 10.7803C3.63756 11.0732 4.11244 11.0732 4.40533 10.7803L8.65533 6.53033C8.94822 6.23744 8.94822 5.76256 8.65533 5.46967L4.40533 1.21967C4.11244 0.926777 3.63756 0.926777 3.34467 1.21967C3.05178 1.51256 3.05178 1.98744 3.34467 2.28033L7.06434 6L3.34467 9.71967Z"
-                                            fill="var(--theme-palette-colors-gray-600)"></path>
+                                                d="M3.34467 9.71967C3.05178 10.0126 3.05178 10.4874 3.34467 10.7803C3.63756 11.0732 4.11244 11.0732 4.40533 10.7803L8.65533 6.53033C8.94822 6.23744 8.94822 5.76256 8.65533 5.46967L4.40533 1.21967C4.11244 0.926777 3.63756 0.926777 3.34467 1.21967C3.05178 1.51256 3.05178 1.98744 3.34467 2.28033L7.06434 6L3.34467 9.71967Z"
+                                                fill="var(--theme-palette-colors-gray-600)"></path>
                                     </svg>
                                 </span>
-                            </p>
-                        </button>
-                        <hr class="division-hr">
-                        <div class="login-footer-container">
-                            <a
+                        </p>
+                    </button>
+                    <hr class="division-hr">
+                    <div class="login-footer-container">
+                        <a
                                 color="var(--theme-palette-colors-gray-700)"
                                 href="https://id.wanted.jobs/terms/ko"
                                 target="_blank"
                                 class="login-footer-a">이용약관</a>
-                            <a
+                        <a
                                 data-testid="Typography"
                                 color="var(--theme-palette-colors-gray-700)"
                                 href="https://id.wanted.jobs/privacy/ko?user=true"
                                 target="_blank"
                                 class="login-footer-a">개인정보처리방침</a>
-                        </div>
-                        <p
+                    </div>
+                    <p
                             color="var(--theme-palette-colors-gray-600)"
                             class="copyrigth-p">© TravelMaker, Inc.</p>
                     <form id="join-form" action="/accounts/join/join" method="post">
@@ -170,10 +205,14 @@
 <script th:inline="javascript">
     let error = [[${error}]];
     let exception = [[${exception}]];
-    if(error){
-        if(exception == "error1"){showWarnModal("아이디 또는 비밀번호를 잘못 입력했습니다.")}
-        else if(exception == "error2"){showWarnModal("탈퇴된 계정입니다")}
-        else{ showWarnModal("알 수 없는 오류입니다.")}
+    if (error) {
+        if (exception == "error1") {
+            showWarnModal("아이디 또는 비밀번호를 잘못 입력했습니다.")
+        } else if (exception == "error2") {
+            showWarnModal("탈퇴된 계정입니다")
+        } else {
+            showWarnModal("알 수 없는 오류입니다.")
+        }
 
     }
 </script>

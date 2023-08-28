@@ -3,7 +3,6 @@ package com.app.travelmaker.entity.file;
 import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.constant.FileType;
 import com.app.travelmaker.entity.mebmer.Member;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;

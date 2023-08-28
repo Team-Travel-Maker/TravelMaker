@@ -90,11 +90,19 @@
                   <li class="profile-container">
                       <button type="button" class="profile-button">
                           <div class="profile">
-                              <th:block th:if="${session.member.getMemberJoinAccountType().getCode().equals('KAKAO')}">
-                              <div class="profile-img" th:style="'background-image:url(' + ${session.member.getSnsProFile()} + ');'">
+                              <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('KAKAO')}">
+                              <div class="profile-img" th:style="'background-image:url(' + ${#authentication.getPrincipal().memberResponseDTO.snsProFile} + ');'">
                               </div>
                               </th:block>
-                              <th:block th:if="${session.member.getMemberJoinAccountType().getCode().equals('GENERAL')}">
+                              <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('NAVER')}">
+                              <div class="profile-img" th:style="'background-image:url(' + ${#authentication.getPrincipal().memberResponseDTO.snsProFile} + ');'">
+                              </div>
+                              </th:block>
+                              <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GOOGLE')}">
+                              <div class="profile-img" th:style="'background-image:url(' + ${#authentication.getPrincipal().memberResponseDTO.snsProFile} + ');'">
+                              </div>
+                              </th:block>
+                              <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
                                   <div class="profile-img" style="
                                   background-image: url(https://static.wanted.co.kr/oneid-user/profile_default.png), url(https://static.wanted.co.kr/images/profile_default.png);
                               ">

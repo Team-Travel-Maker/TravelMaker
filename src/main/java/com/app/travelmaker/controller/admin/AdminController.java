@@ -60,13 +60,13 @@ public class AdminController {
         return "/admins/inquiry/" + request.getRequestURI().split("/")[3];
     }
 
-    //상세 답변 완료된
+/*    //상세 답변 완료된
     @GetMapping("inquiry/answer-detail")
     public void goToInquiryAnswerDetail(){;}
 
     //답변 작성
     @GetMapping("inquiry/write")
-    public void goToInquiryAnswerWrite(){;}
+    public void goToInquiryAnswerWrite(){;}*/
 
 //    커뮤니티 관리
 
@@ -93,8 +93,14 @@ public class AdminController {
     public void goToCouponWrite(){;}
 
     //상품권 상세
-    @GetMapping("coupon/detail")
-    public void goToCouponDetail(){;}
+    @GetMapping(path = {"coupon/detail/{id}", "coupon/modify/{id}"})
+    public String goToCouponDetail(@PathVariable(value = "id", required = true) Long id, Model model, HttpServletRequest request){
+        model.addAttribute("couponId", id);
+        return "/admins/coupon/" + request.getRequestURI().split("/")[3];
+    }
+
+
+
 
     //상품권 수정
     @GetMapping("coupon/modify")
@@ -113,7 +119,7 @@ public class AdminController {
         return "/admins/store/detail";
         }
 
-    //업체 신청 답변
+/*    //업체 신청 답변
     @GetMapping("store/write")
     public void goToCompanyWrite(){;}
 
@@ -123,7 +129,10 @@ public class AdminController {
 
     //업체 신청 답변 받은 상세
     @GetMapping("store/answer-detail")
-    public void goToCompanyAnswerDetail(){;}
+    public void goToCompanyAnswerDetail(){;}*/
 
+    /*스토리 목록*/
+    @GetMapping("story/list")
+    public void goToStoryList(){;}
 
 }

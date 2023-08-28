@@ -1,9 +1,11 @@
 $(document).ready(function() {
+    $('#cType').val({"REVIEW": "일반 후기"})
+
     // 텍스트 영역의 높이를 자동으로 조절하는 함수
     function autoResizeTextarea() {
         // 모든 텍스트 영역 요소를 선택합니다
         $('.AutoTextarea_AutoTextarea').each(function() {
-            var $this = $(this);
+            let $this = $(this);
 
             // 스크롤 높이를 임시로 0으로 설정한 후, 스크롤 높이를 콘텐츠 높이에 맞게 조절합니다
             $this.css('height', 0);
@@ -27,6 +29,7 @@ $('.AutoTextarea_AutoTextarea').on('input',function(){
     if(write1 && write2){
         btn.css('backgroundColor','#36f');
         btn.css('color','#fff');
+        btn.prop("disabled", false);
     }else if(!write1 || !write2){
         btn.css('backgroundColor', '');
         btn.css('color', '');
@@ -46,10 +49,52 @@ function handleFileSelect(event) {
     const file = event.target.files[0];
 }
 
-var input = document.querySelector('input')
-var tagify = new Tagify(input);
+let input = document.querySelector('input')
+let tagify = new Tagify(input);
 
 // 태그가 추가되면 이벤트 발생
 tagify.on('add', function() {
     console.log(tagify.value); // 입력된 태그 정보 객체
 })
+
+// 글 등록 버튼
+const writeForm = $(".rt-btn");
+
+//
+
+$("button.rt-btn").on("click", function(){
+
+    // $.ajax({
+    //         type : 'post',           // 타입 (get, post, put 등등)
+    //         url : '/api/communities/board/write',           // 요청할 서버url
+    //         async : true,            // 비동기화 여부 (default : true)
+    //         headers : {              // Http header
+    //             "Content-Type" : "application/json",
+    //             "X-HTTP-Method-Override" : "POST"
+    //         },
+    //         dataType : 'json',       // 데이터 타입 (html, xml, json, text 등등)
+    //         contentType: "application/json; charset=utf-8",
+    //
+    //         data : JSON.stringify({  // 보낼 데이터 (Object , String, Array)
+    //
+    //
+    //         }),
+    //         success : function(result) { // 결과 성공 콜백함수
+    //
+    //             console.log("성공 여부" + result);
+    //         },
+    //         error : function(request, status, error) { // 결과 에러 콜백함수
+    //             console.log("에러 : " + error)
+    //         }
+    //     })
+
+
+
+
+
+    $("#write").submit();
+
+
+
+
+});

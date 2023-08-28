@@ -124,6 +124,7 @@ public class Member extends Period implements Serializable {
     private boolean deleted = Boolean.FALSE;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @Setter
     private File file;
 
 
@@ -140,18 +141,22 @@ public class Member extends Period implements Serializable {
         this.memberEmail = memberEmail;
     }
 
-/*    public void setAlarm(Alarm alarm) { this.alarm = alarm; }
-
-    public void setAddress(Address address) { this.address = address; }
-
-    public void setMemberPhone(String memberPhone) { this.memberPhone = memberPhone; }
-
-    public void setMemberJoinAccountType(MemberJoinAccountType memberJoinAccountType) { this.memberJoinAccountType = memberJoinAccountType; }*/
+    public void setMemberPhone(String memberPhone) {
+        this.memberPhone = memberPhone;
+    }
 
     public Member update(String memberName, String snsProfile, String memberEmail){
         this.setMemberName(memberName);
         this.setSnsProfile(snsProfile);
         this.setMemberEmail(memberEmail);
+        return this;
+    }
+
+    public Member update(String memberName, String snsProfile, String memberEmail, String memberPhone){
+        this.setMemberName(memberName);
+        this.setSnsProfile(snsProfile);
+        this.setMemberEmail(memberEmail);
+        this.setMemberPhone(memberPhone);
         return this;
     }
 

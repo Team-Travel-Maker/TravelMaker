@@ -1,6 +1,7 @@
 package com.app.travelmaker.handler;
 
-import com.app.travelmaker.common.LoginSupport;
+import com.app.travelmaker.common.AccountSupport;
+import com.app.travelmaker.constant.MemberJoinAccountType;
 import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.provider.MemberDetail;
@@ -25,9 +26,10 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class AuthenticationSuccessHandlerImpl extends LoginSupport implements AuthenticationSuccessHandler {
+public class AuthenticationSuccessHandlerImpl extends AccountSupport implements AuthenticationSuccessHandler {
     private final HttpSession session;
     private static String path = "/";
+    private final String ADMIN_PATH = "/admins/notice/list";
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
@@ -38,10 +40,18 @@ public class AuthenticationSuccessHandlerImpl extends LoginSupport implements Au
 
         log.info(list.get(0).toString());
 
+        
+        /** 관리자 로그인 핸들러*/
+        if(list.get(0).toString().equals(Role.ADMIN.getSecurityRole())){
+            response.sendRedirect(ADMIN_PATH);
+            return;
+        }
+
+
         /** OAuth 로그인 하여 추가 정보 입력하다가 메인으로 넘어가면 다시 로그인 했을때 다시 추가정보입력하게 검사*/
         if(list.get(0).toString().equals(Role.WAIT.getSecurityRole())){
-            MemberResponseDTO memberDTO = ((MemberResponseDTO)session.getAttribute("member"));
-            if(memberDTO.getMemberPhone() == null){
+            MemberResponseDTO memberDTO = authenticationInfo();
+            if(!memberDTO.getMemberJoinAccountType().equals(MemberJoinAccountType.GENERAL)){
                 response.sendRedirect("/accounts/join/join");
                 return;
             }
@@ -58,16 +68,8 @@ public class AuthenticationSuccessHandlerImpl extends LoginSupport implements Au
             }
         }
 
-/*        log.info("===================");
-        log.info(String.valueOf(authentication.getPrincipal() instanceof  MemberDetail));
-        log.info("=================");
-        log.info(authentication.getName());
-        log.info(authentication.getPrincipal().toString());*/
-
            if(authentication.getPrincipal() instanceof MemberDetail){
             /** 일반 로그인 핸들러 기본적*/
-            /*로그인 정보 세션에 담기*/
-            authenticationInfo();
             // 있을 경우 URI 등 정보를 가져와서 사용
             if (savedRequest != null) {
                 String anotherPath = savedRequest.getRedirectUrl();
