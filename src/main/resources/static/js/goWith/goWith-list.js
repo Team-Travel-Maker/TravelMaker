@@ -1,17 +1,17 @@
-// 더미데이터
-// function reqList(){
-//     let sendData = {
-//         posts : [
-//             { localNo : 1, title : "서울가자", content : "같이가자", name: "정범진" },
-//             { localNo : 2, title : "경기가자", content : "같이가자", name: "정범진" },
-//             { localNo : 3, title : "충남가자", content : "같이가자", name: "정범진" },
-//             { localNo : 4, title : "부산가자", content : "같이가자", name: "정범진" }
-//         ]
-//     }
-// }
-
+// // function reqList(){
+// //     let sendData = {
+// //         posts : [
+// //             { localNo : 1, title : "서울가자", content : "같이가자", name: "정범진" },
+// //             { localNo : 2, title : "경기가자", content : "같이가자", name: "정범진" },
+// //             { localNo : 3, title : "충남가자", content : "같이가자", name: "정범진" },
+// //             { localNo : 4, title : "부산가자", content : "같이가자", name: "정범진" }
+// //         ]
+// //     }
+// // }
+//
 // $(document).ready(function() {
 //     let selectLocal = $(".Button-local span:first").text();
+//     console.log(selectLocal);
 //
 //     console.log("지역 : " + selectLocal);
 //     $(".Button-local").on("click", function() {
@@ -20,13 +20,9 @@
 //
 //         console.log("지역 : " + local);
 //
-//
-//
-//
-//
 //         $.ajax({
 //             type : 'post',           // 타입 (get, post, put 등등)
-//             url : '/goWith/goWith-list',           // 요청할 서버url
+//             url : '/api/goWith/goWith-list',           // 요청할 서버url
 //             async : true,            // 비동기화 여부 (default : true)
 //             headers : {              // Http header
 //                 "Content-Type" : "application/json",
@@ -50,3 +46,44 @@
 //
 //     })
 // })
+//
+//
+const $goWithList = $('.postItem');
+console.log($goWithList);
+
+$(document).ready(function() {
+    let currentPage = 0;
+    let currentRegion = null;
+
+    function loadGoWithList() {
+        $.get(`/api/goWith/goWith-list?region=${currentRegion}&page=${currentPage}&size=10`)
+            .done(data => {
+                const goWithList = data.content;
+                const hasNextPage = data.hasNext;
+
+                // goWithList.forEach(goWith => {
+                //     const item = document.createElement("div");
+                //     item.textContent = goWith.title;
+                //     document.getElementById("goWithList").appendChild(item);
+                // });
+
+                if (hasNextPage) {
+                    currentPage++;
+                    loadGoWithList(); // 더 많은 데이터를 가져올 경우 재귀 호출로 처리
+                }
+            })
+            .fail(error => {
+                console.error("Error loading GoWith list:", error);
+            });
+    }
+
+    // 지역 버튼 클릭 이벤트 처리
+    $(".Button-local").on("click", function() {
+        const local = $(this).find("span.Button-label").text();
+        currentRegion = local;
+        currentPage = 0;
+
+        $("#goWithList").empty(); // 기존 목록 초기화
+        loadGoWithList(); // 선택한 지역의 데이터 로드
+    });
+});

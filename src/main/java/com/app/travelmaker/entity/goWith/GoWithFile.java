@@ -1,15 +1,17 @@
 package com.app.travelmaker.entity.goWith;
 
-import com.app.travelmaker.auditing.Period;
-import com.app.travelmaker.entity.eco.Eco;
 import com.app.travelmaker.entity.file.File;
-import lombok.EqualsAndHashCode;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  * GoWith File Entity (같이 가요 파일 중간 테이블)
@@ -17,7 +19,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "TBL_GOWITH_FILE")
+@SuperBuilder
 @Getter @ToString
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE TBL_GOWITH_FILE SET DELETED = 1 WHERE ID = ?")
 public class GoWithFile extends File {
 

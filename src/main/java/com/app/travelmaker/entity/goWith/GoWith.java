@@ -4,9 +4,8 @@ import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.constant.GoWithRegionType;
 import com.app.travelmaker.constant.MbtiType;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.SQLDelete;
 
 import javax.persistence.*;
@@ -19,6 +18,8 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "TBL_GOWITH")
 @Getter @ToString
+@SuperBuilder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLDelete(sql = "UPDATE TBL_GOWITH SET DELETED = 1 WHERE ID = ?")
 public class GoWith extends Period {
 
