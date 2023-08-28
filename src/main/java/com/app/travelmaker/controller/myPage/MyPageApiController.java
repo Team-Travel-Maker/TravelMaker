@@ -5,16 +5,10 @@ import com.app.travelmaker.constant.PointCateGoryType;
 import com.app.travelmaker.domain.cs.response.CustomServiceResponseDTO;
 import com.app.travelmaker.domain.file.FileDTO;
 import com.app.travelmaker.domain.mypage.company.StoreDTO;
-import com.app.travelmaker.domain.mypage.my.MyBookmarkDTO;
-import com.app.travelmaker.domain.mypage.my.MyCommunityLikeDTO;
-import com.app.travelmaker.domain.mypage.my.MyGiftCardDTO;
-import com.app.travelmaker.domain.mypage.my.MyStoryLikeDTO;
+import com.app.travelmaker.domain.mypage.my.*;
 import com.app.travelmaker.domain.mypage.my.point.MyPointDTO;
 import com.app.travelmaker.service.mypage.company.StoreService;
-import com.app.travelmaker.service.mypage.my.MyBookmarkService;
-import com.app.travelmaker.service.mypage.my.MyCommunityLikeService;
-import com.app.travelmaker.service.mypage.my.MyGiftCardService;
-import com.app.travelmaker.service.mypage.my.MyStoryLikeService;
+import com.app.travelmaker.service.mypage.my.*;
 import com.app.travelmaker.service.mypage.my.account.MyAccountService;
 import com.app.travelmaker.service.mypage.my.customService.MyCustomServiceService;
 import com.app.travelmaker.service.mypage.my.point.MyPointService;
@@ -47,6 +41,7 @@ public class MyPageApiController {
     private final MyPointService myPointService;
     private final MyCustomServiceService myCustomServiceService;
     private final MyAccountService myAccountService;
+    private final MypageMainService mypageMainService;
 
     /**
      * 상품권
@@ -290,5 +285,66 @@ public class MyPageApiController {
         myAccountService.updateMobile(request.get("mobile"));
         log.info(request.toString());
         return ResponseEntity.ok("/mypage/accountManage");
+    }
+
+    /**
+     * 마이페이지
+     */
+    // 관심지역 등록 (Member테이블 수정)
+    @Transactional
+    @PutMapping("interestsRegion")
+    public ResponseEntity<?> setInterestsRegion(@RequestBody Map<String, String> request) {
+        myAccountService.setInterestsRegion(request.get("interestsStr"));
+        log.info(request.toString());
+        return ResponseEntity.ok("/mypage/main");
+    }
+
+    // 등록 업체 개수 가져오기
+    @GetMapping("companyCount")
+    public ResponseEntity<?> getCompanyCount() {
+        Long companyCount = mypageMainService.getCompanyCount();
+        return ResponseEntity.ok(companyCount.toString());
+    }
+
+    // 문의/신고 개수 가져오기
+    @GetMapping("customServiceCount")
+    public ResponseEntity<?> getCustomServiceCount() {
+        Long customServiceCount = mypageMainService.getCustomServiceCount();
+        return ResponseEntity.ok(customServiceCount.toString());
+    }
+
+    // 상품권 개수 가져오기
+    @GetMapping("giftCardCount")
+    public ResponseEntity<?> getGiftCardCount() {
+        Long giftCardCount = mypageMainService.getGiftCardCount();
+        return ResponseEntity.ok(giftCardCount.toString());
+    }
+
+    // 북마크 개수 가져오기
+    @GetMapping("bookmarksCount")
+    public ResponseEntity<?> getBookmarksCount() {
+        Long bookmarksCount = mypageMainService.getBookmarksCount();
+        return ResponseEntity.ok(bookmarksCount.toString());
+    }
+
+    // 좋아요 개수 가져오기
+    @GetMapping("likesCount")
+    public ResponseEntity<?> getLikesCount() {
+        Long likesCount = mypageMainService.getLikesCount();
+        return ResponseEntity.ok(likesCount.toString());
+    }
+
+    // 북마크 최대 4개 가져오기
+    @GetMapping("bookmarksMax4")
+    public ResponseEntity<?> getBookmarksMax4() {
+        List<MyBookmarkDTO> bookmarksMax4 = mypageMainService.getBookmarksMax4();
+        return ResponseEntity.ok(bookmarksMax4);
+    }
+
+    // 좋아요 최대 6개 가져오기
+    @GetMapping("likesMax6")
+    public ResponseEntity<?> getLikesMax4() {
+        List<MyLikeDTO> likesMax6 = mypageMainService.getLikesMax6();
+        return ResponseEntity.ok(likesMax6);
     }
 }

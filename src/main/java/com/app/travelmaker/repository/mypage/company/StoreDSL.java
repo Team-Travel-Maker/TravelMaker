@@ -16,4 +16,5 @@ public interface StoreDSL {
 
     public void modifyStatus(StoreResponseDTO result);
 
+    Long getCompanyCount(Long memberId);
 }

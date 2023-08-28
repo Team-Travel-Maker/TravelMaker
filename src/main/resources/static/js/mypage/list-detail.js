@@ -1,8 +1,14 @@
 const $inquiryList = $('.inquiry-list');
 var categoryType = "";
+var cType = {
+    "ALL" : "전체",
+    "INQUIRY" : "문의",
+    "DECLARATION" : "신고"
+}
 
 $(document).ready(function() {
     console.log("페이지 로딩");
+    $('.topPickPostView-header-title-span').text("나의 " + cType.ALL + " 내역");
     getMyListFive(0, "", "ALL");
     categoryType = "ALL";
     // 문의 버튼의 글 목록을 기본으로 보이도록 설정
@@ -13,6 +19,14 @@ $(document).ready(function() {
         categoryType = category;
         $('.search-input').val("");
         console.log(category);
+
+        if (category == "ALL") {
+            $('.topPickPostView-header-title-span').text("나의 " + cType.ALL + " 내역");
+        } else if(category == "INQUIRY") {
+            $('.topPickPostView-header-title-span').text("나의 " + cType.INQUIRY + " 내역");
+        } else {
+            $('.topPickPostView-header-title-span').text("나의 " + cType.DECLARATION + " 내역");
+        }
 
         getMyListFive(0, "", category);
 

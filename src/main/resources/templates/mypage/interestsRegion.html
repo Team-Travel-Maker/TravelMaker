@@ -6,9 +6,15 @@
     <link rel="stylesheet" href="/css/header/header.css"/>
     <link rel="stylesheet" href="/css/common.css"/>
     <link rel="stylesheet" href="/css/mypage/interestsRegion.css">
+    <link rel="stylesheet" href="/css/admin/modal.css"/>
 </head>
 <body style="background-color: #f8f8f8;">
-<div th:replace="~{header/header :: #header}"></div>
+<div class="modal" style="z-index: 9999;">
+    <div class="warn-modal">
+        <div id="content-wrap"></div>
+    </div>
+</div>
+<div  th:replace="~{header/signedin-header :: #signedin-header}"></div>
 <div class="container-profile container-profileInterests">
     <nav role="presentation" class="Nav">
         <h2 class="nav-title">
@@ -18,7 +24,13 @@
     </nav>
     <section class="interests">
         <div class="interests-contents">
-            <p class="interests-message">김광민님의 여행을 위한<br>00를 추천해
+            <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberInterestRegion == null}">
+                <input type="hidden" class="interestsStr" th:value="notexit">
+            </th:block>
+            <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.memberInterestRegion == null}">
+                <input type="hidden" class="interestsStr" th:value="${#authentication.getPrincipal().memberResponseDTO.memberInterestRegion}">
+            </th:block>
+            <p class="interests-message"><span th:text="${#authentication.getPrincipal().memberResponseDTO.memberName}">김광민</span>님의 여행을 위한<br>지역를 추천해
             드릴게요!</p>
             <p class="interests-sub-message">아티클, 영상, 커뮤니티에서 보고싶은 주제를 선택해보세요.</p>
             <div class="interestsTags">
@@ -31,116 +43,116 @@
                             <ul class="curationTags-subTags">
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                            <span>서 울</span>
+                                            <span class="target-span">서 울</span>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 부 산
                                                             </span>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 인 천
                                                             </span>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 대 구
                                                             </span>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 대 전
                                                             </span>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 세 종
                                                             </span>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 광 주
                                                             </span>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 울 산
                                                             </span>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 경기도
                                                             </span>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 충청북도
                                                             </span>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 충청남도
                                                             </span>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 전라북도
                                                             </span>
                                     </button>
                                     <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 전라남도
                                                             </span>
                                     </button>
                                     </li>
                                     <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 경상북도
                                                             </span>
                                     </button>
                                     </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 경상남도
                                                             </span>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 강원도
                                                             </span>
                                     </button>
                                 </li>
                                 <li>
                                     <button type="button" class="location-category" style="transform: translateX(0px);">
-                                                            <span>
+                                                            <span class="target-span">
                                                                 제주도
                                                             </span>
                                     </button>
@@ -152,25 +164,14 @@
             </div>
         </div>
         <div class="interests-buttons">
-            <a href="/mywanted" class="">MY원티드 돌아가기</a>
-            <button type="button" class="style-wrapper">관심지역 저장하기</button>
+            <a href="/mypage/main" class="">MY페이지 돌아가기</a>
+            <button type="button" class="style-wrapper" id="interests-save-btn">관심지역 저장하기</button>
         </div>
     </section>
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script>
-    const $spanTags = $('.location-category>span');
-    const $locationBtns =$('.location-category');
-
-    $locationBtns.on("click", function(){
-        if(!$(this).hasClass("now-button")){
-            $(this).addClass("now-button");
-            $(this).children().addClass('span-color');
-
-        }else{ $(this).removeClass("now-button");
-            $(this).children().removeClass('span-color');
-        }
-    });
-</script>
+<script src="/js/header/header.js"></script>
+<script src="/js/mypage/interestsRegion.js"></script>
+<script src="/js/admin/modal.js"></script>
 </html>

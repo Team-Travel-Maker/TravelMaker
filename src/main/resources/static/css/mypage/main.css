@@ -444,3 +444,38 @@
 body {
     background-color: #f8f8f8 !important;
 }
+
+
+
+.aside-company {
+    position: relative;
+    padding: 30px 25px 30px 20px;
+}
+
+@media (min-width: 1200px) {
+    .aside-company>a {
+        padding-bottom: 23px;
+    }
+}
+
+.aside-company>a {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: baseline;
+    align-items: baseline;
+    position: relative;
+}
+
+.aside-company>a>span {
+    font-size: 16px;
+    line-height: 17px;
+    font-weight: 500;
+}
+
+@media (min-width: 1200px) {
+    .aside-company>a:last-of-type {
+        padding: 0;
+    }
+}

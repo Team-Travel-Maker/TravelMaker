@@ -9,4 +9,6 @@ public interface MyCustomServiceDSL {
     public Page<CustomServiceResponseDTO> getMyListFive(Pageable pageable, String keyword, Long memberId);
 
     Page<CustomServiceResponseDTO> getMyListFiveByType(Pageable pageable, String keyword, Long memberId, CsType type);
+
+    Long getCustomServiceCount(Long memberId);
 }

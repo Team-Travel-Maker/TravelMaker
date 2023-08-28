@@ -229,4 +229,13 @@ public class MemberDSLImpl implements MemberDSL {
                 .where(member.id.eq(memberId))
                 .execute();
     }
+
+    @Override
+    public void setInterestsRegion(Long memberId, String interestsStr) {
+        query.update(member)
+                .set(member.memberInterestRegion, interestsStr)
+                .set(member.updatedDate, LocalDateTime.now())
+                .where(member.id.eq(memberId))
+                .execute();
+    }
 }

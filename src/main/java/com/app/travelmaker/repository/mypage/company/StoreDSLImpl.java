@@ -175,6 +175,15 @@ public class StoreDSLImpl implements StoreDSL {
                 .execute();
     }
 
+    @Override
+    public Long getCompanyCount(Long memberId) {
+        return query.select(store.count())
+                .from(store)
+                .where(store.member.id.eq(memberId)
+                .and(store.deleted.eq(false)))
+                .fetchOne();
+    }
+
     private List<StoreFileDTO> getFiles(){
         return query.select(Projections.fields(StoreFileDTO.class,
                 storeFile.id,

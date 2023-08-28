@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface MyGiftCardDSL {
     List<MyGiftCardDTO> getGiftCardListByMemberId(Long memberId);
+
+    Long getGiftCardCount(Long memberId);
 }

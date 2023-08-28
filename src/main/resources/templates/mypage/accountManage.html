@@ -5,8 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>계정관리</title>
-<!--        <link rel="stylesheet" href="/css/common.css"/>-->
-<!--        <link rel="stylesheet" href="/css/header/header.css"/>-->
     <link rel="stylesheet" href="/css/login/find.css">
     <link rel="stylesheet" href="/css/mypage/accountManage.css">
     <link rel="stylesheet" href="/css/admin/modal.css"/>
@@ -19,6 +17,9 @@
 </div>
 <div class="container">
     <div class="account-container">
+        <button class="back-button" onclick="goBack()">
+            <img src="/images/admin/left-icon.png">
+        </button>
         <!--    프로필-->
         <section class="img-profile-section">
             <div class="img-profile-div">
@@ -29,10 +30,7 @@
 <!--                        background: gray;-->
 <!--                    ">-->
 <!--                </div>-->
-                <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('KAKAO')}">
-                    <img width="80" height="80" th:src="${#authentication.getPrincipal().memberResponseDTO.snsProFile}">
-                </th:block>
-                <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('NAVER')}">
+                <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
                     <img width="80" height="80" th:src="${#authentication.getPrincipal().memberResponseDTO.snsProFile}">
                 </th:block>
                 <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
@@ -494,7 +492,12 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<!--<script src="../../static/js/mypage/accountModal.js"></script>-->
 <script src="/js/mypage/accountModal.js"></script>
 <script src="/js/admin/modal.js"></script>
+<script>
+    // 뒤로 가기 함수
+    function goBack() {
+        window.history.back();
+    }
+</script>
 </html>

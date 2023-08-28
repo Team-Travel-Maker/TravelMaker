@@ -1091,7 +1091,7 @@ img {
 .recommendedPostView-wrapper {
     width: 100%;
     background-color: #fff;
-    padding-top: 50px;
+    padding-top: 25px;
 }
 
 @media (min-width: 1200px) {
