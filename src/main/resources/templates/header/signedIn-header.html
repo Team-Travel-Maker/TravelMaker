@@ -108,10 +108,11 @@
                                       </div>
                                   </th:block>
                                   <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">
-                                      <div class="profile-img" th:style="'background-image:url(/api/files/display?fileName=' +
-                                                                        ${#authentication.getPrincipal().memberResponseDTO.filePath} + '/' +
-                                                                        ${#authentication.getPrincipal().memberResponseDTO.fileUuid} + '_' +
-                                                                        ${#authentication.getPrincipal().memberResponseDTO.fileName} + ');'">
+                                      <div class="profile-img" th:style="'background-image:url(\'' +
+                                                    '/api/files/display?fileName=' +
+                                                    ${#authentication.getPrincipal().memberResponseDTO.filePath} + '/' +
+                                                    ${#authentication.getPrincipal().memberResponseDTO.fileUuid} + '_' +
+                                                    ${#authentication.getPrincipal().memberResponseDTO.fileName} + '\');'">
                                       </div>
                                   </th:block>
                               </th:block>
