@@ -14,4 +14,7 @@ public class CustomErrorHandler {
 
     @GetMapping("401")
     public void error401(){;}
+
+    @GetMapping("500")
+    public void error500(){;}
 }
