@@ -51,7 +51,6 @@ public class AuthenticationSuccessHandlerImpl extends AccountSupport implements 
         /**일반회원으로 이미 가입된 이메일로 oauth sns 로그인 시도할 때 로그인 창으로*/
         if(authentication.getPrincipal() instanceof MemberOauthDetail
                 && ((MemberOauthDetail) authentication.getPrincipal()).getMemberResponseDTO().getMemberJoinAccountType().equals(MemberJoinAccountType.GENERAL) ){
-            log.info("들어옴123");
             session.invalidate();
             response.sendRedirect("/accounts/login/login?error=true&exception=error3");
             return;
