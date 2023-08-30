@@ -64,8 +64,7 @@ public class MypageMainServiceImpl extends AccountSupport implements MypageMainS
 
     @Override
     public Long getGoWithsCount() {
-        //return goWithRepository.getGoWithsCount(authenticationInfo().getId());
-        return null;
+        return goWithRepository.getGoWithsCount(authenticationInfo().getId());
     }
 
     @Override

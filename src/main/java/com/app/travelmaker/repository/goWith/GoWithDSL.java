@@ -17,7 +17,5 @@ public interface GoWithDSL {
     public GoWithDTO getGoWith(Long id);
 
 
-
-
-
+    Long getGoWithsCount(Long memberId);
 }
