@@ -29,6 +29,8 @@ public class SecurityConfig {
         /*문의 글 쓰기*/
     private static final String INFORMATION_PATH = "/informations/inquiry/write"; 
     private static final String ADMIN_PATH = "/admins/**";
+    private static final String MY_PAGE_PATH = "/mypage/**";
+    private static final String MY_PAGE_COMPANY_PATH = "/mypage/company/**";
     private static final String LOGIN_PAGE = "/accounts/login/login";
     private static final String LOGIN_PAGE2 = "/accounts/password/input";
     private static final String LOGOUT_PATH = "/accounts/logout";
@@ -62,17 +64,6 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http
-//                .authorizeHttpRequests() // spring security 시작
-//                .antMatchers(MAIN_PATH).authenticated() // 보안 검사를 하겠다.
-//                .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name()) //ADMIN 권한이 있는 회원은 접근 가능
-//                .antMatchers(BOARD_PATH).hasRole(Role.MEMBER.name())
-//                .and()
-//                .csrf().disable()
-//                .exceptionHandling()
-//                .accessDeniedHandler(accessDeniedHandler) //인가 실패
-//                .authenticationEntryPoint(authenticationEntryPoint); //인증 실패
-
 //        AuthenticationManage가 UserDetailService의 loadUserByUsername(username)를 사용해줌으로써
 //        DB에서 조회된 정보와 비교하여 인증을 진행한다.
         http
@@ -92,6 +83,8 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name()) //ADMIN 권한이 있는 회원은 접근 가능
                 .antMatchers(INFORMATION_PATH).hasAnyRole(Role.ADMIN.name(), Role.GENERAL.name(), Role.COMPANY.name()) //3 중 아무나
+                .antMatchers(MY_PAGE_COMPANY_PATH).hasAnyRole(Role.ADMIN.name(), Role.COMPANY.name()) //2 중 아무나
+                .antMatchers(MY_PAGE_PATH).hasAnyRole(Role.ADMIN.name(), Role.GENERAL.name(), Role.COMPANY.name()) //3 중 아무나
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint().and().successHandler(authenticationSuccessHandler);

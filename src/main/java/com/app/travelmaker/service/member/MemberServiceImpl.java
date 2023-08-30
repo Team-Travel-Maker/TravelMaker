@@ -1,5 +1,6 @@
 package com.app.travelmaker.service.member;
 
+import com.app.travelmaker.constant.ErrorCode;
 import com.app.travelmaker.constant.JoinCheckType;
 import com.app.travelmaker.constant.MemberJoinAccountType;
 import com.app.travelmaker.constant.Role;
@@ -126,7 +127,15 @@ public class MemberServiceImpl implements MemberService, OAuth2UserService<OAuth
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
+
+
         Member member = saveOrUpdate(attributes);
+
+        /* 이미 Oauth 이메일로 일반회원가입이 되어있다면 우선 그냥 정보를 넘기고 핸들러에서 처리*/
+        if(member.getMemberJoinAccountType().equals(MemberJoinAccountType.GENERAL)){
+            log.info("들어옴12");
+            return new MemberOauthDetail(new MemberResponseDTO(member),Collections.singleton(new SimpleGrantedAuthority(member.getMemberRole().getSecurityRole())), attributes.getAttributes(), attributes.getNameAttributeKey());
+        }
 
         if(member.getId() == null){
             memberRepository.save(member);
@@ -142,6 +151,12 @@ public class MemberServiceImpl implements MemberService, OAuth2UserService<OAuth
 
         Member memberForSavingOrUpdating = memberRepository.findByMemberEmail(attributes.getEmail())
                 .map(member -> {
+
+                    /*일반 회원 아이디가 이미 있다면 커스텀 exception*/
+                    if (member.getMemberJoinAccountType().equals(MemberJoinAccountType.GENERAL)) {
+                        return member;
+                    }
+
                     if(member.getMemberJoinAccountType().equals(MemberJoinAccountType.KAKAO)
                             || member.getMemberJoinAccountType().equals(MemberJoinAccountType.GOOGLE)){
                         member.update(attributes.getName(), attributes.getSnsProfile(), attributes.getEmail());

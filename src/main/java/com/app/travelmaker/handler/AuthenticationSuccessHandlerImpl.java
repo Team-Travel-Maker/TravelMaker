@@ -5,6 +5,7 @@ import com.app.travelmaker.constant.MemberJoinAccountType;
 import com.app.travelmaker.constant.Role;
 import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.provider.MemberDetail;
+import com.app.travelmaker.provider.MemberOauthDetail;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -44,6 +45,14 @@ public class AuthenticationSuccessHandlerImpl extends AccountSupport implements 
         /** 관리자 로그인 핸들러*/
         if(list.get(0).toString().equals(Role.ADMIN.getSecurityRole())){
             response.sendRedirect(ADMIN_PATH);
+            return;
+        }
+
+        /**일반회원으로 이미 가입된 이메일로 oauth sns 로그인 시도할 때 로그인 창으로*/
+        if(authentication.getPrincipal() instanceof MemberOauthDetail
+                && ((MemberOauthDetail) authentication.getPrincipal()).getMemberResponseDTO().getMemberJoinAccountType().equals(MemberJoinAccountType.GENERAL) ){
+            session.invalidate();
+            response.sendRedirect("/accounts/login/login?error=true&exception=error3");
             return;
         }
 
