@@ -35,8 +35,8 @@ public class CommunityApiController extends AccountSupport {
 
     @GetMapping("board/detail")
     public String viewPostDetail(@Param("id") Long id, Model model){
+        System.out.println(id);
         PostDTO postDTO = communityService.postDetail(id);
-
 
         if(postDTO != null){
             model.addAttribute("post", postDTO);
@@ -51,12 +51,14 @@ public class CommunityApiController extends AccountSupport {
 
 
     @PostMapping("board/write")
-    public RedirectView write(@ModelAttribute PostDTO postDTO, RedirectAttributes redirectAttributes, Model model){
+    public RedirectView write(@RequestBody String dto, PostDTO postDTO, RedirectAttributes redirectAttributes, Model model){
+        log.info("{}", postDTO.toString());
         String postTitle = postDTO.getPostTitle();
         String postContent = postDTO.getPostContent();
 
+
 //        일단 하드코딩
-        postDTO.setCommunityType(CommunityType.REVIEW);
+//        postDTO.setCommunityType(CommunityType.REVIEW);
 
         String memberName = authenticationInfo().getMemberName();
         Long id = authenticationInfo().getId();
@@ -65,7 +67,6 @@ public class CommunityApiController extends AccountSupport {
 
         System.out.println("멤버 ID : " + id);
         System.out.println("멤버 이름 : " + memberName);
-
         communityService.write(postDTO);
         model.addAttribute("postDTO", postDTO);
 

@@ -61,40 +61,37 @@ tagify.on('add', function() {
 const writeForm = $(".rt-btn");
 
 //
+let form = new FormData();
 
-$("button.rt-btn").on("click", function(){
+$(document).ready(function() {
+    $("button.rt-btn").on("click", function (form) {
+        let communityType = $("#communityType option:selected").val();
+        let postTitle = $('[name="postTitle"]').val();
+        let postContent = $('[name="postContent"]').val();
+        // console.log(`${communityType},${postTitle}, ${postContent}`)
 
-    // $.ajax({
-    //         type : 'post',           // 타입 (get, post, put 등등)
-    //         url : '/api/communities/board/write',           // 요청할 서버url
-    //         async : true,            // 비동기화 여부 (default : true)
-    //         headers : {              // Http header
-    //             "Content-Type" : "application/json",
-    //             "X-HTTP-Method-Override" : "POST"
-    //         },
-    //         dataType : 'json',       // 데이터 타입 (html, xml, json, text 등등)
-    //         contentType: "application/json; charset=utf-8",
-    //
-    //         data : JSON.stringify({  // 보낼 데이터 (Object , String, Array)
-    //
-    //
-    //         }),
-    //         success : function(result) { // 결과 성공 콜백함수
-    //
-    //             console.log("성공 여부" + result);
-    //         },
-    //         error : function(request, status, error) { // 결과 에러 콜백함수
-    //             console.log("에러 : " + error)
-    //         }
-    //     })
+        let postDTO = {
+            communityType : communityType,
+            postTitle : postTitle,
+            postContent : postContent
+        }
 
+        console.log(JSON.stringify(postDTO))
+        $.ajax({
+            type : 'post',           // 타입 (get, post, put 등등)
+            url : '/api/communities/board/write',           // 요청할 서버url
+            async : true,            // 비동기화 여부 (default : true)
+            enctype: "application/json; charset=UTF-8",
+            processData : false,
+            contentType : false,
+            data : JSON.stringify(postDTO),
+            success : function(result) { // 결과 성공 콜백함수
+                console.log("성공 여부" + result);
+            },
+            error : function(request, status, error) { // 결과 에러 콜백함수
+                console.log("에러 : " + error)
+            }
+        })
 
-
-
-
-    $("#write").submit();
-
-
-
-
+    });
 });

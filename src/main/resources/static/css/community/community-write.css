@@ -401,3 +401,21 @@ TagPanel .TagPanel_tagWrapper .TagPanel_slider .TagPanel_scroll {
 .selected-cType{
     margin-top: 10px;
 }
+
+/* 반응형 */
+@media (max-width:990px){
+    /* 등록하기 버튼을 최하단에 배치 */
+    .registration-headerBtn {
+        display: flex;
+        position: fixed;
+        bottom: 20px; /* 원하는 높이로 조정하여 버튼의 수직 위치를 조정합니다. */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 999;
+        margin-top: 5px;
+    }
+
+    .writePaper-title{
+        font-size: 20px;
+    }
+}
