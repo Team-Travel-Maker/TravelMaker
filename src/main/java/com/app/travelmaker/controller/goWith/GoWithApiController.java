@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -28,9 +30,6 @@ public class GoWithApiController {
 //        }else { //OAuth 로그인
 //
 //        }
-    //작성
-//    @PostMapping("goWith-registration")
-
     @GetMapping("goWith-list")
     public Page<GoWithDTO> getList(@PageableDefault(size = 10, page = 0) Pageable pageable, GoWithRegionType regionType){
     return goWithService.getList(pageable,regionType);
@@ -42,17 +41,26 @@ public class GoWithApiController {
         return goWithService.getGoWith(id);
     }
 
-    //게시글 수정
-    // @PutMapping("modify")
-    //    public void changeStatus(@RequestPart(value = "result") StoreResponseDTO result){
-    //        log.info(result.toString());
-    //        storeAdminService.modifyStatus(result);
-    //    }
+    // 작성
+    @PostMapping("goWith-registration")
+    public ResponseEntity<String> writeGoWith(@RequestBody GoWithDTO goWithDTO) {
+        try {
+            goWithService.write(goWithDTO);
+            return ResponseEntity.ok("GoWith 게시물이 성공적으로 작성되었습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("게시물 작성 중 오류가 발생했습니다.");
+        }
+    }
+//    //게시글 수정
+//     @PutMapping("goWith-edit")
+//        public void changeStatus(@RequestPart(value = "result") GoWithDTO goWithDTO){
+//            log.info(goWithDTO.toString());
+//            goWithService.modify(goWithDTO);
+//        }
     //게시글 삭제
-    //    @DeleteMapping("")
-    //    public void delete(@RequestPart List<Long> ids){
-    //        storeAdminService.deleteStore(ids);
-    //    }
-    //}
+//        @DeleteMapping("")
+//        public void delete(@RequestPart Long id){
+//            goWithService.delete(id);
+//    }
 
 }

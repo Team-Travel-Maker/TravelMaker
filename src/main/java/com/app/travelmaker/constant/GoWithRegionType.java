@@ -27,6 +27,7 @@ public enum GoWithRegionType {
      * BUSAN : 부산
      * JEJU_ISLAND : 제주도
      * */
+    ALL("ALL", "전체"),
     SEOUL("SEOUL", "서울"),
     GYEONGGI_DO("GYEONGGI_DO", "경기도"),
     INCHEON("INCHEON", "인천"),
