@@ -5,6 +5,7 @@ import com.app.travelmaker.domain.gowith.GoWithDTO;
 import com.app.travelmaker.domain.gowith.GoWithFileDTO;
 import com.app.travelmaker.entity.goWith.GoWith;
 import com.app.travelmaker.entity.goWith.GoWithFile;
+import com.app.travelmaker.entity.mebmer.Member;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
@@ -19,14 +20,14 @@ public interface GoWithService {
     public void update(GoWithDTO goWithDTO);
     public GoWithDTO getGoWith(Long id);
 
-    default GoWith toEntity(GoWithDTO goWithDTO){
+    default GoWith toEntity(GoWithDTO goWithDTO, Member member){
         return GoWith.builder().id(goWithDTO.getId())
+                .member(member)
                 .goWithTitle(goWithDTO.getGoWithTitle())
                 .goWithContent(goWithDTO.getGoWithContent())
                 .goWithMbti(goWithDTO.getGoWithMbti())
                 .goWithRegionType((goWithDTO.getGoWithRegionType()))
                 .createdDate(goWithDTO.getCreatedDate())
-                .member(goWithDTO.getMember())
                 .build();
     }
 
