@@ -1,9 +1,11 @@
 package com.app.travelmaker.repository.mypage.company;
 
+import com.app.travelmaker.constant.StoreStatus;
 import com.app.travelmaker.domain.mypage.company.StoreDTO;
 import com.app.travelmaker.domain.mypage.company.StoreFileDTO;
 import com.app.travelmaker.domain.store.response.StoreResponseDTO;
 import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -151,6 +153,17 @@ public class StoreDSLImpl implements StoreDSL {
     @Override
     public Page<StoreResponseDTO> getList(Pageable pageable) {
 
+
+        /*메인에서는 12개로 뿌리기 때문에 page 사이즈로 검사*/
+        BooleanExpression mainCheck = null;
+
+        if(pageable.getPageSize() == 12){
+
+            mainCheck = store.storeStatus.eq(StoreStatus.APPROVED);
+
+        }
+
+
         List<StoreFileDTO> files = getFiles();
 
         List<StoreResponseDTO> stores = query.select(Projections.fields(StoreResponseDTO.class,
@@ -168,6 +181,7 @@ public class StoreDSLImpl implements StoreDSL {
                 member.memberEmail
         )).from(store)
                 .innerJoin(store.member, member).on(store.deleted.eq(false))
+                .where(mainCheck)
                 .orderBy(store.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
