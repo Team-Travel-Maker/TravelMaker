@@ -41,18 +41,26 @@ public class AuthenticationSuccessHandlerImpl extends AccountSupport implements 
 
         log.info(list.get(0).toString());
 
-        
-        /** 관리자 로그인 핸들러*/
-        if(list.get(0).toString().equals(Role.ADMIN.getSecurityRole())){
-            response.sendRedirect(ADMIN_PATH);
+        /** 이미 다른 sns로 db에 가입된 경우 로그인 창으로 */
+        if(authentication.getPrincipal() instanceof MemberOauthDetail && ((MemberOauthDetail) authentication.getPrincipal()).getMemberResponseDTO().getMemberEmail() ==null){
+            session.invalidate();
+            response.sendRedirect("/accounts/login/login?error=true&exception=error3");
             return;
         }
 
-        /**일반회원으로 이미 가입된 이메일로 oauth sns 로그인 시도할 때 로그인 창으로*/
+
+        /** 일반회원으로 이미 가입된 이메일로 oauth sns 로그인 시도*/
         if(authentication.getPrincipal() instanceof MemberOauthDetail
-                && ((MemberOauthDetail) authentication.getPrincipal()).getMemberResponseDTO().getMemberJoinAccountType().equals(MemberJoinAccountType.GENERAL) ){
+                && ((MemberOauthDetail) authentication.getPrincipal()).getMemberResponseDTO().getMemberJoinAccountType().equals(MemberJoinAccountType.GENERAL)
+        ){
             session.invalidate();
             response.sendRedirect("/accounts/login/login?error=true&exception=error3");
+            return;
+        }
+
+        /** 관리자 로그인 핸들러*/
+        if(list.get(0).toString().equals(Role.ADMIN.getSecurityRole())){
+            response.sendRedirect(ADMIN_PATH);
             return;
         }
 

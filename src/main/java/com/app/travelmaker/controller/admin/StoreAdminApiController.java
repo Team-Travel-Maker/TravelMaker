@@ -27,6 +27,11 @@ public class StoreAdminApiController {
         return storeAdminService.getList(pageable);
     }
 
+    @GetMapping("/main")
+    public Page<StoreResponseDTO> getListForMain(@PageableDefault(page = 0, size = 12) Pageable pageable){
+        return storeAdminService.getList(pageable);
+    }
+
     @GetMapping("detail/{id}")
     public StoreResponseDTO detail(@PathVariable Long id){
         return storeAdminService.detail(id);
