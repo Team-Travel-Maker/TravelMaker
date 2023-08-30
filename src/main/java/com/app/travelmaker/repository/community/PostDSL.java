@@ -13,7 +13,5 @@ public interface PostDSL {
 
     public void delete(Long id);
 
-
-
-
+    Long getCommunitiesCount(Long memberId);
 }

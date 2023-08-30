@@ -126,25 +126,33 @@
         <section class="main-body-section">
             <div class="replies-manage">
                 <h2 class="replies-h2">MY 글관리</h2>
-                <ul class="replies-ul">
+                <ul class="replies-ul" id="replies-ul">
                     <li>
-                        <a href="/status/applications?status=complete" class="">
-                            <em class="">0</em>
+                        <a href="#" class="">
+                            <em class="communities-count">0</em>
                             <span>커뮤니티</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/status/applications?status=pass" class="">
-                            <em class="">0</em>
+                        <a href="#" class="">
+                            <em class="ecos-count">0</em>
                             <span>에코인증</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/status/applications?status=hire" class="">
-                            <em class="">0</em>
+                        <a href="#" class="">
+                            <em class="goWiths-count">0</em>
                             <span>같이가요</span>
                         </a>
                     </li>
+                    <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberRole.code.equals('COMPANY')}">
+                        <li>
+                            <a href="#" class="">
+                                <em class="stories-count">0</em>
+                                <span>업체 스토리</span>
+                            </a>
+                        </li>
+                    </th:block>
                 </ul>
             </div>
             <div class="bookmark-like-manage">
