@@ -52,14 +52,9 @@
                         <dl>
                             <dt th:text="${#authentication.getPrincipal().memberResponseDTO.memberName}">이수정</dt>
                             <dd th:text="${#authentication.getPrincipal().memberResponseDTO.memberEmail}">dodunge@naver.com</dd>
-                            <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('NAVER')}">
-                                <dd th:text="${#authentication.getPrincipal().memberResponseDTO.member}">010-5478-3506</dd>
-                            </th:block>
-                            <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('NAVER')}">
-                                <dd th:text="${#strings.substring(#authentication.getPrincipal().memberResponseDTO.memberPhone, 0, 3)} + '-' +
-                                             ${#strings.substring(#authentication.getPrincipal().memberResponseDTO.memberPhone, 3, 7)} + '-' +
-                                             ${#strings.substring(#authentication.getPrincipal().memberResponseDTO.memberPhone, 7)}">010-5478-3506</dd>
-                            </th:block>
+                            <dd th:text="${#strings.substring(#authentication.getPrincipal().memberResponseDTO.memberPhone, 0, 3)} + '-' +
+                                         ${#strings.substring(#authentication.getPrincipal().memberResponseDTO.memberPhone, 3, 7)} + '-' +
+                                         ${#strings.substring(#authentication.getPrincipal().memberResponseDTO.memberPhone, 7)}">010-5478-3506</dd>
 
                         </dl>
                     </a>
