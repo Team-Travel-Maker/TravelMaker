@@ -274,19 +274,6 @@ $(document).ready(function() {
         e.preventDefault();
         $('#upload-image').click();
     })
-
-
-
-
-
-
-
-
-
-
-
-
-
 });
 
 

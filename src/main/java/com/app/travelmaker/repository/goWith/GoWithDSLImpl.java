@@ -4,6 +4,7 @@ import com.app.travelmaker.constant.GoWithRegionType;
 import com.app.travelmaker.domain.gowith.GoWithDTO;
 import com.app.travelmaker.domain.gowith.GoWithFileDTO;
 import com.app.travelmaker.entity.goWith.GoWith;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import java.util.stream.Collectors;
 
 import static com.app.travelmaker.entity.goWith.QGoWith.goWith;
 import static com.app.travelmaker.entity.goWith.QGoWithFile.goWithFile;
+import static com.app.travelmaker.entity.goWith.QGoWithReply.goWithReply;
+import static com.app.travelmaker.entity.mebmer.QMember.member;
 
 
 public class GoWithDSLImpl implements GoWithDSL {
@@ -56,31 +59,53 @@ public class GoWithDSLImpl implements GoWithDSL {
                 goWithFile.fileSize,
                 goWithFile.fileUuid,
                 goWithFile.goWith.id.as("goWithId")
-                )).from(goWithFile, goWith)
-                .where(goWithFile.goWith.id.eq(goWith.id)
-                .and(goWithFile.deleted.eq(false))).fetch();
+        )).from(goWithFile, goWith)
+                .where(
+                        goWithFile.goWith.id.eq(goWith.id)
+                                .and(goWithFile.deleted.eq(false))
+                )
+                .fetch();
+
+        BooleanBuilder regionCondition = new BooleanBuilder();
+
+        if (region != null) {
+            regionCondition.and(goWith.goWithRegionType.eq(region));
+        }
 
         List<GoWithDTO> gowiths = query.select(Projections.fields(GoWithDTO.class,
-                        goWith.id,
-                        goWith.goWithTitle,
-                        goWith.goWithContent,
-                        goWith.goWithRegionType,
-                        goWith.goWithMbti,
-                        goWith.createdDate)
+                goWith.id,
+                goWith.goWithTitle,
+                goWith.goWithContent,
+                goWith.goWithRegionType,
+                goWith.goWithMbti,
+                goWith.member,
+                goWith.createdDate)
         ).from(goWith)
-                .where(goWith.goWithRegionType.eq(region))
+                .leftJoin(goWith.member, member)
+//                .leftJoin(goWith.re)
+                .where(regionCondition)
                 .orderBy(goWith.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
-                .fetch().stream().peek(data ->{
-                    if(files !=null) {
-                        files.stream().filter(file -> file.getGoWithId().equals(data.getId())).forEach(
-                                file -> data.getFiles().add(file));
+                .fetch().stream()
+                .peek(data ->{
+                        if(files !=null) {
+                        files.stream().filter(file -> file.getGoWithId().equals(data.getId()))
+                                .forEach(file -> data.getFiles().add(file));
                     }
+                    // 댓글 갯수 계산 및 추가
+                    long replyCount = query.select(goWithReply.count())
+                            .from(goWithReply)
+                            .where(goWithReply.id.eq(data.getId()))
+                            .fetchOne();
+                    data.setReplyCount(replyCount);
                 }).collect(Collectors.toList());
+
         Long totalCount = query.select(goWith.count()).from(goWith).fetchOne();
-        return new PageImpl<>(gowiths,pageable,totalCount);
+
+        return new PageImpl<>(gowiths, pageable, totalCount);
     }
+
 
     @Override
     public GoWithDTO getGoWith(Long id) {
@@ -92,7 +117,7 @@ public class GoWithDSLImpl implements GoWithDSL {
                 goWith.goWithContent,
                 goWith.goWithRegionType,
                 goWith.goWithMbti,
-                goWith.member.memberName,
+//                goWith.member.memberName,
                 goWith.createdDate
         )).from(goWith)
                 .where(goWith.deleted.eq(false).and(goWith.id.eq(id))).fetchOne();

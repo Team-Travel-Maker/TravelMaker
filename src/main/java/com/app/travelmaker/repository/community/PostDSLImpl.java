@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.app.travelmaker.entity.community.QCommunity.community;
+import static com.app.travelmaker.entity.community.QCommunityLike.communityLike;
 
 public class PostDSLImpl implements PostDSL {
 
@@ -46,5 +47,14 @@ public class PostDSLImpl implements PostDSL {
     @Override
     public void delete(Long id) {
 
+    }
+
+    @Override
+    public Long getCommunitiesCount(Long memberId) {
+        return query.select(community.count())
+                .from(community)
+                .where(community.member.id.eq(memberId)
+                        .and(community.deleted.eq(false)))
+                .fetchOne();
     }
 }

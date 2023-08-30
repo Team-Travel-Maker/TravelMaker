@@ -1,3 +1,18 @@
+window.onload = function() {
+    console.log("들어옴");
+    const ul = document.getElementById('replies-ul');
+    console.log(ul);
+    const liCount = ul.getElementsByTagName('li').length;
+    console.log(liCount);
+    const percent = 100 / liCount;
+
+    // 각 li 요소에 동적으로 퍼센트 값을 할당합니다.
+    const liItems = ul.getElementsByTagName('li');
+    for (let i = 0; i < liItems.length; i++) {
+        liItems[i].style.width = percent + '%';
+    }
+}
+
 $(document).ready(function() {
     // 업체 회원이면 등록 업체 개수 가져오기
     if ($('.member-type').val() == "COMPANY") {
@@ -49,7 +64,69 @@ $(document).ready(function() {
         }
     });
 
-    // 북마크 최대 4개 가져오기
+    if($('.member-type').val() === "COMPANY") {
+        // 내가 쓴 스토리 개수 가져오기
+        $.ajax({
+            type: "GET", //전송방식을 지정한다 (POST,GET)
+            url: "/api/myPages/storiesCount",
+            dataType: "text",
+            error: function () {
+                alert("스토리 개수 가져오기 실패!!!!");
+            },
+            success: function (result) {
+                console.log("통신성공" + "OK");
+                console.log(result);
+                $('.stories-count').text(result);
+            }
+        });
+    }
+
+    // 내가 쓴 커뮤니티 개수 가져오기
+    $.ajax({
+        type: "GET", //전송방식을 지정한다 (POST,GET)
+        url: "/api/myPages/communitiesCount",
+        dataType: "text",
+        error: function () {
+            alert("커뮤니티 개수 가져오기 실패!!!!");
+        },
+        success: function (result) {
+            console.log("통신성공" + "OK");
+            console.log(result);
+            $('.communities-count').text(result);
+        }
+    });
+
+    // 내가 쓴 에코 개수 가져오기
+    $.ajax({
+        type: "GET", //전송방식을 지정한다 (POST,GET)
+        url: "/api/myPages/ecosCount",
+        dataType: "text",
+        error: function () {
+            alert("에코 개수 가져오기 실패!!!!");
+        },
+        success: function (result) {
+            console.log("통신성공" + "OK");
+            console.log(result);
+            $('.ecos-count').text(result);
+        }
+    });
+
+    // 내가 쓴 같이가요 개수 가져오기
+    $.ajax({
+        type: "GET", //전송방식을 지정한다 (POST,GET)
+        url: "/api/myPages/goWithsCount",
+        dataType: "text",
+        error: function () {
+            alert("같이가요 개수 가져오기 실패!!!!");
+        },
+        success: function (result) {
+            console.log("통신성공" + "OK");
+            console.log(result);
+            $('.goWiths-count').text(result);
+        }
+    });
+
+    // 북마크 개수 가져오기
     $.ajax({
         type: "GET", //전송방식을 지정한다 (POST,GET)
         url: "/api/myPages/bookmarksCount",
