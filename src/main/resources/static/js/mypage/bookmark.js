@@ -82,5 +82,37 @@ $(document).ready(function () {
             }
         });
     })
-    
+//추후에 무한 스크롤 추가
+    //
+    // var currentPage = 1; // 초기 페이지
+    // var isLoading = false; // 데이터 로딩 중 여부
+    //
+    // // 스크롤 이벤트 핸들러
+    // $(".bookmark-container").scroll(function() {
+    //     var container = $(this);
+    //     if (container.scrollTop() + container.height() >= container[0].scrollHeight - 150) {
+    //         console.log("하단 도착")
+    //         // 스크롤이 페이지 하단에 도달하면 새로운 데이터를 가져오기
+    //         if (!isLoading) {
+    //             loadMoreData();
+    //         }
+    //     }
+    // });
+    //
+    // // 데이터를 가져오는 함수 (AJAX 요청)
+    // function loadMoreData() {
+    //     isLoading = true;
+    //     // AJAX 요청을 통해 새로운 데이터를 가져오는 로직을 구현.
+    //     // 간단히 새로운 데이터 아이템을 생성하여 추가.
+    //     var newData = ["새로운 데이터 1", "새로운 데이터 2", "새로운 데이터 3"];
+    //     $.each(newData, function(index, item) {
+    //         $("<div class='data-item'>" + item + "</div>").appendTo(".list-bookmark-container");
+    //     });
+    //     isLoading = false;
+    //     currentPage++;
+    // }
+    //
+    // // 초기 데이터 로딩
+    // loadMoreData();
+
 })
