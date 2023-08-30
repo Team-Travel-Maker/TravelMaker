@@ -237,3 +237,24 @@ button {
 html::-webkit-scrollbar {
     display: none;
 }
+
+.pagination {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination a {
+    text-decoration: none;
+}
+
+.active {
+    font-weight: bold;
+    color: blue;
+}

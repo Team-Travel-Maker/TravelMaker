@@ -6,6 +6,7 @@ const contentBoxes = document.getElementsByClassName('title-list-slick-track');
 let list = {};
 let rightFlag = false;
 let checkflag = false;
+let checkflag2 = false;
 
 
 /*슬라이드 배너*/
@@ -83,6 +84,9 @@ arrows.forEach(arrow => {
 
 /*오른쪽 버튼*/
 rightBtns.forEach((rightBtn,index) => {
+
+
+
     if(!rightFlag){ list[`right${index+1}`] = 1; if(index==3){rightFlag=true;}}
     rightBtn.addEventListener("click", function (e) {
         /*가까운 거 찾기*/

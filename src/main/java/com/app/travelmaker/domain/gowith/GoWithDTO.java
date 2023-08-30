@@ -30,11 +30,12 @@ public class GoWithDTO {
         private boolean deleted = Boolean.FALSE;
 
         @Builder
-        public GoWithDTO(Long id, String goWithTitle, String goWithContent, GoWithRegionType goWithRegionType, MbtiType goWithMbti) {
+        public GoWithDTO(Long id ,String goWithTitle, String goWithContent, GoWithRegionType goWithRegionType, MbtiType goWithMbti,Member member) {
                 this.id = id;
                 this.goWithTitle = goWithTitle;
                 this.goWithContent = goWithContent;
                 this.goWithRegionType = goWithRegionType;
                 this.goWithMbti = goWithMbti;
+                this.member = member;
         }
 }

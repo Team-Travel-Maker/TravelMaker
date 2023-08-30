@@ -12,7 +12,6 @@ const $sub1X = $('.sub1-x');
 const $sub2X = $('.sub2-x');
 
 const uploadFiles = [];
-let fileDelChk = "no";
 
 const queryParams = new URLSearchParams(window.location.search);
 const storeId = queryParams.get('storeId');
@@ -31,6 +30,8 @@ const status = {
     "APPROVED" : "승인",
     "REJECTED" : "반려"
 }
+
+let storeDTO = {"files" : [], "address" : {}}
 
 $(document).ready(function () {
     $.ajax({
@@ -68,6 +69,13 @@ $(document).ready(function () {
             const fileLength = store.files.length;
             if(fileLength == 0) return;
             store.files.forEach((file, i) => {
+                let test= {}
+                test.filePath = file.filePath;
+                test.fileName = file.fileName;
+                test.fileSize = file.fileSize;
+                test.fileUuid = file.fileUuid;
+                test.fileType = file.fileType.code;
+                storeDTO.files[i]=test;
                 console.log(i)
                 console.log(file);
                 if(3 == fileLength) {
@@ -100,7 +108,7 @@ $(document).ready(function () {
                     }
                 }
                 if(2 == fileLength) {
-                    if (file.fileType == "REPRESENTATIVE") {
+                    if (file.fileType.code == "REPRESENTATIVE") {
                         $thumbnailAttach.show()
                         $thumbnailImg.show();
                         $thumbnailX.show();
@@ -227,9 +235,6 @@ $inputTextArea.on("input", function () {
     checkAll();
 });
 
-
-let storeDTO = {"files" : [], "address" : {}}
-
 function checkAll() {
     if($inputTag.eq(0).val() != "" &&
         $inputTextArea.eq(0).val() != "" &&
@@ -249,13 +254,9 @@ function checkAll() {
 $submitBtn.on("click", function () {
     if ($fileChangeChk == 1 && uploadFiles.length != 0) {
         setFile();
-    } else if ($fileChangeChk == 1 && uploadFiles.length == 0) {
-        fileDelChk = "yes";
-    } else {
-        storeDTO.files = [];
     }
 
-    console.log("=======여기여기여기여기"+storeDTO.files.toString())
+    console.log(storeDTO.files);
 
     storeDTO.id = storeId;
     storeDTO.storeTitle = $inputTag.eq(0).val()
@@ -272,7 +273,7 @@ $submitBtn.on("click", function () {
     console.log(storeDTO);
 
     $.ajax({
-        url: `/api/myPages/store?fileDel=` + fileDelChk,
+        url: `/api/myPages/store`,
         type: `PUT`,
         data		:  JSON.stringify(storeDTO),
         contentType : "application/json",
@@ -289,17 +290,21 @@ $submitBtn.on("click", function () {
     })
 })
 
-function setFile(i) {
+function setFile() {
     console.log("++++++++++++++++" + uploadFiles.length)
     if(uploadFiles.length == 0) {
         return;
-    } else if (!$thumbnailImg.attr('src')){
+    } else if(!$thumbnailImg.attr('src') &&
+        ($sub1Img.attr('src') ||
+        $sub2Img.attr('src'))) {
         showWarnModal("썸네일부터 사진을 등록해 주세요.");
+        return;
     }
 
-    //파일 이름 담는 배열 새로 파일이 담길 때마다 초기화
-    const name = [];
-    const sizes = [];
+    // 0 : 변경없음
+    // 1 : 변경있음
+    // 2 : 있던 파일 삭제
+    const chkChange = [];
 
     const formData = new FormData();
     //경로 생성을 위한 yy/mm/dd 설정
@@ -313,55 +318,53 @@ function setFile(i) {
 
     let filePath = year + "/" + month + "/" + date
 
-    console.log("====================")
-    console.log(uploadFiles);
-    console.log("====================")
-
     $(uploadFiles).each((i) => {
+        //파일 이름 담는 배열 새로 파일이 담길 때마다 초기화
         console.log(uploadFiles[i])
-        if(uploadFiles[i].length == 0) {
-            console.log("이 파일은 비어 있음")
-        }
-        formData.append("uploadFile", uploadFiles[i]);
-        sizes.push(uploadFiles[i].size);
-        name.push(uploadFiles[i].name);
-
-        // ajax로 통신하기 전에 alert 띄우고 막기
-        if (sizes[i] > 41943040) {
-            alert("파일 사이즈가 너무 큽니다.")
-            return false;
-        }
-    })
-
-
-    $.ajax({
-        url        : "/api/files/upload",
-        type       : "post",
-        async      : false,
-        data       : formData,
-        contentType: false,
-        processData: false,
-        success    : function (uuids) {
-            console.log("통신 성공");
-            for (let i = 0; i < uuids.length; i++) {
-                console.log(uuids[i]);
-                let test= {}
-                test.filePath = filePath
-                test.fileName = name[i]
-                test.fileSize = sizes[i]
-                test.fileUuid = uuids[i]
-                if(i == 0) {
-                    test.fileType = "REPRESENTATIVE";
-                } else {
-                    test.fileType = "GENERAL";
+        if (uploadFiles[i] == undefined) {
+            chkChange[i] = 0;
+        } else {
+            if(uploadFiles[i].length != 0) {
+                chkChange[i] = 2;
+                // ajax로 통신하기 전에 alert 띄우고 막기
+                if (uploadFiles[i].size > 41943040) {
+                    alert("파일 사이즈가 너무 큽니다.")
+                    return false;
                 }
-                storeDTO.files[i].push(test);
+                formData.append("uploadFile", uploadFiles[i]);
+                $.ajax({
+                    url        : "/api/files/upload",
+                    type       : "post",
+                    async      : false,
+                    data       : formData,
+                    contentType: false,
+                    processData: false,
+                    success    : function (uuids) {
+                        console.log("통신 성공");
+                        console.log(uuids[0]);
+                        let test= {}
+                        test.filePath = filePath;
+                        test.fileName = uploadFiles[i].name;
+                        test.fileSize = uploadFiles[i].size;
+                        test.fileUuid = uuids[0];
+                        if(i == 0) {
+                            test.fileType = "REPRESENTATIVE";
+                        } else {
+                            test.fileType = "GENERAL";
+                        }
+                        storeDTO.files[i] = test;
+                    },
+                    error      : function () {
+                        alert("통신 실패");
+                    }
+                })
+            } else {
+                chkChange[i] = 1;
+                storeDTO.files[i]={};
             }
-        },
-        error      : function () {
-            alert("통신 실패");
         }
     })
+
 }
 
 

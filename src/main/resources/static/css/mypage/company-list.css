@@ -159,3 +159,24 @@ table th, table td {
 input[type=checkbox] {
     transform : scale(1.5);
 }
+
+.pagination {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination a {
+    text-decoration: none;
+}
+
+.active {
+    font-weight: bold;
+    color: blue;
+}

@@ -2,12 +2,16 @@ package com.app.travelmaker.service.mypage.my;
 
 import com.app.travelmaker.common.AccountSupport;
 import com.app.travelmaker.domain.mypage.my.*;
+import com.app.travelmaker.repository.community.PostRepository;
+import com.app.travelmaker.repository.eco.EcoRepository;
+import com.app.travelmaker.repository.goWith.GoWithRepository;
 import com.app.travelmaker.repository.mypage.company.StoreRepository;
 import com.app.travelmaker.repository.mypage.my.MyBookmarkRepository;
 import com.app.travelmaker.repository.mypage.my.MyCommunityLikeRepository;
 import com.app.travelmaker.repository.mypage.my.MyGiftCardRepository;
 import com.app.travelmaker.repository.mypage.my.MyStoryLikeRepository;
 import com.app.travelmaker.repository.mypage.my.customService.MyCustomServiceRepository;
+import com.app.travelmaker.repository.story.StoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +27,10 @@ public class MypageMainServiceImpl extends AccountSupport implements MypageMainS
     private final MyBookmarkRepository myBookmarkRepository;
     private final MyCommunityLikeRepository myCommunityLikeRepository;
     private final MyStoryLikeRepository myStoryLikeRepository;
+    private final StoryRepository storyRepository;
+    private final PostRepository postRepository;
+    private final EcoRepository ecoRepository;
+    private final GoWithRepository goWithRepository;
 
     @Override
     public Long getCompanyCount() {
@@ -37,6 +45,26 @@ public class MypageMainServiceImpl extends AccountSupport implements MypageMainS
     @Override
     public Long getGiftCardCount() {
         return myGiftCardRepository.getGiftCardCount(authenticationInfo().getId());
+    }
+
+    @Override
+    public Long getStoriesCount() {
+        return storyRepository.getStoriesCount(authenticationInfo().getId());
+    }
+
+    @Override
+    public Long getCommunitiesCount() {
+        return postRepository.getCommunitiesCount(authenticationInfo().getId());
+    }
+
+    @Override
+    public Long getEcosCount() {
+        return ecoRepository.getEcosCount(authenticationInfo().getId());
+    }
+
+    @Override
+    public Long getGoWithsCount() {
+        return goWithRepository.getGoWithsCount(authenticationInfo().getId());
     }
 
     @Override

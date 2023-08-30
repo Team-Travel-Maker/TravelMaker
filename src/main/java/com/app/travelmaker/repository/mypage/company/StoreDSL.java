@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface StoreDSL {
     List<StoreDTO> getAllStore(Long memberId);
+    Page<StoreDTO> getStoreWithPage(Pageable pageable, Long memberId);
     StoreDTO getStore(Long storeId);
     public Page<StoreResponseDTO> getList(Pageable pageable);
 
