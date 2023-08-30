@@ -15,6 +15,8 @@ public class MemberOauthDetail extends DefaultOAuth2User {
 
     private final MemberResponseDTO memberResponseDTO;
 
+
+
     public MemberOauthDetail(MemberResponseDTO memberResponseDTO, Collection<? extends GrantedAuthority> authorities, Map<String, Object> attributes, String nameAttributeKey) {
         super(authorities, attributes, nameAttributeKey);
         this.memberResponseDTO = memberResponseDTO;

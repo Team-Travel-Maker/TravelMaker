@@ -41,7 +41,6 @@ public class MemberResponseDTO {
     private Long fileSize;
 
 
-
     public MemberResponseDTO(Member member){
         this.id = member.getId();
         this.memberEmail = member.getMemberEmail();
