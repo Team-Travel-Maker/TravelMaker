@@ -128,6 +128,15 @@ public class GoWithDSLImpl implements GoWithDSL {
         return goWithDTO;
     }
 
+    @Override
+    public Long getGoWithsCount(Long memberId) {
+        return query.select(goWith.count())
+                .from(goWith)
+                .where(goWith.member.id.eq(memberId)
+                        .and(goWith.deleted.eq(false)))
+                .fetchOne();
+    }
+
     private List<GoWithFileDTO> getFiles() {
         return query.select(Projections.fields(GoWithFileDTO.class,
                 goWithFile.id,
