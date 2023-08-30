@@ -10,6 +10,8 @@ import com.app.travelmaker.repository.mypage.company.StoreRepository;
 import com.app.travelmaker.service.MemberSupport;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -42,6 +44,12 @@ public class StoreServiceImpl extends AccountSupport implements StoreService, Me
         Member member = toMemberEntity(authenticationInfo());
         // 세션으로 가져오기
         return storeRepository.getAllStore(member.getId());
+    }
+
+    @Override
+    public Page<StoreDTO> getStoreWithPage(Pageable pageable) {
+        Long memberId = authenticationInfo().getId();
+        return storeRepository.getStoreWithPage(pageable, memberId);
     }
 
     @Override
@@ -83,7 +91,11 @@ public class StoreServiceImpl extends AccountSupport implements StoreService, Me
         if(request.getFiles().size() != 0) {
             storeFileRepository.deleteAllByStoreId(request.getId());
             // 새로운 업체 파일 등록
-            List<StoreFile> storeFiles = storeFileRepository.saveAll(request.getFiles().stream().map(storeFileDTO -> toStoreFileEntity(storeFileDTO, foundStore)).collect(Collectors.toList()));
+            List<StoreFile> storeFiles = storeFileRepository.saveAll(request.getFiles()
+                    .stream()
+                    .filter(storeFileDTO -> storeFileDTO.getFileName()!=null)
+                    .map(storeFileDTO -> toStoreFileEntity(storeFileDTO, foundStore))
+                    .collect(Collectors.toList()));
         }
     }
 }

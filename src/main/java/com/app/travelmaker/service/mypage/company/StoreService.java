@@ -1,17 +1,19 @@
 package com.app.travelmaker.service.mypage.company;
 
-import com.app.travelmaker.domain.file.FileDTO;
 import com.app.travelmaker.domain.mypage.company.StoreDTO;
 import com.app.travelmaker.domain.mypage.company.StoreFileDTO;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.entity.store.Store;
 import com.app.travelmaker.entity.store.StoreFile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface StoreService {
     void addStore(StoreDTO request);
     List<StoreDTO> getAllStore();
+    Page<StoreDTO> getStoreWithPage(Pageable pageable);
     void deleteStore(List<Long> storeIds);
     StoreDTO getStore(Long storeId);
     void updateStore(StoreDTO request);

@@ -151,10 +151,12 @@ $submitBtn.on("click", function () {
 })
 
 function setFile() {
-    console.log(uploadFiles.length)
+    console.log(uploadFiles.length);
+    console.log("==================="+uploadFiles);
     if(uploadFiles.length == 0) {
         return;
     } else if (uploadFiles[0].length == ""){
+        showWarnModal("썸네일 사진부터 등록해 주세요.");
         return;
     }
 
@@ -176,18 +178,22 @@ function setFile() {
 
     $(uploadFiles).each((i) => {
         console.log(uploadFiles[i])
+        if (uploadFiles[i] == undefined) {
+            uploadFiles[i] = [];
+        }
         if(uploadFiles[i].length == 0) {
-            console.log("이 파일은 비어 있음")
+            console.log("이 파일은 비어 있음");
+        } else {
+            formData.append("uploadFile", uploadFiles[i]);
+            sizes.push(uploadFiles[i].size);
+            name.push(uploadFiles[i].name);
+            // ajax로 통신하기 전에 alert 띄우고 막기
+            if (sizes[i] > 41943040) {
+                alert("파일 사이즈가 너무 큽니다.")
+                return;
+            }
         }
-        formData.append("uploadFile", uploadFiles[i]);
-        sizes.push(uploadFiles[i].size);
-        name.push(uploadFiles[i].name);
 
-        // ajax로 통신하기 전에 alert 띄우고 막기
-        if (sizes[i] > 41943040) {
-            alert("파일 사이즈가 너무 큽니다.")
-            return false;
-        }
     })
 
 
