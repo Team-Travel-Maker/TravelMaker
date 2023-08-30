@@ -1,10 +1,7 @@
 package com.app.travelmaker.service.community;
 
 
-import com.app.travelmaker.common.AccountSupport;
 import com.app.travelmaker.domain.community.PostDTO;
-import com.app.travelmaker.entity.mebmer.Member;
-import com.app.travelmaker.entity.tag.Tag;
 import com.app.travelmaker.repository.community.PostFileRepository;
 import com.app.travelmaker.repository.community.PostRepository;
 import lombok.RequiredArgsConstructor;
