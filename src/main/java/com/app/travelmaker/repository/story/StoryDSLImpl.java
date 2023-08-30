@@ -1,15 +1,9 @@
 package com.app.travelmaker.repository.story;
 
-import com.app.travelmaker.domain.cs.response.CustomServiceFileDTO;
 import com.app.travelmaker.domain.story.response.StoryFileResponseDTO;
 import com.app.travelmaker.domain.story.response.StoryResponseDTO;
-import com.app.travelmaker.entity.store.QStore;
-import com.app.travelmaker.entity.story.QStory;
-import com.app.travelmaker.entity.story.QStoryFile;
-import com.app.travelmaker.entity.story.Story;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -19,9 +13,6 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.app.travelmaker.entity.cs.QCustomService.customService;
-import static com.app.travelmaker.entity.cs.QCustomServiceFile.customServiceFile;
-import static com.app.travelmaker.entity.notice.QNotice.notice;
 import static com.app.travelmaker.entity.story.QStory.story;
 import static com.app.travelmaker.entity.story.QStoryFile.storyFile;
 
@@ -77,4 +68,15 @@ public class StoryDSLImpl implements StoryDSL {
                 storyFile.story.id.as("storyId")
         )).from(storyFile).where(storyFile.story.id.eq(story.id).and(storyFile.deleted.eq(false))).fetch();
     }
+
+
+    @Override
+    public Long getStoriesCount(Long memberId) {
+        return query.select(story.count())
+                .from(story)
+                .where(story.member.id.eq(memberId)
+                        .and(story.deleted.eq(false)))
+                .fetchOne();
+    }
+
 }

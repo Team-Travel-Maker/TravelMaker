@@ -350,6 +350,35 @@ public class MyPageApiController {
         return ResponseEntity.ok(giftCardCount.toString());
     }
 
+    // 스토리 개수 가져오기
+    @GetMapping("storiesCount")
+    public ResponseEntity<?> getStoriesCount() {
+        Long storiesCount = mypageMainService.getStoriesCount();
+        return ResponseEntity.ok(storiesCount.toString());
+    }
+
+    // 커뮤니티 개수 가져오기
+    @GetMapping("communitiesCount")
+    public ResponseEntity<?> getCommunitiesCount() {
+        Long communitiesCount = mypageMainService.getCommunitiesCount();
+        return ResponseEntity.ok(communitiesCount.toString());
+    }
+
+    // 에코 개수 가져오기
+    @GetMapping("ecosCount")
+    public ResponseEntity<?> getEcosCount() {
+        Long ecosCount = mypageMainService.getEcosCount();
+        return ResponseEntity.ok(ecosCount.toString());
+    }
+
+    // 같이가요 개수 가져오기
+    @GetMapping("goWithsCount")
+    public ResponseEntity<?> getGoWithsCount() {
+        Long goWithsCount = mypageMainService.getGoWithsCount();
+        return ResponseEntity.ok(goWithsCount.toString());
+    }
+
+
     // 북마크 개수 가져오기
     @GetMapping("bookmarksCount")
     public ResponseEntity<?> getBookmarksCount() {

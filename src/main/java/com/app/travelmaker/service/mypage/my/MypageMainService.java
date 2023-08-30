@@ -12,6 +12,13 @@ public interface MypageMainService {
 
     Long getGiftCardCount();
 
+    Long getStoriesCount();
+
+    Long getCommunitiesCount();
+
+    Long getEcosCount();
+
+    Long getGoWithsCount();
     Long getBookmarksCount();
 
     Long getLikesCount();
