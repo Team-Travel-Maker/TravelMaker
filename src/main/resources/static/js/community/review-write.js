@@ -81,9 +81,9 @@ $(document).ready(function() {
             type : 'post',           // 타입 (get, post, put 등등)
             url : '/api/communities/board/write',           // 요청할 서버url
             async : true,            // 비동기화 여부 (default : true)
-            enctype: "application/json; charset=UTF-8",
+            // enctype: "text",
             processData : false,
-            contentType : false,
+            contentType : 'application/json',
             data : JSON.stringify(postDTO),
             success : function(result) { // 결과 성공 콜백함수
                 console.log("성공 여부" + result);
