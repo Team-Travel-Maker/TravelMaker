@@ -72,6 +72,13 @@ public class MyPageApiController {
         return ResponseEntity.ok(allStore);
     }
 
+    // 전체 업체 목록 api 페이징 처리
+    @GetMapping("storeListWithPage")
+    public ResponseEntity<?> getStoreListWithPage(@PageableDefault(page = 0, size = 5) Pageable pageable) {
+        Page<StoreDTO> stores = storeService.getStoreWithPage(pageable);
+        return ResponseEntity.ok(stores);
+    }
+
     // 업체 삭제 api
     @Transactional
     @DeleteMapping("store")
@@ -101,6 +108,7 @@ public class MyPageApiController {
     @Transactional
     @PutMapping("store")
     public ResponseEntity updateStore(@RequestBody StoreDTO request) {
+        log.info(request.toString());
         storeService.updateStore(request);
         log.info(request.toString());
         return ResponseEntity.ok("/mypage/company/list");
@@ -168,6 +176,13 @@ public class MyPageApiController {
         return ResponseEntity.ok(myPoints);
     }
 
+    // 포인트 내역 전체 조회 페이징처리
+    @GetMapping("pointsWithPage")
+    public ResponseEntity<?> getMyPoints(@PageableDefault(page = 0, size = 5) Pageable pageable) {
+        Page<MyPointDTO> myPoints = myPointService.getMyPointsWithPage(pageable);
+        return ResponseEntity.ok(myPoints);
+    }
+
     // 포인트 내역 조회(적립, 사용)
     @GetMapping("pointsByType")
     public ResponseEntity<?> getMyPointsByPointType(@RequestParam String pointType) {
@@ -184,6 +199,21 @@ public class MyPageApiController {
         return ResponseEntity.ok(myPoints);
     }
 
+    // 포인트 내역 전체 조회 페이징처리
+    @GetMapping("pointsByTypeWithPage")
+    public ResponseEntity<?> getMyPointsByPointTypeWithPage(@PageableDefault(page = 0, size = 5) Pageable pageable,
+                                         @RequestParam String pointType) {
+        PointCateGoryType pointCateGoryType = null;
+        if(PointCateGoryType.EARN.getCode().equals(pointType)) {
+            pointCateGoryType = PointCateGoryType.EARN;
+        } else {
+            pointCateGoryType = PointCateGoryType.USE;
+        }
+        log.info(pointType);
+        log.info(pointCateGoryType.toString());
+        Page<MyPointDTO> myPoints = myPointService.getMyPointsByPointTypeWithPage(pageable, pointCateGoryType);
+        return ResponseEntity.ok(myPoints);
+    }
 
     /**
      * 문의 신고
