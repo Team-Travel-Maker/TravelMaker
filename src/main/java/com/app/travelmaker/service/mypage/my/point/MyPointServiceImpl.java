@@ -5,6 +5,8 @@ import com.app.travelmaker.constant.PointCateGoryType;
 import com.app.travelmaker.domain.mypage.my.point.MyPointDTO;
 import com.app.travelmaker.repository.mypage.my.point.MyPointRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +24,20 @@ public class MyPointServiceImpl extends AccountSupport implements MyPointService
     }
 
     @Override
+    public Page<MyPointDTO> getMyPointsWithPage(Pageable pageable) {
+        Long memberId = authenticationInfo().getId();
+        return myPointRepository.getMyPointsWithPage(pageable, memberId);
+    }
+
+    @Override
     public List<MyPointDTO> getMyPointsByPointType(PointCateGoryType pointType) {
         Long memberId = authenticationInfo().getId();
         return myPointRepository.getMyPointsByPointType(memberId, pointType);
+    }
+
+    @Override
+    public Page<MyPointDTO> getMyPointsByPointTypeWithPage(Pageable pageable, PointCateGoryType pointCateGoryType) {
+        Long memberId = authenticationInfo().getId();
+        return myPointRepository.getMyPointsByPointTypeWithPage(pageable, memberId, pointCateGoryType);
     }
 }

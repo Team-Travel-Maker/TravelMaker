@@ -59,7 +59,12 @@ public class MyCustomServiceDSLImpl implements MyCustomServiceDSL {
                 }).collect(Collectors.toList());
 
 
-        Long count = query.select(customService.count()).from(customService).where(customService.deleted.eq(false).and(containsKeyword(keyword))).fetchOne();
+        Long count = query.select(customService.count())
+                .from(customService)
+                .where(customService.deleted.eq(false)
+                        .and(containsKeyword(keyword))
+                        .and(customService.member.id.eq(memberId)))
+                .fetchOne();
 
         return new PageImpl<>(customServices, pageable, count);
     }
@@ -103,7 +108,8 @@ public class MyCustomServiceDSLImpl implements MyCustomServiceDSL {
                 .from(customService)
                 .where(customService.deleted.eq(false)
                         .and(customService.csType.eq(type))
-                        .and(containsKeyword(keyword)))
+                        .and(containsKeyword(keyword))
+                        .and(customService.member.id.eq(memberId)))
                 .fetchOne();
 
         return new PageImpl<>(customServices, pageable, count);
