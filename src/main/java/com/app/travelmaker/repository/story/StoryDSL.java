@@ -5,4 +5,6 @@ import org.springframework.http.ResponseEntity;
 
 public interface StoryDSL {
     public ResponseEntity<Object> getList(Pageable pageable);
+
+    Long getStoriesCount(Long memberId);
 }
