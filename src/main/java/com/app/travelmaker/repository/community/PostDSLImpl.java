@@ -1,6 +1,7 @@
 package com.app.travelmaker.repository.community;
 
 import com.app.travelmaker.domain.community.PostDTO;
+import com.app.travelmaker.entity.mebmer.QMember;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import java.util.Optional;
 
 import static com.app.travelmaker.entity.community.QCommunity.community;
 import static com.app.travelmaker.entity.community.QCommunityLike.communityLike;
+import static com.app.travelmaker.entity.mebmer.QMember.member;
 
 public class PostDSLImpl implements PostDSL {
 
@@ -33,10 +35,10 @@ public class PostDSLImpl implements PostDSL {
                 community.communityContent,
                 community.communityCategory,
                 community.createdDate,
-                community.member.memberName,
-                community.member.id.as("memberId")
-                )).from(community)
-                .where(community.id.eq(community.member.id))
+                community.member
+                )).from(community).innerJoin(community.member, member)
+                .on(community.member.id.eq(member.id))
+                .where(community.id.eq(id))
                 .fetchOne());
 
 

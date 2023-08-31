@@ -23,7 +23,7 @@
 </div>
 
 <main class="CommunityWrite">
-    <form th:action="@{/api/communities/board/write}" method="post" id="write" name="postDTO" th:object="${postDTO}">
+    <form th:action="@{/community/board/write}" method="post" id="write" name="postDTO" th:object="${postDTO}">
         <input type="hidden" name="communityType" id="cType">
         <input type="hidden" name="memberId">
         <div class="Header_CommunityWriteHeader">

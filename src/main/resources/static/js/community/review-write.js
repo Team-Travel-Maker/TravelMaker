@@ -69,29 +69,47 @@ $(document).ready(function() {
         let postTitle = $('[name="postTitle"]').val();
         let postContent = $('[name="postContent"]').val();
         // console.log(`${communityType},${postTitle}, ${postContent}`)
+        $("#cType").val(communityType);
+        $("#write").submit();
 
-        let postDTO = {
-            communityType : communityType,
-            postTitle : postTitle,
-            postContent : postContent
-        }
-
-        console.log(JSON.stringify(postDTO))
-        $.ajax({
-            type : 'post',           // 타입 (get, post, put 등등)
-            url : '/api/communities/board/write',           // 요청할 서버url
-            async : true,            // 비동기화 여부 (default : true)
-            // enctype: "text",
-            processData : false,
-            contentType : 'application/json',
-            data : JSON.stringify(postDTO),
-            success : function(result) { // 결과 성공 콜백함수
-                console.log("성공 여부" + result);
-            },
-            error : function(request, status, error) { // 결과 에러 콜백함수
-                console.log("에러 : " + error)
-            }
-        })
+        // let postDTO = {
+        //     communityType : communityType,
+        //     postTitle : postTitle,
+        //     postContent : postContent
+        // }
+        //
+        // console.log(JSON.stringify(postDTO))
+        // $.ajax({
+        //     type : 'post',           // 타입 (get, post, put 등등)
+        //     url : '/api/communities/board/write',           // 요청할 서버url
+        //     async : false,            // 비동기 여부 (default : true)
+        //     // enctype: "text",
+        //     processData : false,
+        //     contentType : 'application/json',
+        //     data : JSON.stringify(postDTO),
+        //     success : function(result) { // 결과 성공 콜백함수
+        //         // location.href = "/community/board/detail"
+        //         console.log("성공 여부");
+        //         // $.ajax({
+        //         //     type : 'GET',
+        //         //     url : 'board/detail',
+        //         //     contentType : 'application/json',
+        //         //     success : function (result) {
+        //         //         result.toString();
+        //         //         console.log(result.toString());
+        //         //         console.log(result.toString());
+        //         //         console.log(result.postTitle);
+        //         //         console.log(result.postContent);
+        //         //         console.log(result.communityType);
+        //         //
+        //         //     }
+        //         // })
+        //
+        //     },
+        //     error : function(request, status, error) { // 결과 에러 콜백함수
+        //         console.log("에러 : " + error)
+        //     }
+        // })
 
     });
 });

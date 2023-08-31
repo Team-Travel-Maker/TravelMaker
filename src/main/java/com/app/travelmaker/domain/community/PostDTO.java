@@ -34,6 +34,12 @@ public class PostDTO {
     private List<Long> fileIdsForDelete = new ArrayList<>();
 
 
-
-
+    public PostDTO(Long id, String postTitle, String postContent, CommunityType communityType, LocalDateTime createTime, Member member) {
+        this.id = id;
+        this.postTitle = postTitle;
+        this.postContent = postContent;
+        this.communityType = communityType;
+        this.createTime = createTime;
+        this.member = member;
+    }
 }
