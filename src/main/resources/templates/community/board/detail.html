@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>소통</title>
     <link rel="stylesheet" href="/css/common.css"/>
     <link rel="stylesheet" href="/css/header/header.css"/>
@@ -11,6 +12,8 @@
 <div th:replace="~{header/header :: #header}"></div>
 <div class="Padding_padding___Nyki"></div>
 <main class="community-post-detail" th:object="${postDTO}">
+    <input type="hidden" name="memberName">
+    <input type="hidden" name="memberId">
     <aside class="communityPostDetail-side">
         <div>
             <div class="postleftside-top">
@@ -22,7 +25,7 @@
                             </div>
                         </div>
                         <div class="authorBox-vertical">
-                            <div class="authorBox-authorBox-username username" th:text="#{postDTO.memberName}"></div>
+                            <div class="authorBox-authorBox-username username" th:text="${memberName}"></div>
                             <div class="author-info">
                                 <div class="userinfo-badge">개발</div>
                                 <div class="userinfo-badge">7년차</div>
@@ -72,15 +75,15 @@
                                             <div class="userinfo-badge">7년차</div>
                                         </div>
                                     </div>
-                                    <span class="authorBox-authorbox-createAt create-time" th:text="${createTime}"></span>
+                                    <span class="authorBox-authorbox-createAt create-time" ></span>
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
-                <h1 itemprop="headline" class="postContents-title" th:text="${postTitle}"></h1>
+                <h1 itemprop="headline" class="postContents-title" th:text="${postDTO.postTitle}"></h1>
             </div>
-            <div class="postContents-body" th:text="${postContent}">
+            <div class="postContents-body" th:text="${postDTO.postContent}">
                 <div class="postContents-metaTags"></div>
                 <div class="postContents-image"></div>
 
@@ -155,7 +158,7 @@
                     <div class="userAvater commentWrite-commtentWrite-avatar">
                         <img src="https://static.wanted.co.kr/oneid-user/profile_default.png" alt="">
                     </div>
-                    <span class="commentWrite-commtentWrite-username" th:text="${memberName}"></span>
+                    <span class="commentWrite-commtentWrite-username" ></span>
                 </div>
                 <div class="commentWrite-commtentWrite-bottom">
                     <form>
@@ -184,4 +187,7 @@
 
 
 </body>
+
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/js/community/detail.js"></script>
 </html>

@@ -6,13 +6,14 @@ import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.entity.community.Community;
 import com.app.travelmaker.service.MemberSupport;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
 
 public interface CommunityService extends MemberSupport {
 
-    public void write(PostDTO postDTO);
+    public Long write(PostDTO postDTO);
 
     public List<PostDTO> getPostList(PostDTO postDTO);
 
@@ -30,7 +31,7 @@ public interface CommunityService extends MemberSupport {
                 .communityTitle(postDTO.getPostTitle())
                 .communityContent(postDTO.getPostContent())
                 .communityCategory(postDTO.getCommunityType())
-                .createdDate(postDTO.getCreateTime())
+                .createdDate(LocalDateTime.now())
                 .member(postDTO.getMember())
                 .build();
     }

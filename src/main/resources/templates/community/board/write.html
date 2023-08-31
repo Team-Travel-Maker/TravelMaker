@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>소통</title>
+    <title>일반 후기</title>
     <link rel="stylesheet" href="/css/common.css"/>
     <link rel="stylesheet" href="/css/header/header.css"/>
     <link rel="stylesheet" href="/css/community/community-write.css">
@@ -23,14 +23,13 @@
 </div>
 
 <main class="CommunityWrite">
-    <form th:action="@{/api/communities/board/write}" method="post" id="write" name="writeForm" th:object="${postDTO}">
+    <form th:action="@{/community/board/write}" method="post" id="write" name="postDTO" th:object="${postDTO}">
         <input type="hidden" name="communityType" id="cType">
         <input type="hidden" name="memberId">
         <div class="Header_CommunityWriteHeader">
             <div class="Header_CommunityWriteHeader_content">
-                <div class="Header_CommunityWriteHeader_button">
-                    <button
-                            class="Button_root Button_contained rt-btn"
+                <div class="Header_CommunityWriteHeader_button registration-headerBtn">
+                    <button class="Button_root Button_contained rt-btn"
                             type="button" form="write" aria-label="registration button" disabled="">
                         <span class="Button_label">등록하기</span>
                     </button>
@@ -54,10 +53,10 @@
                     </style>
                     <input placeholder="태그를 추가해 주세요.">
                     <div class="selected-cType">
-                        <select name="communityType">
-                            <option name="communityType" value="REVIEW" selected>일반 후기</option>
-                            <option name="communityType" value="IMPROVEMENT">개선 요청</option>
-                            <option name="communityType" value="COMMUNICATION">소통</option>
+                        <select id="communityType" name="communityType">
+                            <option value="REVIEW" selected>일반 후기</option>
+                            <option value="IMPROVEMENT">개선 요청</option>
+                            <option value="COMMUNICATION">소통</option>
                         </select>
                     </div>
 
