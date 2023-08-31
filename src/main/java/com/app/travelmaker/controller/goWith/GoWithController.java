@@ -4,19 +4,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 @Slf4j
 @RequestMapping("/goWith/*")
 public class GoWithController {
-
-
 
 //    함께가요 목록
     @GetMapping("goWith-list")
@@ -37,12 +31,20 @@ public class GoWithController {
     @GetMapping("goWith-detail")
     public void goToGoWithDetail(){;}
 
-
-
-
-
-
-
-
-
+    @GetMapping("goWith-detail/{id}")
+    public String  getPost(@PathVariable Long id, Model model) {
+        log.info("==========================================");
+        log.info("==========================================");
+        log.info("==========================================");
+        log.info("==========================================");
+        log.info("==========================================");
+            model.addAttribute("goWithId", id);
+        return "/goWith/goWith-detail";
+    }
 }
+
+
+
+
+
+

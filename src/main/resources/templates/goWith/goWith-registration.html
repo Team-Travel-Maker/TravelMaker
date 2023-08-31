@@ -15,8 +15,8 @@
 
 
 <!-- 헤더 -->
-<div th:replace="~{header/header :: #header}"></div>
-
+<div th:replace="~{header/signedIn-header :: #header}"></div>
+<div class="Padding_padding___Nyki"></div>
 
 
 <!-- 함께가요 등록 -->
@@ -34,11 +34,11 @@
     </header>
 
     <!-- 등록 폼 -->
-    <form id="write">
+    <form id="write" action="post" class="company-form" enctype="multipart/form-data">
         <div class="registration-header">
             <div class="registration-headerContent">
                 <div class="registration-headerBtn ">
-                    <button type="submit" class="Button-btn Button-root Button-contained" disabled="" form="write">
+                    <button id="commit-btn"type="submit" class="Button-btn Button-root Button-contained" disabled="" form="write">
                         <span class="Button-label">등록하기</span>
                         <span class="Button-interaction"></span>
                     </button>
@@ -160,14 +160,14 @@
         </div>
     </form>
     <!--    모바일 submit -->
-    <div class="mobileSubmit">
-        <div class="mobileSubmit-gradient"></div>
-        <div class="mobileSubmit-btn">
-            <button class="Button-root Button-contained btn-toggle" type="submit" form="write" disabled="">
-                <span class="Button-label">등록하기</span>
-            </button>
-        </div>
-    </div>
+<!--    <div class="mobileSubmit">-->
+<!--        <div class="mobileSubmit-gradient"></div>-->
+<!--        <div class="mobileSubmit-btn">-->
+<!--            <button class="Button-root Button-contained btn-toggle" type="submit" form="write" disabled="">-->
+<!--                <span class="Button-label">등록하기</span>-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </div>-->
     <!--    첨부파일-->
     <div class="CommunityWrite_CommunityPhotoButton">
         <label for="upload1">
@@ -202,55 +202,55 @@
                         <h3 style="letter-spacing: 0.5px">여행 지역 선택(1개)</h3>
                     </div>
                     <div class="TagBtn-wrap">
-                        <button type="button" class="modal-btn Button-root local-btn" value="서 울">
+                        <button type="button" class="modal-btn Button-root local-btn" value="SEOUL">
                             서 울
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="경기도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="GYEONGGI_DO">
                             경기도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="인 천">
+                        <button type="button" class="modal-btn Button-root local-btn" value="INCHEON">
                             인 천
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="강원도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="GANG_WONDO">
                             강원도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="세 종">
+                        <button type="button" class="modal-btn Button-root local-btn" value="SEJONG">
                             세 종
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="충청남도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="CHUNGCHEONGNAM_DO">
                             충청남도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="충청북도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="CHUNGCHEONG_BUKDO">
                             충청북도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="대 전">
+                        <button type="button" class="modal-btn Button-root local-btn" value="DAEJEON">
                             대 전
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="전라남도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="JEOLLANAM_DO">
                             전라남도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="전라북도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="JEOLLABUK_DO">
                             전라북도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="광 주">
+                        <button type="button" class="modal-btn Button-root local-btn" value="GWANGJU">
                             광 주
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="경상남도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="GYEONGSANGNAM_DO">
                             경상남도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="경상북도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="GYEONGSANGNBUK_DO">
                             경상북도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="대 구">
+                        <button type="button" class="modal-btn Button-root local-btn" value="DAEGU">
                             대 구
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="울 산">
+                        <button type="button" class="modal-btn Button-root local-btn" value="ULSAN">
                             울 산
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="부 산">
+                        <button type="button" class="modal-btn Button-root local-btn" value="BUSAN">
                             부 산
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="제주도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="JEJU_ISLAND">
                             제주도
                         </button>
                     </div>
@@ -263,8 +263,14 @@
                         <button type="button" class="modal-btn Button-root mbti-btn" value="ISTJ">
                             ISTJ
                         </button>
-                        <button type="button" class="modal-btn Button-root mbti-btn" value="TSFJ">
-                            TSFJ
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ISFJ">
+                            ISFJ
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="INFJ">
+                        INFJ
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="INTJ">
+                            INTJ
                         </button>
                         <button type="button" class="modal-btn Button-root mbti-btn" value="ISTP">
                             ISTP
@@ -272,20 +278,14 @@
                         <button type="button" class="modal-btn Button-root mbti-btn" value="ISFP">
                             ISFP
                         </button>
-                        <button type="button" class="modal-btn Button-root mbti-btn" value="INFJ">
-                            INFJ
-                        </button>
                         <button type="button" class="modal-btn Button-root mbti-btn" value="INFP">
                             INFP
-                        </button>
-                        <button type="button" class="modal-btn Button-root mbti-btn" value="INTJ">
-                            INTJ
                         </button>
                         <button type="button" class="modal-btn Button-root mbti-btn" value="INTP">
                             INTP
                         </button>
-                        <button type="button" class="modal-btn Button-root mbti-btn" value="ESTJ">
-                            ESTJ
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ESTP">
+                            ESTP
                         </button>
                         <button type="button" class="modal-btn Button-root mbti-btn" value="ESFP">
                             ESFP
@@ -296,11 +296,11 @@
                         <button type="button" class="modal-btn Button-root mbti-btn" value="ENTP">
                             ENTP
                         </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ESTJ">
+                            ESTJ
+                        </button>
                         <button type="button" class="modal-btn Button-root mbti-btn" value="ESFJ">
                             ESFJ
-                        </button>
-                        <button type="button" class="modal-btn Button-root mbti-btn" value="ESTP">
-                            ESTP
                         </button>
                         <button type="button" class="modal-btn Button-root mbti-btn" value="ENFJ">
                             ENFJ
@@ -325,5 +325,6 @@
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="/js/goWith/registration.js"></script>
+<script src="/js/header/header.js"></script>
 
 </html>

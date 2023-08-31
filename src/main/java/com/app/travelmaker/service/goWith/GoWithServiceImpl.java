@@ -15,38 +15,33 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
 @Slf4j
 @RequiredArgsConstructor
+@Service
 public class GoWithServiceImpl extends AccountSupport implements GoWithService, MemberSupport {
     private final GoWithRepository goWithRepository;
     private final GoWithFileRepository goWithFileRepository;
     @Override
-    @Transactional
     public Slice<GoWith> getListBySliceAndSorting(Pageable pageable, GoWithRegionType region) {
         return goWithRepository.findAllWithSliceAndSorting(pageable,region);
     }
 
 
     @Override
-    @Transactional
     public Page<GoWithDTO> getList(Pageable pageable, GoWithRegionType region) {
         return goWithRepository.getList(pageable,region);
     }
 
     @Override
-    @Transactional
     public GoWithDTO getGoWith(Long id) {
         return goWithRepository.getGoWith(id);
     }
 
     @Override
-    @Transactional
     public void write(GoWithDTO goWithDTO) {
         Member member = toMemberEntity(authenticationInfo());
         GoWith goWith = goWithRepository.save(toEntity(goWithDTO, member));
@@ -55,7 +50,6 @@ public class GoWithServiceImpl extends AccountSupport implements GoWithService, 
     }
 
     @Override
-    @Transactional
     public void update(GoWithDTO goWithDTO) {
 
     }

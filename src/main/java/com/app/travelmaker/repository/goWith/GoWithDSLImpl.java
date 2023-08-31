@@ -3,6 +3,7 @@ package com.app.travelmaker.repository.goWith;
 import com.app.travelmaker.constant.GoWithRegionType;
 import com.app.travelmaker.domain.gowith.GoWithDTO;
 import com.app.travelmaker.domain.gowith.GoWithFileDTO;
+import com.app.travelmaker.domain.gowith.GoWithReplyDTO;
 import com.app.travelmaker.entity.goWith.GoWith;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
@@ -107,26 +108,61 @@ public class GoWithDSLImpl implements GoWithDSL {
     }
 
 
-    @Override
-    public GoWithDTO getGoWith(Long id) {
-        List<GoWithFileDTO> files = getFiles();
-        GoWithDTO goWithDTO =
-        query.select(Projections.fields(GoWithDTO.class,
-                goWith.id,
-                goWith.goWithTitle,
-                goWith.goWithContent,
-                goWith.goWithRegionType,
-                goWith.goWithMbti,
-//                goWith.member.memberName,
-                goWith.createdDate
-        )).from(goWith)
-                .where(goWith.deleted.eq(false).and(goWith.id.eq(id))).fetchOne();
+//    @Override
+//    public GoWithDTO getGoWith(Long id) {
+//        List<GoWithFileDTO> files = getFiles();
+//        GoWithDTO goWithDTO =
+//        query.select(Projections.fields(GoWithDTO.class,
+//                goWith.id,
+//                goWith.goWithTitle,
+//                goWith.goWithContent,
+//                goWith.goWithRegionType,
+//                goWith.goWithMbti,
+////                goWith.member.memberName,
+//                goWith.createdDate
+//        )).from(goWith)
+//                .where(goWith.deleted.eq(false).and(goWith.id.eq(id))).fetchOne();
+//
+//        files =files.stream().filter(file -> file.getGoWithId().equals(goWithDTO.getId())).collect(Collectors.toList());
+//        goWithDTO.setFiles(files);
+//
+//        return goWithDTO;
+//    }
+@Override
+public GoWithDTO getGoWith(Long id) {
+    List<GoWithFileDTO> files = getFiles();
 
-        files =files.stream().filter(file -> file.getGoWithId().equals(goWithDTO.getId())).collect(Collectors.toList());
-        goWithDTO.setFiles(files);
+    GoWithDTO goWithDTO = query.select(Projections.fields(GoWithDTO.class,
+            goWith.id,
+            goWith.goWithTitle,
+            goWith.goWithContent,
+            goWith.goWithRegionType,
+            goWith.goWithMbti,
+            goWith.createdDate
+    )).from(goWith)
+            .where(goWith.deleted.eq(false).and(goWith.id.eq(id))).fetchOne();
 
-        return goWithDTO;
-    }
+    List<GoWithReplyDTO> replies = query.select(Projections.fields(GoWithReplyDTO.class,
+            goWithReply.id,
+            goWithReply.replyContent,
+            goWithReply.goWith.member,  // 댓글 작성자 정보
+            goWithReply.createdDate
+    )).from(goWithReply)
+            .where(goWithReply.deleted.eq(false).and(goWithReply.goWith.id.eq(id))).fetch();
+
+    Long replyCount = query.select(goWithReply.count())
+            .from(goWithReply)
+            .where(goWithReply.deleted.eq(false).and(goWithReply.goWith.id.eq(id)))
+            .fetchOne();
+
+    files = files.stream().filter(file -> file.getGoWithId().equals(goWithDTO.getId())).collect(Collectors.toList());
+    goWithDTO.setFiles(files);
+    goWithDTO.setReplies(replies);  // 댓글 정보 추가
+    goWithDTO.setReplyCount(replyCount);  // 댓글 갯수 정보 추가
+
+    return goWithDTO;
+}
+
 
     @Override
     public Long getGoWithsCount(Long memberId) {

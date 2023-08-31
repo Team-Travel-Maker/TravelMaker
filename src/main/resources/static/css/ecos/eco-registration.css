@@ -230,6 +230,17 @@ button {
     /*padding-top: 60px;*/
 }
 
+.registration-writePaper {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: calc(100vh - 110px);
+    padding: 68px 40px;
+    border: 1px solid #e1e2e3;
+    border-top: 0;
+    background-color: #fff;
+}
 @media (min-width: 1200px) {
 .registration-writePaper {
     max-width: 790px;
@@ -237,17 +248,7 @@ button {
     }
 }
 
-.registration-writePaper {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-height: calc(100vh - 110px);
-    padding: 39px 40px;
-    border: 1px solid #e1e2e3;
-    border-top: 0;
-    background-color: #fff;
-}
+
 
 .tagPanel {
     margin-bottom: 15px;
@@ -709,20 +710,17 @@ div#modal-wrap span{
 
 
 
-.thumbnail-img{
+.thumbnail-img,
+.sub1-img,
+.sub2-img {
     width: 100px;
     height: 100px;
-}
-.sub1-img{
-    width: 100px;
-    height: 100px;
-}
-.sub2-img{
-    width: 100px;
-    height: 100px;
+    display: none;
 }
 
-
+.Padding_padding___Nyki {
+    height: 50px;
+}
 
 
 
