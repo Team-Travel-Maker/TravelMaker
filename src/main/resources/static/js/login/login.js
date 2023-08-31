@@ -77,8 +77,14 @@ $(document).ready(function () {
 
     }
 
-
-
-
+    $("form[name=login]").on("keydown", evt => {
+        if(!$continueBtn.attr("disabled")) {
+            if ((evt.keyCode || evt.which) === 13) {
+                checkEmail.memberEmail = $('#email_input').val();
+                console.log(checkEmail);
+                checkId(checkEmail);
+            }
+        }
+    });
 
 });
