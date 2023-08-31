@@ -15,8 +15,8 @@
 
 
 <!-- 헤더 -->
-<div th:replace="~{header/header :: #header}"></div>
-
+<div th:replace="~{header/signedIn-header :: #header}"></div>
+<div class="Padding_padding___Nyki"></div>
 
 
 <!-- 함께가요 등록 -->
@@ -34,11 +34,11 @@
     </header>
 
     <!-- 등록 폼 -->
-    <form id="write">
+    <form id="write" action="post" class="company-form" enctype="multipart/form-data">
         <div class="registration-header">
             <div class="registration-headerContent">
                 <div class="registration-headerBtn ">
-                    <button type="submit" class="Button-btn Button-root Button-contained" disabled="" form="write">
+                    <button id="commit-btn"type="submit" class="Button-btn Button-root Button-contained" disabled="" form="write">
                         <span class="Button-label">등록하기</span>
                         <span class="Button-interaction"></span>
                     </button>
@@ -134,46 +134,62 @@
                         <textarea class="AutoTextarea-textarea AutoTextarea-hidden" readonly style="height: 28px;"></textarea>
                     </div>
                 </div>
+                <div class="attach-wrap">
+                    <label for="upload1" class="thumbnail-attach">
+                        <img src="" class="thumbnail-img">
+                        <span class="file-size"></span>
+                    </label>
+                </div>
+                <div class="attach-wrap">
+                    <label for="upload2" class="sub1-attach">
+                        <img src="" class="sub1-img">
+                        </h6>
+                        <span class="file-size"></span>
+                    </label>
+                </div>
+                    <label for="upload3" class="sub2-attach">
+                        <img src="" class="sub2-img">
+                        <span class="file-size"></span>
+                    </label>
+                </div>
+
+                <input type="file" id="upload1" class="upload" accept="image/png, image/jpeg" style="display: none;">
+                <input type="file" id="upload2" class="upload" accept="image/png, image/jpeg" style="display: none;">
+                <input type="file" id="upload3" class="upload" accept="image/png, image/jpeg" style="display: none;">
             </div>
         </div>
     </form>
     <!--    모바일 submit -->
-    <div class="mobileSubmit">
-        <div class="mobileSubmit-gradient"></div>
-        <div class="mobileSubmit-btn">
-            <button class="Button-root Button-contained btn-toggle" type="submit" form="write" disabled="">
-                <span class="Button-label">등록하기</span>
-            </button>
-        </div>
-    </div>
-    <!--    사진등록 -->
-    <input class="writePaper-photoFile" type="file" accept="image/png, image/jpeg">
-    <!--    <input type="button" value="파일 선택" pseudo="-webkit-file-upload-button" id="file-upload-button" aria-hidden="true">-->
-    <!--    <span aria-hidden="true">선택된 파일 없음</span>-->
-    <div class="writePaper-photoBtn">
-        <div class="toolTip">
-            <span>사진을 추가해 보세요!</span>
-            <div class="toolTip-bubblePoint">
-
-            </div>
-        </div>
-        <button type="button" class="PhotoButton" aria-label="add photo button">
-<!--            <input type="file" id="upload-image" style="display: none">-->
-            <input id="upload1" class="upload" type="file" style="display: none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.52489 11.47L9.9908 13.9387L15.4533 8.46998C15.7462 8.17668 16.2216 8.17668 16.5145 8.46998L22.5076 14.47C22.6481 14.6106 22.727 14.8012 22.727 15V19.0395C22.727 19.4539 22.3909 19.7897 21.9765 19.7895L1.99951 19.7763C1.58501 19.776 1.24932 19.4396 1.25 19.0251L1.273 4.99877C1.27368 4.58465 1.60987 4.24946 2.02399 4.25L22.001 4.27632C22.4163 4.27686 22.7521 4.61486 22.75 5.0302L22.727 9.4677C22.7248 9.88191 22.3873 10.216 21.9731 10.2138C21.5589 10.2117 21.2249 9.87414 21.227 9.45993L21.2461 5.77532L2.77177 5.75099L2.75123 18.2768L21.227 18.289V15.3104L15.9839 10.0613L10.5214 15.53C10.2285 15.8233 9.75313 15.8233 9.46017 15.53L6.99425 13.0613L5.52718 14.53C5.23446 14.8231 4.75959 14.8234 4.46653 14.5306C4.17346 14.2379 4.17319 13.763 4.46591 13.47L6.46361 11.47C6.75658 11.1767 7.23192 11.1767 7.52489 11.47ZM9 9.75H5C4.58579 9.75 4.25 9.41421 4.25 9C4.25 8.58579 4.58579 8.25 5 8.25H9C9.41421 8.25 9.75 8.58579 9.75 9C9.75 9.41421 9.41421 9.75 9 9.75Z" fill="currentColor"></path>
-            <mask id="mask0_150_2361" maskUnits="userSpaceOnUse" x="1" y="4" width="22" height="16">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.52489 11.47L9.9908 13.9387L15.4533 8.46998C15.7462 8.17668 16.2216 8.17668 16.5145 8.46998L22.5076 14.47C22.6481 14.6106 22.727 14.8012 22.727 15V19.0395C22.727 19.4539 22.3909 19.7897 21.9765 19.7895L1.99951 19.7763C1.58501 19.776 1.24932 19.4396 1.25 19.0251L1.273 4.99877C1.27368 4.58465 1.60987 4.24946 2.02399 4.25L22.001 4.27632C22.4163 4.27686 22.7521 4.61486 22.75 5.0302L22.727 9.4677C22.7248 9.88191 22.3873 10.216 21.9731 10.2138C21.5589 10.2117 21.2249 9.87414 21.227 9.45993L21.2461 5.77532L2.77177 5.75099L2.75123 18.2768L21.227 18.289V15.3104L15.9839 10.0613L10.5214 15.53C10.2285 15.8233 9.75313 15.8233 9.46017 15.53L6.99425 13.0613L5.52718 14.53C5.23446 14.8231 4.75959 14.8234 4.46653 14.5306C4.17346 14.2379 4.17319 13.763 4.46591 13.47L6.46361 11.47C6.75658 11.1767 7.23192 11.1767 7.52489 11.47ZM9 9.75H5C4.58579 9.75 4.25 9.41421 4.25 9C4.25 8.58579 4.58579 8.25 5 8.25H9C9.41421 8.25 9.75 8.58579 9.75 9C9.75 9.41421 9.41421 9.75 9 9.75Z" fill="white"></path>
-            </mask>
-            <g mask="url(#mask0_150_2361)">
-                <rect width="24" height="24" fill="currentColor"></rect>
-            </g>
-            </svg>
-            <span>
-                (
-                <em>0</em>
-                /1)
+<!--    <div class="mobileSubmit">-->
+<!--        <div class="mobileSubmit-gradient"></div>-->
+<!--        <div class="mobileSubmit-btn">-->
+<!--            <button class="Button-root Button-contained btn-toggle" type="submit" form="write" disabled="">-->
+<!--                <span class="Button-label">등록하기</span>-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!--    첨부파일-->
+    <div class="CommunityWrite_CommunityPhotoButton">
+        <label for="upload1">
+            <button type="button" class="PhotoButton" onclick="openFile()">
+                <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M7.52489 11.47L9.9908 13.9387L15.4533 8.46998C15.7462 8.17668 16.2216 8.17668 16.5145 8.46998L22.5076 14.47C22.6481 14.6106 22.727 14.8012 22.727 15V19.0395C22.727 19.4539 22.3909 19.7897 21.9765 19.7895L1.99951 19.7763C1.58501 19.776 1.24932 19.4396 1.25 19.0251L1.273 4.99877C1.27368 4.58465 1.60987 4.24946 2.02399 4.25L22.001 4.27632C22.4163 4.27686 22.7521 4.61486 22.75 5.0302L22.727 9.4677C22.7248 9.88191 22.3873 10.216 21.9731 10.2138C21.5589 10.2117 21.2249 9.87414 21.227 9.45993L21.2461 5.77532L2.77177 5.75099L2.75123 18.2768L21.227 18.289V15.3104L15.9839 10.0613L10.5214 15.53C10.2285 15.8233 9.75313 15.8233 9.46017 15.53L6.99425 13.0613L5.52718 14.53C5.23446 14.8231 4.75959 14.8234 4.46653 14.5306C4.17346 14.2379 4.17319 13.763 4.46591 13.47L6.46361 11.47C6.75658 11.1767 7.23192 11.1767 7.52489 11.47ZM9 9.75H5C4.58579 9.75 4.25 9.41421 4.25 9C4.25 8.58579 4.58579 8.25 5 8.25H9C9.41421 8.25 9.75 8.58579 9.75 9C9.75 9.41421 9.41421 9.75 9 9.75Z"
+                          fill="currentColor"></path>
+                    <mask id="mask0_150_2361" maskUnits="userSpaceOnUse" x="1" y="4" width="22" height="16">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M7.52489 11.47L9.9908 13.9387L15.4533 8.46998C15.7462 8.17668 16.2216 8.17668 16.5145 8.46998L22.5076 14.47C22.6481 14.6106 22.727 14.8012 22.727 15V19.0395C22.727 19.4539 22.3909 19.7897 21.9765 19.7895L1.99951 19.7763C1.58501 19.776 1.24932 19.4396 1.25 19.0251L1.273 4.99877C1.27368 4.58465 1.60987 4.24946 2.02399 4.25L22.001 4.27632C22.4163 4.27686 22.7521 4.61486 22.75 5.0302L22.727 9.4677C22.7248 9.88191 22.3873 10.216 21.9731 10.2138C21.5589 10.2117 21.2249 9.87414 21.227 9.45993L21.2461 5.77532L2.77177 5.75099L2.75123 18.2768L21.227 18.289V15.3104L15.9839 10.0613L10.5214 15.53C10.2285 15.8233 9.75313 15.8233 9.46017 15.53L6.99425 13.0613L5.52718 14.53C5.23446 14.8231 4.75959 14.8234 4.46653 14.5306C4.17346 14.2379 4.17319 13.763 4.46591 13.47L6.46361 11.47C6.75658 11.1767 7.23192 11.1767 7.52489 11.47ZM9 9.75H5C4.58579 9.75 4.25 9.41421 4.25 9C4.25 8.58579 4.58579 8.25 5 8.25H9C9.41421 8.25 9.75 8.58579 9.75 9C9.75 9.41421 9.41421 9.75 9 9.75Z"
+                              fill="white"></path>
+                    </mask>
+                    <g mask="url(#mask0_150_2361)">
+                        <rect width="24" height="24" fill="currentColor"></rect>
+                    </g>
+                </svg>
+                <span>
+                (<em> 0 </em>/1)
             </span>
-        </button>
+            </button>
+        </label>
     </div>
     <div class="writePaper-mobileBackground"></div>
 
@@ -186,55 +202,55 @@
                         <h3 style="letter-spacing: 0.5px">여행 지역 선택(1개)</h3>
                     </div>
                     <div class="TagBtn-wrap">
-                        <button type="button" class="modal-btn Button-root local-btn" value="서 울">
+                        <button type="button" class="modal-btn Button-root local-btn" value="SEOUL">
                             서 울
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="경기도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="GYEONGGI_DO">
                             경기도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="인 천">
+                        <button type="button" class="modal-btn Button-root local-btn" value="INCHEON">
                             인 천
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="강원도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="GANG_WONDO">
                             강원도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="세 종">
+                        <button type="button" class="modal-btn Button-root local-btn" value="SEJONG">
                             세 종
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="충청남도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="CHUNGCHEONGNAM_DO">
                             충청남도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="충청북도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="CHUNGCHEONG_BUKDO">
                             충청북도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="대 전">
+                        <button type="button" class="modal-btn Button-root local-btn" value="DAEJEON">
                             대 전
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="전라남도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="JEOLLANAM_DO">
                             전라남도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="전라북도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="JEOLLABUK_DO">
                             전라북도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="광 주">
+                        <button type="button" class="modal-btn Button-root local-btn" value="GWANGJU">
                             광 주
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="경상남도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="GYEONGSANGNAM_DO">
                             경상남도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="경상북도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="GYEONGSANGNBUK_DO">
                             경상북도
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="대 구">
+                        <button type="button" class="modal-btn Button-root local-btn" value="DAEGU">
                             대 구
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="울 산">
+                        <button type="button" class="modal-btn Button-root local-btn" value="ULSAN">
                             울 산
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="부 산">
+                        <button type="button" class="modal-btn Button-root local-btn" value="BUSAN">
                             부 산
                         </button>
-                        <button type="button" class="modal-btn Button-root local-btn" value="제주도">
+                        <button type="button" class="modal-btn Button-root local-btn" value="JEJU_ISLAND">
                             제주도
                         </button>
                     </div>
@@ -247,8 +263,14 @@
                         <button type="button" class="modal-btn Button-root mbti-btn" value="ISTJ">
                             ISTJ
                         </button>
-                        <button type="button" class="modal-btn Button-root mbti-btn" value="TSFJ">
-                            TSFJ
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ISFJ">
+                            ISFJ
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="INFJ">
+                        INFJ
+                        </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="INTJ">
+                            INTJ
                         </button>
                         <button type="button" class="modal-btn Button-root mbti-btn" value="ISTP">
                             ISTP
@@ -256,20 +278,14 @@
                         <button type="button" class="modal-btn Button-root mbti-btn" value="ISFP">
                             ISFP
                         </button>
-                        <button type="button" class="modal-btn Button-root mbti-btn" value="INFJ">
-                            INFJ
-                        </button>
                         <button type="button" class="modal-btn Button-root mbti-btn" value="INFP">
                             INFP
-                        </button>
-                        <button type="button" class="modal-btn Button-root mbti-btn" value="INTJ">
-                            INTJ
                         </button>
                         <button type="button" class="modal-btn Button-root mbti-btn" value="INTP">
                             INTP
                         </button>
-                        <button type="button" class="modal-btn Button-root mbti-btn" value="ESTJ">
-                            ESTJ
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ESTP">
+                            ESTP
                         </button>
                         <button type="button" class="modal-btn Button-root mbti-btn" value="ESFP">
                             ESFP
@@ -280,11 +296,11 @@
                         <button type="button" class="modal-btn Button-root mbti-btn" value="ENTP">
                             ENTP
                         </button>
+                        <button type="button" class="modal-btn Button-root mbti-btn" value="ESTJ">
+                            ESTJ
+                        </button>
                         <button type="button" class="modal-btn Button-root mbti-btn" value="ESFJ">
                             ESFJ
-                        </button>
-                        <button type="button" class="modal-btn Button-root mbti-btn" value="ESTP">
-                            ESTP
                         </button>
                         <button type="button" class="modal-btn Button-root mbti-btn" value="ENFJ">
                             ENFJ
@@ -309,5 +325,6 @@
 
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script src="/js/goWith/registration.js"></script>
+<script src="/js/header/header.js"></script>
 
 </html>

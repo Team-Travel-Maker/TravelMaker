@@ -230,6 +230,17 @@ button {
     /*padding-top: 60px;*/
 }
 
+.registration-writePaper {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: calc(100vh - 110px);
+    padding: 68px 40px;
+    border: 1px solid #e1e2e3;
+    border-top: 0;
+    background-color: #fff;
+}
 @media (min-width: 1200px) {
 .registration-writePaper {
     max-width: 790px;
@@ -237,17 +248,7 @@ button {
     }
 }
 
-.registration-writePaper {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-height: calc(100vh - 110px);
-    padding: 39px 40px;
-    border: 1px solid #e1e2e3;
-    border-top: 0;
-    background-color: #fff;
-}
+
 
 .tagPanel {
     margin-bottom: 15px;
@@ -526,10 +527,32 @@ input, input:focus {
     transform: rotate(-55deg) skewX(-20deg);
 }
 
+/*.PhotoButton {*/
+/*    position: absolute;*/
+/*    right: 38px;*/
+/*    bottom: 60px;*/
+/*    display: -ms-flexbox;*/
+/*    display: flex;*/
+/*    -ms-flex-direction: column;*/
+/*    flex-direction: column;*/
+/*    -ms-flex-align: center;*/
+/*    align-items: center;*/
+/*    -ms-flex-pack: center;*/
+/*    justify-content: center;*/
+/*    width: 50px;*/
+/*    height: 50px;*/
+/*    border: 1px solid #e1e2e3;*/
+/*    border-radius: 50%;*/
+/*    background-color: #fff;*/
+/*    -webkit-filter: drop-shadow(0 2px 10px rgba(0,0,0,.1));*/
+/*    filter: drop-shadow(0 2px 10px rgba(0,0,0,.1));*/
+/*    pointer-events: all;*/
+/*    color: #333;*/
+/*}*/
 .PhotoButton {
     position: absolute;
-    right: 38px;
-    bottom: 60px;
+    right: 390px;
+    bottom: 100px;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
@@ -687,12 +710,17 @@ div#modal-wrap span{
 
 
 
+.thumbnail-img,
+.sub1-img,
+.sub2-img {
+    width: 100px;
+    height: 100px;
+    display: none;
+}
 
-
-
-
-
-
+.Padding_padding___Nyki {
+    height: 50px;
+}
 
 
 

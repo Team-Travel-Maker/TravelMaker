@@ -8,189 +8,192 @@
 
 <link rel="stylesheet" href="/css/common.css"/>
 <link rel="stylesheet" href="/css/header/header.css"/>
-<link rel="stylesheet" href="/css/ecos/eco-detail.css">
+<link rel="stylesheet" href="/css/community/community-detail.css">
 
 
 <body>
-<!-- 헤더 -->
-<div th:replace="~{header/header :: #header}"></div>
+<!--<div th:replace="~{header/header :: #header}"></div>-->
+<!--<div th:replace="~{header/signedIn-header :: #header}"></div>-->
 
-<!-- 패딩주기 -->
-<div class="header-padding"></div>
-
-<main class="ecoDetail-wrapper">
-    <aside class="sidebar-wrapper">
+<div class="Padding_padding___Nyki"></div>
+<main class="community-post-detail">
+<!--    <input type="hidden" class="member-type" th:value="${#authentication.getPrincipal().memberResponseDTO.memberRole.code}">-->
+    <aside class="communityPostDetail-side">
         <div>
-            <div class="miniProfile-wrapper">
-                <a href="/community/profile/FBPmrKWGczL8kztvzaVjnf">
-                    <div class="userInfo-wrapper userInfo-xlarge userInfo-leftSide">
-                        <div class="userInfo-avatarWrapper avatar-wrapper">
-                            <div class="userInfo-avatar userInfo-avatarSize avatar">
-                                <img src="https://static.wanted.co.kr/oneid-user/profile_default.png" alt="">
+            <div class="postleftside-top">
+                <a href="/community/profile/3y3VD9cK82eAdgnyv2NhTJ">
+                    <div class="authorbox authorbox-xlarge postleftSide-authorBox">
+                        <div class="authorBox-avatarWrapper avatar-Wrapper">
+                            <div class="userAvater authorBox-avater avatar">
+<!--                                <img src="https://static.wanted.co.kr/open_profile/avatar/18bc9596a867766b497736f70014ccd6232f6c90a845c5a3cb3d5d310bc7537a" alt="">-->
+                                <div class="profile">
+<!--                                    <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('KAKAO')}">-->
+<!--                                        <div class="userAvatar" th:style="'background-image:url(' + ${#authentication.getPrincipal().memberResponseDTO.snsProFile} + ');'">-->
+<!--                                        </div>-->
+<!--                                    </th:block>-->
+<!--                                    <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('NAVER')}">-->
+<!--                                        <div class="userAvatar" th:style="'background-image:url(' + ${#authentication.getPrincipal().memberResponseDTO.snsProFile} + ');'">-->
+<!--                                        </div>-->
+<!--                                    </th:block>-->
+<!--                                    <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GOOGLE')}">-->
+<!--                                        <div class="userAvatar" th:style="'background-image:url(' + ${#authentication.getPrincipal().memberResponseDTO.snsProFile} + ');'">-->
+<!--                                        </div>-->
+<!--                                    </th:block>-->
+<!--                                    <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">-->
+<!--                                        <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">-->
+<!--                                            <div class="userAvatar" th:style="'background-image:url(https://static.wanted.co.kr/oneid-user/profile_default.png'">-->
+<!--                                            </div>-->
+<!--                                        </th:block>-->
+<!--                                        <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">-->
+<!--                                            <div class="userAvatar" th:style="'background-image:url(/api/files/display?fileName=' +-->
+<!--                                                                        ${#authentication.getPrincipal().memberResponseDTO.filePath} + '/' +-->
+<!--                                                                        ${#authentication.getPrincipal().memberResponseDTO.fileUuid} + '_' +-->
+<!--                                                                        ${#authentication.getPrincipal().memberResponseDTO.fileName} + ');'">-->
+<!--                                            </div>-->
+<!--                                        </th:block>-->
+<!--                                    </th:block>-->
                             </div>
                         </div>
-                        <div class="userInfo-verticalBox">
-                            <div class="userInfo-userName userName">정범진</div>
-                            <div class="userInfo-userCareer">
-                                <div class="userInfo-badge" data-id="518">서울</div>
-                                <div class="userInfo-badge">신입</div>
+                        <div class="authorBox-vertical">
+<!--                            <div class="authorBox-authorBox-username username" th:text="${#authentication.getPrincipal().memberResponseDTO.memberName}>잠꾸</div>-->
+<!--                            <div class="author-info">-->
+<!--                            <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberInterestRegion == null-->
+<!--                                            or #authentication.getPrincipal().memberResponseDTO.memberInterestRegion.equals('')}">-->
+<!--                                <div class="userInfo-userBadge">관심지역이 없습니다.</div>-->
+<!--                            </th:block>-->
+<!--                            <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.memberInterestRegion == null-->
+<!--                                            or #authentication.getPrincipal().memberResponseDTO.memberInterestRegion.equals('')}">-->
+<!--                                <div class="userInfo-userBadge" th:text="${#authentication.getPrincipal().memberResponseDTO.memberInterestRegion}"></div>-->
+<!--                            </th:block>-->
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="postInfo-leftSide">
-                <div>
-                    <button type="button" class="Button-btn">
-                        <svg width="20" height="20" viewBox="0 0 18 18">
-                            <path fill="currentColor" d="M13.353 2.214c.082.164.15.332.204.502.325 1.032.13 2.08-.396 3.092l-.105.191L16.253 6a.75.75 0 0 1 .743.648l.007.102v5.75a.75.75 0 0 1-.106.385l-.058.084-3.004 3.75a.75.75 0 0 1-.472.273L13.25 17H9.22a.75.75 0 0 1-.101-1.493l.102-.007h3.668l2.614-3.264V7.5h-3.91a.75.75 0 0 1-.604-1.195l.066-.077c.137-.14.36-.415.584-.778.5-.808.702-1.6.487-2.283a1.858 1.858 0 0 0-.113-.278c-.278-.551-1.075-.442-1.075-.056a3.17 3.17 0 0 1-.777 2.125c-.293.338-.59.555-.774.647l-.472.292c-.89.568-1.459 1.04-1.762 1.409l-.097.128-.058.095v.062l-.004.016-.006.093a.75.75 0 0 1-.641.641l-.102.007-.102-.007a.75.75 0 0 1-.648-.743V7.5H2.496v8h2.999l-.001-4.535.007-.102a.75.75 0 0 1 1.493.102v5.286l-.007.102a.75.75 0 0 1-.743.648H1.747l-.102-.007a.75.75 0 0 1-.648-.743v-9.5l.007-.102A.75.75 0 0 1 1.747 6h4.498l.066.005c.387-.38.92-.796 1.621-1.256l.472-.3.253-.154c.07-.035.217-.143.37-.32.226-.26.37-.576.403-.969l.008-.173c0-2.082 2.972-2.491 3.915-.619z"></path>
-                        </svg>
-                        <span class="Button-count count">0</span>
-                    </button>
-                </div>
-                <div>
-                    <button type="button" class="Button-btn">
-                        <svg width="20" height="20" viewBox="0 0 18 18">
-                            <path fill="currentColor" transform="matrix(-1 0 0 1 18 0)" d="M9 1c4.377 0 8 3.14 8 7s-3.623 7-8 7c-.317 0-.593-.026-.954-.088l-.395-.074-.205-.043-3.295 2.089a.75.75 0 0 1-.968-.143l-.067-.09a.75.75 0 0 1 .143-.968l.09-.067 3.55-2.25a.75.75 0 0 1 .551-.1l.652.132.301.052c.228.036.408.05.597.05 3.592 0 6.5-2.52 6.5-5.5S12.592 2.5 9 2.5C5.407 2.5 2.5 5.02 2.5 8c0 1.858 1.039 3.573 2.773 4.348a.75.75 0 1 1-.612 1.37C2.37 12.693 1 10.432 1 8c0-3.86 3.622-7 8-7z"></path>
-                        </svg>
-                        <span class="Button-count count">1</span>
-                    </button>
-                </div>
-            </div>
         </div>
     </aside>
-    <section class="content-wrapper">
-        <article class="post-wrapper">
-            <div class="post-header">
-                <div class="post-userInfo">
-                    <a href="https://www.wanted.co.kr/community/profile/FBPmrKWGczL8kztvzaVjnf">
-                        <div class="userInfo-wrapper userInfo-xlarge userInfo-leftSide">
-                            <div class="userInfo-verticalArea">
-                                <div class="userInfo-avatarWrapper avatar-wrapper">
-                                    <div class="userInfo-avatar userInfo-avatarSize avatar">
-                                        <img src="https://static.wanted.co.kr/oneid-user/profile_default.png" alt="">
-                                    </div>
-                                </div>
-                                <div class="userInfo-verticalBox">
-                                    <div class="userInfo-postUserInfo">
-                                        <div class="userInfo-userName userName">정범진</div>
-                                        <div class="userInfo-userCareer">
-                                            <div class="userInfo-badge" data-id="518">개발</div>
-                                            <div class="userInfo-badge">신입</div>
-                                        </div>
-                                    </div>
-                                    <span class="userInfo-createAt create-time">38분 전</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <h1 itemprop="" class="ecoPost-title">테스트</h1>
-            </div>
-            <div class="post-body">
-                <div class="ecoPost-metaTags"></div>
-                <div class="ecoPost-images"></div>
-            </div>
-            <div class="ecoPost-tags">
-                <a class="ecoPost-tagBtn" href="https://www.wanted.co.kr/community/10086/results">커리어고민</a>
-            </div>
-            <div class="ecoPost-bottomAction">
-                <div class="bottomAction-likes">
-                    <button type="button" class="Button-btn">
-                        <svg width="24" height="24" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M12.563 2.5c0-2.424 3.201-3.043 4.521-.974.446.7.62 1.499.56 2.358-.07 1.008-.451 2.047-1.039 3.081-.055.097-.11.192-.167.285H22a.75.75 0 0 1 .75.75v7a.75.75 0 0 1-.08.335l-3 6a.75.75 0 0 1-.67.415h-7a.75.75 0 1 1 0-1.5h6.536l2.714-5.427V8.75H15a.75.75 0 0 1-.574-1.232 10.286 10.286 0 0 0 .875-1.293c.486-.857.795-1.697.847-2.445.039-.555-.066-1.035-.328-1.447-.564-.883-1.758-.652-1.758.167 0 .875-.302 1.666-.798 2.357-.292.409-.588.7-.88.923C10.712 6.786 9.66 7.677 9.1 8.426l.067-.082a.752.752 0 0 1-.137.186l-.016.014c-.21.298-.264.453-.264.467a.75.75 0 0 1-1.5 0c0-.079.01-.165.029-.26L2.75 8.75v11.5h4.5v-8.125a.75.75 0 1 1 1.5 0V21a.75.75 0 0 1-.75.75H2a.75.75 0 0 1-.75-.75V8A.75.75 0 0 1 2 7.25h6.12c.71-.844 1.838-1.76 3.414-2.702.113-.089.31-.284.511-.564.327-.456.518-.955.518-1.484z"></path>
-                        </svg>
-                        <span class="Button-count count">0</span>
-                    </button>
-                </div>
-                <div class="bottomAction-comments">
-                    <button type="button" class="Button-btn">
-                        <svg width="24" height="24" viewBox="0 0 24 24">
-                            <path fill="currentColor" transform="matrix(-1 0 0 1 24 0)" d="M9.826 19.561c.71.125 1.438.189 2.174.189 5.912 0 10.75-4.112 10.75-9.25S17.912 1.25 12 1.25c-5.913 0-10.75 4.112-10.75 9.25 0 3.273 1.841 6.389 4.882 7.747a.75.75 0 0 0 .611-1.37C4.267 15.772 2.75 13.205 2.75 10.5c0-4.251 4.116-7.75 9.25-7.75 5.133 0 9.25 3.5 9.25 7.75s-4.117 7.75-9.25 7.75c-.747 0-1.482-.074-2.194-.22a.75.75 0 0 0-.578.12l-4.656 3.234a.75.75 0 0 0 .856 1.232l4.398-3.055z"></path>
-                        </svg>
-                        <span class="Button-count count">1</span>
-                    </button>
-                </div>
-                <button type="button" class="ecoPost-linkBtn">
-                    <span class="svgIcon-root">
-                        <svg class="svgIcon-rootSvg" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M20.8419 5.13156C20.8419 3.34425 19.3929 1.89474 17.6051 1.89474C15.8181 1.89474 14.3682 3.34457 14.3682 5.13156L14.3777 5.37944C14.384 5.46157 14.3934 5.54316 14.4058 5.62409L14.4152 5.67411L6.48256 9.86022L6.41109 9.78015C5.79271 9.13677 4.91641 8.75021 3.9697 8.75021C2.1352 8.75021 0.631592 10.194 0.631592 11.9933C0.631592 13.7933 2.13485 15.2364 3.9697 15.2364L4.20171 15.2286C5.04647 15.1719 5.82161 14.8075 6.3874 14.2307L6.45098 14.1587L15.0769 18.7102C15.2605 18.8071 15.4707 18.841 15.6754 18.8067L15.7022 18.8022L15.8292 18.7718C16.077 18.6942 16.2842 18.5172 16.3988 18.28L16.4722 18.148C16.5528 18.0206 16.6553 17.9073 16.7783 17.8116C17.3632 17.3544 18.2064 17.4579 18.6625 18.0422C19.1191 18.627 19.0157 19.4704 18.4326 19.9256C17.8475 20.3823 17.004 20.2788 16.5478 19.6945L16.4536 19.5905C16.1191 19.272 15.593 19.238 15.2181 19.5307C14.8057 19.8527 14.7324 20.4481 15.0543 20.8605C16.1547 22.2699 18.1889 22.5196 19.5985 21.4192C21.007 20.3199 21.2563 18.2855 20.156 16.8762C19.0556 15.4667 17.0211 15.2169 15.6126 16.3178L15.4226 16.4779C15.3616 16.5334 15.303 16.5911 15.2426 16.6547L6.6973 12.1478L6.67428 12.1292C6.60376 12.0831 6.52833 12.0476 6.45025 12.0225L6.41688 12.0139L6.49246 11.9899C6.53023 11.9752 6.56816 11.9579 6.60613 11.9379L15.9611 7.00213L16.1289 6.88917L16.159 6.86384L16.2612 6.76385C16.5102 6.48039 16.57 6.07014 16.4003 5.72293L16.3408 5.5818C16.2895 5.43808 16.263 5.28694 16.263 5.13156C16.263 4.391 16.8645 3.78948 17.6051 3.78948C18.3463 3.78948 18.9471 4.39053 18.9471 5.13156C18.9471 5.87326 18.3467 6.47363 17.6051 6.47363L17.4765 6.48228C17.0141 6.54501 16.6577 6.94138 16.6577 7.421C16.6577 7.94422 17.0818 8.36837 17.6051 8.36837C19.3932 8.36837 20.8419 6.91969 20.8419 5.13156ZM2.52634 11.9933C2.52634 11.2581 3.16483 10.6449 3.9697 10.6449L4.14547 10.6549C4.60709 10.7073 5.00699 10.9637 5.22962 11.334L5.26108 11.395L5.28192 11.4515C5.38641 11.702 5.59409 11.9092 5.85157 12.0023L5.89393 12.0152L5.85009 12.0269C5.61829 12.1049 5.41331 12.2729 5.296 12.5268L5.22001 12.668C4.96724 13.0762 4.49734 13.3416 3.9697 13.3416C3.16435 13.3416 2.52634 12.7292 2.52634 11.9933Z"></path>
-                        </svg>
-                    </span>
-                </button>
-                <button type="button" class="ecoPost-menuBtn">
-                    <svg width="24" height="24" viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M12 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 12 10zm7 0a2 2 0 1 1-.001 4.001A2 2 0 0 1 19 10zM5 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 5 10z"></path>
-                    </svg>
-                </button>
-            </div>
-            <div></div>
-        </article>
+<!--    <section class="communityPostDetail-contents">-->
+<!--        <article class="postDetail-contents">-->
+<!--            <div class="postContents-header">-->
+<!--                <div class="postContents-author">-->
+<!--                    <a href="/mypage/main">-->
+<!--                    <div class="authorbox authorbox-xlarge">-->
+<!--                        <div class="authorBox-authorbox-verticalArea">-->
+<!--                            <div class="authorBox-avatarWrapper avatar-Wrapper">-->
+<!--                                <div class="userAvater authorBox-avater avatar"><img-->
+<!--                                        src="https://static.wanted.co.kr/open_profile/avatar/18bc9596a867766b497736f70014ccd6232f6c90a845c5a3cb3d5d310bc7537a"-->
+<!--                                        alt=""></div>-->
+<!--                            </div>-->
+<!--                            <div class="authorBox-vertical">-->
+<!--                                <div class="authorBox-authorbox-userinfo">-->
+<!--                                    <div class="authorBox-authorBox-username username" id="gowith-username">잠꾸</div>-->
+<!--                                    <div class="author-info">-->
+<!--                                        <div class="userinfo-badge">memberinterest</div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <span class="authorBox-authorbox-createAt create-time" id="post-create">created</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--                </div>-->
+<!--                <h1 itemprop="headline" class="postContents-title" id="gowith-title">제목입니다!</h1></div>-->
+<!--            <div class="postContents-body" id="gowith-content">안녕하세요! 저희는 온라인 강의(클래스) 통합 관리 서비스를 기획중인 IT 동아리 DND의-->
+<!--                6팀입니다.-->
+<!--                저희는 커져가는 E-러닝 시장에서 흩어져 있는 다양한 온라인 강의 플랫폼들을 통합적으로 관리할 수 있는 서비스를 기획하고 있습니다!-->
+<!--                이와 관련하여 본 설문조사는 온라인 클래스 수강경험에 대한 조사를 위해 제작되었습니다.-->
+<!--                예상 소요 시간: 2-3 분 내외입니다.-->
+<!--                설문에 참여해 주신 분들 중 추첨을 통해 3분께 스타벅스 기프티콘을 드립니다.-->
+<!--                설문 결과를 추합하고 서비스 개발이 마무리 된 뒤, 모든 정보는 폐기될 예정입니다.-->
+<!--                참여에 감사드리며, 기타 문의사항은 <a href="mailto:hayeeun01@gmail.com" target="_blank" rel="noopener noreferrer">hayeeun01@gmail.com</a>-->
+<!--                으로 전송 부탁드립니다.-->
 
-        <!--        댓글 남기기 부분 -->
-        <div class="ecoPost-commentsView">
-            <div class="commentItem">
-                <div class="commentItem-header">
-                    <a href="https://www.wanted.co.kr/community/profile/WuUkA24ewprFEKnbvXCDB4">
-                        <div class="userInfo-wrapper userInfo-xlarge commentItem-userInfo">
-                            <div class="userInfo-verticalArea">
-                                <div class="userInfo-avatarWrapper avatar-wrapper">
-                                    <div class="userInfo-avatar userInfo-avatarSize avatar">
-                                        <img src="https://static.wanted.co.kr/images/avatars/2958997/284bd3e6.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="userInfo-verticalBox">
-                                    <div class="userInfo-postUserInfo">
-                                        <div class="userInfo-userName userName">원티드 AI</div>
-                                    </div>
-                                    <span class="userInfo-createAt create-time">38분 전</span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <button type="button" class="commentItem-menu">
-                        <svg width="18" height="18" viewBox="0 0 24 24">
-                            <path fill="currentColor" d="M12 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 12 10zm7 0a2 2 0 1 1-.001 4.001A2 2 0 0 1 19 10zM5 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 5 10z"></path>
-                        </svg>
-                    </button>
-                </div>
-                <div class="commentItem-content">안녕하세요! 원티드 AI입니다. 테스트하시는군요! 어떤 테스트를 진행하고 계신건가요? 저도 항상 새로운 도전을 좋아하니까요! 테스트 결과가 좋으시길 바랄게요. 🎉😊
-                    그리고 한 가지 알려드릴게요. 제가 여기서는 언어 이해와 대화를 도와주는 AI입니다. 궁금한 점 있으시면 언제든지 물어보세요! 제가 도움을 드릴 수 있을 거예요. 🤗
-                    즐거운 테스트 되세요! 저도 응원하고 있을게요. 😄👍
-                </div>
-            </div>
-            <div class="commentWrite-wrapper">
-                <div class="commentWrite-header">
-                    <div class="userInfo-avatar commentWrite-avatar">
-                        <img src="https://static.wanted.co.kr/oneid-user/profile_default.png" alt="">
-                    </div>
-                    <span class="commentWrite-userName">정범진</span>
-                </div>
-                <div class="commentWrite-content">
-                    <form>
-                        <textarea class="commentWrite-textArea" placeholder="댓글 남기기"></textarea>
-                        <button class="Button-root Button-contained Button-primary Button-SizeMedium Button-containedDisabled Button-disabled commentWrite-saveBtn" type="submit" disabled="">
-                            <span class="Button-label">등록</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <button class="Button-root Button-outlined Button-outlinedAssistive Button-outlinedSizeMedium ecoPost-backToList" type="button">
-                <span class="Button-label">
-                    <span class="Button-startIcon Button-startIcon-sizeMedium">
-                        <span class="svgIcon-root">
-                            <svg class="svgIcon-rootSvg" viewBox="0 0 24 24">
-                                <path d="M15.42 20.7879C14.9267 21.2812 14.1269 21.2812 13.6336 20.7879L5.73887 12.8932C5.24557 12.3999 5.24557 11.6001 5.73887 11.1068L13.6336 3.21207C14.1269 2.71878 14.9267 2.71878 15.42 3.21207C15.9133 3.70537 15.9133 4.50515 15.42 4.99845L8.41843 12L15.42 19.0015C15.9133 19.4948 15.9133 20.2946 15.42 20.7879Z"></path>
-                            </svg>
-                        </span>
-                    </span>
-                    목록으로
-                </span>
-                <span class="Button-interaction"></span>
-            </button>
-        </div>
+<!--                설문조사 링크: <a href="https://forms.gle/BYDyaKKPFq76gQjs5" target="_blank" rel="noopener noreferrer">https://forms.gle/BYDyaKKPFq76gQjs5</a>-->
+<!--                <div class="postContents-metaTags"></div>-->
+<!--                <div class="postContents-image"></div>-->
+<!--            </div>-->
+<!--            <div class="postContents-tags"><a class="postContents-tag-btn" href="/community/10085/results">데이터</a>-->
+<!--                <a class="postContents-tag-btn"id="mbti">개발</a>-->
+<!--                <a class="postContents-tag-btn"id="region" >IT/기술</a></div>-->
+<!--            <div class="postContents-btnActions">-->
+<!--                <div class="postContents-bottomActions-comment">-->
+<!--                    <button type="button" class="btn-lgb">-->
+<!--                        <svg width="24" height="24" viewBox="0 0 24 24">-->
+<!--                            <path fill="currentColor" transform="matrix(-1 0 0 1 24 0)"-->
+<!--                                  d="M9.826 19.561c.71.125 1.438.189 2.174.189 5.912 0 10.75-4.112 10.75-9.25S17.912 1.25 12 1.25c-5.913 0-10.75 4.112-10.75 9.25 0 3.273 1.841 6.389 4.882 7.747a.75.75 0 0 0 .611-1.37C4.267 15.772 2.75 13.205 2.75 10.5c0-4.251 4.116-7.75 9.25-7.75 5.133 0 9.25 3.5 9.25 7.75s-4.117 7.75-9.25 7.75c-.747 0-1.482-.074-2.194-.22a.75.75 0 0 0-.578.12l-4.656 3.234a.75.75 0 0 0 .856 1.232l4.398-3.055z"></path>-->
+<!--                        </svg>-->
+<!--                        <span class="btn-count-L1 count"id="gowith-reply">1</span></button>-->
+<!--                </div>-->
+<!--                <button type="button" class="postContent-menu-link">-->
+<!--                    <span class="svgIcon-root"><svg-->
+<!--                            class="svgIcon-root-svg" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M20.8419 5.13156C20.8419 3.34425 19.3929 1.89474 17.6051 1.89474C15.8181 1.89474 14.3682 3.34457 14.3682 5.13156L14.3777 5.37944C14.384 5.46157 14.3934 5.54316 14.4058 5.62409L14.4152 5.67411L6.48256 9.86022L6.41109 9.78015C5.79271 9.13677 4.91641 8.75021 3.9697 8.75021C2.1352 8.75021 0.631592 10.194 0.631592 11.9933C0.631592 13.7933 2.13485 15.2364 3.9697 15.2364L4.20171 15.2286C5.04647 15.1719 5.82161 14.8075 6.3874 14.2307L6.45098 14.1587L15.0769 18.7102C15.2605 18.8071 15.4707 18.841 15.6754 18.8067L15.7022 18.8022L15.8292 18.7718C16.077 18.6942 16.2842 18.5172 16.3988 18.28L16.4722 18.148C16.5528 18.0206 16.6553 17.9073 16.7783 17.8116C17.3632 17.3544 18.2064 17.4579 18.6625 18.0422C19.1191 18.627 19.0157 19.4704 18.4326 19.9256C17.8475 20.3823 17.004 20.2788 16.5478 19.6945L16.4536 19.5905C16.1191 19.272 15.593 19.238 15.2181 19.5307C14.8057 19.8527 14.7324 20.4481 15.0543 20.8605C16.1547 22.2699 18.1889 22.5196 19.5985 21.4192C21.007 20.3199 21.2563 18.2855 20.156 16.8762C19.0556 15.4667 17.0211 15.2169 15.6126 16.3178L15.4226 16.4779C15.3616 16.5334 15.303 16.5911 15.2426 16.6547L6.6973 12.1478L6.67428 12.1292C6.60376 12.0831 6.52833 12.0476 6.45025 12.0225L6.41688 12.0139L6.49246 11.9899C6.53023 11.9752 6.56816 11.9579 6.60613 11.9379L15.9611 7.00213L16.1289 6.88917L16.159 6.86384L16.2612 6.76385C16.5102 6.48039 16.57 6.07014 16.4003 5.72293L16.3408 5.5818C16.2895 5.43808 16.263 5.28694 16.263 5.13156C16.263 4.391 16.8645 3.78948 17.6051 3.78948C18.3463 3.78948 18.9471 4.39053 18.9471 5.13156C18.9471 5.87326 18.3467 6.47363 17.6051 6.47363L17.4765 6.48228C17.0141 6.54501 16.6577 6.94138 16.6577 7.421C16.6577 7.94422 17.0818 8.36837 17.6051 8.36837C19.3932 8.36837 20.8419 6.91969 20.8419 5.13156ZM2.52634 11.9933C2.52634 11.2581 3.16483 10.6449 3.9697 10.6449L4.14547 10.6549C4.60709 10.7073 5.00699 10.9637 5.22962 11.334L5.26108 11.395L5.28192 11.4515C5.38641 11.702 5.59409 11.9092 5.85157 12.0023L5.89393 12.0152L5.85009 12.0269C5.61829 12.1049 5.41331 12.2729 5.296 12.5268L5.22001 12.668C4.96724 13.0762 4.49734 13.3416 3.9697 13.3416C3.16435 13.3416 2.52634 12.7292 2.52634 11.9933Z"></path></svg></span>-->
+<!--                </button>-->
+<!--                <button type="button" class="postcontent-menu-btn">-->
+<!--                    <svg width="24" height="24" viewBox="0 0 24 24">-->
+<!--                        <path fill="currentColor"-->
+<!--                              d="M12 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 12 10zm7 0a2 2 0 1 1-.001 4.001A2 2 0 0 1 19 10zM5 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 5 10z"></path>-->
+<!--                    </svg>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </article>-->
+<!--&lt;!&ndash;        댓글&ndash;&gt;-->
+<!--        <div class="communitypostDetail-commentsview">-->
+<!--            <div class="commentItem-commtentItem">-->
+<!--                <div class="commentItem-commtentItem-header"><a href="/community/profile/WuUkA24ewprFEKnbvXCDB4">-->
+<!--                    <div class="authorbox authorbox-xlarge commentItem-commtentItem-author">-->
+<!--                        <div class="authorBox-authorbox-verticalArea">-->
+<!--                            <div class="authorBox-avatarWrapper avatar-Wrapper">-->
+<!--                                <div class="userAvater authorBox-avater avatar"><img-->
+<!--                                        src="https://static.wanted.co.kr/images/avatars/2958997/284bd3e6.jpg" alt="">-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="authorBox-vertical">-->
+<!--                                <div class="authorBox-authorbox-userinfo">-->
+<!--                                    <div class="authorBox-authorBox-username username">원티드 AI</div>-->
+<!--                                </div>-->
+<!--                                <span class="authorBox-authorbox-createAt create-time">4분 전</span></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </a>-->
+<!--                    <button type="button" class="commentItem-commtentmenu">-->
+<!--                        <svg width="18" height="18" viewBox="0 0 24 24">-->
+<!--                            <path fill="currentColor"-->
+<!--                                  d="M12 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 12 10zm7 0a2 2 0 1 1-.001 4.001A2 2 0 0 1 19 10zM5 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 5 10z"></path>-->
+<!--                        </svg>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--                <div class="commtentItem-content">설문조사에 참여해 주셔서 감사합니다! 저희 DND 6팀은 온라인 강의 관리 서비스를 기획-->
+<!--                    중입니다. 설문 결과를 토대로 더 나은 서비스를 제공할 수 있도록 노력하겠습니다. 기프티콘 추첨에 참여하시는 것도 잊지 마세요!-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="commentWrite-commtentWrite">-->
+<!--                <div class="commentWrite-commtentWrite-top">-->
+<!--                    <div class="userAvater commentWrite-commtentWrite-avatar"><img-->
+<!--                            src="https://static.wanted.co.kr/oneid-user/profile_default.png" alt=""></div>-->
+<!--                    <span class="commentWrite-commtentWrite-username">김광민</span></div>-->
+<!--                <div class="commentWrite-commtentWrite-bottom">-->
+<!--                    <form><textarea class="commentWrite-commtentWrite-textarea" placeholder="댓글 남기기"></textarea>-->
+<!--                        <button class="button-root button-contained button-containedPrimary button-containedSizeMedium button-containedDisabled button-disabled commentwrite-saveBtn" type="submit" disabled="">-->
+<!--                            <span class="btn-label">등록</span></button>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <button class="button-root btn-outlined btn-outlinedAssistive btn-outlinedSizeMedium communityPostDetail-bakckList"-->
+<!--                    type="button">-->
+<!--                <span class="btn-label"><span-->
+<!--                        class="btn-startIcon btn-startIcon-sizeMedium"><span-->
+<!--                        class="svgIcon-root"><svg class="svgIcon-root-svg"-->
+<!--                                                  viewBox="0 0 24 24"><path-->
+<!--                        d="M15.42 20.7879C14.9267 21.2812 14.1269 21.2812 13.6336 20.7879L5.73887 12.8932C5.24557 12.3999 5.24557 11.6001 5.73887 11.1068L13.6336 3.21207C14.1269 2.71878 14.9267 2.71878 15.42 3.21207C15.9133 3.70537 15.9133 4.50515 15.42 4.99845L8.41843 12L15.42 19.0015C15.9133 19.4948 15.9133 20.2946 15.42 20.7879Z"></path></svg></span></span>목록으로</span><span-->
+<!--                    class="btn-interaction"></span></button>-->
+<!--        </div>-->
     </section>
 </main>
-
 </body>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="/js/eco/common.js"></script>
+<script th:inline="javascript">
+    let goWithId = [[${goWithId}]];
+</script>
+<script src="/js/goWith/goWith-detail.js"></script>
+<script src="/js/header/header.js"></script>
 </html>

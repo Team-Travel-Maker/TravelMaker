@@ -26,6 +26,7 @@ public class GoWithDTO {
         private LocalDateTime updatedDate;
         private Member member;
 
+        private List<GoWithReplyDTO> replies = new ArrayList<>();  // 댓글 리스트 추가
         private List<GoWithFileDTO> files = new ArrayList<>();
         private boolean deleted = Boolean.FALSE;
 
