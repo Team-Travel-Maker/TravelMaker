@@ -27,6 +27,8 @@ $(document).ready(function () {
     }
 
     function setHtml(stores) {
+        allId.length = 0;
+        $("#allSelect").prop("checked", false);
         let text = "";
         if (stores.length > 0) {
             $.each(stores, function (i) {
@@ -173,6 +175,7 @@ $(document).ready(function () {
             $("input[name=check]").prop("checked", false);
             selectedValues.splice(0, selectedValues.length);
         }
+        console.log(selectedValues)
     });
 
     $("#delete-btn").on('click', function() {
