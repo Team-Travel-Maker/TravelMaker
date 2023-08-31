@@ -672,7 +672,7 @@ $joinBtn.on('click', function () {
         member.snsBenefitEvent = true
     }
 
-    if(member.memberEmail.split("@")[1] == "gmail.com"){
+    if(googleCheck){
         joinService.join(member, googleOauthSuccess());
         return;
     }
