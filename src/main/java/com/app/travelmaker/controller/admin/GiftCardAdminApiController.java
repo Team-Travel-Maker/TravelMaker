@@ -27,6 +27,11 @@ public class GiftCardAdminApiController {
         return giftCardService.getListWithPage(pageable);
     }
 
+    @GetMapping("/main")
+    public Page<GiftCardDTO> getListForMain(@PageableDefault(page = 0,size = 12)Pageable pageable){
+        return giftCardService.getListWithPage(pageable);
+    }
+
     @PostMapping("")
     public void register(@RequestPart GiftCardDTO giftCardDTO){
         giftCardService.register(giftCardDTO);
