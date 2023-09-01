@@ -678,11 +678,14 @@ $joinBtn.on('click', function () {
     }
     if($('.new-pass-container').length != 0) {
         joinService.join(member, success);
+        return;
     }else if($('.naver-check').length ==0){
         joinService.join(member, naverOauthSuccess);
+        return;
     }
     else{
         joinService.join(member, kakaoOauthSuccess);
+        return;
     }
 
 })
