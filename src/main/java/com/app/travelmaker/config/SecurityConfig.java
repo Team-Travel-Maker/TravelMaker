@@ -28,6 +28,7 @@ public class SecurityConfig {
     private static final String FAVICON_PATH = "/favicon.ico";
         /*문의 글 쓰기*/
     private static final String INFORMATION_PATH = "/informations/inquiry/write"; 
+    private static final String SHOP_PATH = "/shops/purchase";
     private static final String ADMIN_PATH = "/admins/**";
     private static final String MY_PAGE_PATH = "/mypage/**";
     private static final String MY_PAGE_COMPANY_PATH = "/mypage/company/**";
@@ -83,6 +84,7 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers(ADMIN_PATH).hasRole(Role.ADMIN.name()) //ADMIN 권한이 있는 회원은 접근 가능
                 .antMatchers(INFORMATION_PATH).hasAnyRole(Role.ADMIN.name(), Role.GENERAL.name(), Role.COMPANY.name()) //3 중 아무나
+                .antMatchers(SHOP_PATH).hasAnyRole(Role.ADMIN.name(), Role.GENERAL.name(), Role.COMPANY.name()) //3 중 아무나
                 .antMatchers(MY_PAGE_COMPANY_PATH).hasAnyRole(Role.ADMIN.name(), Role.COMPANY.name()) //2 중 아무나
                 .antMatchers(MY_PAGE_PATH).hasAnyRole(Role.ADMIN.name(), Role.GENERAL.name(), Role.COMPANY.name()) //3 중 아무나
                 .and()

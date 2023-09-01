@@ -69,7 +69,7 @@ function showList(result) {
                         <td>${community.communityCategory.name}</td>
                         <td>${community.memberEmail}</td>
                         <td>
-                            <a href="#" style="text-decoration:underline">${community.communityTitle}</a>
+                            <a href="/community/board/detail/${community.id}" style="text-decoration:underline">${community.communityTitle}</a>
                         </td>
                         <td>${community.createdDate}</td>
                         <td>${community.updatedDate}</td>

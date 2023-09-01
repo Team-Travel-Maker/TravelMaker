@@ -13,7 +13,7 @@ import java.io.IOException;
 @Component
 @Slf4j
 public class AccessDeniedHandlerImpl implements AccessDeniedHandler {
-    private static final String REDIRECT_URL = "/error/403";
+    private static final String REDIRECT_URL = "/";
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
