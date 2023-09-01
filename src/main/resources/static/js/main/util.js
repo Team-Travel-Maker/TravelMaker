@@ -9,8 +9,8 @@ let mainService = (function () {
                 console.log(result)
                 if(callback){
                     callback(result, option);
-                    if(result.pageable){
-                        pagaing(result.pageable.pageSize, result.totalElements, result.pageable.pageNumber)}
+/*                    if(result.pageable){
+                        pagaing(result.pageable.pageSize, result.totalElements, result.pageable.pageNumber)}*/
                 }
             }
         })
