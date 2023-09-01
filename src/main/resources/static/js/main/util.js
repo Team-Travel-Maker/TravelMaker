@@ -78,12 +78,15 @@ function showList(json, option){
                 /*일반 내용 검사*/
                 /** depth 가 2 일 경우 도 검사해 야한다.*/
                 if($(item).data('type') === undefined){
-                    if($(item).get(0).nodeName == "INPUT" ||  $(item).get(0).nodeName == "SELECT"){
-                        $(item).data('key').split('.')[1] === undefined ? $(item).val(`${data[$(item).data('key')]}`)
-                            : $(item).val(`${data[$(item).data('key').split('.')[0]][$(item).data('key').split('.')[1]]}`)
+                    let dataKey =$(item).data('key');
+                    let tags =  $(item).data('key').split('.');
+
+                    if($(item).get(0).nodename == "input" ||  $(item).get(0).nodename == "select"){
+                        tags[1] === undefined ? $(item).val(`${data[dataKey]}`)
+                            : $(item).val(`${data[tags[0]][tags[1]]}`)
                     }else{
-                        $(item).data('key').split('.')[1] === undefined ? $(item).text(`${data[$(item).data('key')]}`)
-                            : $(item).text(`${data[$(item).data('key').split('.')[0]][$(item).data('key').split('.')[1]]}`)
+                        tags[1] === undefined ? $(item).text(`${data[dataKey]}`)
+                            : $(item).text(`${data[tags[0]][tags[1]]}`)
                     }
                 }
             })
