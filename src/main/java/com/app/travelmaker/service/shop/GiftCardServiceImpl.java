@@ -1,17 +1,11 @@
 package com.app.travelmaker.service.shop;
 
-import com.app.travelmaker.common.CommonSupport;
+import com.app.travelmaker.common.AccountSupport;
 import com.app.travelmaker.constant.FileType;
-import com.app.travelmaker.domain.file.FileSize;
-import com.app.travelmaker.domain.member.response.MemberResponseDTO;
-import com.app.travelmaker.domain.notice.request.NoticeRequestDTO;
 import com.app.travelmaker.domain.shop.GiftCardDTO;
 import com.app.travelmaker.domain.shop.purchase.PurchaseRequestDTO;
 import com.app.travelmaker.entity.giftcard.GiftCard;
 import com.app.travelmaker.entity.giftcard.GiftCardFile;
-import com.app.travelmaker.entity.mebmer.Member;
-import com.app.travelmaker.entity.notice.Notice;
-import com.app.travelmaker.entity.notice.NoticeFile;
 import com.app.travelmaker.entity.pay.Pay;
 import com.app.travelmaker.entity.point.Point;
 import com.app.travelmaker.repository.member.MemberRepository;
@@ -35,7 +29,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class GiftCardServiceImpl extends CommonSupport implements GiftCardService, MemberSupport {
+public class GiftCardServiceImpl extends AccountSupport implements GiftCardService, MemberSupport {
     private final GiftCardRepository giftCardRepository;
     private final PayRepository payRepository;
     private final MemberRepository memberRepository;
@@ -56,22 +50,19 @@ public class GiftCardServiceImpl extends CommonSupport implements GiftCardServic
     @Override
     public void addPurchase(PurchaseRequestDTO request) {
         // 1. member 테이블에 포인트 갱신
-        memberRepository.updateMemberPoints(request.getMemberId(), request.getPayTotalPrice());
+        Long memberId = authenticationInfo().getId();
+        memberRepository.updateMemberPoints(memberId, request.getPayTotalPrice());
 
-        final MemberResponseDTO memberDTO = (MemberResponseDTO) session.getAttribute("member");
-        memberDTO.setMemberEcoPoint(memberDTO.getMemberEcoPoint() - request.getPayTotalPrice());
-        session.setAttribute("member", memberDTO);
-
-        Member member = toMemberEntity(memberDTO);
+        authenticationInfo().setMemberEcoPoint(authenticationInfo().getMemberEcoPoint() - request.getPayTotalPrice());
 
         GiftCard giftCard = giftCardRepository.findById(request.getGiftCardId())
                 .orElseThrow(() -> new RuntimeException("상품권 없음 에러 발생"));
 
         // 2. pay 테이블에 구매 정보 등록
-        Pay pay = payRepository.save(request.toPayEntity(member, giftCard));
+        Pay pay = payRepository.save(request.toPayEntity(toMemberEntity(authenticationInfo()), giftCard));
 
         // 3. point 히스토리에 등록
-        Point point = pointRepository.save(request.toPointEntity(member, giftCard.getGiftCardTitle()));
+        Point point = pointRepository.save(request.toPointEntity(toMemberEntity(authenticationInfo()), giftCard.getGiftCardTitle()));
     }
 
     @Override
