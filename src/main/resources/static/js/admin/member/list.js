@@ -18,7 +18,7 @@ $(document).ready(function () {
 
 
 
-    let memberService = (function () {
+    let customService = (function () {
 
         function getList(callback, page){
             $.ajax({
@@ -82,7 +82,7 @@ $(document).ready(function () {
         return {getList : getList, modifyType: modifyType, modifyStatus : modifyStatus, modifyAdmin : modifyAdmin}
     })()
 
-    memberService.getList(showList, page)
+    customService.getList(showList, page)
 
     function showList(result){
         $pagingWrap.html('');
@@ -141,8 +141,8 @@ $(document).ready(function () {
             }
         })
         form.append("statusIds", new Blob([JSON.stringify(memberIds)],{ type: "application/json" }))
-        memberService.modifyStatus()
-        memberService.getList(showList)
+        customService.modifyStatus()
+        customService.getList(showList)
     })
 
 
@@ -157,8 +157,8 @@ $(document).ready(function () {
         })
 
         form.append("typeIds", new Blob([JSON.stringify(memberIds)],{ type: "application/json" }))
-        memberService.modifyType()
-        memberService.getList(showList)
+        customService.modifyType()
+        customService.getList(showList)
     })
 
     $modifyAdminBtn.on("click", function () {
@@ -172,8 +172,8 @@ $(document).ready(function () {
         })
 
         form.append("adminIds", new Blob([JSON.stringify(memberIds)],{ type: "application/json" }))
-        memberService.modifyAdmin()
-        memberService.getList(showList)
+        customService.modifyAdmin()
+        customService.getList(showList)
     })
 
 })

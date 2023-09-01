@@ -8,7 +8,7 @@
     let deleteIds = [];
 
 
-    let noticeService = (function () {
+    let customService = (function () {
 
             function getList(callback,page){
                 $.ajax({
@@ -42,7 +42,7 @@
 
     })()
 
-    noticeService.getList(showList)
+    customService.getList(showList)
 
     function showList(result) {
         $noticeListContainer.html('');
@@ -85,8 +85,8 @@
             }
         })
         form.append("ids", new Blob([JSON.stringify(deleteIds)],{ type: "application/json" }))
-        noticeService.deleteNotice();
-        noticeService.getList(showList);
+        customService.deleteNotice();
+        customService.getList(showList);
         showWarnModal("삭제되었습니다");
         $('#allSelect').prop("checked", false);
     })

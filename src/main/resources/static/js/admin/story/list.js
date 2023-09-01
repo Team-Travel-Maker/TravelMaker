@@ -6,7 +6,7 @@ const $storyListContainer = $('.story-list');
 
 let deleteIds = [];
 
-let storyService = (function () {
+let customService = (function () {
     function deleteStory(form){
         $.ajax({
             url: `/api/admins/story`,
@@ -41,7 +41,7 @@ let storyService = (function () {
 })()
 
 
-storyService.getList(showList);
+customService.getList(showList);
 
 
 function showList(result) {
@@ -95,8 +95,8 @@ $('.delete-button').on("click",async function () {
         }
     })
     form.append("ids", new Blob([JSON.stringify(deleteIds)],{ type: "application/json" }))
-    storyService.deleteStory(form);
-    storyService.getList(showList);
+    customService.deleteStory(form);
+    customService.getList(showList);
     showWarnModal("삭제되었습니다");
     $('#allSelect').prop("checked", false);
 })
