@@ -6,7 +6,7 @@ const $communityListContainer = $('.community-list');
 
 let deleteIds = [];
 
-let communityService = (function () {
+let customService = (function () {
     function deleteCommunity(form){
         $.ajax({
             url: `/api/admins/community`,
@@ -41,7 +41,7 @@ let communityService = (function () {
 })()
 
 
-communityService.getList(showList);
+customService.getList(showList);
 
 
 function showList(result) {
@@ -94,8 +94,8 @@ $('.delete-button').on("click",async function () {
         }
     })
     form.append("ids", new Blob([JSON.stringify(deleteIds)],{ type: "application/json" }))
-    communityService.deleteCommunity(form);
-    communityService.getList(showList);
+    customService.deleteCommunity(form);
+    customService.getList(showList);
     showWarnModal("삭제되었습니다");
     $('#allSelect').prop("checked", false);
 })

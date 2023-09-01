@@ -7,7 +7,7 @@ const $couponListContainer = $('.coupon-list');
 let deleteIds = [];
 
 
-let giftCardService = (function () {
+let customService = (function () {
 
     function getList(callback, page) {
         $.ajax({
@@ -43,7 +43,7 @@ let giftCardService = (function () {
 
 })()
 
-giftCardService.getList(showList)
+customService.getList(showList)
 
 function showList(result) {
     $couponListContainer.html('');
@@ -103,8 +103,8 @@ $('.delete-button').on("click",async function () {
         }
     })
     form.append("ids", new Blob([JSON.stringify(deleteIds)],{ type: "application/json" }))
-    giftCardService.deleteGiftCard();
-    giftCardService.getList(showList);
+    customService.deleteGiftCard();
+    customService.getList(showList);
     showWarnModal("삭제되었습니다");
     $('#allSelect').prop("checked", false);
 })

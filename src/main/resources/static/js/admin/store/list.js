@@ -6,7 +6,7 @@ const $storeListContainer = $('.store-list');
 
 let deleteIds = [];
 
-let storeService = (function () {
+let customService = (function () {
     function deleteStore(form){
         $.ajax({
             url: `/api/admins/store`,
@@ -41,7 +41,7 @@ let storeService = (function () {
 })()
 
 
-storeService.getList(showList);
+customService.getList(showList);
 
 
 function showList(result) {
@@ -105,8 +105,8 @@ $('.delete-button').on("click",async function () {
         }
     })
     form.append("ids", new Blob([JSON.stringify(deleteIds)],{ type: "application/json" }))
-    storeService.deleteStore(form);
-    storeService.getList(showList);
+    customService.deleteStore(form);
+    customService.getList(showList);
     showWarnModal("삭제되었습니다");
     $('#allSelect').prop("checked", false);
 })
