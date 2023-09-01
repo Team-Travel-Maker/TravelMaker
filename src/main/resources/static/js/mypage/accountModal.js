@@ -166,6 +166,10 @@ $(document).ready(function () {
         var oldPass = $('input[name="oldPassword"]').val()
         var newPass = $('input[name="password"]').val()
         var newPassConfirm = $('input[name="passwordConfirm"]').val()
+        if(oldPass=="") {
+            showWarnModal("현재 비밀번호를 제대로 작성해 주세요.");
+            return;
+        }
         if(newPass=="" || newPassConfirm=="") {
             showWarnModal("새 비밀번호, 새 비밀번호 확인을 제대로 작성해 주세요.")
         } else if (newPass != newPassConfirm) {
