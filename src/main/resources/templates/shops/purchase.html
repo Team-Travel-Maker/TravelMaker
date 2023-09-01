@@ -55,7 +55,7 @@
                                             <label for="account" class="first-label">계정</label>
                                             <div class="input-wrap">
                                                 <input id="account" type="text" name="account" disabled
-                                                       value="friend_7-9@naver.com" style="color: rgb(51, 51, 51);">
+                                                       th:value="${#authentication.getPrincipal().memberResponseDTO.memberEmail}" style="color: rgb(51, 51, 51);">
                                             </div>
                                         </div>
                                         <div class="input-wrap has-error">
