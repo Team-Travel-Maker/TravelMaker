@@ -2,6 +2,7 @@ package com.app.travelmaker.controller.community;
 
 
 import com.app.travelmaker.common.AccountSupport;
+import com.app.travelmaker.constant.CommunityType;
 import com.app.travelmaker.domain.community.PostDTO;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.service.community.CommunityService;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -24,59 +26,25 @@ public class CommunityController extends AccountSupport {
 
     private final CommunityService communityService;
 
-//    이용 후기
-    @GetMapping("review/list")
-    public void goToCReviewList(){;}
-
-    @GetMapping("review/write")
-    public void goToReviewWrite(){;}
-
-    @GetMapping("review/detail")
-    public void goToReviewDetail(){;}
-
-    @GetMapping("review/update")
-    public void goToReviewUpdate(){;}
-
-//    개선 요청
-    @GetMapping("request/list")
-    public void goToRequestList(){;}
-
-    @GetMapping("request/update")
-    public void goToRequsetUpdate(){;}
-
-    @GetMapping("request/write")
-    public void goToRequestWrite(){;}
-
-    @GetMapping("request/detail")
-    public void goToRequestDetail(){;}
 
 //    소통
     @GetMapping("board/list")
-    public void goToBoardList(){;}
+    public List<PostDTO> goToBoardList(CommunityType communityType, Model model, PostDTO postDTO){
+
+        List postList = communityService.getPostList(CommunityType.REVIEW);
+
+        System.out.println("postList 1번째 : " + postList.get(0));
+        Long memberId = authenticationInfo().getId();
 
 
-//    @GetMapping("board/detail")
-//    public void goToBoardDetail(){;}
+
+        model.addAttribute("postList", postList);
+        model.addAttribute("memberId", memberId);
+
+        return postList;
+    }
 
 
-//    @GetMapping("board/detail/{id}")
-//    public PostDTO goToBoardDetail(@PathVariable Long id){
-//        System.out.println("상세 페이지 로딩");
-//        System.out.println("게시물 id: " + id);
-//
-//        ModelAndView mv = new ModelAndView();
-//
-//        PostDTO postDTO = communityService.postDetail(id);
-//
-//        String memberName = postDTO.getMember().getMemberName();
-//        System.out.println("작성자 : " + memberName);
-//        System.out.println("작성일 : " + postDTO.getCreateTime());
-//
-//
-//        log.info("=={}==", postDTO.toString());
-//
-//        return postDTO;
-//    }
     @GetMapping("board/detail/{id}")
     public ModelAndView goToBoardDetail(@PathVariable Long id){
         System.out.println("상세 페이지 로딩");
@@ -92,7 +60,6 @@ public class CommunityController extends AccountSupport {
 
 
         log.info("=={}==", postDTO.toString());
-//        mv.setViewName("/community/board/detail");
         mv.setViewName("/community/board/detail");
         mv.addObject("postDTO", postDTO);
         mv.addObject("memberName", memberName);
@@ -101,10 +68,12 @@ public class CommunityController extends AccountSupport {
     }
 
     @GetMapping("board/write")
-    public void goToWrite(){;}
+    public String goToWrite() {
+        return "/community/board/write";
+    }
 
     @PostMapping("board/write")
-    public RedirectView write(PostDTO postDTO, RedirectAttributes redirectAttributes, Model model) throws Exception{
+    public RedirectView write(PostDTO postDTO, Model model) {
         log.info("{}", postDTO.toString());
 
         String memberName = authenticationInfo().getMemberName();

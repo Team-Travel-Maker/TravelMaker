@@ -1,6 +1,7 @@
 package com.app.travelmaker.service.community;
 
 
+import com.app.travelmaker.constant.CommunityType;
 import com.app.travelmaker.domain.community.PostDTO;
 import com.app.travelmaker.repository.community.PostFileRepository;
 import com.app.travelmaker.repository.community.PostRepository;
@@ -21,8 +22,8 @@ public class CommunityServiceImpl implements CommunityService {
     private final PostFileRepository postFileRepository;
 
     @Override
-    public List<PostDTO> getPostList(PostDTO postDTO) {
-        return null;
+    public List<PostDTO> getPostList(CommunityType communityType) {
+        return postRepository.getPostList(communityType);
     }
 
     @Override

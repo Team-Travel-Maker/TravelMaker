@@ -57,7 +57,7 @@ const $chkCodeWrongP = $('.find-check-wrong-p');
 const $chkCodeOkP = $('.find-check-ok-p');
 
 // 인증번호 테스트용 코드(테스트용이라서 나중에 삭제 필요)
-/*let $testCheckCode = '1234';*/
+let $testCheckCode = '1234';
 
 
 /* ---------- 비밀번호 변수 ----------*/
@@ -228,46 +228,46 @@ $phoneChkBtn.on("click", function(){
     setinterval = setInterval(timeIt, 1200);
     joinBtnCheck()
 
-    const to = $('#mobile').val();
-
-    $.ajax ({
-        url: '/api/accounts/check/sendSMS',
-        type: 'GET',
-        data: {
-            "to" : to
-        },
-        success: function(data) {
-            const checkNum = data;
-            $codeChkBtn.on('click', function () {
-                const userNum = $chkCode.val();
-                if(checkNum === userNum) {
-                    $chkTimeInP.hide();
-                    $chkTimeInTimeP.hide();
-                    $chkTimeOutP.hide();
-                    $chkTimeOutTimeP.hide();
-                    $chkCodeWrongP.hide();
-                    $chkCodeOkP.show();
-                    $phoneChkBtn.attr("disabled", true);
-                    $chkCode.attr("disabled", true);
-                    $codeChkBtn.attr("disabled", true);
-                    // 인증 시간 초기화
-                    clearInterval(setinterval);
-                    counter = 0;
-                    showWarnModal("인증에 성공하셨습니다")
-                }
-                else {
-                    $chkTimeInP.hide();
-                    $chkTimeInTimeP.hide();
-                    $chkTimeOutP.hide();
-                    $chkTimeOutTimeP.show();
-                    $chkCodeWrongP.show();
-                    showWarnModal('인증 실패하였습니다. 다시 입력해주세요.')
-                }
-                joinBtnCheck()
-            });
-
-        }
-    });
+    // const to = $('#mobile').val();
+    //
+    // $.ajax ({
+    //     url: '/api/accounts/check/sendSMS',
+    //     type: 'GET',
+    //     data: {
+    //         "to" : to
+    //     },
+    //     success: function(data) {
+    //         const checkNum = data;
+    //         $codeChkBtn.on('click', function () {
+    //             const userNum = $chkCode.val();
+    //             if(checkNum === userNum) {
+    //                 $chkTimeInP.hide();
+    //                 $chkTimeInTimeP.hide();
+    //                 $chkTimeOutP.hide();
+    //                 $chkTimeOutTimeP.hide();
+    //                 $chkCodeWrongP.hide();
+    //                 $chkCodeOkP.show();
+    //                 $phoneChkBtn.attr("disabled", true);
+    //                 $chkCode.attr("disabled", true);
+    //                 $codeChkBtn.attr("disabled", true);
+    //                 // 인증 시간 초기화
+    //                 clearInterval(setinterval);
+    //                 counter = 0;
+    //                 showWarnModal("인증에 성공하셨습니다")
+    //             }
+    //             else {
+    //                 $chkTimeInP.hide();
+    //                 $chkTimeInTimeP.hide();
+    //                 $chkTimeOutP.hide();
+    //                 $chkTimeOutTimeP.show();
+    //                 $chkCodeWrongP.show();
+    //                 showWarnModal('인증 실패하였습니다. 다시 입력해주세요.')
+    //             }
+    //             joinBtnCheck()
+    //         });
+    //
+    //     }
+    // });
 
 
 })
@@ -292,7 +292,7 @@ $chkCode.on('input', function() {
 // 인증하기 버튼 눌렀을 때 처리(2가지 : 인증 실패, 인증 성공)
 // 인증 성공하면 인증번호받기(인증번호 재전송)버튼 비활성화 되어야함.
 // 인증 실패시 인증실패 문구만 출력하고 나머지는 그대로
-/*$codeChkBtn.on('click', function () {
+$codeChkBtn.on('click', function () {
     if($testCheckCode == $chkCode.val()) {
         $chkTimeInP.hide();
         $chkTimeInTimeP.hide();
@@ -315,7 +315,7 @@ $chkCode.on('input', function() {
         $chkCodeWrongP.show();
     }
     joinBtnCheck()
-})*/
+})
 
 /*혹시 모를 이 페이지가 열리면 타이머 값 초기화*/
 $(document).ready(function(){

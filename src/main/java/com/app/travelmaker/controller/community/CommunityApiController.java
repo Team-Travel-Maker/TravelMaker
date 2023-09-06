@@ -26,13 +26,13 @@ public class CommunityApiController extends AccountSupport {
 
     private final CommunityService communityService;
 
-    @GetMapping("board/list")
-    public List<PostDTO> getList(PostDTO postDTO, Model model){
-//        model.addAttribute("postList", postList);
-
-
-        return communityService.getPostList(postDTO);
-    }
+//    @GetMapping("board/list")
+//    public List<PostDTO> getList(PostDTO postDTO,CommunityType communityType, Model model){
+////        model.addAttribute("postList", postList);
+//
+//
+//        return communityService.getPostList(postDTO, communityType);
+//    }
 
 
 //    @GetMapping("board/detail/{id}")

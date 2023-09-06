@@ -1,5 +1,6 @@
 package com.app.travelmaker.repository.community;
 
+import com.app.travelmaker.constant.CommunityType;
 import com.app.travelmaker.domain.community.PostDTO;
 import com.app.travelmaker.entity.mebmer.QMember;
 import com.querydsl.core.types.Projections;
@@ -20,35 +21,45 @@ public class PostDSLImpl implements PostDSL {
 
 
     @Override
-    public List<PostDTO> getPostList(PostDTO postDTO) {
-        query.select().from().where().fetch();
-
-        return null;
+    public List<PostDTO> getPostList(CommunityType communityType) {
+        List postList =
+                query.select(Projections.fields(PostDTO.class,
+                        community.communityTitle.as("postTitle"),
+                        community.communityContent.as("postContent"),
+                        community.communityCategory.as("communityType"),
+                        community.createdDate.as("createTime"),
+                        community.member,
+                        community.member.memberName.as("memberName")
+                        ))
+                        .from(community)
+                        .innerJoin(community.member, member)
+                        .where(community.communityCategory.eq(communityType))
+                        .orderBy(community.createdDate.desc())
+                        .fetch();
+        return postList;
     }
 
     @Override
     public Optional<PostDTO> detail(Long id) {
 
-        Optional<PostDTO> foundPost = Optional.ofNullable(query.select(Projections.constructor(PostDTO.class,
+        Optional<PostDTO> foundPost =
+                Optional.ofNullable(query.select(Projections.constructor(PostDTO.class,
                 community.id,
                 community.communityTitle,
                 community.communityContent,
                 community.communityCategory,
-                community.createdDate,
+                community.createdDate.as("createTime"),
                 community.member
                 )).from(community).innerJoin(community.member, member)
                 .on(community.member.id.eq(member.id))
                 .where(community.id.eq(id))
                 .fetchOne());
 
-
-
         return foundPost;
     }
 
     @Override
     public void delete(Long id) {
-
     }
 
     @Override

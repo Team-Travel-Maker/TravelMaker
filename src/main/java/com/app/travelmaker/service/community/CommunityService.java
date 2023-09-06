@@ -1,6 +1,7 @@
 package com.app.travelmaker.service.community;
 
 
+import com.app.travelmaker.constant.CommunityType;
 import com.app.travelmaker.domain.community.PostDTO;
 import com.app.travelmaker.domain.member.response.MemberResponseDTO;
 import com.app.travelmaker.entity.community.Community;
@@ -15,7 +16,7 @@ public interface CommunityService extends MemberSupport {
 
     public Long write(PostDTO postDTO);
 
-    public List<PostDTO> getPostList(PostDTO postDTO);
+    public List<PostDTO> getPostList(CommunityType communityType);
 
     public PostDTO postDetail(Long id);
 
@@ -35,6 +36,7 @@ public interface CommunityService extends MemberSupport {
                 .member(postDTO.getMember())
                 .build();
     }
+
 
 
 
