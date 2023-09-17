@@ -49,12 +49,15 @@ function handleFileSelect(event) {
     const file = event.target.files[0];
 }
 
-let input = document.querySelector('input')
+let input = document.querySelector('input[name="tag"]')
+
 let tagify = new Tagify(input);
 
+$(document).ready(function() {
 // 태그가 추가되면 이벤트 발생
-tagify.on('add', function() {
-    console.log(tagify.value); // 입력된 태그 정보 객체
+    tagify.on('add', function () {
+        console.log(tagify.value); // 입력된 태그 정보 객체
+    })
 })
 
 // 글 등록 버튼

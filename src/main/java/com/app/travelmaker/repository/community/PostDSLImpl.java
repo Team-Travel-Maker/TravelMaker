@@ -22,6 +22,13 @@ public class PostDSLImpl implements PostDSL {
 
     @Override
     public List<PostDTO> getPostList(CommunityType communityType) {
+//      처음 글 목록페이지 이동 했을 때 기본적으로 보이는
+//      게시글 타입을 REVIEW 로 설정
+        System.out.println("PostDSLImpl : " + communityType);
+        if(communityType == null){
+            communityType = CommunityType.REVIEW;
+        }
+
         List postList =
                 query.select(Projections.fields(PostDTO.class,
                         community.communityTitle.as("postTitle"),
@@ -50,6 +57,7 @@ public class PostDSLImpl implements PostDSL {
                 community.communityCategory,
                 community.createdDate.as("createTime"),
                 community.member
+//                ,community.tags.as("tag")
                 )).from(community).innerJoin(community.member, member)
                 .on(community.member.id.eq(member.id))
                 .where(community.id.eq(id))

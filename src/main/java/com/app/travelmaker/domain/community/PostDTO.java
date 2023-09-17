@@ -31,7 +31,7 @@ public class PostDTO {
     private CommunityType communityType;
     private Member member;
     private String memberName;
-    private Tag tag;
+    private List<Tag> tag;
 
     private List<FileDTO> files = new ArrayList<>();
     private List<Long> fileIdsForDelete = new ArrayList<>();
@@ -46,7 +46,7 @@ public class PostDTO {
         this.member = member;
     }
 
-    public PostDTO(Long id, String postTitle, String postContent, Long postLike, Long replyCount, LocalDateTime createTime, CommunityType communityType, Member member, Tag tag) {
+    public PostDTO(Long id, String postTitle, String postContent, Long postLike, Long replyCount, LocalDateTime createTime, CommunityType communityType, Member member, String memberName, List<Tag> tag, List<FileDTO> files, List<Long> fileIdsForDelete) {
         this.id = id;
         this.postTitle = postTitle;
         this.postContent = postContent;
@@ -55,8 +55,12 @@ public class PostDTO {
         this.createTime = createTime;
         this.communityType = communityType;
         this.member = member;
+        this.memberName = memberName;
         this.tag = tag;
+        this.files = files;
+        this.fileIdsForDelete = fileIdsForDelete;
     }
+
 
     public PostDTO(Long id, String postTitle, String postContent, Long postLike, Long replyCount, LocalDateTime createTime, CommunityType communityType, String memberName) {
         this.id = id;

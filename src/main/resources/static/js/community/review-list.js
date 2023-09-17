@@ -1,5 +1,5 @@
 const $categoryBtns = $('.category-Item');
-const writeBtn = $(".postWriteBtn-writeBtn");
+const writeBtn = $("#goWrite");
 const detailBtn = $(".goToDetail");
 let memberId = $("input[name='memberId']").val();
 let date = $("input[name='createTime']");
@@ -10,27 +10,97 @@ $(document).ready(function () {
     console.log($categoryBtns);
 
     $categoryBtns.on('click',function(){
+        let communityType = $(this).find(".category-btn-label").attr("value");
+        console.log(communityType);
+
+        $.ajax({
+            type : "get",
+            url : "/api/communities/board/list",
+            contentType : 'application/json',
+            data : {communityType : communityType},
+            success : function(data) { // 결과 성공 콜백함수
+                console.log("성공 여부 : " + communityType);
+                console.log(data)
+
+
+                if (data && data.length > 0) {
+                    console.log("글 목록 뿌리는 중")
+                    let postList = $('.postReview');
+                    postList.empty();
+
+                    data.forEach(function(post) {
+                        // 가져온 데이터를 사용하여 게시글 요소 생성
+                        let postItem = '<article class="PostItem_PostItem">';
+                        postItem += '<div class="PostItem_PostItem_top">';
+                        postItem += '<a href="">';
+                        postItem += '<div class="AuthorBox_AuthorBox">'
+                        postItem += '<div class="AuthorBox_AuthorBox_verticalArea">';
+                        postItem += '<div class="AuthorBox_avatar_wrapper">';
+                        postItem += '<div class="mycommunity-myprofile-img  avatar">';
+                        postItem += '<img src="https://static.wanted.co.kr/oneid-user/6m2fVJuPVURemknYfFVHDf/d3WNVAQRrj829gFa2qz4vj.jpg">';
+                        postItem += '</div></div>';
+                        postItem += '<div class="AuthorBox_AuthorBox__verticalBox">';
+                        postItem += '<div class="AuthorBox_AuthorBox__userInfo">';
+                        postItem += '<div class="AuthorBox_AuthorBox_username username">' + post.memberName + '</div>';
+                        postItem += '<div class="Author-wrapper">';
+                        postItem += '<div class="UserInfoGrade">계란</div>';
+                        postItem += '<div class="UserInfoRegion">서울</div>';
+                        postItem += '</div></div>';
+                        postItem += '<input type="hidden" class="createTime" name="createTime" style="display: none">' + post.createTime;
+                        postItem += '<span class="postCreateTime create_time postElapsedTime createTime"></span>';
+                        postItem += '</div></div></div></a></div>';
+                        postItem += '<a class="PostItem_body" href="#">';
+                        // 게시글 내용 및 정보를 가져와서 요소에 추가
+                        postItem += '<h3 class="PostItem_title">' + post.postTitle + '</h3>';
+                        postItem += '<p class="PostItem_content">' + post.postContent + '</p>';
+                        // 게시글 태그 추가 (태그 데이터를 가져와서 반복)
+                        // postItem += '<div class="PostItem_tag_list">';
+                        // post.tags.forEach(function(tag) {
+                        //     postItem += '<button type="button" class="PostItem_tag">' + tag + '</button>';
+                        // });
+                        // postItem += '</div>';
+                        // 좋아요와 댓글 버튼 등의 내용을 추가
+                        postItem += '</div></article>';
+
+                        // 게시글을 게시글 목록에 추가
+                        postList.append(postItem);
+
+                        $("input[name='createTime']").each(function() {
+                            let createTime = $(this).val();
+                            let writeTime = new Date(createTime); // 작성 시간을 Date 객체로 파싱
+                            let currentTime = new Date(); // 현재 시간을 가져옴
+                            let timeDiff = currentTime - writeTime; // 시간 차이 계산 (밀리초 단위)
+
+                            // 시간 차이를 경과 시간으로 변환 (초, 분, 시간 등)
+                            let elapsedTime = calculateElapsedTime(timeDiff);
+
+                            // 해당 게시글의 경과 시간을 표시할 요소를 선택하고 텍스트 설정
+                            $(this).siblings(".postElapsedTime").text(elapsedTime);
+                        })
+                    });
+                }
+            },
+            error : function(request, status, error) { // 결과 에러 콜백함수
+                console.log("에러 : " + error)
+            }
+
+        })
+
         $categoryBtns.removeClass("category-btn-list");
         if(!$(this).hasClass("category-btn-list")){
             $(this).addClass("category-btn-list");
         }
     });
 
+
+
     writeBtn.on('click', function () {
         console.log("글쓰기 버튼 클릭")
         $.ajax({
             type : 'get',           // 타입 (get, post, put 등등)
             url : '/community/board/write',           // 요청할 서버url
-            async : true,            // 비동기화 여부 (default : true)
-            headers : {              // Http header
-                "Content-Type" : "application/json",
-            },
-            dataType : 'json',       // 데이터 타입 (html, xml, json, text 등등)
-            contentType: "application/json; charset=utf-8",
-
-            data : JSON.stringify({  // 보낼 데이터 (Object , String, Array)
-            }),
             success : function(result) { // 결과 성공 콜백함수
+                location.href = "write"
                 console.log("성공 여부" + result);
             },
             error : function(request, status, error) { // 결과 에러 콜백함수
@@ -46,16 +116,8 @@ $(document).ready(function () {
         $.ajax({
             type : 'get',           // 타입 (get, post, put 등등)
             url : '/community/board/detail',           // 요청할 서버url
-            async : true,            // 비동기화 여부 (default : true)
-            headers : {              // Http header
-                "Content-Type" : "application/json",
-            },
-            dataType : 'json',       // 데이터 타입 (html, xml, json, text 등등)
-            contentType: "application/json; charset=utf-8",
-
-            data : JSON.stringify({  // 보낼 데이터 (Object , String, Array)
-            }),
             success : function(result) { // 결과 성공 콜백함수
+                location.href = "detail"
                 console.log("성공 여부" + result);
             },
             error : function(request, status, error) { // 결과 에러 콜백함수
@@ -65,93 +127,10 @@ $(document).ready(function () {
     })
 
 
-//     function SimpleDateTimeFormat(date, pattern) {
-//         let dateString = pattern.replace(/(yyyy|MM|dd|HH|mm|ss|SSS)/g, function(match) {
-//             let matchString = "";
-//             switch(match) {
-//                 case "yyyy":
-//                     matchString = date.getFullYear();
-//                     break;
-//                 case "MM":
-//                     matchString = date.getMonth() + 1;
-//                     break;
-//                 case "dd":
-//                     matchString = date.getDate();
-//                     break;
-//                 case "HH":
-//                     matchString = date.getHours();
-//                     break;
-//                 case "mm":
-//                     matchString = date.getMinutes();
-//                     break;
-//                 case "ss":
-//                     matchString = date.getSeconds();
-//                     break;
-//                 case "SSS":
-//                     matchString = date.getMilliseconds();
-//                     break;
-//                 default :
-//                     matchString = match;
-//                     break;
-//             }
-//             if (match == "SSS") {
-//                 if (matchString < 10) {
-//                     matchString = "00" + matchString;
-//                 } else if (matchString < 100) {
-//                     matchString = "0" + matchString;
-//                 }
-//             } else {
-//                 if ((typeof(matchString) == "number" && matchString < 10)) {
-//                     matchString = "0" + matchString;
-//                 }
-//             }
-//             return matchString;
-//         });
-//
-//         return dateString;
-//     }
-//
-// //    글 작성 경과시간 표시
-//     function elapsedTime(date) {
-//         // 초 (밀리초)
-//         const seconds = 1;
-//         // 분
-//         const minute = seconds * 60;
-//         // 시
-//         const hour = minute * 60;
-//         // 일
-//         const day = hour * 24;
-//
-//         let today = new Date();
-//         let elapsedTime = Math.trunc((today.getTime() - date.getTime()) / 1000);
-//
-//         let elapsedText = "";
-//
-//         if (elapsedTime < seconds) {
-//             elapsedText = "방금 전";
-//         } else if (elapsedTime < minute) {
-//             elapsedText = elapsedTime + "초 전";
-//         } else if (elapsedTime < hour) {
-//             elapsedText = Math.trunc(elapsedTime / minute) + "분 전";
-//         } else if (elapsedTime < day) {
-//             elapsedText = Math.trunc(elapsedTime / hour) + "시간 전";
-//         } else if (elapsedTime < (day * 15)) {
-//             elapsedText = Math.trunc(elapsedTime / day) + "일 전";
-//         } else {
-//             elapsedText = SimpleDateTimeFormat(date, "yyyy.M.d");
-//         }
-//
-//         return elapsedText;
-//     }
-
-
     // 모든 게시글의 작성 시간 요소를 선택
         $("input[name='createTime']").each(function() {
             let createTime = $(this).val();
             let writeTime = new Date(createTime); // 작성 시간을 Date 객체로 파싱
-
-            console.log("==============================================================")
-
             let currentTime = new Date(); // 현재 시간을 가져옴
             let timeDiff = currentTime - writeTime; // 시간 차이 계산 (밀리초 단위)
 
@@ -160,7 +139,6 @@ $(document).ready(function () {
 
             // 해당 게시글의 경과 시간을 표시할 요소를 선택하고 텍스트 설정
             $(this).siblings(".postElapsedTime").text(elapsedTime);
-
         })
 
     // 시간 차이를 경과 시간으로 변환하는 함수
@@ -191,16 +169,12 @@ $(document).ready(function () {
 
 
 
-
-
-
-
-
-
-
-
-
 })
 
+
+// 카테고리 선택 시 해당 글 목록 뿌려주기
+function updatePostList() {
+
+}
 
 

@@ -33,6 +33,7 @@ public interface CommunityService extends MemberSupport {
                 .communityContent(postDTO.getPostContent())
                 .communityCategory(postDTO.getCommunityType())
                 .createdDate(LocalDateTime.now())
+                .tags(postDTO.getTag())
                 .member(postDTO.getMember())
                 .build();
     }

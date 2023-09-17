@@ -3,6 +3,8 @@ package com.app.travelmaker.service.community;
 
 import com.app.travelmaker.constant.CommunityType;
 import com.app.travelmaker.domain.community.PostDTO;
+import com.app.travelmaker.entity.community.Community;
+import com.app.travelmaker.entity.tag.Tag;
 import com.app.travelmaker.repository.community.PostFileRepository;
 import com.app.travelmaker.repository.community.PostRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,11 +25,14 @@ public class CommunityServiceImpl implements CommunityService {
 
     @Override
     public List<PostDTO> getPostList(CommunityType communityType) {
+
         return postRepository.getPostList(communityType);
     }
 
     @Override
     public Long write(PostDTO postDTO) {
+
+
        return postRepository.save(toEntity(postDTO)).getId();
     }
 

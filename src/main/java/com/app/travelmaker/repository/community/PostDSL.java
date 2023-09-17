@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface PostDSL {
 
+
     public List<PostDTO> getPostList(CommunityType communityType);
 
     public Optional<PostDTO> detail(Long id);

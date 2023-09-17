@@ -73,7 +73,7 @@ public class GoWithDSLImpl implements GoWithDSL {
             regionCondition.and(goWith.goWithRegionType.eq(region));
         }
 
-        List<GoWithDTO> gowiths = query.select(Projections.fields(GoWithDTO.class,
+        List<GoWithDTO> goWiths = query.select(Projections.fields(GoWithDTO.class,
                 goWith.id,
                 goWith.goWithTitle,
                 goWith.goWithContent,
@@ -104,7 +104,7 @@ public class GoWithDSLImpl implements GoWithDSL {
 
         Long totalCount = query.select(goWith.count()).from(goWith).fetchOne();
 
-        return new PageImpl<>(gowiths, pageable, totalCount);
+        return new PageImpl<>(goWiths, pageable, totalCount);
     }
 
 

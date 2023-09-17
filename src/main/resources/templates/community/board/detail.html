@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="/css/community/community-detail.css">
 </head>
 <body>
-<div th:replace="~{header/header :: #header}"></div>
+<div th:replace="~{header/signedIn-header :: #header}"></div>
+
 <div class="Padding_padding___Nyki"></div>
 <main class="community-post-detail" th:object="${postDTO}">
     <input type="hidden" name="memberName">

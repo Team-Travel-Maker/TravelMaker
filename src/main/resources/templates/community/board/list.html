@@ -12,8 +12,9 @@
 
 <body>
 <div class="Padding_padding"></div>
-<!-- 전체 container -->
-<div th:replace="~{header/header :: #header}"></div>
+
+<!-- 헤더 -->
+<div th:replace="~{header/signedIn-header :: #header}"></div>
 <div class="container">
     <input type="hidden" name="memberId" th:value="${#authentication.getPrincipal().memberResponseDTO.id}">
     <!-- 사이드  -->
@@ -24,7 +25,27 @@
                 <button type="button" class="mycommunity-myprofile-link goToDetail" >
                     <!-- 프로필 이미지 -->
                     <div class="mycommunity-myprofile-img mycommunity-myprofile-img-size">
-                        <img src="https://static.wanted.co.kr/oneid-user/profile_default.png">
+<!--                        <img src="https://static.wanted.co.kr/oneid-user/profile_default.png">-->
+                        <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
+                            <img alt="프로필 이미지"
+                                 th:src="${#authentication.getPrincipal().memberResponseDTO.snsProFile}"
+                                 class="profile-avatar-img" style="vertical-align: middle;">
+                        </th:block>
+                        <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
+                            <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">
+                                <img alt="프로필 이미지"
+                                     th:src="'https://static.wanted.co.kr/oneid-user/profile_default.png'"
+                                     class="profile-avatar-img" style="vertical-align: middle;">
+                            </th:block>
+                            <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">
+                                <img alt="프로필 이미지"
+                                     th:src="'/api/files/display?fileName=' +
+                                    ${#authentication.getPrincipal().memberResponseDTO.filePath} + '/' +
+                                    ${#authentication.getPrincipal().memberResponseDTO.fileUuid} + '_' +
+                                    ${#authentication.getPrincipal().memberResponseDTO.fileName}"
+                                     class="profile-avatar-img" style="vertical-align: middle;">
+                            </th:block>
+                        </th:block>
                     </div>
                     <div class="mycommunity-myprofile-wrapper">
                         <div class="mycommunity-myprofile-loggedIn">
@@ -63,17 +84,17 @@
                         <div class="community-category-navTag community-category-scrollsnap1">
                             <!--일반 후기 -->
                             <button class="category-Item category-Item-assist btn-outline-size btn-outline-assist btn-outlined selected">
-                                <span class="category-btn-label">일반 후기</span>
+                                <span class="category-btn-label postType" value="REVIEW">일반 후기</span>
                                 <span class="category-btn-label-interaction"></span>
                             </button>
                             <!-- 개선 요청 -->
                             <button class="category-Item category-Item-assist btn-outline-size btn-outline-assist btn-outlined">
-                                <span class="category-btn-label">개선 요청</span>
+                                <span class="category-btn-label postType" value="IMPROVEMENT">개선 요청</span>
                                 <span class="category-btn-label-interaction"></span>
                             </button>
                             <!-- 소통 -->
                             <button class="category-Item category-Item-assist btn-outline-size btn-outline-assist btn-outlined">
-                                <span class="category-btn-label">소통</span>
+                                <span class="category-btn-label postType" value="COMMUNICATION">소통</span>
                                 <span class="category-btn-label-interaction"></span>
                             </button>
                         </div>
@@ -89,7 +110,7 @@
                 <div class="postWriteBtn-avatar mycommunity-myprofile-img mycommunity-myprofile-img-size">
                     <img src="https://static.wanted.co.kr/oneid-user/profile_default.png">
                 </div>
-                <button type="button" class="postWritebtn-writebtn">
+                <button type="button" class="postWritebtn-writebtn" id="goWrite">
                     테마 후기에 대해 자유롭게 이야기 해주세요!
                     <span class="postWritebtn-writeIcon">
                         <span class="SvgIcon_SvgIcon__root__8vwon">
@@ -107,24 +128,23 @@
             <!-- 게시글 목록 -->
             <section class="postReview">
                 <!-- 테마 여행 후기 -->
-                <div class="postReview-Tags">
-                    <h2>새로 올라온 관심글 💘</h2>
-                    <div class="postReviewTag-list" role="button" aria-label="Open my interest tag modal popup">
-                        <!-- 태그 추가해서 인기순 , 지역별 이런거 ? -->
-                        <ul>
-                            <li class="postReview-tag">#서울</li>
-                            <li class="postReview-tag">#빕스</li>
-                        </ul>
-                        <span class="SvgIcon_SvgIcon__root__8vwon">
-                            <svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 18 18">
-                                <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path>
-                            </svg>
-                        </span>
-                    </div>
-                </div>
+<!--                <div class="postReview-Tags">-->
+<!--                    <h2>새로 올라온 관심글 💘</h2>-->
+<!--                    <div class="postReviewTag-list" role="button" aria-label="Open my interest tag modal popup">-->
+<!--                        &lt;!&ndash; 태그 추가해서 인기순 , 지역별 이런거 ? &ndash;&gt;-->
+<!--                        <ul>-->
+<!--                            <li class="postReview-tag">#서울</li>-->
+<!--                            <li class="postReview-tag">#빕스</li>-->
+<!--                        </ul>-->
+<!--                        <span class="SvgIcon_SvgIcon__root__8vwon">-->
+<!--                            <svg class="SvgIcon_SvgIcon__root__svg__DKYBi" viewBox="0 0 18 18">-->
+<!--                                <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path>-->
+<!--                            </svg>-->
+<!--                        </span>-->
+<!--                    </div>-->
+<!--                </div>-->
                 <!-- 게시글 리스트 -->
                 <article class="PostItem_PostItem" th:each="postList : ${postList}">
-
                     <div class="PostItem_PostItem_top">
                         <a href="">
                             <div class="AuthorBox_AuthorBox">
@@ -132,7 +152,30 @@
                                     <div class="AuthorBox_avatar_wrapper">
                                         <!-- 프로필 이미지 -->
                                         <div class="mycommunity-myprofile-img  avatar">
-                                            <img src="https://static.wanted.co.kr/oneid-user/6m2fVJuPVURemknYfFVHDf/d3WNVAQRrj829gFa2qz4vj.jpg" alt="">
+<!--                                            <img src="https://static.wanted.co.kr/oneid-user/6m2fVJuPVURemknYfFVHDf/d3WNVAQRrj829gFa2qz4vj.jpg" alt="">-->
+                                            <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
+                                                <img alt="프로필 이미지"
+                                                     th:src="${#authentication.getPrincipal().memberResponseDTO.snsProFile}"
+                                                     class="profile-avatar-img"
+                                                     style="vertical-align: middle;">
+                                            </th:block>
+                                            <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
+                                                <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">
+                                                    <img alt="프로필 이미지"
+                                                         th:src="'https://static.wanted.co.kr/oneid-user/profile_default.png'"
+                                                         class="profile-avatar-img"
+                                                         style="vertical-align: middle;">
+                                                </th:block>
+                                                <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">
+                                                    <img alt="프로필 이미지"
+                                                         th:src="'/api/files/display?fileName=' +
+                                                        ${#authentication.getPrincipal().memberResponseDTO.filePath} + '/' +
+                                                        ${#authentication.getPrincipal().memberResponseDTO.fileUuid} + '_' +
+                                                        ${#authentication.getPrincipal().memberResponseDTO.fileName}"
+                                                         class="profile-avatar-img"
+                                                         style="vertical-align: middle;">
+                                                </th:block>
+                                            </th:block>
                                         </div>
                                     </div>
                                     <div class="AuthorBox_AuthorBox__verticalBox">
