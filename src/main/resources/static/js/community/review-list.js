@@ -3,6 +3,8 @@ const writeBtn = $("#goWrite");
 const detailBtn = $(".goToDetail");
 let memberId = $("input[name='memberId']").val();
 let date = $("input[name='createTime']");
+let $post = $(".PostItem_PostItem");
+let postId = $("input[name='postId']").val();
 
 
 $(document).ready(function () {
@@ -30,7 +32,8 @@ $(document).ready(function () {
 
                     data.forEach(function(post) {
                         // 가져온 데이터를 사용하여 게시글 요소 생성
-                        let postItem = '<article class="PostItem_PostItem">';
+                        let postItem = '<article class="PostItem_PostItem" th:each="postList : ${postList}">';
+                        postItem += '<input type="hidden" name="postId" id="postId" class="postId" th:value="${postList.id}" style="display: none">' + post.id;
                         postItem += '<div class="PostItem_PostItem_top">';
                         postItem += '<a href="">';
                         postItem += '<div class="AuthorBox_AuthorBox">'
@@ -62,8 +65,8 @@ $(document).ready(function () {
                         // 좋아요와 댓글 버튼 등의 내용을 추가
                         postItem += '</div></article>';
 
-                        // 게시글을 게시글 목록에 추가
-                        postList.append(postItem);
+
+
 
                         $("input[name='createTime']").each(function() {
                             let createTime = $(this).val();
@@ -77,6 +80,12 @@ $(document).ready(function () {
                             // 해당 게시글의 경과 시간을 표시할 요소를 선택하고 텍스트 설정
                             $(this).siblings(".postElapsedTime").text(elapsedTime);
                         })
+
+
+                        // 게시글을 게시글 목록에 추가
+                        postList.append(postItem);
+
+
                     });
                 }
             },
@@ -94,20 +103,20 @@ $(document).ready(function () {
 
 
 
-    writeBtn.on('click', function () {
-        console.log("글쓰기 버튼 클릭")
-        $.ajax({
-            type : 'get',           // 타입 (get, post, put 등등)
-            url : '/community/board/write',           // 요청할 서버url
-            success : function(result) { // 결과 성공 콜백함수
-                location.href = "write"
-                console.log("성공 여부" + result);
-            },
-            error : function(request, status, error) { // 결과 에러 콜백함수
-                console.log("에러 : " + error)
-            }
-        })
-    })
+    // writeBtn.on('click', function () {
+    //     console.log("글쓰기 버튼 클릭")
+    //     $.ajax({
+    //         type : 'get',           // 타입 (get, post, put 등등)
+    //         url : '/community/board/write',           // 요청할 서버url
+    //         success : function(result) { // 결과 성공 콜백함수
+    //             // location.href = "write"
+    //             console.log("성공 여부" + result);
+    //         },
+    //         error : function(request, status, error) { // 결과 에러 콜백함수
+    //             console.log("에러 : " + error)
+    //         }
+    //     })
+    // })
 
     console.log(memberId);
 
@@ -161,8 +170,25 @@ $(document).ready(function () {
     }
 
 
+//    해당 글의 상세보기
+    $(".PostItem_body").on('click', function () {
+        console.log("디테일 페이지 가자")
+        let id = $(this).closest(".PostItem_PostItem").find("input[name='postId']").val();
+        console.log("postId : " + id);
 
+        $.ajax({
+            type : 'get',
+            url : "/community/board/detail/" + id,
+            success : function (result) {
+                console.log("통신 성공!")
+                location.href = "/community/board/detail/" + id;
+            },
+            error : function (request, status, error) {
 
+            }
+        })
+
+    });
 
 
 
@@ -172,9 +198,6 @@ $(document).ready(function () {
 })
 
 
-// 카테고리 선택 시 해당 글 목록 뿌려주기
-function updatePostList() {
 
-}
 
 

@@ -57,6 +57,7 @@
     </aside>
 
     <section class="communityPostDetail-contents">
+        <input type="hidden" name="postId" th:value="${postDTO.id}">
         <article class="postDetail-contents">
             <div class="postContents-header">
                 <div class="postContents-author">
@@ -87,7 +88,6 @@
             <div class="postContents-body" th:text="${postDTO.postContent}">
                 <div class="postContents-metaTags"></div>
                 <div class="postContents-image"></div>
-
             </div>
             <div class="postContents-tags">
                 <a class="postContents-tag-btn" href="/community/10085/results">데이터</a>
@@ -100,7 +100,8 @@
                         <svg width="24" height="24" viewBox="0 0 24 24">
                             <path fill="currentColor" d="M12.563 2.5c0-2.424 3.201-3.043 4.521-.974.446.7.62 1.499.56 2.358-.07 1.008-.451 2.047-1.039 3.081-.055.097-.11.192-.167.285H22a.75.75 0 0 1 .75.75v7a.75.75 0 0 1-.08.335l-3 6a.75.75 0 0 1-.67.415h-7a.75.75 0 1 1 0-1.5h6.536l2.714-5.427V8.75H15a.75.75 0 0 1-.574-1.232 10.286 10.286 0 0 0 .875-1.293c.486-.857.795-1.697.847-2.445.039-.555-.066-1.035-.328-1.447-.564-.883-1.758-.652-1.758.167 0 .875-.302 1.666-.798 2.357-.292.409-.588.7-.88.923C10.712 6.786 9.66 7.677 9.1 8.426l.067-.082a.752.752 0 0 1-.137.186l-.016.014c-.21.298-.264.453-.264.467a.75.75 0 0 1-1.5 0c0-.079.01-.165.029-.26L2.75 8.75v11.5h4.5v-8.125a.75.75 0 1 1 1.5 0V21a.75.75 0 0 1-.75.75H2a.75.75 0 0 1-.75-.75V8A.75.75 0 0 1 2 7.25h6.12c.71-.844 1.838-1.76 3.414-2.702.113-.089.31-.284.511-.564.327-.456.518-.955.518-1.484z"></path>
                         </svg>
-                        <span class="btn-count-L1 count">0</span></button>
+                        <span class="btn-count-L1 count">0</span>
+                    </button>
                 </div>
                 <div class="postContents-bottomActions-comment">
                     <button type="button" class="btn-lgb">
@@ -118,10 +119,22 @@
                     </span>
                 </button>
                 <button type="button" class="postcontent-menu-btn">
-                    <svg width="24" height="24" viewBox="0 0 24 24">
+                    <svg class="edit-svg" width="24" height="24" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M12 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 12 10zm7 0a2 2 0 1 1-.001 4.001A2 2 0 0 1 19 10zM5 10a2 2 0 1 1-.001 4.001A2 2 0 0 1 5 10z"></path>
                     </svg>
                 </button>
+                <div class="btn-wrap">
+                    <div class="edit-btn-detail">
+                        <ul>
+                            <li class="modify-btn-li">
+                                <button type="button" class="modify-btn">글 수정</button>
+                            </li>
+                            <li class="delete-btn-detail">
+                                <button type="button" class="delete-btn">글 삭제</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </article>
         <div class="communitypostDetail-commentsview">

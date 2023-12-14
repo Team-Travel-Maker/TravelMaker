@@ -25,7 +25,7 @@
                 <button type="button" class="mycommunity-myprofile-link goToDetail" >
                     <!-- 프로필 이미지 -->
                     <div class="mycommunity-myprofile-img mycommunity-myprofile-img-size">
-<!--                        <img src="https://static.wanted.co.kr/oneid-user/profile_default.png">-->
+<!--                        <img src="https://static.wanted.co.kr/oneid-user/profile_default.png"> -->
                         <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
                             <img alt="프로필 이미지"
                                  th:src="${#authentication.getPrincipal().memberResponseDTO.snsProFile}"
@@ -33,8 +33,7 @@
                         </th:block>
                         <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
                             <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">
-                                <img alt="프로필 이미지"
-                                     th:src="'https://static.wanted.co.kr/oneid-user/profile_default.png'"
+                                <img alt="프로필 이미지" th:src="'https://static.wanted.co.kr/oneid-user/profile_default.png'"
                                      class="profile-avatar-img" style="vertical-align: middle;">
                             </th:block>
                             <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">
@@ -108,9 +107,23 @@
             <section class="community-content-write">
                 <!-- 프로필 -->
                 <div class="postWriteBtn-avatar mycommunity-myprofile-img mycommunity-myprofile-img-size">
-                    <img src="https://static.wanted.co.kr/oneid-user/profile_default.png">
+                    <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
+                        <img alt="프로필 이미지" th:src="${#authentication.getPrincipal().memberResponseDTO.snsProFile}"
+                             class="profile-avatar-img" style="vertical-align: middle;">
+                    </th:block>
+                    <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.memberJoinAccountType.code.equals('GENERAL')}">
+                        <th:block th:if="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">
+                            <img alt="프로필 이미지" th:src="'https://static.wanted.co.kr/oneid-user/profile_default.png'" class="profile-avatar-img" style="vertical-align: middle;">
+                        </th:block>
+                        <th:block th:unless="${#authentication.getPrincipal().memberResponseDTO.fileId == null}">
+                            <img alt="프로필 이미지" th:src="'/api/files/display?fileName=' +
+                                ${#authentication.getPrincipal().memberResponseDTO.filePath} + '/' +
+                                ${#authentication.getPrincipal().memberResponseDTO.fileUuid} + '_' +
+                                ${#authentication.getPrincipal().memberResponseDTO.fileName}" class="profile-avatar-img" style="vertical-align: middle;">
+                        </th:block>
+                    </th:block>
                 </div>
-                <button type="button" class="postWritebtn-writebtn" id="goWrite">
+                <button type="button" class="postWritebtn-writebtn" id="goWrite" th:href="@{/community/board/write}">
                     테마 후기에 대해 자유롭게 이야기 해주세요!
                     <span class="postWritebtn-writeIcon">
                         <span class="SvgIcon_SvgIcon__root__8vwon">
@@ -145,6 +158,7 @@
 <!--                </div>-->
                 <!-- 게시글 리스트 -->
                 <article class="PostItem_PostItem" th:each="postList : ${postList}">
+                    <input type="hidden" name="postId" id="postId" class="postId" th:value="${postList.id}">
                     <div class="PostItem_PostItem_top">
                         <a href="">
                             <div class="AuthorBox_AuthorBox">
@@ -233,4 +247,13 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/js/community/review-list.js"></script>
+<script src="/js/header/header.js"></script>
+<script>
+    let id = document.getElementsByName("postId").values();
+    console.log("postId : " + id.valueOf());
+</script>
+<script th:inline="javascript">
+    let cs = [[${postList}]];
+    console.log(cs)
+</script>
 </html>

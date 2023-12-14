@@ -3,6 +3,8 @@ package com.app.travelmaker.domain.community;
 
 import com.app.travelmaker.constant.CommunityType;
 import com.app.travelmaker.domain.file.FileDTO;
+import com.app.travelmaker.entity.community.Community;
+import com.app.travelmaker.entity.community.CommunityTag;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.entity.tag.Tag;
 import lombok.Data;
@@ -31,11 +33,19 @@ public class PostDTO {
     private CommunityType communityType;
     private Member member;
     private String memberName;
-    private List<Tag> tag;
+    private List<CommunityTag> tag;
 
     private List<FileDTO> files = new ArrayList<>();
     private List<Long> fileIdsForDelete = new ArrayList<>();
 
+
+    public PostDTO(Long id, String postTitle, String postContent, CommunityType communityType, Member member) {
+        this.id = id;
+        this.postTitle = postTitle;
+        this.postContent = postContent;
+        this.communityType = communityType;
+        this.member = member;
+    }
 
     public PostDTO(Long id, String postTitle, String postContent, CommunityType communityType, LocalDateTime createTime, Member member) {
         this.id = id;
@@ -46,7 +56,7 @@ public class PostDTO {
         this.member = member;
     }
 
-    public PostDTO(Long id, String postTitle, String postContent, Long postLike, Long replyCount, LocalDateTime createTime, CommunityType communityType, Member member, String memberName, List<Tag> tag, List<FileDTO> files, List<Long> fileIdsForDelete) {
+    public PostDTO(Long id, String postTitle, String postContent, Long postLike, Long replyCount, LocalDateTime createTime, CommunityType communityType, Member member, String memberName, List<CommunityTag> tag, List<FileDTO> files, List<Long> fileIdsForDelete) {
         this.id = id;
         this.postTitle = postTitle;
         this.postContent = postContent;
@@ -72,4 +82,7 @@ public class PostDTO {
         this.replyCount = replyCount;
         this.memberName = memberName;
     }
+
+    
+
 }

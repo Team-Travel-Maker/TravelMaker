@@ -13,7 +13,8 @@ public interface PostDSL {
 
     public Optional<PostDTO> detail(Long id);
 
-    public void delete(Long id);
-
     Long getCommunitiesCount(Long memberId);
+
+    public void modifyPost(PostDTO postDTO);
+
 }

@@ -96,8 +96,7 @@ public class GoWithDSLImpl implements GoWithDSL {
                     }
                     // 댓글 갯수 계산 및 추가
                     long replyCount = query.select(goWithReply.count())
-                            .from(goWithReply)
-                            .where(goWithReply.id.eq(data.getId()))
+                            .from(goWithReply)                            .where(goWithReply.id.eq(data.getId()))
                             .fetchOne();
                     data.setReplyCount(replyCount);
                 }).collect(Collectors.toList());

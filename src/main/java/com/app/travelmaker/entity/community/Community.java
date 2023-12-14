@@ -14,6 +14,7 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,11 +71,11 @@ public class Community extends Period {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
-            name = "TBL_TAG",
+            name = "TBL_COMMUNITY_TAG",
             joinColumns = @JoinColumn(name = "community_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
-    private List<Tag> tags = new ArrayList<>();
+    private List<CommunityTag> tags = new ArrayList<>();
 
 
 

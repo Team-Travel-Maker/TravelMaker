@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<div th:replace="~{header/header :: #header}"></div>
+<div th:replace="~{header/signedIn-header :: #header}"></div>
 <div class="Padding_padding___Nyki"></div>
 <!-- 모달 부분 -->
 <div class="modal">
@@ -23,14 +23,19 @@
 </div>
 
 <main class="CommunityWrite">
-    <form id="write">
+    <form id="write" th:action="@{/community/board/update}" method="post" name="postDTO" th:object="${postDTO}">
+        <input type="hidden" class="member-type" th:value="${#authentication.getPrincipal().memberResponseDTO.memberRole.code}">
+        <input type="hidden" name="communityType" id="cType">
+        <input type="hidden" name="memberId">
+        <input type="hidden" name="tag">
+        <input type="hidden" name="id" id="communityId">
         <div class="Header_CommunityWriteHeader">
             <div class="Header_CommunityWriteHeader_content">
                 <div class="Header_CommunityWriteHeader_button">
-                    <button
-                            class="Button_root Button_contained"
-                            type="submit" form="write" aria-label="registration button" disabled=""><span
-                            class="Button_label">등록하기</span></button>
+                    <button class="Button_root Button_contained modify-btn-li"
+                            type="submit" form="write" aria-label="registration button" disabled="">
+                        <span class="Button_label">수정하기</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -38,7 +43,8 @@
             <div class="CommunityWritePaper">
                 <div class="TagPanel">
                     <div class="TagPanel_tagMessage"><span>태그 작성</span>
-                        <span class="TagPanel_tagMessage_required">*</span></div>
+                        <span class="TagPanel_tagMessage_required">*</span>
+                    </div>
                     <style>
                         .tagify {
                             border: 0;
@@ -48,46 +54,30 @@
                         }
                     </style>
                     <input placeholder="태그를 추가해 주세요.">
-
-                    <!--                    <div class="TagPanel_tagWrapper">-->
-                    <!--                        <button type="button" id="write-openModal">-->
-                    <!--                            <svg-->
-                    <!--                                    width="34" height="34" viewBox="0 0 34 34">-->
-                    <!--                                <path-->
-                    <!--                                        d="M0 17C0 7.61116 7.61116 0 17 0V0C26.3888 0 34 7.61116 34 17V17C34 26.3888 26.3888 34 17 34V34C7.61116 34 0 26.3888 0 17V17Z"-->
-                    <!--                                        fill="#F2F4F7"></path>-->
-                    <!--                                <path-->
-                    <!--                                        d="M17.7432 10.6482C17.6935 10.2822 17.3797 10 17 10C16.5858 10 16.25 10.3358 16.25 10.75V16.25H10.75L10.6482 16.2568C10.2822 16.3065 10 16.6203 10 17C10 17.4142 10.3358 17.75 10.75 17.75H16.25V23.25L16.2568 23.3518C16.3065 23.7178 16.6203 24 17 24C17.4142 24 17.75 23.6642 17.75 23.25V17.75H23.25L23.3518 17.7432C23.7178 17.6935 24 17.3797 24 17C24 16.5858 23.6642 16.25 23.25 16.25H17.75V10.75L17.7432 10.6482Z"-->
-                    <!--                                        fill="#666666"></path>-->
-                    <!--                            </svg>-->
-                    <!--                        </button>-->
-                    <!--                        <button type="button" class="TagPanel_tagPlaceholder"-->
-                    <!--                                aria-label="Open Select Tag Modal">-->
-                    <!--                            <picture>-->
-                    <!--                                <source type="image/webp"-->
-                    <!--                                        srcset="https://static.wanted.co.kr/images/community/tag_empty.webp 1x, https://static.wanted.co.kr/images/community/tag_empty@2x.webp 2x, https://static.wanted.co.kr/images/community/tag_empty@3x.webp 3x">-->
-                    <!--                                <img srcset="https://static.wanted.co.kr/images/community/tag_empty.png 1x, https://static.wanted.co.kr/images/community/tag_empty@2x.png 2x, https://static.wanted.co.kr/images/community/tag_empty@3x.png 3x"-->
-                    <!--                                     src="https://static.wanted.co.kr/images/community/tag_empty@3x.png"-->
-                    <!--                                     alt="empty tag"></picture>-->
-                    <!--                        </button>-->
-
-                    <!--                    </div>-->
+                    <div class="selected-cType">
+                        <select id="communityType" name="communityType">
+                            <option value="REVIEW" selected>일반 후기</option>
+                            <option value="IMPROVEMENT">개선 요청</option>
+                            <option value="COMMUNICATION">소통</option>
+                        </select>
+                    </div>
                 </div>
                 <!-- 제목 작성-->
                 <div class="AutoTextarea CommunityWrite-titleWrapper">
-                    <textarea class="AutoTextarea_AutoTextarea" name="title" placeholder="제목을 입력해주세요." required=""
-                              style="height: 38px;"></textarea>
-                    <textarea class="AutoTextarea_AutoTextarea AutoTextarea_AutoTextarea_hidden" readonly=""
-                              style="height: 30px;">
-
-                    </textarea></div>
+<!--                    <textarea class="AutoTextarea_AutoTextarea" name="title" placeholder="제목을 입력해주세요." required=""-->
+<!--                              style="height: 38px;"></textarea>-->
+                    <textarea class="AutoTextarea_AutoTextarea" name="postTitle"
+                              style="height: 30px;" th:text="${postDTO.postTitle}">
+                    </textarea>
+                </div>
                 <div class="CommunityWrite-contentWrapper">
                     <div class="AutoTextarea">
                         <!-- 내용작성  -->
-                        <textarea class="AutoTextarea_AutoTextarea" name="content" placeholder="내용을 작성해주세요." required=""
-                                  style="height: 56px;"></textarea><textarea
-                            class="AutoTextarea_AutoTextarea AutoTextarea_AutoTextarea_hidden"
-                            readonly="" style=""></textarea>
+<!--                        <textarea class="AutoTextarea_AutoTextarea" name="content" placeholder="내용을 작성해주세요." required=""-->
+<!--                                  style="height: 56px;"></textarea>-->
+                        <textarea class="AutoTextarea_AutoTextarea" name="postContent"
+                                  style="" th:text="${postDTO.postContent}">
+                        </textarea>
                     </div>
                     <!--사진 -->
                     <!--                    <div class="CommunityWrite-photosWrap">-->
@@ -106,21 +96,17 @@
         <label for="upload1">
             <button type="button" class="PhotoButton_PhotoButton" onclick="openFile()">
                 <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                          d="M7.52489 11.47L9.9908 13.9387L15.4533 8.46998C15.7462 8.17668 16.2216 8.17668 16.5145 8.46998L22.5076 14.47C22.6481 14.6106 22.727 14.8012 22.727 15V19.0395C22.727 19.4539 22.3909 19.7897 21.9765 19.7895L1.99951 19.7763C1.58501 19.776 1.24932 19.4396 1.25 19.0251L1.273 4.99877C1.27368 4.58465 1.60987 4.24946 2.02399 4.25L22.001 4.27632C22.4163 4.27686 22.7521 4.61486 22.75 5.0302L22.727 9.4677C22.7248 9.88191 22.3873 10.216 21.9731 10.2138C21.5589 10.2117 21.2249 9.87414 21.227 9.45993L21.2461 5.77532L2.77177 5.75099L2.75123 18.2768L21.227 18.289V15.3104L15.9839 10.0613L10.5214 15.53C10.2285 15.8233 9.75313 15.8233 9.46017 15.53L6.99425 13.0613L5.52718 14.53C5.23446 14.8231 4.75959 14.8234 4.46653 14.5306C4.17346 14.2379 4.17319 13.763 4.46591 13.47L6.46361 11.47C6.75658 11.1767 7.23192 11.1767 7.52489 11.47ZM9 9.75H5C4.58579 9.75 4.25 9.41421 4.25 9C4.25 8.58579 4.58579 8.25 5 8.25H9C9.41421 8.25 9.75 8.58579 9.75 9C9.75 9.41421 9.41421 9.75 9 9.75Z"
-                          fill="currentColor"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.52489 11.47L9.9908 13.9387L15.4533 8.46998C15.7462 8.17668 16.2216 8.17668 16.5145 8.46998L22.5076 14.47C22.6481 14.6106 22.727 14.8012 22.727 15V19.0395C22.727 19.4539 22.3909 19.7897 21.9765 19.7895L1.99951 19.7763C1.58501 19.776 1.24932 19.4396 1.25 19.0251L1.273 4.99877C1.27368 4.58465 1.60987 4.24946 2.02399 4.25L22.001 4.27632C22.4163 4.27686 22.7521 4.61486 22.75 5.0302L22.727 9.4677C22.7248 9.88191 22.3873 10.216 21.9731 10.2138C21.5589 10.2117 21.2249 9.87414 21.227 9.45993L21.2461 5.77532L2.77177 5.75099L2.75123 18.2768L21.227 18.289V15.3104L15.9839 10.0613L10.5214 15.53C10.2285 15.8233 9.75313 15.8233 9.46017 15.53L6.99425 13.0613L5.52718 14.53C5.23446 14.8231 4.75959 14.8234 4.46653 14.5306C4.17346 14.2379 4.17319 13.763 4.46591 13.47L6.46361 11.47C6.75658 11.1767 7.23192 11.1767 7.52489 11.47ZM9 9.75H5C4.58579 9.75 4.25 9.41421 4.25 9C4.25 8.58579 4.58579 8.25 5 8.25H9C9.41421 8.25 9.75 8.58579 9.75 9C9.75 9.41421 9.41421 9.75 9 9.75Z" fill="currentColor"></path>
                     <mask id="mask0_150_2361" maskUnits="userSpaceOnUse" x="1" y="4" width="22" height="16">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M7.52489 11.47L9.9908 13.9387L15.4533 8.46998C15.7462 8.17668 16.2216 8.17668 16.5145 8.46998L22.5076 14.47C22.6481 14.6106 22.727 14.8012 22.727 15V19.0395C22.727 19.4539 22.3909 19.7897 21.9765 19.7895L1.99951 19.7763C1.58501 19.776 1.24932 19.4396 1.25 19.0251L1.273 4.99877C1.27368 4.58465 1.60987 4.24946 2.02399 4.25L22.001 4.27632C22.4163 4.27686 22.7521 4.61486 22.75 5.0302L22.727 9.4677C22.7248 9.88191 22.3873 10.216 21.9731 10.2138C21.5589 10.2117 21.2249 9.87414 21.227 9.45993L21.2461 5.77532L2.77177 5.75099L2.75123 18.2768L21.227 18.289V15.3104L15.9839 10.0613L10.5214 15.53C10.2285 15.8233 9.75313 15.8233 9.46017 15.53L6.99425 13.0613L5.52718 14.53C5.23446 14.8231 4.75959 14.8234 4.46653 14.5306C4.17346 14.2379 4.17319 13.763 4.46591 13.47L6.46361 11.47C6.75658 11.1767 7.23192 11.1767 7.52489 11.47ZM9 9.75H5C4.58579 9.75 4.25 9.41421 4.25 9C4.25 8.58579 4.58579 8.25 5 8.25H9C9.41421 8.25 9.75 8.58579 9.75 9C9.75 9.41421 9.41421 9.75 9 9.75Z"
-                              fill="white"></path>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M7.52489 11.47L9.9908 13.9387L15.4533 8.46998C15.7462 8.17668 16.2216 8.17668 16.5145 8.46998L22.5076 14.47C22.6481 14.6106 22.727 14.8012 22.727 15V19.0395C22.727 19.4539 22.3909 19.7897 21.9765 19.7895L1.99951 19.7763C1.58501 19.776 1.24932 19.4396 1.25 19.0251L1.273 4.99877C1.27368 4.58465 1.60987 4.24946 2.02399 4.25L22.001 4.27632C22.4163 4.27686 22.7521 4.61486 22.75 5.0302L22.727 9.4677C22.7248 9.88191 22.3873 10.216 21.9731 10.2138C21.5589 10.2117 21.2249 9.87414 21.227 9.45993L21.2461 5.77532L2.77177 5.75099L2.75123 18.2768L21.227 18.289V15.3104L15.9839 10.0613L10.5214 15.53C10.2285 15.8233 9.75313 15.8233 9.46017 15.53L6.99425 13.0613L5.52718 14.53C5.23446 14.8231 4.75959 14.8234 4.46653 14.5306C4.17346 14.2379 4.17319 13.763 4.46591 13.47L6.46361 11.47C6.75658 11.1767 7.23192 11.1767 7.52489 11.47ZM9 9.75H5C4.58579 9.75 4.25 9.41421 4.25 9C4.25 8.58579 4.58579 8.25 5 8.25H9C9.41421 8.25 9.75 8.58579 9.75 9C9.75 9.41421 9.41421 9.75 9 9.75Z" fill="white"></path>
                     </mask>
                     <g mask="url(#mask0_150_2361)">
                         <rect width="24" height="24" fill="currentColor"></rect>
                     </g>
                 </svg>
                 <span>
-                (<em> 0 </em>/1)
-            </span>
+                    (<em> 0 </em>/1)
+                </span>
             </button>
         </label>
     </div>
@@ -129,7 +115,12 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="https://unpkg.com/@yaireo/tagify"></script>
-<script src="/js/community/review-write.js"></script>
+<!--<script src="/js/community/review-write.js"></script>-->
+<!--<script src="/js/community/detail.js"></script>-->
+<script src="/js/community/update.js"></script>
 <script src="/js/community/write-modal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+<script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+<script src="/js/header/header.js"></script>
 
 </html>
