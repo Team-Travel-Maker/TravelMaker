@@ -49,12 +49,15 @@ function handleFileSelect(event) {
     const file = event.target.files[0];
 }
 
-let input = document.querySelector('input')
+let input = document.querySelector('input[name="tag"]')
+
 let tagify = new Tagify(input);
 
+$(document).ready(function() {
 // 태그가 추가되면 이벤트 발생
-tagify.on('add', function() {
-    console.log(tagify.value); // 입력된 태그 정보 객체
+    tagify.on('add', function () {
+        console.log(tagify.value); // 입력된 태그 정보 객체
+    })
 })
 
 // 글 등록 버튼
@@ -71,45 +74,9 @@ $(document).ready(function() {
         // console.log(`${communityType},${postTitle}, ${postContent}`)
         $("#cType").val(communityType);
         $("#write").submit();
-
-        // let postDTO = {
-        //     communityType : communityType,
-        //     postTitle : postTitle,
-        //     postContent : postContent
-        // }
-        //
-        // console.log(JSON.stringify(postDTO))
-        // $.ajax({
-        //     type : 'post',           // 타입 (get, post, put 등등)
-        //     url : '/api/communities/board/write',           // 요청할 서버url
-        //     async : false,            // 비동기 여부 (default : true)
-        //     // enctype: "text",
-        //     processData : false,
-        //     contentType : 'application/json',
-        //     data : JSON.stringify(postDTO),
-        //     success : function(result) { // 결과 성공 콜백함수
-        //         // location.href = "/community/board/detail"
-        //         console.log("성공 여부");
-        //         // $.ajax({
-        //         //     type : 'GET',
-        //         //     url : 'board/detail',
-        //         //     contentType : 'application/json',
-        //         //     success : function (result) {
-        //         //         result.toString();
-        //         //         console.log(result.toString());
-        //         //         console.log(result.toString());
-        //         //         console.log(result.postTitle);
-        //         //         console.log(result.postContent);
-        //         //         console.log(result.communityType);
-        //         //
-        //         //     }
-        //         // })
-        //
-        //     },
-        //     error : function(request, status, error) { // 결과 에러 콜백함수
-        //         console.log("에러 : " + error)
-        //     }
-        // })
-
     });
+
+
+
+
 });

@@ -4,13 +4,17 @@ import com.app.travelmaker.auditing.Period;
 import com.app.travelmaker.constant.CommunityType;
 import com.app.travelmaker.entity.mebmer.Member;
 import com.app.travelmaker.entity.story.StoryFile;
+import com.app.travelmaker.entity.tag.Tag;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import net.bytebuddy.implementation.bind.annotation.Default;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +51,7 @@ public class Community extends Period {
      * Community Category (커뮤니티 카테고리)
      * */
     @Enumerated(EnumType.STRING)
+    @ColumnDefault("REVIEW")
     @NotNull private CommunityType communityCategory;
 
     /**
@@ -63,4 +68,15 @@ public class Community extends Period {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "community")
     private List<CommunityFile> communityFiles = new ArrayList<>();
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "TBL_COMMUNITY_TAG",
+            joinColumns = @JoinColumn(name = "community_id"),
+            inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private List<CommunityTag> tags = new ArrayList<>();
+
+
+
 }

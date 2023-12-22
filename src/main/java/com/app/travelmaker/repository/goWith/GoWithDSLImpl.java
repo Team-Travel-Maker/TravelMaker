@@ -73,7 +73,7 @@ public class GoWithDSLImpl implements GoWithDSL {
             regionCondition.and(goWith.goWithRegionType.eq(region));
         }
 
-        List<GoWithDTO> gowiths = query.select(Projections.fields(GoWithDTO.class,
+        List<GoWithDTO> goWiths = query.select(Projections.fields(GoWithDTO.class,
                 goWith.id,
                 goWith.goWithTitle,
                 goWith.goWithContent,
@@ -96,15 +96,14 @@ public class GoWithDSLImpl implements GoWithDSL {
                     }
                     // 댓글 갯수 계산 및 추가
                     long replyCount = query.select(goWithReply.count())
-                            .from(goWithReply)
-                            .where(goWithReply.id.eq(data.getId()))
+                            .from(goWithReply)                            .where(goWithReply.id.eq(data.getId()))
                             .fetchOne();
                     data.setReplyCount(replyCount);
                 }).collect(Collectors.toList());
 
         Long totalCount = query.select(goWith.count()).from(goWith).fetchOne();
 
-        return new PageImpl<>(gowiths, pageable, totalCount);
+        return new PageImpl<>(goWiths, pageable, totalCount);
     }
 
 

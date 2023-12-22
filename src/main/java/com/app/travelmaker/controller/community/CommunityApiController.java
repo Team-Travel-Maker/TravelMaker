@@ -8,6 +8,7 @@ import com.app.travelmaker.service.community.CommunityService;
 import io.lettuce.core.dynamic.annotation.Param;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -26,13 +27,37 @@ public class CommunityApiController extends AccountSupport {
 
     private final CommunityService communityService;
 
+
     @GetMapping("board/list")
-    public List<PostDTO> getList(PostDTO postDTO, Model model){
-//        model.addAttribute("postList", postList);
+    public ResponseEntity<?> getPostList(@RequestParam CommunityType communityType, Model model){
 
+        System.out.println("인 커밍");
+        System.out.println("컨트롤러 : " + communityType);
+        List<PostDTO> postList;
 
-        return communityService.getPostList(postDTO);
+        if (communityType == null){
+            postList = communityService.getPostList(CommunityType.REVIEW);
+        } else if (CommunityType.IMPROVEMENT.getCode().equals(communityType.toString())){
+            postList = communityService.getPostList(CommunityType.IMPROVEMENT);
+        } else if (CommunityType.REVIEW.getCode().equals(communityType.toString())){
+            postList = communityService.getPostList(CommunityType.REVIEW);
+        } else{
+            postList = communityService.getPostList(CommunityType.COMMUNICATION);
+        }
+
+        System.out.println("postList 1번째 : " + postList.get(0));
+        model.addAttribute("postList", postList);
+
+        return ResponseEntity.ok(postList);
     }
+
+//    @GetMapping("board/list")
+//    public List<PostDTO> getList(PostDTO postDTO,CommunityType communityType, Model model){
+////        model.addAttribute("postList", postList);
+//
+//
+//        return communityService.getPostList(postDTO, communityType);
+//    }
 
 
 //    @GetMapping("board/detail/{id}")

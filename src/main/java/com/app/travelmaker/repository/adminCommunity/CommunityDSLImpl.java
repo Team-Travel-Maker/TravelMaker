@@ -26,7 +26,8 @@ public class CommunityDSLImpl implements CommunityDSL {
 
         List<CommunityFileResponseDTO> files = getFiles();
 
-        List<CommunityResponseDTO> communities = query.select(Projections.fields(CommunityResponseDTO.class,
+        List<CommunityResponseDTO> communities =
+                query.select(Projections.fields(CommunityResponseDTO.class,
                 community.id,
                 community.communityTitle,
                 community.communityContent,
