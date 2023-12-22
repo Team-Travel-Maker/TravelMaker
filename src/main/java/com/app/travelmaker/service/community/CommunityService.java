@@ -23,8 +23,6 @@ public interface CommunityService extends MemberSupport {
 
     public void modifyPost(PostDTO postDTO);
 
-//    public Optional<PostDTO> getPost(Long id);
-
 
 
 

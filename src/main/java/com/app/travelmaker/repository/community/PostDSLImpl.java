@@ -2,10 +2,7 @@ package com.app.travelmaker.repository.community;
 
 import com.app.travelmaker.constant.CommunityType;
 import com.app.travelmaker.domain.community.PostDTO;
-import com.app.travelmaker.entity.community.CommunityReply;
-import com.app.travelmaker.entity.community.CommunityTag;
-import com.app.travelmaker.entity.community.QCommunityReply;
-import com.app.travelmaker.entity.community.QCommunityTag;
+import com.app.travelmaker.entity.community.*;
 import com.app.travelmaker.entity.mebmer.QMember;
 import com.querydsl.core.types.EntityPath;
 import com.querydsl.core.types.Projections;
@@ -71,7 +68,6 @@ public class PostDSLImpl implements PostDSL {
     @Override
     public Optional<PostDTO> detail(Long id) {
         System.out.println("디테일 DSLImpl id : " + id);
-
         Optional<PostDTO> foundPost =
                 Optional.ofNullable(
                         query.select(Projections.constructor(PostDTO.class,
@@ -86,8 +82,7 @@ public class PostDSLImpl implements PostDSL {
                     .where(community.id.eq(id))
                     .fetchOne());
 
-
-        log.info("=D=S=L=[]=D=S=L=", foundPost);
+        System.out.println("시발 리턴전인데?" + foundPost.toString());
         return foundPost;
     }
 
@@ -96,15 +91,17 @@ public class PostDSLImpl implements PostDSL {
 
     @Override
     public void modifyPost(PostDTO postDTO) {
+//        업데이트를 할 때 Enum을 어떻게 처리할 것인가?
+
+        System.out.println(postDTO.getCommunityType());
+        System.out.println("DSL postID" + postDTO.getId());
         query.update(community)
-                .set(
-                      community.communityTitle,
-                      community.communityContent
-//                      community.communityCategory,
-//                      community.createdDate,
-//                      community.member
-                    )
-                .where(community.id.eq(postDTO.getId())).execute();
+                .set(community.communityTitle, postDTO.getPostTitle())
+                .set(community.communityContent, postDTO.getPostContent())
+                .set(community.communityCategory, postDTO.getCommunityType())
+                .set(community.createdDate, postDTO.getUpdateTime())
+                .where(community.id.eq(postDTO.getId()))
+                .execute();
     }
 
     @Override

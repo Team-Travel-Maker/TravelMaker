@@ -147,26 +147,25 @@ public class CommunityController extends AccountSupport {
 
 
         PostDTO postDTO = communityService.detail(id);
-        System.out.println("슈발 : " + communityService.detail(id));
-        System.out.println(postDTO.getPostTitle());
-        log.info("=<>=", postDTO.getPostTitle());
-//        model.addAttribute("postDTO", postDTO);
         mv.addObject("postDTO", postDTO);
         mv.setViewName("/community/board/update");
 
         return mv;
     }
 
-    @PostMapping("/board/update")
-    public ModelAndView update(PostDTO postDTO, @RequestParam("communityType") Enum communityType){
+    @RequestMapping("/board/update")
+    public ModelAndView update(PostDTO postDTO, @RequestParam("communityType") String communityType){
         ModelAndView mv = new ModelAndView();
-        System.out.println(postDTO.getPostTitle());
-        System.out.println(postDTO.getPostContent());
-        System.out.println(postDTO.getCommunityType());
+
+        if (communityType.equals("REVIEW")){
+            postDTO.setCommunityType(CommunityType.REVIEW);
+        } else if(communityType.equals("IMPROVEMENT")){
+            postDTO.setCommunityType(CommunityType.IMPROVEMENT);
+        } else if(communityType.equals("COMMUNICATION")){
+            postDTO.setCommunityType(CommunityType.COMMUNICATION);
+        }
 
         communityService.modifyPost(postDTO);
-
-        log.info("[[[]]]", postDTO);
 
         mv.setViewName("/community/board/detail");
 
